@@ -130,7 +130,7 @@
 </style>
 
 <div class="profile-header">
-  <img src="/images/avatar.png" alt="Qi Meng" class="profile-avatar">
+  <img src="/images/avatar.svg" alt="avatar" class="profile-avatar">
   <div class="profile-info">
     <h1>Qi Meng</h1>
     <div class="title">凝聚态物理 | 博士研究生</div>

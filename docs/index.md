@@ -6,8 +6,8 @@ hero:
   text: "Research Blog"
   tagline: 凝聚态物理 · 量子计算 · 数值模拟
   image:
-    src: /images/avatar.png
-    alt: Qi Meng
+    src: /images/avatar.svg
+    alt: avatar
   actions:
     - theme: brand
       text: 浏览文章

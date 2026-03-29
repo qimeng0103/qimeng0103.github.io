@@ -35,7 +35,7 @@ export default defineConfig({
     siteTitle: 'Qi Meng',
     
     // Logo
-    logo: '/images/avatar.png',
+    logo: '/images/avatar.svg',
     
     // 导航栏
     nav: [
