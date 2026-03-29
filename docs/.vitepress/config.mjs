@@ -8,8 +8,8 @@ export default defineConfig({
   titleTemplate: ':title | Research Blog',
   description: 'Qi Meng 的个人科研博客 - 凝聚态物理、量子计算与数值模拟',
   
-  // 网站基础路径（GitHub Pages 仓库名）
-  base: `/${GITHUB_USERNAME}.github.io/`,
+  // 网站基础路径（用户/组织页面直接使用根路径）
+  // base: '/',  // 如果使用自定义域名，取消注释这一行
   
   // 语言配置
   lang: 'zh-CN',
