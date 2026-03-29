@@ -5,7 +5,7 @@ const GITHUB_USERNAME = 'qimeng0103'
 
 export default defineConfig({
   title: '我的科研博客',
-  description: "Qi Meng's research notes, tech articles and learning insights"
+  description: "Qi Meng's research notes, tech articles and learning insights",
   base: `/${GITHUB_USERNAME}.github.io/`,
   
   // 语言配置
