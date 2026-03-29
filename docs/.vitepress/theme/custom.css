@@ -1,0 +1,51 @@
+/* 自定义样式 */
+
+/* 首页 hero 区域样式优化 */
+.VPHero .image {
+  max-width: 200px;
+}
+
+/* 数学公式样式优化 */
+.katex-display {
+  margin: 1.5em 0;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+/* 代码块样式优化 */
+.vp-doc div[class*='language-'] {
+  border-radius: 8px;
+  margin: 16px 0;
+}
+
+/* 表格样式优化 */
+.vp-doc table {
+  width: 100%;
+  display: table;
+  margin: 16px 0;
+}
+
+/* 自定义滚动条 */
+::-webkit-scrollbar {
+  width: 8px;
+  height: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--vp-c-bg-soft);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--vp-c-text-3);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--vp-c-text-2);
+}
+
+/* 图片居中显示 */
+.vp-doc img {
+  display: block;
+  margin: 0 auto;
+}
