@@ -4,31 +4,31 @@ layout: home
 hero:
   name: "Qi Meng"
   text: "Research Blog"
-  tagline: 凝聚态物理 · 量子计算 · 数值模拟
+  tagline: Condensed Matter Physics · Quantum Computing · Numerical Simulations
   image:
     src: /images/avatar.svg
-    alt: avatar
+    alt: Qi Meng
   actions:
     - theme: brand
-      text: 浏览文章
-      link: /posts/
+      text: Browse Articles
+      link: /en/posts/
     - theme: alt
-      text: 关于我
-      link: /about
+      text: About Me
+      link: /en/about
 
 features:
   - icon: 🔬
-    title: 研究笔记
-    details: 凝聚态物理与拓扑材料的理论研究记录
+    title: Research Notes
+    details: Theoretical studies on topological materials and condensed matter physics
   - icon: 💻
-    title: 数值方法
-    details: Kwant、Julia 等计算工具的使用与技巧
+    title: Numerical Methods
+    details: Computational tools including Kwant, Julia, and scientific computing
   - icon: 📊
-    title: 数据分析
-    details: 科学计算与数据可视化的实践经验
+    title: Data Analysis
+    details: Practical experience in scientific computing and data visualization
   - icon: 📝
-    title: 论文解读
-    details: 经典文献与前沿进展的阅读笔记
+    title: Paper Reviews
+    details: Reading notes on classic papers and frontier research progress
 ---
 
 <style>
@@ -189,10 +189,11 @@ features:
 <div class="home-content">
 
 <div class="intro-section">
-  <h2>👋 欢迎来到我的研究空间</h2>
+  <h2>👋 Welcome to My Research Space</h2>
   <p class="intro-text">
-    我是 Qi Meng，一名凝聚态物理领域的科研工作者。这里记录我的研究笔记、数值计算经验以及对物理学的思考。
-    主要关注拓扑物态、量子输运和强关联系统。
+    I'm Qi Meng, a researcher in condensed matter physics. This blog documents my research notes, 
+    computational experiences, and thoughts on physics. My primary interests include topological phases, 
+    quantum transport, and strongly correlated systems.
   </p>
   
   <div class="contact-grid">
@@ -202,14 +203,14 @@ features:
     <a href="https://github.com/qimeng0103" class="contact-item" target="_blank">
       <span>🐙</span> GitHub
     </a>
-    <a href="/en/" class="contact-item">
-      <span>🌐</span> English
+    <a href="/" class="contact-item">
+      <span>🌐</span> 中文
     </a>
   </div>
 </div>
 
 <div class="latest-articles">
-  <h2>📝 最新文章</h2>
+  <h2>📝 Latest Articles</h2>
   
   <div class="article-card">
     <div class="article-date">
@@ -217,12 +218,10 @@ features:
       <span class="month">Jan</span>
     </div>
     <div class="article-info">
-      <h3><a href="/posts/example">示例文章：公式与代码演示</a></h3>
-      <p>展示博客支持的数学公式、代码高亮等功能的使用方法</p>
+      <h3><a href="/en/posts/example">Example: Formulas and Code</a></h3>
+      <p>Demonstrating mathematical formulas, code highlighting, and other supported features</p>
     </div>
   </div>
-  
-  <!-- 更多文章会自动添加在这里 -->
   
 </div>
 
