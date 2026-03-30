@@ -1,11 +1,5 @@
 # Stationary Perturbation Theory: Non-Degenerate vs Degenerate Cases
 
----
-date: 2026-03-30
-tags: [Quantum Mechanics, Perturbation Theory]
-categories: [Quantum Mechanics Notes]
----
-
 <div class="article-meta">
 
 📅 **Date:** 2026-03-30 | 🏷️ **Tags:** Quantum Mechanics, Perturbation Theory | 📂 **Category:** Quantum Mechanics Notes
