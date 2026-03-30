@@ -12,16 +12,6 @@ hero:
     - theme: alt
       text: About
       link: /about
-
-features:
-  - title: Research Notes
-    details: Theoretical investigations in condensed matter physics and topological materials
-  - title: Computational Methods
-    details: Numerical techniques using Kwant, Julia, and other scientific computing tools
-  - title: Data Analysis
-    details: Scientific computing and data visualization for physics research
-  - title: Literature Review
-    details: Reading notes on seminal papers and recent advances in the field
 ---
 
 <style>
