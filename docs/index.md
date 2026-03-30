@@ -4,155 +4,140 @@ layout: home
 hero:
   name: "Qi Meng"
   text: "Research Blog"
-  tagline: 凝聚态物理 · 量子计算 · 数值模拟
-  image:
-    src: /images/avatar.svg
-    alt: avatar
+  tagline: Condensed Matter Physics · Quantum Computing · Numerical Simulations
   actions:
     - theme: brand
-      text: 浏览文章
+      text: Publications
       link: /posts/
     - theme: alt
-      text: 关于我
+      text: About
       link: /about
 
 features:
-  - icon: 🔬
-    title: 研究笔记
-    details: 凝聚态物理与拓扑材料的理论研究记录
-  - icon: 💻
-    title: 数值方法
-    details: Kwant、Julia 等计算工具的使用与技巧
-  - icon: 📊
-    title: 数据分析
-    details: 科学计算与数据可视化的实践经验
-  - icon: 📝
-    title: 论文解读
-    details: 经典文献与前沿进展的阅读笔记
+  - title: Research Notes
+    details: Theoretical investigations in condensed matter physics and topological materials
+  - title: Computational Methods
+    details: Numerical techniques using Kwant, Julia, and other scientific computing tools
+  - title: Data Analysis
+    details: Scientific computing and data visualization for physics research
+  - title: Literature Review
+    details: Reading notes on seminal papers and recent advances in the field
 ---
 
 <style>
 .home-content {
   max-width: 800px;
   margin: 0 auto;
-  padding: 40px 24px;
+  padding: 60px 24px;
 }
 
 .intro-section {
-  text-align: center;
-  margin-bottom: 48px;
+  margin-bottom: 60px;
 }
 
 .intro-section h2 {
-  font-size: 28px;
+  font-family: var(--vp-font-family-serif);
+  font-size: 24px;
   font-weight: 600;
   color: var(--vp-c-text-1);
-  margin-bottom: 16px;
+  margin-bottom: 20px;
+  letter-spacing: -0.01em;
 }
 
 .intro-text {
   font-size: 16px;
   line-height: 1.8;
   color: var(--vp-c-text-2);
-  max-width: 600px;
-  margin: 0 auto;
+  text-align: justify;
 }
 
-.contact-grid {
-  display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-  gap: 16px;
-  margin-top: 32px;
+.contact-section {
+  margin-top: 40px;
+  padding-top: 40px;
+  border-top: 1px solid var(--vp-c-divider);
 }
 
-.contact-item {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  gap: 8px;
-  padding: 16px 24px;
-  background: var(--vp-c-bg-soft);
-  border-radius: 12px;
+.contact-section h3 {
+  font-family: var(--vp-font-family-serif);
+  font-size: 14px;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: var(--vp-c-text-3);
+  margin-bottom: 16px;
+}
+
+.contact-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.contact-list li {
+  margin: 8px 0;
+  font-size: 14px;
+}
+
+.contact-list a {
   color: var(--vp-c-text-2);
   text-decoration: none;
-  font-weight: 500;
-  transition: all 0.3s ease;
-  border: 1px solid var(--vp-c-border);
+  border-bottom: 1px solid var(--vp-c-border);
+  transition: border-color 0.2s ease, color 0.2s ease;
 }
 
-.contact-item:hover {
-  background: var(--vp-c-brand-soft);
+.contact-list a:hover {
   color: var(--vp-c-brand-1);
-  border-color: var(--vp-c-brand-1);
-  transform: translateY(-2px);
+  border-bottom-color: var(--vp-c-brand-1);
 }
 
 .latest-articles {
-  margin-top: 64px;
+  margin-top: 60px;
 }
 
 .latest-articles h2 {
-  font-size: 24px;
+  font-family: var(--vp-font-family-serif);
+  font-size: 20px;
   font-weight: 600;
   color: var(--vp-c-text-1);
   margin-bottom: 24px;
   padding-bottom: 12px;
-  border-bottom: 2px solid var(--vp-c-brand-soft);
+  border-bottom: 2px solid var(--vp-c-brand-1);
+  letter-spacing: -0.01em;
 }
 
-.article-card {
+.article-entry {
   display: flex;
-  align-items: flex-start;
-  gap: 16px;
-  padding: 20px;
-  margin: 12px 0;
-  background: var(--vp-c-bg);
-  border: 1px solid var(--vp-c-border);
-  border-radius: 12px;
-  transition: all 0.3s ease;
+  align-items: baseline;
+  gap: 24px;
+  padding: 20px 0;
+  border-bottom: 1px solid var(--vp-c-divider);
 }
 
-.article-card:hover {
-  transform: translateX(8px);
-  border-color: var(--vp-c-brand-1);
-  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.1);
+.article-entry:last-child {
+  border-bottom: none;
 }
 
 .article-date {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-width: 60px;
-  padding: 12px;
-  background: var(--vp-c-brand-soft);
-  border-radius: 10px;
-  color: var(--vp-c-brand-1);
-}
-
-.article-date .day {
-  font-size: 24px;
-  font-weight: 700;
-  line-height: 1;
-}
-
-.article-date .month {
-  font-size: 12px;
-  font-weight: 500;
-  text-transform: uppercase;
-  margin-top: 4px;
+  font-family: var(--vp-font-family-mono);
+  font-size: 13px;
+  color: var(--vp-c-text-3);
+  white-space: nowrap;
+  min-width: 100px;
 }
 
 .article-info h3 {
-  font-size: 18px;
+  font-family: var(--vp-font-family-serif);
+  font-size: 17px;
   font-weight: 600;
-  margin: 0 0 8px 0;
+  margin: 0 0 6px 0;
+  line-height: 1.4;
 }
 
 .article-info h3 a {
   color: var(--vp-c-text-1);
   text-decoration: none;
   border-bottom: none;
+  transition: color 0.2s ease;
 }
 
 .article-info h3 a:hover {
@@ -167,21 +152,13 @@ features:
 }
 
 @media (max-width: 640px) {
-  .article-card {
+  .article-entry {
     flex-direction: column;
-    gap: 12px;
+    gap: 8px;
   }
   
   .article-date {
-    flex-direction: row;
-    gap: 8px;
-    padding: 8px 16px;
     min-width: auto;
-    align-self: flex-start;
-  }
-  
-  .article-date .day {
-    font-size: 18px;
   }
 }
 </style>
@@ -189,40 +166,35 @@ features:
 <div class="home-content">
 
 <div class="intro-section">
-  <h2>👋 欢迎来到我的研究空间</h2>
+  <h2>Welcome</h2>
   <p class="intro-text">
-    我是 Qi Meng，一名凝聚态物理领域的科研工作者。这里记录我的研究笔记、数值计算经验以及对物理学的思考。
-    主要关注拓扑物态、量子输运和强关联系统。
+    I am Qi Meng, a researcher in condensed matter physics. This website documents my research notes, 
+    numerical methods, and reflections on physics. My primary interests include topological phases of matter, 
+    quantum transport, and strongly correlated systems.
   </p>
   
-  <div class="contact-grid">
-    <a href="mailto:qimeng0103@gmail.com" class="contact-item">
-      <span>📧</span> qimeng0103@gmail.com
-    </a>
-    <a href="https://github.com/qimeng0103" class="contact-item" target="_blank">
-      <span>🐙</span> GitHub
-    </a>
-    <a href="/en/" class="contact-item">
-      <span>🌐</span> English
-    </a>
+  <div class="contact-section">
+    <h3>Contact</h3>
+    <ul class="contact-list">
+      <li>Email: <a href="mailto:qimeng0103@gmail.com">qimeng0103@gmail.com</a></li>
+      <li>GitHub: <a href="https://github.com/qimeng0103" target="_blank">github.com/qimeng0103</a></li>
+      <li><a href="/en/">English Version</a></li>
+    </ul>
   </div>
 </div>
 
 <div class="latest-articles">
-  <h2>📝 最新文章</h2>
+  <h2>Recent Articles</h2>
   
-  <div class="article-card">
-    <div class="article-date">
-      <span class="day">15</span>
-      <span class="month">Jan</span>
-    </div>
+  <div class="article-entry">
+    <div class="article-date">2024-01-15</div>
     <div class="article-info">
-      <h3><a href="/posts/example">示例文章：公式与代码演示</a></h3>
-      <p>展示博客支持的数学公式、代码高亮等功能的使用方法</p>
+      <h3><a href="/posts/example">Example: Mathematical Formulas and Code</a></h3>
+      <p>Demonstration of LaTeX equations, syntax highlighting, and other features</p>
     </div>
   </div>
   
-  <!-- 更多文章会自动添加在这里 -->
+  <!-- Additional articles will be added here -->
   
 </div>
 

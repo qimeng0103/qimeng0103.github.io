@@ -55,7 +55,7 @@ export default defineConfig({
       description: 'Qi Meng 的个人科研博客 - 凝聚态物理、量子计算与数值模拟',
       themeConfig: {
         siteTitle: 'Qi Meng',
-        logo: '/images/avatar.svg',
+        // logo: '/images/avatar.svg',
         nav: [
           { text: '首页', link: '/' },
           { text: '文章', link: '/posts/' },
@@ -79,8 +79,8 @@ export default defineConfig({
         docFooter: { prev: '← 上一页', next: '下一页 →' },
         returnToTopLabel: '↑ 返回顶部',
         sidebarMenuLabel: '菜单',
-        darkModeSwitchLabel: '🌓 主题',
-        langMenuLabel: '🌐 语言',
+        darkModeSwitchLabel: 'Theme',
+        langMenuLabel: 'Language',
       }
     },
     en: {
@@ -92,7 +92,7 @@ export default defineConfig({
       link: '/en/',
       themeConfig: {
         siteTitle: 'Qi Meng',
-        logo: '/images/avatar.svg',
+        // logo: '/images/avatar.svg',
         nav: [
           { text: 'Home', link: '/en/' },
           { text: 'Articles', link: '/en/posts/' },
@@ -146,12 +146,12 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     
-    // 字体
+    // 字体 - 学术风格（衬线标题 + 无衬线正文）
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
     ['link', { rel: 'preconnect', href: 'https://fonts.gstatic.com', crossorigin: '' }],
     ['link', { 
       rel: 'stylesheet', 
-      href: 'https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&family=Noto+Sans+SC:wght@400;500;600;700&display=swap'
+      href: 'https://fonts.googleapis.com/css2?family=Source+Serif+Pro:wght@400;600;700&family=Source+Sans+Pro:wght@400;600&family=JetBrains+Mono:wght@400;500&family=Noto+Serif+SC:wght@400;600;700&family=Noto+Sans+SC:wght@400;500&display=swap'
     }],
     
     // KaTeX CSS
@@ -170,8 +170,8 @@ export default defineConfig({
     // 作者信息
     ['meta', { name: 'author', content: 'Qi Meng' }],
     
-    // 主题色
-    ['meta', { name: 'theme-color', content: '#4f46e5' }],
+    // 主题色 - 深海军蓝
+    ['meta', { name: 'theme-color', content: '#1a365d' }],
     
     // 移动端优化
     ['meta', { name: 'viewport', content: 'width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no' }]
