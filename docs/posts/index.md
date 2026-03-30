@@ -113,7 +113,7 @@
   <h2>Quantum Mechanics Notes</h2>
   <ul class="article-list">
     <li class="article-item">
-      <span class="article-date">2025-03-30</span>
+      <span class="article-date">2026-03-30</span>
       <div>
         <div class="article-title"><a href="./quantum-mechanics/stationary-perturbation-theory">Stationary Perturbation Theory: Non-Degenerate vs Degenerate Cases</a></div>
         <div class="article-desc">Complete derivation of energy corrections up to third order and wavefunction corrections up to second order for non-degenerate perturbation theory, with detailed discussion of degenerate case</div>

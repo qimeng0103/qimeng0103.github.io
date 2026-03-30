@@ -2,7 +2,7 @@
 
 ---
 
-date: 2025-03-30
+date: 2026-03-30
 tags:
   - Quantum Mechanics
   - Perturbation Theory
@@ -207,6 +207,7 @@ The second-order energy correction becomes:
 
 $$
 E_n^{(2,k)} = \sum_{m \notin D} \frac{|\langle m^{(0)} | \hat{V} | n, k^{(0)} \rangle|^2}{E_n^{(0)} - E_m^{(0)}}
+$$
 
 where the sum excludes all states $m$ in the degenerate subspace $D$.
 
