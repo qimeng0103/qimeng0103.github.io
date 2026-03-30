@@ -33,8 +33,8 @@ hero:
 }
 
 .intro-avatar {
-  width: 100px;
-  height: 100px;
+  width: 140px;
+  height: 140px;
   border-radius: 50%;
   object-fit: cover;
   border: 3px solid var(--vp-c-brand-1);
@@ -163,6 +163,11 @@ hero:
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+  
+  .intro-avatar {
+    width: 110px;
+    height: 110px;
   }
   
   .article-entry {

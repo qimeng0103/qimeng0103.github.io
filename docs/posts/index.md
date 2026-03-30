@@ -131,9 +131,6 @@
 
 <div class="tag-list">
   <span class="tag">research-notes</span>
-  <span class="tag">technical</span>
-  <span class="tag">tutorial</span>
-  <span class="tag">literature</span>
 </div>
 
 </div>
