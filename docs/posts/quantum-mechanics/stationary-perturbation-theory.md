@@ -237,7 +237,7 @@ where $c_i^{(k)}$ are eigenvectors of $V_{ij}$.
 
 | Aspect | Non-Degenerate | Degenerate |
 |--------|---------------|------------|
-| Zeroth-order state | Unique $|n^{(0)}\rangle$ | Arbitrary superposition within subspace |
+| Zeroth-order state | Unique $\vert n^{(0)}\rangle$ | Arbitrary superposition within subspace |
 | First-order energy | $V_{nn}$ | Eigenvalues of $V_{ij}$ matrix |
 | State correction | Simple sum over $m \neq n$ | Requires diagonalization first |
 | Convergence | Power series in $\lambda$ | May require resummation if degeneracy not fully lifted |
