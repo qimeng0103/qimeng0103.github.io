@@ -7,7 +7,7 @@ hero:
   tagline: Topological Superconductivity · Majorana Physics · Quantum Simulation
   actions:
     - theme: brand
-      text: Publications
+      text: Articles
       link: /posts/
     - theme: alt
       text: About
