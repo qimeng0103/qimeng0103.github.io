@@ -208,11 +208,7 @@ My research focuses on theoretical and computational condensed matter physics, w
 
 ## Technical Skills
 
-**Programming Languages:** Python, Julia, MATLAB, C/C++
-
-**Computational Tools:** Kwant, ITensor, Quantum ESPRESSO
-
-**Numerical Methods:** Tight-binding, DMRG, Exact Diagonalization, Green's Functions
+**Programming Languages:** Python, Julia, Mathematica, MATLAB
 
 ## Contact
 
