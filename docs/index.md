@@ -33,12 +33,12 @@ hero:
 }
 
 .intro-avatar {
-  width: 140px;
-  height: 140px;
+  width: 200px;
+  height: 200px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--vp-c-brand-1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 4px solid var(--vp-c-brand-1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
   flex-shrink: 0;
 }
 
@@ -166,8 +166,8 @@ hero:
   }
   
   .intro-avatar {
-    width: 110px;
-    height: 110px;
+    width: 150px;
+    height: 150px;
   }
   
   .article-entry {

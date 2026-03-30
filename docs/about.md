@@ -11,12 +11,12 @@
 }
 
 .profile-avatar {
-  width: 120px;
-  height: 120px;
+  width: 180px;
+  height: 180px;
   border-radius: 50%;
   object-fit: cover;
-  border: 3px solid var(--vp-c-brand-1);
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  border: 4px solid var(--vp-c-brand-1);
+  box-shadow: 0 6px 20px rgba(0, 0, 0, 0.2);
 }
 
 .profile-info h1 {
@@ -146,8 +146,8 @@
   }
   
   .profile-avatar {
-    width: 100px;
-    height: 100px;
+    width: 140px;
+    height: 140px;
   }
   
   .profile-links {
