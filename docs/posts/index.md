@@ -110,22 +110,15 @@
 <div class="article-index">
 
 <div class="category-section">
-  <h2>Technical Articles</h2>
+  <h2>Quantum Mechanics Notes</h2>
   <ul class="article-list">
     <li class="article-item">
-      <span class="article-date">2024-01-15</span>
+      <span class="article-date">2025-03-30</span>
       <div>
-        <div class="article-title"><a href="./example">Mathematical Formulas and Code Examples</a></div>
-        <div class="article-desc">Demonstration of LaTeX equations and syntax highlighting</div>
+        <div class="article-title"><a href="./quantum-mechanics/stationary-perturbation-theory">Stationary Perturbation Theory: Non-Degenerate vs Degenerate Cases</a></div>
+        <div class="article-desc">Complete derivation of energy corrections up to third order and wavefunction corrections up to second order for non-degenerate perturbation theory, with detailed discussion of degenerate case</div>
       </div>
     </li>
-  </ul>
-</div>
-
-<div class="category-section">
-  <h2>Research Notes</h2>
-  <ul class="article-list">
-    <!-- Add research notes here -->
   </ul>
 </div>
 

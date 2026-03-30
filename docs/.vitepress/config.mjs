@@ -52,7 +52,12 @@ export default defineConfig({
         {
           text: 'Articles',
           items: [
-            { text: 'Example: Formulas and Code', link: '/posts/example' },
+            { 
+              text: 'Quantum Mechanics Notes',
+              items: [
+                { text: 'Stationary Perturbation Theory', link: '/posts/quantum-mechanics/stationary-perturbation-theory' }
+              ]
+            }
           ]
         }
       ]

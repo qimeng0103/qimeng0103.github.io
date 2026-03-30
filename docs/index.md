@@ -209,10 +209,10 @@ hero:
   <h2>Recent Articles</h2>
   
   <div class="article-entry">
-    <div class="article-date">2024-01-15</div>
+    <div class="article-date">2025-03-30</div>
     <div class="article-info">
-      <h3><a href="/posts/example">Example: Mathematical Formulas and Code</a></h3>
-      <p>Demonstration of LaTeX equations, syntax highlighting, and other features</p>
+      <h3><a href="/posts/quantum-mechanics/stationary-perturbation-theory">Stationary Perturbation Theory</a></h3>
+      <p>Non-degenerate and degenerate perturbation theory with complete derivations</p>
     </div>
   </div>
   
