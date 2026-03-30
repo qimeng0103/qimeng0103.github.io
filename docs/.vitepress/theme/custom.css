@@ -199,9 +199,9 @@ html {
 }
 
 .VPFeatures .items {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 0;
+  display: grid !important;
+  grid-template-columns: repeat(2, 1fr) !important;
+  gap: 0 !important;
 }
 
 .VPFeatures .item {
@@ -578,11 +578,11 @@ html {
   }
   
   .VPFeatures .items {
-    grid-template-columns: 1fr;
+    grid-template-columns: 1fr !important;
   }
   
   .VPFeatures .item {
-    border-right: none;
+    border-right: none !important;
     padding: 30px 24px !important;
   }
   
