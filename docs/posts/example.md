@@ -1,60 +1,60 @@
-# 示例文章：公式与代码演示
+# Example: Mathematical Formulas and Code
 
 ---
 
 date: 2024-01-15
 tags:
-  - 教程
+  - Tutorial
   - VitePress
   - LaTeX
 categories:
-  - 技术笔记
+  - Technical Notes
 
 ---
 
-这是一篇示例文章，展示了博客支持的各种功能，包括数学公式、代码高亮、表格等。这些功能非常适合用来撰写科研笔记和技术文档。
+This is an example article demonstrating the various features supported by this blog, including mathematical formulas, code highlighting, tables, and more. These features are well-suited for writing research notes and technical documentation.
 
-## 🧮 数学公式
+## Mathematical Formulas
 
-### 行内公式
+### Inline Formulas
 
-这是爱因斯坦著名的质能方程：$E = mc^2$，它揭示了质量与能量的等价关系。
+Einstein's famous mass-energy equivalence: $E = mc^2$, which reveals the equivalence of mass and energy.
 
-在凝聚态物理中，我们经常使用薛定谔方程：$i\hbar \frac{\partial \psi}{\partial t} = \hat{H}\psi$ 来描述量子系统的演化。
+In condensed matter physics, we often use the Schrödinger equation: $i\hbar \frac{\partial \psi}{\partial t} = \hat{H}\psi$ to describe the evolution of quantum systems.
 
-### 独立公式
+### Display Formulas
 
-**高斯积分**：
+**Gaussian Integral**:
 
 $$
 \int_{-\infty}^{\infty} e^{-x^2} dx = \sqrt{\pi}
 $$
 
-**欧拉公式**（被誉为数学中最美的公式）：
+**Euler's Formula** (often called the most beautiful formula in mathematics):
 
 $$
 e^{i\pi} + 1 = 0
 $$
 
-### 复杂公式示例
+### Complex Formula Examples
 
-**BCS 理论中的能隙方程**：
+**BCS Gap Equation**:
 
 $$
 \Delta_k = -\sum_{k'} V_{kk'} \frac{\Delta_{k'}}{2E_{k'}} \tanh\left(\frac{E_{k'}}{2k_B T}\right)
 $$
 
-其中 $E_k = \sqrt{\xi_k^2 + \Delta_k^2}$ 是准粒子激发能。
+where $E_k = \sqrt{\xi_k^2 + \Delta_k^2}$ is the quasiparticle excitation energy.
 
-**格林函数（ Matsubara 频率表示）**：
+**Green's Function (Matsubara Frequency Representation)**:
 
 $$
 G(\mathbf{r}, \mathbf{r}', i\omega_n) = \sum_{\alpha} \frac{\psi_{\alpha}(\mathbf{r}) \psi_{\alpha}^*(\mathbf{r}')}{i\omega_n - \epsilon_{\alpha}}
 $$
 
-### 矩阵和向量
+### Matrices and Vectors
 
-**泡利矩阵**：
+**Pauli Matrices**:
 
 $$
 \sigma_x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad
@@ -62,15 +62,15 @@ $$
 \sigma_z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}
 $$
 
-**狄拉克方程**：
+**Dirac Equation**:
 
 $$
 (i\gamma^\mu \partial_\mu - m)\psi = 0
 $$
 
-## 💻 代码高亮
+## Code Highlighting
 
-### Python 示例：数值计算
+### Python Example: Numerical Computation
 
 ```python
 import numpy as np
@@ -79,36 +79,36 @@ import matplotlib.pyplot as plt
 
 def calculate_band_structure(H_k):
     """
-    计算能带结构
+    Calculate band structure
     
     Parameters:
     -----------
     H_k : ndarray
-        动量空间哈密顿量，shape (N_k, N_bands, N_bands)
+        Momentum-space Hamiltonian, shape (N_k, N_bands, N_bands)
     
     Returns:
     --------
     energies : ndarray
-        本征能量，shape (N_k, N_bands)
+        Eigenenergies, shape (N_k, N_bands)
     """
     N_k, N_bands, _ = H_k.shape
     energies = np.zeros((N_k, N_bands))
     
     for i, H in enumerate(H_k):
-        # 对角化哈密顿量
+        # Diagonalize Hamiltonian
         eigvals = linalg.eigvalsh(H)
         energies[i] = eigvals
     
     return energies
 
-# 生成示例数据
+# Generate example data
 k_points = np.linspace(-np.pi, np.pi, 100)
 H_k = np.array([[np.cos(k), np.sin(k)], 
                 [np.sin(k), -np.cos(k)]] for k in k_points)
 
 energies = calculate_band_structure(H_k)
 
-# 绘制能带
+# Plot bands
 plt.figure(figsize=(8, 6))
 plt.plot(k_points, energies[:, 0], 'b-', label='Band 1')
 plt.plot(k_points, energies[:, 1], 'r-', label='Band 2')
@@ -119,141 +119,141 @@ plt.grid(True)
 plt.show()
 ```
 
-### Julia 示例：高性能计算
+### Julia Example: High-Performance Computing
 
 ```julia
 using LinearAlgebra
 using Plots
 
 """
-计算拓扑不变量（陈数）
+Calculate topological invariant (Chern number)
 """
 function chern_number(H::Function, N::Int=100)
-    # 定义布里渊区网格
+    # Define Brillouin zone grid
     kx = range(-π, π, length=N)
     ky = range(-π, π, length=N)
     
-    F = zeros(ComplexF64, N, N)  # Berry 曲率
+    F = zeros(ComplexF64, N, N)  # Berry curvature
     
     for i in 1:N, j in 1:N
-        # 计算 Berry 曲率
+        # Calculate Berry curvature
         k = [kx[i], ky[j]]
         H_matrix = H(k)
         
-        # 对角化
+        # Diagonalize
         eigenvalues, eigenvectors = eigen(Hermitian(H_matrix))
-        u = eigenvectors[:, 1]  # 占据态波函数
+        u = eigenvectors[:, 1]  # Occupied state wavefunction
         
-        # 计算 Berry 联络和曲率（简化示例）
+        # Calculate Berry connection and curvature (simplified example)
         F[i,j] = compute_berry_curvature(H, k, N)
     end
     
-    # 陈数 = (1/2π) ∫ F dk_x dk_y
+    # Chern number = (1/2π) ∫ F dk_x dk_y
     C = sum(real(F)) * (2π/N)^2 / (2π)
     return round(Int, real(C))
 end
 
-# Haldane 模型示例
+# Haldane model example
 function haldane_hamiltonian(k::Vector{Float64}; t=1.0, t2=0.1, M=0.5)
     kx, ky = k
     
-    # 最近邻跃迁
+    # Nearest-neighbor hopping
     d1 = 2t * cos(kx) + 4t2 * cos(kx/2) * cos(sqrt(3)*ky/2)
     d2 = 2t * sin(kx) - 4t2 * sin(kx/2) * cos(sqrt(3)*ky/2)
     d3 = M - 4t2 * sin(sqrt(3)*ky/2) * sin(kx/2)
     
-    # 泡利矩阵展开
+    # Pauli matrix expansion
     H = d1 * [0 1; 1 0] + d2 * [0 -im; im 0] + d3 * [1 0; 0 -1]
     return H
 end
 
-# 计算陈数
+# Calculate Chern number
 C = chern_number(k -> haldane_hamiltonian(k, M=0.5))
-println("Chern number = $C")  # 应输出 1
+println("Chern number = $C")  # Should output 1
 ```
 
-## 📊 表格展示
+## Tables
 
-### 常见数值方法对比
+### Comparison of Common Numerical Methods
 
-| 方法 | 适用系统 | 精度 | 计算复杂度 | 主要应用 |
-|------|---------|------|-----------|---------|
-| 精确对角化 | 小系统 | 精确 | $O(N^3)$ | 基态性质、关联函数 |
-| DMRG | 1D 系统 | 高精度 | $O(m^3)$ | 强关联系统 |
-| 量子蒙特卡洛 | 无符号问题系统 | 统计误差 | $O(N)$ | 有限温度性质 |
-| 张量网络 | 低维系统 | 可控 | 可变 | 动力学、热力学 |
-| 神经网络量子态 | 各种系统 | 依赖网络 | 高 | 多体波函数表示 |
+| Method | Applicable Systems | Accuracy | Computational Complexity | Main Applications |
+|--------|-------------------|----------|------------------------|-------------------|
+| Exact Diagonalization | Small systems | Exact | $O(N^3)$ | Ground state properties, correlation functions |
+| DMRG | 1D systems | High precision | $O(m^3)$ | Strongly correlated systems |
+| Quantum Monte Carlo | Sign-problem-free systems | Statistical error | $O(N)$ | Finite-temperature properties |
+| Tensor Networks | Low-dimensional systems | Controllable | Variable | Dynamics, thermodynamics |
+| Neural Quantum States | Various systems | Network-dependent | High | Many-body wavefunction representation |
 
-### 物理常数表
+### Physical Constants
 
-| 常数 | 符号 | 数值 | 单位 |
-|------|------|------|------|
-| 普朗克常数 | $h$ | $6.626 \times 10^{-34}$ | J·s |
-| 约化普朗克常数 | $\hbar$ | $1.055 \times 10^{-34}$ | J·s |
-| 玻尔兹曼常数 | $k_B$ | $1.381 \times 10^{-23}$ | J/K |
-| 电子电荷 | $e$ | $1.602 \times 10^{-19}$ | C |
-| 电子质量 | $m_e$ | $9.109 \times 10^{-31}$ | kg |
+| Constant | Symbol | Value | Unit |
+|----------|--------|-------|------|
+| Planck constant | $h$ | $6.626 \times 10^{-34}$ | J·s |
+| Reduced Planck constant | $\hbar$ | $1.055 \times 10^{-34}$ | J·s |
+| Boltzmann constant | $k_B$ | $1.381 \times 10^{-23}$ | J/K |
+| Electron charge | $e$ | $1.602 \times 10^{-19}$ | C |
+| Electron mass | $m_e$ | $9.109 \times 10^{-31}$ | kg |
 
-## 📝 其他 Markdown 功能
+## Other Markdown Features
 
-### 引用块
+### Blockquotes
 
-> 量子力学并没有说世界被分成了观察者和被观察者。观察者和被观察者是同一个世界的一部分。
+> Quantum mechanics does not say that the world is divided into observers and observed. Observers and observed are part of the same world.
 > 
-> —— 休·艾弗雷特 (Hugh Everett)
+> — Hugh Everett
 
-### 列表情境
+### Lists
 
-研究工作的基本步骤：
+Basic steps in research:
 
-1. **文献调研**
-   - 了解领域现状
-   - 确定研究问题
-   - 寻找合适的方法
+1. **Literature Review**
+   - Understand the current state of the field
+   - Identify research questions
+   - Find appropriate methods
 
-2. **理论推导**
-   - 建立数学模型
-   - 进行解析计算
-   - 验证特殊情况
+2. **Theoretical Derivation**
+   - Establish mathematical models
+   - Perform analytical calculations
+   - Verify special cases
 
-3. **数值模拟**
-   - 编写计算程序
-   - 测试代码正确性
-   - 运行大规模计算
+3. **Numerical Simulation**
+   - Write computational programs
+   - Test code correctness
+   - Run large-scale computations
 
-4. **结果分析**
-   - 数据可视化
-   - 物理图像构建
-   - 撰写研究报告
+4. **Result Analysis**
+   - Data visualization
+   - Physical picture construction
+   - Write research reports
 
-### 任务列表
+### Task Lists
 
-- [x] 完成理论推导
-- [x] 编写数值代码
-- [x] 运行测试算例
-- [ ] 大规模计算
-- [ ] 结果可视化
-- [ ] 撰写论文
+- [x] Complete theoretical derivation
+- [x] Write numerical code
+- [x] Run test cases
+- [ ] Large-scale computation
+- [ ] Result visualization
+- [ ] Write paper
 
-## 🎨 图片展示
+## Images
 
-你可以轻松插入图片：
+You can easily insert images:
 
 ```markdown
-![图片描述](/images/your-image.png)
+![Description](/images/your-image.png)
 ```
 
-图片会自动居中显示，并带有阴影效果。
+Images will be automatically centered with a clean academic style.
 
-## 🔗 链接
+## Links
 
-- 外部链接：[VitePress 官方文档](https://vitepress.dev)
-- 内部链接：[关于我](/about)
-- 文献引用：[[1]](#references)
+- External link: [VitePress Documentation](https://vitepress.dev)
+- Internal link: [About](/about)
+- Citation: [[1]](#references)
 
 ---
 
-## 📚 参考文献
+## References
 
 1. Kohn, W. & Sham, L. J. Self-Consistent Equations Including Exchange and Correlation Effects. *Phys. Rev.* **140**, A1133 (1965).
 

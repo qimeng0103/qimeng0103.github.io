@@ -178,7 +178,6 @@ features:
     <ul class="contact-list">
       <li>Email: <a href="mailto:qimeng0103@gmail.com">qimeng0103@gmail.com</a></li>
       <li>GitHub: <a href="https://github.com/qimeng0103" target="_blank">github.com/qimeng0103</a></li>
-      <li><a href="/en/">English Version</a></li>
     </ul>
   </div>
 </div>
@@ -193,8 +192,6 @@ features:
       <p>Demonstration of LaTeX equations, syntax highlighting, and other features</p>
     </div>
   </div>
-  
-  <!-- Additional articles will be added here -->
   
 </div>
 
