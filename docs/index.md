@@ -5,6 +5,9 @@ hero:
   name: "Qi Meng"
   text: "Research Blog"
   tagline: Condensed Matter Physics · Quantum Computing · Numerical Simulations
+  image:
+    src: /images/avatar.png
+    alt: Qi Meng
   actions:
     - theme: brand
       text: Publications

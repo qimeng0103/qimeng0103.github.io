@@ -2,9 +2,21 @@
 
 <style>
 .profile-header {
+  display: flex;
+  align-items: center;
+  gap: 32px;
   margin-bottom: 48px;
   padding-bottom: 32px;
   border-bottom: 2px solid var(--vp-c-brand-1);
+}
+
+.profile-avatar {
+  width: 120px;
+  height: 120px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--vp-c-brand-1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
 }
 
 .profile-info h1 {
@@ -125,9 +137,27 @@
   color: var(--vp-c-brand-1);
   border-bottom-color: var(--vp-c-brand-1);
 }
+
+@media (max-width: 640px) {
+  .profile-header {
+    flex-direction: column;
+    text-align: center;
+    gap: 20px;
+  }
+  
+  .profile-avatar {
+    width: 100px;
+    height: 100px;
+  }
+  
+  .profile-links {
+    justify-content: center;
+  }
+}
 </style>
 
 <div class="profile-header">
+  <img src="/images/avatar.png" alt="Qi Meng" class="profile-avatar">
   <div class="profile-info">
     <h1>Qi Meng</h1>
     <div class="title">Condensed Matter Physics | Ph.D. Candidate</div>
