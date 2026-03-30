@@ -162,10 +162,10 @@
     <h1>Qi Meng</h1>
     <div class="title">Condensed Matter Physics | Ph.D. Candidate</div>
     <div class="profile-links">
-      <a href="mailto:qimeng0103@gmail.com">Email</a>
+      <a href="mailto:mengq8@mail2.sysu.edu.cn">Email</a>
       <a href="https://github.com/qimeng0103" target="_blank">GitHub</a>
-      <a href="https://scholar.google.com" target="_blank">Google Scholar</a>
-      <a href="https://orcid.org" target="_blank">ORCID</a>
+      <a href="https://www.researchgate.net/profile/Qi-Meng-44" target="_blank">ResearchGate</a>
+      <a href="https://orcid.org/0009-0000-8564-7601" target="_blank">ORCID</a>
     </div>
   </div>
 </div>
@@ -175,50 +175,51 @@
 My research focuses on theoretical and computational condensed matter physics, with particular emphasis on:
 
 <div class="research-areas">
-  <h4>Topological Phases of Matter</h4>
-  <p>Theoretical studies of topological insulators, topological superconductors, and Weyl semimetals</p>
+  <h4>Topological Superconductivity</h4>
+  <p>Theoretical studies of topological superconductors, Majorana zero modes, and non-Abelian anyons</p>
   
-  <h4>Quantum Transport</h4>
-  <p>Electronic transport properties in mesoscopic systems using non-equilibrium Green's functions and scattering matrix approaches</p>
+  <h4>Topological Quantum Computation</h4>
+  <p>Quantum information processing based on Majorana fermions and topological protection</p>
   
-  <h4>Strongly Correlated Systems</h4>
-  <p>Numerical simulations of quantum many-body systems, including DMRG and quantum Monte Carlo methods</p>
-  
-  <h4>Quantum Computing</h4>
-  <p>Theoretical studies of quantum algorithms, quantum error correction, and quantum simulation</p>
+  <h4>Quantum Simulation</h4>
+  <p>Quantum simulation of many-body systems using superconducting quantum processors</p>
 </div>
 
 ## Education
 
-- **Ph.D. in Physics** (2022–Present)  
-  Research Institute, University
+- **Ph.D. in Physics** (2026–Present)  
+  Eastern Institute of Technology, Ningbo  
+  Advisor: Tong Zhou
 
-- **B.S. in Physics** (2018–2022)  
-  University
+- **M.S. in Nuclear Science and Technology** (2023–2026)  
+  Sino-French Institute of Nuclear Engineering and Technology, Sun Yat-sen University, Zhuhai
+
+- **B.S. in Nuclear Engineering** (2019–2023)  
+  Sino-French Institute of Nuclear Engineering and Technology, Sun Yat-sen University, Zhuhai
 
 ## Publications
 
 <div class="publications-list">
+  <!-- Publications will be updated based on ORCID: 0009-0000-8564-7601 -->
   <li>
-    <div class="publication-title">Example Paper Title on Topological Physics</div>
-    <div class="publication-authors">Q. Meng, A. Author, B. Author</div>
-    <div class="publication-journal">Physical Review B 00, 000000 (2024)</div>
+    <div class="publication-title">See <a href="https://www.researchgate.net/profile/Qi-Meng-44" target="_blank">ResearchGate</a> or <a href="https://orcid.org/0009-0000-8564-7601" target="_blank">ORCID</a> for full publication list</div>
   </li>
-  <!-- Add more publications as needed -->
 </div>
 
 ## Technical Skills
 
 **Programming Languages:** Python, Julia, MATLAB, C/C++
 
-**Computational Tools:** Kwant, ITensor, Quantum ESPRESSO, COMSOL
+**Computational Tools:** Kwant, ITensor, Quantum ESPRESSO
 
-**Numerical Methods:** DMRG, Quantum Monte Carlo, Exact Diagonalization, Green's Functions
+**Numerical Methods:** Tight-binding, DMRG, Exact Diagonalization, Green's Functions
 
 ## Contact
 
-- **Email:** [qimeng0103@gmail.com](mailto:qimeng0103@gmail.com)
+- **Email:** [mengq8@mail2.sysu.edu.cn](mailto:mengq8@mail2.sysu.edu.cn)
 - **GitHub:** [@qimeng0103](https://github.com/qimeng0103)
+- **ResearchGate:** [Qi Meng](https://www.researchgate.net/profile/Qi-Meng-44)
+- **ORCID:** [0009-0000-8564-7601](https://orcid.org/0009-0000-8564-7601)
 
 ---
 

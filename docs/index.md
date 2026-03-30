@@ -4,10 +4,7 @@ layout: home
 hero:
   name: "Qi Meng"
   text: "Research Blog"
-  tagline: Condensed Matter Physics · Quantum Computing · Numerical Simulations
-  image:
-    src: /images/avatar.png
-    alt: Qi Meng
+  tagline: Topological Superconductivity · Majorana Physics · Quantum Simulation
   actions:
     - theme: brand
       text: Publications
@@ -26,6 +23,23 @@ hero:
 
 .intro-section {
   margin-bottom: 60px;
+}
+
+.intro-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 32px;
+  margin-bottom: 32px;
+}
+
+.intro-avatar {
+  width: 100px;
+  height: 100px;
+  border-radius: 50%;
+  object-fit: cover;
+  border: 3px solid var(--vp-c-brand-1);
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  flex-shrink: 0;
 }
 
 .intro-section h2 {
@@ -145,6 +159,12 @@ hero:
 }
 
 @media (max-width: 640px) {
+  .intro-header {
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+  }
+  
   .article-entry {
     flex-direction: column;
     gap: 8px;
@@ -159,17 +179,22 @@ hero:
 <div class="home-content">
 
 <div class="intro-section">
-  <h2>Welcome</h2>
-  <p class="intro-text">
-    I am Qi Meng, a researcher in condensed matter physics. This website documents my research notes, 
-    numerical methods, and reflections on physics. My primary interests include topological phases of matter, 
-    quantum transport, and strongly correlated systems.
-  </p>
+  <div class="intro-header">
+    <img src="/images/avatar.png" alt="Qi Meng" class="intro-avatar">
+    <div>
+      <h2>Welcome</h2>
+      <p class="intro-text">
+        I am Qi Meng, a researcher in condensed matter physics. This website documents my research notes, 
+        numerical methods, and reflections on physics. My primary interests include topological superconductivity, 
+        Majorana zero modes, topological quantum computation, and quantum simulation based on superconducting quantum processors.
+      </p>
+    </div>
+  </div>
   
   <div class="contact-section">
     <h3>Contact</h3>
     <ul class="contact-list">
-      <li>Email: <a href="mailto:qimeng0103@gmail.com">qimeng0103@gmail.com</a></li>
+      <li>Email: <a href="mailto:mengq8@mail2.sysu.edu.cn">mengq8@mail2.sysu.edu.cn</a></li>
       <li>GitHub: <a href="https://github.com/qimeng0103" target="_blank">github.com/qimeng0103</a></li>
     </ul>
   </div>
