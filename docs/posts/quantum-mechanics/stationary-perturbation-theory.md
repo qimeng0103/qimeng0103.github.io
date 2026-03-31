@@ -393,7 +393,15 @@ $$
 
 where $\mu_B = e\hbar/2m_e$ is the Bohr magneton.
 
-For $n=2$, there are 8 states including spin ($g = 2n^2 = 8$):
+For hydrogen, the degeneracy of level $n$ (including spin) is $g = 2n^2$. This arises as follows:
+
+- Orbital angular momentum: $l = 0, 1, \ldots, n-1$ ($n$ possible values)
+- For each $l$: magnetic quantum number $m_l = -l, -l+1, \ldots, l$ gives $(2l+1)$ states
+- Spin: $s = \frac{1}{2}$ with $m_s = \pm\frac{1}{2}$ (2 states)
+
+Summing over $l$: $\sum_{l=0}^{n-1}(2l+1) = n^2$ orbital states. Including spin: $g = 2n^2$.
+
+For $n=2$: $g = 2 \times 2^2 = 8$ states.
 
 | State | $l$ | $m_l$ | $m_s$ | $m_l + 2m_s$ |
 |-------|-----|-------|-------|--------------|
