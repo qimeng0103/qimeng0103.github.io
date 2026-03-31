@@ -229,7 +229,7 @@ Both the thermal factor $e^{-\beta\hat{H}}$ and the "evolution" factor $e^{-\hat
 For fermions (we'll specialize to electrons in condensed matter), define the **imaginary-time Green's function**:
 
 $$
-\mathcal{G}(\mathbf{r}, \tau; \mathbf{r}', \tau') \equiv -\langle T_\tau \psi(\mathbf{r}, \tau) \psi^\dagger(\mathbf{r}', \tau') \rangle
+\mathcal{G}(\mathbf{r}, \tau; \mathbf{r}', \tau') \equiv -\langle T_\tau \hat{\psi}(\mathbf{r}, \tau) \hat{\psi}^\dagger(\mathbf{r}', \tau') \rangle
 $$
 
 where:
@@ -238,27 +238,27 @@ where:
 - Field operators in imaginary-time Heisenberg picture:
 
 $$
-\psi(\mathbf{r}, \tau) = e^{\hat{H}\tau}\psi(\mathbf{r})e^{-\hat{H}\tau}
+\hat{\psi}(\mathbf{r}, \tau) = e^{\hat{H}\tau}\hat{\psi}(\mathbf{r})e^{-\hat{H}\tau}
 $$
 
 $$
-\psi^\dagger(\mathbf{r}', \tau') = e^{\hat{H}\tau'}\psi^\dagger(\mathbf{r}')e^{-\hat{H}\tau'}
+\hat{\psi}^\dagger(\mathbf{r}', \tau') = e^{\hat{H}\tau'}\hat{\psi}^\dagger(\mathbf{r}')e^{-\hat{H}\tau'}
 $$
 
-Note: $\psi^\dagger(\mathbf{r}, \tau) \neq [\psi(\mathbf{r}, \tau)]^\dagger$ in general! The $\dagger$ on the field operator is part of the notation, not Hermitian conjugation of the operator at imaginary time.
+Note: $\hat{\psi}^\dagger(\mathbf{r}, \tau) \neq [\hat{\psi}(\mathbf{r}, \tau)]^\dagger$ in general! The $\dagger$ on the field operator is part of the notation, not Hermitian conjugation of the operator at imaginary time.
 
 ### Explicit Form
 
 For $\tau > \tau'$:
 
 $$
-\mathcal{G}(\tau, \tau') = -\text{Tr}\left(\hat{\rho} \, e^{\hat{H}\tau}\psi(\mathbf{r})e^{-\hat{H}\tau} e^{\hat{H}\tau'}\psi^\dagger(\mathbf{r}')e^{-\hat{H}\tau'}\right)
+\mathcal{G}(\tau, \tau') = -\text{Tr}\left(\hat{\rho} \, e^{\hat{H}\tau}\hat{\psi}(\mathbf{r})e^{-\hat{H}\tau} e^{\hat{H}\tau'}\hat{\psi}^\dagger(\mathbf{r}')e^{-\hat{H}\tau'}\right)
 $$
 
 For $\tau < \tau'$:
 
 $$
-\mathcal{G}(\tau, \tau') = +\text{Tr}\left(\hat{\rho} \, e^{\hat{H}\tau'}\psi^\dagger(\mathbf{r}')e^{-\hat{H}\tau'} e^{\hat{H}\tau}\psi(\mathbf{r})e^{-\hat{H}\tau}\right)
+\mathcal{G}(\tau, \tau') = +\text{Tr}\left(\hat{\rho} \, e^{\hat{H}\tau'}\hat{\psi}^\dagger(\mathbf{r}')e^{-\hat{H}\tau'} e^{\hat{H}\tau}\hat{\psi}(\mathbf{r})e^{-\hat{H}\tau}\right)
 $$
 
 ### The Antiperiodicity Property (KMS Condition)
@@ -270,7 +270,7 @@ $$
 Consider $\tau \in [0, \beta\hbar]$ and examine $\mathcal{G}(\tau - \beta\hbar)$ where $\tau - \beta\hbar < 0$:
 
 $$
-\mathcal{G}(\tau - \beta\hbar) = +\text{Tr}\left(\hat{\rho} \psi^\dagger(\tau) \psi(\tau - \beta\hbar)\right)
+\mathcal{G}(\tau - \beta\hbar) = +\text{Tr}\left(\hat{\rho} \hat{\psi}^\dagger(\tau) \hat{\psi}(\tau - \beta\hbar)\right)
 $$
 
 since $\tau - \beta\hbar < 0 < \tau$, the operator with larger time ($\tau$) goes left.
@@ -287,43 +287,43 @@ $$
 = \text{Tr}(e^{-\beta\hat{H}}e^{\beta\hat{H}}\hat{B}e^{-\beta\hat{H}}\hat{A})/\mathcal{Z} = \text{Tr}(\hat{\rho} \, e^{\beta\hat{H}}\hat{B}e^{-\beta\hat{H}}\hat{A})
 $$
 
-For $\hat{B} = \psi^\dagger(\tau) = e^{\hat{H}\tau}\psi^\dagger e^{-\hat{H}\tau}$:
+For $\hat{B} = \hat{\psi}^\dagger(\tau) = e^{\hat{H}\tau}\hat{\psi}^\dagger e^{-\hat{H}\tau}$:
 
 $$
-e^{\beta\hat{H}}\psi^\dagger(\tau)e^{-\beta\hat{H}} = e^{\beta\hat{H}}e^{\hat{H}\tau}\psi^\dagger e^{-\hat{H}\tau}e^{-\beta\hat{H}} = e^{\hat{H}(\tau-\beta\hbar)}\psi^\dagger e^{-\hat{H}(\tau-\beta\hbar)} = \psi^\dagger(\tau - \beta\hbar)
+e^{\beta\hat{H}}\hat{\psi}^\dagger(\tau)e^{-\beta\hat{H}} = e^{\beta\hat{H}}e^{\hat{H}\tau}\hat{\psi}^\dagger e^{-\hat{H}\tau}e^{-\beta\hat{H}} = e^{\hat{H}(\tau-\beta\hbar)}\hat{\psi}^\dagger e^{-\hat{H}(\tau-\beta\hbar)} = \hat{\psi}^\dagger(\tau - \beta\hbar)
 $$
 
 Therefore:
 
 $$
-\mathcal{G}(\tau - \beta\hbar) = +\text{Tr}(\hat{\rho} \psi^\dagger(\tau - \beta\hbar)\psi(\tau - \beta\hbar)) = +\langle \psi^\dagger(\tau - \beta\hbar)\psi(\tau - \beta\hbar)\rangle
+\mathcal{G}(\tau - \beta\hbar) = +\text{Tr}(\hat{\rho} \hat{\psi}^\dagger(\tau - \beta\hbar)\hat{\psi}(\tau - \beta\hbar)) = +\langle \hat{\psi}^\dagger(\tau - \beta\hbar)\hat{\psi}(\tau - \beta\hbar)\rangle
 $$
 
 Wait, let's be more careful. Let $\tau' = \tau - \beta\hbar < 0$:
 
 Actually, let me restart more carefully. Define $\tau \in [0, \beta\hbar]$. We want to relate $\mathcal{G}(\tau)$ to $\mathcal{G}(\tau - \beta\hbar)$.
 
-For $\tau > 0$, $\mathcal{G}(\tau) = -\langle \psi(\tau)\psi^\dagger(0)\rangle$.
+For $\tau > 0$, $\mathcal{G}(\tau) = -\langle \hat{\psi}(\tau)\hat{\psi}^\dagger(0)\rangle$.
 
 For the argument $\tau - \beta\hbar < 0$, since this is negative, we have $\tau - \beta\hbar < 0$, so:
 
-$$\mathcal{G}(\tau - \beta\hbar) = +\langle \psi^\dagger(0)\psi(\tau - \beta\hbar)\rangle$$
+$$\mathcal{G}(\tau - \beta\hbar) = +\langle \hat{\psi}^\dagger(0)\hat{\psi}(\tau - \beta\hbar)\rangle$$
 
 Now using the cyclic property with $\hat{\rho} = e^{-\beta\hat{H}}/\mathcal{Z}$:
 
-$$\langle \psi^\dagger(0)\psi(\tau - \beta\hbar)\rangle = \text{Tr}(e^{-\beta\hat{H}}\psi^\dagger(0)\psi(\tau - \beta\hbar))/\mathcal{Z}$$
+$$\langle \hat{\psi}^\dagger(0)\hat{\psi}(\tau - \beta\hbar)\rangle = \text{Tr}(e^{-\beta\hat{H}}\hat{\psi}^\dagger(0)\hat{\psi}(\tau - \beta\hbar))/\mathcal{Z}$$
 
-$$= \text{Tr}(\psi(\tau - \beta\hbar)e^{-\beta\hat{H}}\psi^\dagger(0))/\mathcal{Z}$$
+$$= \text{Tr}(\hat{\psi}(\tau - \beta\hbar)e^{-\beta\hat{H}}\hat{\psi}^\dagger(0))/\mathcal{Z}$$
 
-$$= \text{Tr}(e^{-\beta\hat{H}}e^{\beta\hat{H}}\psi(\tau - \beta\hbar)e^{-\beta\hat{H}}\psi^\dagger(0))/\mathcal{Z}$$
+$$= \text{Tr}(e^{-\beta\hat{H}}e^{\beta\hat{H}}\hat{\psi}(\tau - \beta\hbar)e^{-\beta\hat{H}}\hat{\psi}^\dagger(0))/\mathcal{Z}$$
 
-$$= \text{Tr}(\hat{\rho} \, e^{\beta\hat{H}}\psi(\tau - \beta\hbar)e^{-\beta\hat{H}}\psi^\dagger(0))$$
+$$= \text{Tr}(\hat{\rho} \, e^{\beta\hat{H}}\hat{\psi}(\tau - \beta\hbar)e^{-\beta\hat{H}}\hat{\psi}^\dagger(0))$$
 
-Now $e^{\beta\hat{H}}\psi(\tau - \beta\hbar)e^{-\beta\hat{H}} = e^{\beta\hat{H}}e^{\hat{H}(\tau-\beta\hbar)}\psi e^{-\hat{H}(\tau-\beta\hbar)}e^{-\beta\hat{H}} = e^{\hat{H}\tau}\psi e^{-\hat{H}\tau} = \psi(\tau)$.
+Now $e^{\beta\hat{H}}\hat{\psi}(\tau - \beta\hbar)e^{-\beta\hat{H}} = e^{\beta\hat{H}}e^{\hat{H}(\tau-\beta\hbar)}\hat{\psi} e^{-\hat{H}(\tau-\beta\hbar)}e^{-\beta\hat{H}} = e^{\hat{H}\tau}\hat{\psi} e^{-\hat{H}\tau} = \hat{\psi}(\tau)$.
 
 Therefore:
 
-$$\mathcal{G}(\tau - \beta\hbar) = +\langle \psi(\tau)\psi^\dagger(0)\rangle = -\mathcal{G}(\tau)$$
+$$\mathcal{G}(\tau - \beta\hbar) = +\langle \hat{\psi}(\tau)\hat{\psi}^\dagger(0)\rangle = -\mathcal{G}(\tau)$$
 
 $$
 \boxed{\mathcal{G}(\tau + \beta\hbar) = -\mathcal{G}(\tau)}$$
@@ -382,11 +382,11 @@ $$G^R(\mathbf{r}, \mathbf{r}', \omega) = \int_{-\infty}^{\infty} dt \, e^{i\omeg
 
 where the real-time retarded function is:
 
-$$G^R(\mathbf{r}, t; \mathbf{r}', t') = -i\theta(t-t')\langle\{\psi(\mathbf{r}, t), \psi^\dagger(\mathbf{r}', t')\}\rangle$$
+$$G^R(\mathbf{r}, t; \mathbf{r}', t') = -i\theta(t-t')\langle\{\hat{\psi}(\mathbf{r}, t), \hat{\psi}^\dagger(\mathbf{r}', t')\}\rangle$$
 
 The **advanced Green's function** is:
 
-$$G^A(\mathbf{r}, t; \mathbf{r}', t') = +i\theta(t'-t)\langle\{\psi(\mathbf{r}, t), \psi^\dagger(\mathbf{r}', t')\}\rangle$$
+$$G^A(\mathbf{r}, t; \mathbf{r}', t') = +i\theta(t'-t)\langle\{\hat{\psi}(\mathbf{r}, t), \hat{\psi}^\dagger(\mathbf{r}', t')\}\rangle$$
 
 For a single-particle system with eigenstates $\hat{H}\vert n\rangle = E_n\vert n\rangle$, we can compute $G^R$ explicitly. Inserting complete sets of eigenstates:
 
@@ -491,7 +491,7 @@ This prescription allows us to compute equilibrium quantities at Matsubara frequ
 
 Real materials have interactions: electrons repel via Coulomb force. The Hamiltonian:
 
-$$\hat{H} = \sum_\sigma \int d^3r \, \psi^\dagger_\sigma(\mathbf{r})\left(-\frac{\hbar^2\nabla^2}{2m}\right)\psi_\sigma(\mathbf{r}) + \frac{1}{2}\sum_{\sigma,\sigma'}\int d^3r d^3r' \, V(\mathbf{r}-\mathbf{r}')\psi^\dagger_\sigma(\mathbf{r})\psi^\dagger_{\sigma'}(\mathbf{r}')\psi_{\sigma'}(\mathbf{r}')\psi_\sigma(\mathbf{r})$$
+$$\hat{H} = \sum_\sigma \int d^3r \, \hat{\psi}^\dagger_\sigma(\mathbf{r})\left(-\frac{\hbar^2\nabla^2}{2m}\right)\hat{\psi}_\sigma(\mathbf{r}) + \frac{1}{2}\sum_{\sigma,\sigma'}\int d^3r d^3r' \, V(\mathbf{r}-\mathbf{r}')\hat{\psi}^\dagger_\sigma(\mathbf{r})\hat{\psi}^\dagger_{\sigma'}(\mathbf{r}')\hat{\psi}_{\sigma'}(\mathbf{r}')\hat{\psi}_\sigma(\mathbf{r})$$
 
 ### Self-Energy
 
@@ -529,12 +529,12 @@ In quantum transport, we have two reservoirs at different chemical potentials $\
 
 Extend time from $-\infty$ to $+\infty$ then back to $-\infty$. The contour-ordered Green's function is:
 
-$$G_C(\tau, \tau') = -i\langle T_C \psi(\tau)\psi^\dagger(\tau')\rangle$$
+$$G_C(\tau, \tau') = -i\langle T_C \hat{\psi}(\tau)\hat{\psi}^\dagger(\tau')\rangle$$
 
 Decomposing into real-time components on the forward $(+)$ and backward $(-)$ branches gives four Green's functions. The useful combinations are:
 
-- **Lesser:** $G^<(t, t') = +i\langle \psi^\dagger(t')\psi(t)\rangle$ (particle occupation)
-- **Greater:** $G^>(t, t') = -i\langle \psi(t)\psi^\dagger(t')\rangle$ (hole occupation)
+- **Lesser:** $G^<(t, t') = +i\langle \hat{\psi}^\dagger(t')\hat{\psi}(t)\rangle$ (particle occupation)
+- **Greater:** $G^>(t, t') = -i\langle \hat{\psi}(t)\hat{\psi}^\dagger(t')\rangle$ (hole occupation)
 - **Retarded:** $G^R = \theta(t-t')[G^> - G^<]$
 - **Advanced:** $G^A = \theta(t'-t)[G^< - G^>]$ 
 
