@@ -298,13 +298,39 @@ A subtle point deserves clarification. First-order energy corrections are obtain
 
 **Step 1: Identify the correct zeroth-order states**
 
-Before perturbation, any superposition in $\mathcal{H}_n^{(0)}$ is valid. The perturbation $\hat{V}$ selects specific combinations—these are the states that will evolve continuously as $\lambda$ increases from zero. To find them, we solve:
+Before perturbation, any superposition in $\mathcal{H}_n^{(0)}$ is valid. The perturbation $\hat{V}$ selects specific combinations—these are the states that will evolve continuously as $\lambda$ increases from zero. To find them, we solve the eigenvalue problem **within the degenerate subspace only**.
+
+Write the correct zeroth-order state as a superposition of the original basis states:
 
 $$
-\mathbf{V}^{(n)} \mathbf{c} = E^{(1)} \mathbf{c}
+\vert n, k^{(0)}\rangle = c_1^{(k)}\vert n, 1\rangle + c_2^{(k)}\vert n, 2\rangle + \cdots + c_g^{(k)}\vert n, g\rangle = \sum_{i=1}^{g} c_i^{(k)}\vert n, i\rangle
 $$
 
-This is an eigenvalue problem **confined to the degenerate subspace**. Why? Because we are not yet asking how the state changes; we are asking which starting point is the "right" one. This is determined entirely by how $\hat{V}$ acts within $\mathcal{H}_n^{(0)}$—states outside this subspace have different unperturbed energies and do not participate in the degeneracy.
+The secular equation requires that for each basis state $\vert n, i\rangle$:
+
+$$
+\sum_{j=1}^{g} \langle n, i\vert\hat{V}\vert n, j\rangle c_j^{(k)} = E_{n,k}^{(1)} c_i^{(k)}
+$$
+
+This is a system of $g$ linear equations. In matrix form:
+
+$$
+\begin{pmatrix} 
+V_{11} & V_{12} & \cdots & V_{1g} \\
+V_{21} & V_{22} & \cdots & V_{2g} \\
+\vdots & \vdots & \ddots & \vdots \\
+V_{g1} & V_{g2} & \cdots & V_{gg}
+\end{pmatrix}
+\begin{pmatrix} c_1^{(k)} \\ c_2^{(k)} \\ \vdots \\ c_g^{(k)} \end{pmatrix}
+= E_{n,k}^{(1)} 
+\begin{pmatrix} c_1^{(k)} \\ c_2^{(k)} \\ \vdots \\ c_g^{(k)} \end{pmatrix}
+$$
+
+**What this equation is actually doing:**
+
+The matrix element $V_{ij} = \langle n, i\vert\hat{V}\vert n, j\rangle$ tells us how much the perturbation couples basis states $\vert n, i\rangle$ and $\vert n, j\rangle$. If we start with an arbitrary superposition, $\hat{V}$ will tend to mix the components. The eigenvalue problem finds those **special superpositions** where the state is "stable" under the action of $\hat{V}$—meaning $\hat{V}$ acting on the state just returns the same state scaled by $E_{n,k}^{(1)}$.
+
+**Why only within $\mathcal{H}_n^{(0)}$?** Because we are not yet asking how the state changes due to mixing with outside states; we are asking which starting point within the degenerate manifold is the "right" one. States outside have $E_m^{(0)} \neq E_n^{(0)}$, so they cannot be degenerate with our level and do not participate in this selection process.
 
 **Step 2: Calculate corrections to these selected states**
 
