@@ -385,7 +385,43 @@ $$
 
 **Physical interpretation:** When $\mathbf{V}^{(n)}$ is diagonal, the perturbation does not mix the degenerate states at first order. Each $|n, i\rangle$ evolves independently with its own energy shift $V_{ii}$, precisely as in non-degenerate theory. The degeneracy is still lifted (unless $V_{ii} = V_{jj}$ for some $i \neq j$), but the lifting occurs without inducing transitions within the subspace.
 
-**Example:** A magnetic field applied to hydrogen $n=2$ states. The field couples to $L_z$ and $S_z$, which are diagonal in the $|n, l, m_l, m_s\rangle$ basis. First-order Zeeman splitting is obtained without diagonalizing any matrix—the basis states are already the "good" states.
+**Example:** First-order Zeeman effect in hydrogen $n=2$ states. The perturbation from a uniform magnetic field $\mathbf{B} = B\hat{z}$ is:
+
+$$
+\hat{V} = -\boldsymbol{\mu} \cdot \mathbf{B} = \frac{e}{2m_e}(\hat{L}_z + 2\hat{S}_z)B = \frac{e\hbar B}{2m_e}(\hat{m}_l + 2\hat{m}_s) = \mu_B B (\hat{m}_l + 2\hat{m}_s)
+$$
+
+where $\mu_B = e\hbar/2m_e$ is the Bohr magneton.
+
+For $n=2$, there are 8 states including spin ($g = 2n^2 = 8$):
+
+| State | $l$ | $m_l$ | $m_s$ | $m_l + 2m_s$ |
+|-------|-----|-------|-------|--------------|
+| $\vert 200, \uparrow\rangle$ | 0 | 0 | $+\frac{1}{2}$ | +1 |
+| $\vert 200, \downarrow\rangle$ | 0 | 0 | $-\frac{1}{2}$ | -1 |
+| $\vert 210, \uparrow\rangle$ | 1 | 0 | $+\frac{1}{2}$ | +1 |
+| $\vert 210, \downarrow\rangle$ | 1 | 0 | $-\frac{1}{2}$ | -1 |
+| $\vert 211, \uparrow\rangle$ | 1 | 1 | $+\frac{1}{2}$ | +2 |
+| $\vert 211, \downarrow\rangle$ | 1 | 1 | $-\frac{1}{2}$ | 0 |
+| $\vert 21,-1, \uparrow\rangle$ | 1 | -1 | $+\frac{1}{2}$ | 0 |
+| $\vert 21,-1, \downarrow\rangle$ | 1 | -1 | $-\frac{1}{2}$ | -2 |
+
+**Key observation:** $\hat{V}$ contains only $\hat{L}_z$ and $\hat{S}_z$, both diagonal in the $|n, l, m_l, m_s\rangle$ basis. The perturbation matrix is already diagonal:
+
+$$
+\langle n, l, m_l, m_s | \hat{V} | n, l', m_l', m_s' \rangle = \mu_B B (m_l + 2m_s) \delta_{ll'} \delta_{m_l m_l'} \delta_{m_s m_s'}
+$$
+
+**First-order energy corrections:**
+
+From the table, the eigenvalues are:
+- $E^{(1)} = +2\mu_B B$ (1 state: $|211, \uparrow\rangle$)
+- $E^{(1)} = +\mu_B B$ (2 states: $\vert 200, \uparrow\rangle$, $\vert 210, \uparrow\rangle$)  
+- $E^{(1)} = 0$ (2 states: $\vert 211, \downarrow\rangle$, $\vert 21,-1, \uparrow\rangle$)
+- $E^{(1)} = -\mu_B B$ (2 states: $\vert 200, \downarrow\rangle$, $\vert 210, \downarrow\rangle$)
+- $E^{(1)} = -2\mu_B B$ (1 state: $|21,-1, \downarrow\rangle$)
+
+The original 8-fold degeneracy is partially lifted into 5 distinct levels. The basis states $|n, l, m_l, m_s\rangle$ are already the "good" states—no diagonalization is required. Each state shifts independently according to its total magnetic moment projection $(m_l + 2m_s)$.
 
 **Mathematical equivalence:** If we formally treat each degenerate state as non-degenerate and apply standard formulas, we obtain the same result because:
 - $E_{n,i}^{(1)} = \langle n, i|\hat{V}|n, i\rangle$ (matches diagonal element)
