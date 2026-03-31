@@ -290,6 +290,63 @@ where $\mathcal{D}_n$ denotes the degenerate subspace. The sum explicitly exclud
 
 ---
 
+### The Apparent Paradox: Subspace Restriction vs. Full Space
+
+A subtle point deserves clarification. First-order energy corrections are obtained by diagonalizing $\hat{V}$ **only within** $\mathcal{H}_n^{(0)}$, yet first-order state corrections involve mixing with states **outside** $\mathcal{H}_n^{(0)}$. This seemingly asymmetric treatment requires explanation.
+
+**Energy corrections are localized:**
+
+$E_{n,k}^{(1)}$ comes from projecting the first-order equation onto $\langle n, k^{(0)}| \in \mathcal{H}_n^{(0)}$. The result involves only matrix elements $\langle n, k^{(0)}|\hat{V}|n, l^{(0)}\rangle$ because the projection kills any component outside $\mathcal{H}_n^{(0)}$.
+
+**State corrections are global:**
+
+The first-order state $|n, k^{(1)}\rangle$ satisfies:
+
+$$
+(\hat{H}_0 - E_n^{(0)})|n, k^{(1)}\rangle = (E_{n,k}^{(1)} - \hat{V})|n, k^{(0)}\rangle
+$$
+
+After diagonalization, the RHS has **no component within** $\mathcal{H}_n^{(0)}$ (this is precisely the secular equation condition). Therefore $|n, k^{(1)}\rangle$ must lie entirely in the orthogonal complement $\mathcal{H}_n^{(0)\perp}$, meaning it is a superposition of states outside the degenerate subspace:
+
+$$
+|n, k^{(1)}\rangle = \sum_{m \notin \mathcal{D}_n} \frac{\langle m^{(0)}|\hat{V}|n, k^{(0)}\rangle}{E_n^{(0)} - E_m^{(0)}}|m^{(0)}\rangle
+$$
+
+**The resolution:** The apparent restriction is not a truncation of Hilbert space but a **decoupling induced by diagonalization**. Before diagonalization, the first-order equation is ill-defined due to the kernel of $(\hat{H}_0 - E_n^{(0)})$. After finding the correct zeroth-order basis, the problem separates:
+
+1. **Within** $\mathcal{H}_n^{(0)}$: Degeneracy is lifted; each $|n, k^{(0)}\rangle$ acquires distinct $E_{n,k}^{(1)}$
+2. **Outside** $\mathcal{H}_n^{(0)}$: Standard non-degenerate perturbation theory applies to each split level
+
+The "restriction" to $\mathcal{H}_n^{(0)}$ for energy corrections is merely the statement that first-order splitting is determined entirely by how $\hat{V}$ acts **within** the originally degenerate manifold.
+
+---
+
+### When Degenerate Theory Reduces to Non-Degenerate
+
+Degenerate perturbation theory subsumes the non-degenerate case as a limit. This occurs when the perturbation matrix in the degenerate subspace is **already diagonal**:
+
+$$
+\mathbf{V}^{(n)} = \begin{pmatrix} V_{11} & 0 & \cdots & 0 \\ 0 & V_{22} & \cdots & 0 \\ \vdots & \vdots & \ddots & \vdots \\ 0 & 0 & \cdots & V_{gg} \end{pmatrix}
+$$
+
+**Consequences:**
+
+1. **Original basis is already "correct":** The basis states $|n, i\rangle$ are eigenstates of $\mathbf{V}^{(n)}$
+2. **First-order energies:** $E_{n,i}^{(1)} = V_{ii} = \langle n, i|\hat{V}|n, i\rangle$ (identical to non-degenerate formula)
+3. **No diagonalization required:** The secular equation is trivially satisfied
+
+**Physical interpretation:** When $\mathbf{V}^{(n)}$ is diagonal, the perturbation does not mix the degenerate states at first order. Each $|n, i\rangle$ evolves independently with its own energy shift $V_{ii}$, precisely as in non-degenerate theory. The degeneracy is still lifted (unless $V_{ii} = V_{jj}$ for some $i \neq j$), but the lifting occurs without inducing transitions within the subspace.
+
+**Example:** A magnetic field applied to hydrogen $n=2$ states. The field couples to $L_z$ and $S_z$, which are diagonal in the $|n, l, m_l, m_s\rangle$ basis. First-order Zeeman splitting is obtained without diagonalizing any matrix—the basis states are already the "good" states.
+
+**Mathematical equivalence:** If we formally treat each degenerate state as non-degenerate and apply standard formulas, we obtain the same result because:
+- $E_{n,i}^{(1)} = \langle n, i|\hat{V}|n, i\rangle$ (matches diagonal element)
+- The problematic denominator $(E_n^{(0)} - E_n^{(0)})^{-1}$ never appears because we never sum over other degenerate states
+
+This validates that degenerate perturbation theory is the **general framework**, with non-degenerate theory emerging when the degenerate subspace structure is trivial.
+
+---
+
 ## Part III: Structural Comparison
 
 | Aspect | Non-Degenerate | Degenerate |
