@@ -481,10 +481,40 @@ $$
 
 The energy denominator is negative: $E_1^{(0)} - E_n^{(0)} = -13.6(1 - 1/n^2)$ eV $< 0$. Each term in the sum is therefore negative, giving a net negative energy shift.
 
-The sum can be evaluated using hydrogen wavefunctions and the radial matrix elements $\langle nl|r|10\rangle$. The result, first calculated by Wentzel (1926) and Waller (1926), is:
+To evaluate the sum, separate the matrix element into radial and angular parts. The hydrogen wavefunctions are $\psi_{nlm}(r,\theta,\phi) = R_{nl}(r)Y_l^m(\theta,\phi)$, and $z = r\cos\theta = r\sqrt{4\pi/3}\,Y_1^0$:
 
 $$
-E_1^{(2)} = -\frac{9}{4}a_0^3\mathcal{E}^2
+\langle nlm|z|100\rangle = \sqrt{\frac{4\pi}{3}} \int_0^{\infty} R_{nl}(r)rR_{10}(r)r^2dr \int Y_l^{m*}Y_1^0Y_0^0\,d\Omega
+$$
+
+The angular integral requires $l = 1$, $m = 0$ (from spherical harmonic addition). With $\int Y_1^{0*}Y_1^0Y_0^0\,d\Omega = 1/\sqrt{4\pi}$:
+
+$$
+\langle n,1,0|z|100\rangle = \frac{1}{\sqrt{3}} \int_0^{\infty} R_{n1}(r)rR_{10}(r)r^2dr = \frac{\langle n1|r|10\rangle}{\sqrt{3}}
+$$
+
+The sum reduces to:
+
+$$
+E_1^{(2)} = \frac{e^2\mathcal{E}^2}{3} \sum_{n=2}^{\infty} \frac{|\langle n1|r|10\rangle|^2}{E_1^{(0)} - E_n^{(0)}}
+$$
+
+With hydrogen energies $E_n^{(0)} = -e^2/(8\pi\varepsilon_0 a_0 n^2)$:
+
+$$
+E_1^{(0)} - E_n^{(0)} = \frac{e^2}{8\pi\varepsilon_0 a_0}\left(1 - \frac{1}{n^2}\right)
+$$
+
+The radial matrix elements $\langle n1|r|10\rangle$ can be computed analytically. Using the known result for the infinite sum over all $np$ states:
+
+$$
+\sum_{n=2}^{\infty} \frac{|\langle n1|r|10\rangle|^2}{1 - 1/n^2} = \frac{27}{2}a_0^2
+$$
+
+Substituting:
+
+$$
+E_1^{(2)} = \frac{e^2\mathcal{E}^2}{3} \cdot \frac{8\pi\varepsilon_0 a_0}{e^2} \cdot \frac{27}{2}a_0^2 \cdot \frac{1}{a_0^2} = -\frac{9}{4}a_0^3\mathcal{E}^2
 $$
 
 where $a_0 = 4\pi\varepsilon_0\hbar^2/m_e e^2 \approx 0.529$ Å is the Bohr radius.
