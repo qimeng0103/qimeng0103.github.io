@@ -119,6 +119,26 @@
         <div class="article-desc">Complete derivation of energy corrections up to third order and wavefunction corrections up to second order for non-degenerate perturbation theory, with detailed discussion of degenerate case</div>
       </div>
     </li>
+    <li class="article-item">
+      <span class="article-date">2026-03-31</span>
+      <div>
+        <div class="article-title"><a href="./quantum-mechanics/time-dependent-perturbation-theory">Time-Dependent Perturbation Theory: From Fermi's Golden Rule to Linear Response</a></div>
+        <div class="article-desc">Interaction picture, Dyson series, Fermi's Golden Rule, scattering theory with Lippmann-Schwinger equation, and linear response theory with Kubo formula</div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="category-section">
+  <h2>Condensed Matter Notes</h2>
+  <ul class="article-list">
+    <li class="article-item">
+      <span class="article-date">2026-04-01</span>
+      <div>
+        <div class="article-title"><a href="./condensed-matter/green-functions-quantum-transport">Green's Functions in Condensed Matter: From Equilibrium to Non-Equilibrium Quantum Transport</a></div>
+        <div class="article-desc">Single-particle and many-body Green's functions, Matsubara formalism, Dyson equation, Keldysh non-equilibrium technique, and applications to quantum transport</div>
+      </div>
+    </li>
   </ul>
 </div>
 

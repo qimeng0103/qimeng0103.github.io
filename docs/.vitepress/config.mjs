@@ -55,7 +55,14 @@ export default defineConfig({
             { 
               text: 'Quantum Mechanics Notes',
               items: [
-                { text: 'Stationary Perturbation Theory', link: '/posts/quantum-mechanics/stationary-perturbation-theory' }
+                { text: 'Stationary Perturbation Theory', link: '/posts/quantum-mechanics/stationary-perturbation-theory' },
+                { text: 'Time-Dependent Perturbation Theory', link: '/posts/quantum-mechanics/time-dependent-perturbation-theory' }
+              ]
+            },
+            {
+              text: 'Condensed Matter Notes',
+              items: [
+                { text: "Green's Functions for Quantum Transport", link: '/posts/condensed-matter/green-functions-quantum-transport' }
               ]
             }
           ]
