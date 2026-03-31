@@ -1,4 +1,4 @@
-# Green's Functions in Condensed Matter: From Equilibrium to Non-Equilibrium Quantum Transport
+# Green's Functions in Condensed Matter: From Quantum Mechanics to Quantum Transport
 
 📅 **Date:** 2026-03-31 | 🏷️ **Tags:** Condensed Matter, Quantum Transport, Many-Body Physics | 📂 **Category:** Condensed Matter Notes
 
@@ -6,396 +6,489 @@
 
 ## Introduction
 
-Green's functions provide the unifying language for quantum many-body physics. They encode:
-- **Single-particle propagation** in disordered potentials
-- **Spectral properties** (density of states, band structure)
-- **Response functions** (conductivity, susceptibility)
-- **Non-equilibrium dynamics** (quantum transport, relaxation)
-
-This note develops Green's functions from quantum mechanical foundations through equilibrium many-body theory to non-equilibrium quantum transport, with the minimal formalism needed for practical calculations.
+This note develops Green's functions from elementary quantum mechanics, assuming familiarity with the Schrödinger equation, eigenstates, and Dirac notation, but **no prior knowledge of statistical mechanics or condensed matter physics**. Every concept is derived explicitly.
 
 ---
 
-## Part I: Single-Particle Green's Functions
+## Part I: The Single-Particle Propagator
 
-### Definition and Physical Meaning
+### Motivation: Why Propagators?
 
-Consider a single-particle quantum system with Hamiltonian $\hat{H} = \hat{H}_0 + \hat{V}$. The **time-ordered Green's function** is:
-
-$$
-G(\mathbf{r}, t; \mathbf{r}', t') = -i\langle T \psi(\mathbf{r}, t) \psi^\dagger(\mathbf{r}', t') \rangle
-$$
-
-where $T$ is the time-ordering operator, $\psi(\mathbf{r}, t) = e^{i\hat{H}t}\psi(\mathbf{r})e^{-i\hat{H}t}$ in Heisenberg picture, and the bracket denotes ground state expectation (zero temperature) or thermal average (finite temperature).
-
-**Physical interpretation:**
-- $G$ describes the amplitude for a particle created at $(\mathbf{r}', t')$ to propagate to $(\mathbf{r}, t)$
-- For $t > t'$: particle propagation; for $t < t'$: hole propagation
-- The spectral information (poles of $G$) gives excitation energies and lifetimes
-
-### Free Particle Green's Function
-
-For $\hat{H}_0 = -\hbar^2\nabla^2/2m$ (free particle), in momentum-frequency space:
+In single-particle quantum mechanics, the time evolution of a state is governed by the Schrödinger equation:
 
 $$
-G_0(\mathbf{k}, \omega) = \frac{1}{\omega - \varepsilon_k + i\eta}
+i\hbar \frac{\partial}{\partial t}\vert\psi(t)\rangle = \hat{H}\vert\psi(t)\rangle
 $$
 
-with $\varepsilon_k = \hbar^2 k^2/2m$ and $\eta \to 0^+$.
-
-The imaginary part gives the spectral function:
+For a time-independent Hamiltonian, the formal solution is:
 
 $$
-A_0(\mathbf{k}, \omega) = -\frac{1}{\pi}\text{Im}\,G_0(\mathbf{k}, \omega) = \delta(\omega - \varepsilon_k)
+\vert\psi(t)\rangle = e^{-i\hat{H}(t-t_0)/\hbar}\vert\psi(t_0)\rangle = \hat{U}(t, t_0)\vert\psi(t_0)\rangle
 $$
 
-This shows the free particle has well-defined energy $\varepsilon_k$ (infinite lifetime, delta function peak).
+where $\hat{U}(t, t_0) = e^{-i\hat{H}(t-t_0)/\hbar}$ is the **time evolution operator**.
 
-### Retarded and Advanced Green's Functions
-
-For response theory, we need **causal** Green's functions:
+The **propagator** (or Green's function) is the position-space matrix element of this operator:
 
 $$
-G^R(\mathbf{r}, t; \mathbf{r}', t') = -i\theta(t - t')\langle \{\psi(\mathbf{r}, t), \psi^\dagger(\mathbf{r}', t')\} \rangle
+G(\mathbf{r}, t; \mathbf{r}', t') \equiv \langle\mathbf{r}\vert\hat{U}(t, t')\vert\mathbf{r}'\rangle = \langle\mathbf{r}\vert e^{-i\hat{H}(t-t')/\hbar}\vert\mathbf{r}'\rangle
 $$
 
-$$
-G^A(\mathbf{r}, t; \mathbf{r}', t') = +i\theta(t' - t)\langle \{\psi(\mathbf{r}, t), \psi^\dagger(\mathbf{r}', t')\} \rangle
-$$
+**Physical meaning:** $G(\mathbf{r}, t; \mathbf{r}', t')$ is the probability amplitude for a particle starting at position $\mathbf{r}'$ at time $t'$ to be found at position $\mathbf{r}$ at time $t$.
 
-where $\{\cdot, \cdot\}$ is the anticommutator for fermions.
+### Evolution of Wavefunctions
 
-In frequency space:
+Given an initial wavefunction $\psi(\mathbf{r}', t') = \langle\mathbf{r}'\vert\psi(t')\rangle$, the wavefunction at later time is:
 
 $$
-G^{R/A}(\mathbf{k}, \omega) = \frac{1}{\omega - \varepsilon_k \pm i\eta}
+\psi(\mathbf{r}, t) = \int d^3r' \, G(\mathbf{r}, t; \mathbf{r}', t') \psi(\mathbf{r}', t')
 $$
 
-The retarded function $G^R$ has poles in the lower half-plane, ensuring causality (response follows perturbation).
-
-### Connection to Density of States
-
-The **local density of states** (LDOS) is directly related to the retarded Green's function:
+**Proof:** Insert complete set $\int d^3r' \vert\mathbf{r}'\rangle\langle\mathbf{r}'\vert = \hat{\mathbb{1}}$:
 
 $$
-\rho(\mathbf{r}, \omega) = -\frac{1}{\pi}\text{Im}\,G^R(\mathbf{r}, \mathbf{r}, \omega) = \sum_n |\phi_n(\mathbf{r})|^2 \delta(\omega - E_n)
+\psi(\mathbf{r}, t) = \langle\mathbf{r}\vert\psi(t)\rangle = \langle\mathbf{r}\vert\hat{U}(t, t')\vert\psi(t')\rangle = \int d^3r' \langle\mathbf{r}\vert\hat{U}(t, t')\vert\mathbf{r}'\rangle\langle\mathbf{r}'\vert\psi(t')\rangle
 $$
 
-where $\phi_n$ are eigenstates of $\hat{H}$ with energies $E_n$.
+### The Free Particle Propagator
 
-For homogeneous systems, the **density of states** per unit volume:
+For a free particle: $\hat{H}_0 = \frac{\hat{\mathbf{p}}^2}{2m} = -\frac{\hbar^2}{2m}\nabla^2$
+
+The eigenstates are plane waves $\vert\mathbf{k}\rangle$ with $\langle\mathbf{r}\vert\mathbf{k}\rangle = \frac{1}{\sqrt{V}}e^{i\mathbf{k}\cdot\mathbf{r}}$ and eigenvalues $E_k = \frac{\hbar^2 k^2}{2m}$.
+
+Insert two complete sets $\sum_\mathbf{k}\vert\mathbf{k}\rangle\langle\mathbf{k}\vert = \hat{\mathbb{1}}$:
 
 $$
-\nu(\omega) = -\frac{1}{\pi}\int \frac{d^d k}{(2\pi)^d} \text{Im}\,G^R(\mathbf{k}, \omega)
+G_0(\mathbf{r}, t; \mathbf{r}', t') = \sum_{\mathbf{k},\mathbf{k}'} \langle\mathbf{r}\vert\mathbf{k}\rangle\langle\mathbf{k}\vert e^{-i\hat{H}_0(t-t')/\hbar}\vert\mathbf{k}'\rangle\langle\mathbf{k}'\vert\mathbf{r}'\rangle
 $$
 
-In $d$ dimensions for free electrons: $\nu(\omega) \propto \omega^{d/2 - 1}$.
+Since $\hat{H}_0\vert\mathbf{k}'\rangle = E_{k'}\vert\mathbf{k}'\rangle$:
+
+$$
+\langle\mathbf{k}\vert e^{-i\hat{H}_0(t-t')/\hbar}\vert\mathbf{k}'\rangle = e^{-iE_{k'}(t-t')/\hbar}\delta_{\mathbf{k}\mathbf{k}'}
+$$
+
+Thus:
+
+$$
+G_0(\mathbf{r}, t; \mathbf{r}', t') = \frac{1}{V}\sum_\mathbf{k} e^{i\mathbf{k}\cdot(\mathbf{r}-\mathbf{r}')} e^{-iE_k(t-t')/\hbar}
+$$
+
+Taking the continuum limit $\frac{1}{V}\sum_\mathbf{k} \to \int \frac{d^3k}{(2\pi)^3}$:
+
+$$
+G_0(\mathbf{r}, t; \mathbf{r}', t') = \int \frac{d^3k}{(2\pi)^3} \exp\left[i\mathbf{k}\cdot(\mathbf{r}-\mathbf{r}') - i\frac{\hbar k^2}{2m}(t-t')\right]
+$$
+
+This is a Gaussian integral. Completing the square in the exponent:
+
+Let $\mathbf{q} = \mathbf{k} - \frac{m(\mathbf{r}-\mathbf{r}')}{\hbar(t-t')}$, then:
+
+$$
+G_0(\mathbf{r}, t; \mathbf{r}', t') = \left(\frac{m}{2\pi i \hbar(t-t')}\right)^{3/2} \exp\left(\frac{im(\mathbf{r}-\mathbf{r}')^2}{2\hbar(t-t')}\right)
+$$
+
+This is the free particle propagator. Note the phase factor and the spreading with time $\sim (t-t')^{-3/2}$.
+
+### The Differential Equation for G
+
+From the definition $G(\mathbf{r}, t; \mathbf{r}', t') = \langle\mathbf{r}\vert e^{-i\hat{H}(t-t')/\hbar}\vert\mathbf{r}'\rangle$, differentiate with respect to $t$:
+
+$$
+i\hbar \frac{\partial}{\partial t}G = \langle\mathbf{r}\vert\hat{H}e^{-i\hat{H}(t-t')/\hbar}\vert\mathbf{r}'\rangle = \langle\mathbf{r}\vert\hat{H}\vert\mathbf{r}'\rangle_{\text{matrix element}}
+$$
+
+For $\hat{H} = -\frac{\hbar^2}{2m}\nabla^2 + V(\mathbf{r})$:
+
+$$
+\langle\mathbf{r}\vert\hat{H}\vert\mathbf{r}'\rangle = \left(-\frac{\hbar^2}{2m}\nabla^2 + V(\mathbf{r})\right)\delta(\mathbf{r}-\mathbf{r}')
+$$
+
+Therefore:
+
+$$
+\boxed{\left(i\hbar \frac{\partial}{\partial t} + \frac{\hbar^2}{2m}\nabla^2 - V(\mathbf{r})\right)G(\mathbf{r}, t; \mathbf{r}', t') = \hbar\delta(\mathbf{r}-\mathbf{r}')\delta(t-t')}
+$$
+
+This shows $G$ is the Green's function for the Schrödinger operator, with a delta-function source.
 
 ---
 
-## Part II: Finite Temperature and Statistical Mechanics
+## Part II: From Quantum Mechanics to Statistical Mechanics
 
-### Imaginary Time (Matsubara) Formalism
+### The Problem: $N \sim 10^{23}$ Particles
 
-At finite temperature $T = 1/(k_B \beta)$, the time evolution operator $e^{-i\hat{H}t}$ becomes problematic due to thermal fluctuations. The **imaginary time formalism** defines:
+Condensed matter systems contain macroscopic numbers of particles. Tracking each particle's wavefunction is impossible. We need a statistical description.
 
-$$
-\tau = it \in [0, \beta\hbar]
-$$
+**Key insight:** Even for a single particle at finite temperature, we don't know the exact quantum state—the system is in a **mixed state** described by probabilities.
 
-The **Matsubara Green's function**:
+### The Density Matrix: Definition
 
-$$
-\mathcal{G}(\mathbf{r}, \tau; \mathbf{r}', \tau') = -\langle T_\tau \psi(\mathbf{r}, \tau) \psi^\dagger(\mathbf{r}', \tau') \rangle
-$$
+A **pure state** is described by a state vector $\vert\psi\rangle$. Expectation values are $\langle\hat{A}\rangle = \langle\psi\vert\hat{A}\vert\psi\rangle$.
 
-where $T_\tau$ orders in imaginary time, and $\psi(\mathbf{r}, \tau) = e^{\hat{H}\tau}\psi(\mathbf{r})e^{-\hat{H}\tau}$.
+A **mixed state** is a statistical ensemble: the system is in state $\vert\psi_i\rangle$ with probability $p_i$, where $\sum_i p_i = 1$.
 
-**Key property:** $\mathcal{G}$ is periodic (bosons) or antiperiodic (fermions) with period $\beta\hbar$:
+The expectation value of an observable is the weighted average:
 
 $$
-\mathcal{G}(\tau + \beta\hbar) = -\mathcal{G}(\tau) \quad \text{(fermions)}
+\langle\hat{A}\rangle = \sum_i p_i \langle\psi_i\vert\hat{A}\vert\psi_i\rangle
 $$
 
-### Matsubara Frequencies
-
-Due to periodicity, Fourier transform yields **discrete frequencies**:
+Define the **density operator** (density matrix):
 
 $$
-\mathcal{G}(i\omega_n) = \int_0^{\beta\hbar} d\tau \, e^{i\omega_n \tau} \mathcal{G}(\tau)
+\hat{\rho} \equiv \sum_i p_i \vert\psi_i\rangle\langle\psi_i\vert
 $$
 
-with $\omega_n = (2n+1)\pi/\beta\hbar$ for fermions and $\omega_n = 2n\pi/\beta\hbar$ for bosons.
-
-For free fermions:
+Then:
 
 $$
-\mathcal{G}_0(\mathbf{k}, i\omega_n) = \frac{1}{i\omega_n - \varepsilon_k + \mu}
+\langle\hat{A}\rangle = \sum_i p_i \langle\psi_i\vert\hat{A}\vert\psi_i\rangle = \sum_i p_i \text{Tr}(\vert\psi_i\rangle\langle\psi_i\vert\hat{A}) = \text{Tr}(\hat{\rho}\hat{A})
 $$
 
-where $\mu$ is the chemical potential.
+**Proof of the cyclic property used above:**
 
-### Analytic Continuation
-
-Physical retarded Green's functions are obtained by analytic continuation:
+For any states $\vert\alpha\rangle$, $\vert\beta\rangle$ and operator $\hat{A}$:
 
 $$
-G^R(\mathbf{k}, \omega) = \mathcal{G}(\mathbf{k}, i\omega_n \to \omega + i\eta)
+\langle\alpha\vert\hat{A}\vert\beta\rangle = \sum_n \langle\alpha\vert\hat{A}\vert n\rangle\langle n\vert\beta\rangle = \sum_n \langle n\vert\beta\rangle\langle\alpha\vert\hat{A}\vert n\rangle = \text{Tr}(\vert\beta\rangle\langle\alpha\vert\hat{A})
 $$
 
-This prescription connects equilibrium statistical mechanics to real-time response.
+### Properties of the Density Matrix
+
+1. **Hermiticity:** $\hat{\rho}^\dagger = \hat{\rho}$ (since $p_i$ are real)
+
+2. **Normalization:** $\text{Tr}(\hat{\rho}) = 1$ (probabilities sum to 1)
+
+3. **Positivity:** $\langle\phi\vert\hat{\rho}\vert\phi\rangle \geq 0$ for all $\vert\phi\rangle$
+
+4. **Pure vs. Mixed:**
+   - Pure state: $\hat{\rho} = \vert\psi\rangle\langle\psi\vert$, so $\hat{\rho}^2 = \hat{\rho}$ and $\text{Tr}(\hat{\rho}^2) = 1$
+   - Mixed state: $\text{Tr}(\hat{\rho}^2) < 1$
+
+### Thermal Equilibrium: The Canonical Ensemble
+
+For a system at temperature $T$ in contact with a heat bath, the probability of being in eigenstate $\vert n\rangle$ with energy $E_n$ follows the **Boltzmann distribution**:
+
+$$
+p_n = \frac{e^{-\beta E_n}}{\mathcal{Z}}, \quad \beta = \frac{1}{k_B T}
+$$
+
+where $\mathcal{Z}$ is the **partition function** ensuring normalization:
+
+$$
+\mathcal{Z} = \sum_n e^{-\beta E_n} = \text{Tr}(e^{-\beta\hat{H}})
+$$
+
+The **canonical density matrix** is:
+
+$$
+\hat{\rho} = \frac{e^{-\beta\hat{H}}}{\mathcal{Z}} = \frac{e^{-\beta\hat{H}}}{\text{Tr}(e^{-\beta\hat{H}})}
+$$
+
+### Time Evolution of the Density Matrix
+
+From the Schrödinger equation $i\hbar \frac{d}{dt}\vert\psi_i(t)\rangle = \hat{H}\vert\psi_i(t)\rangle$:
+
+$$
+i\hbar \frac{d}{dt}\hat{\rho}(t) = \sum_i p_i \left(i\hbar \frac{d}{dt}\vert\psi_i\rangle\right)\langle\psi_i\vert + \sum_i p_i \vert\psi_i\rangle\left(i\hbar \frac{d}{dt}\langle\psi_i\vert\right)
+$$
+
+$$
+= \sum_i p_i \hat{H}\vert\psi_i\rangle\langle\psi_i\vert - \sum_i p_i \vert\psi_i\rangle\langle\psi_i\vert\hat{H} = [\hat{H}, \hat{\rho}]
+$$
+
+This is the **von Neumann equation**:
+
+$$
+\boxed{i\hbar \frac{d}{dt}\hat{\rho}(t) = [\hat{H}, \hat{\rho}(t)]}
+$$
+
+Note the sign difference from the Heisenberg equation for operators.
+
+---
+
+## Part III: Imaginary Time and Matsubara Green's Functions
+
+### The Problem with Real Time at $T > 0$
+
+For $T > 0$, we need thermal averages like $\langle\hat{A}(t)\hat{B}(0)\rangle = \text{Tr}(\hat{\rho}\hat{A}(t)\hat{B}(0))$.
+
+The operator $e^{-i\hat{H}t/\hbar}$ oscillates forever. Thermal weights $e^{-\beta E_n}$ decay exponentially. These two exponentials behave very differently.
+
+**Key insight:** Define $\tau = it/\hbar$ (imaginary time, with units of inverse energy). Then:
+
+$$
+e^{-i\hat{H}t/\hbar} = e^{-\hat{H}\tau}
+$$
+
+Both the thermal factor $e^{-\beta\hat{H}}$ and the "evolution" factor $e^{-\hat{H}\tau}$ are now decaying exponentials—same mathematical structure!
+
+### The Matsubara Green's Function: Definition
+
+For fermions (we'll specialize to electrons in condensed matter), define the **imaginary-time Green's function**:
+
+$$
+\mathcal{G}(\mathbf{r}, \tau; \mathbf{r}', \tau') \equiv -\langle T_\tau \psi(\mathbf{r}, \tau) \psi^\dagger(\mathbf{r}', \tau') \rangle
+$$
+
+where:
+- $\tau, \tau' \in [0, \beta\hbar]$ are imaginary times
+- $T_\tau$ is the imaginary-time ordering operator (larger $\tau$ to the left)
+- Field operators in imaginary-time Heisenberg picture:
+
+$$
+\psi(\mathbf{r}, \tau) = e^{\hat{H}\tau}\psi(\mathbf{r})e^{-\hat{H}\tau}
+$$
+
+$$
+\psi^\dagger(\mathbf{r}', \tau') = e^{\hat{H}\tau'}\psi^\dagger(\mathbf{r}')e^{-\hat{H}\tau'}
+$$
+
+Note: $\psi^\dagger(\mathbf{r}, \tau) \neq [\psi(\mathbf{r}, \tau)]^\dagger$ in general! The $\dagger$ on the field operator is part of the notation, not Hermitian conjugation of the operator at imaginary time.
+
+### Explicit Form
+
+For $\tau > \tau'$:
+
+$$
+\mathcal{G}(\tau, \tau') = -\text{Tr}\left(\hat{\rho} \, e^{\hat{H}\tau}\psi(\mathbf{r})e^{-\hat{H}\tau} e^{\hat{H}\tau'}\psi^\dagger(\mathbf{r}')e^{-\hat{H}\tau'}\right)
+$$
+
+For $\tau < \tau'$:
+
+$$
+\mathcal{G}(\tau, \tau') = +\text{Tr}\left(\hat{\rho} \, e^{\hat{H}\tau'}\psi^\dagger(\mathbf{r}')e^{-\hat{H}\tau'} e^{\hat{H}\tau}\psi(\mathbf{r})e^{-\hat{H}\tau}\right)
+$$
+
+### The Antiperiodicity Property (KMS Condition)
+
+**Theorem:** For fermions, $\mathcal{G}(\tau + \beta\hbar) = -\mathcal{G}(\tau)$ for $-\beta\hbar < \tau < 0$.
+
+**Proof:**
+
+Consider $\tau \in [0, \beta\hbar]$ and examine $\mathcal{G}(\tau - \beta\hbar)$ where $\tau - \beta\hbar < 0$:
+
+$$
+\mathcal{G}(\tau - \beta\hbar) = +\text{Tr}\left(\hat{\rho} \psi^\dagger(\tau) \psi(\tau - \beta\hbar)\right)
+$$
+
+since $\tau - \beta\hbar < 0 < \tau$, the operator with larger time ($\tau$) goes left.
+
+Now use cyclic property of trace and $\hat{\rho} = e^{-\beta\hat{H}}/\mathcal{Z}$:
+
+$$
+\text{Tr}(\hat{\rho} \hat{A}\hat{B}) = \text{Tr}(e^{-\beta\hat{H}}\hat{A}\hat{B})/\mathcal{Z} = \text{Tr}(\hat{B}e^{-\beta\hat{H}}\hat{A})/\mathcal{Z}
+$$
+
+Insert $e^{\beta\hat{H}}e^{-\beta\hat{H}} = \hat{\mathbb{1}}$:
+
+$$
+= \text{Tr}(e^{-\beta\hat{H}}e^{\beta\hat{H}}\hat{B}e^{-\beta\hat{H}}\hat{A})/\mathcal{Z} = \text{Tr}(\hat{\rho} \, e^{\beta\hat{H}}\hat{B}e^{-\beta\hat{H}}\hat{A})
+$$
+
+For $\hat{B} = \psi^\dagger(\tau) = e^{\hat{H}\tau}\psi^\dagger e^{-\hat{H}\tau}$:
+
+$$
+e^{\beta\hat{H}}\psi^\dagger(\tau)e^{-\beta\hat{H}} = e^{\beta\hat{H}}e^{\hat{H}\tau}\psi^\dagger e^{-\hat{H}\tau}e^{-\beta\hat{H}} = e^{\hat{H}(\tau-\beta\hbar)}\psi^\dagger e^{-\hat{H}(\tau-\beta\hbar)} = \psi^\dagger(\tau - \beta\hbar)
+$$
+
+Therefore:
+
+$$
+\mathcal{G}(\tau - \beta\hbar) = +\text{Tr}(\hat{\rho} \psi^\dagger(\tau - \beta\hbar)\psi(\tau - \beta\hbar)) = +\langle \psi^\dagger(\tau - \beta\hbar)\psi(\tau - \beta\hbar)\rangle
+$$
+
+Wait, let's be more careful. Let $\tau' = \tau - \beta\hbar < 0$:
+
+Actually, let me restart more carefully. Define $\tau \in [0, \beta\hbar]$. We want to relate $\mathcal{G}(\tau)$ to $\mathcal{G}(\tau - \beta\hbar)$.
+
+For $\tau > 0$, $\mathcal{G}(\tau) = -\langle \psi(\tau)\psi^\dagger(0)\rangle$.
+
+For the argument $\tau - \beta\hbar < 0$, since this is negative, we have $\tau - \beta\hbar < 0$, so:
+
+$$\mathcal{G}(\tau - \beta\hbar) = +\langle \psi^\dagger(0)\psi(\tau - \beta\hbar)\rangle$$
+
+Now using the cyclic property with $\hat{\rho} = e^{-\beta\hat{H}}/\mathcal{Z}$:
+
+$$\langle \psi^\dagger(0)\psi(\tau - \beta\hbar)\rangle = \text{Tr}(e^{-\beta\hat{H}}\psi^\dagger(0)\psi(\tau - \beta\hbar))/\mathcal{Z}$$
+
+$$= \text{Tr}(\psi(\tau - \beta\hbar)e^{-\beta\hat{H}}\psi^\dagger(0))/\mathcal{Z}$$
+
+$$= \text{Tr}(e^{-\beta\hat{H}}e^{\beta\hat{H}}\psi(\tau - \beta\hbar)e^{-\beta\hat{H}}\psi^\dagger(0))/\mathcal{Z}$$
+
+$$= \text{Tr}(\hat{\rho} \, e^{\beta\hat{H}}\psi(\tau - \beta\hbar)e^{-\beta\hat{H}}\psi^\dagger(0))$$
+
+Now $e^{\beta\hat{H}}\psi(\tau - \beta\hbar)e^{-\beta\hat{H}} = e^{\beta\hat{H}}e^{\hat{H}(\tau-\beta\hbar)}\psi e^{-\hat{H}(\tau-\beta\hbar)}e^{-\beta\hat{H}} = e^{\hat{H}\tau}\psi e^{-\hat{H}\tau} = \psi(\tau)$.
+
+Therefore:
+
+$$\mathcal{G}(\tau - \beta\hbar) = +\langle \psi(\tau)\psi^\dagger(0)\rangle = -\mathcal{G}(\tau)$$
+
+$$
+\boxed{\mathcal{G}(\tau + \beta\hbar) = -\mathcal{G}(\tau)}$$
+
+This is the **Kubo-Martin-Schwinger (KMS) boundary condition**.
+
+### Fourier Series and Matsubara Frequencies
+
+Due to antiperiodicity on $[0, \beta\hbar]$, we expand $\mathcal{G}(\tau)$ in a Fourier series with odd harmonics:
+
+$$
+\mathcal{G}(\tau) = \frac{1}{\beta\hbar}\sum_{n=-\infty}^{\infty} e^{-i\omega_n\tau} \mathcal{G}(i\omega_n)
+$$
+
+where $\omega_n = \frac{(2n+1)\pi}{\beta\hbar}$ are **Matsubara frequencies** for fermions.
+
+**Why these frequencies?** The condition $e^{-i\omega_n(\tau+\beta\hbar)} = -e^{-i\omega_n\tau}$ requires $e^{-i\omega_n\beta\hbar} = -1$, so $\omega_n\beta\hbar = (2n+1)\pi$.
+
+The inverse transform:
+
+$$
+\mathcal{G}(i\omega_n) = \int_0^{\beta\hbar} d\tau \, e^{i\omega_n\tau} \mathcal{G}(\tau)
+$$
+
+### Free Fermions
+
+For non-interacting fermions with $\hat{H}_0 = \sum_\mathbf{k} \varepsilon_k \hat{c}^\dagger_\mathbf{k}\hat{c}_\mathbf{k}$:
+
+$$\mathcal{G}_0(\mathbf{k}, \tau) = -\langle T_\tau \hat{c}_\mathbf{k}(\tau)\hat{c}^\dagger_\mathbf{k}(0)\rangle$$
+
+For $\tau > 0$: $\mathcal{G}_0 = -\langle \hat{c}_\mathbf{k}(\tau)\hat{c}^\dagger_\mathbf{k}(0)\rangle = -e^{-\varepsilon_k\tau}\langle \hat{c}_\mathbf{k}\hat{c}^\dagger_\mathbf{k}\rangle = -e^{-\varepsilon_k\tau}(1 - f_k)$
+
+where $f_k = \langle \hat{c}^\dagger_\mathbf{k}\hat{c}_\mathbf{k}\rangle = \frac{1}{e^{\beta\varepsilon_k}+1}$ is the Fermi function.
+
+For $\tau < 0$: $\mathcal{G}_0 = +\langle \hat{c}^\dagger_\mathbf{k}(0)\hat{c}_\mathbf{k}(\tau)\rangle = +e^{-\varepsilon_k\tau}\langle \hat{c}^\dagger_\mathbf{k}\hat{c}_\mathbf{k}\rangle = +e^{-\varepsilon_k\tau}f_k$
+
+Fourier transforming:
+
+$$\mathcal{G}_0(i\omega_n) = \int_0^{\beta\hbar} d\tau \, e^{i\omega_n\tau} (-e^{-\varepsilon_k\tau}(1-f_k)) = -\frac{1-f_k}{\varepsilon_k - i\omega_n}(1 - e^{-(\varepsilon_k - i\omega_n)\beta\hbar})$$
+
+Using $e^{i\omega_n\beta\hbar} = -1$ and $e^{-\beta\hbar\varepsilon_k}(1-f_k) = f_k$:
+
+$$\mathcal{G}_0(i\omega_n) = \frac{1}{i\omega_n - \varepsilon_k}$$
+
+---
+
+## Part IV: The Spectral Function and Analytic Continuation
 
 ### Spectral Representation
 
-The Matsubara Green's function has spectral representation:
+The physical information in a Green's function is contained in its **spectral function** $A(\mathbf{k}, \omega)$.
 
-$$
-\mathcal{G}(\mathbf{k}, i\omega_n) = \int_{-\infty}^{\infty} \frac{d\omega'}{2\pi} \frac{A(\mathbf{k}, \omega')}{i\omega_n - \omega'}
-$$
+For the Matsubara Green's function, one can prove:
 
-where $A(\mathbf{k}, \omega) = -2\text{Im}\,G^R(\mathbf{k}, \omega)$ is the **spectral function** satisfying:
+$$\mathcal{G}(\mathbf{k}, i\omega_n) = \int_{-\infty}^{\infty} \frac{d\omega'}{2\pi} \frac{A(\mathbf{k}, \omega')}{i\omega_n - \omega'}$$
 
-$$
-\int \frac{d\omega}{2\pi} A(\mathbf{k}, \omega) = 1
-$$
+This is derived by inserting a complete set of exact eigenstates and using the Lehmann representation.
 
-For non-interacting systems: $A(\mathbf{k}, \omega) = 2\pi\delta(\omega - \varepsilon_k)$. Interactions broaden this into a Lorentzian (or more complex shape) with width related to inverse lifetime.
+### Retarded Green's Function
 
----
+The **retarded Green's function** is what we measure in experiments:
 
-## Part III: Many-Body Green's Functions and Field Theory
+$$G^R(\mathbf{k}, \omega) = \int_{-\infty}^{\infty} \frac{d\omega'}{2\pi} \frac{A(\mathbf{k}, \omega')}{\omega + i\eta - \omega'}$$
 
-### Second Quantization Language
+Comparing with the Matsubara form, we obtain the **analytic continuation prescription**:
 
-For many-fermion systems, we use field operators satisfying:
+$$\boxed{G^R(\mathbf{k}, \omega) = \mathcal{G}(\mathbf{k}, i\omega_n \to \omega + i\eta)}$$
 
-$$
-\{\psi(\mathbf{r}), \psi^\dagger(\mathbf{r}')\} = \delta(\mathbf{r} - \mathbf{r}'), \quad \{\psi(\mathbf{r}), \psi(\mathbf{r}')\} = 0
-$$
+The spectral function is:
 
-The Hamiltonian for interacting electrons:
+$$A(\mathbf{k}, \omega) = -2\text{Im}\,G^R(\mathbf{k}, \omega) = i[G^R(\mathbf{k}, \omega) - G^A(\mathbf{k}, \omega)]$$
 
-$$
-\hat{H} = \sum_\sigma \int d^3r \, \psi^\dagger_\sigma(\mathbf{r})\left(-\frac{\hbar^2\nabla^2}{2m} + V_{\text{ext}}(\mathbf{r})\right)\psi_\sigma(\mathbf{r}) + \frac{1}{2}\sum_{\sigma,\sigma'} \int d^3r d^3r' \, \psi^\dagger_\sigma(\mathbf{r})\psi^\dagger_{\sigma'}(\mathbf{r}')V(\mathbf{r} - \mathbf{r}')\psi_{\sigma'}(\mathbf{r}')\psi_\sigma(\mathbf{r})
-$$
-
-### The Interacting Green's Function
-
-The **interacting single-particle Green's function**:
-
-$$
-G_{\sigma\sigma'}(\mathbf{r}, t; \mathbf{r}', t') = -i\langle T \psi_\sigma(\mathbf{r}, t) \psi^\dagger_{\sigma'}(\mathbf{r}', t') \rangle
-$$
-
-encodes the full many-body effects. It no longer describes single-particle eigenstates but **quasiparticles**—dressed excitations with renormalized mass, lifetime, and spectral weight.
-
-### Dyson Equation
-
-The Green's function satisfies the **Dyson equation**:
-
-$$
-G = G_0 + G_0 \Sigma G
-$$
-
-or in matrix form:
-
-$$
-G^{-1} = G_0^{-1} - \Sigma
-$$
-
-where $\Sigma$ is the **self-energy**, containing all interaction effects. In frequency-momentum space:
-
-$$
-G(\mathbf{k}, \omega) = \frac{1}{\omega - \varepsilon_k - \Sigma(\mathbf{k}, \omega)}
-$$
-
-**Physical content of self-energy:**
-
-Writing $\Sigma = \text{Re}\Sigma + i\text{Im}\Sigma$:
-- $\text{Re}\Sigma$: energy shift (effective mass renormalization)
-- $\text{Im}\Sigma$: damping (inverse lifetime $\hbar/\tau_k = -2\text{Im}\Sigma$)
-
-For weak interactions near the Fermi surface, the quasiparticle energy and lifetime are:
-
-$$
-E_k = \varepsilon_k + \text{Re}\Sigma(\mathbf{k}, E_k), \quad \frac{\hbar}{\tau_k} = -2\text{Im}\Sigma(\mathbf{k}, E_k)
-$$
-
-### Diagrammatic Expansion
-
-The self-energy has a perturbative expansion in the interaction $V$:
-
-$$
-\Sigma = \Sigma^{(1)} + \Sigma^{(2)} + \cdots
-$$
-
-The **Hartree-Fock approximation** (first order):
-
-$$
-\Sigma_{\text{HF}}(\mathbf{r}, \mathbf{r}') = \delta(\mathbf{r} - \mathbf{r}')\int d^3r'' \, V(\mathbf{r} - \mathbf{r}'')\langle n(\mathbf{r}'')\rangle - V(\mathbf{r} - \mathbf{r}')\langle \psi(\mathbf{r})\psi^\dagger(\mathbf{r}')\rangle
-$$
-
-gives the mean-field potential plus exchange (Fock) term.
-
-Higher-order diagrams describe correlations: screening, collective modes, etc.
+It satisfies the sum rule: $\int \frac{d\omega}{2\pi} A(\mathbf{k}, \omega) = 1$.
 
 ---
 
-## Part IV: Non-Equilibrium Green's Functions
+## Part V: Interacting Systems and the Dyson Equation
+
+### Many-Particle Systems
+
+Real materials have interactions: electrons repel via Coulomb force. The Hamiltonian:
+
+$$\hat{H} = \sum_\sigma \int d^3r \, \psi^\dagger_\sigma(\mathbf{r})\left(-\frac{\hbar^2\nabla^2}{2m}\right)\psi_\sigma(\mathbf{r}) + \frac{1}{2}\sum_{\sigma,\sigma'}\int d^3r d^3r' \, V(\mathbf{r}-\mathbf{r}')\psi^\dagger_\sigma(\mathbf{r})\psi^\dagger_{\sigma'}(\mathbf{r}')\psi_{\sigma'}(\mathbf{r}')\psi_\sigma(\mathbf{r})$$
+
+### Self-Energy
+
+The full interacting Green's function $G$ can be related to the free $G_0$ via:
+
+$$G = G_0 + G_0 \Sigma G$$
+
+or equivalently:
+
+$$G^{-1} = G_0^{-1} - \Sigma$$
+
+where $\Sigma$ is the **self-energy**. In momentum-frequency space:
+
+$$G(\mathbf{k}, \omega) = \frac{1}{\omega - \varepsilon_k - \Sigma(\mathbf{k}, \omega)}$$
+
+**Physical meaning of self-energy:**
+- $\text{Re}\,\Sigma$: energy shift (effective mass renormalization)
+- $\text{Im}\,\Sigma$: damping (inverse lifetime $\hbar/\tau_k = -2\text{Im}\Sigma$)
+
+For a quasiparticle peak at $\omega = E_k$ with small imaginary part:
+
+$$G^R \approx \frac{Z_k}{\omega - E_k + i/2\tau_k}$$
+
+where $Z_k$ is the spectral weight (quasiparticle residue).
+
+---
+
+## Part VI: Non-Equilibrium Quantum Transport
 
 ### The Problem
 
-Quantum transport involves systems out of thermal equilibrium: two reservoirs at different chemical potentials connected by a scattering region. The standard equilibrium formalism fails because:
-- No global chemical potential $\mu$
-- Stationary state carries finite current
-- Perturbation theory in interaction must respect non-equilibrium boundary conditions
+In quantum transport, we have two reservoirs at different chemical potentials $\mu_L \neq \mu_R$ connected by a conductor. There is no global thermal equilibrium.
 
-### Keldysh Contour
+### The Keldysh Contour
 
-The **Keldysh technique** extends the time contour from $-\infty$ to $+\infty$ and back. The contour-ordered Green's function:
+Extend time from $-\infty$ to $+\infty$ then back to $-\infty$. The contour-ordered Green's function is:
 
-$$
-G(\tau, \tau') = -i\langle T_C \psi(\tau)\psi^\dagger(\tau')\rangle
-$$
+$$G_C(\tau, \tau') = -i\langle T_C \psi(\tau)\psi^\dagger(\tau')\rangle$$
 
-where $T_C$ orders along the Keldysh contour $C$.
+Decomposing into real-time components on the forward $(+)$ and backward $(-)$ branches gives four Green's functions. The useful combinations are:
 
-Decomposing into real-time components yields four Green's functions:
+- **Lesser:** $G^<(t, t') = +i\langle \psi^\dagger(t')\psi(t)\rangle$ (particle occupation)
+- **Greater:** $G^>(t, t') = -i\langle \psi(t)\psi^\dagger(t')\rangle$ (hole occupation)
+- **Retarded:** $G^R = \theta(t-t')[G^> - G^<]$
+- **Advanced:** $G^A = \theta(t'-t)[G^< - G^>]$ 
 
-$$
-G^<(t, t') = +i\langle \psi^\dagger(t')\psi(t)\rangle \quad \text{(particle/hole correlation)}
-$$
+### Physical Observables
 
-$$
-G^>(t, t') = -i\langle \psi(t)\psi^\dagger(t')\rangle \quad \text{(hole/particle correlation)}
-$$
+The density and current are directly obtained from $G^<$:
 
-$$
-G^T(t, t') = -i\langle T \psi(t)\psi^\dagger(t')\rangle \quad \text{(time-ordered)}
-$$
+$$n(\mathbf{r}, t) = -i G^<(\mathbf{r}, t; \mathbf{r}, t)$$
 
-$$
-G^{\bar{T}}(t, t') = -i\langle \bar{T} \psi(t)\psi^\dagger(t')\rangle \quad \text{(anti-time-ordered)}
-$$
-
-Only three are independent: $G^T + G^{\bar{T}} = G^< + G^>$.
-
-### Retarded, Advanced, and Keldysh Components
-
-The **retarded** and **advanced** Green's functions retain their definition:
-
-$$
-G^R = G^T - G^< = G^> - G^{\bar{T}} = -i\theta(t-t')\langle\{\psi(t), \psi^\dagger(t')\}\rangle
-$$
-
-$$
-G^A = G^T - G^> = G^< - G^{\bar{T}} = +i\theta(t'-t)\langle\{\psi(t), \psi^\dagger(t')\}\rangle
-$$
-
-The **Keldysh** (or correlation) Green's function:
-
-$$
-G^K = G^> + G^< = G^T + G^{\bar{T}}
-$$
-
-contains distribution information.
+$$\mathbf{J}(\mathbf{r}, t) = \frac{\hbar}{2m}\left(\nabla' - \nabla\right)_{\mathbf{r}' \to \mathbf{r}} (-i)G^<(\mathbf{r}, t; \mathbf{r}', t)$$
 
 ### The Keldysh Dyson Equation
 
-In matrix form on the Keldysh contour:
+In matrix form:
 
-$$
-\begin{pmatrix} G^R & G^K \\ 0 & G^A \end{pmatrix} = \begin{pmatrix} G_0^R & G_0^K \\ 0 & G_0^A \end{pmatrix} + \begin{pmatrix} G_0^R & G_0^K \\ 0 & G_0^A \end{pmatrix} \begin{pmatrix} \Sigma^R & \Sigma^K \\ 0 & \Sigma^A \end{pmatrix} \begin{pmatrix} G^R & G^K \\ 0 & G^A \end{pmatrix}
-$$
+$$\begin{pmatrix} G^R & G^< \\ 0 & G^A \end{pmatrix} = \begin{pmatrix} G_0^R & G_0^< \\ 0 & G_0^A \end{pmatrix} + \begin{pmatrix} G_0^R & G_0^< \\ 0 & G_0^A \end{pmatrix} \begin{pmatrix} \Sigma^R & \Sigma^< \\ 0 & \Sigma^A \end{pmatrix} \begin{pmatrix} G^R & G^< \\ 0 & G^A \end{pmatrix}$$
 
-This gives three coupled equations:
-1. $G^R = G_0^R + G_0^R \Sigma^R G^R$ (retarded Dyson, same as equilibrium)
-2. $G^A = G_0^A + G_0^A \Sigma^A G^A$ (advanced Dyson)
-3. $G^K = (1 + G^R \Sigma^R)G_0^K(1 + \Sigma^A G^A) + G^R \Sigma^K G^A$
+The equation for $G^<$ decouples:
 
-The third equation couples distribution ($G^K$) to spectral properties ($G^R$, $G^A$).
+$$G^< = (1 + G^R\Sigma^R)G_0^<(1 + \Sigma^AG^A) + G^R\Sigma^<G^A$$
 
-### Physical Observables from $G^<$
-
-The **lesser** Green's function $G^<(t, t')$ is central because:
-
-$$
-G^<(t, t) = i\langle \psi^\dagger(t)\psi(t)\rangle = i n(t)
-$$
-
-gives the **density**. The current is:
-
-$$
-\mathbf{J}(\mathbf{r}, t) = \frac{\hbar}{2m}\left(\nabla' - \nabla\right)_{\mathbf{r}' \to \mathbf{r}} G^<(\mathbf{r}, t; \mathbf{r}', t)
-$$
-
-For stationary transport, we need $G^<(\omega)$ in frequency space.
+For non-interacting systems with no $\Sigma^<$, and using the boundary conditions from the reservoirs, this yields the Landauer formula.
 
 ---
 
-## Part V: Application to Quantum Transport
+## Summary
 
-### Landauer-Buttiker from Green's Functions
-
-Consider a conductor connected to left (L) and right (R) reservoirs with chemical potentials $\mu_L$ and $\mu_R$. The current can be expressed via the transmission function:
-
-$$
-I = \frac{e}{h}\int d\omega \, T(\omega)[f_L(\omega) - f_R(\omega)]
-$$
-
-where $f_{L/R}$ are Fermi functions.
-
-The transmission $T(\omega)$ is related to the retarded Green's function of the central region and the **self-energies** $\Sigma_{L,R}$ from coupling to leads:
-
-$$
-T(\omega) = \text{Tr}[\Gamma_L G^R \Gamma_R G^A]
-$$
-
-with $\Gamma_{L/R} = i(\Sigma_{L/R} - \Sigma_{L/R}^\dagger)$ (linewidth functions).
-
-### Meir-Wingreen Formula
-
-For interacting systems, the current through a quantum dot or molecular junction is:
-
-$$
-I = \frac{ie}{2h}\int d\omega \, \text{Tr}\left[\Gamma_L\left(G^< + 2if_L\text{Im}\,G^R\right)\right] + (L \leftrightarrow R)
-$$
-
-This general form reduces to Landauer-Buttiker for non-interacting systems.
-
-### Kadanoff-Baym Equations
-
-For time-dependent non-equilibrium situations, the **Kadanoff-Baym equations** govern the evolution:
-
-$$
-\left[i\hbar\frac{\partial}{\partial t} - h(t)\right]G^\lessgtr(t, t') = \int d\bar{t}\left[\Sigma^R(t, \bar{t})G^\lessgtr(\bar{t}, t') + \Sigma^\lessgtr(t, \bar{t})G^A(\bar{t}, t')\right]
-$$
-
-These integro-differential equations describe the full quantum kinetic evolution, including memory effects and collisions. In the Markovian limit, they reduce to quantum Boltzmann equations.
-
----
-
-## Summary: Hierarchy of Green's Functions
-
-| Level | Green's Function | Physical Information | Key Equation |
-|-------|-----------------|---------------------|--------------|
-| Single-particle ($T=0$) | $G^R$, $G^A$ | Eigenstates, LDOS | $(\omega - \hat{H})G^R = 1$ |
-| Equilibrium ($T>0$) | $\mathcal{G}(i\omega_n)$ | Thermal occupation, excitations | Dyson equation with Matsubara frequencies |
-| Interacting | $G$, $\Sigma$ | Quasiparticles, lifetime | $G^{-1} = G_0^{-1} - \Sigma$ |
-| Non-equilibrium | $G^<$, $G^>$, $G^K$ | Distribution, current | Keldysh Dyson equation |
-
-The progression is: solve for spectral properties ($G^R$, $G^A$) $\to$ determine distribution ($G^<$, $G^K$) $\to$ calculate observables (current, density).
+| Level | Quantity | Key Result |
+|-------|----------|------------|
+| Single-particle QM | $G(\mathbf{r}, t; \mathbf{r}', t')$ | Propagator for Schrödinger equation |
+| Statistical mechanics | $\hat{\rho}$, $\mathcal{G}(\tau)$ | Thermal averages, Matsubara formalism |
+| Many-body physics | $\Sigma$, Dyson equation | Quasiparticles with renormalized mass and lifetime |
+| Non-equilibrium | $G^<$, $G^R$ | Density and transport from contour-ordered Green's functions |
 
 ---
 
 ## References
 
-1. Mahan, G.D. *Many-Particle Physics*, 3rd ed. (Springer, 2000). Chapters 2–3 (Green's Functions)
-
-2. Bruus, H. & Flensberg, K. *Many-Body Quantum Theory in Condensed Matter Physics* (Oxford, 2004). Chapters 7–8 (Non-equilibrium)
-
-3. Haug, H. & Jauho, A.-P. *Quantum Kinetics in Transport and Optics of Semiconductors* (Springer, 2008). Chapters 4–5 (Keldysh formalism)
-
-4. Datta, S. *Electronic Transport in Mesoscopic Systems* (Cambridge, 1995). Chapter 2 (Scattering and Green's functions)
-
-5. Rammer, J. *Quantum Field Theory of Non-equilibrium States* (Cambridge, 2007). Chapters 4–5 (Real-time formalism)
+1. Mahan, G.D. *Many-Particle Physics*, 3rd ed. (Springer, 2000)
+2. Bruus, H. & Flensberg, K. *Many-Body Quantum Theory in Condensed Matter Physics* (Oxford, 2004)
+3. Haug, H. & Jauho, A.-P. *Quantum Kinetics in Transport and Optics of Semiconductors* (Springer, 2008)
+4. Datta, S. *Electronic Transport in Mesoscopic Systems* (Cambridge, 1995)
