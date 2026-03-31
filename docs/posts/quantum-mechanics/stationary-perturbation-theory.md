@@ -6,301 +6,364 @@
 
 ## Introduction
 
-Stationary perturbation theory is one of the most powerful approximation methods in quantum mechanics. When the Hamiltonian of a system can be written as
+Stationary perturbation theory addresses the eigenvalue problem when the Hamiltonian can be decomposed as
 
 $$
 \hat{H} = \hat{H}_0 + \lambda \hat{V}
 $$
 
-where $\hat{H}_0$ is exactly solvable and $\lambda \hat{V}$ is a small perturbation, we can systematically calculate corrections to the energy eigenvalues and eigenstates.
+where $\hat{H}_0$ is exactly solvable with known spectrum $\hat{H}_0|n^{(0)}\rangle = E_n^{(0)}|n^{(0)}\rangle$, and $\lambda\hat{V}$ is a small perturbation. The central task is to systematically construct corrections to energy and eigenstates as power series in $\lambda$.
 
-The crucial distinction arises when considering whether the unperturbed energy level is **non-degenerate** or **degenerate**. This distinction fundamentally changes the mathematical structure of the perturbation expansion.
+The mathematical structure fundamentally differs between **non-degenerate** and **degenerate** unperturbed levels. This distinction is not merely technical—it reflects deep physical differences in how perturbations interact with symmetries.
 
 ---
 
 ## Part I: Non-Degenerate Perturbation Theory
 
-### Setup
+### Perturbation Expansion Framework
 
-For a non-degenerate level $|n^{(0)}\rangle$ with energy $E_n^{(0)}$:
-
-$$
-\hat{H}_0 |n^{(0)}\rangle = E_n^{(0)} |n^{(0)}\rangle
-$$
-
-We expand both energy and state in powers of $\lambda$:
+We seek solutions to the full Schrödinger equation:
 
 $$
-E_n = E_n^{(0)} + \lambda E_n^{(1)} + \lambda^2 E_n^{(2)} + \lambda^3 E_n^{(3)} + \cdots
+\hat{H}|n\rangle = E_n|n\rangle
+$$
+
+Expanding both energy and state in powers of $\lambda$:
+
+$$
+E_n = E_n^{(0)} + \lambda E_n^{(1)} + \lambda^2 E_n^{(2)} + \lambda^3 E_n^{(3)} + \cdots = \sum_{k=0}^{\infty} \lambda^k E_n^{(k)}
 $$
 
 $$
-|n\rangle = |n^{(0)}\rangle + \lambda |n^{(1)}\rangle + \lambda^2 |n^{(2)}\rangle + \cdots
+|n\rangle = |n^{(0)}\rangle + \lambda |n^{(1)}\rangle + \lambda^2 |n^{(2)}\rangle + \cdots = \sum_{k=0}^{\infty} \lambda^k |n^{(k)}\rangle
 $$
 
-with the intermediate normalization $\langle n^{(0)} | n \rangle = 1$.
+Intermediate normalization is imposed: $\langle n^{(0)} | n \rangle = 1$, which implies $\langle n^{(0)} | n^{(k)}\rangle = 0$ for $k \geq 1$.
 
-### Zeroth-Order
+### Order-by-Order Equation Separation
 
-$$E_n^{(0)}, \quad |n^{(0)}\rangle$$
-
-These are the known solutions of the unperturbed Hamiltonian.
-
-### First-Order Corrections
-
-**Energy correction:**
+Substituting expansions into the Schrödinger equation:
 
 $$
-E_n^{(1)} = \langle n^{(0)} | \hat{V} | n^{(0)} \rangle = V_{nn}
+(\hat{H}_0 + \lambda\hat{V})\sum_{k=0}^{\infty}\lambda^k|n^{(k)}\rangle = \sum_{j=0}^{\infty}\lambda^j E_n^{(j)} \sum_{k=0}^{\infty}\lambda^k|n^{(k)}\rangle
 $$
 
-**State correction:**
-
-Expanding in the basis of unperturbed states:
+Collecting terms by powers of $\lambda$:
 
 $$
-|n^{(1)}\rangle = \sum_{m \neq n} c_m^{(1)} |m^{(0)}\rangle
+\sum_{k=0}^{\infty}\lambda^k \hat{H}_0|n^{(k)}\rangle + \sum_{k=0}^{\infty}\lambda^{k+1}\hat{V}|n^{(k)}\rangle = \sum_{j,k=0}^{\infty}\lambda^{j+k}E_n^{(j)}|n^{(k)}\rangle
 $$
 
-The coefficients are:
+Matching coefficients of $\lambda^N$ on both sides yields the **hierarchy of perturbation equations**:
 
 $$
-c_m^{(1)} = \frac{\langle m^{(0)} | \hat{V} | n^{(0)} \rangle}{E_n^{(0)} - E_m^{(0)}} = \frac{V_{mn}}{E_n^{(0)} - E_m^{(0)}}
+\boxed{\hat{H}_0|n^{(N)}\rangle + \hat{V}|n^{(N-1)}\rangle = \sum_{k=0}^{N} E_n^{(N-k)}|n^{(k)}\rangle}
 $$
 
-Thus:
+Rearranging:
 
 $$
-|n^{(1)}\rangle = \sum_{m \neq n} \frac{V_{mn}}{E_n^{(0)} - E_m^{(0)}} |m^{(0)}\rangle
+(\hat{H}_0 - E_n^{(0)})|n^{(N)}\rangle = \sum_{k=1}^{N}E_n^{(N-k)}|n^{(k)}\rangle - \hat{V}|n^{(N-1)}\rangle + E_n^{(N)}|n^{(0)}\rangle
 $$
 
-### Second-Order Corrections
-
-**Energy correction:**
+Or more compactly:
 
 $$
-E_n^{(2)} = \langle n^{(0)} | \hat{V} | n^{(1)} \rangle = \sum_{m \neq n} \frac{|V_{mn}|^2}{E_n^{(0)} - E_m^{(0)}}
+(\hat{H}_0 - E_n^{(0)})|n^{(N)}\rangle = -\hat{V}|n^{(N-1)}\rangle + \sum_{j=0}^{N-1}E_n^{(N-j)}|n^{(j)}\rangle
 $$
 
-This can also be written as:
+---
+
+### Zeroth Order ($N=0$)
 
 $$
-E_n^{(2)} = \sum_{m \neq n} \frac{|\langle m^{(0)} | \hat{V} | n^{(0)} \rangle|^2}{E_n^{(0)} - E_m^{(0)}}
+\hat{H}_0|n^{(0)}\rangle = E_n^{(0)}|n^{(0)}\rangle
 $$
 
-**State correction:**
+This is the unperturbed problem, solved by assumption.
+
+---
+
+### First Order ($N=1$)
 
 $$
-|n^{(2)}\rangle = \sum_{m \neq n} \left[ \sum_{k \neq n} \frac{V_{mk} V_{kn}}{(E_n^{(0)} - E_m^{(0)})(E_n^{(0)} - E_k^{(0)})} - \frac{V_{mn} V_{nn}}{(E_n^{(0)} - E_m^{(0)})^2} \right] |m^{(0)}\rangle
+(\hat{H}_0 - E_n^{(0)})|n^{(1)}\rangle = (E_n^{(1)} - \hat{V})|n^{(0)}\rangle
 $$
 
-Or more explicitly:
+**Energy correction:** Project onto $\langle n^{(0)}|$:
 
 $$
-|n^{(2)}\rangle = \sum_{m \neq n} \left[ \sum_{k \neq n} \frac{V_{mk} V_{kn}}{(E_n^{(0)} - E_m^{(0)})(E_n^{(0)} - E_k^{(0)})} \right] |m^{(0)}\rangle - |n^{(1)}\rangle \langle n^{(0)} | n^{(1)} \rangle
+\langle n^{(0)}|(\hat{H}_0 - E_n^{(0)})|n^{(1)}\rangle = E_n^{(1)} - \langle n^{(0)}|\hat{V}|n^{(0)}\rangle
 $$
 
-where the second term ensures proper normalization.
-
-### Third-Order Energy Correction
-
-The third-order energy correction is given by:
+Since $\hat{H}_0$ is Hermitian, $\langle n^{(0)}|\hat{H}_0 = E_n^{(0)}\langle n^{(0)}|$, the LHS vanishes:
 
 $$
-E_n^{(3)} = \langle n^{(0)} | \hat{V} | n^{(2)} \rangle = \sum_{m \neq n} \sum_{k \neq n} \frac{V_{nm} V_{mk} V_{kn}}{(E_n^{(0)} - E_m^{(0)})(E_n^{(0)} - E_k^{(0)})} - E_n^{(1)} \sum_{m \neq n} \frac{|V_{mn}|^2}{(E_n^{(0)} - E_m^{(0)})^2}
+\boxed{E_n^{(1)} = \langle n^{(0)}|\hat{V}|n^{(0)}\rangle = V_{nn}}
 $$
 
-This can be reorganized as:
+**State correction:** Expand $|n^{(1)}\rangle = \sum_{m \neq n} c_m^{(1)}|m^{(0)}\rangle$ and project onto $\langle m^{(0)}|$ for $m \neq n$:
 
 $$
-E_n^{(3)} = \sum_{m \neq n} \sum_{k \neq n} \frac{V_{nm} V_{mk} V_{kn}}{(E_n^{(0)} - E_m^{(0)})(E_n^{(0)} - E_k^{(0)})} - V_{nn} \sum_{m \neq n} \frac{|V_{mn}|^2}{(E_n^{(0)} - E_m^{(0)})^2}
+(E_m^{(0)} - E_n^{(0)})c_m^{(1)} = -\langle m^{(0)}|\hat{V}|n^{(0)}\rangle
 $$
 
-An alternative compact form:
-
 $$
-E_n^{(3)} = \sum_{m \neq n} \sum_{k \neq n} \frac{V_{nm} V_{mk} V_{kn}}{(E_n^{(0)} - E_m^{(0)})(E_n^{(0)} - E_k^{(0)})} - E_n^{(1)} \sum_{m \neq n} \frac{|V_{mn}|^2}{(E_n^{(0)} - E_m^{(0)})^2}
+\boxed{c_m^{(1)} = \frac{V_{mn}}{E_n^{(0)} - E_m^{(0)}}}
 $$
 
-### Summary for Non-Degenerate Case
-
-**Energy up to third order:**
-
 $$
-\boxed{E_n \approx E_n^{(0)} + V_{nn} + \sum_{m \neq n} \frac{|V_{mn}|^2}{E_n^{(0)} - E_m^{(0)}} + E_n^{(3)}}
+\boxed{|n^{(1)}\rangle = \sum_{m \neq n} \frac{V_{mn}}{E_n^{(0)} - E_m^{(0)}}|m^{(0)}\rangle}
 $$
 
-**State up to second order:**
+---
+
+### Second Order ($N=2$)
 
 $$
-\boxed{|n\rangle \approx |n^{(0)}\rangle + \sum_{m \neq n} \frac{V_{mn}}{E_n^{(0)} - E_m^{(0)}} |m^{(0)}\rangle + |n^{(2)}\rangle}
+(\hat{H}_0 - E_n^{(0)})|n^{(2)}\rangle = E_n^{(2)}|n^{(0)}\rangle + E_n^{(1)}|n^{(1)}\rangle - \hat{V}|n^{(1)}\rangle
 $$
 
-where the denominators $(E_n^{(0)} - E_m^{(0)})^{-1}$ indicate the critical role of energy level spacing.
+**Energy correction:** Project onto $\langle n^{(0)}|$:
+
+$$
+0 = E_n^{(2)} + E_n^{(1)}\underbrace{\langle n^{(0)}|n^{(1)}\rangle}_{0} - \langle n^{(0)}|\hat{V}|n^{(1)}\rangle
+$$
+
+$$
+\boxed{E_n^{(2)} = \langle n^{(0)}|\hat{V}|n^{(1)}\rangle = \sum_{m \neq n} \frac{|V_{mn}|^2}{E_n^{(0)} - E_m^{(0)}}}
+$$
+
+**State correction:** Expand $|n^{(2)}\rangle = \sum_{m \neq n} c_m^{(2)}|m^{(0)}\rangle$. For $m \neq n$:
+
+$$
+(E_m^{(0)} - E_n^{(0)})c_m^{(2)} = E_n^{(1)}c_m^{(1)} - \sum_{k \neq n} c_k^{(1)}\langle m^{(0)}|\hat{V}|k^{(0)}\rangle
+$$
+
+$$
+c_m^{(2)} = \sum_{k \neq n} \frac{V_{mk}V_{kn}}{(E_n^{(0)} - E_m^{(0)})(E_n^{(0)} - E_k^{(0)})} - \frac{V_{mn}V_{nn}}{(E_n^{(0)} - E_m^{(0)})^2}
+$$
+
+$$
+\boxed{|n^{(2)}\rangle = \sum_{m \neq n}\left[\sum_{k \neq n}\frac{V_{mk}V_{kn}}{(E_n^{(0)} - E_m^{(0)})(E_n^{(0)} - E_k^{(0)})} - \frac{V_{mn}V_{nn}}{(E_n^{(0)} - E_m^{(0)})^2}\right]|m^{(0)}\rangle}
+$$
+
+---
+
+### Third Order Energy Correction
+
+From $E_n^{(3)} = \langle n^{(0)}|\hat{V}|n^{(2)}\rangle$:
+
+$$
+\boxed{E_n^{(3)} = \sum_{m \neq n}\sum_{k \neq n}\frac{V_{nm}V_{mk}V_{kn}}{(E_n^{(0)} - E_m^{(0)})(E_n^{(0)} - E_k^{(0)})} - V_{nn}\sum_{m \neq n}\frac{|V_{mn}|^2}{(E_n^{(0)} - E_m^{(0)})^2}}
+$$
+
+---
+
+### Summary: Non-Degenerate Perturbation Series
+
+$$
+\boxed{E_n = E_n^{(0)} + V_{nn} + \sum_{m \neq n}\frac{|V_{mn}|^2}{E_n^{(0)} - E_m^{(0)}} + E_n^{(3)} + O(\lambda^4)}
+$$
+
+$$
+\boxed{|n\rangle = |n^{(0)}\rangle + \sum_{m \neq n}\frac{V_{mn}}{E_n^{(0)} - E_m^{(0)}}|m^{(0)}\rangle + |n^{(2)}\rangle + O(\lambda^3)}
+$$
 
 ---
 
 ## Part II: Degenerate Perturbation Theory
 
-### The Problem
+### The Problem: Breakdown of Non-Degenerate Theory
 
-When the unperturbed energy level $E_n^{(0)}$ is $g$-fold degenerate:
-
-$$
-\hat{H}_0 |n, i\rangle = E_n^{(0)} |n, i\rangle, \quad i = 1, 2, \ldots, g
-$$
-
-the standard non-degenerate perturbation theory **fails** because the denominators $(E_n^{(0)} - E_m^{(0)})$ vanish for states within the degenerate subspace.
-
-### The Resolution
-
-The key insight is that the perturbation $\hat{V}$ generally **lifts the degeneracy**. The correct zeroth-order states are not arbitrary linear combinations, but specific superpositions diagonalizing $\hat{V}$ within the degenerate subspace.
-
-### Step 1: Construct the Perturbation Matrix
-
-Define the $g \times g$ matrix:
+For a $g$-fold degenerate level $E_n^{(0)}$:
 
 $$
-V_{ij} = \langle n, i | \hat{V} | n, j \rangle
+\hat{H}_0|n, i\rangle = E_n^{(0)}|n, i\rangle, \quad i = 1, 2, \ldots, g
 $$
 
-### Step 2: Diagonalize the Perturbation Matrix
-
-Solve the eigenvalue problem within the degenerate subspace:
+The unperturbed eigenstates form a $g$-dimensional degenerate subspace $\mathcal{H}_n^{(0)} = \text{span}\{|n, i\rangle\}$. Any orthonormal basis of this subspace is equally valid:
 
 $$
-\sum_{j=1}^{g} V_{ij} c_j^{(k)} = E_n^{(1,k)} c_i^{(k)}
+|n, \alpha\rangle = \sum_{i=1}^{g} U_{\alpha i}|n, i\rangle
 $$
 
-The eigenvalues $E_n^{(1,k)}$ ($k = 1, 2, \ldots, g$) give the **first-order energy corrections**, which typically split the degenerate level.
+where $U$ is an arbitrary $g \times g$ unitary matrix.
 
-### Step 3: Determine the Correct Zeroth-Order States
-
-The eigenvectors define the "good" zeroth-order states:
+**Critical observation:** In first-order state correction, the coefficient
 
 $$
-|n, k^{(0)}\rangle = \sum_{i=1}^{g} c_i^{(k)} |n, i\rangle
+c_m^{(1)} = \frac{\langle m^{(0)}|\hat{V}|n^{(0)}\rangle}{E_n^{(0)} - E_m^{(0)}}
 $$
 
-These states are now uniquely determined (up to phase) and diagonalize $\hat{V}$:
+diverges when $|m^{(0)}\rangle$ is also in the degenerate subspace (denominator vanishes). This is not merely a technical obstacle—it signals that the perturbation theory structure itself must be reformulated.
+
+### The Physical Origin of the Problem
+
+The perturbation $\hat{V}$ generically **lifts the degeneracy**. After turning on $\lambda\hat{V}$, the $g$ degenerate levels split into distinct energies. The key question is: **which zeroth-order states evolve into which perturbed states?**
+
+Consider the limit $\lambda \to 0^+$. The perturbed states $|n, k(\lambda)\rangle$ with energies $E_{n,k}(\lambda)$ must approach some zeroth-order states:
 
 $$
-\langle n, k^{(0)} | \hat{V} | n, l^{(0)} \rangle = E_n^{(1,k)} \delta_{kl}
+\lim_{\lambda \to 0^+} |n, k(\lambda)\rangle = |n, k^{(0)}\rangle \in \mathcal{H}_n^{(0)}
 $$
 
-### Higher-Order Corrections in Degenerate Case
+The issue is that the "correct" zeroth-order states $|n, k^{(0)}\rangle$ are determined by $\hat{V}$—they are not arbitrary. Non-degenerate perturbation theory implicitly assumes the zeroth-order state is uniquely defined, which fails when any superposition within $\mathcal{H}_n^{(0)}$ is valid.
 
-Once the degeneracy is lifted at first order, we can apply standard non-degenerate perturbation theory to each new level, provided that:
+### The Resolution: Diagonalization in the Degenerate Subspace
 
-$$
-E_n^{(1,k)} \neq E_n^{(1,l)} \quad \text{for} \quad k \neq l
-$$
-
-The second-order energy correction becomes:
+To identify the correct zeroth-order basis, we examine the first-order equation more carefully. Expand the exact state:
 
 $$
-E_n^{(2,k)} = \sum_{m \notin D} \frac{|\langle m^{(0)} | \hat{V} | n, k^{(0)} \rangle|^2}{E_n^{(0)} - E_m^{(0)}}
+|n, k\rangle = |n, k^{(0)}\rangle + \lambda|n, k^{(1)}\rangle + \cdots
 $$
 
-where the sum excludes all states $m$ in the degenerate subspace $D$.
-
-### Summary for Degenerate Case
-
-**First-order energy splitting:**
+where $|n, k^{(0)}\rangle \in \mathcal{H}_n^{(0)}$. The first-order equation is:
 
 $$
-\boxed{E_{n,k} \approx E_n^{(0)} + E_n^{(1,k)}}
+(\hat{H}_0 - E_n^{(0)})|n, k^{(1)}\rangle = (E_{n,k}^{(1)} - \hat{V})|n, k^{(0)}\rangle
 $$
 
-where $E_n^{(1,k)}$ are eigenvalues of the perturbation matrix $V_{ij}$.
-
-**Correct zeroth-order states:**
+Project onto $\langle n, i| \in \mathcal{H}_n^{(0)}$:
 
 $$
-\boxed{|n, k^{(0)}\rangle = \sum_{i=1}^{g} c_i^{(k)} |n, i\rangle}
+0 = E_{n,k}^{(1)}\langle n, i|n, k^{(0)}\rangle - \langle n, i|\hat{V}|n, k^{(0)}\rangle
 $$
 
-where $c_i^{(k)}$ are eigenvectors of $V_{ij}$.
+Writing $|n, k^{(0)}\rangle = \sum_j c_j^{(k)}|n, j\rangle$, this becomes:
+
+$$
+\sum_{j=1}^{g} \langle n, i|\hat{V}|n, j\rangle c_j^{(k)} = E_{n,k}^{(1)} c_i^{(k)}
+$$
+
+This is the **secular equation**—an eigenvalue problem within the degenerate subspace:
+
+$$
+\boxed{\mathbf{V}^{(n)} \mathbf{c}^{(k)} = E_{n,k}^{(1)} \mathbf{c}^{(k)}}
+$$
+
+where $V_{ij}^{(n)} = \langle n, i|\hat{V}|n, j\rangle$ is the $g \times g$ perturbation matrix restricted to $\mathcal{H}_n^{(0)}$.
+
+### Why Diagonalization is Necessary: The Self-Consistency Argument
+
+The secular equation emerges from a **solvability condition**. For the first-order equation
+
+$$
+(\hat{H}_0 - E_n^{(0)})|n, k^{(1)}\rangle = (E_{n,k}^{(1)} - \hat{V})|n, k^{(0)}\rangle
+$$
+
+to have a solution, the RHS must be orthogonal to the kernel of the operator on LHS. Since $\ker(\hat{H}_0 - E_n^{(0)}) = \mathcal{H}_n^{(0)}$, we require:
+
+$$
+\langle n, i|(E_{n,k}^{(1)} - \hat{V})|n, k^{(0)}\rangle = 0 \quad \forall i
+$$
+
+This is precisely the secular equation. The diagonalization is **not an optional simplification**—it is a **consistency requirement** for perturbation theory to proceed.
+
+### First-Order Results in Degenerate Theory
+
+**Energy splitting:** The eigenvalues $E_{n,k}^{(1)}$ ($k = 1, \ldots, g$) give first-order corrections. Generically, these are distinct, lifting the degeneracy.
+
+**Correct zeroth-order states:** The eigenvectors $\mathbf{c}^{(k)}$ define:
+
+$$
+\boxed{|n, k^{(0)}\rangle = \sum_{i=1}^{g} c_i^{(k)}|n, i\rangle}
+$$
+
+These states diagonalize $\hat{V}$ within $\mathcal{H}_n^{(0)}$:
+
+$$
+\langle n, k^{(0)}|\hat{V}|n, l^{(0)}\rangle = E_{n,k}^{(1)}\delta_{kl}
+$$
+
+This off-diagonal vanishing is crucial: it ensures that when we compute first-order state corrections involving states outside $\mathcal{H}_n^{(0)}$, no divergent terms appear from within the degenerate subspace.
+
+### Higher-Order Corrections
+
+Once the degeneracy is lifted at first order (assuming $E_{n,k}^{(1)} \neq E_{n,l}^{(1)}$ for $k \neq l$), standard non-degenerate theory applies to each $|n, k^{(0)}\rangle$. The second-order energy correction is:
+
+$$
+\boxed{E_{n,k}^{(2)} = \sum_{m \notin \mathcal{D}_n} \frac{|\langle m^{(0)}|\hat{V}|n, k^{(0)}\rangle|^2}{E_n^{(0)} - E_m^{(0)}}}
+$$
+
+where $\mathcal{D}_n$ denotes the degenerate subspace. The sum explicitly excludes states within $\mathcal{H}_n^{(0)}$.
 
 ---
 
-## Part III: Key Differences and Physical Interpretation
-
-### Mathematical Structure
+## Part III: Structural Comparison
 
 | Aspect | Non-Degenerate | Degenerate |
 |--------|---------------|------------|
-| Zeroth-order state | Unique $\vert n^{(0)}\rangle$ | Arbitrary superposition within subspace |
-| First-order energy | $V_{nn}$ | Eigenvalues of $V_{ij}$ matrix |
-| State correction | Simple sum over $m \neq n$ | Requires diagonalization first |
-| Convergence | Power series in $\lambda$ | May require resummation if degeneracy not fully lifted |
+| Zeroth-order state | Unique $|n^{(0)}\rangle$ | Superposition in $\mathcal{H}_n^{(0)}$ (determined by $\hat{V}$) |
+| First-order energy | $V_{nn}$ (single value) | Eigenvalues of $\mathbf{V}^{(n)}$ (generically $g$ distinct values) |
+| Key operation | Direct expansion | Diagonalize $\hat{V}$ in $\mathcal{H}_n^{(0)}$ first |
+| State correction | Sum over all $m \neq n$ | Sum excludes degenerate subspace |
+| Consistency condition | Automatic | Requires secular equation solvability |
 
 ### Physical Interpretation
 
-**Non-degenerate case:** The perturbation slightly modifies an isolated energy level. The system adiabatically follows a unique eigenstate.
+**Non-degenerate case:** The system adiabatically follows a unique eigenstate. Perturbation theory tracks continuous deformation of an isolated level.
 
-**Degenerate case:** The perturbation selects specific linear combinations that respect the symmetry of $\hat{V}$. This is closely related to the concept of "symmetry breaking."
-
-### When Degenerate Theory is Necessary
-
-Even if the unperturbed levels are non-degenerate, degenerate perturbation theory becomes relevant when:
-
-1. Two levels become nearly degenerate: $|E_n^{(0)} - E_m^{(0)}| \lesssim |V_{mn}|$
-2. The perturbation has a degenerate subspace (e.g., spin degeneracy)
-
-In such cases, one should first diagonalize $\hat{V}$ in the nearly degenerate subspace.
+**Degenerate case:** The perturbation acts as a **symmetry-breaking operator** within the degenerate subspace, selecting specific linear combinations. The diagonalization finds the eigenbasis of the residual symmetry.
 
 ---
 
-## Part IV: Example - Stark Effect in Hydrogen
+## Part IV: Example — Stark Effect in Hydrogen
 
-### Non-Degenerate Case: Ground State
+### Ground State ($n=1$, Non-Degenerate)
 
-For hydrogen ground state $|100\rangle$ with energy $E_1^{(0)}$:
-
-$$
-E_1^{(1)} = \langle 100 | e\mathcal{E}z | 100 \rangle = 0 \quad \text{(by parity)}
-$$
-
-Second-order Stark effect:
+$|100\rangle$ is non-degenerate. First-order correction:
 
 $$
-E_1^{(2)} = \sum_{n=2}^{\infty} \frac{|\langle n00 | e\mathcal{E}z | 100 \rangle|^2}{E_1^{(0)} - E_n^{(0)}}
+E_1^{(1)} = \langle 100|e\mathcal{E}z|100\rangle = 0 \quad \text{(parity selection rule)}
 $$
 
-### Degenerate Case: n=2 Level
-
-The $n=2$ level has 4-fold degeneracy: $|200\rangle$, $|210\rangle$, $|211\rangle$, $|21,-1\rangle$.
-
-The perturbation matrix in the basis $\{|200\rangle, |210\rangle, |211\rangle, |21,-1\rangle\}$:
+Second order:
 
 $$
-V = e\mathcal{E} \begin{pmatrix}
-0 & \langle 200 | z | 210 \rangle & 0 & 0 \\
-\langle 210 | z | 200 \rangle & 0 & 0 & 0 \\
+E_1^{(2)} = \sum_{n=2}^{\infty}\sum_{l,m}\frac{|\langle nlm|e\mathcal{E}z|100\rangle|^2}{E_1^{(0)} - E_n^{(0)}} = -\frac{9}{4}a_0^3\mathcal{E}^2
+$$
+
+Quadratic Stark effect (energy shifts downward, induced dipole aligns with field).
+
+### $n=2$ Level (4-Fold Degenerate)
+
+Basis: $|200\rangle$, $|210\rangle$, $|211\rangle$, $|21,-1\rangle$.
+
+Selection rule: $z = r\cos\theta$ connects $\Delta l = \pm 1$, $\Delta m = 0$.
+
+Perturbation matrix in this basis:
+
+$$
+\mathbf{V} = e\mathcal{E}\begin{pmatrix}
+0 & \langle 200|z|210\rangle & 0 & 0 \\
+\langle 210|z|200\rangle & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix} = -3e\mathcal{E}a_0\begin{pmatrix}
+0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0
 \end{pmatrix}
 $$
 
-Since $z = r\cos\theta$ only connects $l=0$ and $l=1$, $m=0$ states:
+Diagonalizing the $2 \times 2$ block: eigenvalues $\pm 3e\mathcal{E}a_0$ with eigenstates $(|200\rangle \mp |210\rangle)/\sqrt{2}$.
+
+**First-order splitting:**
 
 $$
-\langle 200 | z | 210 \rangle = -3a_0
+E_{2\pm}^{(1)} = \pm 3e\mathcal{E}a_0, \quad E_{2,|m|=1}^{(1)} = 0 \text{ (doubly degenerate)}
 $$
 
-Diagonalizing the $2 \times 2$ block:
-
-Eigenvalues: $\pm 3e\mathcal{E}a_0$
-
-The linear Stark splitting demonstrates the power of degenerate perturbation theory.
+Linear Stark effect—characteristic signature of degenerate perturbation theory. The perturbation lifts the $l$-degeneracy (but not $m$-degeneracy, due to residual symmetry).
 
 ---
 
 ## References
 
-1. Sakurai, J.J. & Napolitano, J. *Modern Quantum Mechanics*, 3rd ed. (Cambridge University Press, 2020).
+1. Sakurai, J.J. & Napolitano, J. *Modern Quantum Mechanics*, 3rd ed. (Cambridge University Press, 2020). §5.1–5.3
 
-2. Shankar, R. *Principles of Quantum Mechanics*, 2nd ed. (Springer, 1994).
+2. Shankar, R. *Principles of Quantum Mechanics*, 2nd ed. (Springer, 1994). Chapter 17
 
-3. Landau, L.D. & Lifshitz, E.M. *Quantum Mechanics: Non-Relativistic Theory*, 3rd ed. (Pergamon, 1977).
+3. Landau, L.D. & Lifshitz, E.M. *Quantum Mechanics: Non-Relativistic Theory*, 3rd ed. (Pergamon, 1977). §38–39
