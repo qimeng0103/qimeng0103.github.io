@@ -158,8 +158,9 @@ Dispersion is strongest near the zone boundary where $v_p \neq v_g$.
 
 **4. Symmetry:**
 
-$$\omega(q) = \omega(-q)$$ (time-reversal symmetry)
-$$\omega(q + 2\pi/a) = \omega(q)$$ (periodicity in reciprocal space)
+$$\omega(q) = \omega(-q) \quad \text{(time-reversal symmetry)}$$
+
+$$\omega(q + 2\pi/a) = \omega(q) \quad \text{(periodicity in reciprocal space)}$
 
 ---
 
@@ -200,7 +201,7 @@ $$M_2 \ddot{v}_n = K(u_n - v_n) + K(u_{n+1} - v_n) = K(u_n + u_{n+1} - 2v_n)$$
 Seek plane wave solutions with wavevector $q$ in the reduced zone $[-\pi/2a, \pi/2a]$:
 
 $$
-uu_n = A e^{i(2qna - \omega t)}$$
+u_n = A e^{i(2qna - \omega t)}$$
 $$v_n = B e^{i(q(2n+1)a - \omega t)} = B e^{iqa} e^{i(2qna - \omega t)}$$
 
 Note: The phase factor $e^{iqa}$ accounts for the position offset between sublattices.
