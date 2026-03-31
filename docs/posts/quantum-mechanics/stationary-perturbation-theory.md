@@ -433,11 +433,23 @@ Quadratic Stark effect (energy shifts downward, induced dipole aligns with field
 
 ### $n=2$ Level (4-Fold Degenerate)
 
-Basis: $|200\rangle$, $|210\rangle$, $|211\rangle$, $|21,-1\rangle$.
+Hydrogen eigenstates are labeled $|nlm\rangle$ where $n$ is the principal quantum number, $l = 0, 1, \ldots, n-1$ is the orbital angular momentum, and $m = -l, \ldots, l$ is the magnetic quantum number. For $n=2$, there are four states: $|200\rangle$ ($l=0, m=0$), $|210\rangle$, $|211\rangle$, $|21,-1\rangle$ ($l=1, m = 0, \pm 1$).
 
-Selection rule: $z = r\cos\theta$ connects $\Delta l = \pm 1$, $\Delta m = 0$.
+**Selection rules:** The perturbation is $V = e\mathcal{E}z = e\mathcal{E}r\cos\theta$. In spherical coordinates:
 
-Perturbation matrix in this basis:
+$$
+\cos\theta = \sqrt{\frac{4\pi}{3}} Y_{1}^{0}(\theta, \phi)
+$$
+
+The matrix element $\langle n'l'm'|r\cos\theta|nlm\rangle$ involves the angular integral:
+
+$$
+\int Y_{l'}^{m'*} Y_{1}^{0} Y_{l}^{m} \, d\Omega
+$$
+
+This requires $\Delta l = \pm 1$ and $\Delta m = 0$ (from the addition theorem for spherical harmonics). The perturbation only connects $l=0$ to $l=1$ with $m=0$.
+
+**Perturbation matrix:** In the basis $\{|200\rangle, |210\rangle, |211\rangle, |21,-1\rangle\}$:
 
 $$
 \mathbf{V} = e\mathcal{E}\begin{pmatrix}
@@ -445,23 +457,34 @@ $$
 \langle 210|z|200\rangle & 0 & 0 & 0 \\
 0 & 0 & 0 & 0 \\
 0 & 0 & 0 & 0
-\end{pmatrix} = -3e\mathcal{E}a_0\begin{pmatrix}
-0 & 1 & 0 & 0 \\
-1 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0 \\
-0 & 0 & 0 & 0
 \end{pmatrix}
 $$
 
-Diagonalizing the $2 \times 2$ block: eigenvalues $\pm 3e\mathcal{E}a_0$ with eigenstates $(|200\rangle \mp |210\rangle)/\sqrt{2}$.
-
-**First-order splitting:**
+The radial matrix element evaluates to:
 
 $$
-E_{2\pm}^{(1)} = \pm 3e\mathcal{E}a_0, \quad E_{2,|m|=1}^{(1)} = 0 \text{ (doubly degenerate)}
+\langle 200|z|210\rangle = \int_0^{\infty} R_{20}(r) \, r \, R_{21}(r) \, r^2 dr = -3a_0
 $$
 
-Linear Stark effect—characteristic signature of degenerate perturbation theory. The perturbation lifts the $l$-degeneracy (but not $m$-degeneracy, due to residual symmetry).
+where $R_{nl}(r)$ are the hydrogen radial wavefunctions and $a_0$ is the Bohr radius. Thus:
+
+$$
+\mathbf{V} = -3e\mathcal{E}a_0\begin{pmatrix} 0 & 1 & 0 & 0 \\ 1 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \\ 0 & 0 & 0 & 0 \end{pmatrix}
+$$
+
+**Diagonalization:** The $2 \times 2$ block has eigenvalues $\pm 3e\mathcal{E}a_0$ with eigenstates:
+
+$$
+|\psi_{+}\rangle = \frac{1}{\sqrt{2}}(|200\rangle - |210\rangle), \quad E_{2,+}^{(1)} = +3e\mathcal{E}a_0
+$$
+
+$$
+|\psi_{-}\rangle = \frac{1}{\sqrt{2}}(|200\rangle + |210\rangle), \quad E_{2,-}^{(1)} = -3e\mathcal{E}a_0
+$$
+
+The states $|211\rangle$ and $|21,-1\rangle$ remain degenerate with $E^{(1)} = 0$.
+
+**Physical interpretation:** The linear Stark splitting $\Delta E \propto \mathcal{E}$ is the hallmark of degenerate perturbation theory. The perturbation lifts the $l$-degeneracy but preserves $m$-degeneracy due to cylindrical symmetry about the $z$-axis. The eigenstates $|\psi_{\pm}\rangle$ are linear combinations with opposite induced dipole moments, hence opposite energy shifts in the electric field.
 
 ---
 
