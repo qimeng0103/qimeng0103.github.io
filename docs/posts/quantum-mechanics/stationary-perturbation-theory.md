@@ -359,7 +359,9 @@ The energy correction appears "local" because it answers: *which state in the de
 
 ### The Secular Equation: Origin of the Name
 
-The eigenvalue equation $\mathbf{V}^{(n)}\mathbf{c} = E^{(1)}\mathbf{c}$ is historically called the **secular equation** (Latin *saeculum* = generation/century, Greek *αιών* = long period). In celestial mechanics, this term refers to equations describing **slow, long-term evolution** of orbital elements (as opposed to rapid periodic variations). In perturbation theory, the first-order splitting is the "secular" effect—slow compared to the rapid oscillations associated with energy denominators $E_n^{(0)} - E_m^{(0)}$ for $m \notin \mathcal{D}_n$.
+The eigenvalue equation $\mathbf{V}^{(n)}\mathbf{c} = E^{(1)}\mathbf{c}$ is historically called the **secular equation** (Latin *saeculum* = generation/century, Greek *αιών* = long period). In celestial mechanics, this term refers to equations describing **slow, long-term evolution** of orbital elements (as opposed to rapid periodic variations).
+
+In quantum perturbation theory, the first-order energy splitting $E_{n,k}^{(1)}$ is the "secular" effect. It represents a slow drift in energy, in contrast to the rapid oscillations associated with transitions between distinct unperturbed levels. These oscillations have frequency $(E_n^{(0)} - E_m^{(0)})/\hbar$ for $m \notin \mathcal{D}_n$, which is large compared to the splitting scale. The secular equation captures the slow evolution within the degenerate manifold, while non-degenerate perturbation theory describes fast oscillatory mixing with outside states.
 
 The matrix $\mathbf{V}^{(n)}$ is sometimes called the **secular matrix**.
 
