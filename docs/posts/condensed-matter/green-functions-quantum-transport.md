@@ -370,33 +370,118 @@ $$\mathcal{G}_0(i\omega_n) = \frac{1}{i\omega_n - \varepsilon_k}$$
 
 ---
 
-## Part IV: The Spectral Function and Analytic Continuation
+## Part IV: The Spectral Function, LDOS, and Density of States
 
-### Spectral Representation
+### Retarded and Advanced Green's Functions: Definition
 
-The physical information in a Green's function is contained in its **spectral function** $A(\mathbf{k}, \omega)$.
+In Part I, we defined the time-ordered Green's function. For calculating physical response, we need the **retarded** and **advanced** Green's functions defined directly in real frequency.
 
-For the Matsubara Green's function, one can prove:
+The **retarded Green's function** is defined as:
+
+$$G^R(\mathbf{r}, \mathbf{r}', \omega) = \int_{-\infty}^{\infty} dt \, e^{i\omega t} G^R(\mathbf{r}, t; \mathbf{r}', 0)$$
+
+where the real-time retarded function is:
+
+$$G^R(\mathbf{r}, t; \mathbf{r}', t') = -i\theta(t-t')\langle\{\psi(\mathbf{r}, t), \psi^\dagger(\mathbf{r}', t')\}\rangle$$
+
+The **advanced Green's function** is:
+
+$$G^A(\mathbf{r}, t; \mathbf{r}', t') = +i\theta(t'-t)\langle\{\psi(\mathbf{r}, t), \psi^\dagger(\mathbf{r}', t')\}\rangle$$
+
+For a single-particle system with eigenstates $\hat{H}\vert n\rangle = E_n\vert n\rangle$, we can compute $G^R$ explicitly. Inserting complete sets of eigenstates:
+
+$$G^R(\mathbf{r}, \mathbf{r}', \omega) = \sum_{n,m} \phi_n(\mathbf{r})\phi_m^*(\mathbf{r}')\int_{-\infty}^{\infty} dt \, e^{i\omega t} (-i)\theta(t) \langle n\vert\{\vert n\rangle\langle n\vert, \vert m\rangle\langle m\vert\}\vert m\rangle e^{-i(E_n-E_m)t/\hbar}$$
+
+For fermions, $\{\hat{c}_n, \hat{c}_m^\dagger\} = \delta_{nm}$, giving:
+
+$$G^R(\mathbf{r}, \mathbf{r}', \omega) = \sum_n \frac{\phi_n(\mathbf{r})\phi_n^*(\mathbf{r}')}{\omega - E_n/\hbar + i\eta}$$
+
+where $\eta \to 0^+$ ensures the retarded nature (poles in lower half-plane).
+
+### The Spectral Function
+
+From the above, the **spectral function** is defined as:
+
+$$A(\mathbf{r}, \mathbf{r}', \omega) = -2\text{Im}\,G^R(\mathbf{r}, \mathbf{r}', \omega)$$
+
+Computing the imaginary part using $\text{Im}\frac{1}{x+i\eta} = -\pi\delta(x)$:
+
+$$A(\mathbf{r}, \mathbf{r}', \omega) = 2\pi\sum_n \phi_n(\mathbf{r})\phi_n^*(\mathbf{r}')\delta(\omega - E_n/\hbar)$$
+
+For the diagonal case $\mathbf{r} = \mathbf{r}'$, this relates to the local density of states.
+
+### Local Density of States (LDOS)
+
+The **local density of states** at position $\mathbf{r}$ and frequency $\omega$ is:
+
+$$\rho(\mathbf{r}, \omega) = \sum_n |\phi_n(\mathbf{r})|^2 \delta(\omega - E_n/\hbar)$$
+
+Comparing with the spectral function:
+
+$$\boxed{\rho(\mathbf{r}, \omega) = -\frac{1}{\pi}\text{Im}\,G^R(\mathbf{r}, \mathbf{r}, \omega) = \frac{1}{2\pi}A(\mathbf{r}, \mathbf{r}, \omega)}$$
+
+**Physical interpretation:** $\rho(\mathbf{r}, \omega)d\omega$ is the probability density of finding a state with energy in $[\hbar\omega, \hbar(\omega+d\omega)]$ at position $\mathbf{r}$.
+
+### Free Particle: Deriving the Spectral Function
+
+For free particles, we found $G_0(\mathbf{k}, \omega) = \frac{1}{\omega - \varepsilon_k/\hbar + i\eta}$. The spectral function is:
+
+$$A_0(\mathbf{k}, \omega) = -2\text{Im}\frac{1}{\omega - \varepsilon_k/\hbar + i\eta} = 2\pi\delta(\omega - \varepsilon_k/\hbar)$$
+
+This shows the free particle has well-defined energy $\varepsilon_k$ (infinite lifetime, delta function peak).
+
+### Density of States in $d$ Dimensions
+
+For homogeneous systems, the **density of states per unit volume** is:
+
+$$\nu(\omega) = \int \frac{d^d k}{(2\pi)^d} \delta(\omega - \varepsilon_k/\hbar)$$
+
+**Derivation:** Integrate the LDOS over all space. Since $|\phi_k(\mathbf{r})|^2 = 1/V$ for plane waves:
+
+$$\nu(\omega) = \frac{1}{V}\sum_{\mathbf{k}} \delta(\omega - \varepsilon_k/\hbar) = \int \frac{d^d k}{(2\pi)^d} \delta(\omega - \varepsilon_k/\hbar)$$
+
+For free electrons with $\varepsilon_k = \frac{\hbar^2 k^2}{2m}$, change variables to energy. The surface area of a $d$-dimensional sphere is $S_{d-1} = \frac{2\pi^{d/2}}{\Gamma(d/2)}$.
+
+In spherical coordinates:
+
+$$\nu(\omega) = \frac{S_{d-1}}{(2\pi)^d} \int_0^{\infty} dk \, k^{d-1} \delta\left(\omega - \frac{\hbar k^2}{2m}\right)$$
+
+Let $\xi = \frac{\hbar k^2}{2m}$, then $k = \sqrt{2m\xi/\hbar}$ and $dk = \frac{m}{\hbar k}d\xi$:
+
+$$\nu(\omega) = \frac{S_{d-1}}{(2\pi)^d} \left(\frac{2m\omega}{\hbar}\right)^{(d-2)/2} \frac{m}{\hbar} \theta(\omega)$$
+
+Simplifying using $\Gamma$ functions:
+
+$$\boxed{\nu(\omega) = \frac{1}{(2\pi)^{d/2}} \left(\frac{m}{\hbar}\right)^{d/2} \frac{\omega^{d/2-1}}{\Gamma(d/2)} \theta(\omega)}$$
+
+**Special cases:**
+- **$d=1$:** $\nu(\omega) \propto \omega^{-1/2}$ (van Hove singularity at band bottom)
+- **$d=2$:** $\nu(\omega) = \text{constant}$ (independent of energy)
+- **$d=3$:** $\nu(\omega) \propto \omega^{1/2}$ (parabolic increase)
+
+### Spectral Representation and Sum Rules
+
+The spectral function satisfies important sum rules. From the definition:
+
+$$\int_{-\infty}^{\infty} \frac{d\omega}{2\pi} A(\mathbf{k}, \omega) = \int_{-\infty}^{\infty} d\omega \sum_n |\langle n\vert\mathbf{k}\rangle|^2 \delta(\omega - E_n/\hbar) = \sum_n |\langle n\vert\mathbf{k}\rangle|^2 = 1$$
+
+This **normalization sum rule** reflects the completeness of eigenstates.
+
+The first moment gives the average energy:
+
+$$\int_{-\infty}^{\infty} \frac{d\omega}{2\pi} \omega A(\mathbf{k}, \omega) = \varepsilon_k$$
+
+### Matsubara to Real Axis: Analytic Continuation
+
+For the Matsubara Green's function, the **spectral representation** is derived by inserting exact eigenstates (Lehmann representation):
 
 $$\mathcal{G}(\mathbf{k}, i\omega_n) = \int_{-\infty}^{\infty} \frac{d\omega'}{2\pi} \frac{A(\mathbf{k}, \omega')}{i\omega_n - \omega'}$$
 
-This is derived by inserting a complete set of exact eigenstates and using the Lehmann representation.
-
-### Retarded Green's Function
-
-The **retarded Green's function** is what we measure in experiments:
-
-$$G^R(\mathbf{k}, \omega) = \int_{-\infty}^{\infty} \frac{d\omega'}{2\pi} \frac{A(\mathbf{k}, \omega')}{\omega + i\eta - \omega'}$$
-
-Comparing with the Matsubara form, we obtain the **analytic continuation prescription**:
+Comparing with the retarded function form, we obtain the **analytic continuation prescription**:
 
 $$\boxed{G^R(\mathbf{k}, \omega) = \mathcal{G}(\mathbf{k}, i\omega_n \to \omega + i\eta)}$$
 
-The spectral function is:
-
-$$A(\mathbf{k}, \omega) = -2\text{Im}\,G^R(\mathbf{k}, \omega) = i[G^R(\mathbf{k}, \omega) - G^A(\mathbf{k}, \omega)]$$
-
-It satisfies the sum rule: $\int \frac{d\omega}{2\pi} A(\mathbf{k}, \omega) = 1$.
+This prescription allows us to compute equilibrium quantities at Matsubara frequencies, then obtain real-time response by analytically continuing to just above the real axis.
 
 ---
 
