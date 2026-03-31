@@ -212,25 +212,19 @@ The issue is that the "correct" zeroth-order states $|n, k^{(0)}\rangle$ are det
 
 ### The Resolution: Diagonalization in the Degenerate Subspace
 
-To identify the correct zeroth-order basis, we examine the first-order equation more carefully. Expand the exact state:
+To identify the correct zeroth-order basis, we examine the first-order equation more carefully. Consider the $k$-th perturbed state that emerges from the originally degenerate level. Expand it as:
 
 $$
-|n, k\rangle = |n, k^{(0)}\rangle + \lambda|n, k^{(1)}\rangle + \cdots
+|\psi_{n,k}\rangle = |n, k^{(0)}\rangle + \lambda|n, k^{(1)}\rangle + \cdots
 $$
 
-where $|n, k^{(0)}\rangle \in \mathcal{H}_n^{(0)}$. The first-order equation is:
+where $|n, k^{(0)}\rangle \in \mathcal{H}_n^{(0)}$ is the "correct" zeroth-order state we seek, and $|\psi_{n,k}\rangle$ denotes the exact eigenstate. The first-order equation is:
 
 $$
 (\hat{H}_0 - E_n^{(0)})|n, k^{(1)}\rangle = (E_{n,k}^{(1)} - \hat{V})|n, k^{(0)}\rangle
 $$
 
-Project onto $\langle n, i| \in \mathcal{H}_n^{(0)}$:
-
-$$
-0 = E_{n,k}^{(1)}\langle n, i|n, k^{(0)}\rangle - \langle n, i|\hat{V}|n, k^{(0)}\rangle
-$$
-
-Writing $|n, k^{(0)}\rangle = \sum_j c_j^{(k)}|n, j\rangle$, this becomes:
+To solve this, expand $|n, k^{(0)}\rangle$ in the original basis $|n, i\rangle$ ($i = 1, \ldots, g$) and project onto $\langle n, i|$:
 
 $$
 \sum_{j=1}^{g} \langle n, i|\hat{V}|n, j\rangle c_j^{(k)} = E_{n,k}^{(1)} c_i^{(k)}
