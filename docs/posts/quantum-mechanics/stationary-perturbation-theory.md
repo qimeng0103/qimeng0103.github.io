@@ -294,30 +294,46 @@ where $\mathcal{D}_n$ denotes the degenerate subspace. The sum explicitly exclud
 
 A subtle point deserves clarification. First-order energy corrections are obtained by diagonalizing $\hat{V}$ **only within** $\mathcal{H}_n^{(0)}$, yet first-order state corrections involve mixing with states **outside** $\mathcal{H}_n^{(0)}$. This seemingly asymmetric treatment requires explanation.
 
-**Energy corrections are localized:**
+**The key insight: two distinct problems are being solved sequentially**
 
-$E_{n,k}^{(1)}$ comes from projecting the first-order equation onto $\langle n, k^{(0)}| \in \mathcal{H}_n^{(0)}$. The result involves only matrix elements $\langle n, k^{(0)}|\hat{V}|n, l^{(0)}\rangle$ because the projection kills any component outside $\mathcal{H}_n^{(0)}$.
+**Step 1: Identify the correct zeroth-order states**
 
-**State corrections are global:**
-
-The first-order state $|n, k^{(1)}\rangle$ satisfies:
+Before perturbation, any superposition in $\mathcal{H}_n^{(0)}$ is valid. The perturbation $\hat{V}$ selects specific combinations—these are the states that will evolve continuously as $\lambda$ increases from zero. To find them, we solve:
 
 $$
-(\hat{H}_0 - E_n^{(0)})|n, k^{(1)}\rangle = (E_{n,k}^{(1)} - \hat{V})|n, k^{(0)}\rangle
+\mathbf{V}^{(n)} \mathbf{c} = E^{(1)} \mathbf{c}
 $$
 
-After diagonalization, the RHS has **no component within** $\mathcal{H}_n^{(0)}$ (this is precisely the secular equation condition). Therefore $|n, k^{(1)}\rangle$ must lie entirely in the orthogonal complement $\mathcal{H}_n^{(0)\perp}$, meaning it is a superposition of states outside the degenerate subspace:
+This is an eigenvalue problem **confined to the degenerate subspace**. Why? Because we are not yet asking how the state changes; we are asking which starting point is the "right" one. This is determined entirely by how $\hat{V}$ acts within $\mathcal{H}_n^{(0)}$—states outside this subspace have different unperturbed energies and do not participate in the degeneracy.
+
+**Step 2: Calculate corrections to these selected states**
+
+Once the correct zeroth-order states $|n, k^{(0)}\rangle$ are identified (with distinct $E_{n,k}^{(1)}$), we treat each as the starting point for standard perturbation theory. Now the first-order state correction involves the full Hilbert space:
 
 $$
 |n, k^{(1)}\rangle = \sum_{m \notin \mathcal{D}_n} \frac{\langle m^{(0)}|\hat{V}|n, k^{(0)}\rangle}{E_n^{(0)} - E_m^{(0)}}|m^{(0)}\rangle
 $$
 
-**The resolution:** The apparent restriction is not a truncation of Hilbert space but a **decoupling induced by diagonalization**. Before diagonalization, the first-order equation is ill-defined due to the kernel of $(\hat{H}_0 - E_n^{(0)})$. After finding the correct zeroth-order basis, the problem separates:
+Note the sum excludes $\mathcal{D}_n$ because after diagonalization, $\langle m^{(0)}|\hat{V}|n, k^{(0)}\rangle = 0$ for $m^{(0)} \in \mathcal{D}_n$ with $m \neq k$. The degenerate states are "orthogonal" under $\hat{V}$.
 
-1. **Within** $\mathcal{H}_n^{(0)}$: Degeneracy is lifted; each $|n, k^{(0)}\rangle$ acquires distinct $E_{n,k}^{(1)}$
-2. **Outside** $\mathcal{H}_n^{(0)}$: Standard non-degenerate perturbation theory applies to each split level
+**Why the asymmetry is natural:**
 
-The "restriction" to $\mathcal{H}_n^{(0)}$ for energy corrections is merely the statement that first-order splitting is determined entirely by how $\hat{V}$ acts **within** the originally degenerate manifold.
+| Stage | Scope | Physical meaning |
+|-------|-------|------------------|
+| Finding correct zeroth-order states | $\mathcal{H}_n^{(0)}$ only | Breaking the degeneracy; selecting eigenbasis of residual symmetry |
+| Computing first-order state corrections | Full space minus $\mathcal{D}_n$ | Admixture of non-degenerate states; standard perturbation theory |
+
+**Notation note:** $\vert m^{(0)}\rangle \in \mathcal{D}_n$ denotes states in the degenerate subspace.
+
+The energy correction appears "local" because it answers: *which state in the degenerate manifold am I following?* The state correction is "global" because it answers: *how much does this state mix with everything else?*
+
+---
+
+### The Secular Equation: Origin of the Name
+
+The eigenvalue equation $\mathbf{V}^{(n)}\mathbf{c} = E^{(1)}\mathbf{c}$ is historically called the **secular equation** (拉丁语 *saeculum* = generation/century, 古希腊语 *αιών* = long period). In celestial mechanics, this term refers to equations describing **slow, long-term evolution** of orbital elements (as opposed to rapid periodic variations). In perturbation theory, the first-order splitting is the "secular" effect—slow compared to the rapid oscillations associated with energy denominators $E_n^{(0)} - E_m^{(0)}$ for $m \notin \mathcal{D}_n$.
+
+The matrix $\mathbf{V}^{(n)}$ is sometimes called the **secular matrix**.
 
 ---
 
