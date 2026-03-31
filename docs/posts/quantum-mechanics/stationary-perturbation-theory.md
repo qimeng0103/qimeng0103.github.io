@@ -238,21 +238,25 @@ $$
 
 where $V_{ij}^{(n)} = \langle n, i|\hat{V}|n, j\rangle$ is the $g \times g$ perturbation matrix restricted to $\mathcal{H}_n^{(0)}$.
 
-### Why Diagonalization is Necessary: The Self-Consistency Argument
+### Why Diagonalization is Necessary: The Consistency Requirement
 
-The secular equation emerges from a **solvability condition**. For the first-order equation
+Consider the first-order equation for the state correction:
 
 $$
 (\hat{H}_0 - E_n^{(0)})|n, k^{(1)}\rangle = (E_{n,k}^{(1)} - \hat{V})|n, k^{(0)}\rangle
 $$
 
-to have a solution, the RHS must be orthogonal to the kernel of the operator on LHS. Since $\ker(\hat{H}_0 - E_n^{(0)}) = \mathcal{H}_n^{(0)}$, we require:
+**The problem:** The operator $(\hat{H}_0 - E_n^{(0)})$ annihilates any state in $\mathcal{H}_n^{(0)}$—it sends all degenerate states to zero. This means it has no inverse within the subspace.
+
+**The consequence:** For this equation to have a solution, the right-hand side **must not contain any component in** $\mathcal{H}_n^{(0)}$. If it did, we would be trying to invert zero, which is impossible.
+
+**The solution:** We choose $E_{n,k}^{(1)}$ and $|n, k^{(0)}\rangle$ such that:
 
 $$
-\langle n, i|(E_{n,k}^{(1)} - \hat{V})|n, k^{(0)}\rangle = 0 \quad \forall i
+\langle n, i|(E_{n,k}^{(1)} - \hat{V})|n, k^{(0)}\rangle = 0 \quad \text{for all } i = 1, \ldots, g
 $$
 
-This is precisely the secular equation. The diagonalization is **not an optional simplification**—it is a **consistency requirement** for perturbation theory to proceed.
+This ensures the RHS is orthogonal to every basis state in $\mathcal{H}_n^{(0)}$, hence has no component in the degenerate subspace. This is exactly the secular equation. The diagonalization is **not an optional simplification**—it is a **consistency requirement** that makes the perturbation theory well-defined.
 
 ### First-Order Results in Degenerate Theory
 
