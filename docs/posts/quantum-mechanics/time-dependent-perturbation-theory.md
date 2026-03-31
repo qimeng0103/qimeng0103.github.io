@@ -1,6 +1,6 @@
 # Time-Dependent Perturbation Theory: From Fermi's Golden Rule to Linear Response
 
-📅 **Date:** 2026-03-31 | 🏷️ **Tags:** Quantum Mechanics, Quantum Optics, Condensed Matter | 📂 **Category:** Quantum Mechanics Notes
+📅 **Date:** 2026-03-31 | 🏷️ **Tags:** Quantum Mechanics, Condensed Matter, Statistical Mechanics | 📂 **Category:** Quantum Mechanics Notes
 
 ---
 
@@ -12,7 +12,7 @@ $$
 \hat{H}(t) = \hat{H}_0 + \hat{V}(t)
 $$
 
-Unlike stationary perturbation theory where $\hat{V}$ is static and we seek energy eigenstates, here we track the **dynamical evolution** of quantum states under time-varying influences. This framework underlies quantum optics, scattering theory, and condensed matter response functions.
+Unlike stationary perturbation theory where $\hat{V}$ is static and we seek energy eigenstates, here we track the **dynamical evolution** of quantum states under time-varying influences. This framework underlies scattering theory and condensed matter response functions.
 
 ---
 
@@ -48,12 +48,6 @@ $$
 \hat{U}(t, t_0) = \hat{\mathbb{1}} + \sum_{n=1}^{\infty} \left(\frac{-i}{\hbar}\right)^n \int_{t_0}^{t} dt_1 \int_{t_0}^{t_1} dt_2 \cdots \int_{t_0}^{t_{n-1}} dt_n \, \hat{V}_I(t_1)\hat{V}_I(t_2)\cdots\hat{V}_I(t_n)
 $$
 
-Or with time-ordering:
-
-$$
-\hat{U}(t, t_0) = \mathcal{T} \exp\left(-\frac{i}{\hbar}\int_{t_0}^{t} \hat{V}_I(t') dt'\right)
-$$
-
 ---
 
 ## Part II: First-Order Transition Amplitudes
@@ -69,54 +63,14 @@ $$
 The amplitude for transition to state $\vert f\rangle$ ($f \neq i$) is:
 
 $$
-c_f^{(1)}(t) = \langle f\vert \psi_I(t)\rangle = \frac{1}{i\hbar}\int_0^t \langle f\vert\hat{V}_I(t')\vert i\rangle dt'
-$$
-
-With $\hat{V}_I(t) = e^{i\hat{H}_0 t/\hbar}\hat{V}(t)e^{-i\hat{H}_0 t/\hbar}$ and $E_i$, $E_f$ the unperturbed energies:
-
-$$
-c_f^{(1)}(t) = \frac{1}{i\hbar}\int_0^t e^{i\omega_{fi}t'} V_{fi}(t') dt'
+c_f^{(1)}(t) = \langle f\vert \psi_I(t)\rangle = \frac{1}{i\hbar}\int_0^t e^{i\omega_{fi}t'} V_{fi}(t') dt'
 $$
 
 where $\omega_{fi} = (E_f - E_i)/\hbar$ and $V_{fi}(t) = \langle f\vert\hat{V}(t)\vert i\rangle$.
 
-### Harmonic Perturbation
+### Harmonic Perturbation and Fermi's Golden Rule
 
-For monochromatic driving $\hat{V}(t) = \hat{V}e^{-i\omega t} + \hat{V}^\dagger e^{i\omega t}$:
-
-$$
-c_f^{(1)}(t) = \frac{1}{\hbar}\left[\frac{e^{i(\omega_{fi}-\omega)t} - 1}{\omega_{fi} - \omega} V_{fi} + \frac{e^{i(\omega_{fi}+\omega)t} - 1}{\omega_{fi} + \omega} V_{fi}^*\right]
-$$
-
-The first term dominates when $\omega \approx \omega_{fi}$ (absorption); the second when $\omega \approx -\omega_{fi}$ (stimulated emission).
-
----
-
-## Part III: Fermi's Golden Rule
-
-### Constant Perturbation
-
-For $\hat{V}(t) = \hat{V}\theta(t)$ turned on at $t=0$:
-
-$$
-c_f^{(1)}(t) = \frac{V_{fi}}{i\hbar}\int_0^t e^{i\omega_{fi}t'} dt' = \frac{V_{fi}}{\hbar\omega_{fi}}(1 - e^{i\omega_{fi}t})
-$$
-
-The transition probability is:
-
-$$
-P_{i\to f}(t) = \vert c_f^{(1)}(t)\vert^2 = \frac{4\vert V_{fi}\vert^2}{\hbar^2}\frac{\sin^2(\omega_{fi}t/2)}{\omega_{fi}^2}
-$$
-
-For large $t$, using $\sin^2(xt/2)/x^2 \to \frac{\pi t}{2}\delta(x)$:
-
-$$
-P_{i\to f}(t) \approx \frac{2\pi t}{\hbar}\vert V_{fi}\vert^2 \delta(E_f - E_i)
-$$
-
-### Transition Rate
-
-The transition rate $W_{i\to f} = dP/dt$ for transitions into a continuum of final states with density $\rho(E_f)$:
+For monochromatic driving $\hat{V}(t) = \hat{V}e^{-i\omega t} + \hat{V}^\dagger e^{i\omega t}$, the first term dominates near resonance $\omega \approx \omega_{fi}$ (absorption). The transition probability to a continuum of final states with density $\rho(E_f)$ gives the transition rate:
 
 $$
 \boxed{W_{i\to f} = \frac{2\pi}{\hbar}\vert V_{fi}\vert^2 \rho(E_f)}
@@ -126,154 +80,278 @@ This is **Fermi's Golden Rule**—the fundamental result for transitions between
 
 ---
 
-## Part IV: Propagating States and Scattering Theory
+## Part III: Scattering Theory and Propagating States
 
-### Lippmann-Schwinger Equation
+### From Time-Dependent to Stationary Scattering
 
-For scattering where $\hat{H}_0$ describes free particles and $\hat{V}$ is a static potential, stationary scattering states satisfy:
+Scattering problems involve particles approaching from infinity, interacting via potential $\hat{V}$, and emerging to infinity. While the full problem is time-dependent, the S-matrix connects asymptotic states at $t \to \pm\infty$.
 
-$$
-\vert \psi^{(\pm)}\rangle = \vert \phi\rangle + \frac{1}{E - \hat{H}_0 \pm i\epsilon}\hat{V}\vert \psi^{(\pm)}\rangle
-$$
-
-where $\vert \phi\rangle$ is the incident plane wave with energy $E$, and $\pm i\epsilon$ selects outgoing $(+)$ or incoming $(-)$ boundary conditions.
-
-### Time-Dependent Scattering
-
-For time-dependent potentials $\hat{V}(t)$, the S-matrix connects asymptotic states:
-
-$$
-S_{fi} = \lim_{\substack{t_+ \to +\infty \\ t_- \to -\infty}} \langle f\vert \hat{U}(t_+, t_-)\vert i\rangle
-$$
-
-To first order:
+The first-order S-matrix element for transition $\vert i\rangle \to \vert f\rangle$ under perturbation $\hat{V}(t)$ is:
 
 $$
 S_{fi}^{(1)} = -\frac{i}{\hbar}\int_{-\infty}^{\infty} e^{i\omega_{fi}t} \langle f\vert\hat{V}(t)\vert i\rangle dt
 $$
 
-This Fourier-transform relationship between time-dependent potential and S-matrix elements is central to scattering calculations.
-
-### Wave Packet Dynamics
-
-For propagating wave packets (not stationary eigenstates), the time evolution involves both phase accumulation and shape distortion:
+For a time-independent potential, this becomes:
 
 $$
-\psi(x,t) = \int \frac{dk}{\sqrt{2\pi}} \phi(k) e^{ikx - iE(k)t/\hbar}
+S_{fi}^{(1)} = -2\pi i \delta(E_f - E_i) \langle f\vert\hat{V}\vert i\rangle
 $$
 
-Under perturbation, group velocity $v_g = dE/dk$ and wave packet spreading become modified. The WKB approximation connects this to classical trajectories in slowly varying potentials.
+The energy-conserving delta function reflects that elastic scattering preserves energy.
+
+### The Lippmann-Schwinger Equation
+
+Stationary scattering states $\vert \psi^{(\pm)}\rangle$ with energy $E$ satisfy an integral equation derived from the Schrödinger equation. Starting from:
+
+$$
+(E - \hat{H}_0)\vert \psi\rangle = \hat{V}\vert \psi\rangle
+$$
+
+Formally inverting $(E - \hat{H}_0)$ requires care due to the singularity at $E = E_n$. The resolution is the **resolvent operator** with appropriate boundary conditions:
+
+$$
+\hat{G}_0^{(\pm)}(E) = \frac{1}{E - \hat{H}_0 \pm i\epsilon}
+$$
+
+The $\pm i\epsilon$ prescription ($\epsilon \to 0^+$) selects:
+- **$+i\epsilon$**: outgoing spherical waves (retarded Green's function)
+- **$-i\epsilon$**: incoming spherical waves (advanced Green's function)
+
+The Lippmann-Schwinger equation is:
+
+$$
+\boxed{\vert \psi^{(\pm)}\rangle = \vert \phi\rangle + \hat{G}_0^{(\pm)}(E)\hat{V}\vert \psi^{(\pm)}\rangle}
+$$
+
+where $\vert \phi\rangle$ is the incident plane wave satisfying $(E - \hat{H}_0)\vert \phi\rangle = 0$.
+
+### Born Approximation
+
+Iterating the Lippmann-Schwinger equation generates the Born series:
+
+$$
+\vert \psi^{(+)}\rangle = \vert \phi\rangle + \hat{G}_0^{(+)}\hat{V}\vert \phi\rangle + \hat{G}_0^{(+)}\hat{V}\hat{G}_0^{(+)}\hat{V}\vert \phi\rangle + \cdots
+$$
+
+The first-order **Born approximation** keeps only the single-scattering term:
+
+$$
+\vert \psi^{(+)}\rangle \approx \vert \phi\rangle + \frac{1}{E - \hat{H}_0 + i\epsilon}\hat{V}\vert \phi\rangle
+$$
+
+The scattering amplitude $f(\mathbf{k}', \mathbf{k})$ relates to the transition matrix element:
+
+$$
+f(\mathbf{k}', \mathbf{k}) = -\frac{m}{2\pi\hbar^2} \langle \mathbf{k}'\vert\hat{V}\vert \psi^{(+)}\rangle
+$$
+
+To first order in $\hat{V}$, replace $\vert \psi^{(+)}\rangle \to \vert \mathbf{k}\rangle$:
+
+$$
+f_B(\mathbf{k}', \mathbf{k}) = -\frac{m}{2\pi\hbar^2} \langle \mathbf{k}'\vert\hat{V}\vert \mathbf{k}\rangle = -\frac{m}{2\pi\hbar^2} \tilde{V}(\mathbf{k}' - \mathbf{k})
+$$
+
+where $\tilde{V}(\mathbf{q}) = \int d^3r \, e^{-i\mathbf{q}\cdot\mathbf{r}} V(\mathbf{r})$ is the Fourier transform of the potential.
+
+### Propagating Wave Packets
+
+Real scattering experiments involve localized wave packets, not plane waves. A wave packet at $t=0$:
+
+$$
+\psi(\mathbf{r}, 0) = \int \frac{d^3k}{(2\pi)^{3/2}} \phi(\mathbf{k}) e^{i\mathbf{k}\cdot\mathbf{r}}
+$$
+
+evolves as:
+
+$$
+\psi(\mathbf{r}, t) = \int \frac{d^3k}{(2\pi)^{3/2}} \phi(\mathbf{k}) e^{i\mathbf{k}\cdot\mathbf{r} - iE(k)t/\hbar}
+$$
+
+For a narrow momentum distribution around $\mathbf{k}_0$, expand $E(k) \approx E(k_0) + \hbar\mathbf{v}_g\cdot(\mathbf{k} - \mathbf{k}_0)$ with group velocity $\mathbf{v}_g = \nabla_k E/\hbar$. The wave packet propagates without distortion (in free space) at velocity $\mathbf{v}_g$:
+
+$$
+\psi(\mathbf{r}, t) \approx e^{-iE(k_0)t/\hbar} \psi(\mathbf{r} - \mathbf{v}_g t, 0)
+$$
+
+Under scattering, the outgoing wave packet is a superposition of scattered spherical waves from each momentum component, leading to the differential cross section.
 
 ---
 
-## Part V: Linear Response Theory and Kubo Formula
+## Part IV: Linear Response Theory
 
-### Response Functions
+### The Setting: Systems in Thermal Equilibrium
 
-In condensed matter, we probe systems with weak external fields and measure linear response. The general framework: perturbation $\hat{V}(t) = \hat{A}F(t)$ couples operator $\hat{A}$ to external field $F(t)$; we measure response of observable $\hat{B}$.
+Linear response theory addresses a fundamental question: **How does a macroscopic quantum system respond to weak external probes?**
 
-The first-order change in $\langle\hat{B}\rangle$ is:
+Consider a system described by $\hat{H}_0$ at temperature $T$, with equilibrium density matrix:
 
 $$
-\delta\langle\hat{B}(t)\rangle = \int_{-\infty}^{\infty} \chi_{BA}(t-t')F(t') dt'
+\hat{\rho}_0 = \frac{e^{-\beta\hat{H}_0}}{\mathcal{Z}}, \quad \mathcal{Z} = \text{Tr}(e^{-\beta\hat{H}_0})
 $$
 
-where $\chi_{BA}(\tau)$ is the **retarded response function**.
+where $\beta = 1/(k_B T)$. The expectation value of any observable $\hat{B}$ in equilibrium is:
 
-### Kubo Formula
+$$
+\langle\hat{B}\rangle_0 = \text{Tr}(\hat{\rho}_0 \hat{B})
+$$
 
-From first-order perturbation theory, the response function is:
+At $t = t_0$, we turn on a weak perturbation coupled to some operator $\hat{A}$:
+
+$$
+\hat{V}(t) = -\hat{A}F(t)\theta(t - t_0)
+$$
+
+where $F(t)$ is a classical external field. We wish to compute the induced change in $\langle\hat{B}\rangle$.
+
+### Single-Particle vs. Many-Particle Settings
+
+**Single-particle quantum mechanics:** The system is in a pure state $\vert \psi(t)\rangle$. Expectation values are $\langle\hat{B}\rangle = \langle\psi(t)\vert\hat{B}\vert\psi(t)\rangle$. The density matrix is $\hat{\rho} = \vert\psi\rangle\langle\psi\vert$ (a projector).
+
+**Statistical mechanics/condensed matter:** The system is an ensemble described by $\hat{\rho}$. For $N \sim 10^{23}$ particles, pure states are intractable. We work with:
+- **Canonical ensemble:** $\hat{\rho} = e^{-\beta\hat{H}}/\mathcal{Z}$
+- **Grand canonical ensemble:** $\hat{\rho} = e^{-\beta(\hat{H} - \mu\hat{N})}/\mathcal{Z}$
+
+The unified language is the **density matrix formalism**, where $\langle\hat{B}\rangle = \text{Tr}(\hat{\rho}\hat{B})$ reduces to the quantum average for pure states ($\hat{\rho}^2 = \hat{\rho}$) and statistical average for mixed states.
+
+### Density Matrix Evolution
+
+In the interaction picture, the density matrix evolves as:
+
+$$
+\hat{\rho}_I(t) = \hat{U}(t, t_0)\hat{\rho}_0\hat{U}^\dagger(t, t_0)
+$$
+
+To first order in $\hat{V}$:
+
+$$
+\hat{\rho}_I(t) \approx \hat{\rho}_0 + \frac{1}{i\hbar}\int_{t_0}^t [\hat{V}_I(t'), \hat{\rho}_0] dt'
+$$
+
+### Deriving the Kubo Formula
+
+The change in $\langle\hat{B}\rangle$ is:
+
+$$
+\delta\langle\hat{B}(t)\rangle = \text{Tr}[\hat{\rho}_I(t)\hat{B}_I(t)] - \text{Tr}[\hat{\rho}_0\hat{B}_I(t)]
+$$
+
+Using the cyclic property of trace and noting $\hat{\rho}_0$ commutes with $\hat{H}_0$ (hence $[\hat{\rho}_0, \hat{B}_I(t)] \neq 0$ in general, but $\hat{\rho}_0$ is time-independent):
+
+$$
+\delta\langle\hat{B}(t)\rangle = \frac{1}{i\hbar}\int_{t_0}^t \text{Tr}\{[\hat{V}_I(t'), \hat{\rho}_0]\hat{B}_I(t)\} dt'
+$$
+
+With $\hat{V}_I(t') = -\hat{A}_I(t')F(t')$ and using $\text{Tr}([\hat{X}, \hat{Y}]\hat{Z}) = \text{Tr}(\hat{X}[\hat{Y}, \hat{Z}])$:
+
+$$
+\delta\langle\hat{B}(t)\rangle = \frac{1}{i\hbar}\int_{t_0}^t F(t')\text{Tr}\{\hat{\rho}_0[\hat{A}_I(t'), \hat{B}_I(t)]\} dt'
+$$
+
+Recognizing $\text{Tr}(\hat{\rho}_0[\cdot, \cdot]) = \langle[\cdot, \cdot]\rangle_0$:
+
+$$
+\delta\langle\hat{B}(t)\rangle = \int_{t_0}^t \chi_{BA}(t - t')F(t') dt'
+$$
+
+where the **retarded response function** (Kubo formula) is:
 
 $$
 \boxed{\chi_{BA}(t) = -\frac{i}{\hbar}\theta(t)\langle[\hat{B}_I(t), \hat{A}_I(0)]\rangle_0}
 $$
 
-where $\langle\cdots\rangle_0$ denotes thermal/equilibrium average over $\hat{H}_0$, and $[\cdot,\cdot]$ is the commutator.
+**Key features:**
+1. **Causality:** The $\theta(t)$ ensures response follows stimulus
+2. **Equilibrium correlation:** The commutator is evaluated in the unperturbed thermal state
+3. **Quantum structure:** The commutator encodes both classical and quantum fluctuations
 
-The frequency-domain version, via Fourier transform:
+### Frequency Domain and Spectral Representation
+
+For harmonic driving $F(t) = F_0 e^{-i\omega t + \epsilon t}$ (adiabatic turn-on), the response is:
+
+$$
+\delta\langle\hat{B}(\omega)\rangle = \chi_{BA}(\omega)F(\omega)
+$$
+
+with the susceptibility:
 
 $$
 \chi_{BA}(\omega) = \int_0^{\infty} e^{i\omega t}\chi_{BA}(t)dt
 $$
 
+Insert a complete set of eigenstates $\vert n\rangle$ of $\hat{H}_0$ with energies $E_n$:
+
+$$
+\chi_{BA}(\omega) = \frac{1}{\mathcal{Z}}\sum_{n,m} e^{-\beta E_n}\left(\frac{\langle n\vert\hat{B}\vert m\rangle\langle m\vert\hat{A}\vert n\rangle}{\hbar\omega + E_n - E_m + i\epsilon} - \frac{\langle n\vert\hat{A}\vert m\rangle\langle m\vert\hat{B}\vert n\rangle}{\hbar\omega + E_m - E_n + i\epsilon}\right)
+$$
+
+This **spectral representation** reveals the poles at excitation energies $\hbar\omega = E_m - E_n$.
+
 ### Fluctuation-Dissipation Theorem
 
-The imaginary part of $\chi(\omega)$ describes dissipation. It relates to equilibrium fluctuations:
+Consider the symmetrized correlation function:
 
 $$
-\text{Im}\,\chi_{AA}(\omega) = \frac{1}{2\hbar}(1 - e^{-\beta\hbar\omega})S_{AA}(\omega)
+S_{BA}(\omega) = \int_{-\infty}^{\infty} e^{i\omega t}\frac{1}{2}\langle\{\hat{B}_I(t), \hat{A}_I(0)\}\rangle_0 dt
 $$
 
-where $S_{AA}(\omega)$ is the power spectrum of fluctuations in $\hat{A}$.
-
-For conductivity (Kubo-Greenwood), $\hat{A} = \hat{j}_\alpha$ (current), giving:
+and the response function's imaginary part $\chi''_{BA}(\omega) = \text{Im}\,\chi_{BA}(\omega)$. Using the spectral representation and detailed balance $e^{-\beta E_n} - e^{-\beta E_m} = (1 - e^{-\beta\hbar\omega})e^{-\beta E_n}$ for $\omega = (E_m - E_n)/\hbar$:
 
 $$
-\sigma_{\alpha\beta}(\omega) = \frac{1}{\hbar\omega}\int_0^{\infty} e^{i\omega t}\langle[\hat{j}_\alpha(t), \hat{j}_\beta(0)]\rangle dt
+\boxed{\chi''_{AA}(\omega) = \frac{1}{2\hbar}(1 - e^{-\beta\hbar\omega})S_{AA}(\omega)}
 $$
 
----
+**Physical interpretation:** The imaginary part of the susceptibility (dissipation) is proportional to the power spectrum of equilibrium fluctuations. At high temperatures ($\beta\hbar\omega \ll 1$), this reduces to the classical form $\chi'' = (\omega/2k_B T)S$.
 
-## Part VI: Quantum Optics Framework
+### Connection to Single-Particle Formulas
 
-### Jaynes-Cummings Model
-
-The paradigmatic quantum optics system: a two-level atom (states $\vert g\rangle$, $\vert e\rangle$ with spacing $\hbar\omega_0$) coupled to a single cavity mode (frequency $\omega$).
+For a **pure state** at $T=0$, the density matrix is $\hat{\rho}_0 = \vert\psi_0\rangle\langle\psi_0\vert$ where $\vert\psi_0\rangle$ is the ground state. The Kubo formula reduces to:
 
 $$
-\hat{H} = \frac{\hbar\omega_0}{2}\hat{\sigma}_z + \hbar\omega\hat{a}^\dagger\hat{a} + \hbar g(\hat{\sigma}_+\hat{a} + \hat{\sigma}_-\hat{a}^\dagger)
+\chi_{BA}(t) = -\frac{i}{\hbar}\theta(t)\langle\psi_0\vert[\hat{B}_I(t), \hat{A}_I(0)]\vert\psi_0\rangle
 $$
 
-In the **rotating wave approximation** (RWA), counter-rotating terms $\hat{\sigma}_+\hat{a}^\dagger$ and $\hat{\sigma}_-\hat{a}$ are dropped—valid when $g \ll \omega, \omega_0$.
-
-### Dressed States
-
-The eigenstates of the coupled system (dressed states) are superpositions of bare atom-photon states:
+For a **single-particle system**, insert complete set of excited states:
 
 $$
-\vert \pm, n\rangle = \frac{1}{\sqrt{2}}(\vert e, n\rangle \pm \vert g, n+1\rangle)
+\chi_{BA}(t) = -\frac{i}{\hbar}\theta(t)\sum_{n\neq 0}\left(e^{i\omega_{n0}t}\langle 0\vert\hat{B}\vert n\rangle\langle n\vert\hat{A}\vert 0\rangle - e^{-i\omega_{n0}t}\langle 0\vert\hat{A}\vert n\rangle\langle n\vert\hat{B}\vert 0\rangle\right)
 $$
 
-with energies $E_{\pm,n} = \hbar\omega(n+1) \pm \frac{\hbar}{2}\sqrt{4g^2(n+1) + \Delta^2}$, where $\Delta = \omega_0 - \omega$ is the detuning.
+This matches the time-dependent perturbation theory result for transition amplitudes—the same physics expressed in the language of response functions. The many-body generalization simply replaces the ground state expectation with a thermal average, accounting for temperature and interactions.
 
-### Input-Output Theory
+### Conductivity: The Kubo-Greenwood Formula
 
-For open quantum systems (cavity with loss $\kappa$, atom with decay $\gamma$), the Heisenberg-Langevin approach gives:
-
-$$
-\frac{d\hat{a}}{dt} = -i[\hat{a}, \hat{H}] - \frac{\kappa}{2}\hat{a} + \sqrt{\kappa}\hat{a}_{\text{in}}(t)
-$$
-
-The input field $\hat{a}_{\text{in}}$ satisfies $[\hat{a}_{\text{in}}(t), \hat{a}_{\text{in}}^\dagger(t')] = \delta(t-t')$. The output field relates via:
+For electrical conductivity, the perturbation is $\hat{V} = -e\hat{\mathbf{r}}\cdot\mathbf{E}(t)$ and the response current is $\hat{\mathbf{j}}$. The current-current response gives:
 
 $$
-\hat{a}_{\text{out}} = \hat{a}_{\text{in}} + \sqrt{\kappa}\hat{a}
+\sigma_{\alpha\beta}(\omega) = \frac{1}{\hbar\omega}\int_0^{\infty} e^{i\omega t}\langle[\hat{j}_\alpha(t), \hat{j}_\beta(0)]\rangle_0 dt
 $$
 
-This framework connects cavity QED to scattering theory, with the cavity acting as a frequency-dependent beam splitter for photons.
-
-### Weak Drive Limit
-
-For weak probe fields, linear response applies. The cavity transmission spectrum:
+At $T=0$ for non-interacting electrons, this reduces to the Greenwood formula:
 
 $$
-T(\omega_p) = \left\vert\frac{\kappa/2}{\kappa/2 - i(\omega_p - \omega_c) + g^2/\gamma}\right\vert^2
+\sigma_{\alpha\beta}(\omega) = \frac{\pi e^2}{\hbar}\sum_{n,m}(f_n - f_m)\langle n\vert\hat{v}_\alpha\vert m\rangle\langle m\vert\hat{v}_\beta\vert n\rangle\delta(E_m - E_n - \hbar\omega)
 $$
 
-shows vacuum Rabi splitting: two peaks separated by $2g$ when the atom is resonant with the cavity.
+where $f_n$ are Fermi occupation factors. The connection is clear: conductivity measures the ease of inducing transitions (current) by an electric field, directly related to the density of states and transition matrix elements.
 
 ---
 
 ## Summary and Connections
 
-| Domain | Key Quantity | Perturbation Theory Role |
-|--------|--------------|--------------------------|
-| Atomic transitions | $W_{i\to f}$ (transition rate) | Fermi's Golden Rule for spontaneous/absorbed photons |
-| Scattering | $S$-matrix elements | Born approximation from Dyson series |
-| Condensed matter | $\chi_{BA}(\omega)$ (susceptibility) | Kubo formula connects response to correlations |
-| Quantum optics | Dressed state spectra | Jaynes-Cummings diagonalization in limited subspace |
+| Domain | Initial State | Perturbation | Key Quantity | Physical Content |
+|--------|--------------|--------------|--------------|------------------|
+| Atomic transitions | $\vert i\rangle$ (discrete) | $\hat{V}e^{-i\omega t}$ | $W_{i\to f}$ | Transition rate to continuum |
+| Scattering | $\vert\mathbf{k}\rangle$ (plane wave) | Static $\hat{V}$ | $f(\mathbf{k}', \mathbf{k})$ | Differential cross section |
+| Single-particle response | $\vert\psi_0\rangle$ (pure state) | $-\hat{A}F(t)$ | $\chi_{BA}(t)$ | Ground state correlations |
+| Many-body response | $\hat{\rho}_0 = e^{-\beta\hat{H}_0}/\mathcal{Z}$ | $-\hat{A}F(t)$ | $\chi_{BA}(\omega)$ | Thermal/fluctuation properties |
 
-The unifying theme: weak perturbations enable systematic approximation, but the choice of basis (bound vs. scattering states, bare vs. dressed) determines the efficiency and physical transparency of the calculation.
+The unifying framework is time-dependent perturbation theory in the interaction picture. The differences lie in:
+1. **Initial conditions:** Pure states vs. thermal ensembles
+2. **Observables:** Transition probabilities vs. induced expectation values  
+3. **Time domains:** Transient evolution vs. steady-state response
+
+The Kubo formula generalizes single-particle transition amplitudes to correlated many-body systems through the density matrix formalism.
 
 ---
 
@@ -281,8 +359,10 @@ The unifying theme: weak perturbations enable systematic approximation, but the 
 
 1. Sakurai, J.J. & Napolitano, J. *Modern Quantum Mechanics*, 3rd ed. (Cambridge University Press, 2020). Chapter 2, 5
 
-2. Scully, M.O. & Zubairy, M.S. *Quantum Optics* (Cambridge University Press, 1997). Chapters 5–6
+2. Taylor, J.R. *Scattering Theory: The Quantum Theory of Nonrelativistic Collisions* (Dover, 2006). Chapters 2–3, 9–10
 
 3. Mahan, G.D. *Many-Particle Physics*, 3rd ed. (Springer, 2000). Chapter 3 (Linear Response)
 
-4. Gerry, C.C. & Knight, P.L. *Introductory Quantum Optics* (Cambridge University Press, 2005). Chapters 3–4, 7
+4. Kubo, R. *Statistical-Mechanical Theory of Irreversible Processes. I.* J. Phys. Soc. Jpn. 12, 570 (1957)
+
+5. Fetter, A.L. & Walecka, J.D. *Quantum Theory of Many-Particle Systems* (Dover, 2003). Chapter 6 (Linear Response)
