@@ -351,7 +351,7 @@ This validates that degenerate perturbation theory is the **general framework**,
 
 | Aspect | Non-Degenerate | Degenerate |
 |--------|---------------|------------|
-| Zeroth-order state | Unique $|n^{(0)}\rangle$ | Superposition in $\mathcal{H}_n^{(0)}$ (determined by $\hat{V}$) |
+| Zeroth-order state | Unique $\vert n^{(0)}\rangle$ | Superposition in $\mathcal{H}_n^{(0)}$ (determined by $\hat{V}$) |
 | First-order energy | $V_{nn}$ (single value) | Eigenvalues of $\mathbf{V}^{(n)}$ (generically $g$ distinct values) |
 | Key operation | Direct expansion | Diagonalize $\hat{V}$ in $\mathcal{H}_n^{(0)}$ first |
 | State correction | Sum over all $m \neq n$ | Sum excludes degenerate subspace |
