@@ -453,19 +453,43 @@ This validates that degenerate perturbation theory is the **general framework**,
 
 ### Ground State ($n=1$, Non-Degenerate)
 
-$|100\rangle$ is non-degenerate. First-order correction:
+The hydrogen ground state $|100\rangle$ is unique with energy $E_1^{(0)} = -13.6$ eV.
+
+**First-order correction:**
+
+Using the non-degenerate formula $E_1^{(1)} = \langle 100|\hat{V}|100\rangle$ with $\hat{V} = e\mathcal{E}z = e\mathcal{E}r\cos\theta$:
 
 $$
-E_1^{(1)} = \langle 100|e\mathcal{E}z|100\rangle = 0 \quad \text{(parity selection rule)}
+E_1^{(1)} = e\mathcal{E}\langle 100|z|100\rangle = e\mathcal{E} \int |\psi_{100}(\mathbf{r})|^2 z \, d^3r
 $$
 
-Second order:
+The ground state wavefunction $\psi_{100}(\mathbf{r}) = (\pi a_0^3)^{-1/2}e^{-r/a_0}$ has **even parity**: $\psi_{100}(-\mathbf{r}) = +\psi_{100}(\mathbf{r})$. The operator $z$ has **odd parity**: $z \to -z$ under inversion. The integrand $|\psi_{100}|^2 z$ is therefore odd, and the integral over all space vanishes:
 
 $$
-E_1^{(2)} = \sum_{n=2}^{\infty}\sum_{l,m}\frac{|\langle nlm|e\mathcal{E}z|100\rangle|^2}{E_1^{(0)} - E_n^{(0)}} = -\frac{9}{4}a_0^3\mathcal{E}^2
+E_1^{(1)} = 0
 $$
 
-Quadratic Stark effect (energy shifts downward, induced dipole aligns with field).
+This is a general selection rule: diagonal matrix elements of odd-parity operators vanish for parity eigenstates.
+
+**Second-order correction:**
+
+From non-degenerate perturbation theory:
+
+$$
+E_1^{(2)} = \sum_{n=2}^{\infty}\sum_{l,m}\frac{|\langle nlm|e\mathcal{E}z|100\rangle|^2}{E_1^{(0)} - E_n^{(0)}}
+$$
+
+The energy denominator is negative: $E_1^{(0)} - E_n^{(0)} = -13.6(1 - 1/n^2)$ eV $< 0$. Each term in the sum is therefore negative, giving a net negative energy shift.
+
+The sum can be evaluated using hydrogen wavefunctions and the radial matrix elements $\langle nl|r|10\rangle$. The result, first calculated by Wentzel (1926) and Waller (1926), is:
+
+$$
+E_1^{(2)} = -\frac{9}{4}a_0^3\mathcal{E}^2
+$$
+
+where $a_0 = 4\pi\varepsilon_0\hbar^2/m_e e^2 \approx 0.529$ Å is the Bohr radius.
+
+**Physical interpretation:** The ground state has no permanent dipole moment, but the electric field **induces** a dipole moment $\mathbf{p} = \alpha\mathbf{\mathcal{E}}$ through admixture of excited states. The polarizability is $\alpha = 9a_0^3/2$. The energy shift $-\frac{1}{2}\alpha\mathcal{E}^2$ represents the work done by the field to polarize the atom. The negative sign indicates the induced dipole aligns with the field, lowering the energy (as expected for a stable configuration).
 
 ### $n=2$ Level (4-Fold Degenerate)
 
