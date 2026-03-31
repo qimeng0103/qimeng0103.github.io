@@ -133,7 +133,7 @@
   <h2>Condensed Matter Notes</h2>
   <ul class="article-list">
     <li class="article-item">
-      <span class="article-date">2026-04-01</span>
+      <span class="article-date">2026-03-31</span>
       <div>
         <div class="article-title"><a href="./condensed-matter/green-functions-quantum-transport">Green's Functions in Condensed Matter: From Equilibrium to Non-Equilibrium Quantum Transport</a></div>
         <div class="article-desc">Single-particle and many-body Green's functions, Matsubara formalism, Dyson equation, Keldysh non-equilibrium technique, and applications to quantum transport</div>
