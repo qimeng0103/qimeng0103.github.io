@@ -43,7 +43,7 @@ $$
 Due to lattice periodicity, we seek normal mode solutions of the form:
 
 $$
-u\mathbf{u}_n(t) = \mathbf{e}(\mathbf{q}) e^{i(\mathbf{q}\cdot\mathbf{R}_n^0 - \omega t)}
+\mathbf{u}_n(t) = \mathbf{e}(\mathbf{q}) e^{i(\mathbf{q}\cdot\mathbf{R}_n^0 - \omega t)}
 $$
 
 where:
@@ -160,7 +160,7 @@ Dispersion is strongest near the zone boundary where $v_p \neq v_g$.
 
 $$\omega(q) = \omega(-q) \quad \text{(time-reversal symmetry)}$$
 
-$$\omega(q + 2\pi/a) = \omega(q) \quad \text{(periodicity in reciprocal space)}$
+$$\omega(q + 2\pi/a) = \omega(q) \quad \text{(periodicity in reciprocal space)}$$
 
 ---
 
@@ -588,7 +588,7 @@ This gives two branches separated by a frequency gap (the **Reststrahlen band**)
 
 | Concept | Mathematical Result | Physical Interpretation |
 |---------|---------------------|-------------------------|
-| Monatomic dispersion | $\omega = 2\sqrt{K/M}|\sin(qa/2)|$ | Acoustic phonons, $\omega \propto q$ at small $q$ |
+| Monatomic dispersion | $\omega = 2\sqrt{K/M}\vert\sin(qa/2)\vert$ | Acoustic phonons, $\omega \propto q$ at small $q$ |
 | Diatomic dispersion | Two branches with gap | Acoustic (in-phase) and optical (out-of-phase) |
 | Sound velocity | $v_s = a\sqrt{K/M}$ or $a\sqrt{2K/(M_1+M_2)}$ | Long-wavelength limit |
 | Quantization | $[\hat{a}_q, \hat{a}_{q'}^\dagger] = \delta_{qq'}$ | Bosonic quasiparticles |
