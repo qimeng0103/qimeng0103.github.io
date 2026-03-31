@@ -62,7 +62,8 @@ export default defineConfig({
             {
               text: 'Condensed Matter Notes',
               items: [
-                { text: "Green's Functions for Quantum Transport", link: '/posts/condensed-matter/green-functions-quantum-transport' }
+                { text: "Green's Functions for Quantum Transport", link: '/posts/condensed-matter/green-functions-quantum-transport' },
+                { text: 'Phonons and Lattice Dynamics', link: '/posts/condensed-matter/phonons-lattice-dynamics' }
               ]
             }
           ]
