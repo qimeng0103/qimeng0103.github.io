@@ -261,7 +261,99 @@ E_{n,k}^{(2)} = \sum_{m \notin \mathcal{D}_n} \frac{|\langle m^{(0)} | \hat{V} |
 \end{multicols}
 
 % ============================================
-% PART III: 二级结论速查表
+% PART III: 错题与思路短路库（\en{Error & Mental Block Library}）
+% ============================================
+\newpage
+\section{错题与思路短路库}
+
+\begin{multicols}{2}
+
+\begin{errorbox}{USTC 2023 - 微扰论计算}{colback=white}
+\textbf{题目：}氢原子 $n=2$ 能级在电场中的斯塔克效应，计算一级能量修正。
+
+\textbf{我的错误：}
+直接用非简并微扰公式 $E^{(1)} = \langle 210|eEz|210\rangle = 0$，得出分裂为零的结论。
+
+\textbf{错误类型：}\key{概念性错误} — 忽略简并性
+
+\textbf{正确分析：}
+$n=2$ 是 4 重简并，必须用\key{简并微扰论}。微扰在简并子空间非对角，需要构造微扰矩阵并对角化。
+
+\textbf{教训：}
+\examnote{看到简并 $ightarrow$ 立即检查微扰是否对角！}
+
+\begin{itemize}
+    \item 先判断简并度
+    \item 构造微扰矩阵 $V_{ij} = \langle i|V|j\rangle$
+    \item 对角化求本征值
+\end{itemize}
+\end{errorbox}
+
+\begin{errorbox}{Greentop 2024 - 散射截面计算}{colback=white}
+\textbf{题目：}计算低能粒子在球方势阱中的散射截面。
+
+\textbf{我的卡壳：}
+不知道何时用 Born 近似，何时用分波法。
+
+\textbf{思路短路点：}
+混淆了 $ka \ll 1$ 和 $ka \gg 1$ 的适用条件。
+
+\textbf{决策树（必须背诵）：}
+\begin{center}
+\small
+\begin{tabular}{|c|c|}
+\hline
+条件 & 方法 \\
+\hline
+$ka \ll 1$ & 分波法，仅 s 波 \\
+$ka \gg 1$ & Born 近似 \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{快速记忆：}
+低能 $ightarrow$ 分波（\en{partial wave}）
+高能 $ightarrow$ Born（\en{Born} 首字母 B 像高能的 $\gamma$ 射线）
+\end{errorbox}
+
+\begin{thinkbox}[解题思路模板]
+\textbf{步骤 1 - 识别题型：}
+快速扫描题目关键词
+
+\textbf{步骤 2 - 选取方法：}
+根据条件选择公式
+
+\textbf{步骤 3 - 检查量纲：}
+确保答案单位正确
+
+\textbf{步骤 4 - 极限验证：}
+$\lambda \to 0$ 或 $E \to \infty$ 是否合理？
+\end{thinkbox}
+
+\begin{errorbox}{常见计算错误汇总}{colback=white}
+\textbf{1. 积分限错误}
+\begin{itemize}
+    \item 球坐标：$\theta \in [0,\pi]$，$\phi \in [0,2\pi]$
+    \item 径向：$r \in [0,\infty)$
+\end{itemize}
+
+\textbf{2. 归一化系数}
+\begin{itemize}
+    \item 氢原子：$R_{10} = 2a_0^{-3/2}e^{-r/a_0}$
+    \item 平面波：$\langle\mathbf{r}|\mathbf{k}\rangle = \frac{1}{\sqrt{V}}e^{i\mathbf{k}\cdot\mathbf{r}}$
+\end{itemize}
+
+\textbf{3. 算符次序}
+\begin{itemize}
+    \item $[\hat{x}, \hat{p}] = i\hbar$，注意是减号
+    \item 注意厄米共轭：$(AB)^\dagger = B^\dagger A^\dagger$
+\end{itemize}
+\end{errorbox}
+
+\end{multicols}
+
+% ============================================
+% PART IV: 二级结论速查表
 % ============================================
 \newpage
 \section{二级结论速查}

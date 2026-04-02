@@ -142,6 +142,24 @@ git push origin main
 % 灰色框 - 附录详细推导（放在 \appendix 部分）
 完整数学推导过程，逐步展开
 \end{derivationbox}
+
+\begin{errorbox}{题目来源 - 错误类型}{colback=white}
+% 深红色框 - 错题与思路短路（最醒目，警示性最强）
+\textbf{题目：}简述题目内容或关键词
+
+\textbf{我的错误/卡壳：}描述具体错误
+
+\textbf{错误类型：}\key{计算错误/概念错误/思路短路}
+
+\textbf{正确解法：}正确的思路或公式
+
+\textbf{教训：}\examnote{如何避免类似错误}
+\end{errorbox}
+
+\begin{thinkbox}[解题思路模板]
+% 青色框 - 解题技巧总结
+\textbf{步骤 1 - XXXX：}...
+\end{thinkbox}
 ```
 
 **英文术语标注命令：**
@@ -176,6 +194,7 @@ TeX 更新（如适用）：
 - [ ] 使用了正确的颜色框类型
 - [ ] 英文术语已用 `\en{}` 标注
 - [ ] 详细推导已添加到 Appendix（如需要）
+- [ ] **错题/思路短路已记录到 "错题与思路短路库" 章节（如适用）**
 - [ ] PDF 编译成功无错误 (`xelatex ustc-phd-prep.tex`)
 - [ ] PDF 已复制到 `docs/public/exam-prep/ustc-phd-prep.pdf`
 - [ ] about.md 中的 `Last updated` 日期已更新为当前日期
