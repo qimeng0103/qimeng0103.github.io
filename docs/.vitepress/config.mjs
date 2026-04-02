@@ -55,8 +55,9 @@ export default defineConfig({
             { 
               text: 'Quantum Mechanics Notes',
               items: [
-                { text: 'Stationary Perturbation Theory', link: '/posts/quantum-mechanics/stationary-perturbation-theory' },
-                { text: 'Time-Dependent Perturbation Theory', link: '/posts/quantum-mechanics/time-dependent-perturbation-theory' }
+                { text: 'Bound States, Resonances, and Scattering', link: '/posts/quantum-mechanics/bound-states-resonances-scattering' },
+                { text: 'Time-Dependent Perturbation Theory', link: '/posts/quantum-mechanics/time-dependent-perturbation-theory' },
+                { text: 'Stationary Perturbation Theory', link: '/posts/quantum-mechanics/stationary-perturbation-theory' }
               ]
             },
             {

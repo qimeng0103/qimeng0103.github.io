@@ -584,6 +584,9 @@ As the barrier height $V_0 \to \infty$:
 
 ### 3.1 Basic Setup and Asymptotic Behavior
 
+![Scattering Geometry](/images/qm-notes/scattering-geometry.png)
+*Figure 6: Scattering geometry showing the incident plane wave and the scattered spherical wave. The scattering amplitude $f(\theta)$ characterizes the amplitude for scattering in direction $\theta$.*
+
 Consider a particle incident on a localized potential $V(\mathbf{r})$ that vanishes as $r \to \infty$. The time-independent Schrödinger equation is:
 
 $$\left(-\frac{\hbar^2}{2\mu}\nabla^2 + V(\mathbf{r})\right)\psi(\mathbf{r}) = E\psi(\mathbf{r})$$
