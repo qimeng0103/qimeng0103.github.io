@@ -580,118 +580,270 @@ As the barrier height $V_0 \to \infty$:
 
 ---
 
-## Part III: Multi-Channel Resonance and Scattering Theory
+## Part III: Scattering Theory Fundamentals
 
-### 3.1 Double-Barrier Transmission
+### 3.1 Basic Setup and Asymptotic Behavior
 
-Consider a symmetric square well that acts as a double-barrier structure:
+Consider a particle incident on a localized potential $V(\mathbf{r})$ that vanishes as $r \to \infty$. The time-independent Schrödinger equation is:
 
-$$V(x) = \begin{cases} -V_0, & |x| < a \\ 0, & |x| > a \end{cases}$$
+$$\left(-\frac{\hbar^2}{2\mu}\nabla^2 + V(\mathbf{r})\right)\psi(\mathbf{r}) = E\psi(\mathbf{r})$$
 
-**Incident Wave Setup**
+For scattering states, $E > 0$. We define $k = \sqrt{2\mu E}/\hbar$.
 
-For $E > 0$, a wave incident from the left has the form:
+**Asymptotic Form of the Wavefunction**
 
-$$\psi(x) = \begin{cases} e^{ikx} + Re^{-ikx}, & x < -a \\ Ae^{ik'x} + Be^{-ik'x}, & |x| < a \\ Se^{ikx}, & x > a \end{cases}$$
+At large distances from the scattering center ($r \to \infty$), the wavefunction consists of two parts:
+1. The incident plane wave: $e^{ikz}$ (propagating along the $z$-direction)
+2. The scattered spherical wave: $f(\theta,\phi)\frac{e^{ikr}}{r}$
 
-where $k = \sqrt{2\mu E}/\hbar$ and $k' = \sqrt{2\mu(E+V_0)}/\hbar$.
+$$\boxed{\psi(\mathbf{r}) \xrightarrow{r\to\infty} e^{ikz} + f(\theta,\phi)\frac{e^{ikr}}{r}}$$
 
-**Matching at $x = -a$**
+The scattering amplitude $f(\theta,\phi)$ contains all information about the scattering process.
 
-Continuity of $\psi$:
-$$e^{-ika} + Re^{ika} = Ae^{-ik'a} + Be^{ik'a}$$
+**Physical Interpretation:**
+- The factor $e^{ikr}/r$ represents an outgoing spherical wave (conservation of probability flux requires the $1/r$ dependence)
+- The scattering amplitude $f(\theta,\phi)$ gives the amplitude for scattering in direction $(\theta,\phi)$
 
-Continuity of $\psi'$:
-$$ike^{-ika} - ike^{ika} = ik'Ae^{-ik'a} - ik'Be^{ik'a}$$
+### 3.2 Cross Sections
 
-**Matching at $x = a$**
+**Probability Current Density**
 
-Continuity of $\psi$:
-$$Ae^{ik'a} + Be^{-ik'a} = Se^{ika}$$
+The quantum mechanical probability current is:
+$$\mathbf{j} = \frac{\hbar}{2\mu i}(\psi^*\nabla\psi - \psi\nabla\psi^*)$$
 
-Continuity of $\psi'$:
-$$ik'Ae^{ik'a} - ik'Be^{-ik'a} = ikSe^{ika}$$
+For the incident plane wave $\psi_{\text{inc}} = e^{ikz}$:
+$$\mathbf{j}_{\text{inc}} = \frac{\hbar k}{\mu}\hat{\mathbf{z}} = v\hat{\mathbf{z}}$$
 
-**Solving for Transmission Amplitude**
+where $v = \hbar k/\mu$ is the particle velocity.
 
-After algebraic manipulation (eliminating $A$, $B$, and $R$):
+For the scattered wave $\psi_{\text{sc}} = f(\theta,\phi)\frac{e^{ikr}}{r}$:
+$$\mathbf{j}_{\text{sc}} \cdot \hat{\mathbf{r}} = \frac{\hbar k}{\mu}\frac{|f(\theta,\phi)|^2}{r^2} = v\frac{|f(\theta,\phi)|^2}{r^2}$$
 
-$$Se^{2ika} = \left[\cos(2k'a) - \frac{i}{2}\left(\frac{k}{k'} + \frac{k'}{k}\right)\sin(2k'a)\right]^{-1}$$
+**Differential Cross Section**
 
-**Transmission Coefficient**
+The differential cross section is defined as the ratio of scattered flux per unit solid angle to incident flux:
 
-$$T = |S|^2 = \left[1 + \frac{V_0^2}{4E(E+V_0)}\sin^2(2k'a)\right]^{-1}$$
+$$\frac{d\sigma}{d\Omega} = \frac{r^2 \mathbf{j}_{\text{sc}} \cdot \hat{\mathbf{r}}}{|\mathbf{j}_{\text{inc}}|} = |f(\theta,\phi)|^2$$
 
-**Resonance Condition**
+$$\boxed{\frac{d\sigma}{d\Omega} = |f(\theta,\phi)|^2}$$
 
-When $\sin(2k'a) = 0$, i.e., $2k'a = n\pi$:
-$$T = 1$$
+**Total Cross Section**
 
-**Resonance Energies**
+$$\sigma_{\text{tot}} = \int |f(\theta,\phi)|^2 d\Omega = \int_0^{2\pi}d\phi \int_0^{\pi}d\theta \sin\theta |f(\theta,\phi)|^2$$
 
-$$E_n = -V_0 + \frac{\pi^2\hbar^2}{8\mu a^2}n^2$$
+### 3.3 Optical Theorem
 
-For small $n$ where $E_n < 0$, these are bound states. For large $n$ where $E_n > 0$, these are resonance states.
+**Derivation**
 
-### 3.2 Partial Wave Analysis
+From probability conservation (continuity equation), the total flux into a large sphere must equal the total flux out. The interference between incident and scattered waves in the forward direction leads to a relationship between the total cross section and the forward scattering amplitude.
 
-For scattering from a central potential, the plane wave can be expanded in spherical harmonics:
+Consider a large sphere of radius $R$. The net flux through the surface is:
+$$\oint \mathbf{j} \cdot d\mathbf{A} = 0$$
 
-$$e^{ikz} = \sum_{l=0}^{\infty}(2l+1)i^j j_l(kr)P_l(\cos\theta)$$
+Breaking this into incident, scattered, and interference terms, and using the fact that the incident flux through a closed surface is zero, we obtain:
 
-**Asymptotic Behavior**
+$$\sigma_{\text{tot}} = \frac{4\pi}{k}\text{Im}[f(0)]$$
 
-At large $r$, using $j_l(kr) \sim \sin(kr - l\pi/2)/(kr)$:
+$$\boxed{\sigma_{\text{tot}} = \frac{4\pi}{k}\text{Im}f(0)}$$
 
-$$e^{ikz} \xrightarrow{r\to\infty} \sum_{l=0}^{\infty}(2l+1)i^l \frac{\sin(kr - l\pi/2)}{kr}P_l(\cos\theta)$$
+where $f(0)$ is the scattering amplitude in the forward direction ($\theta = 0$).
 
-**Scattered Wavefunction**
+**Physical Interpretation:** The total cross section (which includes scattering in all directions) is proportional to the imaginary part of the forward scattering amplitude. This arises because the scattered wave in the forward direction interferes with the incident wave, depleting the beam.
 
-The full wavefunction including scattering:
+### 3.4 Partial Wave Expansion
+
+For central potentials $V(r)$, the scattering amplitude depends only on $\theta$ (not $\phi$), and we can expand in Legendre polynomials.
+
+**Expansion of Plane Wave**
+
+A plane wave can be expanded in spherical waves:
+
+$$e^{ikz} = \sum_{l=0}^{\infty}(2l+1)i^l j_l(kr)P_l(\cos\theta)$$
+
+where $j_l(kr)$ are spherical Bessel functions and $P_l(\cos\theta)$ are Legendre polynomials.
+
+**Asymptotic Behavior of Spherical Bessel Functions**
+
+As $r \to \infty$:
+$$j_l(kr) \xrightarrow{r\to\infty} \frac{\sin(kr - l\pi/2)}{kr} = \frac{1}{2ikr}\left[e^{i(kr-l\pi/2)} - e^{-i(kr-l\pi/2)}\right]$$
+
+So the plane wave becomes:
+$$e^{ikz} \xrightarrow{r\to\infty} \sum_{l=0}^{\infty}\frac{(2l+1)i^l}{2ikr}P_l(\cos\theta)\left[e^{i(kr-l\pi/2)} - e^{-i(kr-l\pi/2)}\right]$$
+
+**Partial Wave Expansion of Scattered Wave**
+
+For each partial wave (angular momentum $l$), the effect of the potential is to introduce a phase shift $\delta_l$. The asymptotic form of the radial wave function for each $l$ is:
+
+$$\frac{u_l(r)}{r} \xrightarrow{r\to\infty} \frac{1}{kr}\sin(kr - l\pi/2 + \delta_l)$$
+
+Comparing with the free particle case ($\delta_l = 0$), we see that $\delta_l$ represents the phase shift introduced by the potential.
+
+**Scattering Amplitude**
+
+The total wavefunction is:
+$$\psi(\mathbf{r}) = \sum_{l=0}^{\infty}\frac{u_l(r)}{r}P_l(\cos\theta)$$
+
+Matching the asymptotic form:
 $$\psi(\mathbf{r}) \xrightarrow{r\to\infty} e^{ikz} + f(\theta)\frac{e^{ikr}}{r}$$
 
-**Partial Wave Expansion**
+we obtain:
 
-$$f(\theta) = \sum_{l=0}^{\infty}(2l+1)f_l P_l(\cos\theta)$$
+$$f(\theta) = \sum_{l=0}^{\infty}(2l+1)\frac{e^{2i\delta_l}-1}{2ik}P_l(\cos\theta)$$
 
-**Partial Wave Amplitude**
+Defining the partial wave amplitude:
+$$\boxed{f_l = \frac{e^{2i\delta_l}-1}{2ik} = \frac{1}{k\cot\delta_l - ik} = \frac{e^{i\delta_l}\sin\delta_l}{k}}$$
 
-$$f_l = \frac{e^{2i\delta_l} - 1}{2ik} = \frac{1}{k\cot\delta_l - ik}$$
+The full scattering amplitude is:
+$$\boxed{f(\theta) = \sum_{l=0}^{\infty}(2l+1)f_l P_l(\cos\theta) = \frac{1}{k}\sum_{l=0}^{\infty}(2l+1)e^{i\delta_l}\sin\delta_l P_l(\cos\theta)}$$
 
-where $\delta_l$ is the phase shift for angular momentum $l$.
+### 3.5 Partial Wave Cross Sections
 
-**Total Cross-Section**
+**Total Cross Section**
 
-$$\sigma_{\text{tot}} = \int|f(\theta)|^2d\Omega = \frac{4\pi}{k^2}\sum_{l=0}^{\infty}(2l+1)\sin^2\delta_l$$
+Using the orthogonality of Legendre polynomials:
+$$\int_{-1}^{1}P_l(x)P_{l'}(x)dx = \frac{2}{2l+1}\delta_{ll'}$$
 
-This is the partial wave expansion of the total cross-section.
+The total cross section becomes:
+$$\sigma_{\text{tot}} = \int |f(\theta)|^2 d\Omega = 2\pi \int_{-1}^{1}|f(\theta)|^2 d(\cos\theta)$$
 
-### 3.3 Low-Energy Scattering and Scattering Length
+$$= 2\pi \sum_{l=0}^{\infty}(2l+1)^2|f_l|^2 \cdot \frac{2}{2l+1}$$
 
-At low energies where $ka \ll 1$, only s-wave ($l = 0$) contributes significantly to scattering.
+$$\boxed{\sigma_{\text{tot}} = \frac{4\pi}{k^2}\sum_{l=0}^{\infty}(2l+1)\sin^2\delta_l}$$
+
+**Partial Wave Cross Section**
+
+For each angular momentum $l$:
+$$\boxed{\sigma_l = \frac{4\pi}{k^2}(2l+1)\sin^2\delta_l}$$
+
+**Maximum Value (Unitarity Bound)**
+
+Since $\sin^2\delta_l \leq 1$:
+$$\boxed{\sigma_l^{\text{max}} = \frac{4\pi}{k^2}(2l+1)}$$
+
+This maximum is achieved when $\delta_l = \pi/2$ (modulo $\pi$).
+
+### 3.6 Low-Energy Scattering: s-Wave Dominance
+
+At low energies where $ka \ll 1$ (where $a$ is the range of the potential), higher partial waves ($l \geq 1$) are suppressed.
+
+**Effective Potential Analysis**
+
+The radial equation includes an effective centrifugal barrier:
+$$V_{\text{eff}}(r) = V(r) + \frac{\hbar^2 l(l+1)}{2\mu r^2}$$
+
+For $l \geq 1$, the centrifugal term $\sim \hbar^2 l(l+1)/(2\mu r^2)$ prevents the particle from reaching small $r$. At low energies, the particle does not have enough energy to overcome this barrier, so scattering is dominated by s-wave ($l = 0$).
+
+**Condition for s-Wave Dominance**
+
+The centrifugal barrier is significant when:
+$$\frac{\hbar^2 l(l+1)}{2\mu a^2} \gtrsim E = \frac{\hbar^2 k^2}{2\mu}$$
+
+For $l = 1$:
+$$ka \lesssim \sqrt{2}$$
+
+In practice, for $ka \ll 1$, only s-wave contributes significantly.
+
+### 3.7 Scattering Length and Effective Range
 
 **Scattering Length Definition**
 
-The s-wave scattering length $a_s$ is defined by:
-$$\lim_{k\to 0} k\cot\delta_0 = -\frac{1}{a_s}$$
+For s-wave scattering at low energies, we define the scattering length $a_s$ by the expansion:
+
+$$\boxed{k\cot\delta_0 = -\frac{1}{a_s} + \frac{1}{2}r_e k^2 + O(k^4)}$$
+
+where $r_e$ is the effective range.
+
+At very low energies ($k \to 0$):
+$$k\cot\delta_0 \xrightarrow{k\to 0} -\frac{1}{a_s}$$
 
 **Low-Energy Scattering Amplitude**
 
-$$f_0 = \frac{1}{k\cot\delta_0 - ik} \xrightarrow{k\to 0} \frac{1}{-1/a_s - ik} \xrightarrow{k\to 0} -a_s$$
+$$f_0 = \frac{1}{k\cot\delta_0 - ik} = \frac{1}{-1/a_s - ik} = -\frac{a_s}{1 + ika_s}$$
 
-**Low-Energy Cross-Section**
+For $ka_s \ll 1$:
+$$\boxed{f_0 \approx -a_s}$$
 
-$$\sigma_0 = 4\pi|f_0|^2 \xrightarrow{k\to 0} 4\pi a_s^2$$
+**Low-Energy Cross Section**
 
-**Connection to Bound States**
+$$\boxed{\sigma_0 = 4\pi|f_0|^2 \approx 4\pi a_s^2}$$
 
-If the potential supports a weakly bound state with energy $E_b = -\hbar^2\beta^2/(2\mu)$, the scattering length is:
+This is isotropic (independent of angle) because only s-wave contributes.
+
+### 3.8 Connection Between Scattering Length and Bound States
+
+**Weakly Bound State**
+
+If the potential supports a weakly bound s-state with binding energy $E_b = -\hbar^2\beta^2/(2\mu)$ where $\beta \ll 1/a$, the scattering length is:
 
 $$\boxed{a_s = \frac{1}{\beta} = \frac{\hbar}{\sqrt{-2\mu E_b}}}$$
 
-**Physical Interpretation:** The scattering length measures the spatial extent of the bound state. For a loosely bound state (small $|E_b|$), the scattering length is large, leading to a large low-energy cross-section. This explains why low-energy nucleon-nucleon scattering has a large cross-section—the deuteron is a very loosely bound state.
+**Derivation**
 
-### 3.4 Levinson's Theorem
+For a bound state at $E = -\hbar^2\beta^2/(2\mu) < 0$, the radial wavefunction outside the potential is $u(r) \propto e^{-\beta r}$.
+
+The logarithmic derivative at the boundary is:
+$$\frac{u'}{u}\bigg|_{r=a} = -\beta$$
+
+Matching to the scattering solution, this corresponds to a pole in the scattering amplitude at imaginary $k = i\beta$. The condition for a pole in the s-wave amplitude:
+
+$$k\cot\delta_0 = ik$$
+
+At $k = i\beta$:
+$$i\beta\cot\delta_0(i\beta) = i(i\beta) = -\beta$$
+
+$$\cot\delta_0(i\beta) = -1$$
+
+Using the effective range expansion at low energy:
+$$k\cot\delta_0 \approx -\frac{1}{a_s}$$
+
+For a weakly bound state where the bound state pole is close to threshold:
+$$-\frac{1}{a_s} \approx -\beta$$
+
+$$a_s \approx \frac{1}{\beta}$$
+
+**Physical Interpretation:**
+
+The scattering length measures the "size" of the bound state. For a loosely bound state (small binding energy $\Rightarrow$ small $\beta$), the scattering length is large, leading to a large low-energy cross-section. This is why low-energy nucleon-nucleon scattering has a large cross-section—the deuteron is a very loosely bound state with binding energy only 2.2 MeV.
+
+**Sign of Scattering Length:**
+
+- $a_s > 0$: Potential is attractive enough to support a bound state (or nearly so)
+- $a_s < 0$: Potential is attractive but not strong enough for a bound state
+- $a_s \to \pm\infty$: Zero-energy resonance (bound state exactly at threshold)
+
+### 3.9 Born Approximation
+
+**First Born Approximation**
+
+For weak potentials or high energies, we can treat the scattering perturbatively. The first Born approximation gives:
+
+$$\boxed{f_B(\mathbf{k}',\mathbf{k}) = -\frac{\mu}{2\pi\hbar^2}\int e^{-i\mathbf{q}\cdot\mathbf{r}'}V(\mathbf{r}')d^3r'}$$
+
+where $\mathbf{q} = \mathbf{k}' - \mathbf{k}$ is the momentum transfer.
+
+For a spherically symmetric potential:
+$$\boxed{f_B(\theta) = -\frac{2\mu}{\hbar^2 q}\int_0^{\infty}rV(r)\sin(qr)dr}$$
+
+where $q = 2k\sin(\theta/2)$.
+
+**Validity Condition**
+
+The Born approximation is valid when the scattered wave is much smaller than the incident wave. This requires:
+
+$$\frac{\mu}{\hbar^2 k}\int_0^{\infty}|V(r)|dr \ll 1$$
+
+or equivalently:
+$$ka \gg \frac{\mu|V|a^2}{\hbar^2}$$
+
+For a potential of strength $V_0$ and range $a$, this is roughly:
+$$ka \gg \frac{\mu V_0 a^2}{\hbar^2}$$
+
+**Comparison with Partial Wave Method:**
+
+- Born approximation: Good for high energies ($ka \gg 1$) and weak potentials
+- Partial wave method: Good for low energies ($ka \ll 1$) where only a few partial waves contribute
+
+### 3.10 Levinson's Theorem
 
 ![Levinson's Theorem](/images/qm-notes/levinson-theorem.png)
 *Figure 5: Illustration of Levinson's theorem showing the difference in zero-energy phase shifts for potentials with and without bound states. Each bound state contributes $\pi$ to $\delta_0(0)$.*
@@ -705,7 +857,11 @@ where $n_l$ is the number of bound states with angular momentum $l$.
 
 **Proof Outline**
 
-Consider the Jost function $f_l(k)$, which is analytic in the upper half of the complex $k$-plane. Bound states correspond to zeros of $f_l(k)$ on the positive imaginary axis at $k_n = i\kappa_n$.
+Consider the Jost function $f_l(k)$, which is analytic in the upper half of the complex $k$-plane. The Jost function is defined such that the regular solution of the radial Schrödinger equation behaves as:
+
+$$u_l(r) \xrightarrow{r\to\infty} \frac{1}{2}\left[f_l(k)e^{i(kr-l\pi/2)} - f_l^*(k)e^{-i(kr-l\pi/2)}\right]$$
+
+Bound states correspond to zeros of $f_l(k)$ on the positive imaginary axis at $k_n = i\kappa_n$ (where $E_n = -\hbar^2\kappa_n^2/2\mu < 0$).
 
 The phase shift is related to the argument of the Jost function:
 $$\delta_l(k) = -\arg f_l(k)$$
@@ -720,66 +876,79 @@ $$n_l = \frac{1}{\pi}[\delta_l(0) - \delta_l(\infty)] = \frac{\delta_l(0)}{\pi}$
 Therefore:
 $$\delta_l(0) = n_l\pi$$
 
-**Physical Significance**
+**Physical Significance:**
 - Each bound state contributes $\pi$ to the zero-energy phase shift
 - The phase shift encodes information about the discrete spectrum
 - For attractive potentials that support bound states, $\delta_0(0) > 0$
 
-### 3.5 Bound States as Poles of the Scattering Amplitude
+**Example:**
+- Square well with no bound state: $\delta_0(0) = 0$
+- Square well with one bound state: $\delta_0(0) = \pi$
 
-**Key Insight:** Bound state energies correspond to poles of the scattering amplitude in the complex momentum plane.
+### 3.11 Resonant Scattering
 
-For s-wave scattering:
-$$f_0(k) = \frac{1}{k\cot\delta_0 - ik}$$
+**Phase Shift Near Resonance**
 
-**Pole Condition**
+When there is a resonance at energy $E_r$ with width $\Gamma$, the phase shift behaves as:
 
-A pole occurs when:
-$$k\cot\delta_0 = ik$$
-
-For a bound state, the energy is negative: $E = -|E| < 0$, so:
-$$k = \frac{\sqrt{2\mu E}}{\hbar} = i\frac{\sqrt{2\mu|E|}}{\hbar} = i\beta$$
-
-where $\beta > 0$.
-
-At $k = i\beta$:
-$$i\beta\cot\delta_0(i\beta) = i(i\beta) = -\beta$$
-
-$$\cot\delta_0(i\beta) = i$$
-
-This condition is satisfied for potentials that support bound states. The residue of the pole is related to the normalization of the bound state wavefunction.
-
-**Resonances as Poles**
-
-Resonances correspond to poles in the complex $k$-plane near the real axis (in the lower half-plane for decaying states with the physical sheet choice). The proximity to the real axis determines the width $\Gamma$.
-
-### 3.6 Unitarity Bound and Resonant Scattering
-
-**Optical Theorem**
-
-From probability conservation:
-$$\sigma_{\text{tot}} = \frac{4\pi}{k}\text{Im}f(0)$$
-
-**Partial Wave Unitarity**
-
-For a single partial wave, the maximum cross-section occurs when $\sin^2\delta_l = 1$ (i.e., $\delta_l = \pi/2$):
-
-$$\sigma_l^{\text{max}} = \frac{4\pi}{k^2}(2l+1)$$
-
-This is called the **unitarity limit**.
-
-**Resonant Scattering**
-
-Near a resonance, the phase shift behaves as:
 $$\tan\delta_l(E) = \frac{\Gamma/2}{E_r - E}$$
 
-At $E = E_r$:
-$$\delta_l = \frac{\pi}{2}$$
+or equivalently:
+$$\delta_l(E) = \tan^{-1}\left(\frac{\Gamma/2}{E_r - E}\right)$$
 
-The cross-section reaches its maximum value:
-$$\sigma_l(E_r) = \frac{4\pi}{k^2}(2l+1)$$
+**Behavior at Resonance:**
+- At $E \ll E_r$: $\delta_l \approx 0$
+- At $E = E_r$: $\delta_l = \pi/2$
+- At $E \gg E_r$: $\delta_l \approx \pi$
 
-The rapid change of the phase shift by $\pi$ as energy passes through $E_r$ is the hallmark of resonant scattering.
+The phase shift increases rapidly by $\pi$ as energy passes through the resonance.
+
+**Cross Section at Resonance**
+
+At $E = E_r$ where $\delta_l = \pi/2$:
+$$\sigma_l(E_r) = \frac{4\pi}{k^2}(2l+1)\sin^2(\pi/2) = \frac{4\pi}{k^2}(2l+1)$$
+
+This is the **unitarity limit**—the maximum possible cross section for that partial wave.
+
+**Physical Interpretation:**
+
+At resonance, the particle is temporarily trapped in a quasi-bound state, leading to a large scattering probability. The rapid change in phase shift by $\pi$ is the signature of resonance.
+
+### 3.12 Unitarity Bound and General Properties
+
+**Optical Theorem Revisited**
+
+From the partial wave expansion:
+$$f(0) = \frac{1}{k}\sum_{l=0}^{\infty}(2l+1)e^{i\delta_l}\sin\delta_l$$
+
+Taking the imaginary part:
+$$\text{Im}f(0) = \frac{1}{k}\sum_{l=0}^{\infty}(2l+1)\sin^2\delta_l$$
+
+Comparing with the total cross section:
+$$\sigma_{\text{tot}} = \frac{4\pi}{k^2}\sum_{l=0}^{\infty}(2l+1)\sin^2\delta_l = \frac{4\pi}{k}\text{Im}f(0)$$
+
+This confirms the optical theorem derived earlier.
+
+**Maximum Cross Section**
+
+For any given partial wave, the maximum contribution to the cross section is achieved when $\sin^2\delta_l = 1$, i.e., $\delta_l = \pi/2$.
+
+$$\boxed{\sigma_l^{\text{max}} = \frac{4\pi}{k^2}(2l+1)}$$
+
+This is called the **unitarity bound** because it follows from the unitarity of the S-matrix (conservation of probability).
+
+**S-Matrix Formulation**
+
+The S-matrix for each partial wave is:
+$$S_l = e^{2i\delta_l}$$
+
+Unitarity requires $|S_l| = 1$, which is automatically satisfied by this form.
+
+The relationship to the scattering amplitude:
+$$f_l = \frac{S_l - 1}{2ik}$$
+
+The total cross section can be written as:
+$$\sigma_{\text{tot}} = \frac{\pi}{k^2}\sum_{l=0}^{\infty}(2l+1)|S_l - 1|^2$$
 
 ---
 
@@ -793,26 +962,38 @@ The rapid change of the phase shift by $\pi$ as energy passes through $E_r$ is t
 | 1D (semi-infinite) | Requires $8\mu V_0 a^2 > \pi^2\hbar^2$ |
 | 3D (spherical well) | Requires $8\mu V_0 a^2 > \pi^2\hbar^2$ |
 
-### Key Equations
+### Resonance Phenomena
 
-**Matching Conditions:**
-- Even parity (1D symmetric well): $k\tan(ka) = \kappa$
-- Odd parity (1D symmetric well): $-k\cot(ka) = \kappa$
+- **Breit-Wigner formula:** $T(E) = \frac{\Gamma^2/4}{(E-E_r)^2 + \Gamma^2/4}$
+- **Lifetime-width relation:** $\tau = \hbar/\Gamma$
+- **Phase shift near resonance:** $\tan\delta = \frac{\Gamma/2}{E_r - E}$
 
-**Delta Potential:**
-- Energy: $E = -\frac{\mu\gamma^2}{2\hbar^2}$
-- Wavefunction: $\psi(x) = \sqrt{\frac{\mu\gamma}{\hbar^2}}e^{-\mu\gamma|x|/\hbar^2}$
+### Scattering Theory
 
-**Resonance Phenomena:**
-- Breit-Wigner formula: $T(E) = \frac{\Gamma^2/4}{(E-E_r)^2 + \Gamma^2/4}$
-- Lifetime-width relation: $\tau = \hbar/\Gamma$
-- Phase shift near resonance: $\tan\delta = \frac{\Gamma/2}{E_r - E}$
+**Basic Definitions:**
+- Scattering amplitude: $f(\theta,\phi)$ defined by $\psi \xrightarrow{r\to\infty} e^{ikz} + f(\theta,\phi)\frac{e^{ikr}}{r}$
+- Differential cross section: $\frac{d\sigma}{d\Omega} = |f(\theta,\phi)|^2$
+- Total cross section: $\sigma_{\text{tot}} = \int |f|^2 d\Omega$
+- Optical theorem: $\sigma_{\text{tot}} = \frac{4\pi}{k}\text{Im}f(0)$
 
-**Scattering Theory:**
-- Scattering length: $a_s = -\lim_{k\to 0}f_0(k)$
-- Low-energy cross-section: $\sigma_0 = 4\pi a_s^2$
-- Levinson's theorem: $\delta_l(0) = n_l\pi$
-- Unitarity limit: $\sigma_l^{\text{max}} = \frac{4\pi(2l+1)}{k^2}$
+**Partial Wave Analysis:**
+- Partial wave amplitude: $f_l = \frac{e^{2i\delta_l}-1}{2ik} = \frac{e^{i\delta_l}\sin\delta_l}{k}$
+- Scattering amplitude: $f(\theta) = \sum_{l=0}^{\infty}(2l+1)f_l P_l(\cos\theta)$
+- Total cross section: $\sigma_{\text{tot}} = \frac{4\pi}{k^2}\sum_{l=0}^{\infty}(2l+1)\sin^2\delta_l$
+- Unitarity bound: $\sigma_l^{\text{max}} = \frac{4\pi(2l+1)}{k^2}$
+
+**Low-Energy Scattering:**
+- Scattering length: $k\cot\delta_0 \xrightarrow{k\to 0} -\frac{1}{a_s}$
+- Low-energy amplitude: $f_0 \approx -a_s$
+- Low-energy cross section: $\sigma_0 \approx 4\pi a_s^2$
+- Connection to bound states: $a_s = \frac{\hbar}{\sqrt{-2\mu E_b}}$ (for weakly bound states)
+
+**Levinson's Theorem:**
+- $\delta_l(0) = n_l\pi$ where $n_l$ is the number of bound states
+
+**Born Approximation:**
+- $f_B(\mathbf{k}',\mathbf{k}) = -\frac{\mu}{2\pi\hbar^2}\int e^{-i\mathbf{q}\cdot\mathbf{r}'}V(\mathbf{r}')d^3r'$
+- Valid for weak potentials and high energies
 
 ### Unified Picture
 
