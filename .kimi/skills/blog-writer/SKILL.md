@@ -76,6 +76,32 @@ my-blog/
 
 当 Blog 文章包含适合考试复习的内容时，提取核心信息到 `tex/exam-prep/ustc-phd-prep.tex`：
 
+**完整工作流程：**
+
+```bash
+# Step 1: 编辑 tex 文件
+cd tex/exam-prep
+vim ustc-phd-prep.tex  # 添加新内容到对应章节
+
+# Step 2: 编译 PDF
+xelatex ustc-phd-prep.tex
+# 如有交叉引用，需编译两次：
+# xelatex ustc-phd-prep.tex && xelatex ustc-phd-prep.tex
+
+# Step 3: 复制 PDF 到网站目录
+cp ustc-phd-prep.pdf ../../docs/public/exam-prep/
+
+# Step 4: 更新 about.md 中的日期
+cd ../..
+date=$(date +%Y-%m-%d)
+# 修改 docs/about.md 中的 "Last updated: YYYY-MM-DD"
+
+# Step 5: Git 提交
+git add docs/about.md docs/public/exam-prep/ustc-phd-prep.tex tex/exam-prep/ustc-phd-prep.tex
+git commit -m "tex: add XXX content and update PDF (updated: $date)"
+git push origin main
+```
+
 **提取原则：**
 - **正文部分（双栏）：** 核心公式、解题套路、二级结论、快速识别方法
 - **附录部分：** 完整推导、详细理解、长难推导过程
@@ -150,7 +176,9 @@ TeX 更新（如适用）：
 - [ ] 使用了正确的颜色框类型
 - [ ] 英文术语已用 `\en{}` 标注
 - [ ] 详细推导已添加到 Appendix（如需要）
-- [ ] PDF 编译成功无错误
+- [ ] PDF 编译成功无错误 (`xelatex ustc-phd-prep.tex`)
+- [ ] PDF 已复制到 `docs/public/exam-prep/ustc-phd-prep.pdf`
+- [ ] about.md 中的 `Last updated` 日期已更新为当前日期
 
 Git：
 - [ ] 提交信息清晰描述更改（如 "blog: add Bloch theorem; tex: add to model section"）
