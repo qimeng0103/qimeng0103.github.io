@@ -113,10 +113,10 @@
   <h2>Quantum Mechanics Notes</h2>
   <ul class="article-list">
     <li class="article-item">
-      <span class="article-date">2026-03-30</span>
+      <span class="article-date">2026-04-02</span>
       <div>
-        <div class="article-title"><a href="./quantum-mechanics/stationary-perturbation-theory">Stationary Perturbation Theory: Non-Degenerate vs Degenerate Cases</a></div>
-        <div class="article-desc">Complete derivation of energy corrections up to third order and wavefunction corrections up to second order for non-degenerate perturbation theory, with detailed discussion of degenerate case</div>
+        <div class="article-title"><a href="./quantum-mechanics/bound-states-resonances-scattering">Bound States, Resonances, and Scattering: Three Pillars of Quantum Mechanics</a></div>
+        <div class="article-desc">Existence conditions for bound states in 1D/3D potentials, resonance states and the Breit-Wigner formula, scattering theory with partial wave analysis and Levinson's theorem</div>
       </div>
     </li>
     <li class="article-item">
@@ -124,6 +124,13 @@
       <div>
         <div class="article-title"><a href="./quantum-mechanics/time-dependent-perturbation-theory">Time-Dependent Perturbation Theory: From Fermi's Golden Rule to Linear Response</a></div>
         <div class="article-desc">Interaction picture, Dyson series, Fermi's Golden Rule, scattering theory with Lippmann-Schwinger equation, and linear response theory with Kubo formula</div>
+      </div>
+    </li>
+    <li class="article-item">
+      <span class="article-date">2026-03-30</span>
+      <div>
+        <div class="article-title"><a href="./quantum-mechanics/stationary-perturbation-theory">Stationary Perturbation Theory: Non-Degenerate vs Degenerate Cases</a></div>
+        <div class="article-desc">Complete derivation of energy corrections up to third order and wavefunction corrections up to second order for non-degenerate perturbation theory, with detailed discussion of degenerate case</div>
       </div>
     </li>
   </ul>
