@@ -65,7 +65,9 @@ my-blog/
      xelatex ustc-phd-prep.tex              # 编译生成 PDF
      cp ustc-phd-prep.pdf ../../docs/public/exam-prep/  # 复制到网站目录
      ```
-   - **更新 about.md 中的日期：** 修改 `Last updated: YYYY-MM-DD` 为当前日期
+   - **更新 about.md：**
+     - 修改 `Last updated: YYYY-MM-DD` 为当前日期
+     - **检查并更新内容介绍**（如新增章节，需要在 Contents 列表中添加）
    - 确保 PDF 下载链接 `/exam-prep/ustc-phd-prep.pdf` 可正常访问
 
 ### Blog 文章格式规范

@@ -91,10 +91,12 @@ xelatex ustc-phd-prep.tex
 # Step 3: 复制 PDF 到网站目录
 cp ustc-phd-prep.pdf ../../docs/public/exam-prep/
 
-# Step 4: 更新 about.md 中的日期
+# Step 4: 更新 about.md 中的日期和内容介绍
 cd ../..
 date=$(date +%Y-%m-%d)
-# 修改 docs/about.md 中的 "Last updated: YYYY-MM-DD"
+# 修改 docs/about.md 中的:
+#   - "Last updated: YYYY-MM-DD" 日期
+#   - "Contents:" 部分的内容介绍（如新增章节）
 
 # Step 5: Git 提交
 git add docs/about.md docs/public/exam-prep/ustc-phd-prep.tex tex/exam-prep/ustc-phd-prep.tex
@@ -197,6 +199,7 @@ TeX 更新（如适用）：
 - [ ] **错题/思路短路已记录到 "错题与思路短路库" 章节（如适用）**
 - [ ] PDF 编译成功无错误 (`xelatex ustc-phd-prep.tex`)
 - [ ] PDF 已复制到 `docs/public/exam-prep/ustc-phd-prep.pdf`
+- [ ] **about.md 中的内容介绍已更新（如新增章节）**
 - [ ] about.md 中的 `Last updated` 日期已更新为当前日期
 
 Git：
