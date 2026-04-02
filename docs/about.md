@@ -210,6 +210,21 @@ My research focuses on theoretical and computational condensed matter physics, w
 
 **Programming Languages:** Python, Julia, Mathematica, MATLAB
 
+## Exam Preparation Materials
+
+**USTC PhD Physics Exam Prep** — Personal study notes for the Chinese Academy of Sciences (University of Science and Technology of China) Physics Ph.D. entrance examination.
+
+📄 [Download PDF](/exam-prep/ustc-phd-prep.pdf) *(Last updated: 2024-04-02)*
+
+**Contents:**
+- Core physical models with quick recognition guides
+- Stationary perturbation theory (non-degenerate & degenerate)
+- Problem-solving techniques and decision trees
+- Secondary conclusions and quick-reference formulas
+- Detailed derivations in appendix
+
+**Format:** Chinese main text with English terminology notes, Beamer-style colored boxes for high-density review
+
 ## Contact
 
 - **Email:** [mengq8@mail2.sysu.edu.cn](mailto:mengq8@mail2.sysu.edu.cn)
