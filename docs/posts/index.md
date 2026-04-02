@@ -140,6 +140,13 @@
   <h2>Condensed Matter Notes</h2>
   <ul class="article-list">
     <li class="article-item">
+      <span class="article-date">2026-04-03</span>
+      <div>
+        <div class="article-title"><a href="./condensed-matter/spontaneous-symmetry-breaking">Spontaneous Symmetry Breaking: From Functional Calculus to Goldstone Modes</a></div>
+        <div class="article-desc">Functional differentiation vs ordinary calculus, spontaneous symmetry breaking in condensed matter, Goldstone's theorem, and order parameter physics</div>
+      </div>
+    </li>
+    <li class="article-item">
       <span class="article-date">2026-04-02</span>
       <div>
         <div class="article-title"><a href="./condensed-matter/metal-electron-theory-fermi-statistics-transport">Metal Electron Theory: From Fermi Statistics to Transport Properties</a></div>

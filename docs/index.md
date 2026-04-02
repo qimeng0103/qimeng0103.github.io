@@ -209,6 +209,14 @@ hero:
   <h2>Recent Articles</h2>
   
   <div class="article-entry">
+    <div class="article-date">2026-04-03</div>
+    <div class="article-info">
+      <h3><a href="/posts/condensed-matter/spontaneous-symmetry-breaking">Spontaneous Symmetry Breaking and Functional Calculus</a></h3>
+      <p>Functional differentiation vs ordinary calculus, Goldstone's theorem, and order parameter physics</p>
+    </div>
+  </div>
+  
+  <div class="article-entry">
     <div class="article-date">2026-04-02</div>
     <div class="article-info">
       <h3><a href="/posts/condensed-matter/metal-electron-theory-fermi-statistics-transport">Metal Electron Theory: Fermi Statistics and Transport</a></h3>
@@ -237,14 +245,6 @@ hero:
     <div class="article-info">
       <h3><a href="/posts/condensed-matter/phonons-lattice-dynamics">Phonons and Lattice Dynamics</a></h3>
       <p>Classical and quantum treatment of lattice vibrations, acoustic and optical phonons</p>
-    </div>
-  </div>
-  
-  <div class="article-entry">
-    <div class="article-date">2026-03-31</div>
-    <div class="article-info">
-      <h3><a href="/posts/condensed-matter/green-functions-quantum-transport">Green's Functions for Quantum Transport</a></h3>
-      <p>Single-particle and many-body Green's functions, Matsubara formalism, Dyson equation</p>
     </div>
   </div>
   
