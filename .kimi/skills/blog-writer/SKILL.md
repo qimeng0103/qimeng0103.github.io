@@ -205,7 +205,7 @@ Blog 更新：
 - [ ] 文章已保存到 `docs/posts/{category}/article-slug.md`
 - [ ] 文章开头包含日期、标签、分类信息（英文）
 - [ ] **主页 `docs/index.md` 的 Recent Articles 已更新**
-- [ ] **文章列表页 `docs/posts/index.md` 已更新（如需要）**
+- [ ] **文章列表页 `docs/posts/index.md` 已更新（⚠️ 必须在对应分类下添加新文章链接）**
 - [ ] 侧边栏配置 `docs/.vitepress/config.mjs` 已更新（如需要）
 
 TeX 更新（如适用）：
