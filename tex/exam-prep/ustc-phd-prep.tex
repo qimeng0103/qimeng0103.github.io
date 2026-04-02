@@ -18,10 +18,6 @@
 \textcolor{ustcblue}{\rule{\linewidth}{2pt}}
 \vspace{8pt}
 
-% ---------- 目录（可选，可注释掉节省时间）----------
-% \tableofcontents
-% \newpage
-
 % ============================================
 % PART I: 核心速查（双栏高密度）
 % ============================================
@@ -117,97 +113,150 @@ E(k) = \varepsilon_0 - 2t\cos(ka)
 粒子是场算符的激发态，类似光子在电磁场中。
 \end{insightbox}
 
-\begin{cheatbox}[快速公式备忘]
-\textbf{对易关系：}
-\begin{itemize}
-    \item $[\hat{x}, \hat{p}] = i\hbar$
-    \item $[\hat{a}, \hat{a}^\dagger] = 1$（玻色子）
-    \item $\{\hat{c}_i, \hat{c}_j^\dagger\} = \delta_{ij}$（费米子）
-\end{itemize}
-
-\textbf{常用积分：}
-\[
-\int_{-\infty}^\infty e^{-x^2} dx = \sqrt{\pi}
-\]
-\[
-\int_0^\infty \frac{x^{s-1}}{e^x + 1} dx = (1-2^{1-s})\Gamma(s)\zeta(s)
-\]
-\end{cheatbox}
-
 \end{multicols}
 
 % ============================================
-% PART II: 真题题型与技巧
+% PART II: 定态微扰论（新增）
 % ============================================
 \newpage
-\section{真题题型与解题套路}
+\section{定态微扰论（\en{Stationary Perturbation Theory}）}
 
 \begin{multicols}{2}
 
-\begin{tipbox}[题型 A：微扰论计算]
-\textbf{识别特征：}
-$\hat{H} = \hat{H}_0 + \lambda \hat{V}$，已知 $\hat{H}_0$ 本征态
+\begin{modelbox}[定态微扰论框架]
+\textbf{基本设定：}
+\[
+\hat{H} = \hat{H}_0 + \lambda \hat{V}, \quad \hat{H}_0|n^{(0)}\rangle = E_n^{(0)}|n^{(0)}\rangle
+\]
 
-\textbf{非简并微扰（能量到二级）：}
+\textbf{展开形式：}
 \begin{align*}
-E_n^{(1)} &= \langle n^{(0)} | \hat{V} | n^{(0)} \rangle \\
-E_n^{(2)} &= \sum_{m \neq n} \frac{|\langle m^{(0)} | \hat{V} | n^{(0)} \rangle|^2}{E_n^{(0)} - E_m^{(0)}}
+E_n &= E_n^{(0)} + \lambda E_n^{(1)} + \lambda^2 E_n^{(2)} + \cdots \\
+|n\rangle &= |n^{(0)}\rangle + \lambda |n^{(1)}\rangle + \lambda^2 |n^{(2)}\rangle + \cdots
 \end{align*}
 
-\textbf{简并微扰：}
-在简并子空间对角化 $V_{ij} = \langle i | \hat{V} | j \rangle$
+\textbf{中间归一化：}
+$\langle n^{(0)} | n \rangle = 1$，即 $\langle n^{(0)} | n^{(k)} \rangle = 0$（$k \geq 1$）
 
-\examnote{先判断简并性！}
-\end{tipbox}
+\examnote{先判断简并性！非简并 vs 简并完全不同}
+\end{modelbox}
 
-\begin{tipbox}[题型 B：格林函数]
-\textbf{定义速查：}
+\begin{formulabox}[非简并微扰论（\en{Non-Degenerate}）]
+\textbf{一级能量修正：}
 \[
-G^R(\omega) = \frac{1}{\omega - H + i\eta}
+\boxed{E_n^{(1)} = \langle n^{(0)} | \hat{V} | n^{(0)} \rangle = V_{nn}}
 \]
 
-\textbf{Dyson 方程：}
+\textbf{二级能量修正：}
 \[
-G = G_0 + G_0 \Sigma G
+\boxed{E_n^{(2)} = \sum_{m \neq n} \frac{|V_{mn}|^2}{E_n^{(0)} - E_m^{(0)}}}
 \]
 
-\textbf{谱函数：}
+\textbf{一级态修正：}
 \[
-A(\mathbf{k},\omega) = -2\text{Im}\,G^R(\mathbf{k},\omega)
+|n^{(1)}\rangle = \sum_{m \neq n} \frac{V_{mn}}{E_n^{(0)} - E_m^{(0)}} |m^{(0)}\rangle
 \]
 
-\textbf{DOS 联系：}
+\textbf{三级能量修正：}
 \[
-\rho(\omega) = \sum_\mathbf{k} A(\mathbf{k},\omega)
+E_n^{(3)} = \sum_{m \neq n} \sum_{k \neq n} \frac{V_{nm}V_{mk}V_{kn}}{(E_n^{(0)} - E_m^{(0)})(E_n^{(0)} - E_k^{(0)})} - V_{nn}\sum_{m \neq n}\frac{|V_{mn}|^2}{(E_n^{(0)} - E_m^{(0)})^2}
 \]
-\end{tipbox}
-
-\begin{formulabox}[题型 C：角动量耦合]
-\textbf{C-G 系数快速记忆：}
-\[
-|j_1 m_1\rangle |j_2 m_2\rangle = \sum_{j,m} C_{j_1 m_1, j_2 m_2}^{jm} |jm\rangle
-\]
-
-\textbf{常用：自旋-1/2 与轨道耦合}
-\[
-\mathbf{J} = \mathbf{L} + \mathbf{S}, \quad j = l \pm \frac{1}{2}
-\]
-
-\textbf{LS 耦合 vs jj 耦合：}
-\begin{itemize}
-    \item 轻原子：LS 耦合（$[\mathbf{L}, \mathbf{S}] = 0$）
-    \item 重原子：jj 耦合
-\end{itemize}
 \end{formulabox}
 
-\begin{warnbox}[考试中的单位陷阱]
+\begin{tipbox}[微扰论解题步骤]
+\textbf{Step 1：识别}\quad 判断简并性
+
+\textbf{Step 2：计算矩阵元}\quad $V_{mn} = \langle m^{(0)} | \hat{V} | n^{(0)} \rangle$
+
+\textbf{Step 3：代入公式}
 \begin{itemize}
-    \item 自然单位制：$\hbar = c = 1$（高能物理）
-    \item 原子单位制：$\hbar = m_e = e = 1$
-    \item 检查答案量纲！
-    \item 玻尔半径：$a_0 = 4\pi\varepsilon_0\hbar^2/(m_e e^2) \approx 0.529$ Å
+    \item 非简并：直接用上述公式
+    \item 简并：在简并子空间对角化
+\end{itemize}
+
+\textbf{Step 4：检查}\quad 能量修正是否实数？态矢量是否归一化？
+\end{tipbox}
+
+\begin{warnbox}[非简并微扰适用条件]
+\begin{itemize}
+    \item $|V_{mn}| \ll |E_n^{(0)} - E_m^{(0)}|$（微扰远小于能级间距）
+    \item 分母不能为零（不能用于简并能级！）
+    \item 级数收敛性：通常要求 $\lambda$ 足够小
+\end{itemize}
+
+\key{关键}：二级能量修正的分母是 $E_n^{(0)} - E_m^{(0)}$，注意符号！
+\end{warnbox}
+
+\begin{modelbox}[简并微扰论（\en{Degenerate Perturbation Theory}）]
+\textbf{问题核心：}
+对于 $g$ 重简并能级 $E_n^{(0)}$，非简并公式分母为零：
+\[
+c_m^{(1)} = \frac{V_{mn}}{E_n^{(0)} - E_m^{(0)}} \rightarrow \infty
+\]
+
+\textbf{解决方案：}
+在简并子空间 $\mathcal{H}_n^{(0)}$ 中对角化微扰矩阵：
+\[
+\boxed{\mathbf{V}^{(n)} \mathbf{c}^{(k)} = E_{n,k}^{(1)} \mathbf{c}^{(k)}}
+\]
+其中 $V_{ij}^{(n)} = \langle n, i | \hat{V} | n, j \rangle$
+
+\textbf{物理意义：}
+微扰 $\hat{V}$ 解除简并，选取"正确"的零级态使矩阵对角化。
+\end{modelbox}
+
+\begin{tipbox}[简并微扰解题套路]
+\textbf{Step 1：}\quad 确定简并子空间维数 $g$
+
+\textbf{Step 2：}\quad 选取基矢 $|n, i\rangle$（$i = 1, ..., g$）
+
+\textbf{Step 3：}\quad 构造 $g \times g$ 微扰矩阵 $V_{ij}$
+
+\textbf{Step 4：}\quad 对角化求本征值 $E_{n,k}^{(1)}$ 和本征矢 $\mathbf{c}^{(k)}$
+
+\textbf{Step 5：}\quad 构造正确零级态：
+\[
+|n, k^{(0)}\rangle = \sum_{i=1}^g c_i^{(k)} |n, i\rangle
+\]
+
+\textbf{Step 6：}\quad 简并解除后，对各自态用非简并公式算高阶修正
+\end{tipbox}
+
+\begin{formulabox}[简并微扰二级修正]
+简并解除后（假设 $E_{n,k}^{(1)} \neq E_{n,l}^{(1)}$），可用非简并公式：
+\[
+E_{n,k}^{(2)} = \sum_{m \notin \mathcal{D}_n} \frac{|\langle m^{(0)} | \hat{V} | n, k^{(0)} \rangle|^2}{E_n^{(0)} - E_m^{(0)}}
+\]
+
+\key{注意}：求和排除简并子空间 $\mathcal{D}_n$！
+\end{formulabox}
+
+\begin{warnbox}[简并微扰常见错误]
+\begin{itemize}
+    \item 未在简并子空间对角化直接用非简并公式
+    \item 二级修正时忘记排除简并子空间
+    \item 混淆"正确零级态"与原始基矢
+    \item 忽略微扰可能不解除简并的情况（如对称性保护）
 \end{itemize}
 \end{warnbox}
+
+\begin{insightbox}[非简并 vs 简并对比]
+\begin{center}
+\small
+\begin{tabular}{|l|c|c|}
+\hline
+& 非简并 & 简并 \\
+\hline
+零级态 & 唯一确定 & 子空间中超position \\
+一级能量 & $V_{nn}$ & $V^{(n)}$ 本征值 \\
+关键操作 & 直接展开 & 先对角化 \\
+态修正 & 对所有 $m \neq n$ & 排除子空间 \\
+\hline
+\end{tabular}
+\end{center}
+
+简并微扰是更一般的框架，非简并是其特例。
+\end{insightbox}
 
 \end{multicols}
 
@@ -227,6 +276,16 @@ A(\mathbf{k},\omega) = -2\text{Im}\,G^R(\mathbf{k},\omega)
     \item 突然近似：$\psi(t=0^+) = \psi(t=0^-)$
     \item 绝热近似：保持在瞬时本征态
     \item Berry 相位：$\gamma_n = i\oint \langle n|\nabla_R n\rangle \cdot d\mathbf{R}$
+\end{itemize}
+\end{cheatbox}
+
+\begin{cheatbox}[微扰论要点]
+\begin{itemize}
+    \item $E_n^{(1)} = V_{nn}$（对角元）
+    \item 二级修正 $\propto |V_{mn}|^2/\Delta E$
+    \item 简并：在子空间对角化
+    \item 久期方程（\en{secular equation}）
+    \item 斯塔克效应（\en{Stark effect}）用简并微扰
 \end{itemize}
 \end{cheatbox}
 
@@ -250,6 +309,26 @@ A(\mathbf{k},\omega) = -2\text{Im}\,G^R(\mathbf{k},\omega)
 \end{itemize}
 \end{cheatbox}
 
+\begin{cheatbox}[散射理论]
+\begin{itemize}
+    \item Born：$f_B = -\frac{m}{2\pi\hbar^2}\tilde{V}(\mathbf{q})$
+    \item 光学定理：$\sigma_{tot} = \frac{4\pi}{k}\text{Im}f(0)$
+    \item 相移与散射截面相联系
+    \item 低能s波：$\sigma_0 = 4\pi a_s^2$
+    \item 共振：$\sigma_l \propto 1/(E-E_R)^2$
+\end{itemize}
+\end{cheatbox}
+
+\begin{cheatbox}[格林函数]
+\begin{itemize}
+    \item $G^R(\omega) = (\omega - H + i\eta)^{-1}$
+    \item DOS：$\rho(\omega) = -\frac{1}{\pi}\text{Im}\,G^R$
+    \item Dyson：$G = G_0 + G_0 \Sigma G$
+    \item 谱函数：$A = -2\text{Im}\,G^R$
+    \item 松原（Matsubara）：$\omega_n = (2n+1)\pi/\beta$
+\end{itemize}
+\end{cheatbox}
+
 \end{multicols}
 
 % ============================================
@@ -257,52 +336,9 @@ A(\mathbf{k},\omega) = -2\text{Im}\,G^R(\mathbf{k},\omega)
 % ============================================
 \newpage
 \appendix
-\section{附录：完整推导与理解}
+\section{附录：定态微扰论完整推导}
 
-\begin{derivationbox}[Bloch 定理完整推导]
-\textbf{出发点：}周期势场 $V(\mathbf{r} + \mathbf{R}) = V(\mathbf{r})$，其中 $\mathbf{R}$ 为晶格矢量。
-
-\textbf{步骤 1：定义平移算符}
-
-平移算符 $\hat{T}_\mathbf{R}$ 作用为：
-\[
-\hat{T}_\mathbf{R} \psi(\mathbf{r}) = \psi(\mathbf{r} + \mathbf{R})
-\]
-
-\textbf{步骤 2：证明与哈密顿量对易}
-
-由于 $V(\mathbf{r} + \mathbf{R}) = V(\mathbf{r})$，且动能项 $-\frac{\hbar^2}{2m}\nabla^2$ 在平移下不变：
-\[
-[\hat{T}_\mathbf{R}, \hat{H}] = 0
-\]
-
-\textbf{步骤 3：平移算符的本征值}
-
-由于 $\hat{T}_\mathbf{R}\hat{T}_{\mathbf{R}'} = \hat{T}_{\mathbf{R}+\mathbf{R}'}$，且 $\hat{T}_\mathbf{R}^\dagger = \hat{T}_{-\mathbf{R}}$，平移算符是么正的。
-
-本征值必须是模为 1 的复数：
-\[
-\hat{T}_\mathbf{R} |\psi\rangle = c_\mathbf{R} |\psi\rangle, \quad |c_\mathbf{R}| = 1
-\]
-
-由群的性质，$c_{\mathbf{R}+\mathbf{R}'} = c_\mathbf{R} c_{\mathbf{R}'}$，这要求：
-\[
-c_\mathbf{R} = e^{i\mathbf{k}\cdot\mathbf{R}}
-\]
-
-\textbf{步骤 4：构造 Bloch 函数}
-
-定义 $u_\mathbf{k}(\mathbf{r}) = e^{-i\mathbf{k}\cdot\mathbf{r}} \psi(\mathbf{r})$，验证其周期性：
-\begin{align*}
-u_\mathbf{k}(\mathbf{r} + \mathbf{R}) &= e^{-i\mathbf{k}\cdot(\mathbf{r}+\mathbf{R})} \psi(\mathbf{r} + \mathbf{R}) \\
-&= e^{-i\mathbf{k}\cdot\mathbf{r}} e^{-i\mathbf{k}\cdot\mathbf{R}} \cdot e^{i\mathbf{k}\cdot\mathbf{R}} \psi(\mathbf{r}) \\
-&= e^{-i\mathbf{k}\cdot\mathbf{r}} \psi(\mathbf{r}) = u_\mathbf{k}(\mathbf{r})
-\end{align*}
-
-\textbf{Q.E.D.}
-\end{derivationbox}
-
-\begin{derivationbox}[微扰论详细推导]
+\begin{derivationbox}[非简并微扰论详细推导]
 \textbf{设定：}$
 \hat{H} = \hat{H}_0 + \lambda \hat{V}, \quad
 \hat{H}_0 |n^{(0)}\rangle = E_n^{(0)} |n^{(0)}\rangle
@@ -310,20 +346,29 @@ $
 
 \textbf{展开：}
 \begin{align*}
-E_n &= E_n^{(0)} + \lambda E_n^{(1)} + \lambda^2 E_n^{(2)} + ... \\
-|n\rangle &= |n^{(0)}\rangle + \lambda |n^{(1)}\rangle + \lambda^2 |n^{(2)}\rangle + ...
+E_n &= E_n^{(0)} + \lambda E_n^{(1)} + \lambda^2 E_n^{(2)} + \cdots \\
+|n\rangle &= |n^{(0)}\rangle + \lambda |n^{(1)}\rangle + \lambda^2 |n^{(2)}\rangle + \cdots
 \end{align*}
 
 使用中间归一化：$\langle n^{(0)} | n \rangle = 1$，则 $\langle n^{(0)} | n^{(k)} \rangle = 0$（$k \geq 1$）。
 
-\textbf{一级能量修正：}
+\textbf{零级方程}（$\lambda^0$）：
+\[
+\hat{H}_0 |n^{(0)}\rangle = E_n^{(0)} |n^{(0)}\rangle
+\]
+这是未微扰问题，已知解。
 
-将展开代入薛定谔方程，收集 $\lambda^1$ 项：
+\textbf{一级方程}（$\lambda^1$）：
 \[
 \hat{H}_0 |n^{(1)}\rangle + \hat{V} |n^{(0)}\rangle = E_n^{(0)} |n^{(1)}\rangle + E_n^{(1)} |n^{(0)}\rangle
 \]
 
-左乘 $\langle n^{(0)} |$：
+整理得：
+\[
+(\hat{H}_0 - E_n^{(0)}) |n^{(1)}\rangle = (E_n^{(1)} - \hat{V}) |n^{(0)}\rangle
+\]
+
+\textbf{一级能量修正：}左乘 $\langle n^{(0)} |$：
 \[
 \underbrace{\langle n^{(0)} | \hat{H}_0 | n^{(1)} \rangle}_{E_n^{(0)} \langle n^{(0)} | n^{(1)} \rangle = 0} + \langle n^{(0)} | \hat{V} | n^{(0)} \rangle = E_n^{(0)} \underbrace{\langle n^{(0)} | n^{(1)} \rangle}_{0} + E_n^{(1)}
 \]
@@ -333,11 +378,9 @@ E_n &= E_n^{(0)} + \lambda E_n^{(1)} + \lambda^2 E_n^{(2)} + ... \\
 E_n^{(1)} = \langle n^{(0)} | \hat{V} | n^{(0)} \rangle = V_{nn}
 \]
 
-\textbf{一级态修正：}
-
-展开 $|n^{(1)}\rangle = \sum_{m \neq n} c_m^{(1)} |m^{(0)}\rangle$，左乘 $\langle m^{(0)} |$（$m \neq n$）：
+\textbf{一级态修正：}将 $|n^{(1)}\rangle = \sum_{m \neq n} c_m^{(1)} |m^{(0)}\rangle$ 代入一级方程，左乘 $\langle m^{(0)} |$（$m \neq n$）：
 \[
-E_m^{(0)} c_m^{(1)} + V_{mn} = E_n^{(0)} c_m^{(1)}
+(E_m^{(0)} - E_n^{(0)}) c_m^{(1)} = -\langle m^{(0)} | \hat{V} | n^{(0)} \rangle = -V_{mn}
 \]
 
 解得：
@@ -350,12 +393,113 @@ c_m^{(1)} = \frac{V_{mn}}{E_n^{(0)} - E_m^{(0)}}
 |n^{(1)}\rangle = \sum_{m \neq n} \frac{V_{mn}}{E_n^{(0)} - E_m^{(0)}} |m^{(0)}\rangle
 \]
 
-\textbf{二级能量修正：}
-
-类似地，收集 $\lambda^2$ 项并投影到 $\langle n^{(0)} |$：
+\textbf{二级能量修正：}收集 $\lambda^2$ 项：
 \[
-E_n^{(2)} = \langle n^{(0)} | \hat{V} | n^{(1)} \rangle = \sum_{m \neq n} \frac{|V_{mn}|^2}{E_n^{(0)} - E_m^{(0)}}
+\hat{H}_0 |n^{(2)}\rangle + \hat{V} |n^{(1)}\rangle = E_n^{(0)} |n^{(2)}\rangle + E_n^{(1)} |n^{(1)}\rangle + E_n^{(2)} |n^{(0)}\rangle
 \]
+
+左乘 $\langle n^{(0)} |$：
+\begin{align*}
+0 + \langle n^{(0)} | \hat{V} | n^{(1)} \rangle &= 0 + E_n^{(1)} \cdot 0 + E_n^{(2)} \\
+E_n^{(2)} &= \sum_{m \neq n} \frac{V_{mn}}{E_n^{(0)} - E_m^{(0)}} \langle n^{(0)} | \hat{V} | m^{(0)} \rangle \\
+&= \sum_{m \neq n} \frac{|V_{mn}|^2}{E_n^{(0)} - E_m^{(0)}}
+\end{align*}
+\end{derivationbox}
+
+\begin{derivationbox}[简并微扰论详细推导]
+\textbf{问题设定：}设能级 $E_n^{(0)}$ 有 $g$ 重简并，基矢为 $|n, i\rangle$（$i = 1, ..., g$）。
+
+\textbf{关键困难：}非简并微扰中态修正系数：
+\[
+c_m^{(1)} = \frac{\langle m^{(0)} | \hat{V} | n^{(0)} \rangle}{E_n^{(0)} - E_m^{(0)}}
+\]
+当 $|m^{(0)}\rangle$ 也在简并子空间时，分母为零，发散！
+
+\textbf{解决方案：}在简并子空间中找到"正确"的零级态 $|n, k^{(0)}\rangle$，使微扰不混合这些态。
+
+设正确零级态为：
+\[
+|n, k^{(0)}\rangle = \sum_{i=1}^g c_i^{(k)} |n, i\rangle
+\]
+
+\textbf{一级方程：}
+\[
+(\hat{H}_0 - E_n^{(0)}) |n, k^{(1)}\rangle = (E_{n,k}^{(1)} - \hat{V}) |n, k^{(0)}\rangle
+\]
+
+\textbf{自洽性要求：}左式与简并子空间正交（因 $\hat{H}_0 - E_n^{(0)}$ 消灭子空间内所有态），故右式也必须与子空间正交：
+\[
+\langle n, i | (E_{n,k}^{(1)} - \hat{V}) | n, k^{(0)} \rangle = 0, \quad \forall i
+\]
+
+展开得：
+\[
+\sum_{j=1}^g \langle n, i | \hat{V} | n, j \rangle c_j^{(k)} = E_{n,k}^{(1)} c_i^{(k)}
+\]
+
+即久期方程：
+\[
+\mathbf{V}^{(n)} \mathbf{c}^{(k)} = E_{n,k}^{(1)} \mathbf{c}^{(k)}
+\]
+
+\textbf{对角化后：}微扰矩阵在正确基底下对角化：
+\[
+\langle n, k^{(0)} | \hat{V} | n, l^{(0)} \rangle = E_{n,k}^{(1)} \delta_{kl}
+\]
+
+此时可用非简并公式计算态修正，求和自动排除简并子空间（因矩阵元为零）。
+\end{derivationbox}
+
+\begin{derivationbox}[氢原子斯塔克效应（\en{Stark Effect}）]
+\textbf{基态}（$n=1$，非简并）：
+
+$\hat{V} = e\mathcal{E} z = e\mathcal{E} r\cos\theta$
+
+一级修正：
+\[
+E_1^{(1)} = e\mathcal{E} \langle 100 | z | 100 \rangle = 0
+\]
+（被积函数 $|\psi_{100}|^2 z$ 为奇函数，积分为零）
+
+二级修正：
+\[
+E_1^{(2)} = \sum_{n=2}^\infty \sum_{l,m} \frac{|\langle nlm | e\mathcal{E} z | 100 \rangle|^2}{E_1^{(0)} - E_n^{(0)}}
+\]
+
+能量分母为负，故 $E_1^{(2)} < 0$。
+
+计算得：
+\[
+E_1^{(2)} = -\frac{9}{4} a_0^3 \mathcal{E}^2
+\]
+
+物理意义：外电场诱导电偶极矩 $\mathbf{p} = \alpha \mathbf{\mathcal{E}}$，其中极化率 $\alpha = 9a_0^3/2$。
+
+\textbf{$n=2$ 能级}（4重简并：$|200\rangle, |210\rangle, |211\rangle, |21,-1\rangle$）：
+
+选择定则：$\Delta l = \pm 1, \Delta m = 0$，微扰只连接 $|200\rangle \leftrightarrow |210\rangle$。
+
+微扰矩阵：
+\[
+\mathbf{V} = -3e\mathcal{E}a_0 \begin{pmatrix} 
+0 & 1 & 0 & 0 \\
+1 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0 \\
+0 & 0 & 0 & 0
+\end{pmatrix}
+\]
+
+对角化得本征值：$\pm 3e\mathcal{E}a_0, 0, 0$
+
+对应本征态：
+\begin{align*}
+|\psi_+\rangle &= \frac{1}{\sqrt{2}}(|200\rangle - |210\rangle), \quad E = +3e\mathcal{E}a_0 \\
+|\psi_-\rangle &= \frac{1}{\sqrt{2}}(|200\rangle + |210\rangle), \quad E = -3e\mathcal{E}a_0
+\end{align*}
+
+$|211\rangle, |21,-1\rangle$ 仍为简并，能量不变。
+
+\key{特征}：线性斯塔克分裂 $\Delta E \propto \mathcal{E}$ 是简并微扰的标志。
 \end{derivationbox}
 
 \vfill
