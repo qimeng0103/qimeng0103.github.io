@@ -23,6 +23,24 @@ my-blog/
 └── package.json
 ```
 
+## 双轨制内容管理
+
+本项目采用 **Blog (英文) + TeX PDF (中文备考)** 双轨制：
+
+### 1. Blog (`docs/posts/`) - 公开英文文章
+- **语言：** 全英文
+- **目的：** 学术写作训练，公开分享
+- **内容：** 详细推导 + 概念理解 + 物理图像
+- **格式：** Markdown
+
+### 2. TeX PDF (`tex/exam-prep/`) - 内部备考资料
+- **语言：** 中文为主，英文术语备注
+- **目的：** 中科大物理博士考试备考
+- **内容：**
+  - **正文：** 核心结论、解题技巧、二级结论（简洁，双栏高密度）
+  - **附录：** 完整推导、详细理解（完备参考）
+- **格式：** LaTeX (Article 类 + Beamer 风格彩色框)
+
 ## ⚠️ 重要规则
 
 ### 添加/修改文章时必须同步更新以下文件
@@ -38,10 +56,14 @@ my-blog/
 3. **`docs/.vitepress/config.mjs`** - 侧边栏配置（如添加新分类）
    - 在 sidebar 中添加新文章链接
 
-### 文章格式规范
+4. **`tex/exam-prep/ustc-phd-prep.tex`** - 备考 PDF（如相关内容适合放入）
+   - 将 Blog 文章的核心结论提取到 PDF 对应章节
+   - 在 Appendix 添加详细推导（如需要）
+
+### Blog 文章格式规范
 
 ```markdown
-# 文章标题
+# Article Title
 
 📅 **Date:** YYYY-MM-DD | 🏷️ **Tags:** Tag1, Tag2 | 📂 **Category:** Category Name
 
@@ -49,13 +71,39 @@ my-blog/
 
 ## Introduction
 
-文章内容，支持 LaTeX 数学公式：
-- 行内：$E = mc^2$
-- 独立：
+Article content in English, supporting LaTeX math:
+- Inline: $E = mc^2$
+- Display:
   $$
   \hat{H}\psi = E\psi
   $$
 ```
+
+### TeX PDF 格式规范
+
+```latex
+% 使用预定义的颜色框
+\begin{modelbox}[Bloch 定理]
+核心结论和物理图像...
+\end{modelbox}
+
+\begin{tipbox}[解题技巧]
+快速识别和解题套路...
+\end{tipbox}
+
+\begin{derivationbox}[详细推导]
+附录中的完整推导...
+\end{derivationbox}
+```
+
+**可用框类型：**
+- `modelbox` (蓝色) - 物理模型和定理
+- `tipbox` (红色) - 解题技巧和识别方法
+- `formulabox` (绿色) - 重要公式和二级结论
+- `warnbox` (橙色) - 警示和常见错误
+- `insightbox` (紫色) - 概念理解和物理图像
+- `cheatbox` (黄色) - 速查备忘
+- `derivationbox` (灰色) - 附录推导
 
 ### 发布检查清单
 

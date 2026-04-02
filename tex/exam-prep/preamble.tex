@@ -1,0 +1,220 @@
+% ============================================
+% USTC PhD Exam Prep - Preamble
+% 中科大物理博士考试备考资料导言区
+% ============================================
+
+\documentclass[10pt,a4paper]{article}
+
+% ---------- 基础包 ----------
+\usepackage[margin=1.2cm, top=1cm, bottom=1cm]{geometry}
+\usepackage{ctex}  % 中文支持
+\usepackage{multicol}  % 双栏/三栏
+\usepackage{enumitem}  % 列表控制
+\usepackage{hyperref}  % 超链接
+
+% ---------- 数学包 ----------
+\usepackage{amsmath,amssymb,amsthm}
+\usepackage{physics}
+\usepackage{mathrsfs}
+\usepackage{bm}  % 粗体数学符号
+
+% ---------- 图形与颜色 ----------
+\usepackage{xcolor}
+\usepackage{tcolorbox}
+\tcbuselibrary{skins,breakable}
+\usepackage{tikz}
+\usetikzlibrary{shapes,arrows,positioning,calc}
+
+% ---------- 页面设置 ----------
+\pagestyle{empty}  % 无页眉页脚，最大化空间
+\setlength{\parindent}{0pt}  % 无缩进
+\setlength{\parskip}{2pt}    % 紧凑段落
+
+% ---------- 双栏设置 ----------
+\setlength{\columnseprule}{0.4pt}  % 栏间分隔线
+\def\columnseprulecolor{\color{gray!50}}
+
+% ============================================
+% 颜色定义 - Beamer 风格
+% ============================================
+
+% 主题色
+\definecolor{ustcblue}{RGB}{0,51,153}      % 科大蓝
+\definecolor{alertred}{RGB}{220,38,38}     % 警示红
+\definecolor{successgreen}{RGB}{34,139,34} % 成功绿
+\definecolor{warnorange}{RGB}{255,140,0}   % 警告橙
+\definecolor{royalpurple}{RGB}{120,81,169} % 皇家紫
+
+% 柔和背景色
+\definecolor{lightblue}{RGB}{230,240,255}
+\definecolor{lightred}{RGB}{255,230,230}
+\definecolor{lightgreen}{RGB}{230,255,230}
+\definecolor{lightorange}{RGB}{255,245,230}
+\definecolor{lightpurple}{RGB}{245,230,255}
+\definecolor{lightyellow}{RGB}{255,255,200}
+
+% ============================================
+% tcolorbox 样式定义
+% ============================================
+
+% 1. 核心定理/模型框（蓝色主题）
+\newtcolorbox{modelbox}[1][]{
+    enhanced,
+    colback=lightblue,
+    colframe=ustcblue,
+    fonttitle=\bfseries\sffamily\small,
+    title=#1,
+    boxrule=1pt,
+    arc=3pt,
+    left=4pt,right=4pt,top=3pt,bottom=3pt,
+    drop shadow={opacity=0.15},
+    breakable
+}
+
+% 2. 解题技巧/快速识别框（红色主题）
+\newtcolorbox{tipbox}[1][]{
+    enhanced,
+    colback=lightred,
+    colframe=alertred,
+    fonttitle=\bfseries\sffamily\small,
+    title=#1,
+    boxrule=1pt,
+    arc=3pt,
+    left=4pt,right=4pt,top=3pt,bottom=3pt,
+    drop shadow={opacity=0.15},
+    breakable
+}
+
+% 3. 重要公式/二级结论框（绿色主题）
+\newtcolorbox{formulabox}[1][]{
+    enhanced,
+    colback=lightgreen,
+    colframe=successgreen,
+    fonttitle=\bfseries\sffamily\small,
+    title=#1,
+    boxrule=1pt,
+    arc=3pt,
+    left=4pt,right=4pt,top=3pt,bottom=3pt,
+    drop shadow={opacity=0.15},
+    breakable
+}
+
+% 4. 警示/易错点框（橙色主题）
+\newtcolorbox{warnbox}[1][]{
+    enhanced,
+    colback=lightorange,
+    colframe=warnorange,
+    fonttitle=\bfseries\sffamily\small,
+    title=#1,
+    boxrule=1pt,
+    arc=3pt,
+    left=4pt,right=4pt,top=3pt,bottom=3pt,
+    drop shadow={opacity=0.15},
+    breakable
+}
+
+% 5. 物理图像/概念理解框（紫色主题）
+\newtcolorbox{insightbox}[1][]{
+    enhanced,
+    colback=lightpurple,
+    colframe=royalpurple,
+    fonttitle=\bfseries\sffamily\small,
+    title=#1,
+    boxrule=1pt,
+    arc=3pt,
+    left=4pt,right=4pt,top=3pt,bottom=3pt,
+    drop shadow={opacity=0.15},
+    breakable
+}
+
+% 6. 速查/备忘框（黄色主题）
+\newtcolorbox{cheatbox}[1][]{
+    enhanced,
+    colback=lightyellow,
+    colframe=warnorange!80!black,
+    fonttitle=\bfseries\sffamily\small,
+    title=#1,
+    boxrule=1pt,
+    arc=3pt,
+    left=3pt,right=3pt,top=2pt,bottom=2pt,
+    breakable
+}
+
+% 7. 附录推导框（灰色主题）
+\newtcolorbox{derivationbox}[1][]{
+    enhanced,
+    colback=gray!10,
+    colframe=gray!70!black,
+    fonttitle=\bfseries\sffamily\small,
+    title=#1,
+    boxrule=0.8pt,
+    arc=2pt,
+    left=3pt,right=3pt,top=2pt,bottom=2pt,
+    breakable
+}
+
+% ============================================
+% 快捷命令
+% ============================================
+
+% 英文术语备注
+\newcommand{\en}[1]{\textcolor{ustcblue}{\textit{#1}}}
+
+% 重要强调
+\newcommand{\key}[1]{\textcolor{alertred}{\textbf{#1}}}
+
+% 公式中的文字说明
+\newcommand{\texteq}[1]{\quad\text{\small #1}}
+
+% 快速引用
+\newcommand{\quickref}[2]{\fbox{\parbox{0.9\linewidth}{\small\textbf{#1:} #2}}}
+
+% 考试提醒标记
+\newcommand{\examnote}[1]{\textcolor{warnorange}{$\triangleright$ \textbf{#1}}}
+
+% ============================================
+% 列表样式优化
+% ============================================
+\setlist[itemize]{
+    nosep,
+    leftmargin=12pt,
+    label={\textcolor{ustcblue}{$\bullet$}}
+}
+
+\setlist[enumerate]{
+    nosep,
+    leftmargin=15pt
+}
+
+% ============================================
+% 章节标题样式
+% ============================================
+\usepackage{titlesec}
+
+\titleformat{\section}
+    {\Large\bfseries\sffamily\color{ustcblue}}
+    {\thesection}{0.5em}{}
+    [\vspace{-0.5em}\textcolor{ustcblue}{\rule{\linewidth}{1pt}}]
+
+\titleformat{\subsection}
+    {\large\bfseries\sffamily\color{alertred}}
+    {\thesubsection}{0.5em}{}
+
+\titleformat{\subsubsection}
+    {\normalsize\bfseries\sffamily\color{successgreen}}
+    {\thesubsubsection}{0.5em}{}
+
+\titlespacing*{\section}{0pt}{10pt}{5pt}
+\titlespacing*{\subsection}{0pt}{8pt}{4pt}
+\titlespacing*{\subsubsection}{0pt}{6pt}{3pt}
+
+% ============================================
+% 页眉设置（可选）
+% ============================================
+\usepackage{fancyhdr}
+\pagestyle{fancy}
+\fancyhf{}
+\fancyhead[L]{\small\textcolor{gray}{USTC PhD Exam Prep}}
+\fancyhead[R]{\small\textcolor{gray}{\leftmark}}
+\renewcommand{\headrulewidth}{0.4pt}
+\renewcommand{\headrule}{\hbox to\headwidth{\color{gray}\leaders\hrule height \headrulewidth\hfill}}
