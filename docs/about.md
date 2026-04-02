@@ -212,7 +212,7 @@ My research focuses on theoretical and computational condensed matter physics, w
 
 ## Exam Preparation Materials
 
-**USTC PhD Physics Exam Prep** — Personal study notes for the Chinese Academy of Sciences (University of Science and Technology of China) Physics Ph.D. entrance examination.
+**USTC PhD Physics Exam Prep** — Personal study notes for University of Science and Technology of China (USTC) Physics Ph.D. entrance examination.
 
 📄 [Download PDF](/exam-prep/ustc-phd-prep.pdf) *(Last updated: 2024-04-02)*
 
