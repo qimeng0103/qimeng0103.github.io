@@ -58,7 +58,24 @@ my-blog/
 </div>
 ```
 
-### 2. 文章元信息格式
+### 2. 文章元信息与文件命名规范
+
+#### 文件命名规则
+
+**使用内容描述性命名，不包含人名或书名：**
+- ✅ `bound-states-resonances-scattering.md` (主题关键词)
+- ✅ `stationary-perturbation-theory.md`
+- ❌ `zeng-jinyan-chapters-3-4-5.md` (包含人名+章节号)
+- ❌ `landau-chapter-1.md` (包含人名)
+
+**命名原则：**
+1. 使用主题关键词，小写，单词间用连字符 `-` 分隔
+2. 不包含作者姓名（如 zeng-jinyan, sakurai, landau）
+3. 不包含书名缩写（如 qm-special-topics）
+4. 不包含章节号（用主题代替 chapter-3-4-5）
+5. 保持简洁但有描述性（3-5个单词）
+
+#### 文章元信息格式
 
 每篇文章开头必须包含日期和标签：
 ```markdown

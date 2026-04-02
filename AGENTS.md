@@ -72,6 +72,22 @@ my-blog/
 
 ### Blog 文章格式规范
 
+#### 文件命名规范
+
+**使用内容描述性命名，不包含人名或书名：**
+- ✅ `bound-states-resonances-scattering.md`
+- ✅ `stationary-perturbation-theory.md`
+- ❌ `zeng-jinyan-chapters-3-4-5.md` (包含人名)
+- ❌ `landau-chapter-1.md` (包含人名)
+
+**命名原则：**
+1. 使用主题关键词，小写，单词间用连字符分隔
+2. 不包含作者姓名（如 zeng-jinyan, landau）
+3. 不包含书名（如 qm-special-topics）
+4. 不包含章节号（用主题代替 chapter-3-4-5）
+
+#### 文章头部格式
+
 ```markdown
 # Article Title
 

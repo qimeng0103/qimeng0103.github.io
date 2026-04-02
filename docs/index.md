@@ -211,8 +211,8 @@ hero:
   <div class="article-entry">
     <div class="article-date">2026-04-02</div>
     <div class="article-info">
-      <h3><a href="/posts/quantum-mechanics/zeng-jinyan-chapters-3-4-5">Bound States, Resonances, and Scattering</a></h3>
-      <p>Insights from Zeng Jinyan's QM: 1D bound states, resonance states, and scattering theory</p>
+      <h3><a href="/posts/quantum-mechanics/bound-states-resonances-scattering">Bound States, Resonances, and Scattering</a></h3>
+      <p>Existence conditions for bound states, resonance phenomena, and scattering theory connections</p>
     </div>
   </div>
   
