@@ -140,6 +140,20 @@
   <h2>Condensed Matter Notes</h2>
   <ul class="article-list">
     <li class="article-item">
+      <span class="article-date">2026-04-02</span>
+      <div>
+        <div class="article-title"><a href="./condensed-matter/metal-electron-theory-fermi-statistics-transport">Metal Electron Theory: From Fermi Statistics to Transport Properties</a></div>
+        <div class="article-desc">Fermi-Dirac statistics, electronic heat capacity, Boltzmann transport equation, conductivity, Hall effect, and thermoelectric effects in metals</div>
+      </div>
+    </li>
+    <li class="article-item">
+      <span class="article-date">2026-04-02</span>
+      <div>
+        <div class="article-title"><a href="./condensed-matter/semiconductor-electron-theory">Semiconductor Electron Theory: From Band Structure to p-n Junctions</a></div>
+        <div class="article-desc">Direct and indirect band gaps, Maxwell-Boltzmann statistics for carriers, doping and impurity levels, transport properties, and p-n junction physics</div>
+      </div>
+    </li>
+    <li class="article-item">
       <span class="article-date">2026-03-31</span>
       <div>
         <div class="article-title"><a href="./condensed-matter/green-functions-quantum-transport">Green's Functions in Condensed Matter: From Equilibrium to Non-Equilibrium Quantum Transport</a></div>

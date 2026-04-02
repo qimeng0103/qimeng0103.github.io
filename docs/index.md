@@ -211,6 +211,22 @@ hero:
   <div class="article-entry">
     <div class="article-date">2026-04-02</div>
     <div class="article-info">
+      <h3><a href="/posts/condensed-matter/metal-electron-theory-fermi-statistics-transport">Metal Electron Theory: Fermi Statistics and Transport</a></h3>
+      <p>Fermi-Dirac statistics, electronic heat capacity, Boltzmann equation, conductivity, Hall effect</p>
+    </div>
+  </div>
+  
+  <div class="article-entry">
+    <div class="article-date">2026-04-02</div>
+    <div class="article-info">
+      <h3><a href="/posts/condensed-matter/semiconductor-electron-theory">Semiconductor Electron Theory</a></h3>
+      <p>Band structure, doping, carrier statistics, transport properties, and p-n junction physics</p>
+    </div>
+  </div>
+  
+  <div class="article-entry">
+    <div class="article-date">2026-04-02</div>
+    <div class="article-info">
       <h3><a href="/posts/quantum-mechanics/bound-states-resonances-scattering">Bound States, Resonances, and Scattering</a></h3>
       <p>Existence conditions for bound states, resonance phenomena, and scattering theory connections</p>
     </div>
@@ -219,7 +235,7 @@ hero:
   <div class="article-entry">
     <div class="article-date">2026-03-31</div>
     <div class="article-info">
-      <h3><a href="/posts/condensed-matter/phonons-lattice-dynamics">Phonons: From Classical Lattice Dynamics to Quantum Transport</a></h3>
+      <h3><a href="/posts/condensed-matter/phonons-lattice-dynamics">Phonons and Lattice Dynamics</a></h3>
       <p>Classical and quantum treatment of lattice vibrations, acoustic and optical phonons</p>
     </div>
   </div>
@@ -229,22 +245,6 @@ hero:
     <div class="article-info">
       <h3><a href="/posts/condensed-matter/green-functions-quantum-transport">Green's Functions for Quantum Transport</a></h3>
       <p>Single-particle and many-body Green's functions, Matsubara formalism, Dyson equation</p>
-    </div>
-  </div>
-  
-  <div class="article-entry">
-    <div class="article-date">2026-03-31</div>
-    <div class="article-info">
-      <h3><a href="/posts/quantum-mechanics/time-dependent-perturbation-theory">Time-Dependent Perturbation Theory</a></h3>
-      <p>Interaction picture, Fermi's Golden Rule, scattering theory, and Kubo formula</p>
-    </div>
-  </div>
-  
-  <div class="article-entry">
-    <div class="article-date">2026-03-30</div>
-    <div class="article-info">
-      <h3><a href="/posts/quantum-mechanics/stationary-perturbation-theory">Stationary Perturbation Theory</a></h3>
-      <p>Non-degenerate and degenerate perturbation theory with complete derivations</p>
     </div>
   </div>
   
