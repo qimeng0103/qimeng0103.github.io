@@ -209,6 +209,30 @@ hero:
   <h2>Recent Articles</h2>
   
   <div class="article-entry">
+    <div class="article-date">2026-03-31</div>
+    <div class="article-info">
+      <h3><a href="/posts/condensed-matter/phonons-lattice-dynamics">Phonons: From Classical Lattice Dynamics to Quantum Transport</a></h3>
+      <p>Classical and quantum treatment of lattice vibrations, acoustic and optical phonons</p>
+    </div>
+  </div>
+  
+  <div class="article-entry">
+    <div class="article-date">2026-03-31</div>
+    <div class="article-info">
+      <h3><a href="/posts/condensed-matter/green-functions-quantum-transport">Green's Functions for Quantum Transport</a></h3>
+      <p>Single-particle and many-body Green's functions, Matsubara formalism, Dyson equation</p>
+    </div>
+  </div>
+  
+  <div class="article-entry">
+    <div class="article-date">2026-03-31</div>
+    <div class="article-info">
+      <h3><a href="/posts/quantum-mechanics/time-dependent-perturbation-theory">Time-Dependent Perturbation Theory</a></h3>
+      <p>Interaction picture, Fermi's Golden Rule, scattering theory, and Kubo formula</p>
+    </div>
+  </div>
+  
+  <div class="article-entry">
     <div class="article-date">2026-03-30</div>
     <div class="article-info">
       <h3><a href="/posts/quantum-mechanics/stationary-perturbation-theory">Stationary Perturbation Theory</a></h3>
