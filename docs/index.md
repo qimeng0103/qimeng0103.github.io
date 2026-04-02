@@ -209,6 +209,14 @@ hero:
   <h2>Recent Articles</h2>
   
   <div class="article-entry">
+    <div class="article-date">2026-04-02</div>
+    <div class="article-info">
+      <h3><a href="/posts/quantum-mechanics/zeng-jinyan-chapters-3-4-5">Bound States, Resonances, and Scattering</a></h3>
+      <p>Insights from Zeng Jinyan's QM: 1D bound states, resonance states, and scattering theory</p>
+    </div>
+  </div>
+  
+  <div class="article-entry">
     <div class="article-date">2026-03-31</div>
     <div class="article-info">
       <h3><a href="/posts/condensed-matter/phonons-lattice-dynamics">Phonons: From Classical Lattice Dynamics to Quantum Transport</a></h3>

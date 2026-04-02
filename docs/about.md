@@ -214,14 +214,16 @@ My research focuses on theoretical and computational condensed matter physics, w
 
 **USTC PhD Physics Exam Prep** — Personal study notes for University of Science and Technology of China (USTC) Physics Ph.D. entrance examination.
 
-📄 [Download PDF](/exam-prep/ustc-phd-prep.pdf) *(Last updated: 2026-04-02)* <!-- 每次更新PDF后修改此日期 -->
+📄 [Download PDF](/exam-prep/ustc-phd-prep.pdf) *(Last updated: 2026-04-02)* <!-- Updated: 2026-04-02 -->
 
 **Contents:**
 - Core physical models with quick recognition guides
+- **Zeng Jinyan QM Chapters 3-5:** Bound states, resonances, scattering theory
 - Stationary perturbation theory (non-degenerate & degenerate)
 - Problem-solving techniques and decision trees
 - Secondary conclusions and quick-reference formulas
 - Detailed derivations in appendix
+- Error & mental block library
 
 **Format:** Chinese main text with English terminology notes, Beamer-style colored boxes for high-density review
 

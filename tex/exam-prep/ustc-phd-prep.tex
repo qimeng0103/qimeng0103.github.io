@@ -116,7 +116,118 @@ E(k) = \varepsilon_0 - 2t\cos(ka)
 \end{multicols}
 
 % ============================================
-% PART II: 定态微扰论（新增）
+% 曾谨言《量子力学专题分析》第3-5章要点
+% ============================================
+\newpage
+\section{曾谨言《量子力学专题分析》第3-5章要点}
+
+\begin{multicols}{2}
+
+\begin{modelbox}[一维势阱中的束缚态（第3章）]
+\textbf{无限深方势阱：}
+\[
+E_n = \frac{n^2\pi^2\hbar^2}{2ma^2}, \quad \psi_n = \sqrt{\frac{2}{a}}\sin\frac{n\pi x}{a}
+\]
+
+\textbf{有限深方势阱（对称 $V(x)=-V_0$ for $|x|<a$）：}
+
+偶宇称：$\xi\tan\xi = \eta$
+
+奇宇称：$-\xi\cot\xi = \eta$
+
+其中 $\xi = k'a = a\sqrt{2\mu(V_0-|E|)}/\hbar$，$\eta = \kappa a = a\sqrt{2\mu|E|}/\hbar$
+
+\textbf{存在条件：}
+\begin{itemize}
+    \item 偶宇称态：\key{总是存在}（至少一个）
+    \item 奇宇称态：需 $V_0 a^2 \geq \frac{\pi^2\hbar^2}{8\mu}$
+\end{itemize}
+
+\examnote{记住存在条件！奇宇称要求更严格}
+\end{modelbox}
+
+\begin{formulabox}[Delta势阱（\en{$\delta$-function potential}）]
+\textbf{吸引势 $V(x) = -\gamma\delta(x)$，$\gamma > 0$：}
+
+\key{仅有一个束缚态}：
+\[
+E = -\frac{\mu\gamma^2}{2\hbar^2}
+\]
+
+波函数：
+\[
+\psi(x) = \sqrt{\frac{\mu\gamma}{\hbar^2}}\exp\left(-\frac{\mu\gamma|x|}{\hbar^2}\right)
+\]
+
+\textbf{特征：}指数衰减，特征长度 $a = \hbar^2/(\mu\gamma)$
+\end{formulabox}
+
+\begin{insightbox}[束缚态与势阱深度]
+\textbf{一般规律：}
+\begin{itemize}
+    \item 一维对称势阱：\key{至少一个}束缚态
+    \item 三维球对称势阱：可能没有束缚态（需 $V_0$ 足够大）
+    \item 一维势阱比三维更"容易"形成束缚态
+\end{itemize}
+\end{insightbox}
+
+\begin{modelbox}[共振态与准束缚态（第4章）]
+\textbf{共振态定义：}
+
+能量为复数：$E = E_0 - i\Gamma/2$
+
+寿命：$\tau = \hbar/\Gamma$
+
+\textbf{双势垒共振（Breit-Wigner公式）：}
+\[
+T(E) \approx \frac{\Gamma^2/4}{(E-E_0)^2 + \Gamma^2/4}
+\]
+
+\examnote{共振是"漏的"束缚态}
+\end{modelbox}
+
+\begin{warnbox}[共振 vs 束缚态区别]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+& 束缚态 & 共振态 \\
+\hline
+能量 & $E < 0$（实数） & $E > 0$（复数） \\
+寿命 & $\infty$ & $\tau = \hbar/\Gamma$ \\
+\hline
+\end{tabular}
+\end{center}
+\end{warnbox}
+
+\begin{formulabox}[低能散射（第5章）]
+\textbf{条件：}$ka \ll 1$（s波主导）
+
+散射长度 $a_s$：$k\cot\delta_0 \to -1/a_s$
+
+截面：
+\[
+\sigma_0 = 4\pi a_s^2
+\]
+
+\textbf{Levinson定理：}
+\[
+\delta_l(0) = n_l \pi
+\]
+\end{formulabox}
+
+\begin{tipbox}[考试快速识别]
+\textbf{问题类型判断：}
+\begin{enumerate}
+    \item 给定 $V(x)$ 求束缚态 $\rightarrow$ 解薛定谔方程，匹配边界
+    \item 透射系数尖锐峰值 $\rightarrow$ 共振态，Breit-Wigner
+    \item 低能散射求截面 $\rightarrow$ s波近似，散射长度
+\end{enumerate}
+\end{tipbox}
+
+\end{multicols}
+
+% ============================================
+% PART II: 定态微扰论
 % ============================================
 \newpage
 \section{定态微扰论（\en{Stationary Perturbation Theory}）}
