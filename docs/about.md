@@ -218,7 +218,9 @@ My research focuses on theoretical and computational condensed matter physics, w
 
 **Contents:**
 - Core physical models with quick recognition guides
-- **Zeng Jinyan QM Chapters 3-5:** Bound states, resonances, scattering theory
+- **Zeng Jinyan QM Chapter 3:** Bound state existence conditions (1D symmetric/semi-infinite wells, δ-potential, 3D spherical well)
+- **Zeng Jinyan QM Chapter 4:** Resonance states & quasi-bound states (Breit-Wigner formula, barrier transmission, decaying states)
+- **Zeng Jinyan QM Chapter 5:** Scattering theory (double-barrier resonance, partial wave analysis, scattering length, Levinson's theorem)
 - Stationary perturbation theory (non-degenerate & degenerate)
 - Problem-solving techniques and decision trees
 - Secondary conclusions and quick-reference formulas

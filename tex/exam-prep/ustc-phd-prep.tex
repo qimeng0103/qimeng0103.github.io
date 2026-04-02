@@ -227,6 +227,604 @@ T(E) \approx \frac{\Gamma^2/4}{(E-E_0)^2 + \Gamma^2/4}
 \end{multicols}
 
 % ============================================
+% 曾谨言第3章完整内容：束缚态存在的条件
+% ============================================
+\newpage
+\section{第三章：束缚态存在的条件（完整版）}
+
+\begin{multicols}{2}
+
+\begin{modelbox}[3.1 一维对称方势阱]
+\textbf{势场定义：}
+\[
+V(x) = \begin{cases} -W_0, & |x| < a \\ 0, & |x| > a \end{cases}
+\]
+
+\textbf{束缚态} $(E < 0)$：
+
+设 $\beta = \sqrt{-2\mu E}/\hbar$，$k' = \sqrt{2\mu(E+W_0)}/\hbar$
+
+约束条件：$\beta^2 + k'^2 = 2\mu W_0/\hbar^2$
+
+\textbf{偶宇称态}：$\psi(-x) = \psi(x)$
+\[
+\psi(x) = \begin{cases}
+e^{-\beta x}, & x > a \\
+A\cos(k'x), & -a < x < a \\
+e^{\beta x}, & x < -a
+\end{cases}
+\]
+
+匹配条件：$\boxed{\beta = k'\tan(k'a)}$
+
+\textbf{奇宇称态}：$\psi(-x) = -\psi(x)$
+\[
+\psi(x) = \begin{cases}
+e^{-\beta x}, & x > a \\
+A\sin(k'x), & -a < x < a \\
+-e^{\beta x}, & x < -a
+\end{cases}
+\]
+
+匹配条件：$\boxed{\beta = -k'\cot(k'a)}$
+\end{modelbox}
+
+\begin{insightbox}[存在条件的关键结论]
+\textbf{偶宇称态}：\key{总是存在}（至少一个束缚态）
+
+当 $\sqrt{2\mu W_0}/\hbar \geq \pi/a$ 时，出现第二条偶宇称能级。
+
+\textbf{奇宇称态}：需要满足条件
+\[
+\sqrt{2\mu W_0}/\hbar \geq \frac{\pi}{2a}
+\]
+或等价地：
+\[
+8\mu W_0 a^2 \geq \pi^2\hbar^2
+\]
+
+\textbf{物理解释}：奇宇称要求波函数在原点有节点，需要更大的阱宽或深度才能容纳。
+\end{insightbox}
+
+\begin{formulabox}[无量纲参数形式]
+定义无量纲参数：
+\[
+\xi = k'a, \quad \eta = \beta a, \quad R = \frac{\sqrt{2\mu W_0}a}{\hbar}
+\]
+
+偶宇称方程变为：
+\[
+\begin{cases}
+\xi\tan\xi = \eta \\
+\xi^2 + \eta^2 = R^2
+\end{cases}
+\]
+
+奇宇称方程变为：
+\[
+\begin{cases}
+-\xi\cot\xi = \eta \\
+\xi^2 + \eta^2 = R^2
+\end{cases}
+\]
+
+图解法：圆 $\xi^2 + \eta^2 = R^2$ 与超越曲线的交点给出能级。
+\end{formulabox}
+
+\begin{modelbox}[3.2 一维半壁无限高方势阱]
+\textbf{势场定义：}
+\[
+V(x) = \begin{cases} \infty, & x < 0 \\ -W_0, & 0 < x < a \\ 0, & x > a \end{cases}
+\]
+
+\textbf{边界条件}：$\psi(0) = 0$
+
+波函数形式：
+\[
+\psi(x) = \begin{cases}
+0, & x < 0 \\
+A\sin(k'x), & 0 < x < a \\
+e^{-\beta x}, & x > a
+\end{cases}
+\]
+
+匹配条件：$\boxed{\beta = -k'\cot(k'a)}$
+
+这与对称势阱的奇宇称态相同！
+
+\textbf{存在条件}：
+\[
+8\mu W_0 a^2 \geq \pi^2\hbar^2
+\]
+
+无限高势垒迫使波函数在原点为零，相当于奇宇称条件。
+\end{modelbox}
+
+\begin{formulabox}[3.3 浅势阱近似]
+当势阱很浅或很窄时（$R \ll 1$）：
+
+\textbf{基态能量}：
+\[
+E = -\frac{2\mu W_0^2 a^2}{\hbar^2} = -\frac{\hbar^2 R^4}{2\mu a^2}
+\]
+
+\textbf{基态波函数}：
+\[
+\psi(x) = \begin{cases}
+e^{-R^2 x/a}, & x > a \\
+A\cos(Rx/a), & -a < x < a \\
+e^{R^2 x/a}, & x < -a
+\end{cases}
+\]
+
+\textbf{粒子在阱内概率}：
+\[
+P = \frac{2R^2}{1 + 2R^2} \approx 2R^2 \ll 1
+\]
+
+\key{重要结论}：浅势阱中粒子虽然处于束缚态，但主要停留在势阱之外！
+\end{formulabox}
+
+\begin{modelbox}[3.4 三维球方势阱]
+\textbf{势场定义：}
+\[
+V(r) = \begin{cases} -W_0, & r < a \\ 0, & r > a \end{cases}
+\]
+
+\textbf{最低能级必为s态} $(l = 0)$：
+
+令 $R(r) = \chi(r)/r$，$\chi$ 满足：
+\[
+-\frac{\hbar^2}{2\mu}\frac{d^2\chi}{dr^2} + V(r)\chi = E\chi
+\]
+
+边界条件：$\chi(0) = 0$
+
+\textbf{阱内}：$\chi = A\sin(k'r)$
+
+\textbf{阱外}：$\chi = e^{-\beta r}$
+
+匹配条件：$\boxed{\beta = -k'\cot(k'a)}$
+
+这与一维奇宇称态条件相同！
+\end{modelbox}
+
+\begin{insightbox}[1D vs 3D 束缚态存在的差异]
+\textbf{一维情况}：
+\begin{itemize}
+    \item 任何吸引势 $V(x) < 0$ 都至少有一个束缚态
+    \item 再弱的势也能束缚粒子
+\end{itemize}
+
+\textbf{三维情况}：
+\begin{itemize}
+    \item 势阱必须足够深/宽才可能存在束缚态
+    \item 浅势阱可能没有束缚态
+\end{itemize}
+
+\textbf{数学根源}：1D薛定谔方程在势阱边界总是有解，而3D需要满足径向方程的节点条件。
+\end{insightbox}
+
+\begin{formulabox}[$\delta$势阱的精确解]
+\textbf{势场}：$V(x) = -\gamma\delta(x)$，$\gamma > 0$
+
+\textbf{恰好一个束缚态}：
+\[
+\boxed{E = -\frac{\mu\gamma^2}{2\hbar^2}}
+\]
+
+\textbf{归一化波函数}：
+\[
+\psi(x) = \frac{1}{\sqrt{L}}e^{-|x|/L}, \quad L = \frac{\hbar^2}{\mu\gamma}
+\]
+
+\textbf{特征长度} $L$：粒子分布的衰减长度
+
+\textbf{动量空间波函数}：
+\[
+\phi(p) = \sqrt{\frac{2L}{\pi\hbar}}\frac{1}{1+(pL/\hbar)^2}
+\]
+\end{formulabox}
+
+\end{multicols}
+
+% ============================================
+% 曾谨言第4章完整内容：共振态
+% ============================================
+\newpage
+\section{第四章：共振态及其与束缚态的关系（完整版）}
+
+\begin{multicols}{2}
+
+\begin{modelbox}[4.1 共振态的物理图像]
+\textbf{定义}：能量 $E > 0$ 但粒子在势阱内有很大概率的状态
+
+\textbf{特征能量}：粒子在阱内概率达到极大值的能量
+
+\textbf{复能描述}：
+\[
+E = E_n - i\frac{\Gamma}{2}
+\]
+
+其中 $E_n$ 是共振能量，$\Gamma$ 是共振宽度。
+
+\textbf{寿命-宽度关系}：
+\[
+\boxed{\tau = \frac{\hbar}{\Gamma}}
+\]
+
+满足不确定关系 $\tau\Gamma = \hbar/2$。
+
+\key{物理图像}：共振态是"漏的"束缚态，粒子有一定寿命后会逃逸。
+\end{modelbox}
+
+\begin{modelbox}[4.2 势垒贯穿与共振]
+\textbf{模型}：势阱被有限势垒包围
+\[
+V(x) = \begin{cases}
+0, & 0 < x < a \\
+V_0, & a < x < a+b \\
+0, & x > a+b \\
+\infty, & x < 0
+\end{cases}
+\]
+
+\textbf{对于 $E < V_0$}：粒子通过隧道效应穿透势垒
+
+\textbf{波函数}：阱内为驻波，势垒区衰减，外部为行波
+
+\textbf{共振条件}：当阱内波函数与外部出射波相位匹配时，粒子在阱内概率最大
+
+\textbf{近似条件}：当势垒很宽时，共振能量接近无限宽势垒的束缚态能级
+\end{modelbox}
+
+\begin{formulabox}[Breit-Wigner共振公式]
+\textbf{透射系数}在共振能量附近：
+\[
+T(E) \approx \frac{\Gamma^2/4}{(E-E_n)^2 + \Gamma^2/4}
+\]
+
+\textbf{特征}：
+\begin{itemize}
+    \item $E = E_n$ 时 $T = 1$（完全透射）
+    \item $E = E_n \pm \Gamma/2$ 时 $T = 1/2$
+    \item 半高宽为 $\Gamma$
+\end{itemize}
+
+\textbf{相移}在共振附近：
+\[
+\tan\delta(E) = \frac{\Gamma/2}{E_n - E}
+\]
+
+相移在 $E = E_n$ 处突变 $\pi$。
+\end{formulabox}
+
+\begin{modelbox}[4.3 势垒顶部的共振]
+\textbf{势场}：
+\[
+V(x) = \begin{cases}
+\infty, & x < 0 \\
+V_0, & 0 < x < a \\
+0, & x > a
+\end{cases}
+\]
+
+\textbf{对于 $E > V_0$}：
+
+波数：$k = \sqrt{2\mu E}/\hbar$，$k' = \sqrt{2\mu(E-V_0)}/\hbar$
+
+\textbf{振幅平方}：
+\[
+A^2 = \frac{E/V_0}{(E-V_0)/V_0 + \sin^2(k'a)}
+\]
+
+当 $\sin(k'a) = 0$（即 $k'a = n\pi$）时发生共振！
+
+\textbf{共振宽度}：
+\[
+\Gamma = \frac{4\hbar(E_n-V_0)}{a\sqrt{2\mu V_0}}
+\]
+\end{modelbox}
+
+\begin{insightbox}[共振与束缚态的联系]
+当势垒高度 $V_0 \to \infty$：
+\begin{itemize}
+    \item 共振能级 $\to$ 束缚态能级
+    \item 共振宽度 $\Gamma \to 0$
+    \item 寿命 $\tau \to \infty$
+\end{itemize}
+
+\textbf{统一图像}：
+\begin{itemize}
+    \item 束缚态：无限高势垒的极限
+    \item 共振态：有限势垒，准束缚
+    \item 散射态：完全开放系统
+\end{itemize}
+\end{insightbox}
+
+\begin{modelbox}[4.4 衰变态的复能描述]
+\textbf{出射波边界条件}：
+\[
+\psi(x) = \begin{cases}
+A\sin(k'x), & 0 < x < a \\
+e^{ikx}, & x > a
+\end{cases}
+\]
+
+\textbf{匹配条件}给出复数 $k$ 和 $k'$
+
+\textbf{能量为复数}：
+\[
+E = E_n - i\frac{\Gamma}{2}
+\]
+
+\textbf{时间演化}：
+\[
+\psi(t) \sim e^{-iEt/\hbar} = e^{-iE_nt/\hbar}e^{-\Gamma t/(2\hbar)}
+\]
+
+\textbf{概率衰减}：
+\[
+|\psi(t)|^2 \sim e^{-\Gamma t/\hbar} = e^{-t/\tau}
+\]
+\end{modelbox}
+
+\begin{warnbox}[共振态 vs 束缚态的区别]
+\begin{center}
+\begin{tabular}{|c|c|c|}
+\hline
+特性 & 束缚态 & 共振态 \\
+\hline
+能量 & $E < 0$（实数） & $E > 0$（复数） \\
+波函数 & 可归一化 & 不归一化（出射波） \\
+寿命 & $\infty$ & $\tau = \hbar/\Gamma$ \\
+势垒 & 无限高或不存在 & 有限高/宽 \\
+\hline
+\end{tabular}
+\end{center}
+
+\key{考试注意}：共振态不是定态，是准束缚态！
+\end{warnbox}
+
+\begin{tipbox}[半经典估算]
+\textbf{势阱内往返时间}：
+\[
+\theta = \frac{2a}{v'} = a\sqrt{\frac{2\mu}{E_n-V_0}}
+\]
+
+\textbf{单次穿透概率}：
+\[
+T' \approx 4\sqrt{\frac{E_n}{V_0}}
+\]
+
+\textbf{寿命}：
+\[
+\tau = \theta \cdot T'^{-1} = \frac{a}{4}\sqrt{\frac{2\mu}{E_n}}
+\]
+
+\textbf{验证}：$\Gamma\tau = \hbar$ 与精确结果一致。
+\end{tipbox}
+
+\end{multicols}
+
+% ============================================
+% 曾谨言第5章完整内容：散射理论
+% ============================================
+\newpage
+\section{第五章：多道共振、束缚能级与散射振幅的关系（完整版）}
+
+\begin{multicols}{2}
+
+\begin{modelbox}[5.1 双道共振]
+\textbf{模型}：对称方势阱（双势垒结构）
+\[
+V(x) = \begin{cases}
+-W_0, & |x| < a \\
+0, & |x| > a
+\end{cases}
+\]
+
+\textbf{透射系数}：
+\[
+T(E) = \left[1 + \frac{W_0^2}{4E(E+W_0)}\sin^2(2k'a)\right]^{-1}
+\]
+
+\textbf{共振条件}：$2k'a = n\pi$（即 $\sin(2k'a) = 0$）
+
+此时 $T = 1$（完全透射）
+
+\textbf{共振能量}：
+\[
+E_n = -W_0 + \frac{\pi^2\hbar^2}{8\mu a^2}n^2
+\]
+
+当 $n$ 很小时 $E_n < 0$（束缚态），$n$ 大时 $E_n > 0$（共振态）。
+\end{modelbox}
+
+\begin{formulabox}[共振宽度推导]
+在共振能量附近展开：
+
+令 $2k'a = n\pi + \epsilon$，$\epsilon$ 为小量
+
+\textbf{透射振幅}：
+\[
+S(E) = e^{2ika}\left[\cos(2k'a) - \frac{i}{2}\left(\frac{k}{k'}+\frac{k'}{k}\right)\sin(2k'a)\right]^{-1}
+\]
+
+\textbf{近似为Breit-Wigner形式}：
+\[
+S(E) \approx \frac{\Gamma/2}{(E-E_n) + i\Gamma/2}
+\]
+
+\textbf{宽度}：
+\[
+\Gamma = \frac{2\hbar}{a}\sqrt{\frac{2E_n}{\mu}}
+\]
+
+当 $E \ll W_0$ 时，共振变得非常尖锐。
+\end{formulabox}
+
+\begin{modelbox}[5.2 分波法基础]
+\textbf{平面波展开}：
+\[
+e^{ikz} = \sum_{l=0}^{\infty} (2l+1)i^l j_l(kr) P_l(\cos\theta)
+\]
+
+\textbf{散射波函数}（远处）：
+\[
+\psi(\mathbf{r}) \xrightarrow{r\to\infty} e^{ikz} + f(\theta)\frac{e^{ikr}}{r}
+\]
+
+\textbf{散射振幅}：
+\[
+f(\theta) = \sum_{l=0}^{\infty} (2l+1)f_l P_l(\cos\theta)
+\]
+
+\textbf{分波振幅}：
+\[
+f_l = \frac{e^{2i\delta_l}-1}{2ik} = \frac{1}{k\cot\delta_l - ik}
+\]
+\end{modelbox}
+
+\begin{formulabox}[分波截面公式]
+\textbf{微分截面}：
+\[
+\sigma(\theta) = |f(\theta)|^2
+\]
+
+\textbf{分波截面}：
+\[
+\sigma_l = \frac{4\pi}{k^2}(2l+1)\sin^2\delta_l
+\]
+
+\textbf{总截面}：
+\[
+\sigma_{\text{tot}} = \sum_l \sigma_l = \frac{4\pi}{k^2}\sum_{l}(2l+1)\sin^2\delta_l
+\]
+
+\textbf{光学定理}：
+\[
+\sigma_{\text{tot}} = \frac{4\pi}{k}\text{Im}f(0)
+\]
+\end{formulabox}
+
+\begin{insightbox}[束缚态与散射振幅的关系]
+\textbf{核心结论}：束缚态对应散射振幅在复 $k$ 平面的极点
+
+\textbf{s波散射振幅}：
+\[
+f_0(k) = \frac{1}{k\cot\delta_0 - ik}
+\]
+
+\textbf{束缚态条件}（$k = i\beta$，$\beta > 0$）：
+\[
+k\cot\delta_0 = i\beta = -\beta
+\]
+
+即束缚态对应 $k$ 平面正虚轴上的极点。
+
+\textbf{低能展开}：
+\[
+k\cot\delta_0 \xrightarrow{k\to 0} -\frac{1}{a_s}
+\]
+
+其中 $a_s$ 是\key{散射长度}。
+\end{insightbox}
+
+\begin{modelbox}[5.3 低能散射与散射长度]
+\textbf{条件}：$ka \ll 1$（s波主导）
+
+\textbf{散射长度定义}：
+\[
+\boxed{a_s = -\lim_{k\to 0}f_0(k)}
+\]
+
+或等价地：
+\[
+k\cot\delta_0 \xrightarrow{k\to 0} -\frac{1}{a_s}
+\]
+
+\textbf{低能截面}：
+\[
+\sigma_0 = 4\pi a_s^2
+\]
+
+\textbf{与束缚态的联系}：若存在弱束缚态（$E_b = -\hbar^2\beta^2/2\mu$）：
+\[
+a_s = \frac{1}{\beta} = \frac{\hbar}{\sqrt{-2\mu E_b}}
+\]
+\end{modelbox}
+
+\begin{tipbox}[n-p散射实例]
+中子-质子散射：
+\begin{itemize}
+    \item n-p体系只有一个束缚态（氘核基态）
+    \item 结合能 $E_b = -2.23$ MeV
+    \item 散射长度 $a_s = \hbar/\sqrt{-2\mu E_b} \approx 4.3 \times 10^{-13}$ cm
+\end{itemize}
+
+\textbf{物理意义}：散射长度是束缚态线度的度量。
+
+对于松散束缚态（$|E_b|$ 很小），$a_s \gg$ 力程，散射截面很大。
+\end{tipbox}
+
+\begin{formulabox}[Levinson定理]
+\textbf{定理表述}：
+\[
+\boxed{\delta_l(0) = n_l\pi}
+\]
+
+其中 $n_l$ 是角动量为 $l$ 的束缚态数目。
+
+\textbf{物理解释}：
+\begin{itemize}
+    \item 每个束缚态对应相移增加 $\pi$
+    \item 零能相移反映势场"深度"
+    \item 吸引势：$\delta_0(0) > 0$
+\end{itemize}
+
+\textbf{适用条件}：势场满足 $\int_0^{\infty} r|V(r)|dr < \infty$
+\end{formulabox}
+
+\begin{warnbox}[共振散射的特征]
+当能量接近束缚态能级（但被势垒阻挡形成准束缚态）时：
+
+\textbf{相移行为}：
+\[
+\tan\delta_l(E) = \frac{\Gamma/2}{E_r - E}
+\]
+
+\textbf{在 $E = E_r$ 处}：
+\begin{itemize}
+    \item $\delta_l$ 从 $\pi/2$ 跳变（快速变化）
+    \item 截面达到极大值（Unitarity极限）
+    \item $\sigma_{\text{max}}^{(l)} = 4\pi(2l+1)/k^2$
+\end{itemize}
+
+\textbf{识别共振}：相移快速增加 $\pi$ 且截面出现峰。
+\end{warnbox}
+
+\begin{modelbox}[5.4 有效力程展开]
+\textbf{低能展开}（$k \to 0$）：
+\[
+k\cot\delta_0 = -\frac{1}{a_s} + \frac{1}{2}r_e k^2 + O(k^4)
+\]
+
+\textbf{有效力程} $r_e$：表征势场作用范围
+
+\textbf{截面展开}：
+\[
+\sigma_0 = \frac{4\pi}{k^2 + (-1/a_s + r_e k^2/2 + ...)^2}
+\]
+
+\textbf{零能极限}：$\sigma_0(0) = 4\pi a_s^2$
+
+当存在零能共振（$a_s \to \infty$）时，截面发散！
+\end{modelbox}
+
+\end{multicols}
+
+% ============================================
 % PART II: 定态微扰论
 % ============================================
 \newpage
