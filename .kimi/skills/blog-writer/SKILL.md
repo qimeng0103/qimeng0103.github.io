@@ -90,11 +90,25 @@ my-blog/
 - ✅ **归一化计算**：波函数归一化必须完整计算，包括积分过程
 
 **示意图要求：**
-- ✅ **使用 TikZ 或 Asymptote**：绘制高质量的矢量示意图
-- ✅ **创建源文件**：将 `.tex` (TikZ) 或 `.asy` (Asymptote) 源文件保存在 `tex/figures/` 目录
-- ✅ **编译流程**：TikZ → PDF → PNG，Asymptote → PDF/SVG → PNG
-- ✅ **必要图示**：势阱形状、波函数、共振曲线、相移图等关键物理图像
+- ✅ **使用 Python matplotlib**：所有数值计算绘图统一使用 Python
+- ✅ **创建工具脚本**：将绘图代码保存在 `utils/` 目录，建立可复用的 `plot_style.py`
+- ✅ **统一样式**：使用一致的配色方案（`utils/plot_style.py` 中的 `COLORS`）
+- ✅ **编译流程**：Python 脚本直接生成 PNG 到 `docs/images/{category}/`
+- ✅ **必要图示**：势阱形状、波函数、共振曲线、相移图、散射几何等关键物理图像
 - ✅ **图注完整**：每张图都应有清晰的标题和物理说明
+
+**Python 绘图示例：**
+```python
+# utils/generate_figures.py
+from plot_style import setup_style, save_figure, COLORS
+import matplotlib.pyplot as plt
+import numpy as np
+
+setup_style()
+fig, ax = plt.subplots(figsize=(10, 6))
+# ... plotting code using COLORS['primary'], etc.
+save_figure(fig, 'figure-name.png', 'docs/images/category')
+```
 
 #### 文章元信息格式
 

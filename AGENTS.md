@@ -100,16 +100,15 @@ my-blog/
 - ✅ **显式求解**：所有边界条件、匹配条件必须显式写出并求解
 - ✅ **物理意义说明**：每个方程、每个结果的物理意义必须解释
 
-**示意图规范：**
-- ✅ **使用 TikZ/Asymptote**：创建 `tex/figures/` 目录存放源文件
+**示意图规范（Python matplotlib）：**
+- ✅ **统一工具**：使用 `utils/plot_style.py` 保持全站图表风格一致
+- ✅ **存放位置**：绘图脚本在 `utils/`，输出到 `docs/images/{category}/`
 - ✅ **编译流程**：
   ```bash
-  cd tex/figures
-  pdflatex figure.tex              # TikZ → PDF
-  convert -density 200 figure.pdf ../docs/images/category/figure.png
+  python3 utils/generate_figures.py
   ```
-- ✅ **必要图像**：势阱结构、波函数匹配、共振曲线、相移图
-- ✅ **高质量输出**：矢量图转换，确保网页显示清晰
+- ✅ **必要图像**：势阱结构、波函数匹配、共振曲线、相移图、散射几何
+- ✅ **配色方案**：使用 `plot_style.py` 中定义的学术配色（深蓝、暗红、绿色、紫色等）
 
 #### 文章头部格式
 
