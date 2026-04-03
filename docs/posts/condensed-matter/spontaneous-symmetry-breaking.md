@@ -1747,89 +1747,181 @@ Unlike other field theories, the Einstein-Hilbert action is **non-renormalizable
 - Loop quantum gravity (discrete spacetime structure)
 - Asymptotic safety (RG fixed point at high energy)
 
-### B.5 Ginzburg-Landau Theory of Superconductivity
+### B.5 Ginzburg-Landau Theory of Superconductivity — Complete Derivation
+
+#### B.5.1 The GL Free Energy Functional
+
+**Physical Motivation**
+
+The Ginzburg-Landau theory (1950) is a phenomenological description of superconductors near the critical temperature $T_c$. It predates the microscopic BCS theory (1957) and introduces a **complex order parameter** $\psi(\mathbf{r})$ that can be interpreted as the wavefunction of Cooper pairs.
+
+**Key assumptions:**
+1. The superconducting state is characterized by a complex order parameter $\psi(\mathbf{r})$
+2. Near $T_c$, $|\psi|$ is small, so we can expand the free energy in powers of $|\psi|$
+3. The system interacts with the electromagnetic field via minimal coupling
 
 **The Free Energy Functional**
-
-The Ginzburg-Landau (GL) theory describes superconductors near the critical temperature $T_c$. The central object is the **complex order parameter** $\psi(\mathbf{r})$ (Cooper pair wavefunction) and the **vector potential** $\mathbf{A}$.
-
-The GL free energy functional is:
 
 $$
 F[\psi, \psi^*, \mathbf{A}] = \int d^3r \left[\alpha|\psi|^2 + \frac{\beta}{2}|\psi|^4 + \frac{1}{2m^*}\left|\left(-i\hbar\nabla - \frac{e^*}{c}\mathbf{A}\right)\psi\right|^2 + \frac{\mathbf{B}^2}{8\pi}\right]
 $$
 
 where:
-- $\alpha = \alpha_0(T - T_c)$ changes sign at $T_c$
-- $\beta > 0$ ensures stability
+- $\alpha = \alpha_0(T - T_c)$ changes sign at $T_c$ (linear temperature dependence)
+- $\beta > 0$ ensures stability (quartic term prevents $|\psi| \rightarrow \infty$)
 - $m^* = 2m$ and $e^* = 2e$ are the effective mass and charge of Cooper pairs
 - $\mathbf{B} = \nabla \times \mathbf{A}$ is the magnetic field
 
-**Gauge Invariance**
+**Physical interpretation of each term:**
 
-The GL functional has a **U(1) gauge symmetry**:
+| Term | Physical Meaning |
+|------|-----------------|
+| $\alpha|\psi|^2$ | Quadratic term in the Landau expansion; drives the phase transition |
+| $\frac{\beta}{2}|\psi|^4$ | Quartic stabilization term |
+| $\frac{1}{2m^*}|\mathbf{D}\psi|^2$ | Kinetic energy of Cooper pairs (gauge-covariant) |
+| $\frac{\mathbf{B}^2}{8\pi}$ | Magnetic field energy (Maxwell term) |
 
-$$
-\psi(\mathbf{r}) \rightarrow \psi(\mathbf{r})e^{i\chi(\mathbf{r})}, \quad \mathbf{A}(\mathbf{r}) \rightarrow \mathbf{A}(\mathbf{r}) + \frac{\hbar c}{e^*}\nabla\chi(\mathbf{r})
-$$
+#### B.5.2 Gauge Invariance
 
-The covariant derivative $D = \nabla - \frac{ie^*}{\hbar c}\mathbf{A}$ ensures gauge invariance.
+**U(1) Gauge Transformation**
 
-**Step-by-Step Variation — The GL Equations**
-
-**Step 1: Variation with respect to $\psi^*(\mathbf{r})$**
-
-Consider a variation $\psi^*(\mathbf{r}) \rightarrow \psi^*(\mathbf{r}) + \delta\psi^*(\mathbf{r})$ while keeping $\psi$ and $\mathbf{A}$ fixed.
-
-The free energy is:
+The GL functional has a **local U(1) gauge symmetry**:
 
 $$
-F = \int d^3r\left[\alpha\psi^*\psi + \frac{\beta}{2}(\psi^*\psi)^2 + \frac{1}{2m^*}\left|\left(-i\hbar\nabla - \frac{e^*}{c}\mathbf{A}\right)\psi\right|^2 + \frac{\mathbf{B}^2}{8\pi}\right]
-$$
-
-**Term 1: Potential terms**
-
-$$
-\delta(\alpha\psi^*\psi) = \alpha\psi \delta\psi^*
+\psi(\mathbf{r}) \rightarrow \psi'(\mathbf{r}) = \psi(\mathbf{r})e^{i\chi(\mathbf{r})}
 $$
 
 $$
-\delta\left(\frac{\beta}{2}|\psi|^4\right) = \beta|\psi|^2\psi \delta\psi^*
+\mathbf{A}(\mathbf{r}) \rightarrow \mathbf{A}'(\mathbf{r}) = \mathbf{A}(\mathbf{r}) + \frac{\hbar c}{e^*}\nabla\chi(\mathbf{r})
 $$
 
-**Term 2: Kinetic term (this is the tricky part)**
+where $\chi(\mathbf{r})$ is an arbitrary real function.
 
-Define the covariant derivative: $\mathbf{D} = -i\hbar\nabla - \frac{e^*}{c}\mathbf{A}$.
+**Proof of gauge invariance:**
+
+The covariant derivative transforms as:
+
+$$
+\mathbf{D}'\psi' = \left(-i\hbar\nabla - \frac{e^*}{c}\mathbf{A}'\right)\psi e^{i\chi}
+$$
+
+$$
+= e^{i\chi}\left(-i\hbar\nabla + \hbar\nabla\chi - \frac{e^*}{c}\mathbf{A} - \frac{e^*}{c}\cdot\frac{\hbar c}{e^*}\nabla\chi\right)\psi
+$$
+
+$$
+= e^{i\chi}\left(-i\hbar\nabla - \frac{e^*}{c}\mathbf{A}\right)\psi = e^{i\chi}\mathbf{D}\psi
+$$
+
+Therefore:
+
+$$
+|\mathbf{D}'\psi'|^2 = |e^{i\chi}\mathbf{D}\psi|^2 = |\mathbf{D}\psi|^2
+$$
+
+The kinetic term is gauge invariant. The magnetic field $\mathbf{B} = \nabla \times \mathbf{A}$ is also gauge invariant since $\nabla \times \nabla\chi = 0$.
+
+#### B.5.3 First GL Equation: Variation with respect to $\psi^*$
+
+**Setup**
+
+We vary $\psi^*(\mathbf{r}) \rightarrow \psi^*(\mathbf{r}) + \delta\psi^*(\mathbf{r})$ while keeping $\psi$ and $\mathbf{A}$ fixed. The variation of the free energy must vanish at the minimum:
+
+$$
+\delta F = F[\psi + \delta\psi, \psi^* + \delta\psi^*, \mathbf{A}] - F[\psi, \psi^*, \mathbf{A}] = 0
+$$
+
+to first order in $\delta\psi^*$.
+
+**Step 1: Potential terms**
+
+For $\alpha|\psi|^2 = \alpha\psi^*\psi$:
+
+$$
+\delta(\alpha\psi^*\psi) = \alpha(\delta\psi^*)\psi + \alpha\psi^*\underbrace{(\delta\psi)}_{=0 \text{ (fixed)}} = \alpha\psi \delta\psi^*
+$$
+
+For $\frac{\beta}{2}|\psi|^4 = \frac{\beta}{2}(\psi^*\psi)^2$:
+
+$$
+\delta\left(\frac{\beta}{2}|\psi|^4\right) = \frac{\beta}{2} \cdot 2(\psi^*\psi) \cdot \delta(\psi^*\psi) = \beta|\psi|^2(\psi \delta\psi^* + \psi^*\underbrace{\delta\psi}_{=0}) = \beta|\psi|^2\psi \delta\psi^*
+$$
+
+**Step 2: Kinetic term (detailed calculation)**
+
+Define the **covariant derivative**:
+
+$$
+\mathbf{D} \equiv -i\hbar\nabla - \frac{e^*}{c}\mathbf{A}
+$$
 
 The kinetic term is:
 
 $$
-\frac{1}{2m^*}|\mathbf{D}\psi|^2 = \frac{1}{2m^*}(\mathbf{D}\psi)^* \cdot (\mathbf{D}\psi)
+\mathcal{T} = \frac{1}{2m^*}|\mathbf{D}\psi|^2 = \frac{1}{2m^*}(\mathbf{D}\psi)^* \cdot (\mathbf{D}\psi)
 $$
 
-Varying with respect to $\psi^*$:
+Under variation $\psi^* \rightarrow \psi^* + \delta\psi^*$:
 
 $$
-\delta(|\mathbf{D}\psi|^2) = (\mathbf{D}\delta\psi)^* \cdot (\mathbf{D}\psi) + (\mathbf{D}\psi)^* \cdot (\mathbf{D}\delta\psi)
+\delta\mathcal{T} = \frac{1}{2m^*}\left[(\mathbf{D}\delta\psi)^* \cdot (\mathbf{D}\psi) + (\mathbf{D}\psi)^* \cdot (\mathbf{D}\underbrace{\delta\psi}_{=0})\right] = \frac{1}{2m^*}(\mathbf{D}\delta\psi)^* \cdot (\mathbf{D}\psi)
 $$
 
-Since $\delta$ acts on $\psi^*$ only, and $\mathbf{D}^* = i\hbar\nabla - \frac{e^*}{c}\mathbf{A} = -\mathbf{D} + 2\cdot(\text{real part})$... actually, let's be careful.
+**Step 3: Integration by parts**
 
-Note that $\mathbf{D}^* = i\hbar\nabla - \frac{e^*}{c}\mathbf{A}$ for the complex conjugate. But more usefully, integrate by parts:
+We need to evaluate:
 
 $$
-\int d^3r \, (\mathbf{D}\delta\psi)^* \cdot (\mathbf{D}\psi) = \int d^3r \, \delta\psi^* \mathbf{D}^2\psi + \text{(boundary terms)}
+\int d^3r \, (\mathbf{D}\delta\psi)^* \cdot (\mathbf{D}\psi)
+$$
+
+First, write out the components. Let $D_j = -i\hbar\partial_j - \frac{e^*}{c}A_j$ where $j = x, y, z$. Then:
+
+$$
+(D_j\delta\psi)^* = (i\hbar\partial_j - \frac{e^*}{c}A_j)\delta\psi^*
+$$
+
+since $(-i\hbar\partial_j)^* = i\hbar\partial_j$ and $A_j$ is real.
+
+Therefore:
+
+$$
+\int d^3r \, (\mathbf{D}\delta\psi)^* \cdot (\mathbf{D}\psi) = \int d^3r \sum_j (i\hbar\partial_j - \frac{e^*}{c}A_j)\delta\psi^* \cdot D_j\psi
+$$
+
+Integrate by parts (assuming boundary terms vanish):
+
+$$
+= -\int d^3r \sum_j \delta\psi^* \cdot (i\hbar\partial_j - \frac{e^*}{c}A_j)D_j\psi
+$$
+
+$$
+= -\int d^3r \, \delta\psi^* \sum_j D_j^2\psi
+$$
+
+where we used the fact that $D_j$ acts on everything to its right. Since $D_j^2$ means applying $D_j$ twice:
+
+$$
+D_j^2\psi = (-i\hbar\partial_j - \frac{e^*}{c}A_j)(-i\hbar\partial_j - \frac{e^*}{c}A_j)\psi
+$$
+
+we have:
+
+$$
+\int d^3r \, (\mathbf{D}\delta\psi)^* \cdot (\mathbf{D}\psi) = \int d^3r \, \delta\psi^* \mathbf{D}^2\psi
 $$
 
 where $\mathbf{D}^2 = \mathbf{D} \cdot \mathbf{D} = \left(-i\hbar\nabla - \frac{e^*}{c}\mathbf{A}\right)^2$.
 
-**Step 3: Combine and set to zero**
+**Step 4: Collect all terms**
+
+The total variation is:
 
 $$
 \delta F = \int d^3r \, \delta\psi^*\left[\alpha\psi + \beta|\psi|^2\psi + \frac{1}{2m^*}\mathbf{D}^2\psi\right]
 $$
 
-Setting $\frac{\delta F}{\delta\psi^*} = 0$:
+Since $\delta\psi^*$ is arbitrary, the integrand must vanish:
 
 $$
 \alpha\psi + \beta|\psi|^2\psi + \frac{1}{2m^*}\left(-i\hbar\nabla - \frac{e^*}{c}\mathbf{A}\right)^2\psi = 0
@@ -1837,47 +1929,90 @@ $$
 
 This is the **first Ginzburg-Landau equation** — a non-linear Schrödinger equation for Cooper pairs.
 
----
+#### B.5.4 Second GL Equation: Variation with respect to $\mathbf{A}$
 
-**Step 4: Variation with respect to $\mathbf{A}(\mathbf{r})$**
+**Setup**
 
-Now vary $\mathbf{A} \rightarrow \mathbf{A} + \delta\mathbf{A}$ while keeping $\psi$ fixed.
-
-**Term 1: Kinetic term variation**
-
-The kinetic term depends on $\mathbf{A}$ through $\mathbf{D}$:
+Now vary $\mathbf{A}(\mathbf{r}) \rightarrow \mathbf{A}(\mathbf{r}) + \delta\mathbf{A}(\mathbf{r})$ while keeping $\psi$ fixed. The free energy change is:
 
 $$
-|\mathbf{D}\psi|^2 = \hbar^2|\nabla\psi|^2 - \frac{e^*\hbar}{ic}\mathbf{A}\cdot(\psi^*\nabla\psi - \psi\nabla\psi^*) + \frac{(e^*)^2}{c^2}|\psi|^2\mathbf{A}^2
+\delta F = \int d^3r \left[\frac{1}{2m^*}\delta(|\mathbf{D}\psi|^2) + \frac{1}{8\pi}\delta(\mathbf{B}^2)\right]
+$$
+
+**Step 1: Kinetic term variation**
+
+Expand the kinetic term:
+
+$$
+|\mathbf{D}\psi|^2 = (\mathbf{D}\psi)^* \cdot (\mathbf{D}\psi)
+$$
+
+$$
+= \left[(i\hbar\nabla - \frac{e^*}{c}\mathbf{A})\psi^*\right] \cdot \left[(-i\hbar\nabla - \frac{e^*}{c}\mathbf{A})\psi\right]
+$$
+
+$$
+= \hbar^2|\nabla\psi|^2 + \frac{i\hbar e^*}{c}\mathbf{A}\cdot(\psi^*\nabla\psi - \psi\nabla\psi^*) + \frac{(e^*)^2}{c^2}|\psi|^2\mathbf{A}^2
 $$
 
 Varying with respect to $\mathbf{A}$:
 
 $$
-\delta(|\mathbf{D}\psi|^2) = \left[-\frac{e^*\hbar}{ic}(\psi^*\nabla\psi - \psi\nabla\psi^*) + \frac{2(e^*)^2}{c^2}|\psi|^2\mathbf{A}\right]\cdot\delta\mathbf{A}
+\delta(|\mathbf{D}\psi|^2) = \left[\frac{i\hbar e^*}{c}(\psi^*\nabla\psi - \psi\nabla\psi^*) + \frac{2(e^*)^2}{c^2}|\psi|^2\mathbf{A}\right]\cdot\delta\mathbf{A}
 $$
 
-**Term 2: Magnetic field energy**
+**Step 2: Magnetic field term variation**
 
 With $\mathbf{B} = \nabla \times \mathbf{A}$:
 
 $$
-\delta\left(\frac{\mathbf{B}^2}{8\pi}\right) = \frac{\mathbf{B}\cdot(\nabla \times \delta\mathbf{A})}{4\pi} = \frac{(\nabla \times \mathbf{B})\cdot\delta\mathbf{A}}{4\pi} + \text{(divergence)}
+\delta\mathbf{B} = \nabla \times \delta\mathbf{A}
 $$
 
-(using vector identity: $\mathbf{a} \cdot (\nabla \times \mathbf{b}) = \mathbf{b} \cdot (\nabla \times \mathbf{a}) + \nabla \cdot (\mathbf{a} \times \mathbf{b})$)
+Therefore:
 
-**Step 5: Collect terms**
+$$
+\delta(\mathbf{B}^2) = 2\mathbf{B} \cdot \delta\mathbf{B} = 2\mathbf{B} \cdot (\nabla \times \delta\mathbf{A})
+$$
 
-Define the **supercurrent**:
+Using the vector identity:
+
+$$
+\mathbf{a} \cdot (\nabla \times \mathbf{b}) = \mathbf{b} \cdot (\nabla \times \mathbf{a}) - \nabla \cdot (\mathbf{a} \times \mathbf{b})
+$$
+
+we get:
+
+$$
+\mathbf{B} \cdot (\nabla \times \delta\mathbf{A}) = (\nabla \times \mathbf{B}) \cdot \delta\mathbf{A} - \nabla \cdot (\mathbf{B} \times \delta\mathbf{A})
+$$
+
+The divergence term integrates to a surface term (vanishing at infinity), so:
+
+$$
+\int d^3r \, \mathbf{B} \cdot (\nabla \times \delta\mathbf{A}) = \int d^3r \, (\nabla \times \mathbf{B}) \cdot \delta\mathbf{A}
+$$
+
+**Step 3: Collect terms and define supercurrent**
+
+The total variation is:
+
+$$
+\delta F = \int d^3r \left\{\frac{1}{2m^*}\left[\frac{i\hbar e^*}{c}(\psi^*\nabla\psi - \psi\nabla\psi^*) + \frac{2(e^*)^2}{c^2}|\psi|^2\mathbf{A}\right] + \frac{1}{4\pi}(\nabla \times \mathbf{B})\right\}\cdot\delta\mathbf{A}
+$$
+
+Define the **supercurrent density**:
 
 $$
 \mathbf{j} = \frac{e^*\hbar}{2im^*}(\psi^*\nabla\psi - \psi\nabla\psi^*) - \frac{(e^*)^2}{m^*c}|\psi|^2\mathbf{A}
 $$
 
-Then:
+The first term is the **paramagnetic current** (from phase gradients), the second is the **diamagnetic current** (screening response).
 
-$$\frac{\delta F}{\delta\mathbf{A}} = \frac{1}{c}\mathbf{j} + \frac{1}{4\pi}\nabla \times \mathbf{B} = 0
+Setting $\delta F/\delta\mathbf{A} = 0$:
+
+$$
+\frac{1}{c}\mathbf{j} + \frac{1}{4\pi}\nabla \times \mathbf{B} = 0
 $$
 
 Rearranging:
@@ -1886,63 +2021,173 @@ $$
 \nabla \times \mathbf{B} = \frac{4\pi}{c}\mathbf{j}
 $$
 
-This is **Ampère's law** with the supercurrent! It's also called the **second Ginzburg-Landau equation**.
+This is **Ampère's law** with the supercurrent — the **second Ginzburg-Landau equation**.
 
----
+#### B.5.5 Physical Consequences: Characteristic Lengths
 
-**Physical Interpretation of the Supercurrent:**
+**Coherence Length $\xi$**
 
-The supercurrent has two contributions:
-
-1. **Paramagnetic term:** $\mathbf{j}_{para} \propto \psi^*\nabla\psi - \psi\nabla\psi^*$ — arises from the phase gradient of $\psi$
-2. **Diamagnetic term:** $\mathbf{j}_{dia} \propto -|\psi|^2\mathbf{A}$ — screening current that opposes the magnetic field
-
-This is the **London equation** (with quantum corrections from the GL theory).
-
-**Physical Consequences**
-
-**1. Coherence Length $\xi$**
-
-Near $T_c$, neglecting magnetic fields, the GL equation becomes:
+In zero magnetic field ($\mathbf{A} = 0$), far from boundaries, the GL equation becomes:
 
 $$
-\xi^2\nabla^2\psi + \psi - \frac{|\psi|^2}{|\psi_\infty|^2}\psi = 0
+-\frac{\hbar^2}{2m^*}\nabla^2\psi + \alpha\psi + \beta|\psi|^2\psi = 0
 $$
 
-where $\xi = \sqrt{\frac{\hbar^2}{2m^*|\alpha|}}$ is the **coherence length**—the characteristic length over which $\psi$ varies.
+Near $T_c$, write $\psi = \psi_\infty + \delta\psi$ where $|\psi_\infty|^2 = -\alpha/\beta$ (bulk value). Linearizing:
 
-**2. Penetration Depth $\lambda$**
+$$
+-\frac{\hbar^2}{2m^*}\nabla^2\delta\psi + \alpha\delta\psi + 2\beta|\psi_\infty|^2\delta\psi = 0
+$$
 
-For a weakly varying order parameter, the supercurrent gives:
+Using $|\psi_\infty|^2 = -\alpha/\beta$:
+
+$$
+-\frac{\hbar^2}{2m^*}\nabla^2\delta\psi - \alpha\delta\psi = 0
+$$
+
+This has solutions $\delta\psi \propto e^{-x/\xi}$ with:
+
+$$
+\xi = \sqrt{\frac{\hbar^2}{2m^*|\alpha|}} = \sqrt{\frac{\hbar^2}{2m^*\alpha_0|T_c - T|}}
+$$
+
+The **coherence length** diverges as $T \rightarrow T_c$.
+
+**Penetration Depth $\lambda$**
+
+Consider a weak magnetic field penetrating from the surface. With $\psi \approx \psi_\infty$ (constant), the supercurrent is:
+
+$$
+\mathbf{j} = -\frac{(e^*)^2n_s}{m^*c}\mathbf{A} = -\frac{c}{4\pi\lambda^2}\mathbf{A}
+$$
+
+where $n_s = |\psi_\infty|^2$ and:
+
+$$
+\lambda = \sqrt{\frac{m^*c^2}{4\pi(e^*)^2n_s}} = \sqrt{\frac{m^*c^2\beta}{4\pi(e^*)^2|\alpha|}}
+$$
+
+From Ampère's law $\nabla \times \mathbf{B} = \frac{4\pi}{c}\mathbf{j}$ and $\mathbf{B} = \nabla \times \mathbf{A}$:
 
 $$
 \nabla^2\mathbf{B} = \frac{1}{\lambda^2}\mathbf{B}
 $$
 
-where $\lambda = \sqrt{\frac{m^*c^2}{4\pi(e^*)^2|\psi_\infty|^2}}$ is the **London penetration depth**—the distance over which magnetic fields are expelled from the superconductor (Meissner effect).
+The solution $\mathbf{B}(x) = \mathbf{B}_0 e^{-x/\lambda}$ shows exponential decay — the **Meissner effect**.
 
-**3. Type I vs Type II Superconductors**
+#### B.5.6 Type I vs Type II Superconductors
 
-The ratio $\kappa = \lambda/\xi$ (Ginzburg-Landau parameter) determines the superconductor type:
-- **Type I** ($\kappa < 1/\sqrt{2}$): Sharp first-order transition; complete flux expulsion up to $H_c$
-- **Type II** ($\kappa > 1/\sqrt{2}$): Second-order transition; magnetic flux penetrates as **vortices** (Abrikosov lattice) between $H_{c1}$ and $H_{c2}$
+**The GL Parameter**
 
-**The Abrikosov Vortex**
+The ratio:
 
-In a Type II superconductor, a vortex has:
-- **Core:** $|\psi| = 0$ at the center (normal region), radius $\sim \xi$
-- **Magnetic field:** Peaks at center, decays over $\lambda$
-- **Supercurrent:** Circulates around the vortex
+$$
+\kappa = \frac{\lambda}{\xi} = \frac{m^*c}{\hbar e^*}\sqrt{\frac{\beta}{2\pi}}
+$$
 
-The vortex energy per unit length is $\epsilon = (\Phi_0/4\pi\lambda)^2\ln(\lambda/\xi)$, where $\Phi_0 = hc/e^*$ is the flux quantum.
+is temperature-independent (within GL theory) and determines the superconductor type.
 
-**Connection to Microscopic Theory**
+**Interface Energy Analysis**
 
-The GL theory was originally phenomenological. Later, **Gor'kov** showed that it follows from the BCS theory near $T_c$, with:
-- $\psi(\mathbf{r}) \propto \Delta(\mathbf{r})$ (the gap parameter)
-- The coefficients $\alpha$, $\beta$ can be expressed in terms of BCS parameters (density of states, coupling constant)
+Consider the energy of a normal-superconducting interface. There are two competing effects:
 
-This makes GL theory a powerful bridge between microscopic physics and macroscopic phenomena.
+1. **Positive contribution**: Energy cost of suppressing $|\psi|$ over distance $\xi$ (condensation energy loss)
+2. **Negative contribution**: Energy gain from allowing magnetic field penetration over distance $\lambda$ (field energy reduction)
+
+The interface energy is:
+
+$$
+\sigma_{ns} \approx \frac{H_c^2}{8\pi}(\xi - \lambda)
+$$
+
+where $H_c$ is the thermodynamic critical field.
+
+- **Type I** ($\kappa < 1/\sqrt{2}$): $\xi > \lambda$, $\sigma_{ns} > 0$ — positive surface energy, complete flux expulsion (Meissner state)
+- **Type II** ($\kappa > 1/\sqrt{2}$): $\xi < \lambda$, $\sigma_{ns} < 0$ — negative surface energy, flux penetration favored
+
+**Critical Fields**
+
+For Type II superconductors:
+- $H_{c1}$: Lower critical field — first vortex enters
+- $H_{c2}$: Upper critical field — superconductivity destroyed
+
+$$
+H_{c2} = \frac{\Phi_0}{2\pi\xi^2}, \quad H_{c1} \approx \frac{\Phi_0}{4\pi\lambda^2}\ln\kappa
+$$
+
+where $\Phi_0 = hc/e^* = hc/2e$ is the flux quantum.
+
+#### B.5.7 The Abrikosov Vortex Solution
+
+**Vortex Ansatz**
+
+For a single vortex along the $z$-axis, use cylindrical coordinates $(r, \theta, z)$. The order parameter has the form:
+
+$$
+\psi(r, \theta) = f(r)e^{in\theta}
+$$
+
+where $n$ is the winding number (vorticity). By symmetry, $f(r) \rightarrow 0$ as $r \rightarrow 0$ (normal core) and $f(r) \rightarrow \psi_\infty$ as $r \rightarrow \infty$.
+
+**Core Structure**
+
+Near the core ($r \ll \xi$), $f(r) \approx 0$ and the region is normal. The core radius is $\sim \xi$.
+
+**Magnetic Field Distribution**
+
+The magnetic field peaks at the center and decays exponentially:
+
+$$
+B(r) \approx \frac{\Phi_0}{2\pi\lambda^2}K_0(r/\lambda)
+$$
+
+where $K_0$ is the modified Bessel function. For $r \gg \lambda$: $B(r) \propto e^{-r/\lambda}/\sqrt{r}$.
+
+**Supercurrent Pattern**
+
+The current circulates azimuthally:
+
+$$
+j_\theta(r) = \frac{e^*\hbar n}{m^*r}f^2(r) - \frac{(e^*)^2}{m^*c}A_\theta(r)f^2(r)
+$$
+
+**Vortex Energy**
+
+The energy per unit length is:
+
+$$
+\epsilon = \left(\frac{\Phi_0}{4\pi\lambda}\right)^2\ln\left(\frac{\lambda}{\xi}\right) = \frac{\Phi_0H_{c1}}{4\pi}
+$$
+
+for $\kappa \gg 1$.
+
+#### B.5.8 Connection to BCS Theory
+
+**Microscopic Derivation**
+
+Gor'kov (1959) showed that GL theory follows from BCS theory near $T_c$. The key results:
+
+$$
+\psi(\mathbf{r}) = \sqrt{\frac{7\zeta(3)n}{8\pi^2T_c^2}}\Delta(\mathbf{r})
+$$
+
+where $\Delta(\mathbf{r})$ is the BCS gap parameter, $n$ is the electron density, and $\zeta(3) \approx 1.202$.
+
+The GL coefficients are:
+
+$$
+\alpha = -\frac{6\pi^2T_c^2}{7\zeta(3)\epsilon_F}N(0), \quad \beta = \frac{12\pi^2T_c^2}{7\zeta(3)N(0)n}
+$$
+
+where $N(0)$ is the density of states at the Fermi level and $\epsilon_F$ is the Fermi energy.
+
+**Characteristic lengths in BCS terms:**
+
+$$
+\xi_0 = \frac{\hbar v_F}{\pi\Delta(0)}, \quad \lambda_L(0) = \sqrt{\frac{mc^2}{4\pi n e^2}}
+$$
+
+The GL theory bridges the gap between the microscopic BCS theory and macroscopic electrodynamics, providing a powerful framework for describing superconducting phenomena.
 
 ---
 
