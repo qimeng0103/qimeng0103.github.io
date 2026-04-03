@@ -509,70 +509,12 @@ The symmetry is "spontaneous" because:
 2. No external symmetry-breaking field is applied
 3. The system "chooses" a specific ground state that breaks the symmetry
 
-**Analogy: The Balanced Pencil**
+**Key Insight:**
 
-Imagine a perfectly symmetrical pencil balanced on its tip. Let's write down the physics explicitly.
-
-**The Lagrangian**
-
-For a rigid rod of mass $m$ and length $l$, pivoted at one end (on a horizontal table), the Lagrangian in spherical coordinates $(\theta, \phi)$ is:
-
-$$
-L = \frac{1}{2}I\dot{\theta}^2 + \frac{1}{2}I\sin^2\theta \, \dot{\phi}^2 + mgl\cos\theta
-$$
-
-where:
-- $I = \frac{1}{3}ml^2$ is the moment of inertia about the pivot
-- $\theta$ is the polar angle measured from the **vertical upward direction** ($\theta = 0$ is balanced upright on its tip)
-- $\phi$ is the azimuthal angle in the horizontal plane (specifies which way the pencil falls)
-- The potential $V = -mgl\cos\theta$ comes from gravity (center of mass height is $h = \frac{l}{2}\cos\theta$)
-
-**Note:** We use $+mgl\cos\theta$ in $L = T - V$, so $V = -mgl\cos\theta$ means the Lagrangian contains $+mgl\cos\theta$.
-
-**Symmetry Analysis**
-
-Notice that $L$ does **not** depend on $\phi$ explicitly:
-
-$$
-\frac{\partial L}{\partial \phi} = 0
-$$
-
-This means $L$ is invariant under rotations about the vertical axis:
-
-$$
-\phi \rightarrow \phi + \alpha \quad \text{(for any constant } \alpha\text{)}
-$$
-
-By Noether's theorem, the conjugate momentum $p_\phi = \partial L/\partial\dot{\phi} = I\sin^2\theta \, \dot{\phi}$ is conserved.
-
-**The Equilibrium States**
-
-The potential $V(\theta) = -mgl\cos\theta$ has:
-- **Maximum** at $\theta = 0$ ($\cos\theta = 1$, upright position, unstable equilibrium)
-- **Minimum** at $\theta = \pi/2$ ($\cos\theta = 0$, rod lying horizontally on the table, stable equilibrium)
-
-*Physical interpretation:*
-- $\theta = 0$: Pencil balanced upright on its tip (unstable, maximum potential energy)
-- $\theta = \pi/2$: Pencil has fallen and lies flat on the table (stable, minimum potential energy)
-
-For the **fallen state** at $\theta = \pi/2$:
-- The rod lies in a specific direction in the $xy$-plane: $(\theta = \pi/2, \phi = \phi_0)$
-- The value of $\phi_0$ is arbitrary—any horizontal direction (north, east, south, west...) is equivalent
-- But the pencil must pick **one specific** $\phi_0$ when it falls
-
-**Symmetry Breaking**
-
-The **Hamiltonian** $H = \frac{p_\theta^2}{2I} + \frac{p_\phi^2}{2I\sin^2\theta} - mgl\cos\theta$ is invariant under $\phi \rightarrow \phi + \alpha$.
-
-However, the **ground state** $|\theta = \pi/2, \phi = \phi_0\rangle$ is **not** invariant:
-
-$$
-e^{i\alpha p_\phi/\hbar}|\theta = \pi/2, \phi = \phi_0\rangle = |\theta = \pi/2, \phi = \phi_0 + \alpha\rangle \neq |\theta = \pi/2, \phi = \phi_0\rangle
-$$
-
-The ground state is transformed into a **different** ground state (pointing in a different direction). This is spontaneous symmetry breaking.
-
-**Key Insight:** Any fall direction is equally likely (symmetric), but the system must pick one (symmetry breaking).
+The symmetry is "spontaneous" because:
+1. The equations of motion retain the full symmetry
+2. No external symmetry-breaking field is applied
+3. The system dynamically "chooses" a specific ground state from a degenerate set
 
 ### 2.3 The Complex Scalar Field Model
 
