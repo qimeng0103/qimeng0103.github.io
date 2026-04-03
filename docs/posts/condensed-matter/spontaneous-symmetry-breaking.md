@@ -1776,9 +1776,9 @@ where:
 
 | Term | Physical Meaning |
 |------|-----------------|
-| $\alpha|\psi|^2$ | Quadratic term in the Landau expansion; drives the phase transition |
-| $\frac{\beta}{2}|\psi|^4$ | Quartic stabilization term |
-| $\frac{1}{2m^*}|\mathbf{D}\psi|^2$ | Kinetic energy of Cooper pairs (gauge-covariant) |
+| $\alpha\vert\psi\vert^2$ | Quadratic term in the Landau expansion; drives the phase transition |
+| $\frac{\beta}{2}\vert\psi\vert^4$ | Quartic stabilization term |
+| $\frac{1}{2m^*}\vert\mathbf{D}\psi\vert^2$ | Kinetic energy of Cooper pairs (gauge-covariant) |
 | $\frac{\mathbf{B}^2}{8\pi}$ | Magnetic field energy (Maxwell term) |
 
 #### B.5.2 Gauge Invariance
