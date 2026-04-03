@@ -1488,25 +1488,25 @@ $$
 
 ---
 
-### 补充：拉格朗日乘子法详解
+### Supplement: Detailed Explanation of Lagrange Multipliers
 
-**何时使用拉格朗日乘子？**
+**When to Use Lagrange Multipliers?**
 
-当你在优化一个函数/泛函时，如果有**等式约束条件**，就需要拉格朗日乘子。
+When optimizing a function or functional subject to **equality constraints**, Lagrange multipliers are required.
 
-**简单例子（有限维）：**
+**Simple Example (Finite-Dimensional):**
 
-求 $f(x,y) = x^2 + y^2$ 在约束 $g(x,y) = x + y - 1 = 0$ 下的最小值。
+Find the minimum of $f(x,y) = x^2 + y^2$ subject to the constraint $g(x,y) = x + y - 1 = 0$.
 
-**错误做法：** 直接令 $\nabla f = 0$（得到 $x=y=0$，但不满足约束）
+**Incorrect approach:** Directly set $\nabla f = 0$ (gives $x=y=0$, which violates the constraint).
 
-**正确做法：** 构造拉格朗日函数：
+**Correct approach:** Construct the Lagrangian:
 
 $$
 \mathcal{L}(x,y,\lambda) = f(x,y) - \lambda g(x,y) = x^2 + y^2 - \lambda(x + y - 1)
 $$
 
-然后求解：
+Then solve:
 
 $$
 \frac{\partial\mathcal{L}}{\partial x} = 2x - \lambda = 0 \quad \Rightarrow \quad x = \lambda/2
@@ -1520,27 +1520,27 @@ $$
 \frac{\partial\mathcal{L}}{\partial \lambda} = -(x + y - 1) = 0 \quad \Rightarrow \quad x + y = 1
 $$
 
-解得：$x = y = 1/2$，$\lambda = 1$。
+Solution: $x = y = 1/2$, $\lambda = 1$.
 
-**关键概念：**
-- **乘子 $\lambda$** 的物理意义：约束的"硬度"或目标函数对约束的敏感度
-- 在本例中，$\lambda = 1$ 表示如果约束常数增加 1，最小值增加 1
+**Key Concept:**
+- **Physical meaning of multiplier $\lambda$**: The "stiffness" of the constraint, or how sensitive the objective function is to changes in the constraint.
+- In this example, $\lambda = 1$ means if the constraint constant increases by 1, the minimum value increases by 1.
 
 ---
 
-**泛函的拉格朗日乘子**
+**Lagrange Multipliers for Functionals**
 
-对于 DFT，我们构造：
+For DFT, we construct:
 
 $$
 \mathcal{F}[n, \mu] = E[n] - \mu\left(\int d^3r \, n(\mathbf{r}) - N\right)
 $$
 
-其中 $\mu$ 是拉格朗日乘子（后面会看到它是**化学势**）。
+where $\mu$ is the Lagrange multiplier (which we will see is the **chemical potential**).
 
-**Step-by-Step 变分计算：**
+**Step-by-Step Variational Calculation:**
 
-**Step 1:** 对 $n(\mathbf{r})$ 变分（$\delta n$ 任意）：
+**Step 1:** Vary with respect to $n(\mathbf{r})$ ($\delta n$ is arbitrary):
 
 $$
 \frac{\delta\mathcal{F}}{\delta n(\mathbf{r})} = \frac{\delta E}{\delta n(\mathbf{r})} - \mu = 0
@@ -1552,7 +1552,7 @@ $$
 \frac{\delta E}{\delta n(\mathbf{r})} = \mu
 $$
 
-**Step 2:** 计算 $\frac{\delta E}{\delta n}$ 的各项。
+**Step 2:** Compute each term of $\frac{\delta E}{\delta n}$.
 
 The energy functional is:
 
@@ -1566,7 +1566,7 @@ $$
 \frac{\delta}{\delta n(\mathbf{r})}\int d^3r' \, n(\mathbf{r}')V_{ext}(\mathbf{r}') = V_{ext}(\mathbf{r})
 $$
 
-(Using $\frac{\delta n(\mathbf{r}')}{\delta n(\mathbf{r})} = \delta(\mathbf{r} - \mathbf{r}')$)
+(using $\frac{\delta n(\mathbf{r}')}{\delta n(\mathbf{r})} = \delta(\mathbf{r} - \mathbf{r}')$)
 
 **Term 2: Hartree energy**
 
