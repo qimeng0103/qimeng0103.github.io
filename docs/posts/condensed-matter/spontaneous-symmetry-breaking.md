@@ -44,7 +44,7 @@ $$F: \mathcal{F} \rightarrow \mathbb{R}, \quad f(\cdot) \mapsto F[f]$$
    $$I[f] = \int_{-\infty}^{+\infty} dx \, x^2 f(x)$$
 
 3. **Energy functional** (kinetic + potential energy):
-   $$E[\psi] = \int d^3r \left[\frac{\hbar^2}{2m}|\nabla\psi|^2 + V(r)|\psi|^2\right]$$
+   $$E[\psi] = \int d^3r \left[\frac{\hbar^2}{2m}\vert\nabla\psi\vert^2 + V(r)\vert\psi\vert^2\right]$$
    
    **Note:** After integration by parts, the kinetic term becomes:
    $$-\int d^3r \, \frac{\hbar^2}{2m}\psi^*\nabla^2\psi$$
@@ -421,7 +421,7 @@ $$
 \phi \rightarrow \phi e^{i\theta}
 $$
 
-where $\theta$ is a constant (independent of spacetime). Since $|\phi|^2 = \phi^*\phi$ is invariant under this transformation, the potential $V$ and kinetic term are unchanged.
+where $\theta$ is a constant (independent of spacetime). Since $\vert\phi\vert^2 = \phi^*\phi$ is invariant under this transformation, the potential $V$ and kinetic term are unchanged.
 
 **Finding the Ground State: Why Minimize $V$?**
 
@@ -449,7 +449,7 @@ Similarly for $\phi_2$.
 
 Solutions:
 1. $\phi_1 = \phi_2 = 0$ (local **maximum**, since $V(0) = 0$ and $V < 0$ nearby)
-2. $|\phi|^2 = \phi_1^2 + \phi_2^2 = \frac{\alpha}{2\gamma} \equiv v^2$ (circle of **minima**)
+2. $\vert\phi\vert^2 = \phi_1^2 + \phi_2^2 = \frac{\alpha}{2\gamma} \equiv v^2$ (circle of **minima**)
 
 The ground state energy is:
 
@@ -518,13 +518,13 @@ So $h = \sqrt{2}\eta$ (amplitude) and $\pi = \sqrt{2}v\theta$ (phase).
 
 We substitute $\phi = v + \frac{1}{\sqrt{2}}(h + i\pi)$ into $\mathcal{L}$ and expand to quadratic order in $h$ and $\pi$.
 
-First, compute $|\phi|^2$:
+First, compute $\vert\phi\vert^2$:
 \begin{align}
 |\phi|^2 &= \left(v + \frac{h}{\sqrt{2}}\right)^2 + \left(\frac{\pi}{\sqrt{2}}\right)^2 \\
 &= v^2 + \sqrt{2}vh + \frac{h^2}{2} + \frac{\pi^2}{2}
 \end{align}
 
-Then expand $V(|\phi|^2)$ to quadratic order:
+Then expand $V(\vert\phi\vert^2)$ to quadratic order:
 
 \begin{align}
 V &= -\alpha|\phi|^2 + \gamma|\phi|^4 \\
@@ -850,7 +850,7 @@ When the external field is strong enough to overcome pinning, a domain wall "de-
 |---------|-------------|
 | **Definition** | Ground state has less symmetry than Hamiltonian |
 | **Goldstone Theorem** | Broken continuous symmetry $\Rightarrow$ massless mode |
-| **Mexican Hat Potential** | $V = -\alpha|\phi|^2 + \gamma|\phi|^4$ with circular minimum |
+| **Mexican Hat Potential** | $V = -\alpha\vert\phi\vert^2 + \gamma\vert\phi\vert^4$ with circular minimum |
 | **Order Parameter** | Non-zero in ordered phase, zero in disordered phase |
 | **Higgs vs Goldstone** | Amplitude mode ($h$) is massive; Phase mode ($\pi$) is massless |
 
