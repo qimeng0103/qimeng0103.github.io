@@ -348,27 +348,48 @@ $$
 \frac{\delta F}{\delta \phi(x)} = \frac{\partial \mathcal{L}}{\partial \phi}(x) - \nabla_x \cdot \frac{\partial \mathcal{L}}{\partial(\nabla\phi)}(x)
 $$
 
-Now substitute $\phi(x) = \phi_0$ (constant):
-- $\frac{\partial \mathcal{L}}{\partial \phi}(x) = \frac{\partial \mathcal{L}}{\partial \phi}(\phi_0, 0)$ (just a number)
-- $\nabla\phi(x) = 0$, so the second term vanishes
+**Step 1: Evaluate at uniform field $\phi(x) = \phi_0$**
 
-Therefore:
+When we substitute the constant field $\phi_0$:
+- The partial derivative $\frac{\partial \mathcal{L}}{\partial \phi}$ is evaluated at $(\phi, \nabla\phi) = (\phi_0, 0)$
+- Since $\nabla\phi = 0$ everywhere, the derivative term becomes a **constant number** (independent of $x$)
+
+**Step 2: The gradient term vanishes**
+
+The second term involves $\frac{\partial \mathcal{L}}{\partial(\nabla\phi)}(x)$. For a uniform field:
+- $\nabla\phi(x) = 0$ (constant field has no spatial variation)
+- Therefore $\frac{\partial \mathcal{L}}{\partial(\nabla\phi)}$ is evaluated at zero field gradient
+- The divergence of a constant (or zero) is zero: $\nabla_x \cdot [\text{constant}] = 0$
+
+**Step 3: The equality**
+
+Combining these results:
 
 $$
-\left.\frac{\delta F}{\delta \phi(x)}\right|_{\phi(x)=\phi_0} = \frac{\partial \mathcal{L}}{\partial \phi}(\phi_0, 0) = \left.\frac{\partial \mathcal{L}}{\partial \phi}\right|_{\phi=\phi_0}
+\left.\frac{\delta F}{\delta \phi(x)}\right|_{\phi(x)=\phi_0} = \frac{\partial \mathcal{L}}{\partial \phi}(\phi_0, 0) - 0 = \frac{\partial \mathcal{L}}{\partial \phi}(\phi_0, 0)
 $$
 
-**Why This is Confusing**
+The right-hand side $\left.\frac{\partial \mathcal{L}}{\partial \phi}\right|_{\phi=\phi_0}$ means:
+1. Take the function $\mathcal{L}(\phi, \nabla\phi)$ 
+2. Compute its partial derivative with respect to the variable $\phi$
+3. Evaluate at the point where the field value is $\phi_0$ and field gradient is $0$
 
-The notation makes it look like we're comparing:
-- A function evaluated at a point: $\frac{\delta F}{\delta \phi(x)}|_{\phi(x)=\phi_0}$
-- A function of a variable: $\frac{\partial \mathcal{L}}{\partial \phi}|_{\phi=\phi_0}$
+This gives exactly $\frac{\partial \mathcal{L}}{\partial \phi}(\phi_0, 0)$, proving the equality.
 
-But after substitution, both are just **numbers**. The equality holds because for a uniform field, spatial derivatives vanish, and the functional derivative reduces to the ordinary derivative of the density.
+**Clarifying the Notation Confusion**
+
+| Symbol | Meaning | Evaluated at uniform field |
+|--------|---------|---------------------------|
+| $\frac{\delta F}{\delta \phi(x)}$ | Functional derivative (function of $x$) | Becomes constant: $\frac{\partial \mathcal{L}}{\partial \phi}(\phi_0, 0)$ |
+| $\frac{\partial \mathcal{L}}{\partial \phi}$ | Partial derivative of density (function of $\phi, \nabla\phi$) | Evaluated to number: $\frac{\partial \mathcal{L}}{\partial \phi}(\phi_0, 0)$ |
+
+Both sides yield the same **numerical value** after evaluation, but they reach it through different paths:
+- LHS: Take functional derivative first (getting a function), then substitute uniform field
+- RHS: Take partial derivative of density, then evaluate at the point $(\phi_0, 0)$
 
 **Key Takeaway:**
 
-This equality is why physicists often mix notation—but it **only holds for uniform configurations**! For non-uniform fields, the functional derivative contains additional terms from spatial derivatives.
+This equality is why physicists often mix notation—but it **only holds for uniform configurations**! For non-uniform fields, the gradient term $\nabla \cdot \frac{\partial \mathcal{L}}{\partial(\nabla\phi)}$ contributes, and the functional derivative differs from the ordinary partial derivative.
 
 ### 1.8 Worked Example: $\phi^4$ Theory
 
@@ -494,17 +515,19 @@ Imagine a perfectly symmetrical pencil balanced on its tip. Let's write down the
 
 **The Lagrangian**
 
-For a rigid rod of mass $m$ and length $l$, pivoted at one end, the Lagrangian in spherical coordinates $(\theta, \phi)$ is:
+For a rigid rod of mass $m$ and length $l$, pivoted at one end (on a horizontal table), the Lagrangian in spherical coordinates $(\theta, \phi)$ is:
 
 $$
-L = \frac{1}{2}I\dot{\theta}^2 + \frac{1}{2}I\sin^2\theta \, \dot{\phi}^2 - mgl\cos\theta
+L = \frac{1}{2}I\dot{\theta}^2 + \frac{1}{2}I\sin^2\theta \, \dot{\phi}^2 + mgl\cos\theta
 $$
 
 where:
 - $I = \frac{1}{3}ml^2$ is the moment of inertia about the pivot
-- $\theta$ is the polar angle from vertical ($\theta = 0$ is upright)
-- $\phi$ is the azimuthal angle in the horizontal plane
-- The potential $V = mgl\cos\theta$ comes from gravity
+- $\theta$ is the polar angle measured from the **vertical upward direction** ($\theta = 0$ is balanced upright on its tip)
+- $\phi$ is the azimuthal angle in the horizontal plane (specifies which way the pencil falls)
+- The potential $V = -mgl\cos\theta$ comes from gravity (center of mass height is $h = \frac{l}{2}\cos\theta$)
+
+**Note:** We use $+mgl\cos\theta$ in $L = T - V$, so $V = -mgl\cos\theta$ means the Lagrangian contains $+mgl\cos\theta$.
 
 **Symmetry Analysis**
 
@@ -524,26 +547,30 @@ By Noether's theorem, the conjugate momentum $p_\phi = \partial L/\partial\dot{\
 
 **The Equilibrium States**
 
-The potential $V(\theta) = mgl\cos\theta$ has:
-- **Maximum** at $\theta = 0$ (upright, unstable equilibrium)
-- **Minimum** at $\theta = \pi$ (hanging down, stable equilibrium)
+The potential $V(\theta) = -mgl\cos\theta$ has:
+- **Maximum** at $\theta = 0$ ($\cos\theta = 1$, upright position, unstable equilibrium)
+- **Minimum** at $\theta = \pi/2$ ($\cos\theta = 0$, rod lying horizontally on the table, stable equilibrium)
 
-For the **fallen state** at $\theta = \pi$:
-- The rod points in a specific direction in the $xy$-plane: $(\theta = \pi, \phi = \phi_0)$
-- The value of $\phi_0$ is arbitrary—any horizontal direction is equivalent
-- But the rod must pick **one specific** $\phi_0$
+*Physical interpretation:*
+- $\theta = 0$: Pencil balanced upright on its tip (unstable, maximum potential energy)
+- $\theta = \pi/2$: Pencil has fallen and lies flat on the table (stable, minimum potential energy)
+
+For the **fallen state** at $\theta = \pi/2$:
+- The rod lies in a specific direction in the $xy$-plane: $(\theta = \pi/2, \phi = \phi_0)$
+- The value of $\phi_0$ is arbitrary—any horizontal direction (north, east, south, west...) is equivalent
+- But the pencil must pick **one specific** $\phi_0$ when it falls
 
 **Symmetry Breaking**
 
-The **Hamiltonian** $H = \frac{p_\theta^2}{2I} + \frac{p_\phi^2}{2I\sin^2\theta} + mgl\cos\theta$ is invariant under $\phi \rightarrow \phi + \alpha$.
+The **Hamiltonian** $H = \frac{p_\theta^2}{2I} + \frac{p_\phi^2}{2I\sin^2\theta} - mgl\cos\theta$ is invariant under $\phi \rightarrow \phi + \alpha$.
 
-However, the **ground state** $|\theta = \pi, \phi = \phi_0\rangle$ is **not** invariant:
+However, the **ground state** $|\theta = \pi/2, \phi = \phi_0\rangle$ is **not** invariant:
 
 $$
-e^{i\alpha p_\phi/\hbar}|\theta = \pi, \phi = \phi_0\rangle = |\theta = \pi, \phi = \phi_0 + \alpha\rangle \neq |\theta = \pi, \phi = \phi_0\rangle
+e^{i\alpha p_\phi/\hbar}|\theta = \pi/2, \phi = \phi_0\rangle = |\theta = \pi/2, \phi = \phi_0 + \alpha\rangle \neq |\theta = \pi/2, \phi = \phi_0\rangle
 $$
 
-The ground state is transformed into a **different** ground state. This is spontaneous symmetry breaking.
+The ground state is transformed into a **different** ground state (pointing in a different direction). This is spontaneous symmetry breaking.
 
 **Key Insight:** Any fall direction is equally likely (symmetric), but the system must pick one (symmetry breaking).
 
