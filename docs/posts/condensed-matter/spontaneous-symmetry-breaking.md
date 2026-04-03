@@ -1593,7 +1593,7 @@ For a finite system at $T=0$: $\mu = \epsilon_N$ (highest occupied Kohn-Sham eig
 | DFT | $\int n = N$ | Chemical potential $\mu$ |
 | Statistical mechanics | $\langle H \rangle = E$ | Inverse temperature $\beta$ |
 | QED/QCD | $\partial_\mu A^\mu = 0$ | Gauge-fixing parameter |
-| Quantum mechanics | $\int |\psi|^2 = 1$ | Energy eigenvalue $E$ |
+| Quantum mechanics | $\int \vert\psi\vert^2 = 1$ | Energy eigenvalue $E$ |
 
 The Lagrange multiplier enforces constraints through the variational principle without restricting the function space a priori.
 
