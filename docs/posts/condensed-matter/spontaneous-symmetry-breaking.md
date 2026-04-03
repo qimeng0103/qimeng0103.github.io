@@ -1373,6 +1373,196 @@ $$
 
 This describes how the effective potential (and thus the physics, including symmetry breaking) changes with scale.
 
+### B.6 General Relativity — The Einstein-Hilbert Action
+
+**The Einstein-Hilbert Action**
+
+General relativity can be formulated as a **functional of the metric tensor** $g_{\mu\nu}(x)$. The Einstein-Hilbert action is:
+
+$$
+S[g_{\mu\nu}] = \frac{c^4}{16\pi G}\int d^4x \, \sqrt{-g} \, R + S_{\text{matter}}[g_{\mu\nu}, \psi]
+$$
+
+where:
+- $g = \det(g_{\mu\nu})$ is the metric determinant
+- $R = g^{\mu\nu}R_{\mu\nu}$ is the Ricci scalar (curvature)
+- $G$ is Newton's gravitational constant
+- $S_{\text{matter}}$ describes matter fields $\psi$ coupled to gravity
+
+**The Ricci Tensor and Christoffel Symbols**
+
+The Ricci tensor is built from the Christoffel symbols:
+
+$$
+\Gamma^\lambda_{\mu\nu} = \frac{1}{2}g^{\lambda\sigma}(\partial_\mu g_{\nu\sigma} + \partial_\nu g_{\mu\sigma} - \partial_\sigma g_{\mu\nu})
+$$
+
+$$
+R_{\mu\nu} = \partial_\lambda\Gamma^\lambda_{\mu\nu} - \partial_\nu\Gamma^\lambda_{\mu\lambda} + \Gamma^\lambda_{\lambda\rho}\Gamma^\rho_{\mu\nu} - \Gamma^\lambda_{\mu\rho}\Gamma^\rho_{\lambda\nu}
+$$
+
+**The Variation Principle**
+
+The Einstein field equations follow from $\delta S = 0$ under variations of the metric. This requires computing:
+
+$$
+\frac{\delta S}{\delta g^{\mu\nu}(x)} = 0
+$$
+
+**Step 1: Vary the Einstein-Hilbert Term**
+
+The variation of $\sqrt{-g}R$ is intricate because $R$ depends on $g_{\mu\nu}$ through the Christoffel symbols, which involve derivatives of the metric.
+
+After a lengthy calculation (using the Palatini identity and integration by parts):
+
+$$
+\delta(\sqrt{-g}R) = \sqrt{-g}\left(R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R\right)\delta g^{\mu\nu} + \text{(boundary terms)}
+$$
+
+**Step 2: The Energy-Momentum Tensor**
+
+The matter action variation defines the **energy-momentum tensor**:
+
+$$
+\delta S_{\text{matter}} = -\frac{1}{2}\int d^4x \, \sqrt{-g} \, T_{\mu\nu}\delta g^{\mu\nu}
+$$
+
+Or equivalently:
+
+$$
+T_{\mu\nu} = -\frac{2}{\sqrt{-g}}\frac{\delta S_{\text{matter}}}{\delta g^{\mu\nu}}
+$$
+
+**Step 3: The Einstein Field Equations**
+
+Setting the total variation to zero:
+
+$$
+\frac{c^4}{16\pi G}\left(R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R\right) - \frac{1}{2}T_{\mu\nu} = 0
+$$
+
+Rearranging:
+
+$$
+R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R = \frac{8\pi G}{c^4}T_{\mu\nu}
+$$
+
+Or in the more familiar trace-reversed form:
+
+$$
+R_{\mu\nu} = \frac{8\pi G}{c^4}\left(T_{\mu\nu} - \frac{1}{2}g_{\mu\nu}T\right)
+$$
+
+**Physical Interpretation:**
+
+- **Left side:** Geometric quantities describing spacetime curvature
+- **Right side:** Matter energy-momentum content
+- The equation states: **"Matter tells spacetime how to curve; curved spacetime tells matter how to move"**
+
+**The Challenge of Quantum Gravity:**
+
+Unlike other field theories, the Einstein-Hilbert action is **non-renormalizable** in 4D. The coupling constant $G$ has dimensions of length², leading to divergences that cannot be absorbed by counterterms. This is a key motivation for:
+- String theory (spacetime is not fundamental)
+- Loop quantum gravity (discrete spacetime structure)
+- Asymptotic safety (RG fixed point at high energy)
+
+### B.7 Ginzburg-Landau Theory of Superconductivity
+
+**The Free Energy Functional**
+
+The Ginzburg-Landau (GL) theory describes superconductors near the critical temperature $T_c$. The central object is the **complex order parameter** $\psi(\mathbf{r})$ (Cooper pair wavefunction) and the **vector potential** $\mathbf{A}$.
+
+The GL free energy functional is:
+
+$$
+F[\psi, \psi^*, \mathbf{A}] = \int d^3r \left[\alpha|\psi|^2 + \frac{\beta}{2}|\psi|^4 + \frac{1}{2m^*}\left|\left(-i\hbar\nabla - \frac{e^*}{c}\mathbf{A}\right)\psi\right|^2 + \frac{\mathbf{B}^2}{8\pi}\right]
+$$
+
+where:
+- $\alpha = \alpha_0(T - T_c)$ changes sign at $T_c$
+- $\beta > 0$ ensures stability
+- $m^* = 2m$ and $e^* = 2e$ are the effective mass and charge of Cooper pairs
+- $\mathbf{B} = \nabla \times \mathbf{A}$ is the magnetic field
+
+**Gauge Invariance**
+
+The GL functional has a **U(1) gauge symmetry**:
+
+$$
+\psi(\mathbf{r}) \rightarrow \psi(\mathbf{r})e^{i\chi(\mathbf{r})}, \quad \mathbf{A}(\mathbf{r}) \rightarrow \mathbf{A}(\mathbf{r}) + \frac{\hbar c}{e^*}\nabla\chi(\mathbf{r})
+$$
+
+The covariant derivative $D = \nabla - \frac{ie^*}{\hbar c}\mathbf{A}$ ensures gauge invariance.
+
+**Functional Variation — The GL Equations**
+
+**Variation with respect to $\psi^*$:**
+
+$$
+\frac{\delta F}{\delta \psi^*(\mathbf{r})} = \alpha\psi + \beta|\psi|^2\psi + \frac{1}{2m^*}\left(-i\hbar\nabla - \frac{e^*}{c}\mathbf{A}\right)^2\psi = 0
+$$
+
+This is the **first Ginzburg-Landau equation** (non-linear Schrödinger equation for Cooper pairs).
+
+**Variation with respect to $\mathbf{A}$:**
+
+$$
+\frac{\delta F}{\delta \mathbf{A}(\mathbf{r})} = \frac{1}{c}\mathbf{j} + \frac{1}{4\pi}\nabla \times \mathbf{B} = 0
+$$
+
+where the **supercurrent** is:
+
+$$
+\mathbf{j} = \frac{e^*\hbar}{2im^*}\left(\psi^*\nabla\psi - \psi\nabla\psi^*\right) - \frac{(e^*)^2}{m^*c}|\psi|^2\mathbf{A}
+$$
+
+This is the **second Ginzburg-Landau equation** (London equation with quantum corrections).
+
+**Physical Consequences**
+
+**1. Coherence Length $\xi$**
+
+Near $T_c$, neglecting magnetic fields, the GL equation becomes:
+
+$$
+\xi^2\nabla^2\psi + \psi - \frac{|\psi|^2}{|\psi_\infty|^2}\psi = 0
+$$
+
+where $\xi = \sqrt{\frac{\hbar^2}{2m^*|\alpha|}}$ is the **coherence length**—the characteristic length over which $\psi$ varies.
+
+**2. Penetration Depth $\lambda$**
+
+For a weakly varying order parameter, the supercurrent gives:
+
+$$
+\nabla^2\mathbf{B} = \frac{1}{\lambda^2}\mathbf{B}
+$$
+
+where $\lambda = \sqrt{\frac{m^*c^2}{4\pi(e^*)^2|\psi_\infty|^2}}$ is the **London penetration depth**—the distance over which magnetic fields are expelled from the superconductor (Meissner effect).
+
+**3. Type I vs Type II Superconductors**
+
+The ratio $\kappa = \lambda/\xi$ (Ginzburg-Landau parameter) determines the superconductor type:
+- **Type I** ($\kappa < 1/\sqrt{2}$): Sharp first-order transition; complete flux expulsion up to $H_c$
+- **Type II** ($\kappa > 1/\sqrt{2}$): Second-order transition; magnetic flux penetrates as **vortices** (Abrikosov lattice) between $H_{c1}$ and $H_{c2}$
+
+**The Abrikosov Vortex**
+
+In a Type II superconductor, a vortex has:
+- **Core:** $|\psi| = 0$ at the center (normal region), radius $\sim \xi$
+- **Magnetic field:** Peaks at center, decays over $\lambda$
+- **Supercurrent:** Circulates around the vortex
+
+The vortex energy per unit length is $\epsilon = (\Phi_0/4\pi\lambda)^2\ln(\lambda/\xi)$, where $\Phi_0 = hc/e^*$ is the flux quantum.
+
+**Connection to Microscopic Theory**
+
+The GL theory was originally phenomenological. Later, **Gor'kov** showed that it follows from the BCS theory near $T_c$, with:
+- $\psi(\mathbf{r}) \propto \Delta(\mathbf{r})$ (the gap parameter)
+- The coefficients $\alpha$, $\beta$ can be expressed in terms of BCS parameters (density of states, coupling constant)
+
+This makes GL theory a powerful bridge between microscopic physics and macroscopic phenomena.
+
 ---
 
 ## Summary and Key Takeaways
