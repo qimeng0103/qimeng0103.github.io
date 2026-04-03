@@ -1663,42 +1663,7 @@ $$
 
 **Key insight:** The Lagrange multiplier enforces the constraint "softly" through the variational principle, rather than restricting the function space a priori.
 
-### B.5 Renormalization Group (RG) Flow Equations
-
-**The Wilsonian Effective Action**
-
-In RG, we study how the effective action $S_\Lambda[\phi]$ changes as we integrate out high-momentum modes above scale $\Lambda$. The exact RG flow equation (Wetterich equation) describes the evolution of the effective average action $\Gamma_\Lambda$:
-
-$$
-\partial_\Lambda \Gamma_\Lambda[\phi] = \frac{1}{2}\text{Tr}\left[\frac{\partial_\Lambda R_\Lambda}{\Gamma_\Lambda^{(2)}[\phi] + R_\Lambda}\right]
-$$
-
-where:
-- $R_\Lambda$ is an infrared regulator (suppresses modes with $p < \Lambda$)
-- $\Gamma_\Lambda^{(2)} = \frac{\delta^2\Gamma_\Lambda}{\delta\phi\delta\phi}$ is the second functional derivative (inverse propagator)
-- $\text{Tr}$ denotes momentum and frequency integration
-
-**Physical Interpretation:**
-
-This is a **functional differential equation**. At each scale $\Lambda$, $\Gamma_\Lambda[\phi]$ is a functional of the field. The RG equation tells us how this functional changes as we lower $\Lambda$ (coarse-grain).
-
-**The Local Potential Approximation (LPA):**
-
-Make the ansatz:
-
-$$
-\Gamma_\Lambda[\phi] = \int d^dx \left[\frac{1}{2}(\nabla\phi)^2 + U_\Lambda(\phi)\right]
-$$
-
-Projecting the flow equation onto constant field configurations gives the RG equation for the potential $U_\Lambda$:
-
-$$
-\partial_\Lambda U_\Lambda(\phi) = \frac{1}{2}\int \frac{d^dq}{(2\pi)^d} \frac{\partial_\Lambda R_\Lambda(q)}{q^2 + U_\Lambda''(\phi) + R_\Lambda(q)}
-$$
-
-This describes how the effective potential (and thus the physics, including symmetry breaking) changes with scale.
-
-### B.6 General Relativity — The Einstein-Hilbert Action
+### B.5 General Relativity — The Einstein-Hilbert Action
 
 **The Einstein-Hilbert Action**
 
@@ -1848,7 +1813,7 @@ Unlike other field theories, the Einstein-Hilbert action is **non-renormalizable
 - Loop quantum gravity (discrete spacetime structure)
 - Asymptotic safety (RG fixed point at high energy)
 
-### B.7 Ginzburg-Landau Theory of Superconductivity
+### B.6 Ginzburg-Landau Theory of Superconductivity
 
 **The Free Energy Functional**
 
