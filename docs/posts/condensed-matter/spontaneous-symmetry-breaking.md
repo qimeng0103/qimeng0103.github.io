@@ -1167,21 +1167,37 @@ where:
 - $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$ is the field strength
 - $\gamma^\mu$ are Dirac matrices
 
-**Functional Derivative with respect to $\bar{\psi}$**
+**Step-by-Step Variation with respect to $\bar{\psi}$**
 
-Treating $\psi$ and $\bar{\psi}$ as independent fields:
+**Step 1:** Identify the relevant part of the action:
+
+$$
+S_{\text{Dirac}} = \int d^4x \, \bar{\psi}(x)(i\gamma^\mu D_\mu - m)\psi(x)
+$$
+
+**Step 2:** Introduce a variation:
+
+$$
+\bar{\psi}(x) \rightarrow \bar{\psi}(x) + \delta\bar{\psi}(x)
+$$
+
+**Step 3:** Compute the change in the action:
+
+$$
+\delta S = S[\bar{\psi} + \delta\bar{\psi}] - S[\bar{\psi}] = \int d^4x \, \delta\bar{\psi}(x)(i\gamma^\mu D_\mu - m)\psi(x)
+$$
+
+**Step 4:** Apply the functional derivative definition:
+
+By definition, $\delta S = \int d^4x \, \frac{\delta S}{\delta\bar{\psi}(x)}\delta\bar{\psi}(x)$.
+
+Comparing with our result:
 
 $$
 \frac{\delta S}{\delta \bar{\psi}(x)} = (i\gamma^\mu D_\mu - m)\psi(x)
 $$
 
-**Derivation:** The action contains $\int d^4x \, \bar{\psi}(x)[...]$. When we vary $\bar{\psi} \rightarrow \bar{\psi} + \delta\bar{\psi}$:
-
-$$
-\delta S = \int d^4x \, \delta\bar{\psi}(x)(i\gamma^\mu D_\mu - m)\psi(x)
-$$
-
-By definition of the functional derivative, $\delta S = \int d^4x \, \frac{\delta S}{\delta\bar{\psi}(x)}\delta\bar{\psi}(x)$.
+**Step 5:** Stationary condition:
 
 Setting $\frac{\delta S}{\delta\bar{\psi}} = 0$ gives the **Dirac equation in an electromagnetic field**:
 
@@ -1189,19 +1205,79 @@ $$
 (i\gamma^\mu D_\mu - m)\psi = 0
 $$
 
-**Functional Derivative with respect to $A_\mu$**
+Expanding $D_\mu = \partial_\mu + ieA_\mu$:
 
 $$
-\frac{\delta S}{\delta A_\nu(x)} = e\bar{\psi}\gamma^\nu\psi + \partial_\mu F^{\mu\nu}
+(i\gamma^\mu\partial_\mu - e\gamma^\mu A_\mu - m)\psi = 0
 $$
 
-Setting this to zero gives the **Maxwell equations with source**:
+This describes a relativistic spin-1/2 particle interacting with the electromagnetic field.
+
+---
+
+**Step-by-Step Variation with respect to $A_\nu$**
+
+**Step 1:** Split the action into fermion and gauge parts:
 
 $$
-\partial_\mu F^{\mu\nu} = -e\bar{\psi}\gamma^\nu\psi = -j^\nu
+S = \underbrace{\int d^4x \, \bar{\psi}(i\gamma^\mu\partial_\mu - m)\psi}_{S_{\text{free}}} + \underbrace{\int d^4x \, e\bar{\psi}\gamma^\mu A_\mu\psi}_{S_{\text{int}}} - \underbrace{\int d^4x \, \frac{1}{4}F_{\mu\nu}F^{\mu\nu}}_{S_{\text{Maxwell}}}
 $$
 
-where $j^\nu = e\bar{\psi}\gamma^\nu\psi$ is the electromagnetic current.
+**Step 2:** Vary $A_\nu \rightarrow A_\nu + \delta A_\nu$.
+
+For the interaction term:
+
+$$
+\delta S_{\text{int}} = \int d^4x \, e\bar{\psi}\gamma^\mu\psi \, \delta A_\mu(x) = \int d^4x \, j^\mu(x)\delta A_\mu(x)
+$$
+
+where $j^\mu = e\bar{\psi}\gamma^\mu\psi$.
+
+**Step 3:** Vary the Maxwell term.
+
+First, note that $F_{\mu\nu} = \partial_\mu A_\nu - \partial_\nu A_\mu$, so:
+
+$$
+\delta F_{\mu\nu} = \partial_\mu(\delta A_\nu) - \partial_\nu(\delta A_\mu)
+$$
+
+Then:
+
+$$
+\delta(F_{\mu\nu}F^{\mu\nu}) = 2F^{\mu\nu}\delta F_{\mu\nu} = 2F^{\mu\nu}(\partial_\mu\delta A_\nu - \partial_\nu\delta A_\mu) = 4F^{\mu\nu}\partial_\mu\delta A_\nu
+$$
+
+(using antisymmetry $F^{\mu\nu} = -F^{\nu\mu}$)
+
+**Step 4:** Integrate by parts:
+
+$$
+\delta S_{\text{Maxwell}} = -\frac{1}{4}\int d^4x \, 4F^{\mu\nu}\partial_\mu\delta A_\nu = \int d^4x \, (\partial_\mu F^{\mu\nu})\delta A_\nu
+$$
+
+(assuming boundary terms vanish).
+
+**Step 5:** Combine results:
+
+$$
+\delta S = \int d^4x \, \left[j^\nu(x) + \partial_\mu F^{\mu\nu}(x)\right]\delta A_\nu(x)
+$$
+
+Therefore:
+
+$$
+\frac{\delta S}{\delta A_\nu(x)} = j^\nu(x) + \partial_\mu F^{\mu\nu}(x) = e\bar{\psi}\gamma^\nu\psi + \partial_\mu F^{\mu\nu}
+$$
+
+**Step 6:** Stationary condition gives Maxwell's equations:
+
+$$
+\partial_\mu F^{\mu\nu} = -j^\nu = -e\bar{\psi}\gamma^\nu\psi
+$$
+
+This is $\partial_\mu F^{\mu\nu} = -j^\nu$, which in 3-vector notation gives:
+- $\nabla \cdot \mathbf{E} = \rho$ (Gauss's law)
+- $\nabla \times \mathbf{B} - \partial_t\mathbf{E} = \mathbf{j}$ (Ampère-Maxwell law)
 
 ### B.2 Quantum Chromodynamics (QCD) — Non-Abelian Gauge Theory
 
@@ -1227,12 +1303,62 @@ where $T^a$ are Gell-Mann matrices (generators of SU(3)) and $f^{abc}$ are struc
 
 **The Challenge:** The field strength contains **quadratic terms** $A_\mu^b A_\nu^c$, leading to **three-gluon and four-gluon self-interactions** that have no analogue in QED.
 
-**Functional Derivative — Yang-Mills Equations**
+**Step-by-Step Variation — Yang-Mills Equations**
 
-Varying with respect to $A_\nu^b$:
+**Step 1:** Write the QCD action separating matter and gauge parts:
 
 $$
-\frac{\delta S}{\delta A_\nu^b(x)} = g\bar{\psi}_i\gamma^\nu (T^b)^{ij}\psi_j + (D_\mu F^{\mu\nu})_b = 0
+S = \int d^4x \, \bar{\psi}_i(i\gamma^\mu D_\mu^{ij} - m\delta^{ij})\psi_j - \frac{1}{4}\int d^4x \, F_{\mu\nu}^a F^{\mu\nu}_a
+$$
+
+**Step 2:** Variation of the matter term with respect to $A_\nu^b$.
+
+The covariant derivative is $D_\mu^{ij} = \partial_\mu\delta^{ij} + igA_\mu^a (T^a)^{ij}$. Varying:
+
+$$
+\delta D_\mu^{ij} = ig\delta A_\mu^a (T^a)^{ij}
+$$
+
+So the variation of the matter action is:
+
+$$
+\delta S_{\text{matter}} = \int d^4x \, \bar{\psi}_i(i\gamma^\mu)(ig\delta A_\mu^a T^a)^{ij}\psi_j = -\int d^4x \, g\bar{\psi}_i\gamma^\mu(T^a)^{ij}\psi_j \delta A_\mu^a
+$$
+
+Define the **color current**:
+
+$$
+j^{\mu,a} = g\bar{\psi}\gamma^\mu T^a\psi
+$$
+
+**Step 3:** Variation of the gauge field term.
+
+This is more complex than QED because $F_{\mu\nu}^a$ contains quadratic terms:
+
+$$
+F_{\mu\nu}^a = \partial_\mu A_\nu^a - \partial_\nu A_\mu^a + gf^{abc}A_\mu^b A_\nu^c
+$$
+
+The variation is:
+
+$$
+\delta F_{\mu\nu}^a = \partial_\mu(\delta A_\nu^a) - \partial_\nu(\delta A_\mu^a) + gf^{abc}[\delta A_\mu^b A_\nu^c + A_\mu^b \delta A_\nu^c]
+$$
+
+**Step 4:** Compute $\delta(F_{\mu\nu}^a F^{\mu\nu}_a) = 2F^{\mu\nu}_a \delta F_{\mu\nu}^a$.
+
+After careful algebra and integration by parts (see textbooks for detailed steps):
+
+$$
+\delta S_{\text{gauge}} = \int d^4x \, (D_\mu F^{\mu\nu})_a \delta A_\nu^a
+$$
+
+where $(D_\mu F^{\mu\nu})_a = \partial_\mu F^{\mu\nu}_a + gf_{abc}A_\mu^b F^{\mu\nu}_c$ is the **covariant divergence**.
+
+**Step 5:** Combine variations:
+
+$$
+\frac{\delta S}{\delta A_\nu^b(x)} = -j^{\nu,b}(x) + (D_\mu F^{\mu\nu})_b(x) = 0
 $$
 
 This gives the **Yang-Mills equations**:
@@ -1242,9 +1368,9 @@ $$
 $$
 
 **Physical Significance:**
-- Unlike QED, the gluon field itself carries color charge
-- This leads to **asymptotic freedom** (weak coupling at high energy) and **confinement** (strong coupling at low energy)
-- The non-linear terms make QCD much harder to solve than QED
+- Unlike QED ($\partial_\mu F^{\mu\nu} = j^\nu$), the left side has covariant derivative
+- This reflects that gluons themselves carry color charge (they contribute to the current)
+- The non-linear terms lead to **asymptotic freedom** (weak at high energy) and **confinement** (strong at low energy)
 
 ### B.3 Electroweak Theory (Spontaneously Broken Gauge Theory)
 
@@ -1270,19 +1396,61 @@ $$
 \langle\Phi\rangle = \frac{1}{\sqrt{2}}\begin{pmatrix} 0 \\ v \end{pmatrix}
 $$
 
-**Expansion around Vacuum:**
+**Step-by-Step Expansion and Mass Generation**
 
-Write $\Phi = \frac{1}{\sqrt{2}}\begin{pmatrix} \phi_1 + i\phi_2 \\ v + h + i\phi_3 \end{pmatrix}$ and substitute into $\mathcal{L}$.
-
-**The Result:**
-
-The kinetic term $(D_\mu\Phi)^\dagger(D^\mu\Phi)$ generates **vector boson masses**:
+**Step 1:** Parameterize fluctuations around the vacuum:
 
 $$
-M_W = \frac{gv}{2}, \quad M_Z = \frac{gv}{2\cos\theta_W}
+\Phi(x) = \frac{1}{\sqrt{2}}\begin{pmatrix} \phi_1(x) + i\phi_2(x) \\ v + h(x) + i\phi_3(x) \end{pmatrix} = \frac{1}{\sqrt{2}}\exp\left(i\frac{\phi_a\tau^a}{v}\right)\begin{pmatrix} 0 \\ v + h \end{pmatrix}
 $$
 
-where $g$ is the SU(2) coupling and $\theta_W$ is the Weinberg angle.
+where $\tau^a$ are Pauli matrices and $\phi_1, \phi_2, \phi_3$ are Goldstone fields.
+
+**Step 2:** The covariant derivative in electroweak theory is:
+
+$$
+D_\mu = \partial_\mu - ig\frac{\tau^a}{2}W_\mu^a - ig'\frac{Y}{2}B_\mu
+$$
+
+where:
+- $W_\mu^a$ ($a = 1,2,3$) are SU(2)$_L$ gauge fields
+- $B_\mu$ is U(1)$_Y$ gauge field
+- $g$ and $g'$ are respective couplings
+- $Y = 1$ is the hypercharge of the Higgs doublet
+
+**Step 3:** Compute the kinetic term $(D_\mu\Phi)^\dagger(D^\mu\Phi)$.
+
+Focus on the vacuum contribution (constant $v$):
+
+$$
+D_\mu\langle\Phi\rangle = -\frac{igv}{2\sqrt{2}}\begin{pmatrix} W_\mu^1 - iW_\mu^2 \\ -W_\mu^3 + \frac{g'}{g}B_\mu \end{pmatrix}
+$$
+
+Therefore:
+
+$$
+|D_\mu\langle\Phi\rangle|^2 = \frac{g^2v^2}{4}W_\mu^+ W^{-\mu} + \frac{g^2v^2}{8\cos^2\theta_W}Z_\mu Z^\mu + 0 \cdot A_\mu A^\mu
+$$
+
+where we've defined:
+- $W_\mu^\pm = (W_\mu^1 \mp iW_\mu^2)/\sqrt{2}$ (charged weak bosons)
+- $Z_\mu = \cos\theta_W W_\mu^3 - \sin\theta_W B_\mu$ (neutral weak boson)
+- $A_\mu = \sin\theta_W W_\mu^3 + \cos\theta_W B_\mu$ (photon)
+- $\tan\theta_W = g'/g$ (Weinberg angle)
+
+**Step 4: Read off the masses**
+
+Comparing with the Proca Lagrangian $\mathcal{L} = \frac{1}{2}M^2 A_\mu A^\mu$:
+
+$$
+M_W = \frac{gv}{2}, \quad M_Z = \frac{gv}{2\cos\theta_W} = \frac{M_W}{\cos\theta_W}
+$$
+
+The photon $A_\mu$ remains massless (unbroken U(1)$_{\text{em}}$).
+
+**Step 5: Goldstone boson "eating"**
+
+The three fields $\phi_1, \phi_2, \phi_3$ mix with the gauge fields. They become the **longitudinal polarizations** of the massive $W^\pm$ and $Z$ bosons. This is the **Higgs mechanism** — gauge bosons acquire mass by "eating" Goldstone bosons.
 
 **Functional Variation after SSB:**
 
@@ -1308,35 +1476,192 @@ where:
 - $E_H[n] = \frac{e^2}{2}\int d^3r d^3r' \frac{n(\mathbf{r})n(\mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|}$: Hartree (classical electrostatic) energy
 - $E_{xc}[n]$: Exchange-correlation energy (quantum effects)
 
-**The Hohenberg-Kohn Theorem:**
+**The Hohenberg-Kohn Theorem and Constrained Minimization**
 
-The ground state density $n_0(\mathbf{r})$ minimizes $E[n]$ subject to $\int d^3r \, n(\mathbf{r}) = N$ (particle number constraint).
+The ground state density $n_0(\mathbf{r})$ minimizes $E[n]$ but must satisfy the **constraint**:
 
-**The Euler-Lagrange Equation:**
+$$
+\int d^3r \, n(\mathbf{r}) = N \quad \text{(fixed particle number)}
+$$
 
-Using a Lagrange multiplier $\mu$ (chemical potential):
+**Mathematical Problem:** Minimize $E[n]$ subject to $C[n] = \int n(\mathbf{r})d^3r - N = 0$.
+
+---
+
+### 补充：拉格朗日乘子法详解
+
+**何时使用拉格朗日乘子？**
+
+当你在优化一个函数/泛函时，如果有**等式约束条件**，就需要拉格朗日乘子。
+
+**简单例子（有限维）：**
+
+求 $f(x,y) = x^2 + y^2$ 在约束 $g(x,y) = x + y - 1 = 0$ 下的最小值。
+
+**错误做法：** 直接令 $\nabla f = 0$（得到 $x=y=0$，但不满足约束）
+
+**正确做法：** 构造拉格朗日函数：
+
+$$
+\mathcal{L}(x,y,\lambda) = f(x,y) - \lambda g(x,y) = x^2 + y^2 - \lambda(x + y - 1)
+$$
+
+然后求解：
+
+$$
+\frac{\partial\mathcal{L}}{\partial x} = 2x - \lambda = 0 \quad \Rightarrow \quad x = \lambda/2
+$$
+
+$$
+\frac{\partial\mathcal{L}}{\partial y} = 2y - \lambda = 0 \quad \Rightarrow \quad y = \lambda/2
+$$
+
+$$
+\frac{\partial\mathcal{L}}{\partial \lambda} = -(x + y - 1) = 0 \quad \Rightarrow \quad x + y = 1
+$$
+
+解得：$x = y = 1/2$，$\lambda = 1$。
+
+**关键概念：**
+- **乘子 $\lambda$** 的物理意义：约束的"硬度"或目标函数对约束的敏感度
+- 在本例中，$\lambda = 1$ 表示如果约束常数增加 1，最小值增加 1
+
+---
+
+**泛函的拉格朗日乘子**
+
+对于 DFT，我们构造：
+
+$$
+\mathcal{F}[n, \mu] = E[n] - \mu\left(\int d^3r \, n(\mathbf{r}) - N\right)
+$$
+
+其中 $\mu$ 是拉格朗日乘子（后面会看到它是**化学势**）。
+
+**Step-by-Step 变分计算：**
+
+**Step 1:** 对 $n(\mathbf{r})$ 变分（$\delta n$ 任意）：
+
+$$
+\frac{\delta\mathcal{F}}{\delta n(\mathbf{r})} = \frac{\delta E}{\delta n(\mathbf{r})} - \mu = 0
+$$
+
+Therefore:
 
 $$
 \frac{\delta E}{\delta n(\mathbf{r})} = \mu
 $$
 
-Computing each term:
-- $\frac{\delta}{\delta n(\mathbf{r})}\int nV_{ext} = V_{ext}(\mathbf{r})$
-- $\frac{\delta E_H}{\delta n(\mathbf{r})} = e^2\int d^3r' \frac{n(\mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|}$ (Hartree potential)
+**Step 2:** 计算 $\frac{\delta E}{\delta n}$ 的各项。
 
-The result is the **Kohn-Sham equation**:
+The energy functional is:
+
+$$
+E[n] = T_s[n] + \int d^3r \, n(\mathbf{r})V_{ext}(\mathbf{r}) + \frac{e^2}{2}\int d^3r d^3r' \frac{n(\mathbf{r})n(\mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|} + E_{xc}[n]
+$$
+
+**Term 1: External potential**
+
+$$
+\frac{\delta}{\delta n(\mathbf{r})}\int d^3r' \, n(\mathbf{r}')V_{ext}(\mathbf{r}') = V_{ext}(\mathbf{r})
+$$
+
+(Using $\frac{\delta n(\mathbf{r}')}{\delta n(\mathbf{r})} = \delta(\mathbf{r} - \mathbf{r}')$)
+
+**Term 2: Hartree energy**
+
+$$
+E_H = \frac{e^2}{2}\int d^3r d^3r' \frac{n(\mathbf{r})n(\mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|}
+$$
+
+Varying:
+
+$$
+\delta E_H = \frac{e^2}{2}\int d^3r d^3r' \frac{\delta n(\mathbf{r})n(\mathbf{r}') + n(\mathbf{r})\delta n(\mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|} = e^2\int d^3r \delta n(\mathbf{r})\int d^3r' \frac{n(\mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|}
+$$
+
+So:
+
+$$
+\frac{\delta E_H}{\delta n(\mathbf{r})} = e^2\int d^3r' \frac{n(\mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|} \equiv V_H(\mathbf{r})
+$$
+
+This is the **Hartree potential** (classical electrostatic potential from charge density $n$).
+
+**Term 3: Exchange-correlation**
+
+$$
+\frac{\delta E_{xc}}{\delta n(\mathbf{r})} \equiv V_{xc}(\mathbf{r})
+$$
+
+(This is where approximations like LDA enter)
+
+**Term 4: Kinetic energy** $T_s[n]$
+
+This is subtle because $T_s$ is not an explicit functional of $n$. The trick is to use the **Kohn-Sham orbitals**.
+
+**Step 3:** The Kohn-Sham construction.
+
+Introduce auxiliary non-interacting electrons with orbitals $\phi_i$ such that:
+
+$$
+n(\mathbf{r}) = \sum_{i=1}^N |\phi_i(\mathbf{r})|^2
+$$
+
+For non-interacting electrons:
+
+$$
+T_s = -\frac{\hbar^2}{2m}\sum_{i=1}^N \int d^3r \, \phi_i^*\nabla^2\phi_i = \sum_{i=1}^N \langle\phi_i|\hat{T}|\phi_i\rangle
+$$
+
+To minimize $E$ while maintaining the density constraint, we need the orbitals to satisfy:
+
+$$
+\frac{\delta}{\delta\phi_i^*}\left[T_s + \int d^3r \, nV_{eff}\right] = 0
+$$
+
+This gives the **Kohn-Sham equation**:
 
 $$
 \left(-\frac{\hbar^2}{2m}\nabla^2 + V_{eff}(\mathbf{r})\right)\phi_i(\mathbf{r}) = \epsilon_i\phi_i(\mathbf{r})
 $$
 
-with effective potential:
+with:
 
 $$
-V_{eff}(\mathbf{r}) = V_{ext}(\mathbf{r}) + e^2\int d^3r' \frac{n(\mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|} + \frac{\delta E_{xc}}{\delta n(\mathbf{r})}
+V_{eff}(\mathbf{r}) = V_{ext}(\mathbf{r}) + V_H(\mathbf{r}) + V_{xc}(\mathbf{r}) = V_{ext} + e^2\int d^3r' \frac{n(\mathbf{r}')}{|\mathbf{r}-\mathbf{r}'|} + \frac{\delta E_{xc}}{\delta n}
 $$
 
-**Self-Consistency:** The density is $n(\mathbf{r}) = \sum_{i=1}^N |\phi_i(\mathbf{r})|^2$, so the Kohn-Sham equations must be solved iteratively.
+**Step 4:** What is $\mu$ (the Lagrange multiplier)?
+
+From $\frac{\delta E}{\delta n} = \mu$, the multiplier equals the functional derivative of energy with respect to density. This is precisely the definition of the **chemical potential**—the energy cost to add one more particle.
+
+For the highest occupied Kohn-Sham orbital:
+
+$$
+\mu = \epsilon_N \quad \text{(for a finite system at } T = 0\text{)}
+$$
+
+**Self-Consistency Loop:**
+
+1. Start with an initial guess $n_0(\mathbf{r})$
+2. Compute $V_{eff}[n_0]$
+3. Solve Kohn-Sham equations for $\phi_i$
+4. Compute new density $n_1 = \sum_i |\phi_i|^2$
+5. If $\|n_1 - n_0\| <$ tolerance, done. Otherwise, mix $n_1$ with $n_0$ and repeat
+
+---
+
+**Summary: When to Use Lagrange Multipliers in Physics**
+
+| Situation | Constraint Type | Example |
+|-----------|----------------|---------|
+| Particle number conservation | $\int n = N$ | DFT, statistical mechanics |
+| Fixed total energy | $\langle H \rangle = E$ | Canonical ensemble |
+| Gauge fixing | $\partial_\mu A^\mu = 0$ | QED, QCD quantization |
+| Normalization | $\int |\psi|^2 = 1$ | Quantum mechanics |
+
+**Key insight:** The Lagrange multiplier enforces the constraint "softly" through the variational principle, rather than restricting the function space a priori.
 
 ### B.5 Renormalization Group (RG) Flow Equations
 
@@ -1401,25 +1726,77 @@ $$
 R_{\mu\nu} = \partial_\lambda\Gamma^\lambda_{\mu\nu} - \partial_\nu\Gamma^\lambda_{\mu\lambda} + \Gamma^\lambda_{\lambda\rho}\Gamma^\rho_{\mu\nu} - \Gamma^\lambda_{\mu\rho}\Gamma^\rho_{\lambda\nu}
 $$
 
-**The Variation Principle**
+**Step-by-Step Variation of the Einstein-Hilbert Action**
 
-The Einstein field equations follow from $\delta S = 0$ under variations of the metric. This requires computing:
+**Step 1: Setup the variation**
 
-$$
-\frac{\delta S}{\delta g^{\mu\nu}(x)} = 0
-$$
+Vary the metric: $g_{\mu\nu} \rightarrow g_{\mu\nu} + \delta g_{\mu\nu}$, or equivalently $g^{\mu\nu} \rightarrow g^{\mu\nu} + \delta g^{\mu\nu}$.
 
-**Step 1: Vary the Einstein-Hilbert Term**
+Note: $\delta g^{\mu\nu} = -g^{\mu\alpha}g^{\nu\beta}\delta g_{\alpha\beta}$ (using $g^{\mu\alpha}g_{\alpha\nu} = \delta^\mu_\nu$).
 
-The variation of $\sqrt{-g}R$ is intricate because $R$ depends on $g_{\mu\nu}$ through the Christoffel symbols, which involve derivatives of the metric.
+**Step 2: Variation of $\sqrt{-g}$**
 
-After a lengthy calculation (using the Palatini identity and integration by parts):
+Using $\delta g = g g^{\mu\nu}\delta g_{\mu\nu} = -g g_{\mu\nu}\delta g^{\mu\nu}$:
 
 $$
-\delta(\sqrt{-g}R) = \sqrt{-g}\left(R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R\right)\delta g^{\mu\nu} + \text{(boundary terms)}
+\delta(\sqrt{-g}) = \frac{1}{2\sqrt{-g}}(-g)g^{\mu\nu}\delta g_{\mu\nu} = -\frac{1}{2}\sqrt{-g}g_{\mu\nu}\delta g^{\mu\nu}
 $$
 
-**Step 2: The Energy-Momentum Tensor**
+**Step 3: Variation of the Ricci scalar $R = g^{\mu\nu}R_{\mu\nu}$**
+
+$$
+\delta R = R_{\mu\nu}\delta g^{\mu\nu} + g^{\mu\nu}\delta R_{\mu\nu}
+$$
+
+**Step 4: The Palatini Identity for $\delta R_{\mu\nu}$**
+
+This is the key step. The Ricci tensor is:
+
+$$
+R_{\mu\nu} = \partial_\lambda\Gamma^\lambda_{\mu\nu} - \partial_\nu\Gamma^\lambda_{\mu\lambda} + \Gamma^\lambda_{\lambda\rho}\Gamma^\rho_{\mu\nu} - \Gamma^\lambda_{\mu\rho}\Gamma^\rho_{\lambda\nu}
+$$
+
+The variation $\delta R_{\mu\nu}$ can be written as a **total derivative** plus Christoffel terms. After calculation (see Carroll's "Spacetime and Geometry" for details):
+
+$$
+\delta R_{\mu\nu} = \nabla_\lambda(\delta\Gamma^\lambda_{\mu\nu}) - \nabla_\nu(\delta\Gamma^\lambda_{\mu\lambda})
+$$
+
+This is the **Palatini identity**.
+
+Therefore:
+
+$$
+g^{\mu\nu}\delta R_{\mu\nu} = \nabla_\lambda(g^{\mu\nu}\delta\Gamma^\lambda_{\mu\nu} - g^{\mu\lambda}\delta\Gamma^\rho_{\mu\rho}) \equiv \nabla_\lambda V^\lambda
+$$
+
+This is a total covariant divergence.
+
+**Step 5: Putting it together**
+
+$$
+\delta(\sqrt{-g}R) = \delta(\sqrt{-g})R + \sqrt{-g}\delta R
+$$
+
+$$
+= -\frac{1}{2}\sqrt{-g}g_{\mu\nu}R\delta g^{\mu\nu} + \sqrt{-g}R_{\mu\nu}\delta g^{\mu\nu} + \sqrt{-g}g^{\mu\nu}\delta R_{\mu\nu}
+$$
+
+$$
+= \sqrt{-g}\left(R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R\right)\delta g^{\mu\nu} + \sqrt{-g}\nabla_\lambda V^\lambda
+$$
+
+**Step 6: Integration by parts / Boundary terms**
+
+The last term $\sqrt{-g}\nabla_\lambda V^\lambda = \partial_\lambda(\sqrt{-g}V^\lambda)$ is a total divergence. When integrated over spacetime with suitable boundary conditions (variations vanish at boundaries), this term vanishes.
+
+**Result:**
+
+$$
+\delta S_{EH} = \frac{c^4}{16\pi G}\int d^4x \, \sqrt{-g}\left(R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R\right)\delta g^{\mu\nu}
+$$
+
+**Step 7: The Energy-Momentum Tensor**
 
 The matter action variation defines the **energy-momentum tensor**:
 
@@ -1433,9 +1810,14 @@ $$
 T_{\mu\nu} = -\frac{2}{\sqrt{-g}}\frac{\delta S_{\text{matter}}}{\delta g^{\mu\nu}}
 $$
 
-**Step 3: The Einstein Field Equations**
+**Examples:**
+- For a scalar field: $T_{\mu\nu} = \partial_\mu\phi\partial_\nu\phi - \frac{1}{2}g_{\mu\nu}(\partial\phi)^2$
+- For electromagnetic field: $T_{\mu\nu} = F_{\mu\alpha}F_\nu^{\alpha} - \frac{1}{4}g_{\mu\nu}F^2$
+- For perfect fluid: $T_{\mu\nu} = (\rho + p)u_\mu u_\nu + pg_{\mu\nu}$
 
-Setting the total variation to zero:
+**Step 8: The Einstein Field Equations**
+
+Setting the total variation $\delta S = \delta S_{EH} + \delta S_{\text{matter}} = 0$:
 
 $$
 \frac{c^4}{16\pi G}\left(R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R\right) - \frac{1}{2}T_{\mu\nu} = 0
@@ -1447,7 +1829,7 @@ $$
 R_{\mu\nu} - \frac{1}{2}g_{\mu\nu}R = \frac{8\pi G}{c^4}T_{\mu\nu}
 $$
 
-Or in the more familiar trace-reversed form:
+Or in the more familiar trace-reversed form (taking the trace $g^{\mu\nu}g_{\mu\nu} = 4$):
 
 $$
 R_{\mu\nu} = \frac{8\pi G}{c^4}\left(T_{\mu\nu} - \frac{1}{2}g_{\mu\nu}T\right)
@@ -1494,29 +1876,129 @@ $$
 
 The covariant derivative $D = \nabla - \frac{ie^*}{\hbar c}\mathbf{A}$ ensures gauge invariance.
 
-**Functional Variation — The GL Equations**
+**Step-by-Step Variation — The GL Equations**
 
-**Variation with respect to $\psi^*$:**
+**Step 1: Variation with respect to $\psi^*(\mathbf{r})$**
 
-$$
-\frac{\delta F}{\delta \psi^*(\mathbf{r})} = \alpha\psi + \beta|\psi|^2\psi + \frac{1}{2m^*}\left(-i\hbar\nabla - \frac{e^*}{c}\mathbf{A}\right)^2\psi = 0
-$$
+Consider a variation $\psi^*(\mathbf{r}) \rightarrow \psi^*(\mathbf{r}) + \delta\psi^*(\mathbf{r})$ while keeping $\psi$ and $\mathbf{A}$ fixed.
 
-This is the **first Ginzburg-Landau equation** (non-linear Schrödinger equation for Cooper pairs).
-
-**Variation with respect to $\mathbf{A}$:**
+The free energy is:
 
 $$
-\frac{\delta F}{\delta \mathbf{A}(\mathbf{r})} = \frac{1}{c}\mathbf{j} + \frac{1}{4\pi}\nabla \times \mathbf{B} = 0
+F = \int d^3r\left[\alpha\psi^*\psi + \frac{\beta}{2}(\psi^*\psi)^2 + \frac{1}{2m^*}\left|\left(-i\hbar\nabla - \frac{e^*}{c}\mathbf{A}\right)\psi\right|^2 + \frac{\mathbf{B}^2}{8\pi}\right]
 $$
 
-where the **supercurrent** is:
+**Term 1: Potential terms**
 
 $$
-\mathbf{j} = \frac{e^*\hbar}{2im^*}\left(\psi^*\nabla\psi - \psi\nabla\psi^*\right) - \frac{(e^*)^2}{m^*c}|\psi|^2\mathbf{A}
+\delta(\alpha\psi^*\psi) = \alpha\psi \delta\psi^*
 $$
 
-This is the **second Ginzburg-Landau equation** (London equation with quantum corrections).
+$$
+\delta\left(\frac{\beta}{2}|\psi|^4\right) = \beta|\psi|^2\psi \delta\psi^*
+$$
+
+**Term 2: Kinetic term (this is the tricky part)**
+
+Define the covariant derivative: $\mathbf{D} = -i\hbar\nabla - \frac{e^*}{c}\mathbf{A}$.
+
+The kinetic term is:
+
+$$
+\frac{1}{2m^*}|\mathbf{D}\psi|^2 = \frac{1}{2m^*}(\mathbf{D}\psi)^* \cdot (\mathbf{D}\psi)
+$$
+
+Varying with respect to $\psi^*$:
+
+$$
+\delta(|\mathbf{D}\psi|^2) = (\mathbf{D}\delta\psi)^* \cdot (\mathbf{D}\psi) + (\mathbf{D}\psi)^* \cdot (\mathbf{D}\delta\psi)
+$$
+
+Since $\delta$ acts on $\psi^*$ only, and $\mathbf{D}^* = i\hbar\nabla - \frac{e^*}{c}\mathbf{A} = -\mathbf{D} + 2\cdot(\text{real part})$... actually, let's be careful.
+
+Note that $\mathbf{D}^* = i\hbar\nabla - \frac{e^*}{c}\mathbf{A}$ for the complex conjugate. But more usefully, integrate by parts:
+
+$$
+\int d^3r \, (\mathbf{D}\delta\psi)^* \cdot (\mathbf{D}\psi) = \int d^3r \, \delta\psi^* \mathbf{D}^2\psi + \text{(boundary terms)}
+$$
+
+where $\mathbf{D}^2 = \mathbf{D} \cdot \mathbf{D} = \left(-i\hbar\nabla - \frac{e^*}{c}\mathbf{A}\right)^2$.
+
+**Step 3: Combine and set to zero**
+
+$$
+\delta F = \int d^3r \, \delta\psi^*\left[\alpha\psi + \beta|\psi|^2\psi + \frac{1}{2m^*}\mathbf{D}^2\psi\right]
+$$
+
+Setting $\frac{\delta F}{\delta\psi^*} = 0$:
+
+$$
+\alpha\psi + \beta|\psi|^2\psi + \frac{1}{2m^*}\left(-i\hbar\nabla - \frac{e^*}{c}\mathbf{A}\right)^2\psi = 0
+$$
+
+This is the **first Ginzburg-Landau equation** — a non-linear Schrödinger equation for Cooper pairs.
+
+---
+
+**Step 4: Variation with respect to $\mathbf{A}(\mathbf{r})$**
+
+Now vary $\mathbf{A} \rightarrow \mathbf{A} + \delta\mathbf{A}$ while keeping $\psi$ fixed.
+
+**Term 1: Kinetic term variation**
+
+The kinetic term depends on $\mathbf{A}$ through $\mathbf{D}$:
+
+$$
+|\mathbf{D}\psi|^2 = \hbar^2|\nabla\psi|^2 - \frac{e^*\hbar}{ic}\mathbf{A}\cdot(\psi^*\nabla\psi - \psi\nabla\psi^*) + \frac{(e^*)^2}{c^2}|\psi|^2\mathbf{A}^2
+$$
+
+Varying with respect to $\mathbf{A}$:
+
+$$
+\delta(|\mathbf{D}\psi|^2) = \left[-\frac{e^*\hbar}{ic}(\psi^*\nabla\psi - \psi\nabla\psi^*) + \frac{2(e^*)^2}{c^2}|\psi|^2\mathbf{A}\right]\cdot\delta\mathbf{A}
+$$
+
+**Term 2: Magnetic field energy**
+
+With $\mathbf{B} = \nabla \times \mathbf{A}$:
+
+$$
+\delta\left(\frac{\mathbf{B}^2}{8\pi}\right) = \frac{\mathbf{B}\cdot(\nabla \times \delta\mathbf{A})}{4\pi} = \frac{(\nabla \times \mathbf{B})\cdot\delta\mathbf{A}}{4\pi} + \text{(divergence)}
+$$
+
+(using vector identity: $\mathbf{a} \cdot (\nabla \times \mathbf{b}) = \mathbf{b} \cdot (\nabla \times \mathbf{a}) + \nabla \cdot (\mathbf{a} \times \mathbf{b})$)
+
+**Step 5: Collect terms**
+
+Define the **supercurrent**:
+
+$$
+\mathbf{j} = \frac{e^*\hbar}{2im^*}(\psi^*\nabla\psi - \psi\nabla\psi^*) - \frac{(e^*)^2}{m^*c}|\psi|^2\mathbf{A}
+$$
+
+Then:
+
+$$\frac{\delta F}{\delta\mathbf{A}} = \frac{1}{c}\mathbf{j} + \frac{1}{4\pi}\nabla \times \mathbf{B} = 0
+$$
+
+Rearranging:
+
+$$
+\nabla \times \mathbf{B} = \frac{4\pi}{c}\mathbf{j}
+$$
+
+This is **Ampère's law** with the supercurrent! It's also called the **second Ginzburg-Landau equation**.
+
+---
+
+**Physical Interpretation of the Supercurrent:**
+
+The supercurrent has two contributions:
+
+1. **Paramagnetic term:** $\mathbf{j}_{para} \propto \psi^*\nabla\psi - \psi\nabla\psi^*$ — arises from the phase gradient of $\psi$
+2. **Diamagnetic term:** $\mathbf{j}_{dia} \propto -|\psi|^2\mathbf{A}$ — screening current that opposes the magnetic field
+
+This is the **London equation** (with quantum corrections from the GL theory).
 
 **Physical Consequences**
 
