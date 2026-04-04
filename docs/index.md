@@ -209,6 +209,14 @@ hero:
   <h2>Recent Articles</h2>
   
   <div class="article-entry">
+    <div class="article-date">2026-04-04</div>
+    <div class="article-info">
+      <h3><a href="/posts/quantum-mechanics/angular-momentum-algebra">Angular Momentum Algebra</a></h3>
+      <p>Commutation relations, ladder operators, matrix representations, and addition of angular momenta</p>
+    </div>
+  </div>
+  
+  <div class="article-entry">
     <div class="article-date">2026-04-03</div>
     <div class="article-info">
       <h3><a href="/posts/condensed-matter/spontaneous-symmetry-breaking">Spontaneous Symmetry Breaking and Functional Calculus</a></h3>
