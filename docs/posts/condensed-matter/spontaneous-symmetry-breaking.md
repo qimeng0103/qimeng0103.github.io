@@ -282,43 +282,29 @@ When to use which?
 | Lagrangian density $\mathcal{L}$ | Value $\phi(x)$ at single point | Ordinary partial | $\frac{\partial \mathcal{L}}{\partial \phi}$ |
 | Potential $V(\phi)$ (uniform field) | Single number $\phi$ | Ordinary | $\frac{\partial V}{\partial \phi}$ |
 
-**Rule 2: Local vs. Non-Local Functionals — Two Levels of Variables**
+**Rule 2: Local Functionals and the Inherited $x$-Dependence**
 
 A **local functional** has the form:
 
 $$
-F[\phi] = \int dy \, \mathcal{L}(\phi(y), \nabla\phi(y), y)
+F[\phi] = \int dy \, \mathcal{L}(\phi(y), \nabla\phi(y))
 $$
 
-where $\mathcal{L}$ (the **Lagrangian density**) depends on:
-- The field value $\phi(y)$ at point $y$
-- The field gradient $\nabla\phi(y)$ at point $y$  
-- Possibly an **explicit dependence** on the point $y$ itself (e.g., external potential $V_{ext}(y)$)
+where $\mathcal{L}$ depends on the field value $\phi(y)$ and its gradient $\nabla\phi(y)$ at point $y$.
 
-**Critical Point: Two Levels of Variable Substitution**
+**Key Insight: The Functional Derivative Inherits $x$-Dependence**
 
-The functional derivative $\frac{\delta F}{\delta \phi(x)}$ requires **two distinct levels of substitution** to become a numerical value:
+The functional derivative $\frac{\delta F}{\delta \phi(x)}$ is a **function of $x$**, but this dependence is not explicit—it is **inherited** from the field configuration $\phi(x)$ that was "absorbed" into the functional.
 
-1. **First level (the functional level)**: Substitute a specific field configuration $\phi(\cdot)$ into the functional $F[\phi]$
-2. **Second level (the point level)**: Specify the point $x$ where we evaluate the derivative
+**The Logic:**
+1. $F[\phi]$ "eats" an entire function $\phi(\cdot)$ → outputs a number
+2. $\frac{\delta F}{\delta \phi(x)}$ "eats" the same function $\phi(\cdot)$ → outputs a **function of $x$**
 
-**The Chain of Dependencies:**
-
-```
-$\frac{\delta F}{\delta \phi(x)}$ depends on $x$ ← inherits from $\phi(x)$ in the variation
-                ↓
-         After substituting $\phi(\cdot)$
-                ↓
-      Becomes a function of $x$: $\frac{\delta F}{\delta \phi(x)} = f(x)$
-```
-
-**Explicit Formula:**
+The $x$-dependence comes from evaluating $\phi$ and its derivatives at point $x$:
 
 $$
-\frac{\delta F}{\delta \phi(x)} = \frac{\partial \mathcal{L}}{\partial \phi}(\phi(x), \nabla\phi(x), x) - \nabla_x \cdot \left(\frac{\partial \mathcal{L}}{\partial(\nabla\phi)}(\phi(x), \nabla\phi(x), x)\right)
+\frac{\delta F}{\delta \phi(x)} = \frac{\partial \mathcal{L}}{\partial \phi}(\phi(x), \nabla\phi(x)) - \nabla_x \cdot \left(\frac{\partial \mathcal{L}}{\partial(\nabla\phi)}(\phi(x), \nabla\phi(x))\right)
 $$
-
-The $(x)$ on the right-hand side appears **after** substituting the field configuration $\phi$ — the $x$-dependence is **inherited** from $\phi(x)$.
 
 **Example Where They Differ:**
 
@@ -329,78 +315,31 @@ Consider $F[\phi] = \int dx \, \frac{1}{2}(\nabla\phi)^2$.
 
 These are completely different! The functional derivative captures spatial variation.
 
-### 1.7 Rule 3: Uniform Field Configurations - Detailed Analysis
+### 1.7 Rule 3: Uniform Field Configurations
 
-**Two Levels of Abstraction for Functionals**
+**The Key Equality**
 
-Before stating the rule, let's clarify the dual nature of functional derivatives. A functional derivative involves **two distinct levels of abstraction**:
-
-1. **The functional level**: $F[\phi]$ is a map from the space of functions to numbers. The functional derivative $\frac{\delta F}{\delta \phi(x)}$ tells us how $F$ responds to changes in $\phi$ at point $x$.
-
-2. **The function level**: Once we evaluate $\frac{\delta F}{\delta \phi(x)}$, we obtain a **new function of position $x$**. For each $x$, this gives a number telling us the sensitivity at that point.
-
-**Key distinction**: $\frac{\delta F}{\delta \phi(x)}$ is itself a function of $x$. When we write $\frac{\delta F}{\delta \phi}$ without the $(x)$, we mean the functional derivative operator or the resulting function evaluated at all points.
-
-**The Lagrangian Density $\mathcal{L}$ — A Different Object**
-
-It's crucial to understand what $\mathcal{L}$ is:
-- $\mathcal{L}(\phi(x), \nabla\phi(x), x)$ takes a **position $x$** and field values at that point, and returns a number
-- It is **not** a functional—it's an ordinary function of its arguments $(\phi, \nabla\phi, x)$
-- For a local theory: $F[\phi] = \int dx \, \mathcal{L}(\phi(x), \nabla\phi(x), x)$
-
-When we write $\frac{\partial \mathcal{L}}{\partial \phi}$, we treat $\mathcal{L}$ as a function of the variable $\phi$ (at fixed $x$), not as a functional of the entire field configuration.
-
-**The Equality**
-
-For a spatially uniform field $\phi(x) = \phi_0$ (constant), the following equality holds:
+For a spatially uniform field $\phi(x) = \phi_0$ (constant), the functional derivative simplifies:
 
 $$
-\left.\frac{\delta F[\phi]}{\delta \phi(x)}\right|_{\phi(x)=\phi_0} = \left.\frac{\partial \mathcal{L}}{\partial \phi}\right|_{\phi=\phi_0}
+\left.\frac{\delta F[\phi]}{\delta \phi(x)}\right|_{\phi(x)=\phi_0} = \left.\frac{\partial \mathcal{L}}{\partial \phi}\right|_{(\phi, \nabla\phi) = (\phi_0, 0)}
 $$
 
-**Understanding the Left-Hand Side (Functional Derivative)**
+**Why This Holds:**
 
-The functional derivative $\frac{\delta F}{\delta \phi(x)}$ is computed as follows:
-1. Start with $F[\phi] = \int dy \, \mathcal{L}(\phi(y), \nabla\phi(y), y)$
-2. Compute $\frac{\delta F}{\delta \phi(x)}$ using the formula for local functionals
-3. This yields a **function of $x$**: $\frac{\delta F}{\delta \phi(x)} = \frac{\partial \mathcal{L}}{\partial \phi}(x) - \nabla \cdot \left(\frac{\partial \mathcal{L}}{\partial(\nabla\phi)}(x)\right)$
-4. Now substitute the uniform configuration $\phi(x) = \phi_0$ (constant for all $x$)
-5. The result is a **constant number** (same value for all $x$)
+For uniform field $\phi_0$:
+1. **Gradient term vanishes**: $\nabla\phi = 0$, so the second term in the functional derivative drops out
+2. **No explicit $x$-dependence**: The result is the same ordinary partial derivative evaluated at the point $(\phi_0, 0)$
 
-**Understanding the Right-Hand Side (Ordinary Derivative)**
+**The Critical Distinction:**
 
-The partial derivative $\frac{\partial \mathcal{L}}{\partial \phi}$ is computed as follows:
-1. Take the Lagrangian density function $\mathcal{L}(\phi, \nabla\phi, x)$
-2. Treat $\phi$ as an independent variable (not a field), holding $\nabla\phi$ and $x$ fixed
-3. Compute the ordinary partial derivative with respect to this variable
-4. Evaluate at the point where the field value is $\phi_0$ and field gradient is $\nabla\phi = 0$
-5. The result is a number
+| | Functional Derivative | Ordinary Partial Derivative |
+|---|---|---|
+| **Input** | Function $\phi(\cdot)$ | Variables $(\phi, \nabla\phi)$ |
+| **Output** | Function of $x$ (inherited from $\phi(x)$) | Function of $(\phi, \nabla\phi)$ |
+| **At uniform field** | Constant number $\frac{\partial\mathcal{L}}{\partial\phi}(\phi_0, 0)$ | Same constant number |
 
-**Detailed Proof:**
-
-For a local functional:
-
-$$
-F[\phi] = \int dy \, \mathcal{L}(\phi(y), \nabla\phi(y))
-$$
-
-The functional derivative is:
-
-$$
-\frac{\delta F}{\delta \phi(x)} = \frac{\partial \mathcal{L}}{\partial \phi}(x) - \nabla_x \cdot \frac{\partial \mathcal{L}}{\partial(\nabla\phi)}(x)
-$$
-
-**Step 1: Evaluate at uniform field $\phi(x) = \phi_0$**
-
-When we substitute the constant field $\phi_0$:
-- The partial derivative $\frac{\partial \mathcal{L}}{\partial \phi}$ is evaluated at $(\phi, \nabla\phi) = (\phi_0, 0)$
-- Since $\nabla\phi = 0$ everywhere, the derivative term becomes a **constant number** (independent of $x$)
-
-**Step 2: The gradient term vanishes**
-
-The second term involves $\frac{\partial \mathcal{L}}{\partial(\nabla\phi)}(x)$. For a uniform field:
-- $\nabla\phi(x) = 0$ (constant field has no spatial variation)
-- Therefore $\frac{\partial \mathcal{L}}{\partial(\nabla\phi)}$ is evaluated at zero field gradient
+The equality holds **only at uniform configurations** because the gradient term vanishes. For non-uniform fields, the functional derivative includes spatial variation: $\frac{\delta F}{\delta\phi(x)} = \frac{\partial\mathcal{L}}{\partial\phi} - \nabla\cdot\frac{\partial\mathcal{L}}{\partial(\nabla\phi)}$.
 - The divergence of a constant (or zero) is zero: $\nabla_x \cdot [\text{constant}] = 0$
 
 **Step 3: The equality**
@@ -893,65 +832,55 @@ $$
 \int dx \, M(y,x) \eta(x) = 0
 $$
 
-**Step 5: The Mass Matrix for Local Theories**
+**Step 5: Deriving the Mass Matrix**
 
-**The Setup**
+**Setup**
 
-For a local theory, the potential is:
-
-$$
-V[\phi] = \int dy \, \mathcal{V}(\phi(y), \nabla\phi(y))
-$$
-
-The mass kernel is the second functional derivative:
+For a local potential:
 
 $$
-M(y,x) = \frac{\delta^2 V}{\delta \phi(y)\delta \phi(x)}
+V[\phi] = \int dz \, \mathcal{V}(\phi(z), \nabla\phi(z))
 $$
 
-**Key Insight: $\mathcal{V}$ as a Functional**
-
-The density $\mathcal{V}(\phi(y), \nabla\phi(y))$ at fixed $y$ can be viewed as a functional:
+The first functional derivative is:
 
 $$
-\mathcal{V}_y[\phi] = \int dz \, \mathcal{V}(\phi(z), \nabla\phi(z)) \delta(z-y)
-$$
-
-Its functional derivative is:
-
-$$
-\frac{\delta \mathcal{V}_y}{\delta \phi(x)} = \left[\frac{\partial \mathcal{V}}{\partial \phi} - \nabla \cdot \frac{\partial \mathcal{V}}{\partial(\nabla\phi)}\right]_{z=y} \delta(y-x)
+\frac{\delta V}{\delta \phi(x)} = \frac{\partial \mathcal{V}}{\partial \phi}(\phi(x), \nabla\phi(x)) - \nabla_x \cdot \frac{\partial \mathcal{V}}{\partial(\nabla\phi)}(\phi(x), \nabla\phi(x))
 $$
 
 **Computing the Second Derivative**
 
-Taking $\frac{\delta}{\delta \phi(y)}$ of $\frac{\delta V}{\delta \phi(x)}$:
+The mass kernel is:
 
 $$
-M(y,x) = \frac{\delta}{\delta \phi(y)}\left\{\left[\frac{\partial \mathcal{V}}{\partial \phi} - \nabla \cdot \frac{\partial \mathcal{V}}{\partial(\nabla\phi)}\right]_{z=x}\right\}
+M(y,x) = \frac{\delta}{\delta \phi(y)}\left(\frac{\delta V}{\delta \phi(x)}\right)
 $$
 
-Since $\frac{\partial \mathcal{V}}{\partial \phi}$ at point $x$ depends only on $\phi(x)$, the functional derivative gives:
+**Key observation:** $\frac{\delta V}{\delta \phi(x)}$ depends on $\phi$ only through $\phi(x)$ and $\nabla\phi(x)$ at the specific point $x$. So varying at point $y$ gives:
 
 $$
-\frac{\delta}{\delta \phi(y)}\left(\frac{\partial \mathcal{V}}{\partial \phi}(x)\right) = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}(x) \delta(x-y)
+\frac{\delta}{\delta \phi(y)}\left(\frac{\partial \mathcal{V}}{\partial \phi}(x)\right) = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}(x) \cdot \delta(x-y)
 $$
 
-Similarly for the gradient term (after integration by parts):
+The delta function appears because $\frac{\partial \mathcal{V}}{\partial \phi}(x)$ only "feels" changes in $\phi$ at point $x$.
+
+Similarly, the gradient term contributes:
 
 $$
-\frac{\delta}{\delta \phi(y)}\left(-\nabla_x \cdot \frac{\partial \mathcal{V}}{\partial(\nabla\phi)}(x)\right) = -\nabla_x^2\left(\frac{\partial^2 \mathcal{V}}{\partial(\nabla\phi)^2}(x)\delta(x-y)\right)
+\frac{\delta}{\delta \phi(y)}\left(-\nabla_x \cdot \frac{\partial \mathcal{V}}{\partial(\nabla\phi)}(x)\right) = -\nabla_x^2\left(\frac{\partial^2 \mathcal{V}}{\partial(\nabla\phi)^2}(x)\right) \delta(x-y) + \ldots
 $$
 
-**Simplification for Uniform Background**
+**At Uniform Background $\phi(x) = \phi_0$:**
 
-At $\phi(x) = \phi_0$ (constant):
-- $\nabla\phi = 0$, so mixed derivatives vanish
-- The second derivative term simplifies to:
+- $\nabla\phi = 0$, so terms with mixed derivatives vanish
+- The delta function enforces $y = x$ (locality)
+- The mass matrix becomes diagonal:
 
 $$
 M(y,x) = \left.\frac{\partial^2 \mathcal{V}}{\partial \phi^2}\right|_{\phi_0} \delta(y-x) = m^2 \delta(y-x)
 $$
+
+**Physical Interpretation:** The mass $m^2 = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}|_{\phi_0}$ is the curvature of the potential at the minimum. The delta function reflects that the theory is local—fluctuations at different points don't directly couple.
 
 $$
 M(y,x) = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}\bigg|_{\phi_0} \delta(y-x) = m^2 \delta(y-x)
