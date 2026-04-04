@@ -837,33 +837,41 @@ This extracts the density derivative at point $x$, viewed as a functional of the
 
 **Step 5b-ii: Compute the functional derivative of $F_x$**
 
-By definition:
+By definition, introduce a variation at point $y$:
 
 $$
 \frac{\delta F_x}{\delta \phi(y)} = \lim_{\epsilon \to 0} \frac{1}{\epsilon}\left[F_x[\phi + \epsilon\delta_y] - F_x[\phi]\right]
 $$
 
-where $\delta_y(z) = \delta(z-y)$ is a variation at point $y$.
-
-Now, $F_x[\phi + \epsilon\delta_y]$ depends on $(\phi + \epsilon\delta_y)$ evaluated at $x$. Since $\delta_y(x) = \delta(x-y)$:
-- If $x \neq y$: The variation doesn't affect point $x$, so $F_x[\phi + \epsilon\delta_y] = F_x[\phi]$
-- If $x = y$: The variation does affect point $x$
-
-**Step 5b-iii: Apply the chain rule and evaluate at uniform background**
-
-For $x = y$, using ordinary calculus on $F_x[\phi + \epsilon\delta_y]$:
+where $\delta_y(z) = \delta(z-y)$. Now compute $F_x[\phi + \epsilon\delta_y]$:
 
 $$
-\frac{\delta F_x}{\delta \phi(y)} = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}(\phi(x), \nabla\phi(x)) \cdot \delta(x-y)
+F_x[\phi + \epsilon\delta_y] = \frac{\partial \mathcal{V}}{\partial \phi}\bigg|_{(\phi(x) + \epsilon\delta(x-y), \nabla\phi(x) + \epsilon\nabla\delta(x-y))}
 $$
 
-Now evaluate at the **uniform background** $\phi(x) = \phi_0$ where $\nabla\phi = 0$:
+**Step 5b-iii: Taylor expand and take the limit**
+
+Taylor expand to first order in $\epsilon$:
 
 $$
-\left.\frac{\delta F_x}{\delta \phi(y)}\right|_{\phi_0} = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}(\phi_0, 0) \cdot \delta(x-y)
+F_x[\phi + \epsilon\delta_y] = \frac{\partial \mathcal{V}}{\partial \phi}(\phi(x), \nabla\phi(x)) + \epsilon\frac{\partial^2 \mathcal{V}}{\partial \phi^2}(\phi(x), \nabla\phi(x))\delta(x-y) + O(\epsilon^2)
 $$
 
-The delta function appears because varying the field at $y$ only affects the functional at $x$ when $x = y$ (locality).
+The gradient term doesn't contribute at $O(\epsilon)$ because $\nabla\delta(x-y)$ is odd and integrates to boundary terms that vanish.
+
+Taking the limit:
+
+$$
+\frac{\delta F_x}{\delta \phi(y)} = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}(\phi(x), \nabla\phi(x))\delta(x-y)
+$$
+
+**Step 5b-iv: Evaluate at uniform background**
+
+At $\phi(x) = \phi_0$ with $\nabla\phi = 0$:
+
+$$
+\left.\frac{\delta F_x}{\delta \phi(y)}\right|_{\phi_0} = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}(\phi_0, 0)\delta(x-y)
+$$
 
 **Step 5c: At uniform background $\phi(x) = \phi_0$**
 
