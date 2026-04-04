@@ -579,7 +579,196 @@ $$|j = l - 1/2, m_j\rangle = -\sqrt{\frac{l - m_j + 1/2}{2l + 1}}|l, m_j - 1/2; 
 
 ---
 
-## Part V: Central Force Field Problems
+## Part V: Group Representation Theory and Young Tableaux
+
+### 5.1 Rotation Groups SO(3) and SU(2)
+
+Angular momentum operators generate rotations in quantum mechanics. The commutation relations $[J_i, J_j] = i\hbar\varepsilon_{ijk}J_k$ define the Lie algebra of the rotation group.
+
+**SO(3) - The 3D Rotation Group**
+
+SO(3) is the group of proper rotations in three-dimensional space. Each rotation can be parameterized by:
+- An axis $\mathbf{n}$ (unit vector)
+- An angle $\theta$
+
+The rotation operator is:
+$$R(\mathbf{n}, \theta) = e^{-i\theta \mathbf{n} \cdot \mathbf{J}/\hbar}$$
+
+**SU(2) - The Special Unitary Group**
+
+SU(2) is the group of $2 \times 2$ unitary matrices with determinant 1. It is the double cover of SO(3):
+- Every SO(3) rotation corresponds to two SU(2) elements ($\pm U$)
+- For integer $j$, the representations correspond to SO(3)
+- For half-integer $j$, the representations correspond to SU(2)
+
+**Relationship:**
+$$\text{SU(2)}/\mathbb{Z}_2 \cong \text{SO(3)}$$
+
+### 5.2 Irreducible Representations
+
+For angular momentum $j$, the $(2j+1)$ states $|j, m\rangle$ form an irreducible representation of the rotation group.
+
+**Dimension of Representation:**
+$$d_j = 2j + 1$$
+
+**Character of Rotation:**
+
+The character (trace of the representation matrix) for rotation by angle $\theta$ about any axis is:
+$$\chi_j(\theta) = \sum_{m=-j}^{j} e^{-im\theta} = \frac{\sin[(j+1/2)\theta]}{\sin(\theta/2)}$$
+
+**Orthogonality Relation:**
+$$\int_0^{2\pi} \chi_{j_1}(\theta) \chi_{j_2}(\theta) \sin^2\frac{\theta}{2} d\theta = \pi \delta_{j_1 j_2}$$
+
+### 5.3 Young Tableaux for Permutation Symmetry
+
+Young tableaux provide a graphical method to classify the symmetry types of many-particle states under particle exchange.
+
+**Basic Rules for Constructing Young Diagrams:**
+
+1. Each box represents one particle
+2. Rows represent symmetric combinations
+3. Columns represent antisymmetric combinations
+4. The number of boxes equals the number of particles
+
+**Young Diagrams for Two Particles:**
+
+```tikz
+\begin{tikzpicture}[scale=0.6]
+  % Symmetric representation (box box)
+  \draw[thick] (0,0) rectangle (1,1);
+  \draw[thick] (1,0) rectangle (2,1);
+  \node at (1,-0.5) {Symmetric: $\boxed{\phantom{a}}\boxed{\phantom{a}}$};
+  \node at (1,-1) {$S = 1$ (Triplet)};
+  
+  % Antisymmetric representation (box over box)
+  \begin{scope}[shift={(4,0)}]
+    \draw[thick] (0,0) rectangle (1,1);
+    \draw[thick] (0,1) rectangle (1,2);
+    \node at (0.5,-0.5) {Antisymmetric:};
+    \node at (0.5,-1) {$\begin{array}{c}\boxed{\phantom{a}} \\ \boxed{\phantom{a}} \end{array}$};
+    \node at (0.5,-1.8) {$S = 0$ (Singlet)};
+  \end{scope}
+\end{tikzpicture}
+```
+
+**Young Diagrams for Three Particles:**
+
+```tikz
+\begin{tikzpicture}[scale=0.6]
+  % Totally symmetric
+  \begin{scope}[shift={(0,0)}]
+    \draw[thick] (0,0) rectangle (1,1);
+    \draw[thick] (1,0) rectangle (2,1);
+    \draw[thick] (2,0) rectangle (3,1);
+    \node at (1.5,-0.5) {Totally Symmetric};
+    \node at (1.5,-1) {$S = 3/2$, dimension 4};
+  \end{scope}
+  
+  % Mixed symmetry
+  \begin{scope}[shift={(5,0)}]
+    \draw[thick] (0,0) rectangle (1,1);
+    \draw[thick] (1,0) rectangle (2,1);
+    \draw[thick] (0,1) rectangle (1,2);
+    \node at (1,-0.5) {Mixed Symmetry};
+    \node at (1,-1) {$S = 1/2$, dimension 2};
+  \end{scope}
+  
+  % Totally antisymmetric
+  \begin{scope}[shift={(9,0)}]
+    \draw[thick] (0,0) rectangle (1,1);
+    \draw[thick] (0,1) rectangle (1,2);
+    \draw[thick] (0,2) rectangle (1,3);
+    \node at (0.5,-0.5) {Totally Antisymmetric};
+    \node at (0.5,-1) {(Only for $j \geq 1$)};
+  \end{scope}
+\end{tikzpicture}
+```
+
+### 5.4 Hook Length Formula
+
+The dimension of a representation corresponding to a Young diagram with $n$ boxes is given by the hook length formula:
+
+$$d = \frac{n!}{\prod_{\text{boxes}} h_i}$$
+
+where $h_i$ is the hook length of box $i$ (number of boxes to the right in the same row + number below in the same column + 1).
+
+**Example: Three spin-1/2 particles**
+
+For the symmetric diagram $\boxed{\phantom{a}}\boxed{\phantom{a}}\boxed{\phantom{a}}$:
+- Hook lengths: 3, 2, 1
+- Dimension: $\frac{3!}{3 \cdot 2 \cdot 1} = 1$ (for each $m$ value, total $2S+1 = 4$)
+
+For the mixed symmetry diagram $\begin{array}{cc}\boxed{\phantom{a}} & \boxed{\phantom{a}} \\ \boxed{\phantom{a}} & \end{array}$:
+- Hook lengths: 3, 1, 1
+- Dimension: $\frac{3!}{3 \cdot 1 \cdot 1} = 2$ (two doublet states)
+
+### 5.5 Connection to Angular Momentum Addition
+
+When adding angular momenta $\mathbf{J} = \mathbf{J}_1 + \mathbf{J}_2$, the product of representations decomposes as:
+
+$$D^{(j_1)} \otimes D^{(j_2)} = \bigoplus_{j=|j_1-j_2|}^{j_1+j_2} D^{(j)}$$
+
+**Dimension Check:**
+$$(2j_1+1)(2j_2+1) = \sum_{j=|j_1-j_2|}^{j_1+j_2} (2j+1)$$
+
+**Visual Representation of CG Decomposition:**
+
+```tikz
+\begin{tikzpicture}[scale=0.9]
+  % Input states
+  \node[draw, rounded corners, fill=blue!10] (j1) at (0, 1) {$j_1 = 1/2$};
+  \node[draw, rounded corners, fill=blue!10] (j2) at (0, -1) {$j_2 = 1/2$};
+  
+  % Arrow
+  \draw[->, thick, >=stealth] (1.5, 0) -- (2.5, 0) node[midway, above] {CG};
+  
+  % Output states
+  \node[draw, rounded corners, fill=green!15, minimum width=2cm] (triplet) at (4.5, 1) {$j = 1$ (Triplet)};
+  \node[draw, rounded corners, fill=red!15, minimum width=2cm] (singlet) at (4.5, -1) {$j = 0$ (Singlet)};
+  
+  % Dimensions
+  \node at (0, -2) {Input: $2 \times 2 = 4$ states};
+  \node at (4.5, -2) {Output: $3 + 1 = 4$ states};
+  
+  % States breakdown
+  \node[right] at (6.5, 1.5) {$|1, 1\rangle = |\uparrow\uparrow\rangle$};
+  \node[right] at (6.5, 1) {$|1, 0\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle + |\downarrow\uparrow\rangle)$};
+  \node[right] at (6.5, 0.5) {$|1, -1\rangle = |\downarrow\downarrow\rangle$};
+  \node[right] at (6.5, -1) {$|0, 0\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle)$};
+\end{tikzpicture}
+```
+
+**General Pattern for Arbitrary $j_1$ and $j_2$:**
+
+```tikz
+\begin{tikzpicture}[scale=0.8]
+  % Input
+  \node[draw, fill=blue!10] (a) at (0,0) {$D^{(j_1)}$};
+  \node[draw, fill=blue!10] (b) at (0,-1.5) {$D^{(j_2)}$};
+  \node at (-1, -0.75) {$\otimes$};
+  
+  % Arrow
+  \draw[->, thick] (1, -0.75) -- (2.5, -0.75);
+  
+  % Output - tower of representations
+  \foreach \j/\y in {j_1+j_2/0, j_1+j_2-1/-0.8, .../..., |j_1-j_2|/-3.2} {
+    \ifnum\j=\j
+      \node[draw, fill=green!15, minimum width=1.5cm] at (4.5, \y) {$D^{(\j)}$};
+    \fi
+  }
+  
+  % Labels
+  \node at (4.5, 0.5) {Maximum: $j_{\max} = j_1 + j_2$};
+  \node at (4.5, -3.7) {Minimum: $j_{\min} = |j_1 - j_2|$};
+  
+  % Dimension check
+  \node at (2, -4.5) {$(2j_1+1)(2j_2+1) = \sum_{j=|j_1-j_2|}^{j_1+j_2}(2j+1)$};
+\end{tikzpicture}
+```
+
+---
+
+## Part VI: Central Force Field Problems
 
 ### 5.1 Separation of Variables in Spherical Coordinates
 
@@ -752,7 +941,7 @@ $$g_N = \frac{(N+1)(N+2)}{2}$$
 
 ---
 
-## Part VI: Systems of Identical Particles
+## Part VII: Systems of Identical Particles and Young Tableaux Applications
 
 ### 6.1 Symmetry Requirements for Many-Particle States
 
@@ -954,24 +1143,70 @@ $$|1/2, 1/2\rangle_B = \frac{1}{\sqrt{6}}(|\downarrow\uparrow\uparrow\rangle + |
 
 Under cyclic permutation $(1 \to 2 \to 3 \to 1)$, these states transform into each other, forming a 2-dimensional representation of the cyclic group.
 
-**Young Tableaux Classification of Symmetry Types**
+**Young Tableaux Classification with TikZ Diagrams**
 
 The symmetry types of three-particle states can be classified using Young diagrams:
 
 1. **Totally Symmetric** ( quartet, $s = 3/2$ ):
-   $$\boxed{\phantom{a}}\boxed{\phantom{a}}\boxed{\phantom{a}}$$
+
+```tikz
+\begin{tikzpicture}[scale=0.8]
+  \draw[thick,fill=blue!15] (0,0) rectangle (1,1);
+  \draw[thick,fill=blue!15] (1,0) rectangle (2,1);
+  \draw[thick,fill=blue!15] (2,0) rectangle (3,1);
+  \node at (1.5,-0.5) {Partition $(3)$};
+  \node at (1.5,-1) {Dimension: 4 (each $m$ value)};
+\end{tikzpicture}
+```
    
-   One row of three boxes. Corresponds to the partition $(3)$ of $S_3$.
+   One row of three boxes. Corresponds to the partition $(3)$ of $S_3$. All boxes can be filled with spins to give totally symmetric combinations.
 
 2. **Mixed Symmetry** ( doublets, $s = 1/2$ ):
-   $$\begin{array}{cc}\boxed{\phantom{a}} & \boxed{\phantom{a}} \\ \boxed{\phantom{a}} & \end{array}$$
+
+```tikz
+\begin{tikzpicture}[scale=0.8]
+  \draw[thick,fill=yellow!15] (0,0) rectangle (1,1);
+  \draw[thick,fill=yellow!15] (1,0) rectangle (2,1);
+  \draw[thick,fill=yellow!15] (0,1) rectangle (1,2);
+  \node at (1,-0.5) {Partition $(2,1)$};
+  \node at (1,-1) {Dimension: 2 (standard tableaux)};
+\end{tikzpicture}
+```
    
-   Two boxes in the first row, one in the second. Corresponds to the partition $(2,1)$ of $S_3$.
+   Two boxes in the first row, one in the second. Corresponds to the partition $(2,1)$ of $S_3$. This diagram admits two standard Young tableaux, corresponding to the two doublet states.
 
 3. **Totally Antisymmetric**:
-   $$\begin{array}{c}\boxed{\phantom{a}} \\ \boxed{\phantom{a}} \\ \boxed{\phantom{a}} \end{array}$$
+
+```tikz
+\begin{tikzpicture}[scale=0.8]
+  \draw[thick,fill=red!15] (0,0) rectangle (1,1);
+  \draw[thick,fill=red!15] (0,1) rectangle (1,2);
+  \draw[thick,fill=red!15] (0,2) rectangle (1,3);
+  \node at (0.5,-0.5) {Partition $(1,1,1)$};
+  \node at (0.5,-1) {Dimension: 0 for spin-1/2};
+\end{tikzpicture}
+```
    
-   One column of three boxes. This representation does not exist for three spin-1/2 particles (would require $s_{max} < 3/2$), but exists for higher spin particles.
+   One column of three boxes. This representation does not exist for three spin-1/2 particles (would require $s_{max} < 3/2$), but exists for higher spin particles ($j \geq 1$).
+
+**Hook Length and Dimension Calculation**
+
+The number of standard Young tableaux (dimension of representation) is:
+$$d = \frac{n!}{\prod_{i} h_i}$$
+
+where $h_i$ is the hook length of box $i$.
+
+For the mixed symmetry diagram:
+```
+Box positions and hook lengths:
+(1,1): right=1, below=1, self=1 → h = 3
+(1,2): right=0, below=0, self=1 → h = 1  
+(2,1): right=0, below=0, self=1 → h = 1
+```
+
+$$d = \frac{3!}{3 \cdot 1 \cdot 1} = 2$$
+
+This confirms there are two independent doublet states.
 
 **Connection to Angular Momentum**
 
@@ -1070,7 +1305,29 @@ $$P_{12}|S=0\rangle = -|S=0\rangle, \quad P_{12}|S=1\rangle = +|S=1\rangle$$
 **Slater Determinant for $N$ Fermions:**
 $$\Psi = \frac{1}{\sqrt{N!}}\det[\phi_i(j)]$$
 
-**Young Tableaux for Three Particles:**
-- Totally symmetric ($s = 3/2$): $\boxed{\phantom{a}}\boxed{\phantom{a}}\boxed{\phantom{a}}$
-- Mixed symmetry ($s = 1/2$): $\begin{array}{cc}\boxed{\phantom{a}} & \boxed{\phantom{a}} \\ \boxed{\phantom{a}} & \end{array}$
-- Totally antisymmetric: $\begin{array}{c}\boxed{\phantom{a}} \\ \boxed{\phantom{a}} \\ \boxed{\phantom{a}} \end{array}$
+### Group Representation Theory
+
+**Rotation Groups:**
+$$\text{SO(3)} \cong \text{SU(2)}/\mathbb{Z}_2$$
+
+**Character Formula:**
+$$\chi_j(\theta) = \frac{\sin[(j+1/2)\theta]}{\sin(\theta/2)}$$
+
+**Dimension of Representation:**
+$$d_j = 2j + 1$$
+
+### Young Tableaux
+
+**Hook Length Formula:**
+$$d = \frac{n!}{\prod_i h_i}$$
+
+**Three-Particle Symmetry Types:**
+
+| Partition | Young Diagram | Spin | Dimension |
+|-----------|---------------|------|-----------|
+| $(3)$ | $\boxed{\phantom{a}}\boxed{\phantom{a}}\boxed{\phantom{a}}$ | $s = 3/2$ | 4 |
+| $(2,1)$ | $\begin{array}{cc}\boxed{\phantom{a}} & \boxed{\phantom{a}} \\ \boxed{\phantom{a}} & \end{array}$ | $s = 1/2$ | 2 |
+| $(1,1,1)$ | $\begin{array}{c}\boxed{\phantom{a}} \\ \boxed{\phantom{a}} \\ \boxed{\phantom{a}} \end{array}$ | (not for spin-1/2) | 0 |
+
+**Exchange Symmetry and Total Angular Momentum:**
+$$P_{12}|J, M\rangle = (-1)^{2j-J}|J, M\rangle$$
