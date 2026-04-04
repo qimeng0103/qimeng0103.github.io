@@ -825,13 +825,7 @@ $$
 M(y,x) = \frac{\delta}{\delta \phi(y)}\left(\frac{\delta V}{\delta \phi(x)}\right)
 $$
 
-**The key observation:** At the uniform background, the first derivative simplifies to:
-
-$$
-\left.\frac{\delta V}{\delta \phi(x)}\right|_{\phi_0} = \frac{\partial \mathcal{V}}{\partial \phi}(\phi_0, 0)
-$$
-
-This is a constant number (independent of $x$). To find how it changes when we vary the field, we must remember that **this "constant" is actually evaluated at a specific point $x$**, and its value depends on $\phi(x)$.
+At the uniform background $\phi_0$, the first derivative is $\frac{\partial \mathcal{V}}{\partial \phi}(\phi_0, 0)$. To find how this changes under field variations, we analyze the structure more carefully.
 
 **Step 5b-i: Define the functional**
 
