@@ -1,4 +1,5 @@
 import { defineConfig } from 'vitepress'
+import mathjax3 from 'markdown-it-mathjax3'
 
 // Your GitHub username
 const GITHUB_USERNAME = 'qimeng0103'
@@ -35,6 +36,9 @@ export default defineConfig({
   markdown: {
     math: true,
     lineNumbers: true,
+    config: (md) => {
+      md.use(mathjax3)
+    }
   },
   
   // Theme config
