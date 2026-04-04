@@ -851,10 +851,6 @@ $$
 
 **Step 5b-iii: Analyze by cases and take the limit**
 
-Recall that $F_x[\phi + \epsilon\delta_y]$ depends on the field values at point $x$:
-- $(\phi + \epsilon\delta_y)(x) = \phi(x) + \epsilon\delta(x-y)$
-- $\nabla(\phi + \epsilon\delta_y)(x) = \nabla\phi(x) + \epsilon\nabla\delta(x-y)$
-
 **Case 1: $x \neq y$**
 
 Here $\delta(x-y) = 0$ and $\nabla\delta(x-y) = 0$. Therefore:
