@@ -317,7 +317,118 @@ The off-diagonal matrix elements follow the general formula $\hbar\sqrt{(j-m)(j+
 
 ---
 
-## Part IV: Addition of Angular Momenta and Clebsch-Gordan Coefficients
+## Part IV: Applications of Angular Momentum Algebra
+
+Based on classic problems from the *Physics Problem Collection (量子力学大题典)* by Zhang Yongde.
+
+### 4.1 Fourth Power Expectation Values of Angular Momentum Components
+
+**Problem**: For a particle in the orbital angular momentum state $|lm\rangle$ with $l = 1$, calculate $\langle L_x^4 \rangle$.
+
+**Solution**
+
+Using the ladder operator representation:
+$$L_x = \frac{1}{2}(L_+ + L_-)$$
+
+Therefore:
+$$L_x^4 = \frac{1}{16}(L_+ + L_-)^4$$
+
+When expanding $(L_+ + L_-)^4$, the non-zero terms in the $|lm\rangle$ state are those with equal numbers of $L_+$ and $L_-$ operators. For $l = 1$, we use the fact that in this subspace:
+$$L_x^3 = L_x, \quad L_y^3 = L_y$$
+
+This implies the pattern:
+$$L_x^{2m+1} = L_x, \quad L_x^{2m} = L_x^2$$
+
+**General Result for $\langle L_x^2 \rangle$ and $\langle L_y^2 \rangle$:**
+
+$$\langle L_x^2 \rangle = \langle L_y^2 \rangle = \frac{1}{2}[l(l+1) - m^2]\hbar^2$$
+
+For $l = 1$:
+$$\langle L_x^2 \rangle = \langle L_y^2 \rangle = \frac{1}{2}(2 - m^2)\hbar^2$$
+
+Therefore:
+$$\langle L_x^4 \rangle = \langle L_x^2 \rangle = \frac{1}{2}(2 - m^2)\hbar^4$$
+
+**Specific Values:**
+- For $m = 0$: $\langle L_x^4 \rangle = \hbar^4$
+- For $m = \pm 1$: $\langle L_x^4 \rangle = \frac{1}{2}\hbar^4$
+
+### 4.2 Measurement Probabilities for $L_x$ in $Y_{20}$ State
+
+**Problem**: A particle is in the common eigenstate $Y_{20}$ of $(L^2, L_z)$. Find the possible measured values of $L_x$ and their corresponding probabilities.
+
+**Solution using Rotation Method**
+
+The spherical harmonics $Y_{2m}(\theta, \phi)$ are eigenfunctions of $L_z$. To find $L_x$ eigenstates, we perform a coordinate rotation $x \to y$, $y \to z$, $z \to x$.
+
+**Explicit Forms of $Y_{2m}$:**
+
+$$Y_{2,\pm 2} = \frac{1}{2}\sqrt{\frac{15}{8\pi}}\frac{(x \pm iy)^2}{r^2}$$
+
+$$Y_{2,\pm 1} = \mp\sqrt{\frac{15}{8\pi}}\frac{(x \pm iy)z}{r^2}$$
+
+$$Y_{2,0} = \sqrt{\frac{5}{16\pi}}\frac{2z^2 - x^2 - y^2}{r^2}$$
+
+**Eigenstates of $L_x$ (denoted $Y_{2m}^x$):**
+
+By cyclic permutation:
+
+$$Y_{2,0}^x = -\frac{1}{2}Y_{2,0} + \frac{\sqrt{3}}{2\sqrt{2}}(Y_{2,-2} + Y_{2,2})$$
+
+$$Y_{2,\pm 1}^x = \pm\frac{i}{2}(Y_{2,2} - Y_{2,-2}) + \frac{i}{2}(Y_{2,1} - Y_{2,-1})$$
+
+$$Y_{2,\pm 2}^x = -\frac{\sqrt{3}}{2\sqrt{2}}Y_{2,0} \mp \frac{1}{2}(Y_{2,1} + Y_{2,-1}) - \frac{1}{4}(Y_{2,-2} + Y_{2,2})$$
+
+**Expanding $Y_{2,0}$ in $L_x$ Eigenstates:**
+
+From the expression for $Y_{2,0}^x$, we can invert to find:
+
+$$Y_{2,0} = -\frac{1}{2}Y_{2,0}^x - \frac{\sqrt{3}}{2\sqrt{2}}(Y_{2,-2}^x + Y_{2,2}^x)$$
+
+**Measurement Probabilities:**
+
+The possible measured values of $L_x$ are $0, \pm\hbar, \pm 2\hbar$ with probabilities:
+
+| $L_x$ Value | Probability |
+|-------------|-------------|
+| $0$ | $\frac{1}{4}$ |
+| $\pm\hbar$ | $0$ |
+| $\pm 2\hbar$ | $\frac{3}{8}$ each |
+
+**Alternative Method using Expectation Values**
+
+The probabilities $P_m^{(20)}$ for measuring $L_x = m\hbar$ satisfy:
+
+1. Normalization: $P_0 + 2P_1 + 2P_2 = 1$
+2. $\langle L_x^2 \rangle = 2\hbar^2$: $2P_1 \cdot \hbar^2 + 2P_2 \cdot 4\hbar^2 = 2\hbar^2$
+3. $\langle L_x^4 \rangle = 12\hbar^4$: $2P_1 \cdot \hbar^4 + 2P_2 \cdot 16\hbar^4 = 12\hbar^4$
+
+Solving this system yields:
+$$P_0 = \frac{1}{4}, \quad P_1 = 0, \quad P_2 = \frac{3}{8}$$
+
+### 4.3 Action of Ladder Operators on Angular Momentum States
+
+**General Formulas (Condon-Shortley Phase Convention):**
+
+$$J_{\pm}|jm\rangle = \sqrt{(j \mp m)(j \pm m + 1)}\hbar|j, m \pm 1\rangle$$
+
+**Products of Ladder Operators:**
+
+$$L_-L_+|lm\rangle = [l(l+1) - m(m+1)]\hbar^2|lm\rangle$$
+
+$$L_+L_-|lm\rangle = [l(l+1) - m(m-1)]\hbar^2|lm\rangle$$
+
+**Double-Step Operators:**
+
+$$L_+^2|lm\rangle = \sqrt{[l(l+1)-m(m+1)][l(l+1)-(m+1)(m+2)]}\hbar^2|l,m+2\rangle$$
+
+$$L_-^2|lm\rangle = \sqrt{[l(l+1)-m(m-1)][l(l+1)-(m-1)(m-2)]}\hbar^2|l,m-2\rangle$$
+
+These formulas are essential for calculating higher-order expectation values and transition matrix elements.
+
+---
+
+## Part V: Addition of Angular Momenta and Clebsch-Gordan Coefficients
 
 ### 4.1 Tensor Product Space
 
@@ -498,6 +609,56 @@ where:
 - $L^2 Y_l^m = \hbar^2 l(l+1) Y_l^m$
 - $L_z Y_l^m = \hbar m Y_l^m$ with $m = -l, -l+1, ..., l$
 
+### 5.3 Angular Momentum in Central Force Fields: Key Theorems
+
+**Theorem 1: Degeneracy with respect to magnetic quantum number $m$**
+
+For a particle in a central force field $V(r)$, the energy eigenvalues are independent of the magnetic quantum number $m$.
+
+**Proof:**
+
+The Hamiltonian is:
+$$H = \frac{\mathbf{p}^2}{2\mu} + V(r)$$
+
+We need to show $[H, L_z] = 0$.
+
+$$[L_z, \mathbf{p}^2] = [(xp_y - yp_x), (p_x^2 + p_y^2 + p_z^2)]$$
+
+$$= [xp_y, p_x^2] - [yp_x, p_y^2]$$
+
+Using $[x, p_x^2] = 2i\hbar p_x$:
+
+$$[xp_y, p_x^2] = x[p_y, p_x^2] + [x, p_x^2]p_y = 2i\hbar p_x p_y$$
+
+Similarly:
+$$[yp_x, p_y^2] = y[p_x, p_y^2] + [y, p_y^2]p_x = 2i\hbar p_y p_x$$
+
+Therefore:
+$$[L_z, \mathbf{p}^2] = 2i\hbar p_x p_y - 2i\hbar p_y p_x = 0$$
+
+Also $[L_z, V(r)] = 0$ since $V(r)$ depends only on $r = \sqrt{x^2+y^2+z^2}$, which is rotationally invariant.
+
+Thus $[H, L_z] = 0$, proving that energy is independent of $m$. The degeneracy is $2l+1$.
+
+**Theorem 2: Radial wavefunction behavior near origin**
+
+For a particle with angular momentum $l$ in a central potential, the radial wavefunction behaves as:
+
+$$R_{nl}(r) \xrightarrow{r \to 0} r^l$$
+
+**Physical Interpretation:**
+
+The centrifugal barrier $\frac{\hbar^2 l(l+1)}{2\mu r^2}$ prevents particles with $l \geq 1$ from reaching the origin. Only s-waves ($l = 0$) have non-zero probability density at $r = 0$.
+
+### 5.4 Radial Equation
+
+$$\psi(r, \theta, \phi) = R_{nl}(r)Y_l^m(\theta, \phi)$$
+
+where:
+- $Y_l^m(\theta, \phi)$ are the spherical harmonics (eigenfunctions of $L^2$ and $L_z$)
+- $L^2 Y_l^m = \hbar^2 l(l+1) Y_l^m$
+- $L_z Y_l^m = \hbar m Y_l^m$ with $m = -l, -l+1, ..., l$
+
 ### 5.3 Radial Equation and Angular Momentum Barrier
 
 Substituting into the Schrödinger equation:
@@ -628,7 +789,41 @@ $$\chi_{11} = |\uparrow\uparrow\rangle, \quad \chi_{10} = \frac{1}{\sqrt{2}}(|\u
 The spatial part must be **antisymmetric**:
 $$\psi_A(\mathbf{r}_1, \mathbf{r}_2) = \frac{1}{\sqrt{2}}[\phi_a(\mathbf{r}_1)\phi_b(\mathbf{r}_2) - \phi_b(\mathbf{r}_1)\phi_a(\mathbf{r}_2)]$$
 
-### 6.4 Exchange Interaction and Helium Atom
+### 6.4 Total Angular Momentum of Two-Particle Systems
+
+For two identical particles each with angular momentum $j$, the total angular momentum $J$ can range from $0$ (or $1$ if $j$ is half-integer) to $2j$.
+
+**Symmetry of Coupled States:**
+
+Under particle exchange $P_{12}$:
+
+$$P_{12}|J, M\rangle = (-1)^{2j-J}|J, M\rangle$$
+
+**Proof:**
+
+The exchange of two identical particles is equivalent to a rotation by $\pi$ about the y-axis (or any axis perpendicular to the quantization axis). Under this rotation:
+
+$$P_{12}|j_1, m_1; j_2, m_2\rangle = (-1)^{j_1+j_2-J}|j_2, m_2; j_1, m_1\rangle$$
+
+For identical particles ($j_1 = j_2 = j$), the symmetry of the state $|J, M\rangle$ under exchange is $(-1)^{2j-J}$.
+
+**Important Results:**
+
+- For two spin-1/2 particles ($j = 1/2$):
+  - $J = 1$ (triplet): $(-1)^{1-1} = +1$ (symmetric)
+  - $J = 0$ (singlet): $(-1)^{1-0} = -1$ (antisymmetric)
+
+- For two spin-1 particles ($j = 1$):
+  - $J = 2, 0$: symmetric
+  - $J = 1$: antisymmetric
+
+**Connection to Statistics:**
+- Fermions (half-integer spin): Total wavefunction must be antisymmetric
+  - If $2j$ is odd, symmetric spin requires antisymmetric spatial, and vice versa
+- Bosons (integer spin): Total wavefunction must be symmetric
+  - If $2j$ is even, symmetric spin requires symmetric spatial, and vice versa
+
+### 6.5 Exchange Interaction and Helium Atom
 
 In the helium atom, the electron-electron interaction energy depends on the spin state through the symmetry requirement.
 
