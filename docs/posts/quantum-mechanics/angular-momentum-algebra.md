@@ -694,10 +694,10 @@ $$(2j_1+1)(2j_2+1) = \sum_{j=|j_1-j_2|}^{j_1+j_2}(2j+1)$$
 
 | Uncoupled Basis | Coupled States |
 |:----------------|:---------------|
-| $|\uparrow\uparrow\rangle$ | $|j=1, m=1\rangle$ (Triplet) |
-| $\frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle + |\downarrow\uparrow\rangle)$ | $|j=1, m=0\rangle$ (Triplet) |
-| $|\downarrow\downarrow\rangle$ | $|j=1, m=-1\rangle$ (Triplet) |
-| $\frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle)$ | $|j=0, m=0\rangle$ (Singlet) |
+| $\vert \uparrow\uparrow\rangle$ | $\vert j=1, m=1\rangle$ (Triplet) |
+| $\frac{1}{\sqrt{2}}(\vert \uparrow\downarrow\rangle + \vert \downarrow\uparrow\rangle)$ | $\vert j=1, m=0\rangle$ (Triplet) |
+| $\vert \downarrow\downarrow\rangle$ | $\vert j=1, m=-1\rangle$ (Triplet) |
+| $\frac{1}{\sqrt{2}}(\vert \uparrow\downarrow\rangle - \vert \downarrow\uparrow\rangle)$ | $\vert j=0, m=0\rangle$ (Singlet) |
 
 *Total: $2 \times 2 = 4$ states decompose into $j=1$ (3 states) $\oplus$ $j=0$ (1 state)*
 
