@@ -649,7 +649,7 @@ Young tableaux provide a graphical method to classify the symmetry types of many
 
 **Young Diagrams for Three Particles:**
 
-![Three Particle Young Diagrams](/images/angular-momentum/young_diagram_3particles.png)
+<img src="/images/angular-momentum/young_3_all_combined.png" width="600px" alt="Young Diagrams for Three Particles">
 
 *Left: Totally symmetric (quartet, $S=3/2$, dim=4). Center: Mixed symmetry (doublet, $S=1/2$, dim=2). Right: Totally antisymmetric (not for spin-1/2)*
 
@@ -661,12 +661,14 @@ $$d = \frac{n!}{\prod_{\text{boxes}} h_i}$$
 
 where $h_i$ is the hook length of box $i$ (number of boxes to the right in the same row + number below in the same column + 1).
 
-**Example: Three spin-1/2 particles**
+**Hook Length Calculation Example: Three Spin-1/2 Particles**
 
-![Young Diagram (3)](/images/angular-momentum/young_3_symmetric.png)
+For three spin-1/2 particles, the Young diagrams and their properties are:
+
+<img src="/images/angular-momentum/young_3_symmetric.png" width="150px" alt="Symmetric diagram (3)">
 *Symmetric diagram (3): Hook lengths are 3, 2, 1. Dimension: $\frac{3!}{3 \cdot 2 \cdot 1} = 1$ (for each $m$ value, total $2S+1 = 4$)*
 
-![Young Diagram (2,1)](/images/angular-momentum/young_21_mixed.png)
+<img src="/images/angular-momentum/young_21_mixed.png" width="120px" alt="Mixed symmetry diagram (2,1)">
 *Mixed symmetry diagram (2,1): Hook lengths are 3, 1, 1. Dimension: $\frac{3!}{3 \cdot 1 \cdot 1} = 2$ (two doublet states)*
 
 ### 5.5 Connection to Angular Momentum Addition
@@ -1070,7 +1072,7 @@ Under cyclic permutation $(1 \to 2 \to 3 \to 1)$, these states transform into ea
 
 **Young Tableaux Classification with Diagrams**
 
-![Three Particle Young Diagrams](/images/angular-momentum/young_diagram_3particles.png)
+<img src="/images/angular-momentum/young_3_all_combined.png" width="600px" alt="Young Diagrams for Three Particles">
 
 The symmetry types of three-particle states can be classified using Young diagrams:
 
@@ -1221,10 +1223,10 @@ $$d = \frac{n!}{\prod_i h_i}$$
 **Three-Particle Symmetry Types:**
 
 | Partition | Young Diagram | Spin | Dimension |
-|-----------|---------------|------|-----------|
-| (3) | ![](/images/angular-momentum/young_3_symmetric.png) | s = 3/2 | 4 |
-| (2,1) | ![](/images/angular-momentum/young_21_mixed.png) | s = 1/2 | 2 |
-| (1,1,1) | ![](/images/angular-momentum/young_111_antisymmetric.png) | (not for spin-1/2) | 0 |
+|-----------|:-------------:|:----:|:---------:|
+| (3) | <img src="/images/angular-momentum/young_3_symmetric_small.png" width="60px"> | s = 3/2 | 4 |
+| (2,1) | <img src="/images/angular-momentum/young_21_mixed_small.png" width="50px"> | s = 1/2 | 2 |
+| (1,1,1) | <img src="/images/angular-momentum/young_111_antisymmetric_small.png" width="30px"> | (not for spin-1/2) | 0 |
 
 **Exchange Symmetry and Total Angular Momentum:**
 $$P_{12}|J, M\rangle = (-1)^{2j-J}|J, M\rangle$$
