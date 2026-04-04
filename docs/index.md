@@ -211,6 +211,22 @@ hero:
   <div class="article-entry">
     <div class="article-date">2026-04-04</div>
     <div class="article-info">
+      <h3><a href="/posts/condensed-matter/crystal-structures-bravais-lattices">Crystal Structures: From Bravais Lattices to Reciprocal Space</a></h3>
+      <p>Crystal systems, Bravais lattices, Wigner-Seitz cell, reciprocal lattice, and Brillouin zone construction</p>
+    </div>
+  </div>
+  
+  <div class="article-entry">
+    <div class="article-date">2026-04-04</div>
+    <div class="article-info">
+      <h3><a href="/posts/condensed-matter/electron-energy-bands-origin">Electron Energy Bands: From Atomic Orbitals to Bloch States</a></h3>
+      <p>Energy band formation, LCAO approximation, Kronig-Penney model, and Bloch's theorem</p>
+    </div>
+  </div>
+  
+  <div class="article-entry">
+    <div class="article-date">2026-04-04</div>
+    <div class="article-info">
       <h3><a href="/posts/quantum-mechanics/angular-momentum-algebra">Angular Momentum Algebra</a></h3>
       <p>Commutation relations, ladder operators, matrix representations, and addition of angular momenta</p>
     </div>

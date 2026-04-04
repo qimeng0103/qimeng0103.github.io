@@ -68,6 +68,8 @@ export default defineConfig({
             {
               text: 'Condensed Matter Notes',
               items: [
+                { text: 'Crystal Structures: Bravais Lattices and Reciprocal Space', link: '/posts/condensed-matter/crystal-structures-bravais-lattices' },
+                { text: 'Electron Energy Bands: Origin and Bloch States', link: '/posts/condensed-matter/electron-energy-bands-origin' },
                 { text: "Green's Functions for Quantum Transport", link: '/posts/condensed-matter/green-functions-quantum-transport' },
                 { text: 'Phonons and Lattice Dynamics', link: '/posts/condensed-matter/phonons-lattice-dynamics' },
                 { text: 'Metal Electron Theory: Fermi Statistics and Transport', link: '/posts/condensed-matter/metal-electron-theory-fermi-statistics-transport' },

@@ -147,6 +147,20 @@
   <h2>Condensed Matter Notes</h2>
   <ul class="article-list">
     <li class="article-item">
+      <span class="article-date">2026-04-04</span>
+      <div>
+        <div class="article-title"><a href="./condensed-matter/crystal-structures-bravais-lattices">Crystal Structures: From Bravais Lattices to Reciprocal Space</a></div>
+        <div class="article-desc">Seven crystal systems, fourteen Bravais lattices, Wigner-Seitz cell construction, reciprocal lattice derivation, and first Brillouin zone</div>
+      </div>
+    </li>
+    <li class="article-item">
+      <span class="article-date">2026-04-04</span>
+      <div>
+        <div class="article-title"><a href="./condensed-matter/electron-energy-bands-origin">Electron Energy Bands: From Atomic Orbitals to Bloch States</a></div>
+        <div class="article-desc">Origin of energy bands from wavefunction overlap, LCAO approximation, exact solution of Kronig-Penney model, and proof of Bloch's theorem</div>
+      </div>
+    </li>
+    <li class="article-item">
       <span class="article-date">2026-04-03</span>
       <div>
         <div class="article-title"><a href="./condensed-matter/spontaneous-symmetry-breaking">Spontaneous Symmetry Breaking: From Functional Calculus to Goldstone Modes</a></div>
