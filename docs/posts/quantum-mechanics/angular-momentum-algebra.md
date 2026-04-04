@@ -561,10 +561,10 @@ The CG coefficients for coupling two spin-1/2 particles are summarized below:
 
 | Coupled State | Uncoupled State | CG Coefficient |
 |:-------------:|:---------------:|:--------------:|
-| j=1, m=1 | ↑↑ | 1 |
-| j=1, m=0 | (↑↓ + ↓↑)/√2 | 1/√2 |
-| j=1, m=-1 | ↓↓ | 1 |
-| j=0, m=0 | (↑↓ - ↓↑)/√2 | 1/√2 |
+| $j=1, m=1$ | $\|\uparrow\uparrow\rangle$ | $1$ |
+| $j=1, m=0$ | $\frac{1}{\sqrt{2}}(\|\uparrow\downarrow\rangle + \|\downarrow\uparrow\rangle)$ | $\frac{1}{\sqrt{2}}$ |
+| $j=1, m=-1$ | $\|\downarrow\downarrow\rangle$ | $1$ |
+| $j=0, m=0$ | $\frac{1}{\sqrt{2}}(\|\uparrow\downarrow\rangle - \|\downarrow\uparrow\rangle)$ | $\frac{1}{\sqrt{2}}$ |
 
 **Triplet States (Symmetric, S=1):**
 - |1,1⟩ = |↑↑⟩
@@ -680,18 +680,24 @@ $$D^{(j_1)} \otimes D^{(j_2)} = \bigoplus_{j=|j_1-j_2|}^{j_1+j_2} D^{(j)}$$
 **Dimension Check:**
 $$(2j_1+1)(2j_2+1) = \sum_{j=|j_1-j_2|}^{j_1+j_2} (2j+1)$$
 
-**Visual Representation of CG Decomposition:**
-
-![CG Coupling Diagram](/images/angular-momentum/cg_coupling.png)
-
-*Angular momentum coupling for two spin-1/2 particles: $2 \otimes 2 = 3 \oplus 1$*
-
-**General Pattern for Arbitrary $j_1$ and $j_2$:**
+**CG Decomposition Pattern:**
 
 The decomposition follows the triangle rule:
 $$D^{(j_1)} \otimes D^{(j_2)} = \bigoplus_{j=|j_1-j_2|}^{j_1+j_2} D^{(j)}$$
 
-Dimension check: $(2j_1+1)(2j_2+1) = \sum_{j=|j_1-j_2|}^{j_1+j_2}(2j+1)$
+**Dimension Verification:**
+$$(2j_1+1)(2j_2+1) = \sum_{j=|j_1-j_2|}^{j_1+j_2}(2j+1)$$
+
+**Example: Two Spin-1/2 Particles ($j_1 = j_2 = 1/2$)**
+
+| Uncoupled Basis | Coupled States |
+|:----------------|:---------------|
+| $|\uparrow\uparrow\rangle$ | $|j=1, m=1\rangle$ (Triplet) |
+| $\frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle + |\downarrow\uparrow\rangle)$ | $|j=1, m=0\rangle$ (Triplet) |
+| $\|\downarrow\downarrow\rangle$ | $|j=1, m=-1\rangle$ (Triplet) |
+| $\frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle)$ | $|j=0, m=0\rangle$ (Singlet) |
+
+*Total: $2 \times 2 = 4$ states decompose into $j=1$ (3 states) $\oplus$ $j=0$ (1 state)*
 
 ---
 
@@ -725,7 +731,7 @@ where:
 - $L^2 Y_l^m = \hbar^2 l(l+1) Y_l^m$
 - $L_z Y_l^m = \hbar m Y_l^m$ with $m = -l, -l+1, ..., l$
 
-### 5.3 Angular Momentum in Central Force Fields: Key Theorems
+### 5.6 Angular Momentum in Central Force Fields: Key Theorems
 
 **Theorem 1: Degeneracy with respect to magnetic quantum number $m$**
 
@@ -766,16 +772,7 @@ $$R_{nl}(r) \xrightarrow{r \to 0} r^l$$
 
 The centrifugal barrier $\frac{\hbar^2 l(l+1)}{2\mu r^2}$ prevents particles with $l \geq 1$ from reaching the origin. Only s-waves ($l = 0$) have non-zero probability density at $r = 0$.
 
-### 5.4 Radial Equation
-
-$$\psi(r, \theta, \phi) = R_{nl}(r)Y_l^m(\theta, \phi)$$
-
-where:
-- $Y_l^m(\theta, \phi)$ are the spherical harmonics (eigenfunctions of $L^2$ and $L_z$)
-- $L^2 Y_l^m = \hbar^2 l(l+1) Y_l^m$
-- $L_z Y_l^m = \hbar m Y_l^m$ with $m = -l, -l+1, ..., l$
-
-### 5.3 Radial Equation and Angular Momentum Barrier
+### 5.7 Radial Equation and Angular Momentum Barrier
 
 Substituting into the Schrödinger equation:
 
@@ -803,7 +800,7 @@ $$R_{nl}(r) \xrightarrow{r \to 0} r^l$$
 
 This shows that higher angular momentum states are increasingly suppressed near the origin.
 
-### 5.4 Runge-Lenz Vector and Hydrogen Atom Degeneracy
+### 5.8 Runge-Lenz Vector and Hydrogen Atom Degeneracy
 
 The hydrogen atom possesses an additional conserved quantity beyond angular momentum—the Runge-Lenz vector.
 
@@ -834,7 +831,7 @@ These relations, combined with the angular momentum algebra, form an SO(4) symme
 
 The existence of the Runge-Lenz vector as a conserved quantity is special to the $1/r$ potential (Coulomb and gravitational). It implies closed elliptical orbits in classical mechanics and the degeneracy in quantum mechanics.
 
-### 5.5 Hydrogen Atom Energy Levels and Angular Momentum
+### 5.9 Hydrogen Atom Energy Levels and Angular Momentum
 
 For the Coulomb potential $V(r) = -\frac{e^2}{4\pi\varepsilon_0 r}$:
 
@@ -851,7 +848,7 @@ For each $l$, there are $2l+1$ values of $m$.
 The total degeneracy of level $n$ is:
 $$g_n = \sum_{l=0}^{n-1}(2l+1) = n^2$$
 
-### 5.5 Three-Dimensional Isotropic Harmonic Oscillator
+### 5.10 Three-Dimensional Isotropic Harmonic Oscillator
 
 For $V(r) = \frac{1}{2}\mu\omega^2 r^2$:
 
@@ -974,7 +971,7 @@ For helium ground state ($1s^2$):
 - Only singlet possible (antisymmetric spatial required for same orbital)
 - Designation: $^1S_0$
 
-### 6.5 Exchange Operator and Total Angular Momentum
+### 6.6 Exchange Operator and Total Angular Momentum
 
 **Exchange Operator Definition**
 
@@ -1019,7 +1016,7 @@ This shows that:
 - Half-integer total spin ($S = 0, 2, 4, ...$ in units of $\hbar$): Antisymmetric
 - Integer total spin ($S = 1, 3, 5, ...$ in units of $\hbar$): Symmetric
 
-### 6.6 Addition of Three Angular Momenta and Permutation Symmetry
+### 6.7 Addition of Three Angular Momenta and Permutation Symmetry
 
 For three spin-1/2 particles, we first combine two spins, then add the third:
 
@@ -1070,6 +1067,55 @@ $$|1/2, 1/2\rangle_B = \frac{1}{\sqrt{6}}(|\downarrow\uparrow\uparrow\rangle + |
 
 Under cyclic permutation $(1 \to 2 \to 3 \to 1)$, these states transform into each other, forming a 2-dimensional representation of the cyclic group.
 
+**Explicit Derivation of Mixed Symmetry States:**
+
+The two doublet states can be constructed using the standard Clebsch-Gordan procedure:
+
+1. Start with the quartet state $|3/2, 1/2\rangle$ which is totally symmetric
+2. Apply the lowering operator $S_- = S_{1-} + S_{2-} + S_{3-}$ to generate the full quartet
+3. Construct the first doublet state $|1/2, 1/2\rangle_A$ by requiring:
+   - Orthogonality to $|3/2, 1/2\rangle$
+   - Antisymmetry under $P_{12}$
+   
+Explicit calculation:
+$$|1/2, 1/2\rangle_A \propto |\downarrow\uparrow\uparrow\rangle - |\uparrow\downarrow\uparrow\rangle$$
+
+After normalization:
+$$|1/2, 1/2\rangle_A = \frac{1}{\sqrt{2}}(|\downarrow\uparrow\uparrow\rangle - |\uparrow\downarrow\uparrow\rangle)$$
+
+The second doublet state $|1/2, 1/2\rangle_B$ is obtained by requiring:
+- Orthogonality to both $|3/2, 1/2\rangle$ and $|1/2, 1/2\rangle_A$
+- Symmetry under $P_{12}$
+
+This gives:
+$$|1/2, 1/2\rangle_B = \frac{1}{\sqrt{6}}(|\downarrow\uparrow\uparrow\rangle + |\uparrow\downarrow\uparrow\rangle - 2|\uparrow\uparrow\downarrow\rangle)$$
+
+**Action of Ladder Operators:**
+
+Applying $S_- = S_{1-} + S_{2-} + S_{3-}$:
+
+For State A:
+$$S_-|1/2, 1/2\rangle_A = \hbar|1/2, -1/2\rangle_A$$
+
+where:
+$$|1/2, -1/2\rangle_A = \frac{1}{\sqrt{2}}(|\downarrow\downarrow\uparrow\rangle - |\downarrow\uparrow\downarrow\rangle)$$
+
+For State B:
+$$S_-|1/2, 1/2\rangle_B = \hbar|1/2, -1/2\rangle_B$$
+
+where:
+$$|1/2, -1/2\rangle_B = \frac{1}{\sqrt{6}}(|\downarrow\downarrow\uparrow\rangle + |\downarrow\uparrow\downarrow\rangle - 2|\uparrow\downarrow\downarrow\rangle)$$
+
+**Connection to Lithium Atom:**
+
+In the lithium atom ($1s^2 2s^1$ configuration):
+- The two $1s$ electrons form a singlet (antisymmetric spin state)
+- The $2s$ electron adds angular momentum $s = 1/2$
+- The total spin can be $S = 0$ or $S = 1$
+- The $S = 1$ state (spin doublet) is the ground state
+
+This coupling scheme is essential for understanding the fine structure and hyperfine structure of multi-electron atoms.
+
 **Young Tableaux Classification with Diagrams**
 
 <img src="/images/angular-momentum/young_3_all_combined.png" width="600px" alt="Young Diagrams for Three Particles">
@@ -1095,13 +1141,16 @@ $$d = \frac{n!}{\prod_{i} h_i}$$
 
 where $h_i$ is the hook length of box $i$.
 
-For the mixed symmetry diagram:
-```
+**Mixed Symmetry Example: Partition (2,1)**
+
+For the mixed symmetry diagram (2,1):
+
+<img src="/images/angular-momentum/young_21_mixed.png" width="120px" alt="Mixed symmetry diagram (2,1)">
+
 Box positions and hook lengths:
-(1,1): right=1, below=1, self=1 → h = 3
-(1,2): right=0, below=0, self=1 → h = 1  
-(2,1): right=0, below=0, self=1 → h = 1
-```
+- Position (1,1): right=1, below=1, self=1 → $h = 3$
+- Position (1,2): right=0, below=0, self=1 → $h = 1$  
+- Position (2,1): right=0, below=0, self=1 → $h = 1$
 
 $$d = \frac{3!}{3 \cdot 1 \cdot 1} = 2$$
 
@@ -1115,7 +1164,7 @@ For three identical fermions with spin-1/2:
 
 This constraint is crucial for understanding the structure of three-electron atoms like lithium and three-nucleon systems like $^3$He.
 
-### 6.7 Slater Determinant and Total Angular Momentum Coupling
+### 6.8 Slater Determinant and Total Angular Momentum Coupling
 
 For $N$ identical fermions, the antisymmetric wavefunction can be written as a Slater determinant:
 
@@ -1127,6 +1176,62 @@ $$\Psi(1, 2, ..., N) = \frac{1}{\sqrt{N!}}\begin{vmatrix}
 \end{vmatrix}$$
 
 If any two particles occupy the same state ($\phi_i = \phi_j$), the determinant vanishes. This is the **Pauli exclusion principle**.
+
+**Properties of the Slater Determinant:**
+
+1. **Antisymmetry:** Interchanging two columns (particle coordinates) changes the sign of the determinant
+2. **Normalization:** The factor $1/\sqrt{N!}$ ensures proper normalization when single-particle states are orthonormal
+3. **Expansion:** The determinant can be expanded using the Levi-Civita symbol:
+   $$\Psi = \frac{1}{\sqrt{N!}} \sum_{\sigma \in S_N} \text{sgn}(\sigma) \prod_{i=1}^N \phi_i(\sigma(i))$$
+
+**Example: Helium Ground State ($1s^2$)**
+
+For two electrons in the $1s$ orbital with opposite spins:
+
+$$\Psi(1, 2) = \frac{1}{\sqrt{2}}\begin{vmatrix}
+\psi_{1s}(1)\alpha(1) & \psi_{1s}(2)\alpha(2) \\
+\psi_{1s}(1)\beta(1) & \psi_{1s}(2)\beta(2)
+\end{vmatrix}$$
+
+$$= \frac{1}{\sqrt{2}}\psi_{1s}(1)\psi_{1s}(2)[\alpha(1)\beta(2) - \beta(1)\alpha(2)]$$
+
+$$= \psi_{1s}(1)\psi_{1s}(2) \cdot \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle)$$
+
+This is the spin singlet state, required by antisymmetry since both electrons occupy the same spatial orbital.
+
+**Connection to LS Coupling:**
+
+For multi-electron atoms, the total angular momentum $\mathbf{J} = \mathbf{L} + \mathbf{S}$ is constructed from:
+- Total orbital angular momentum $\mathbf{L} = \sum_i \mathbf{l}_i$
+- Total spin angular momentum $\mathbf{S} = \sum_i \mathbf{s}_i$
+
+The Slater determinant ensures the overall antisymmetry of the wavefunction. The spatial and spin parts must combine to give the correct permutation symmetry:
+
+| Configuration | Spatial Symmetry | Spin Symmetry | Total $S$ |
+|:-------------:|:----------------:|:-------------:|:---------:|
+| $(1s)^2$ | Symmetric | Antisymmetric | $S = 0$ |
+| $(1s)(2s)$ | Symmetric | Antisymmetric | $S = 0$ |
+| $(1s)(2s)$ | Antisymmetric | Symmetric | $S = 1$ |
+
+**Matrix Elements in Slater Determinant Basis:**
+
+For operators that are sums of single-particle operators $F = \sum_i f(i)$:
+$$\langle\Psi|F|\Psi\rangle = \sum_{i=1}^N \langle\phi_i|f|\phi_i\rangle$$
+
+For two-particle operators $G = \sum_{i<j} g(i,j)$:
+$$\langle\Psi|G|\Psi\rangle = \sum_{i<j} [\langle\phi_i\phi_j|g|\phi_i\phi_j\rangle - \langle\phi_i\phi_j|g|\phi_j\phi_i\rangle]$$
+
+The second term is the **exchange integral**, arising from antisymmetry.
+
+**Application to Atomic Structure:**
+
+The Slater determinant formalism is essential for:
+- Hartree-Fock calculations
+- Configuration interaction methods
+- Understanding Hund's rules
+- Calculating term symbols ($^{2S+1}L_J$)
+
+For example, the carbon atom ground state configuration $(1s)^2(2s)^2(2p)^2$ has possible terms $^1S$, $^1D$, and $^3P$, with $^3P_0$ being the ground state according to Hund's rules.
 
 ---
 
@@ -1169,12 +1274,12 @@ $$|j, m\rangle = \sum_{m_1+m_2=m} \langle j_1, m_1; j_2, m_2|j, m\rangle |j_1, m
 
 **Two Spin-1/2 CG Coefficients:**
 
-| $|j, m\rangle$ | $|\uparrow\uparrow\rangle$ | $|\uparrow\downarrow\rangle$ | $|\downarrow\uparrow\rangle$ | $|\downarrow\downarrow\rangle$ |
-|---------------|----------------|----------------|----------------|----------------|
-| $|1, 1\rangle$ | 1 | 0 | 0 | 0 |
-| $|1, 0\rangle$ | 0 | $1/\sqrt{2}$ | $1/\sqrt{2}$ | 0 |
-| $|1, -1\rangle$ | 0 | 0 | 0 | 1 |
-| $|0, 0\rangle$ | 0 | $1/\sqrt{2}$ | $-1/\sqrt{2}$ | 0 |
+| Coupled State | $|\uparrow\uparrow\rangle$ | $|\uparrow\downarrow\rangle$ | $|\downarrow\uparrow\rangle$ | $|\downarrow\downarrow\rangle$ |
+|:-------------:|:-----------:|:-----------:|:-----------:|:-----------:|
+| $|1, 1\rangle$ | $1$ | $0$ | $0$ | $0$ |
+| $|1, 0\rangle$ | $0$ | $\frac{1}{\sqrt{2}}$ | $\frac{1}{\sqrt{2}}$ | $0$ |
+| $|1, -1\rangle$ | $0$ | $0$ | $0$ | $1$ |
+| $|0, 0\rangle$ | $0$ | $\frac{1}{\sqrt{2}}$ | $-\frac{1}{\sqrt{2}}$ | $0$ |
 
 ### Central Force Field
 
@@ -1224,9 +1329,9 @@ $$d = \frac{n!}{\prod_i h_i}$$
 
 | Partition | Young Diagram | Spin | Dimension |
 |-----------|:-------------:|:----:|:---------:|
-| (3) | <img src="/images/angular-momentum/young_3_symmetric_small.png" width="60px"> | s = 3/2 | 4 |
-| (2,1) | <img src="/images/angular-momentum/young_21_mixed_small.png" width="50px"> | s = 1/2 | 2 |
-| (1,1,1) | <img src="/images/angular-momentum/young_111_antisymmetric_small.png" width="30px"> | (not for spin-1/2) | 0 |
+| $(3)$ | <img src="/images/angular-momentum/young_3_symmetric_small.png" width="60px"> | $s = 3/2$ | 4 |
+| $(2,1)$ | <img src="/images/angular-momentum/young_21_mixed_small.png" width="50px"> | $s = 1/2$ | 2 |
+| $(1,1,1)$ | <img src="/images/angular-momentum/young_111_antisymmetric_small.png" width="30px"> | (not for spin-1/2) | 0 |
 
 **Exchange Symmetry and Total Angular Momentum:**
 $$P_{12}|J, M\rangle = (-1)^{2j-J}|J, M\rangle$$
