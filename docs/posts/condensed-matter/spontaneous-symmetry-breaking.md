@@ -873,21 +873,6 @@ $$
 \left.\frac{\delta F_x}{\delta \phi(y)}\right|_{\phi_0} = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}(\phi_0, 0)\delta(x-y)
 $$
 
-**Step 5c: At uniform background $\phi(x) = \phi_0$**
-
-The key simplifications at the uniform background:
-1. $\nabla\phi = 0$, so the gradient term in the first derivative vanishes
-2. $\frac{\partial \mathcal{V}}{\partial \phi}$ at point $x$ depends only on $\phi(x)$
-3. The variation $\delta(x-y)$ is non-zero only when $x = y$
-
-Therefore:
-
-$$
-\frac{\delta}{\delta \phi(y)}\left(\frac{\partial \mathcal{V}}{\partial \phi}(x)\right) = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}(\phi_0, 0) \cdot \delta(x-y)
-$$
-
-The delta function appears because varying $\phi$ at $y$ only affects the derivative at $x$ when $x = y$ (locality).
-
 **Result:**
 
 $$
