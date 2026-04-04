@@ -803,10 +803,10 @@ $$
 
 **Step 5: The Mass Matrix from Definition**
 
-**Definition:** The mass kernel is the second functional derivative:
+**Definition:** The mass kernel is the second functional derivative evaluated at the uniform background:
 
 $$
-M(y,x) = \frac{\delta^2 V}{\delta \phi(y)\delta \phi(x)} = \left.\frac{\delta}{\delta \phi(y)}\left(\frac{\delta V}{\delta \phi(x)}\right)\right|_{\phi=\phi_0}
+M(y,x) = \left.\frac{\delta^2 V}{\delta \phi(y)\delta \phi(x)}\right|_{\phi=\phi_0} = \left.\frac{\delta}{\delta \phi(y)}\left(\frac{\delta V}{\delta \phi(x)}\right)\right|_{\phi=\phi_0}
 $$
 
 **Step 5a: First functional derivative**
