@@ -848,11 +848,6 @@ $$
 
 where $m^2 = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}|_{\phi_0}$ is the curvature of the potential at the minimum.
 
-$$
-M(y,x) = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}\bigg|_{\phi_0} \delta(y-x) = m^2 \delta(y-x)
-$$
-
-where $m^2 = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}|_{\phi_0}$ is the mass squared.
 
 **Step 6: The Massless Mode**
 
