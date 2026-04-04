@@ -801,31 +801,52 @@ $$
 \int dx \, M(y,x) \eta(x) = 0
 $$
 
-**Step 5: The Mass Matrix (Simplified Derivation)**
+**Step 5: The Mass Matrix from Definition**
 
-**Goal:** Compute $M(y,x) = \frac{\delta^2 V}{\delta \phi(y)\delta \phi(x)}$ at the uniform background $\phi_0$.
-
-**The Key Simplification:**
-
-For a local theory, $V[\phi] = \int dz \, \mathcal{V}(\phi(z), \nabla\phi(z))$. The second functional derivative at a **uniform** background simplifies dramatically:
-
-1. **First derivative:** $\frac{\delta V}{\delta \phi(x)} = \frac{\partial \mathcal{V}}{\partial \phi}(x) - \nabla_x \cdot \frac{\partial \mathcal{V}}{\partial(\nabla\phi)}(x)$
-
-2. **At $\phi(x) = \phi_0$ (constant):**
-   - The gradient term vanishes (divergence of a constant is zero)
-   - So $\frac{\delta V}{\delta \phi(x)}\big|_{\phi_0} = \frac{\partial \mathcal{V}}{\partial \phi}(\phi_0, 0)$ = constant
-
-3. **Second derivative:** Taking $\frac{\delta}{\delta \phi(y)}$ of a constant gives zero, **unless** we consider how the argument itself varies. The correct result is:
+**Definition:** The mass kernel is the second functional derivative:
 
 $$
-M(y,x) = \left.\frac{\partial^2 \mathcal{V}}{\partial \phi^2}\right|_{\phi_0} \delta(y-x)
+M(y,x) = \frac{\delta^2 V}{\delta \phi(y)\delta \phi(x)} = \left.\frac{\delta}{\delta \phi(y)}\left(\frac{\delta V}{\delta \phi(x)}\right)\right|_{\phi=\phi_0}
 $$
 
-**Why the delta function?** 
+**Step 5a: First functional derivative**
 
-The second functional derivative asks: "How does the first derivative at $x$ change when we vary the field at $y$?" For a local theory, the answer is "only when $y = x$"—hence the delta function.
+For $V[\phi] = \int dz \, \mathcal{V}(\phi(z), \nabla\phi(z))$, the first derivative is:
 
-**Result:** The mass matrix is diagonal with eigenvalue $m^2 = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}|_{\phi_0}$ (the curvature of the potential at the minimum).
+$$
+\frac{\delta V}{\delta \phi(x)} = \frac{\partial \mathcal{V}}{\partial \phi}(\phi(x), \nabla\phi(x)) - \nabla_x \cdot \frac{\partial \mathcal{V}}{\partial(\nabla\phi)}(\phi(x), \nabla\phi(x))
+$$
+
+**Step 5b: Vary at point $y$**
+
+By definition of the functional derivative, we introduce a variation $\eta(z) = \delta(z-y)$ at point $y$:
+
+$$
+\frac{\delta}{\delta \phi(y)}\left(\frac{\partial \mathcal{V}}{\partial \phi}(x)\right) = \lim_{\epsilon \to 0} \frac{1}{\epsilon}\left[\frac{\partial \mathcal{V}}{\partial \phi}(\phi(x)+\epsilon\delta(x-y)) - \frac{\partial \mathcal{V}}{\partial \phi}(\phi(x))\right]
+$$
+
+**Step 5c: At uniform background $\phi(x) = \phi_0$**
+
+The key simplifications at the uniform background:
+1. $\nabla\phi = 0$, so the gradient term in the first derivative vanishes
+2. $\frac{\partial \mathcal{V}}{\partial \phi}$ at point $x$ depends only on $\phi(x)$
+3. The variation $\delta(x-y)$ is non-zero only when $x = y$
+
+Therefore:
+
+$$
+\frac{\delta}{\delta \phi(y)}\left(\frac{\partial \mathcal{V}}{\partial \phi}(x)\right) = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}(\phi_0, 0) \cdot \delta(x-y)
+$$
+
+The delta function appears because varying $\phi$ at $y$ only affects the derivative at $x$ when $x = y$ (locality).
+
+**Result:**
+
+$$
+M(y,x) = \left.\frac{\partial^2 \mathcal{V}}{\partial \phi^2}\right|_{\phi_0} \delta(y-x) = m^2 \delta(y-x)
+$$
+
+where $m^2 = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}|_{\phi_0}$ is the curvature of the potential at the minimum.
 
 $$
 M(y,x) = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}\bigg|_{\phi_0} \delta(y-x) = m^2 \delta(y-x)
