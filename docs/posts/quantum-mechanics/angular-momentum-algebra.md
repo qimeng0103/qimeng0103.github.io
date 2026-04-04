@@ -1,15 +1,15 @@
 ---
-title: "Angular Momentum Algebra in Quantum Mechanics"
-description: "Comprehensive treatment of angular momentum theory including commutation relations, ladder operators, eigenvalue spectra, and addition of angular momenta with detailed derivations"
+title: "Angular Momentum Algebra and Its Applications"
+description: "Comprehensive treatment of angular momentum theory: algebraic structure, spin systems, Clebsch-Gordan coefficients, central force fields, and identical particle systems"
 date: 2026-04-04
-tags: ["quantum mechanics", "angular momentum", "ladder operators", "Clebsch-Gordan coefficients", "rotation group"]
+tags: ["quantum mechanics", "angular momentum", "spin", "Clebsch-Gordan coefficients", "central force field", "identical particles"]
 category: "quantum-mechanics"
 math: true
 ---
 
-# Angular Momentum Algebra in Quantum Mechanics
+# Angular Momentum Algebra and Its Applications
 
-This article presents a systematic treatment of angular momentum theory in quantum mechanics, covering the algebraic structure based on commutation relations, the ladder operator method for determining eigenvalue spectra, the matrix representations, and the theory of angular momentum addition. Detailed mathematical derivations are provided throughout.
+This article presents a systematic treatment of angular momentum theory in quantum mechanics. We begin with the fundamental commutation relations and ladder operator formalism, then discuss the matrix representations for various spin systems. The article provides detailed derivations of Clebsch-Gordan coefficients for angular momentum addition. Finally, we explore applications to central force field problems and systems of identical particles.
 
 ---
 
@@ -17,7 +17,7 @@ This article presents a systematic treatment of angular momentum theory in quant
 
 ### 1.1 Definition of Angular Momentum Operators
 
-In quantum mechanics, angular momentum is defined through operators that satisfy specific commutation relations. The orbital angular momentum operator is:
+In quantum mechanics, angular momentum is defined through operators satisfying specific commutation relations. The orbital angular momentum operator is:
 
 $$\mathbf{L} = \mathbf{r} \times \mathbf{p}$$
 
@@ -100,7 +100,7 @@ $$J_z|j, m\rangle = \hbar m|j, m\rangle$$
 
 where $j$ is the total angular momentum quantum number and $m$ is the magnetic quantum number.
 
-**Key Question**: What are the allowed values of $j$ and $m$?
+The allowed values of $j$ and $m$ are determined by the algebraic structure. Starting from the constraint that $J^2 \geq J_z^2$ as positive operators, we obtain $-j \leq m \leq j$. The requirement that ladder operators terminate the sequence leads to $j = 0, 1/2, 1, 3/2, ...$.
 
 ---
 
@@ -211,7 +211,7 @@ $$2j = n$$
 
 $$\boxed{j = 0, \frac{1}{2}, 1, \frac{3}{2}, 2, ...}$$
 
-Angular momentum is quantized in integer or half-integer units!
+Angular momentum is quantized in integer or half-integer units.
 
 ### 2.5 Normalization Constants
 
@@ -236,7 +236,7 @@ $$\boxed{J_-|j, m\rangle = \hbar\sqrt{(j+m)(j-m+1)}|j, m-1\rangle}$$
 
 ---
 
-## Part III: Matrix Representations
+## Part III: Spin Systems and Matrix Representations
 
 ### 3.1 Matrix Elements of Angular Momentum Operators
 
@@ -259,7 +259,7 @@ $$(J_-)_{m',m} = \hbar\sqrt{(j+m)(j-m+1)}\delta_{m',m-1}$$
 
 $$J_x = \frac{J_+ + J_-}{2}, \quad J_y = \frac{J_+ - J_-}{2i}$$
 
-### 3.2 Example: Spin-1/2 (j = 1/2)
+### 3.2 Spin-1/2 System (j = 1/2)
 
 For $j = 1/2$, there are two states: $|1/2, 1/2\rangle \equiv |\uparrow\rangle$ and $|1/2, -1/2\rangle \equiv |\downarrow\rangle$.
 
@@ -275,21 +275,49 @@ $$J_x = \frac{\hbar}{2}\begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix} = \frac{\hba
 
 $$J_y = \frac{\hbar}{2}\begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix} = \frac{\hbar}{2}\sigma_y$$
 
-The matrices $\sigma_i$ are the famous **Pauli matrices**.
+The matrices $\sigma_i$ are the **Pauli matrices**:
 
-### 3.3 Example: Spin-1 (j = 1)
+$$\sigma_x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad \sigma_y = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \quad \sigma_z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$$
+
+**Properties of Pauli Matrices**
+
+$$\sigma_x^2 = \sigma_y^2 = \sigma_z^2 = I$$
+
+$$[\sigma_i, \sigma_j] = 2i\varepsilon_{ijk}\sigma_k$$
+
+$$\{\sigma_i, \sigma_j\} = 2\delta_{ij}I$$
+
+$$\sigma_i\sigma_j = \delta_{ij}I + i\varepsilon_{ijk}\sigma_k$$
+
+**Spin Operators in Terms of Pauli Matrices**
+
+$$\mathbf{S} = \frac{\hbar}{2}\boldsymbol{\sigma}$$
+
+### 3.3 Spin-1 System (j = 1)
 
 For $j = 1$, the basis is $|1, 1\rangle$, $|1, 0\rangle$, $|1, -1\rangle$.
 
-$$J_z = \hbar\begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & -1 \end{pmatrix}$$
+$$S_z = \hbar\begin{pmatrix} 1 & 0 & 0 \\ 0 & 0 & 0 \\ 0 & 0 & -1 \end{pmatrix}$$
 
-$$J_+ = \hbar\begin{pmatrix} 0 & \sqrt{2} & 0 \\ 0 & 0 & \sqrt{2} \\ 0 & 0 & 0 \end{pmatrix}, \quad J_- = \hbar\begin{pmatrix} 0 & 0 & 0 \\ \sqrt{2} & 0 & 0 \\ 0 & \sqrt{2} & 0 \end{pmatrix}$$
+$$S_+ = \hbar\begin{pmatrix} 0 & \sqrt{2} & 0 \\ 0 & 0 & \sqrt{2} \\ 0 & 0 & 0 \end{pmatrix}, \quad S_- = \hbar\begin{pmatrix} 0 & 0 & 0 \\ \sqrt{2} & 0 & 0 \\ 0 & \sqrt{2} & 0 \end{pmatrix}$$
 
-$$J_x = \frac{\hbar}{\sqrt{2}}\begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix}, \quad J_y = \frac{\hbar}{\sqrt{2}}\begin{pmatrix} 0 & -i & 0 \\ i & 0 & -i \\ 0 & i & 0 \end{pmatrix}$$
+$$S_x = \frac{\hbar}{\sqrt{2}}\begin{pmatrix} 0 & 1 & 0 \\ 1 & 0 & 1 \\ 0 & 1 & 0 \end{pmatrix}, \quad S_y = \frac{\hbar}{\sqrt{2}}\begin{pmatrix} 0 & -i & 0 \\ i & 0 & -i \\ 0 & i & 0 \end{pmatrix}$$
+
+### 3.4 Higher Spin Systems
+
+**Spin-3/2 System**
+
+For $j = 3/2$, the matrices are $4 \times 4$. The basis states are $|3/2, 3/2\rangle$, $|3/2, 1/2\rangle$, $|3/2, -1/2\rangle$, $|3/2, -3/2\rangle$.
+
+$$S_z = \frac{\hbar}{2}\begin{pmatrix} 3 & 0 & 0 & 0 \\ 0 & 1 & 0 & 0 \\ 0 & 0 & -1 & 0 \\ 0 & 0 & 0 & -3 \end{pmatrix}$$
+
+$$S_+ = \hbar\begin{pmatrix} 0 & \sqrt{3} & 0 & 0 \\ 0 & 0 & 2 & 0 \\ 0 & 0 & 0 & \sqrt{3} \\ 0 & 0 & 0 & 0 \end{pmatrix}$$
+
+The off-diagonal matrix elements follow the general formula $\hbar\sqrt{(j-m)(j+m+1)}$.
 
 ---
 
-## Part IV: Addition of Angular Momenta
+## Part IV: Addition of Angular Momenta and Clebsch-Gordan Coefficients
 
 ### 4.1 Tensor Product Space
 
@@ -318,13 +346,15 @@ $$= i\hbar\varepsilon_{ijk}J_{1k} + 0 + 0 + i\hbar\varepsilon_{ijk}J_{2k} = i\hb
 
 $$= i\hbar\varepsilon_{ijk}J_k$$
 
-### 4.3 Coupled Basis
+### 4.3 Clebsch-Gordan Expansion
 
 The total angular momentum $J^2$ and $J_z$ have eigenstates:
 
-$$|j, m\rangle = \sum_{m_1, m_2} C(j_1, j_2, j; m_1, m_2, m)|j_1, m_1; j_2, m_2\rangle$$
+$$|j, m\rangle = \sum_{m_1, m_2} \langle j_1, m_1; j_2, m_2|j, m\rangle |j_1, m_1; j_2, m_2\rangle$$
 
-where $C(j_1, j_2, j; m_1, m_2, m)$ are the **Clebsch-Gordan coefficients**.
+where $\langle j_1, m_1; j_2, m_2|j, m\rangle$ are the **Clebsch-Gordan (CG) coefficients**.
+
+**Selection Rule**: $m = m_1 + m_2$
 
 ### 4.4 Determining Allowed Values of Total $j$
 
@@ -355,7 +385,7 @@ $$\boxed{j = |j_1 - j_2|, |j_1 - j_2| + 1, ..., j_1 + j_2}$$
 
 This is analogous to the classical vector addition where the resultant vector's magnitude ranges from the difference to the sum.
 
-### 4.5 Example: Addition of Two Spin-1/2
+### 4.5 Two Spin-1/2 System: Detailed CG Coefficient Calculation
 
 For two spin-1/2 particles ($j_1 = j_2 = 1/2$):
 
@@ -363,17 +393,258 @@ $$j = |1/2 - 1/2|, ..., 1/2 + 1/2 = 0, 1$$
 
 **Triplet States (j = 1):**
 
-$$|1, 1\rangle = |\uparrow\uparrow\rangle$$
+For $|1, 1\rangle$: Only $m_1 = m_2 = 1/2$ contributes.
 
+$$|1, 1\rangle = |\uparrow\uparrow\rangle = |1/2, 1/2; 1/2, 1/2\rangle$$
+
+Apply $J_- = J_{1-} + J_{2-}$ to get $|1, 0\rangle$:
+
+$$J_-|1, 1\rangle = \hbar\sqrt{(1+1)(1-1+1)}|1, 0\rangle = \hbar\sqrt{2}|1, 0\rangle$$
+
+$$J_-|\uparrow\uparrow\rangle = (J_{1-} + J_{2-})|\uparrow\uparrow\rangle = \hbar|\downarrow\uparrow\rangle + \hbar|\uparrow\downarrow\rangle$$
+
+Therefore:
 $$|1, 0\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle + |\downarrow\uparrow\rangle)$$
 
+Apply $J_-$ again to get $|1, -1\rangle$:
+
+$$J_-|1, 0\rangle = \hbar\sqrt{2}|1, -1\rangle$$
+
+$$J_-\frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle + |\downarrow\uparrow\rangle) = \frac{1}{\sqrt{2}}(\hbar|\downarrow\downarrow\rangle + \hbar|\downarrow\downarrow\rangle) = \hbar\sqrt{2}|\downarrow\downarrow\rangle$$
+
+Therefore:
 $$|1, -1\rangle = |\downarrow\downarrow\rangle$$
 
 **Singlet State (j = 0):**
 
+For $|0, 0\rangle$: Must be orthogonal to $|1, 0\rangle$ and have $m = 0$.
+
 $$|0, 0\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle)$$
 
-These states are important in quantum information (Bell states) and atomic physics (exchange interaction).
+Verification: Apply $J^2 = (\mathbf{S}_1 + \mathbf{S}_2)^2$:
+
+$$J^2 = S_1^2 + S_2^2 + 2\mathbf{S}_1 \cdot \mathbf{S}_2$$
+
+$$= \frac{3\hbar^2}{4} + \frac{3\hbar^2}{4} + 2\mathbf{S}_1 \cdot \mathbf{S}_2 = \frac{3\hbar^2}{2} + 2\mathbf{S}_1 \cdot \mathbf{S}_2$$
+
+For the singlet state:
+$$\mathbf{S}_1 \cdot \mathbf{S}_2 = \frac{1}{2}(S_{1+}S_{2-} + S_{1-}S_{2+}) + S_{1z}S_{2z}$$
+
+$$S_{1z}S_{2z}|0,0\rangle = \frac{\hbar^2}{4}\frac{1}{\sqrt{2}}(-|\uparrow\downarrow\rangle + |\downarrow\uparrow\rangle) = -\frac{\hbar^2}{4}|0,0\rangle$$
+
+$$S_{1+}S_{2-}|0,0\rangle = \hbar^2\frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - 0) = \frac{\hbar^2}{\sqrt{2}}|\uparrow\downarrow\rangle$$
+
+$$S_{1-}S_{2+}|0,0\rangle = \hbar^2\frac{1}{\sqrt{2}}(0 - |\downarrow\uparrow\rangle) = -\frac{\hbar^2}{\sqrt{2}}|\downarrow\uparrow\rangle$$
+
+$$\mathbf{S}_1 \cdot \mathbf{S}_2|0,0\rangle = \frac{1}{2}(\frac{\hbar^2}{\sqrt{2}}|\uparrow\downarrow\rangle - \frac{\hbar^2}{\sqrt{2}}|\downarrow\uparrow\rangle) - \frac{\hbar^2}{4}|0,0\rangle = \frac{\hbar^2}{2}|0,0\rangle - \frac{\hbar^2}{4}|0,0\rangle = \frac{\hbar^2}{4}|0,0\rangle$$
+
+Therefore:
+$$J^2|0,0\rangle = \left(\frac{3\hbar^2}{2} + \frac{\hbar^2}{2}\right)|0,0\rangle = 2\hbar^2|0,0\rangle = \hbar^2 \cdot 0(0+1)|0,0\rangle$$
+
+This confirms $|0,0\rangle$ has $j = 0$.
+
+### 4.6 CG Coefficient Table for Two Spin-1/2
+
+| Coupled Basis $|j, m\rangle$ | Uncoupled Basis $|m_1, m_2\rangle$ | CG Coefficient |
+|------------------------------|-------------------------------------|----------------|
+| $|1, 1\rangle$ | $|\uparrow\uparrow\rangle$ | 1 |
+| $|1, 0\rangle$ | $\frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle + |\downarrow\uparrow\rangle)$ | $\frac{1}{\sqrt{2}}$ |
+| $|1, -1\rangle$ | $|\downarrow\downarrow\rangle$ | 1 |
+| $|0, 0\rangle$ | $\frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle)$ | $\frac{1}{\sqrt{2}}$ |
+
+### 4.7 Orbital-Spin Coupling (j = l ± 1/2)
+
+For an electron with orbital angular momentum $l$ and spin $s = 1/2$:
+
+$$j = l + 1/2 \quad \text{or} \quad j = l - 1/2 \quad (\text{for } l \geq 1)$$
+
+**States with $j = l + 1/2$:**
+
+$$|j = l + 1/2, m_j\rangle = \sqrt{\frac{l + m_j + 1/2}{2l + 1}}|l, m_j - 1/2; 1/2, 1/2\rangle + \sqrt{\frac{l - m_j + 1/2}{2l + 1}}|l, m_j + 1/2; 1/2, -1/2\rangle$$
+
+**States with $j = l - 1/2$:**
+
+$$|j = l - 1/2, m_j\rangle = -\sqrt{\frac{l - m_j + 1/2}{2l + 1}}|l, m_j - 1/2; 1/2, 1/2\rangle + \sqrt{\frac{l + m_j + 1/2}{2l + 1}}|l, m_j + 1/2; 1/2, -1/2\rangle$$
+
+---
+
+## Part V: Central Force Field Problems
+
+### 5.1 Separation of Variables in Spherical Coordinates
+
+For a particle in a central potential $V(r)$, the Hamiltonian is:
+
+$$H = -\frac{\hbar^2}{2\mu}\nabla^2 + V(r)$$
+
+In spherical coordinates:
+
+$$\nabla^2 = \frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial}{\partial r}\right) + \frac{1}{r^2}\left[\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial}{\partial\theta}\right) + \frac{1}{\sin^2\theta}\frac{\partial^2}{\partial\phi^2}\right]$$
+
+The angular part is related to $L^2$:
+
+$$L^2 = -\hbar^2\left[\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\sin\theta\frac{\partial}{\partial\theta}\right) + \frac{1}{\sin^2\theta}\frac{\partial^2}{\partial\phi^2}\right]$$
+
+Therefore:
+$$H = -\frac{\hbar^2}{2\mu}\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial}{\partial r}\right) + \frac{L^2}{2\mu r^2} + V(r)$$
+
+### 5.2 Simultaneous Eigenfunctions
+
+Since $[H, L^2] = [H, L_z] = [L^2, L_z] = 0$, we have simultaneous eigenfunctions:
+
+$$\psi(r, \theta, \phi) = R_{nl}(r)Y_l^m(\theta, \phi)$$
+
+where:
+- $Y_l^m(\theta, \phi)$ are the spherical harmonics (eigenfunctions of $L^2$ and $L_z$)
+- $L^2 Y_l^m = \hbar^2 l(l+1) Y_l^m$
+- $L_z Y_l^m = \hbar m Y_l^m$ with $m = -l, -l+1, ..., l$
+
+### 5.3 Radial Equation
+
+Substituting into the Schrödinger equation:
+
+$$\left[-\frac{\hbar^2}{2\mu}\frac{1}{r^2}\frac{d}{dr}\left(r^2\frac{d}{dr}\right) + \frac{\hbar^2 l(l+1)}{2\mu r^2} + V(r)\right]R_{nl}(r) = E R_{nl}(r)$$
+
+Define $u_{nl}(r) = r R_{nl}(r)$:
+
+$$\left[-\frac{\hbar^2}{2\mu}\frac{d^2}{dr^2} + V_{\text{eff}}(r)\right]u_{nl}(r) = E u_{nl}(r)$$
+
+with the effective potential:
+
+$$\boxed{V_{\text{eff}}(r) = V(r) + \frac{\hbar^2 l(l+1)}{2\mu r^2}}$$
+
+The second term is the **centrifugal barrier**.
+
+### 5.4 Hydrogen Atom
+
+For the Coulomb potential $V(r) = -\frac{e^2}{4\pi\varepsilon_0 r}$:
+
+The energy eigenvalues are:
+
+$$\boxed{E_n = -\frac{\mu e^4}{2(4\pi\varepsilon_0)^2\hbar^2}\frac{1}{n^2} = -\frac{13.6 \text{ eV}}{n^2}}$$
+
+where $n = 1, 2, 3, ...$ is the principal quantum number.
+
+For each $n$, the allowed values of $l$ are $l = 0, 1, 2, ..., n-1$.
+
+For each $l$, there are $2l+1$ values of $m$.
+
+The total degeneracy of level $n$ is:
+$$g_n = \sum_{l=0}^{n-1}(2l+1) = n^2$$
+
+### 5.5 Three-Dimensional Isotropic Harmonic Oscillator
+
+For $V(r) = \frac{1}{2}\mu\omega^2 r^2$:
+
+The energy eigenvalues are:
+
+$$\boxed{E_N = \left(N + \frac{3}{2}\right)\hbar\omega}$$
+
+where $N = 2n_r + l = 0, 1, 2, ...$ with $n_r = 0, 1, 2, ...$ being the radial quantum number.
+
+For a given $N$, the allowed values of $l$ are $l = N, N-2, N-4, ..., 1$ or $0$.
+
+The degeneracy of level $N$ is:
+$$g_N = \frac{(N+1)(N+2)}{2}$$
+
+---
+
+## Part VI: Systems of Identical Particles
+
+### 6.1 Symmetry Requirements for Many-Particle States
+
+For a system of $N$ identical particles, the total wavefunction must satisfy specific symmetry properties under particle exchange:
+
+- **Bosons** (integer spin): Wavefunction is **symmetric** under exchange of any two particles
+- **Fermions** (half-integer spin): Wavefunction is **antisymmetric** under exchange of any two particles
+
+### 6.2 Two-Particle Systems
+
+For two identical particles with single-particle states $|\alpha\rangle$ and $|\beta\rangle$:
+
+**Symmetric State (Bosons):**
+$$|\psi_S\rangle = \frac{1}{\sqrt{2}}(|\alpha\rangle_1|\beta\rangle_2 + |\beta\rangle_1|\alpha\rangle_2)$$
+
+**Antisymmetric State (Fermions):**
+$$|\psi_A\rangle = \frac{1}{\sqrt{2}}(|\alpha\rangle_1|\beta\rangle_2 - |\beta\rangle_1|\alpha\rangle_2)$$
+
+### 6.3 Spin and Spatial Degrees of Freedom
+
+For two spin-1/2 fermions (e.g., electrons), the total wavefunction is:
+
+$$\Psi(1, 2) = \psi_{\text{spatial}}(\mathbf{r}_1, \mathbf{r}_2) \cdot \chi_{\text{spin}}$$
+
+**Spin Singlet (Antisymmetric):**
+$$\chi_{00} = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle)$$
+
+The spatial part must be **symmetric**:
+$$\psi_S(\mathbf{r}_1, \mathbf{r}_2) = \frac{1}{\sqrt{2}}[\phi_a(\mathbf{r}_1)\phi_b(\mathbf{r}_2) + \phi_b(\mathbf{r}_1)\phi_a(\mathbf{r}_2)]$$
+
+**Spin Triplet (Symmetric):**
+$$\chi_{11} = |\uparrow\uparrow\rangle, \quad \chi_{10} = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle + |\downarrow\uparrow\rangle), \quad \chi_{1-1} = |\downarrow\downarrow\rangle$$
+
+The spatial part must be **antisymmetric**:
+$$\psi_A(\mathbf{r}_1, \mathbf{r}_2) = \frac{1}{\sqrt{2}}[\phi_a(\mathbf{r}_1)\phi_b(\mathbf{r}_2) - \phi_b(\mathbf{r}_1)\phi_a(\mathbf{r}_2)]$$
+
+### 6.4 Exchange Interaction and Helium Atom
+
+In the helium atom, the electron-electron interaction energy depends on the spin state through the symmetry requirement.
+
+**Parahelium (Singlet Spin State):**
+- Spatial wavefunction is symmetric
+- Electrons can be close together
+- Higher electron-electron repulsion
+- Lower energy binding
+
+**Orthohelium (Triplet Spin State):**
+- Spatial wavefunction is antisymmetric
+- Electrons tend to avoid each other
+- Lower electron-electron repulsion
+- Higher energy binding
+
+This effective spin-dependent interaction is called the **exchange interaction**.
+
+### 6.5 Addition of Three Angular Momenta
+
+For three spin-1/2 particles, we first combine two spins, then add the third:
+
+**Step 1**: Combine particles 1 and 2:
+- $s_{12} = 1$ (triplet, symmetric)
+- $s_{12} = 0$ (singlet, antisymmetric)
+
+**Step 2**: Add particle 3:
+
+For $s_{12} = 1$:
+$$s = 1 + 1/2 = 3/2 \quad \text{or} \quad s = 1 - 1/2 = 1/2$$
+
+For $s_{12} = 0$:
+$$s = 0 + 1/2 = 1/2$$
+
+**Total Spin States:**
+
+**$s = 3/2$ (Quartet, symmetric):**
+$$|3/2, 3/2\rangle = |\uparrow\uparrow\uparrow\rangle$$
+$$|3/2, 1/2\rangle = \frac{1}{\sqrt{3}}(|\downarrow\uparrow\uparrow\rangle + |\uparrow\downarrow\uparrow\rangle + |\uparrow\uparrow\downarrow\rangle)$$
+$$|3/2, -1/2\rangle = \frac{1}{\sqrt{3}}(|\downarrow\downarrow\uparrow\rangle + |\downarrow\uparrow\downarrow\rangle + |\uparrow\downarrow\downarrow\rangle)$$
+$$|3/2, -3/2\rangle = |\downarrow\downarrow\downarrow\rangle$$
+
+**$s = 1/2$ (Doublet, mixed symmetry):**
+
+Two orthogonal doublet states exist:
+$$|1/2, 1/2\rangle_A = \frac{1}{\sqrt{2}}(|\downarrow\uparrow\uparrow\rangle - |\uparrow\downarrow\uparrow\rangle)$$
+$$|1/2, 1/2\rangle_B = \frac{1}{\sqrt{6}}(|\downarrow\uparrow\uparrow\rangle + |\uparrow\downarrow\uparrow\rangle - 2|\uparrow\uparrow\downarrow\rangle)$$
+
+### 6.6 Slater Determinant for Fermions
+
+For $N$ identical fermions, the antisymmetric wavefunction can be written as a Slater determinant:
+
+$$\Psi(1, 2, ..., N) = \frac{1}{\sqrt{N!}}\begin{vmatrix}
+\phi_1(1) & \phi_1(2) & \cdots & \phi_1(N) \\
+\phi_2(1) & \phi_2(2) & \cdots & \phi_2(N) \\
+\vdots & \vdots & \ddots & \vdots \\
+\phi_N(1) & \phi_N(2) & \cdots & \phi_N(N)
+\end{vmatrix}$$
+
+If any two particles occupy the same state ($\phi_i = \phi_j$), the determinant vanishes. This is the **Pauli exclusion principle**.
 
 ---
 
@@ -393,12 +664,18 @@ These states are important in quantum information (Bell states) and atomic physi
 |----------|------------|
 | $J^2$ | $\hbar^2 j(j+1)$ where $j = 0, 1/2, 1, 3/2, ...$ |
 | $J_z$ | $\hbar m$ where $m = -j, -j+1, ..., j-1, j$ |
-| Number of states for given $j$ | $2j + 1$ |
+| Number of states | $2j + 1$ |
 
 ### Ladder Operator Matrix Elements
 
 $$J_+|j, m\rangle = \hbar\sqrt{(j-m)(j+m+1)}|j, m+1\rangle$$
 $$J_-|j, m\rangle = \hbar\sqrt{(j+m)(j-m+1)}|j, m-1\rangle$$
+
+### Pauli Matrices (Spin-1/2)
+
+$$\sigma_x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad \sigma_y = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \quad \sigma_z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$$
+
+$$\sigma_i\sigma_j = \delta_{ij}I + i\varepsilon_{ijk}\sigma_k$$
 
 ### Angular Momentum Addition
 
@@ -408,13 +685,27 @@ $$|j_1 - j_2| \leq j \leq j_1 + j_2$$
 **Clebsch-Gordan Expansion:**
 $$|j, m\rangle = \sum_{m_1+m_2=m} \langle j_1, m_1; j_2, m_2|j, m\rangle |j_1, m_1\rangle|j_2, m_2\rangle$$
 
-**Key Property:**
-$$m = m_1 + m_2$$
+**Two Spin-1/2 CG Coefficients:**
 
-### Pauli Matrices (Spin-1/2)
+| $|j, m\rangle$ | $|\uparrow\uparrow\rangle$ | $|\uparrow\downarrow\rangle$ | $|\downarrow\uparrow\rangle$ | $|\downarrow\downarrow\rangle$ |
+|---------------|----------------|----------------|----------------|----------------|
+| $|1, 1\rangle$ | 1 | 0 | 0 | 0 |
+| $|1, 0\rangle$ | 0 | $1/\sqrt{2}$ | $1/\sqrt{2}$ | 0 |
+| $|1, -1\rangle$ | 0 | 0 | 0 | 1 |
+| $|0, 0\rangle$ | 0 | $1/\sqrt{2}$ | $-1/\sqrt{2}$ | 0 |
 
-$$\sigma_x = \begin{pmatrix} 0 & 1 \\ 1 & 0 \end{pmatrix}, \quad \sigma_y = \begin{pmatrix} 0 & -i \\ i & 0 \end{pmatrix}, \quad \sigma_z = \begin{pmatrix} 1 & 0 \\ 0 & -1 \end{pmatrix}$$
+### Central Force Field
 
-**Identity:**
-$$\sigma_i\sigma_j = \delta_{ij}I + i\varepsilon_{ijk}\sigma_k$$
+**Effective Potential:**
+$$V_{\text{eff}}(r) = V(r) + \frac{\hbar^2 l(l+1)}{2\mu r^2}$$
 
+**Hydrogen Atom Energy:**
+$$E_n = -\frac{13.6 \text{ eV}}{n^2}, \quad n = 1, 2, 3, ...$$
+
+### Identical Particles
+
+**Two-Particle Symmetric/Antisymmetric States:**
+$$|\psi_{S/A}\rangle = \frac{1}{\sqrt{2}}(|\alpha\beta\rangle \pm |\beta\alpha\rangle)$$
+
+**Slater Determinant for $N$ Fermions:**
+$$\Psi = \frac{1}{\sqrt{N!}}\det[\phi_i(j)]$$
