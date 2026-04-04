@@ -710,7 +710,7 @@ As $\mathbf{k} \rightarrow 0$:
 - Massive: $E \rightarrow m \neq 0$ (finite energy gap)
 - Massless: $E \rightarrow 0$ (gapless)
 
-For the phase mode $\pi$: a uniform rotation $\theta = $ constant costs **zero energy** because all points on the Mexican hat minimum have the same energy. This is the Goldstone mode.
+For the phase mode $\pi$: a uniform rotation $\theta = \text{constant}$ costs **zero energy** because all points on the Mexican hat minimum have the same energy. This is the Goldstone mode.
 
 ### 2.5 Goldstone's Theorem
 
