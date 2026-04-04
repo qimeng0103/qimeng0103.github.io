@@ -561,10 +561,10 @@ The CG coefficients for coupling two spin-1/2 particles are summarized below:
 
 | Coupled State | Uncoupled State | CG Coefficient |
 |:-------------:|:---------------:|:--------------:|
-| $j=1, m=1$ | $\|\uparrow\uparrow\rangle$ | $1$ |
-| $j=1, m=0$ | $\frac{1}{\sqrt{2}}(\|\uparrow\downarrow\rangle + \|\downarrow\uparrow\rangle)$ | $\frac{1}{\sqrt{2}}$ |
-| $j=1, m=-1$ | $\|\downarrow\downarrow\rangle$ | $1$ |
-| $j=0, m=0$ | $\frac{1}{\sqrt{2}}(\|\uparrow\downarrow\rangle - \|\downarrow\uparrow\rangle)$ | $\frac{1}{\sqrt{2}}$ |
+| $j=1, m=1$ | $\vert \uparrow\uparrow\rangle$ | $1$ |
+| $j=1, m=0$ | $\frac{1}{\sqrt{2}}(\vert \uparrow\downarrow\rangle + \vert \downarrow\uparrow\rangle)$ | $\frac{1}{\sqrt{2}}$ |
+| $j=1, m=-1$ | $\vert \downarrow\downarrow\rangle$ | $1$ |
+| $j=0, m=0$ | $\frac{1}{\sqrt{2}}(\vert \uparrow\downarrow\rangle - \vert \downarrow\uparrow\rangle)$ | $\frac{1}{\sqrt{2}}$ |
 
 **Triplet States (Symmetric, S=1):**
 - |1,1⟩ = |↑↑⟩
@@ -1328,12 +1328,12 @@ $$|j, m\rangle = \sum_{m_1+m_2=m} \langle j_1, m_1; j_2, m_2|j, m\rangle |j_1, m
 
 **Two Spin-1/2 CG Coefficients:**
 
-| Coupled State | $|\uparrow\uparrow\rangle$ | $|\uparrow\downarrow\rangle$ | $|\downarrow\uparrow\rangle$ | $|\downarrow\downarrow\rangle$ |
+| Coupled State | $\vert \uparrow\uparrow\rangle$ | $\vert \uparrow\downarrow\rangle$ | $\vert \downarrow\uparrow\rangle$ | $\vert \downarrow\downarrow\rangle$ |
 |:-------------:|:-----------:|:-----------:|:-----------:|:-----------:|
-| $|1, 1\rangle$ | $1$ | $0$ | $0$ | $0$ |
-| $|1, 0\rangle$ | $0$ | $\frac{1}{\sqrt{2}}$ | $\frac{1}{\sqrt{2}}$ | $0$ |
-| $|1, -1\rangle$ | $0$ | $0$ | $0$ | $1$ |
-| $|0, 0\rangle$ | $0$ | $\frac{1}{\sqrt{2}}$ | $-\frac{1}{\sqrt{2}}$ | $0$ |
+| $\vert 1, 1\rangle$ | $1$ | $0$ | $0$ | $0$ |
+| $\vert 1, 0\rangle$ | $0$ | $\frac{1}{\sqrt{2}}$ | $\frac{1}{\sqrt{2}}$ | $0$ |
+| $\vert 1, -1\rangle$ | $0$ | $0$ | $0$ | $1$ |
+| $\vert 0, 0\rangle$ | $0$ | $\frac{1}{\sqrt{2}}$ | $-\frac{1}{\sqrt{2}}$ | $0$ |
 
 ### Central Force Field
 
