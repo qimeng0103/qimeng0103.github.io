@@ -132,7 +132,7 @@ where $\delta_{x_0}(x) = \delta(x - x_0)$.
 
 **Important Clarification: Function vs. Function Value**
 
-The functional derivative $\frac{\delta F}{\delta f(x_0)}$ is itself a **function of $x_0$**. However, physicists often write $\frac{\delta F}{\delta f}$ or $\frac{\delta F}{\delta \phi}$ without the explicit $(x_0)$, which can cause confusion between:
+The functional derivative $\frac{\delta F}{\delta f(x_0)}$ is itself a **function of $x_0$**. However, physicists often write $\frac{\delta F}{\delta f}$ without the explicit $(x_0)$, which can cause confusion between:
 - The function $\frac{\delta F}{\delta f(x)}$ for all $x$
 - The value $\frac{\delta F}{\delta f(x_0)}$ at a specific point $x_0$
 
