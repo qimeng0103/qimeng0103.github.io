@@ -340,37 +340,6 @@ For uniform field $\phi_0$:
 | **At uniform field** | Constant number $\frac{\partial\mathcal{L}}{\partial\phi}(\phi_0, 0)$ | Same constant number |
 
 The equality holds **only at uniform configurations** because the gradient term vanishes. For non-uniform fields, the functional derivative includes spatial variation: $\frac{\delta F}{\delta\phi(x)} = \frac{\partial\mathcal{L}}{\partial\phi} - \nabla\cdot\frac{\partial\mathcal{L}}{\partial(\nabla\phi)}$.
-- The divergence of a constant (or zero) is zero: $\nabla_x \cdot [\text{constant}] = 0$
-
-**Step 3: The equality**
-
-Combining these results:
-
-$$
-\left.\frac{\delta F}{\delta \phi(x)}\right|_{\phi(x)=\phi_0} = \frac{\partial \mathcal{L}}{\partial \phi}(\phi_0, 0) - 0 = \frac{\partial \mathcal{L}}{\partial \phi}(\phi_0, 0)
-$$
-
-The right-hand side $\left.\frac{\partial \mathcal{L}}{\partial \phi}\right|_{\phi=\phi_0}$ means:
-1. Take the function $\mathcal{L}(\phi, \nabla\phi)$ 
-2. Compute its partial derivative with respect to the variable $\phi$
-3. Evaluate at the point where the field value is $\phi_0$ and field gradient is $0$
-
-This gives exactly $\frac{\partial \mathcal{L}}{\partial \phi}(\phi_0, 0)$, proving the equality.
-
-**Clarifying the Notation Confusion**
-
-| Symbol | Meaning | Evaluated at uniform field |
-|--------|---------|---------------------------|
-| $\frac{\delta F}{\delta \phi(x)}$ | Functional derivative (function of $x$) | Becomes constant: $\frac{\partial \mathcal{L}}{\partial \phi}(\phi_0, 0)$ |
-| $\frac{\partial \mathcal{L}}{\partial \phi}$ | Partial derivative of density (function of $\phi, \nabla\phi$) | Evaluated to number: $\frac{\partial \mathcal{L}}{\partial \phi}(\phi_0, 0)$ |
-
-Both sides yield the same **numerical value** after evaluation, but they reach it through different paths:
-- LHS: Take functional derivative first (getting a function), then substitute uniform field
-- RHS: Take partial derivative of density, then evaluate at the point $(\phi_0, 0)$
-
-**Key Takeaway:**
-
-This equality is why physicists often mix notation—but it **only holds for uniform configurations**! For non-uniform fields, the gradient term $\nabla \cdot \frac{\partial \mathcal{L}}{\partial(\nabla\phi)}$ contributes, and the functional derivative differs from the ordinary partial derivative.
 
 ### 1.8 Worked Example: $\phi^4$ Theory
 
