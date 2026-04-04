@@ -801,55 +801,31 @@ $$
 \int dx \, M(y,x) \eta(x) = 0
 $$
 
-**Step 5: Deriving the Mass Matrix**
+**Step 5: The Mass Matrix (Simplified Derivation)**
 
-**Setup**
+**Goal:** Compute $M(y,x) = \frac{\delta^2 V}{\delta \phi(y)\delta \phi(x)}$ at the uniform background $\phi_0$.
 
-For a local potential:
+**The Key Simplification:**
 
-$$
-V[\phi] = \int dz \, \mathcal{V}(\phi(z), \nabla\phi(z))
-$$
+For a local theory, $V[\phi] = \int dz \, \mathcal{V}(\phi(z), \nabla\phi(z))$. The second functional derivative at a **uniform** background simplifies dramatically:
 
-The first functional derivative is:
+1. **First derivative:** $\frac{\delta V}{\delta \phi(x)} = \frac{\partial \mathcal{V}}{\partial \phi}(x) - \nabla_x \cdot \frac{\partial \mathcal{V}}{\partial(\nabla\phi)}(x)$
 
-$$
-\frac{\delta V}{\delta \phi(x)} = \frac{\partial \mathcal{V}}{\partial \phi}(\phi(x), \nabla\phi(x)) - \nabla_x \cdot \frac{\partial \mathcal{V}}{\partial(\nabla\phi)}(\phi(x), \nabla\phi(x))
-$$
+2. **At $\phi(x) = \phi_0$ (constant):**
+   - The gradient term vanishes (divergence of a constant is zero)
+   - So $\frac{\delta V}{\delta \phi(x)}\big|_{\phi_0} = \frac{\partial \mathcal{V}}{\partial \phi}(\phi_0, 0)$ = constant
 
-**Computing the Second Derivative**
-
-The mass kernel is:
+3. **Second derivative:** Taking $\frac{\delta}{\delta \phi(y)}$ of a constant gives zero, **unless** we consider how the argument itself varies. The correct result is:
 
 $$
-M(y,x) = \frac{\delta}{\delta \phi(y)}\left(\frac{\delta V}{\delta \phi(x)}\right)
+M(y,x) = \left.\frac{\partial^2 \mathcal{V}}{\partial \phi^2}\right|_{\phi_0} \delta(y-x)
 $$
 
-**Key observation:** $\frac{\delta V}{\delta \phi(x)}$ depends on $\phi$ only through $\phi(x)$ and $\nabla\phi(x)$ at the specific point $x$. So varying at point $y$ gives:
+**Why the delta function?** 
 
-$$
-\frac{\delta}{\delta \phi(y)}\left(\frac{\partial \mathcal{V}}{\partial \phi}(x)\right) = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}(x) \cdot \delta(x-y)
-$$
+The second functional derivative asks: "How does the first derivative at $x$ change when we vary the field at $y$?" For a local theory, the answer is "only when $y = x$"—hence the delta function.
 
-The delta function appears because $\frac{\partial \mathcal{V}}{\partial \phi}(x)$ only "feels" changes in $\phi$ at point $x$.
-
-Similarly, the gradient term contributes:
-
-$$
-\frac{\delta}{\delta \phi(y)}\left(-\nabla_x \cdot \frac{\partial \mathcal{V}}{\partial(\nabla\phi)}(x)\right) = -\nabla_x^2\left(\frac{\partial^2 \mathcal{V}}{\partial(\nabla\phi)^2}(x)\right) \delta(x-y) + \ldots
-$$
-
-**At Uniform Background $\phi(x) = \phi_0$:**
-
-- $\nabla\phi = 0$, so terms with mixed derivatives vanish
-- The delta function enforces $y = x$ (locality)
-- The mass matrix becomes diagonal:
-
-$$
-M(y,x) = \left.\frac{\partial^2 \mathcal{V}}{\partial \phi^2}\right|_{\phi_0} \delta(y-x) = m^2 \delta(y-x)
-$$
-
-**Physical Interpretation:** The mass $m^2 = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}|_{\phi_0}$ is the curvature of the potential at the minimum. The delta function reflects that the theory is local—fluctuations at different points don't directly couple.
+**Result:** The mass matrix is diagonal with eigenvalue $m^2 = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}|_{\phi_0}$ (the curvature of the potential at the minimum).
 
 $$
 M(y,x) = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}\bigg|_{\phi_0} \delta(y-x) = m^2 \delta(y-x)
