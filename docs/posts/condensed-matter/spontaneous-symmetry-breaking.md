@@ -328,8 +328,8 @@ $$
 **Why This Holds:**
 
 For uniform field $\phi_0$:
-1. **Gradient term vanishes**: $\nabla\phi = 0$, so the second term in the functional derivative drops out
-2. **No explicit $x$-dependence**: The result is the same ordinary partial derivative evaluated at the point $(\phi_0, 0)$
+1. **Gradient term vanishes**: At $(\phi, \nabla\phi) = (\phi_0, 0)$, the quantity $\frac{\partial \mathcal{L}}{\partial(\nabla\phi)}$ becomes a constant (independent of $x$). Taking the divergence: $\nabla \cdot [\text{constant}] = 0$. Thus the second term in the functional derivative vanishes.
+2. **Result**: Only the first term survives, giving the ordinary partial derivative evaluated at $(\phi_0, 0)$
 
 **The Critical Distinction:**
 
