@@ -849,21 +849,39 @@ $$
 F_x[\phi + \epsilon\delta_y] = \frac{\partial \mathcal{V}}{\partial \phi}\bigg|_{(\phi(x) + \epsilon\delta(x-y), \nabla\phi(x) + \epsilon\nabla\delta(x-y))}
 $$
 
-**Step 5b-iii: Taylor expand and take the limit**
+**Step 5b-iii: Analyze by cases and take the limit**
 
-Taylor expand to first order in $\epsilon$:
+Recall that $F_x[\phi + \epsilon\delta_y]$ depends on the field values at point $x$:
+- $(\phi + \epsilon\delta_y)(x) = \phi(x) + \epsilon\delta(x-y)$
+- $\nabla(\phi + \epsilon\delta_y)(x) = \nabla\phi(x) + \epsilon\nabla\delta(x-y)$
 
-$$
-F_x[\phi + \epsilon\delta_y] = \frac{\partial \mathcal{V}}{\partial \phi}(\phi(x), \nabla\phi(x)) + \epsilon\frac{\partial^2 \mathcal{V}}{\partial \phi^2}(\phi(x), \nabla\phi(x))\delta(x-y) + O(\epsilon^2)
-$$
+**Case 1: $x \neq y$**
 
-The gradient term doesn't contribute at $O(\epsilon)$ because $\nabla\delta(x-y)$ is odd and integrates to boundary terms that vanish.
-
-Taking the limit:
+Here $\delta(x-y) = 0$ and $\nabla\delta(x-y) = 0$. Therefore:
 
 $$
-\frac{\delta F_x}{\delta \phi(y)} = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}(\phi(x), \nabla\phi(x))\delta(x-y)
+F_x[\phi + \epsilon\delta_y] = \frac{\partial \mathcal{V}}{\partial \phi}(\phi(x), \nabla\phi(x)) = F_x[\phi]
 $$
+
+The functional derivative is zero because the variation at $y$ doesn't affect point $x$.
+
+**Case 2: $x = y$**
+
+Here $\delta(x-y) = \delta(0)$ is singular, but we can work directly: varying the field at $x$ changes $\phi(x) \rightarrow \phi(x) + \epsilon$. By Taylor expansion:
+
+$$
+F_x[\phi + \epsilon\delta_x] = \frac{\partial \mathcal{V}}{\partial \phi}(\phi(x) + \epsilon, \nabla\phi(x)) = F_x[\phi] + \epsilon\frac{\partial^2 \mathcal{V}}{\partial \phi^2}(\phi(x), \nabla\phi(x)) + O(\epsilon^2)
+$$
+
+(The gradient term doesn't contribute because $\nabla\phi$ is unchanged at $O(\epsilon)$ when we only vary $\phi$ itself.)
+
+**Combining both cases:**
+
+$$
+\frac{\delta F_x}{\delta \phi(y)} = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}(\phi(x), \nabla\phi(x)) \cdot \delta(x-y)
+$$
+
+The delta function naturally appears because the variation only affects the functional when $x = y$ (locality).
 
 **Step 5b-iv: Evaluate at uniform background**
 
