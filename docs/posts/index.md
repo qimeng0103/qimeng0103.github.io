@@ -113,6 +113,13 @@
   <h2>Quantum Mechanics Notes</h2>
   <ul class="article-list">
     <li class="article-item">
+      <span class="article-date">2026-04-04</span>
+      <div>
+        <div class="article-title"><a href="./quantum-mechanics/angular-momentum-algebra">Angular Momentum Algebra: From Commutation Relations to Addition of Angular Momenta</a></div>
+        <div class="article-desc">Angular momentum commutation relations, ladder operators and eigenvalue spectrum, matrix representations for spin-1/2 and spin-1, and Clebsch-Gordan coefficients for angular momentum addition</div>
+      </div>
+    </li>
+    <li class="article-item">
       <span class="article-date">2026-04-02</span>
       <div>
         <div class="article-title"><a href="./quantum-mechanics/bound-states-resonances-scattering">Bound States, Resonances, and Scattering: Three Pillars of Quantum Mechanics</a></div>
