@@ -825,17 +825,15 @@ $$
 M(y,x) = \frac{\delta}{\delta \phi(y)}\left(\frac{\delta V}{\delta \phi(x)}\right)
 $$
 
-At the uniform background $\phi_0$, the first derivative is $\frac{\partial \mathcal{V}}{\partial \phi}(\phi_0, 0)$. To find how this changes under field variations, we analyze the structure more carefully.
-
 **Step 5b-i: Define the functional**
 
-Define a functional $F_x[\phi]$ that extracts the density derivative at point $x$:
+The first derivative $\frac{\delta V}{\delta \phi(x)}$ contains the term $\frac{\partial \mathcal{V}}{\partial \phi}(\phi(x), \nabla\phi(x))$. Define this as a functional $F_x[\phi]$:
 
 $$
 F_x[\phi] \equiv \frac{\partial \mathcal{V}}{\partial \phi}(\phi(x), \nabla\phi(x))
 $$
 
-For a uniform field $\phi(z) = \phi_0$, we have $F_x[\phi_0] = \frac{\partial \mathcal{V}}{\partial \phi}(\phi_0, 0)$.
+This extracts the density derivative at point $x$, viewed as a functional of the entire field configuration.
 
 **Step 5b-ii: Compute the functional derivative of $F_x$**
 
@@ -851,21 +849,21 @@ Now, $F_x[\phi + \epsilon\delta_y]$ depends on $(\phi + \epsilon\delta_y)$ evalu
 - If $x \neq y$: The variation doesn't affect point $x$, so $F_x[\phi + \epsilon\delta_y] = F_x[\phi]$
 - If $x = y$: The variation does affect point $x$
 
-**Step 5b-iii: Apply the chain rule**
+**Step 5b-iii: Apply the chain rule and evaluate at uniform background**
 
-For $x = y$, using ordinary calculus:
-
-$$
-F_x[\phi + \epsilon\delta_x] = \frac{\partial \mathcal{V}}{\partial \phi}(\phi(x) + \epsilon, \nabla\phi(x))
-$$
-
-Therefore:
+For $x = y$, using ordinary calculus on $F_x[\phi + \epsilon\delta_y]$:
 
 $$
 \frac{\delta F_x}{\delta \phi(y)} = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}(\phi(x), \nabla\phi(x)) \cdot \delta(x-y)
 $$
 
-The delta function appears because varying the field at $y$ only affects the functional at $x$ when $x = y$.
+Now evaluate at the **uniform background** $\phi(x) = \phi_0$ where $\nabla\phi = 0$:
+
+$$
+\left.\frac{\delta F_x}{\delta \phi(y)}\right|_{\phi_0} = \frac{\partial^2 \mathcal{V}}{\partial \phi^2}(\phi_0, 0) \cdot \delta(x-y)
+$$
+
+The delta function appears because varying the field at $y$ only affects the functional at $x$ when $x = y$ (locality).
 
 **Step 5c: At uniform background $\phi(x) = \phi_0$**
 
