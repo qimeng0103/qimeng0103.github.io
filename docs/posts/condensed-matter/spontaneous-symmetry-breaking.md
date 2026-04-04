@@ -819,10 +819,10 @@ $$
 
 **Step 5b: Computing the Second Functional Derivative**
 
-We need to compute:
+We need to compute the second functional derivative:
 
 $$
-M(y,x) = \frac{\delta}{\delta \phi(y)}\left(\frac{\delta V}{\delta \phi(x)}\right)
+\frac{\delta}{\delta \phi(y)}\left(\frac{\delta V}{\delta \phi(x)}\right)
 $$
 
 **Step 5b-i: Define the functional**
