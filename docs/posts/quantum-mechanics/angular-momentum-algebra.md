@@ -663,13 +663,11 @@ where $h_i$ is the hook length of box $i$ (number of boxes to the right in the s
 
 **Example: Three spin-1/2 particles**
 
-For the symmetric diagram $\boxed{\phantom{a}}\boxed{\phantom{a}}\boxed{\phantom{a}}$:
-- Hook lengths: 3, 2, 1
-- Dimension: $\frac{3!}{3 \cdot 2 \cdot 1} = 1$ (for each $m$ value, total $2S+1 = 4$)
+![Young Diagram (3)](/images/angular-momentum/young_3_symmetric.png)
+*Symmetric diagram (3): Hook lengths are 3, 2, 1. Dimension: $\frac{3!}{3 \cdot 2 \cdot 1} = 1$ (for each $m$ value, total $2S+1 = 4$)*
 
-For the mixed symmetry diagram $\begin{array}{cc}\boxed{\phantom{a}} & \boxed{\phantom{a}} \\ \boxed{\phantom{a}} & \end{array}$:
-- Hook lengths: 3, 1, 1
-- Dimension: $\frac{3!}{3 \cdot 1 \cdot 1} = 2$ (two doublet states)
+![Young Diagram (2,1)](/images/angular-momentum/young_21_mixed.png)
+*Mixed symmetry diagram (2,1): Hook lengths are 3, 1, 1. Dimension: $\frac{3!}{3 \cdot 1 \cdot 1} = 2$ (two doublet states)*
 
 ### 5.5 Connection to Angular Momentum Addition
 
@@ -1224,9 +1222,9 @@ $$d = \frac{n!}{\prod_i h_i}$$
 
 | Partition | Young Diagram | Spin | Dimension |
 |-----------|---------------|------|-----------|
-| $(3)$ | $\boxed{\phantom{a}}\boxed{\phantom{a}}\boxed{\phantom{a}}$ | $s = 3/2$ | 4 |
-| $(2,1)$ | $\begin{array}{cc}\boxed{\phantom{a}} & \boxed{\phantom{a}} \\ \boxed{\phantom{a}} & \end{array}$ | $s = 1/2$ | 2 |
-| $(1,1,1)$ | $\begin{array}{c}\boxed{\phantom{a}} \\ \boxed{\phantom{a}} \\ \boxed{\phantom{a}} \end{array}$ | (not for spin-1/2) | 0 |
+| (3) | ![](/images/angular-momentum/young_3_symmetric.png) | s = 3/2 | 4 |
+| (2,1) | ![](/images/angular-momentum/young_21_mixed.png) | s = 1/2 | 2 |
+| (1,1,1) | ![](/images/angular-momentum/young_111_antisymmetric.png) | (not for spin-1/2) | 0 |
 
 **Exchange Symmetry and Total Angular Momentum:**
 $$P_{12}|J, M\rangle = (-1)^{2j-J}|J, M\rangle$$
