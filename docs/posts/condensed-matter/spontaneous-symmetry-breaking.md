@@ -817,9 +817,22 @@ $$
 \frac{\delta V}{\delta \phi(x)} = \frac{\partial \mathcal{V}}{\partial \phi}(\phi(x), \nabla\phi(x)) - \nabla_x \cdot \frac{\partial \mathcal{V}}{\partial(\nabla\phi)}(\phi(x), \nabla\phi(x))
 $$
 
-**Step 5b: Vary at point $y$**
+**Step 5b: Understanding $\frac{\partial \mathcal{V}}{\partial \phi}(x)$ as a Functional**
 
-By definition of the functional derivative, we introduce a variation $\eta(z) = \delta(z-y)$ at point $y$:
+The quantity $\frac{\partial \mathcal{V}}{\partial \phi}(x)$ is the ordinary partial derivative of the density $\mathcal{V}$ with respect to $\phi$, **evaluated at point $x$**:
+
+$$
+\frac{\partial \mathcal{V}}{\partial \phi}(x) = \left.\frac{\partial \mathcal{V}(\phi, \nabla\phi)}{\partial \phi}\right|_{(\phi, \nabla\phi) = (\phi(x), \nabla\phi(x))}
+$$
+
+**Key insight:** This is a number that depends on the field values **at point $x$ only**. To view it as a functional of the entire field configuration $\phi(\cdot)$, we note:
+
+- Input: the function $\phi(\cdot)$ defined everywhere
+- Output at $x$: a number determined by $\phi(x)$ and $\nabla\phi(x)$
+
+When we vary the field at point $y$ using $\phi(z) \rightarrow \phi(z) + \epsilon\delta(z-y)$, the change in $\frac{\partial \mathcal{V}}{\partial \phi}(x)$ is non-zero **only if $x = y$** (locality).
+
+**Computing the functional derivative:**
 
 $$
 \frac{\delta}{\delta \phi(y)}\left(\frac{\partial \mathcal{V}}{\partial \phi}(x)\right) = \lim_{\epsilon \to 0} \frac{1}{\epsilon}\left[\frac{\partial \mathcal{V}}{\partial \phi}(\phi(x)+\epsilon\delta(x-y)) - \frac{\partial \mathcal{V}}{\partial \phi}(\phi(x))\right]
