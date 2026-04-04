@@ -294,11 +294,11 @@ where $\mathcal{L}$ depends on the field value $\phi(y)$ and its gradient $\nabl
 
 **Key Insight: The Functional Derivative Inherits $x$-Dependence**
 
-The functional derivative $\frac{\delta F}{\delta \phi(x)}$ is a **function of $x$**, but this dependence is not explicit—it is **inherited** from the field configuration $\phi(x)$ that was "absorbed" into the functional.
+The functional derivative $\frac{\delta F}{\delta \phi(x)}$ is a **function of $x$**, but this dependence is not explicit—it is **inherited** from the field configuration $\phi(x)$ that was incorporated into the functional.
 
 **The Logic:**
-1. $F[\phi]$ "eats" an entire function $\phi(\cdot)$ → outputs a number
-2. $\frac{\delta F}{\delta \phi(x)}$ "eats" the same function $\phi(\cdot)$ → outputs a **function of $x$**
+1. $F[\phi]$ takes an entire function $\phi(\cdot)$ as input → outputs a number
+2. $\frac{\delta F}{\delta \phi(x)}$ takes the same function $\phi(\cdot)$ as input → outputs a **function of $x$**
 
 The $x$-dependence comes from evaluating $\phi$ and its derivatives at point $x$:
 
