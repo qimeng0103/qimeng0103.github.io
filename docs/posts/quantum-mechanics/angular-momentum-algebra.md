@@ -632,57 +632,15 @@ Young tableaux provide a graphical method to classify the symmetry types of many
 
 **Young Diagrams for Two Particles:**
 
-```tikz
-\begin{tikzpicture}[scale=0.6]
-  % Symmetric representation (box box)
-  \draw[thick] (0,0) rectangle (1,1);
-  \draw[thick] (1,0) rectangle (2,1);
-  \node at (1,-0.5) {Symmetric: $\boxed{\phantom{a}}\boxed{\phantom{a}}$};
-  \node at (1,-1) {$S = 1$ (Triplet)};
-  
-  % Antisymmetric representation (box over box)
-  \begin{scope}[shift={(4,0)}]
-    \draw[thick] (0,0) rectangle (1,1);
-    \draw[thick] (0,1) rectangle (1,2);
-    \node at (0.5,-0.5) {Antisymmetric:};
-    \node at (0.5,-1) {$\begin{array}{c}\boxed{\phantom{a}} \\ \boxed{\phantom{a}} \end{array}$};
-    \node at (0.5,-1.8) {$S = 0$ (Singlet)};
-  \end{scope}
-\end{tikzpicture}
-```
+![Two Particle Young Diagrams](/images/angular-momentum/two_particle_young.png)
+
+*Left: Symmetric representation (triplet, $S=1$). Right: Antisymmetric representation (singlet, $S=0$)*
 
 **Young Diagrams for Three Particles:**
 
-```tikz
-\begin{tikzpicture}[scale=0.6]
-  % Totally symmetric
-  \begin{scope}[shift={(0,0)}]
-    \draw[thick] (0,0) rectangle (1,1);
-    \draw[thick] (1,0) rectangle (2,1);
-    \draw[thick] (2,0) rectangle (3,1);
-    \node at (1.5,-0.5) {Totally Symmetric};
-    \node at (1.5,-1) {$S = 3/2$, dimension 4};
-  \end{scope}
-  
-  % Mixed symmetry
-  \begin{scope}[shift={(5,0)}]
-    \draw[thick] (0,0) rectangle (1,1);
-    \draw[thick] (1,0) rectangle (2,1);
-    \draw[thick] (0,1) rectangle (1,2);
-    \node at (1,-0.5) {Mixed Symmetry};
-    \node at (1,-1) {$S = 1/2$, dimension 2};
-  \end{scope}
-  
-  % Totally antisymmetric
-  \begin{scope}[shift={(9,0)}]
-    \draw[thick] (0,0) rectangle (1,1);
-    \draw[thick] (0,1) rectangle (1,2);
-    \draw[thick] (0,2) rectangle (1,3);
-    \node at (0.5,-0.5) {Totally Antisymmetric};
-    \node at (0.5,-1) {(Only for $j \geq 1$)};
-  \end{scope}
-\end{tikzpicture}
-```
+![Three Particle Young Diagrams](/images/angular-momentum/young_diagram_3particles.png)
+
+*Left: Totally symmetric (quartet, $S=3/2$, dim=4). Center: Mixed symmetry (doublet, $S=1/2$, dim=2). Right: Totally antisymmetric (not for spin-1/2)*
 
 ### 5.4 Hook Length Formula
 
@@ -713,58 +671,16 @@ $$(2j_1+1)(2j_2+1) = \sum_{j=|j_1-j_2|}^{j_1+j_2} (2j+1)$$
 
 **Visual Representation of CG Decomposition:**
 
-```tikz
-\begin{tikzpicture}[scale=0.9]
-  % Input states
-  \node[draw, rounded corners, fill=blue!10] (j1) at (0, 1) {$j_1 = 1/2$};
-  \node[draw, rounded corners, fill=blue!10] (j2) at (0, -1) {$j_2 = 1/2$};
-  
-  % Arrow
-  \draw[->, thick, >=stealth] (1.5, 0) -- (2.5, 0) node[midway, above] {CG};
-  
-  % Output states
-  \node[draw, rounded corners, fill=green!15, minimum width=2cm] (triplet) at (4.5, 1) {$j = 1$ (Triplet)};
-  \node[draw, rounded corners, fill=red!15, minimum width=2cm] (singlet) at (4.5, -1) {$j = 0$ (Singlet)};
-  
-  % Dimensions
-  \node at (0, -2) {Input: $2 \times 2 = 4$ states};
-  \node at (4.5, -2) {Output: $3 + 1 = 4$ states};
-  
-  % States breakdown
-  \node[right] at (6.5, 1.5) {$|1, 1\rangle = |\uparrow\uparrow\rangle$};
-  \node[right] at (6.5, 1) {$|1, 0\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle + |\downarrow\uparrow\rangle)$};
-  \node[right] at (6.5, 0.5) {$|1, -1\rangle = |\downarrow\downarrow\rangle$};
-  \node[right] at (6.5, -1) {$|0, 0\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle)$};
-\end{tikzpicture}
-```
+![CG Coupling Diagram](/images/angular-momentum/cg_coupling.png)
+
+*Angular momentum coupling for two spin-1/2 particles: $2 \otimes 2 = 3 \oplus 1$*
 
 **General Pattern for Arbitrary $j_1$ and $j_2$:**
 
-```tikz
-\begin{tikzpicture}[scale=0.8]
-  % Input
-  \node[draw, fill=blue!10] (a) at (0,0) {$D^{(j_1)}$};
-  \node[draw, fill=blue!10] (b) at (0,-1.5) {$D^{(j_2)}$};
-  \node at (-1, -0.75) {$\otimes$};
-  
-  % Arrow
-  \draw[->, thick] (1, -0.75) -- (2.5, -0.75);
-  
-  % Output - tower of representations
-  \foreach \j/\y in {j_1+j_2/0, j_1+j_2-1/-0.8, .../..., |j_1-j_2|/-3.2} {
-    \ifnum\j=\j
-      \node[draw, fill=green!15, minimum width=1.5cm] at (4.5, \y) {$D^{(\j)}$};
-    \fi
-  }
-  
-  % Labels
-  \node at (4.5, 0.5) {Maximum: $j_{\max} = j_1 + j_2$};
-  \node at (4.5, -3.7) {Minimum: $j_{\min} = |j_1 - j_2|$};
-  
-  % Dimension check
-  \node at (2, -4.5) {$(2j_1+1)(2j_2+1) = \sum_{j=|j_1-j_2|}^{j_1+j_2}(2j+1)$};
-\end{tikzpicture}
-```
+The decomposition follows the triangle rule:
+$$D^{(j_1)} \otimes D^{(j_2)} = \bigoplus_{j=|j_1-j_2|}^{j_1+j_2} D^{(j)}$$
+
+Dimension check: $(2j_1+1)(2j_2+1) = \sum_{j=|j_1-j_2|}^{j_1+j_2}(2j+1)$
 
 ---
 
@@ -1143,51 +1059,23 @@ $$|1/2, 1/2\rangle_B = \frac{1}{\sqrt{6}}(|\downarrow\uparrow\uparrow\rangle + |
 
 Under cyclic permutation $(1 \to 2 \to 3 \to 1)$, these states transform into each other, forming a 2-dimensional representation of the cyclic group.
 
-**Young Tableaux Classification with TikZ Diagrams**
+**Young Tableaux Classification with Diagrams**
+
+![Three Particle Young Diagrams](/images/angular-momentum/young_diagram_3particles.png)
 
 The symmetry types of three-particle states can be classified using Young diagrams:
 
-1. **Totally Symmetric** ( quartet, $s = 3/2$ ):
-
-```tikz
-\begin{tikzpicture}[scale=0.8]
-  \draw[thick,fill=blue!15] (0,0) rectangle (1,1);
-  \draw[thick,fill=blue!15] (1,0) rectangle (2,1);
-  \draw[thick,fill=blue!15] (2,0) rectangle (3,1);
-  \node at (1.5,-0.5) {Partition $(3)$};
-  \node at (1.5,-1) {Dimension: 4 (each $m$ value)};
-\end{tikzpicture}
-```
+1. **Totally Symmetric** ( quartet, $s = 3/2$ ): Partition $(3)$, Dimension 4
+   - One row of three boxes
+   - Corresponds to the partition $(3)$ of $S_3$
    
-   One row of three boxes. Corresponds to the partition $(3)$ of $S_3$. All boxes can be filled with spins to give totally symmetric combinations.
-
-2. **Mixed Symmetry** ( doublets, $s = 1/2$ ):
-
-```tikz
-\begin{tikzpicture}[scale=0.8]
-  \draw[thick,fill=yellow!15] (0,0) rectangle (1,1);
-  \draw[thick,fill=yellow!15] (1,0) rectangle (2,1);
-  \draw[thick,fill=yellow!15] (0,1) rectangle (1,2);
-  \node at (1,-0.5) {Partition $(2,1)$};
-  \node at (1,-1) {Dimension: 2 (standard tableaux)};
-\end{tikzpicture}
-```
+2. **Mixed Symmetry** ( doublets, $s = 1/2$ ): Partition $(2,1)$, Dimension 2
+   - Two boxes in the first row, one in the second
+   - Corresponds to the partition $(2,1)$ of $S_3$
    
-   Two boxes in the first row, one in the second. Corresponds to the partition $(2,1)$ of $S_3$. This diagram admits two standard Young tableaux, corresponding to the two doublet states.
-
-3. **Totally Antisymmetric**:
-
-```tikz
-\begin{tikzpicture}[scale=0.8]
-  \draw[thick,fill=red!15] (0,0) rectangle (1,1);
-  \draw[thick,fill=red!15] (0,1) rectangle (1,2);
-  \draw[thick,fill=red!15] (0,2) rectangle (1,3);
-  \node at (0.5,-0.5) {Partition $(1,1,1)$};
-  \node at (0.5,-1) {Dimension: 0 for spin-1/2};
-\end{tikzpicture}
-```
-   
-   One column of three boxes. This representation does not exist for three spin-1/2 particles (would require $s_{max} < 3/2$), but exists for higher spin particles ($j \geq 1$).
+3. **Totally Antisymmetric**: Partition $(1,1,1)$, Dimension 0 (for spin-1/2)
+   - One column of three boxes
+   - Not available for spin-1/2, requires $j \geq 1$
 
 **Hook Length and Dimension Calculation**
 
