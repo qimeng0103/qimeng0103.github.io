@@ -825,15 +825,21 @@ $$
 \frac{\delta}{\delta \phi(y)}\left(\frac{\delta V}{\delta \phi(x)}\right)
 $$
 
-**Step 5b-i: Define the functional**
+**Step 5b-i: The Key Abstraction — Define a Point-Labeled Functional**
 
-The first derivative $\frac{\delta V}{\delta \phi(x)}$ contains the term $\frac{\partial \mathcal{V}}{\partial \phi}(\phi(x), \nabla\phi(x))$. Define this as a functional $F_x[\phi]$:
+**Key insight:** The quantity $\frac{\partial \mathcal{V}}{\partial \phi}(\phi(x), \nabla\phi(x))$ is a number evaluated at point $x$. To compute its functional derivative with respect to $\phi(y)$, we need to view it as a functional of the entire field configuration $\phi(\cdot)$.
+
+**The trick:** Define a family of functionals $F_x[\phi]$ indexed by the point $x$:
 
 $$
 F_x[\phi] \equiv \frac{\partial \mathcal{V}}{\partial \phi}(\phi(x), \nabla\phi(x))
 $$
 
-This extracts the density derivative at point $x$, viewed as a functional of the entire field configuration.
+Here $x$ acts as a **label** (parameter), not a variable of integration. For each fixed $x$, $F_x[\phi]$ is a functional that:
+- Takes the entire field configuration $\phi(\cdot)$ as input
+- Returns the density derivative evaluated at the specific point $x$
+
+This abstraction allows us to apply the functional derivative machinery to study how the value at $x$ changes when we vary the field at $y$.
 
 **Step 5b-ii: Compute the functional derivative of $F_x$**
 
