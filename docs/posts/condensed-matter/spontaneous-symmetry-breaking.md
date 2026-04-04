@@ -846,7 +846,7 @@ $$
 where $\delta_y(z) = \delta(z-y)$. Now compute $F_x[\phi + \epsilon\delta_y]$:
 
 $$
-F_x[\phi + \epsilon\delta_y] = \frac{\partial \mathcal{V}}{\partial \phi}\bigg|_{(\phi(x) + \epsilon\delta(x-y), \nabla\phi(x) + \epsilon\nabla\delta(x-y))}
+F_x[\phi + \epsilon\delta_y] = \frac{\partial \mathcal{V}}{\partial \phi}\left(\phi(x) + \epsilon\delta(x-y), \nabla(\phi(x) + \epsilon\delta(x-y))\right)
 $$
 
 **Step 5b-iii: Analyze by cases and take the limit**
