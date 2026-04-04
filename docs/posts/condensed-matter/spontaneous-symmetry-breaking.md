@@ -1550,21 +1550,41 @@ $$
 
 The kinetic term is $\mathcal{T} = \frac{1}{2m^*}|\mathbf{D}\psi|^2 = \frac{1}{2m^*}(\mathbf{D}\psi)^* \cdot (\mathbf{D}\psi)$.
 
-**Important**: Since we are varying with respect to $\psi^*$ only (keeping $\psi$ and $\mathbf{A}$ fixed), we only substitute $\psi^* \rightarrow \psi^* + \delta\psi^*$:
+**Important**: We vary only $\psi^* \rightarrow \psi^* + \delta\psi^*$ while keeping $\psi$ and $\mathbf{A}$ fixed.
+
+**Step 2a: Substitute into $(\mathbf{D}\psi)^*$**
+
+Since $(\mathbf{D}\psi)^* = (i\hbar\nabla - \frac{e^*}{c}\mathbf{A})\psi^*$, substituting $\psi^* \rightarrow \psi^* + \delta\psi^*$ gives:
 
 $$
-(\mathbf{D}\psi)^* \rightarrow (i\hbar\nabla - \frac{e^*}{c}\mathbf{A})(\psi^* + \delta\psi^*) = (\mathbf{D}\psi)^* + \mathbf{D}^*\delta\psi^*
+(\mathbf{D}\psi)^* \rightarrow (i\hbar\nabla - \frac{e^*}{c}\mathbf{A})(\psi^* + \delta\psi^*) = (\mathbf{D}\psi)^* + (i\hbar\nabla - \frac{e^*}{c}\mathbf{A})\delta\psi^*
 $$
 
-where $\mathbf{D}^* = i\hbar\nabla - \frac{e^*}{c}\mathbf{A}$ is the complex conjugate operator.
+**Step 2b: Compute the varied kinetic term**
 
-Now substitute into the kinetic term:
+The varied kinetic energy density is:
 
 $$
-\delta(|\mathbf{D}\psi|^2) = (\mathbf{D}\delta\psi^*) \cdot (\mathbf{D}\psi) = [(i\hbar\nabla - \frac{e^*}{c}\mathbf{A})\delta\psi^*] \cdot (\mathbf{D}\psi)
+|\mathbf{D}\psi|^2_{\text{varied}} = [(\mathbf{D}\psi)^* + (i\hbar\nabla - \frac{e^*}{c}\mathbf{A})\delta\psi^*] \cdot (\mathbf{D}\psi)
 $$
 
-where we used $(\mathbf{D}\psi)^* = (i\hbar\nabla - \frac{e^*}{c}\mathbf{A})\psi^*$. Therefore:
+Note: $\mathbf{D}\psi$ is unchanged because we are not varying $\psi$.
+
+Expanding:
+
+$$
+= (\mathbf{D}\psi)^* \cdot (\mathbf{D}\psi) + [(i\hbar\nabla - \frac{e^*}{c}\mathbf{A})\delta\psi^*] \cdot (\mathbf{D}\psi)
+$$
+
+**Step 2c: Extract the variation**
+
+The first-order variation is:
+
+$$
+\delta(|\mathbf{D}\psi|^2) = [(i\hbar\nabla - \frac{e^*}{c}\mathbf{A})\delta\psi^*] \cdot (\mathbf{D}\psi)
+$$
+
+Therefore:
 
 $$
 \delta\mathcal{T} = \frac{1}{2m^*}[(i\hbar\nabla - \frac{e^*}{c}\mathbf{A})\delta\psi^*] \cdot (\mathbf{D}\psi)
