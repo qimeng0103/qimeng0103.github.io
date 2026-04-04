@@ -319,7 +319,7 @@ The off-diagonal matrix elements follow the general formula $\hbar\sqrt{(j-m)(j+
 
 ## Part IV: Applications of Angular Momentum Algebra
 
-Based on classic problems from the *Physics Problem Collection (量子力学大题典)* by Zhang Yongde.
+This section explores practical applications of angular momentum algebra, including expectation value calculations, measurement probabilities, and symmetry properties in quantum systems.
 
 ### 4.1 Fourth Power Expectation Values of Angular Momentum Components
 
@@ -643,7 +643,7 @@ Young tableaux provide a graphical method to classify the symmetry types of many
 
 **Young Diagrams for Two Particles:**
 
-<img src="/images/angular-momentum/two_particle_young_new.png" width="500px" alt="Young Diagrams for Two Particles">
+<img src="/images/angular-momentum/two_particle_young_new.png" width="350px" alt="Young Diagrams for Two Particles">
 
 *Left: Symmetric representation (partition (2), triplet $S=1$, dimension 3). Right: Antisymmetric representation (partition (1,1), singlet $S=0$, dimension 1)*
 
