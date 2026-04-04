@@ -643,9 +643,9 @@ Young tableaux provide a graphical method to classify the symmetry types of many
 
 **Young Diagrams for Two Particles:**
 
-![Two Particle Young Diagrams](/images/angular-momentum/two_particle_young.png)
+<img src="/images/angular-momentum/two_particle_young_new.png" width="500px" alt="Young Diagrams for Two Particles">
 
-*Left: Symmetric representation (triplet, $S=1$). Right: Antisymmetric representation (singlet, $S=0$)*
+*Left: Symmetric representation (partition (2), triplet $S=1$, dimension 3). Right: Antisymmetric representation (partition (1,1), singlet $S=0$, dimension 1)*
 
 **Young Diagrams for Three Particles:**
 
@@ -665,10 +665,12 @@ where $h_i$ is the hook length of box $i$ (number of boxes to the right in the s
 
 For three spin-1/2 particles, the Young diagrams and their properties are:
 
-<img src="/images/angular-momentum/young_3_symmetric.png" width="150px" alt="Symmetric diagram (3)">
+<img src="/images/angular-momentum/young_3_symmetric.png" width="200px" alt="Symmetric diagram (3)">
+
 *Symmetric diagram (3): Hook lengths are 3, 2, 1. Dimension: $\frac{3!}{3 \cdot 2 \cdot 1} = 1$ (for each $m$ value, total $2S+1 = 4$)*
 
-<img src="/images/angular-momentum/young_21_mixed.png" width="120px" alt="Mixed symmetry diagram (2,1)">
+<img src="/images/angular-momentum/young_21_mixed.png" width="180px" alt="Mixed symmetry diagram (2,1)">
+
 *Mixed symmetry diagram (2,1): Hook lengths are 3, 1, 1. Dimension: $\frac{3!}{3 \cdot 1 \cdot 1} = 2$ (two doublet states)*
 
 ### 5.5 Connection to Angular Momentum Addition
@@ -694,7 +696,7 @@ $$(2j_1+1)(2j_2+1) = \sum_{j=|j_1-j_2|}^{j_1+j_2}(2j+1)$$
 |:----------------|:---------------|
 | $|\uparrow\uparrow\rangle$ | $|j=1, m=1\rangle$ (Triplet) |
 | $\frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle + |\downarrow\uparrow\rangle)$ | $|j=1, m=0\rangle$ (Triplet) |
-| $\|\downarrow\downarrow\rangle$ | $|j=1, m=-1\rangle$ (Triplet) |
+| $|\downarrow\downarrow\rangle$ | $|j=1, m=-1\rangle$ (Triplet) |
 | $\frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle)$ | $|j=0, m=0\rangle$ (Singlet) |
 
 *Total: $2 \times 2 = 4$ states decompose into $j=1$ (3 states) $\oplus$ $j=0$ (1 state)*
@@ -938,38 +940,90 @@ For identical particles ($j_1 = j_2 = j$), the symmetry of the state $|J, M\rang
 
 ### 6.5 Exchange Interaction and Helium Atom
 
-In the helium atom, the electron-electron interaction energy depends on the spin state through the symmetry requirement.
+**Exchange Interaction: Theoretical Foundation**
 
-**Parahelium (Singlet Spin State):**
+For two identical particles, the exchange operator $P_{12}$ can be expressed in terms of spin operators. For spin-1/2 particles:
+
+$$P_{12}^{\text{spin}} = \frac{1}{2}(1 + \boldsymbol{\sigma}_1 \cdot \boldsymbol{\sigma}_2)$$
+
+Using the identity $\boldsymbol{\sigma}_1 \cdot \boldsymbol{\sigma}_2 = 2\mathbf{S}_1 \cdot \mathbf{S}_2/(\hbar^2/4) - 3$ for spin-1/2:
+
+$$\mathbf{S}_1 \cdot \mathbf{S}_2 = \frac{\hbar^2}{2}\left(\boldsymbol{\sigma}_1 \cdot \boldsymbol{\sigma}_2\right) = \frac{\hbar^2}{2}\left(2P_{12}^{\text{spin}} - 1\right)$$
+
+The eigenvalues of $P_{12}^{\text{spin}}$ are:
+- $P_{12}^{\text{spin}} = +1$ for triplet states ($S = 1$)
+- $P_{12}^{\text{spin}} = -1$ for singlet states ($S = 0$)
+
+Therefore:
+$$\langle \mathbf{S}_1 \cdot \mathbf{S}_2 \rangle = \begin{cases} +\frac{\hbar^2}{4} & \text{(triplet)} \\ -\frac{3\hbar^2}{4} & \text{(singlet)} \end{cases}$$
+
+**Helium Atom: Spatial Wavefunction Symmetry**
+
+For helium, the Hamiltonian is:
+$$H = \frac{\mathbf{p}_1^2}{2m} + \frac{\mathbf{p}_2^2}{2m} - \frac{Ze^2}{4\pi\varepsilon_0 r_1} - \frac{Ze^2}{4\pi\varepsilon_0 r_2} + \frac{e^2}{4\pi\varepsilon_0 |\mathbf{r}_1 - \mathbf{r}_2|}$$
+
+The total wavefunction must be antisymmetric under particle exchange:
+$$\Psi(1, 2) = \psi_{\text{spatial}}(\mathbf{r}_1, \mathbf{r}_2) \cdot \chi_{\text{spin}}$$
+
+**First-Order Perturbation Theory:**
+
+Treating the electron-electron repulsion $V_{12} = \frac{e^2}{4\pi\varepsilon_0 r_{12}}$ as perturbation:
+
+$$E^{(1)} = \langle V_{12} \rangle = \iint |\psi_{\text{spatial}}(\mathbf{r}_1, \mathbf{r}_2)|^2 \frac{e^2}{4\pi\varepsilon_0 |\mathbf{r}_1 - \mathbf{r}_2|} d^3r_1 d^3r_2$$
+
+For the $1s^2$ configuration, using hydrogenic wavefunctions:
+$$\psi_{1s}(r) = \frac{1}{\sqrt{\pi a_0^3}}e^{-r/a_0}$$
+
+**Direct Integral (Coulomb):**
+$$J = \iint |\psi_{1s}(\mathbf{r}_1)|^2 |\psi_{1s}(\mathbf{r}_2)|^2 \frac{e^2}{4\pi\varepsilon_0 r_{12}} d^3r_1 d^3r_2 = \frac{5}{8}\frac{Ze^2}{4\pi\varepsilon_0 a_0}$$
+
+**Exchange Integral:**
+$$K = \iint \psi_{1s}^*(\mathbf{r}_1)\psi_{1s}^*(\mathbf{r}_2) \frac{e^2}{4\pi\varepsilon_0 r_{12}} \psi_{1s}(\mathbf{r}_2)\psi_{1s}(\mathbf{r}_1) d^3r_1 d^3r_2$$
+
+For different spatial orbitals (e.g., $1s2s$ configuration), the exchange integral is non-zero and leads to energy splitting.
+
+**Energy Splitting:**
+
+| State | Spin Symmetry | Spatial Symmetry | Energy |
+|:-----:|:-------------:|:----------------:|:------:|
+| Singlet | Antisymmetric | Symmetric | $E_0 + J + K$ |
+| Triplet | Symmetric | Antisymmetric | $E_0 + J - K$ |
+
+where $K > 0$, so the triplet state has lower energy (exchange interaction favors parallel spins).
+
+**Parahelium vs Orthohelium:**
+
+**Parahelium (Singlet, $S = 0$):**
 - Spatial wavefunction is symmetric
-- Electrons can be close together
-- Higher electron-electron repulsion
-- Lower energy binding
+- Electrons can be close together ($r_{12} \to 0$ is allowed)
+- Higher electron-electron repulsion: $\langle V_{12} \rangle = J + K$
+- Higher total energy
 
-**Orthohelium (Triplet Spin State):**
-- Spatial wavefunction is antisymmetric
-- Electrons tend to avoid each other
-- Lower electron-electron repulsion
-- Higher energy binding
+**Orthohelium (Triplet, $S = 1$):**
+- Spatial wavefunction is antisymmetric: $\psi(\mathbf{r}, \mathbf{r}) = 0$
+- Electrons avoid each other (Fermi hole)
+- Lower electron-electron repulsion: $\langle V_{12} \rangle = J - K$
+- Lower total energy
 
-This effective spin-dependent interaction is called the **exchange interaction**.
+This effective spin-dependent interaction is the **exchange interaction**.
 
-**Angular Momentum Classification**
+**Angular Momentum Classification ($^{2S+1}L_J$ notation):**
 
-The total spin quantum number $S$ determines the symmetry:
-- Singlet ($S = 0$): Antisymmetric spin state $\Rightarrow$ symmetric spatial state
-- Triplet ($S = 1$): Symmetric spin state $\Rightarrow$ antisymmetric spatial state
+| Configuration | Term Symbol | Spin | Spatial | Energy (eV) |
+|:-------------:|:-----------:|:----:|:-------:|:-----------:|
+| $1s^2$ | $^1S_0$ | Singlet | Symmetric | -79.0 (ground) |
+| $1s2s$ | $^3S_1$ | Triplet | Antisymmetric | -59.0 (excited) |
+| $1s2s$ | $^1S_0$ | Singlet | Symmetric | -58.6 (excited) |
+| $1s2p$ | $^3P_{0,1,2}$ | Triplet | Antisymmetric | -58.3 (excited) |
 
-The total wavefunction for two electrons is labeled by $^{2S+1}L_J$ where:
-- $2S+1$ is the spin multiplicity (1 for singlet, 3 for triplet)
-- $L$ is the total orbital angular momentum (S, P, D, ... for $L = 0, 1, 2, ...$)
-- $J$ is the total angular momentum ($|L-S| \leq J \leq L+S$)
+**Hund's First Rule:** The term with the maximum multiplicity (maximum $S$) lies lowest in energy. This is a direct consequence of the exchange interaction favoring parallel spins.
 
-For helium ground state ($1s^2$):
-- Both electrons in $l = 0$ state
-- $L = 0$ (S state)
-- Only singlet possible (antisymmetric spatial required for same orbital)
-- Designation: $^1S_0$
+**Mathematical Origin:**
+
+The exchange splitting arises because:
+$$\langle V_{12} \rangle_{\text{singlet}} - \langle V_{12} \rangle_{\text{triplet}} = 2K > 0$$
+
+This energy difference is not due to any magnetic interaction between spins, but purely from the requirement of overall antisymmetry and the electrostatic repulsion between electrons.
 
 ### 6.6 Exchange Operator and Total Angular Momentum
 
