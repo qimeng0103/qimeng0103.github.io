@@ -9,7 +9,9 @@ math: true
 
 # Angular Momentum Algebra and Its Applications
 
-This article presents a systematic treatment of angular momentum theory in quantum mechanics. We begin with the fundamental commutation relations and ladder operator formalism, then discuss the matrix representations for various spin systems. The article provides detailed derivations of Clebsch-Gordan coefficients for angular momentum addition. Finally, we explore applications to central force field problems and systems of identical particles.
+This article presents a systematic treatment of angular momentum theory in quantum mechanics. We begin with the fundamental algebraic structure—commutation relations and ladder operators—then develop the matrix representations and explicit wave function formalism (spherical harmonics) for orbital angular momentum. Building on this foundation, we explore the addition of angular momenta and the resulting Clebsch-Gordan theory. The latter half of the article develops the deeper group-theoretic perspective (rotation groups SO(3) and SU(2)), and concludes with applications to many-particle systems using Young tableaux.
+
+The logical progression follows: **Algebraic Structure** → **Representation Theory** → **Wave Function Realization** → **Angular Momentum Addition** → **Group Theory** → **Many-Particle Applications**.
 
 ---
 
@@ -646,11 +648,11 @@ $$|j = l - 1/2, m_j\rangle = -\sqrt{\frac{l - m_j + 1/2}{2l + 1}}|l, m_j - 1/2; 
 
 ---
 
-## Part VI: Group Representation Theory and Young Tableaux
+## Part V: Group Representation Theory and Young Tableaux
 
 The addition of angular momenta discussed in Part IV has a deep group-theoretic interpretation. The different values of total angular momentum $j$ that result from coupling $j_1$ and $j_2$ correspond to the **irreducible representations** that appear in the decomposition of the tensor product representation. This part develops the mathematical framework of rotation groups and introduces Young tableaux as a powerful tool for classifying symmetry types in multi-particle systems.
 
-### 6.1 Rotation Groups SO(3) and SU(2)
+### 5.1 Rotation Groups SO(3) and SU(2)
 
 Angular momentum operators generate rotations in quantum mechanics. The commutation relations $[J_i, J_j] = i\hbar\varepsilon_{ijk}J_k$ define the Lie algebra of the rotation group.
 
@@ -762,7 +764,7 @@ $$\text{SU(2)}/\mathbb{Z}_2 \cong \text{SO(3)}$$
 
 The quotient by $\mathbb{Z}_2$ means we identify $U \sim -U$ in SU(2), giving us SO(3). For integer spin representations, $U$ and $-U$ act identically (since $e^{-im\theta}$ with $m$ integer is unchanged by $\theta \to \theta + 2\pi$), so these representations are "faithful" representations of SO(3). For half-integer spins, they are representations of SU(2) but not of SO(3).
 
-### 6.2 Irreducible Representations and the Meaning of "Representation"
+### 5.2 Irreducible Representations and the Meaning of "Representation"
 
 **What is a "Representation"?**
 
@@ -885,7 +887,7 @@ To solidify the concept of representation, here's a comprehensive summary:
 
 When we say "the spin-1 representation," we are referring to the **three-dimensional vector space** of all possible spin-1 states. The three states $|1,1\rangle$, $|1,0\rangle$, $|1,-1\rangle$ are not three different representations—they are three orthogonal directions in the *same* representation space. Just as $\hat{x}$, $\hat{y}$, $\hat{z}$ are three basis vectors in 3D space, these $|j,m\rangle$ states are basis vectors in the spin-1 representation space.
 
-### 6.3 Young Tableaux for Permutation Symmetry
+### 5.3 Young Tableaux for Permutation Symmetry
 
 Young tableaux provide a graphical method to classify the symmetry types of many-particle states under particle exchange.
 
@@ -908,7 +910,7 @@ Young tableaux provide a graphical method to classify the symmetry types of many
 
 *Left: Totally symmetric (quartet, $S=3/2$, dim=4). Center: Mixed symmetry (doublet, $S=1/2$, dim=2). Right: Totally antisymmetric (not for spin-1/2)*
 
-### 6.4 Hook Length Formula
+### 5.4 Hook Length Formula
 
 The dimension of a representation corresponding to a Young diagram with $n$ boxes is given by the hook length formula:
 
@@ -957,9 +959,9 @@ For three spin-1/2 particles, the Young diagrams and their properties are:
 
 *Mixed symmetry diagram (2,1): Hook lengths are 3, 1, 1. Dimension: $\frac{3!}{3 \cdot 1 \cdot 1} = 2$ (two doublet states)*
 
-### 6.5 Connection to Angular Momentum Addition
+### 5.5 Connection to Angular Momentum Addition
 
-The CG decomposition derived in Part V has an elegant group-theoretic interpretation. When adding angular momenta $\mathbf{J} = \mathbf{J}_1 + \mathbf{J}_2$, the tensor product of representations decomposes into irreducible representations according to:
+The CG decomposition derived in Part IV has an elegant group-theoretic interpretation. When adding angular momenta $\mathbf{J} = \mathbf{J}_1 + \mathbf{J}_2$, the tensor product of representations decomposes into irreducible representations according to:
 
 $$D^{(j_1)} \otimes D^{(j_2)} = \bigoplus_{j=|j_1-j_2|}^{j_1+j_2} D^{(j)}$$
 
@@ -969,11 +971,11 @@ This is precisely the **Clebsch-Gordan series**. The triangle rule $|j_1 - j_2| 
 
 ---
 
-## Part VII: Central Force Field Problems
+## Part VI: Central Force Field Problems
 
 The algebraic machinery developed so far finds immediate application in the physics of central force fields, where the potential depends only on the radial coordinate $V(r)$. Angular momentum plays a central role because the spherical symmetry of such systems guarantees that $[H, L^2] = [H, L_z] = 0$, allowing simultaneous eigenstates of energy and angular momentum. This leads to the separation of the Schrödinger equation into radial and angular parts.
 
-### 7.1 Separation of Variables in Spherical Coordinates
+### 6.1 Separation of Variables in Spherical Coordinates
 
 For a particle in a central potential $V(r)$, the Hamiltonian is:
 
@@ -990,7 +992,7 @@ $$L^2 = -\hbar^2\left[\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\
 Therefore:
 $$H = -\frac{\hbar^2}{2\mu}\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial}{\partial r}\right) + \frac{L^2}{2\mu r^2} + V(r)$$
 
-### 7.2 Simultaneous Eigenfunctions and Spherical Harmonics
+### 6.2 Simultaneous Eigenfunctions and Spherical Harmonics
 
 Since $[H, L^2] = [H, L_z] = [L^2, L_z] = 0$, we have simultaneous eigenfunctions:
 
@@ -1033,7 +1035,7 @@ The magnetic quantum number $m$ determines the orientation:
 - For $m = 0$: Maximum amplitude along $z$-axis
 - For $m = \pm l$: Maximum amplitude in $xy$-plane (toroidal shape for large $l$)
 
-### 7.3 Measurement Probabilities for $L_x$ in $Y_{20}$ State
+### 6.3 Measurement Probabilities for $L_x$ in $Y_{20}$ State
 
 As an application of spherical harmonics and angular momentum algebra, consider a particle in the $Y_{20}$ eigenstate. While this state is an eigenstate of $L_z$ with $m = 0$, it is **not** an eigenstate of $L_x$. We can determine the possible measured values of $L_x$ and their corresponding probabilities.
 
@@ -1083,7 +1085,7 @@ Solving yields: $P_0 = \frac{1}{4}$, $P_1 = 0$, $P_2 = \frac{3}{8}$.
 
 This example illustrates how eigenstates of one angular momentum component ($L_z$) can be expressed as superpositions of eigenstates of another component ($L_x$).
 
-### 7.4 Angular Momentum in Central Force Fields: Key Theorems
+### 6.4 Angular Momentum in Central Force Fields: Key Theorems
 
 **Theorem 1: Degeneracy with respect to magnetic quantum number $m$**
 
@@ -1124,7 +1126,7 @@ $$R_{nl}(r) \xrightarrow{r \to 0} r^l$$
 
 The centrifugal barrier $\frac{\hbar^2 l(l+1)}{2\mu r^2}$ prevents particles with $l \geq 1$ from reaching the origin. Only s-waves ($l = 0$) have non-zero probability density at $r = 0$.
 
-### 7.5 Radial Equation and Angular Momentum Barrier
+### 6.5 Radial Equation and Angular Momentum Barrier
 
 Substituting into the Schrödinger equation:
 
@@ -1152,7 +1154,7 @@ $$R_{nl}(r) \xrightarrow{r \to 0} r^l$$
 
 This shows that higher angular momentum states are increasingly suppressed near the origin.
 
-### 7.6 Runge-Lenz Vector and Hydrogen Atom Degeneracy
+### 6.6 Runge-Lenz Vector and Hydrogen Atom Degeneracy
 
 The hydrogen atom possesses an additional conserved quantity beyond angular momentum—the Runge-Lenz vector.
 
@@ -1183,7 +1185,7 @@ These relations, combined with the angular momentum algebra, form an SO(4) symme
 
 The existence of the Runge-Lenz vector as a conserved quantity is special to the $1/r$ potential (Coulomb and gravitational). It implies closed elliptical orbits in classical mechanics and the degeneracy in quantum mechanics.
 
-### 7.7 Hydrogen Atom Energy Levels and Angular Momentum
+### 6.7 Hydrogen Atom Energy Levels and Angular Momentum
 
 For the Coulomb potential $V(r) = -\frac{e^2}{4\pi\varepsilon_0 r}$:
 
@@ -1200,7 +1202,7 @@ For each $l$, there are $2l+1$ values of $m$.
 The total degeneracy of level $n$ is:
 $$g_n = \sum_{l=0}^{n-1}(2l+1) = n^2$$
 
-### 7.8 Three-Dimensional Isotropic Harmonic Oscillator
+### 6.8 Three-Dimensional Isotropic Harmonic Oscillator
 
 For $V(r) = \frac{1}{2}\mu\omega^2 r^2$:
 
@@ -1217,18 +1219,18 @@ $$g_N = \frac{(N+1)(N+2)}{2}$$
 
 ---
 
-## Part VIII: Systems of Identical Particles and Young Tableaux Applications
+## Part VII: Systems of Identical Particles and Young Tableaux Applications
 
-The quantum mechanics of identical particles imposes fundamental symmetry constraints on many-body wavefunctions. For fermions (half-integer spin), the total wavefunction must be antisymmetric under particle exchange, while for bosons (integer spin), it must be symmetric. These requirements deeply affect how angular momenta combine in multi-particle systems. This part applies the Young tableaux formalism from Part VI to classify symmetry types and derives the connection between total spin and exchange symmetry, with applications to the helium atom and lithium atom.
+The quantum mechanics of identical particles imposes fundamental symmetry constraints on many-body wavefunctions. For fermions (half-integer spin), the total wavefunction must be antisymmetric under particle exchange, while for bosons (integer spin), it must be symmetric. These requirements deeply affect how angular momenta combine in multi-particle systems. This part applies the Young tableaux formalism from Part V to classify symmetry types and derives the connection between total spin and exchange symmetry, with applications to the helium atom and lithium atom.
 
-### 8.1 Symmetry Requirements for Many-Particle States
+### 7.1 Symmetry Requirements for Many-Particle States
 
 For a system of $N$ identical particles, the total wavefunction must satisfy specific symmetry properties under particle exchange:
 
 - **Bosons** (integer spin): Wavefunction is **symmetric** under exchange of any two particles
 - **Fermions** (half-integer spin): Wavefunction is **antisymmetric** under exchange of any two particles
 
-### 8.2 Two-Particle Systems
+### 7.2 Two-Particle Systems
 
 For two identical particles with single-particle states $|\alpha\rangle$ and $|\beta\rangle$:
 
@@ -1238,7 +1240,7 @@ $$|\psi_S\rangle = \frac{1}{\sqrt{2}}(|\alpha\rangle_1|\beta\rangle_2 + |\beta\r
 **Antisymmetric State (Fermions):**
 $$|\psi_A\rangle = \frac{1}{\sqrt{2}}(|\alpha\rangle_1|\beta\rangle_2 - |\beta\rangle_1|\alpha\rangle_2)$$
 
-### 8.3 Spin and Spatial Degrees of Freedom
+### 7.3 Spin and Spatial Degrees of Freedom
 
 For two spin-1/2 fermions (e.g., electrons), the total wavefunction is:
 
@@ -1256,7 +1258,7 @@ $$\chi_{11} = |\uparrow\uparrow\rangle, \quad \chi_{10} = \frac{1}{\sqrt{2}}(|\u
 The spatial part must be **antisymmetric**:
 $$\psi_A(\mathbf{r}_1, \mathbf{r}_2) = \frac{1}{\sqrt{2}}[\phi_a(\mathbf{r}_1)\phi_b(\mathbf{r}_2) - \phi_b(\mathbf{r}_1)\phi_a(\mathbf{r}_2)]$$
 
-### 8.4 Total Angular Momentum of Two-Particle Systems
+### 7.4 Total Angular Momentum of Two-Particle Systems
 
 For two identical particles each with angular momentum $j$, the total angular momentum $J$ can range from $0$ (or $1$ if $j$ is half-integer) to $2j$.
 
@@ -1290,7 +1292,7 @@ For identical particles ($j_1 = j_2 = j$), the symmetry of the state $|J, M\rang
 - Bosons (integer spin): Total wavefunction must be symmetric
   - If $2j$ is even, symmetric spin requires symmetric spatial, and vice versa
 
-### 8.5 Exchange Interaction and Helium Atom
+### 7.5 Exchange Interaction and Helium Atom
 
 **Exchange Interaction: Theoretical Foundation**
 
@@ -1377,7 +1379,7 @@ $$\langle V_{12} \rangle_{\text{singlet}} - \langle V_{12} \rangle_{\text{triple
 
 This energy difference is not due to any magnetic interaction between spins, but purely from the requirement of overall antisymmetry and the electrostatic repulsion between electrons.
 
-### 8.6 Exchange Operator and Total Angular Momentum
+### 7.6 Exchange Operator and Total Angular Momentum
 
 **Exchange Operator Definition**
 
@@ -1422,7 +1424,7 @@ This shows that:
 - Half-integer total spin ($S = 0, 2, 4, ...$ in units of $\hbar$): Antisymmetric
 - Integer total spin ($S = 1, 3, 5, ...$ in units of $\hbar$): Symmetric
 
-### 8.7 Addition of Three Angular Momenta and Permutation Symmetry
+### 7.7 Addition of Three Angular Momenta and Permutation Symmetry
 
 For three spin-1/2 particles, we first combine two spins, then add the third:
 
@@ -1570,7 +1572,7 @@ For three identical fermions with spin-1/2:
 
 This constraint is crucial for understanding the structure of three-electron atoms like lithium and three-nucleon systems like $^3$He.
 
-### 8.8 Slater Determinant and Total Angular Momentum Coupling
+### 7.8 Slater Determinant and Total Angular Momentum Coupling
 
 For $N$ identical fermions, the antisymmetric wavefunction can be written as a Slater determinant:
 
