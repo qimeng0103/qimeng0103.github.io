@@ -1010,23 +1010,11 @@ The number of such fillings equals the dimension of the representation.
 
 **Example: Partition (2,1) for 3 particles**
 
-Possible standard Young tableaux:
+Possible standard Young tableaux for partition $(2,1)$:
 
-$$
-\begin{array}{|c|c|}
-\hline 1 & 2 \\
-\hline 3 & \multicolumn{1}{c}{} \\
-\hline
-\end{array}
-\qquad
-\begin{array}{|c|c|}
-\hline 1 & 3 \\
-\hline 2 & \multicolumn{1}{c}{} \\
-\hline
-\end{array}
-$$
+<img src="/images/angular-momentum/young_tableaux_21_example.png" width="280px" alt="Standard Young tableaux for partition (2,1)">
 
-There are exactly 2 such fillings, so the dimension is 2. This matches our calculation using the hook length formula!
+*There are exactly 2 such fillings, so the dimension is 2. This matches our calculation using the hook length formula!*
 
 **Step 4: Connect to Physical States**
 

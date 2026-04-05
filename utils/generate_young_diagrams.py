@@ -193,49 +193,28 @@ def young_diagram_2particle_comparison():
 
 
 def young_diagram_with_hook_lengths():
-    """Generate diagram showing hook lengths for (2,1) partition - compact design."""
+    """Generate simple diagram showing hook lengths for (2,1) partition."""
     setup_style()
     
-    fig = plt.figure(figsize=(5, 3.5))
-    ax = fig.add_axes([0.15, 0.15, 0.4, 0.7])  # [left, bottom, width, height]
+    fig = plt.figure(figsize=(4.5, 3))
+    ax = fig.add_axes([0.1, 0.15, 0.5, 0.75])  # [left, bottom, width, height]
     
-    # Draw (2,1) diagram with hook length labels
+    # Draw (2,1) diagram with hook length labels only
     partition = [2, 1]
     hook_lengths = ['3', '1', '1']
     
     # Draw the diagram
     draw_young_diagram(ax, partition, labels=hook_lengths, title='',
-                       label_color='darkred', label_fontsize=18)
+                       label_color='darkred', label_fontsize=20)
     
-    # Draw hook illustrations - small L-shapes in corner of each box
-    # Top-left box: hook goes right and down
-    ax.plot([0.15, 0.85], [-0.15, -0.15], 'b-', linewidth=1.5, alpha=0.7)
-    ax.plot([0.15, 0.15], [-0.15, -0.85], 'b-', linewidth=1.5, alpha=0.7)
-    
-    # Top-right box: hook is just a point (no extension)
-    ax.plot([1.5], [-0.5], 'b.', markersize=8, alpha=0.7)
-    
-    # Bottom-left box: hook is just a point (no extension)
-    ax.plot([0.5], [-1.5], 'b.', markersize=8, alpha=0.7)
-    
-    # Title
-    fig.text(0.5, 0.92, 'Partition (2,1) with Hook Lengths', 
+    # Title at top
+    fig.text(0.5, 0.95, 'Partition (2,1) with Hook Lengths', 
              ha='center', fontsize=12, fontweight='normal')
-    fig.text(0.5, 0.85, r'$d = 3!/(3 \cdot 1 \cdot 1) = 2$',
+    fig.text(0.5, 0.88, r'$d = 3!/(3 \cdot 1 \cdot 1) = 2$',
              ha='center', fontsize=11, style='italic')
     
-    # Explanation on the right side
-    fig.text(0.62, 0.65, 'Hook Lengths:', fontsize=10, fontweight='bold')
-    fig.text(0.62, 0.55, r'$h_1 = 3$ (top-left)', fontsize=9)
-    fig.text(0.62, 0.48, r'$h_2 = 1$ (top-right)', fontsize=9)
-    fig.text(0.62, 0.41, r'$h_3 = 1$ (bottom-left)', fontsize=9)
-    
-    fig.text(0.62, 0.30, 'Formula:', fontsize=10, fontweight='bold')
-    fig.text(0.62, 0.22, r'$d = \frac{n!}{\prod h_i}$', fontsize=10)
-    
-    # Bottom note
-    fig.text(0.5, 0.05, 'Hook = self + right + below', 
-             ha='center', fontsize=9, style='italic')
+    # Simple explanation on the right
+    fig.text(0.65, 0.65, r'$h_i = 1 + $(right + below)', fontsize=10)
     
     filepath = os.path.join(OUTPUT_DIR, 'young_21_hook_lengths.png')
     fig.savefig(filepath, dpi=200, facecolor='white', edgecolor='none')
@@ -302,6 +281,31 @@ def young_diagram_individual_with_label(partition, filename, label_text):
     return filepath
 
 
+def young_tableaux_example():
+    """Generate image for standard Young tableaux example (2,1) partition."""
+    setup_style()
+    
+    fig, axes = plt.subplots(1, 2, figsize=(4, 2.5))
+    
+    # Tableau 1: [[1, 2], [3]]
+    ax1 = axes[0]
+    draw_young_diagram(ax1, [2, 1], labels=['1', '2', '3'], title='')
+    ax1.text(0.5, 1.15, 'Tableau 1', ha='center', fontsize=10, transform=ax1.transAxes)
+    
+    # Tableau 2: [[1, 3], [2]]
+    ax2 = axes[1]
+    draw_young_diagram(ax2, [2, 1], labels=['1', '3', '2'], title='')
+    ax2.text(0.5, 1.15, 'Tableau 2', ha='center', fontsize=10, transform=ax2.transAxes)
+    
+    plt.tight_layout()
+    filepath = os.path.join(OUTPUT_DIR, 'young_tableaux_21_example.png')
+    fig.savefig(filepath, dpi=200, bbox_inches='tight',
+                facecolor='white', edgecolor='none')
+    print(f"Saved: {filepath}")
+    plt.close()
+    return filepath
+
+
 if __name__ == '__main__':
     print("Generating Young diagram figures...")
     
@@ -327,5 +331,8 @@ if __name__ == '__main__':
     young_diagram_pure([3], 'young_3_pure.png')
     young_diagram_pure([2, 1], 'young_21_pure.png')
     young_diagram_pure([1, 1, 1], 'young_111_pure.png')
+    
+    # Generate tableau example figure
+    young_tableaux_example()
     
     print("\nAll Young diagram figures generated successfully!")
