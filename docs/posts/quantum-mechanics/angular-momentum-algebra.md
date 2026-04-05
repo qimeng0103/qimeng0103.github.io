@@ -751,7 +751,7 @@ SO(3) is the group of proper rotations in three-dimensional space. Each rotation
 The rotation operator is:
 $$R(\mathbf{n}, \theta) = e^{-i\theta \mathbf{n} \cdot \mathbf{J}/\hbar}$$
 
-**Generators from the Functional Perspective**
+**Generators of Rotations: The Infinitesimal Point of View**
 
 The angular momentum operators $\mathbf{J}$ are the **generators** of rotations. What does this mean?
 
@@ -762,13 +762,20 @@ $$R(\mathbf{n}, \delta\theta) \approx 1 - \frac{i}{\hbar}\delta\theta (\mathbf{n
 
 The operator $\mathbf{n} \cdot \mathbf{J}$ is the generator that produces the change in the quantum state under infinitesimal rotation. The factor $i/\hbar$ is the conventional normalization.
 
-**Connection to Functional Derivatives:**
+**Extracting the Generator:**
 
-In the language of functional analysis, consider a rotation as a transformation of the state vector $|\psi\rangle$. The generator $J_z$, for example, can be understood through:
+The generator can be extracted from the rotation operator by differentiation. For $J_z$:
 
-$$J_z = i\hbar \frac{\partial R_z(\theta)}{\partial \theta}\bigg|_{\theta=0}$$
+$$J_z = i\hbar \frac{d R_z(\theta)}{d \theta}\bigg|_{\theta=0}$$
 
-This is analogous to how momentum generates translations: $p_x = i\hbar \frac{\partial}{\partial x}$. The angular momentum generates rotations.
+This is **not** a functional derivative—it is an ordinary derivative with respect to the rotation angle $\theta$. The derivative is taken at $\theta = 0$ (the identity rotation) to isolate the generator.
+
+**Analogy with Momentum:**
+
+This is directly analogous to how momentum generates spatial translations:
+$$T(a) = e^{-iap_x/\hbar}, \quad p_x = i\hbar \frac{dT(a)}{da}\bigg|_{a=0}$$
+
+Just as $p_x$ generates translations in $x$, the angular momentum components $J_i$ generate rotations about their respective axes.
 
 **Why the Commutation Relations?**
 
