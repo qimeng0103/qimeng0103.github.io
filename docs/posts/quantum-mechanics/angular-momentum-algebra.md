@@ -915,11 +915,9 @@ A partition of $n$ is a way of writing $n$ as a sum of positive integers: $n = \
 
 **Examples:**
 
-| Partition | Young Diagram (Image) | Description | Symmetry Type |
-|:---------:|:---------------------:|:-----------:|:-------------:|
-| $(2)$ | <img src="/images/angular-momentum/two_particle_young_new.png" width="80px"> (left) | Two boxes in one row | Symmetric |
-| $(1,1)$ | <img src="/images/angular-momentum/two_particle_young_new.png" width="80px"> (right) | Two boxes in one column | Antisymmetric |
-| $(2,1)$ | <img src="/images/angular-momentum/young_21_mixed.png" width="60px"> | Two boxes in first row, one in second | Mixed symmetry |
+<img src="/images/angular-momentum/young_partition_examples.png" width="700px" alt="Young diagram examples for various partitions">
+
+*Young diagrams for different partitions. Top row: 3-particle partitions. Bottom row: 4-particle partitions. The shape determines the symmetry type: horizontal rows give symmetric combinations, vertical columns give antisymmetric combinations.*
 
 **Young Diagrams for Two Particles:**
 
@@ -948,18 +946,23 @@ For each box in the Young diagram, draw a "hook"—a line going right along the 
 
 $$h_i = 1 + (\text{boxes to right}) + (\text{boxes below})$$
 
-**Visual Example:**
+**Visual Example: Hook Lengths for Partition (2,1)**
 
-<img src="/images/angular-momentum/young_21_mixed.png" width="120px" alt="Mixed symmetry diagram (2,1)">
+<img src="/images/angular-momentum/young_21_hook_lengths.png" width="350px" alt="Young diagram (2,1) with hook lengths labeled">
 
-*Young diagram for partition (2,1). Numbers indicate hook lengths for each box.*
+*The partition (2,1) with hook lengths labeled in each box. The dimension is calculated as $d = 3!/(3 \cdot 1 \cdot 1) = 2$.*
 
-For the diagram (2,1) with three boxes, the hook lengths are calculated as follows:
+**How to calculate each hook length:**
+
+For each box, draw a "hook" line going right along the row and down along the column. Count:
+- The box itself (= 1)
+- Boxes to the right in the same row
+- Boxes below in the same column
 
 **Box positions and hook lengths:**
-- **Top-left box:** hook length = 3 (1 self + 1 right + 1 below)
-- **Top-right box:** hook length = 1 (1 self + 0 right + 0 below)
-- **Bottom-left box:** hook length = 1 (1 self + 0 right + 0 below)
+- **Top-left box (labeled 3):** 1 (self) + 1 (right) + 1 (below) = **3**
+- **Top-right box (labeled 1):** 1 (self) + 0 (right) + 0 (below) = **1**
+- **Bottom-left box (labeled 1):** 1 (self) + 0 (right) + 0 (below) = **1**
 
 **The +1 is essential**—it accounts for the box itself (the box at the "elbow" of the hook). Without this +1, the formula would give incorrect dimensions.
 
@@ -984,15 +987,11 @@ For three spin-1/2 particles, the Young diagrams and their properties are:
 
 **Step 1: Identify the Partition**
 
-Count the number of boxes in each row:
+Count the number of boxes in each row. The partition is written as $(\lambda_1, \lambda_2, ...)$ where $\lambda_i$ is the number of boxes in row $i$.
 
-| Visual Description | Row Counts | Partition |
-|:------------------:|:----------:|:---------:|
-| Three boxes in one row | (3) | $(3)$ |
-| Two boxes in first row, one in second | (2,1) | $(2,1)$ |
-| Two boxes in each of two rows | (2,2) | $(2,2)$ |
+<img src="/images/angular-momentum/young_partition_examples.png" width="600px" alt="Partition examples">
 
-Refer to the images above to see what these diagrams look like visually.
+*Examples of partitions: (3) is one row of 3; (2,1) is 2 boxes in row 1, 1 box in row 2; (2,2) is a square shape with 2 rows of 2 boxes each.*
 
 **Step 2: Determine the Symmetry Type**
 
@@ -1027,15 +1026,13 @@ For spin-1/2 particles:
 
 **Complete Analysis Table for Two and Three Spin-1/2 Particles:**
 
-| Particles | Partition | Shape Description | Symmetry | Spin $S$ | Dim $(2S+1)$ |
-|:---------:|:---------:|:-----------------:|:--------:|:--------:|:------------:|
-| 2 | $(2)$ | One row of 2 boxes | Symmetric | 1 (Triplet) | 3 |
-| 2 | $(1,1)$ | One column of 2 boxes | Antisymmetric | 0 (Singlet) | 1 |
-| 3 | $(3)$ | One row of 3 boxes | Totally Symmetric | 3/2 (Quartet) | 4 |
-| 3 | $(2,1)$ | 2 boxes in row 1, 1 in row 2 | Mixed | 1/2 (Doublet) | 2 |
-| 3 | $(1,1,1)$ | One column of 3 boxes | Totally Antisymmetric | — | 0 (impossible) |
-
-*Visual reference: See the Young diagram images in the sections above for what these shapes look like.*
+| Particles | Partition | Symmetry | Spin $S$ | Dim $(2S+1)$ | Visual |
+|:---------:|:---------:|:--------:|:--------:|:------------:|:------:|
+| 2 | $(2)$ | Symmetric | 1 (Triplet) | 3 | <img src="/images/angular-momentum/young_2_symmetric_single.png" width="50px"> |
+| 2 | $(1,1)$ | Antisymmetric | 0 (Singlet) | 1 | <img src="/images/angular-momentum/young_11_antisymmetric_single.png" width="25px"> |
+| 3 | $(3)$ | Totally Symmetric | 3/2 (Quartet) | 4 | <img src="/images/angular-momentum/young_3_symmetric_single.png" width="70px"> |
+| 3 | $(2,1)$ | Mixed | 1/2 (Doublet) | 2 | <img src="/images/angular-momentum/young_21_mixed_single.png" width="50px"> |
+| 3 | $(1,1,1)$ | Totally Antisymmetric | — | 0 (impossible) | <img src="/images/angular-momentum/young_111_antisymmetric_single.png" width="25px"> |
 
 **Key Observations:**
 
