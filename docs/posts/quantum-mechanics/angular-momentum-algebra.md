@@ -988,12 +988,6 @@ For three spin-1/2 particles, the Young diagrams and their properties are:
 
 **Step 1: Identify the Partition**
 
-Count the number of boxes in each row. The partition is written as $(\lambda_1, \lambda_2, ...)$ where $\lambda_i$ is the number of boxes in row $i$.
-
-<img src="/images/angular-momentum/young_partition_examples.png" width="600px" alt="Partition examples">
-
-*Examples of partitions: (3) is one row of 3; (2,1) is 2 boxes in row 1, 1 box in row 2; (2,2) is a square shape with 2 rows of 2 boxes each.*
-
 **Step 2: Determine the Symmetry Type**
 
 - **More rows → more antisymmetric**: A tall, thin diagram represents mostly antisymmetric states
@@ -1012,12 +1006,21 @@ The number of such fillings equals the dimension of the representation.
 
 Possible standard Young tableaux:
 
-| Tableau 1 | Tableau 2 |
-|:---------:|:---------:|
-| <pre>1  2<br>3</pre> | <pre>1  3<br>2</pre> |
+$$
+\begin{array}{|c|c|}
+\hline 1 & 2 \\
+\hline 3 \\
+\cline{1-1}
+\end{array}
+\quad
+\begin{array}{|c|c|}
+\hline 1 & 3 \\
+\hline 2 \\
+\cline{1-1}
+\end{array}
+$$
 
-Or in linear notation:
-- $\begin{array}{|c|c|} \hline 1 & 2 \\ \hline 3 \\ \cline{1-1} \end{array}$ and $\begin{array}{|c|c|} \hline 1 & 3 \\ \hline 2 \\ \cline{1-1} \end{array}$
+There are exactly 2 such fillings, so the dimension is 2. This matches our calculation using the hook length formula!
 
 There are exactly 2 such fillings, so the dimension is 2. This matches our calculation using the hook length formula!
 
@@ -1032,11 +1035,11 @@ For spin-1/2 particles:
 
 | Particles | Partition | Symmetry | Spin $S$ | Dim $(2S+1)$ | Visual |
 |:---------:|:---------:|:--------:|:--------:|:------------:|:------:|
-| 2 | $(2)$ | Symmetric | 1 (Triplet) | 3 | <img src="/images/angular-momentum/young_2_symmetric_single.png" width="50px"> |
-| 2 | $(1,1)$ | Antisymmetric | 0 (Singlet) | 1 | <img src="/images/angular-momentum/young_11_antisymmetric_single.png" width="25px"> |
-| 3 | $(3)$ | Totally Symmetric | 3/2 (Quartet) | 4 | <img src="/images/angular-momentum/young_3_symmetric_single.png" width="70px"> |
-| 3 | $(2,1)$ | Mixed | 1/2 (Doublet) | 2 | <img src="/images/angular-momentum/young_21_mixed_single.png" width="50px"> |
-| 3 | $(1,1,1)$ | Totally Antisymmetric | — | 0 (impossible) | <img src="/images/angular-momentum/young_111_antisymmetric_single.png" width="25px"> |
+| 2 | $(2)$ | Symmetric | 1 (Triplet) | 3 | <img src="/images/angular-momentum/young_2_pure.png" width="40px"> |
+| 2 | $(1,1)$ | Antisymmetric | 0 (Singlet) | 1 | <img src="/images/angular-momentum/young_11_pure.png" width="20px"> |
+| 3 | $(3)$ | Totally Symmetric | 3/2 (Quartet) | 4 | <img src="/images/angular-momentum/young_3_pure.png" width="60px"> |
+| 3 | $(2,1)$ | Mixed | 1/2 (Doublet) | 2 | <img src="/images/angular-momentum/young_21_pure.png" width="40px"> |
+| 3 | $(1,1,1)$ | Totally Antisymmetric | — | 0 (impossible) | <img src="/images/angular-momentum/young_111_pure.png" width="20px"> |
 
 **Key Observations:**
 

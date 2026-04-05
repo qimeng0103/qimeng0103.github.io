@@ -16,7 +16,8 @@ from plot_style import setup_style, COLORS
 OUTPUT_DIR = 'docs/images/angular-momentum'
 
 def draw_young_diagram(ax, partition, labels=None, title='', box_size=1.0, 
-                       linewidth=2, edgecolor='black', facecolor='white'):
+                       linewidth=2, edgecolor='black', facecolor='white',
+                       label_color='black', label_fontsize=14):
     """
     Draw a Young diagram on the given axes.
     
@@ -51,7 +52,8 @@ def draw_young_diagram(ax, partition, labels=None, title='', box_size=1.0,
                        -(i + 0.5) * box_size,
                        labels[i * max_cols + j],
                        ha='center', va='center',
-                       fontsize=14)
+                       fontsize=label_fontsize,
+                       color=label_color)
     
     # Set limits and aspect
     ax.set_xlim(-0.2, max_cols * box_size + 0.2)
@@ -62,6 +64,40 @@ def draw_young_diagram(ax, partition, labels=None, title='', box_size=1.0,
     # Add title
     if title:
         ax.set_title(title, fontsize=12, pad=10)
+
+
+def draw_young_diagram_pure(ax, partition, box_size=1.0, linewidth=2, 
+                            edgecolor='black', facecolor='white'):
+    """
+    Draw a Young diagram without any labels or titles - just the boxes.
+    
+    Args:
+        ax: matplotlib axes
+        partition: list of row lengths
+        box_size: size of each box
+    """
+    # Calculate dimensions
+    n_rows = len(partition)
+    max_cols = max(partition) if partition else 0
+    
+    # Draw boxes
+    for i, row_length in enumerate(partition):
+        for j in range(row_length):
+            rect = patches.Rectangle(
+                (j * box_size, -(i + 1) * box_size),
+                box_size, box_size,
+                linewidth=linewidth,
+                edgecolor=edgecolor,
+                facecolor=facecolor,
+                joinstyle='miter'
+            )
+            ax.add_patch(rect)
+    
+    # Set limits - tight around the diagram
+    ax.set_xlim(-0.1, max_cols * box_size + 0.1)
+    ax.set_ylim(-n_rows * box_size - 0.1, 0.1)
+    ax.set_aspect('equal')
+    ax.axis('off')
 
 
 def young_diagram_single(partition, filename, label='', box_labels=None):
@@ -79,6 +115,30 @@ def young_diagram_single(partition, filename, label='', box_labels=None):
     filepath = os.path.join(OUTPUT_DIR, filename)
     fig.savefig(filepath, dpi=200, bbox_inches='tight', 
                 facecolor='white', edgecolor='none')
+    print(f"Saved: {filepath}")
+    plt.close()
+    return filepath
+
+
+def young_diagram_pure(partition, filename, box_size=1.0):
+    """Generate a pure Young diagram figure with no labels."""
+    setup_style()
+    
+    n_rows = len(partition)
+    max_cols = max(partition) if partition else 0
+    
+    # Calculate figure size based on diagram size
+    fig_width = max_cols * 0.5 + 0.2
+    fig_height = n_rows * 0.5 + 0.2
+    
+    fig, ax = plt.subplots(figsize=(fig_width, fig_height))
+    
+    draw_young_diagram_pure(ax, partition, box_size=box_size)
+    
+    plt.tight_layout(pad=0)
+    filepath = os.path.join(OUTPUT_DIR, filename)
+    fig.savefig(filepath, dpi=200, bbox_inches='tight',
+                facecolor='white', edgecolor='none', pad_inches=0.02)
     print(f"Saved: {filepath}")
     plt.close()
     return filepath
@@ -132,26 +192,55 @@ def young_diagram_2particle_comparison():
 
 
 def young_diagram_with_hook_lengths():
-    """Generate diagram showing hook lengths for (2,1) partition."""
+    """Generate diagram showing hook lengths for (2,1) partition - improved design."""
     setup_style()
     
-    fig, ax = plt.subplots(figsize=(4, 3))
+    fig = plt.figure(figsize=(10, 5))
+    
+    # Create grid layout: left for diagram, right for explanation
+    gs = fig.add_gridspec(1, 2, width_ratios=[1, 1.2], wspace=0.3)
+    ax_diagram = fig.add_subplot(gs[0])
+    ax_text = fig.add_subplot(gs[1])
+    ax_text.axis('off')
     
     # Draw (2,1) diagram with hook length labels
     partition = [2, 1]
-    hook_lengths = ['3', '1', '1']  # top-left, top-right, bottom-left
+    hook_lengths = ['3', '1', '1']
     
-    partition_str = '(2,1) with Hook Lengths'
-    title = f'{partition_str}\nDimension: 3!/(3·1·1) = 2'
+    # Draw diagram with colored labels
+    draw_young_diagram(ax_diagram, partition, labels=hook_lengths, 
+                       title='Partition (2,1) with Hook Lengths',
+                       label_color='darkred', label_fontsize=18)
     
-    draw_young_diagram(ax, partition, labels=hook_lengths, title=title)
+    # Add visual hook illustration
+    # Top-left box hook
+    ax_diagram.annotate('', xy=(1.9, -0.1), xytext=(0.1, -0.9),
+                arrowprops=dict(arrowstyle='->', color='blue', lw=1.5))
+    ax_diagram.annotate('', xy=(0.1, -1.9), xytext=(0.9, -1.1),
+                arrowprops=dict(arrowstyle='->', color='green', lw=1.5))
     
-    # Add explanation text
-    ax.text(0.5, -2.2, 'Hook length = 1 + (boxes to right) + (boxes below)',
-            ha='center', va='top', fontsize=9, style='italic',
-            transform=ax.transData)
+    # Explanation text on the right
+    explanation_text = (
+        "Hook Length Formula:\n"
+        "$d = \\frac{n!}{\\prod_i h_i}$\n\n"
+        "For partition (2,1):\n"
+        "• $h_1 = 3$ (top-left)\n"
+        "• $h_2 = 1$ (top-right)\n"
+        "• $h_3 = 1$ (bottom-left)\n\n"
+        "Dimension:\n"
+        "$d = \\frac{3!}{3 \\times 1 \\times 1} = 2$\n\n"
+        "This gives two doublet states ($S=1/2$)"
+    )
     
-    plt.tight_layout()
+    ax_text.text(0.1, 0.95, explanation_text, transform=ax_text.transAxes,
+                fontsize=11, verticalalignment='top', family='monospace',
+                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.3))
+    
+    # Add hook length definition at bottom
+    fig.text(0.5, 0.02, 
+             'Hook length = 1 (self) + boxes to right + boxes below',
+             ha='center', fontsize=10, style='italic')
+    
     filepath = os.path.join(OUTPUT_DIR, 'young_21_hook_lengths.png')
     fig.savefig(filepath, dpi=200, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
@@ -195,17 +284,24 @@ if __name__ == '__main__':
     # Ensure output directory exists
     os.makedirs(OUTPUT_DIR, exist_ok=True)
     
-    # Generate all figures
+    # Generate comparison figures
     young_diagram_2particle_comparison()
     young_diagram_comparison()
     young_diagram_with_hook_lengths()
     young_diagram_partition_examples()
     
-    # Generate individual small diagrams for table use
+    # Generate individual diagrams with labels for reference
     young_diagram_single([2], 'young_2_symmetric_single.png', 'Symmetric')
     young_diagram_single([1, 1], 'young_11_antisymmetric_single.png', 'Antisymmetric')
     young_diagram_single([3], 'young_3_symmetric_single.png', 'Totally Symmetric')
     young_diagram_single([2, 1], 'young_21_mixed_single.png', 'Mixed')
     young_diagram_single([1, 1, 1], 'young_111_antisymmetric_single.png', 'Totally Antisymmetric')
+    
+    # Generate pure diagram versions (no labels) for table use
+    young_diagram_pure([2], 'young_2_pure.png')
+    young_diagram_pure([1, 1], 'young_11_pure.png')
+    young_diagram_pure([3], 'young_3_pure.png')
+    young_diagram_pure([2, 1], 'young_21_pure.png')
+    young_diagram_pure([1, 1, 1], 'young_111_pure.png')
     
     print("\nAll Young diagram figures generated successfully!")
