@@ -609,14 +609,15 @@ The CG coefficients for coupling two spin-1/2 particles are summarized below:
 | $j=0, m=0$ | $\frac{1}{\sqrt{2}}(\vert \uparrow\downarrow\rangle - \vert \downarrow\uparrow\rangle)$ | $\frac{1}{\sqrt{2}}$ |
 
 **Triplet States (Symmetric, S=1):**
-- |1,1⟩ = |↑↑⟩
-- |1,0⟩ = (|↑↓⟩ + |↓↑⟩)/√2  
-- |1,-1⟩ = |↓↓⟩
+**Triplet States (Symmetric, $S=1$):**
+$$|1,1\rangle = |\uparrow\uparrow\rangle$$
+$$|1,0\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle + |\downarrow\uparrow\rangle)$$
+$$|1,-1\rangle = |\downarrow\downarrow\rangle$$
 
-**Singlet State (Antisymmetric, S=0):**
-- |0,0⟩ = (|↑↓⟩ - |↓↑⟩)/√2
+**Singlet State (Antisymmetric, $S=0$):**
+$$|0,0\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle)$$
 
-### 4.8 Orbital-Spin Coupling (j = l ± 1/2)
+### 4.8 Orbital-Spin Coupling ($j = l \pm 1/2$)
 
 **Is $j$ the Coupling of $l$ and $s$? Yes!**
 
@@ -1010,10 +1011,13 @@ The number of such fillings equals the dimension of the representation.
 **Example: Partition (2,1) for 3 particles**
 
 Possible standard Young tableaux:
-```
-1  2      1  3
-3        2
-```
+
+| Tableau 1 | Tableau 2 |
+|:---------:|:---------:|
+| <pre>1  2<br>3</pre> | <pre>1  3<br>2</pre> |
+
+Or in linear notation:
+- $\begin{array}{|c|c|} \hline 1 & 2 \\ \hline 3 \\ \cline{1-1} \end{array}$ and $\begin{array}{|c|c|} \hline 1 & 3 \\ \hline 2 \\ \cline{1-1} \end{array}$
 
 There are exactly 2 such fillings, so the dimension is 2. This matches our calculation using the hook length formula!
 

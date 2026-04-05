@@ -51,7 +51,7 @@ def draw_young_diagram(ax, partition, labels=None, title='', box_size=1.0,
                        -(i + 0.5) * box_size,
                        labels[i * max_cols + j],
                        ha='center', va='center',
-                       fontsize=14, fontweight='bold')
+                       fontsize=14)
     
     # Set limits and aspect
     ax.set_xlim(-0.2, max_cols * box_size + 0.2)
@@ -61,7 +61,7 @@ def draw_young_diagram(ax, partition, labels=None, title='', box_size=1.0,
     
     # Add title
     if title:
-        ax.set_title(title, fontsize=12, fontweight='bold', pad=10)
+        ax.set_title(title, fontsize=12, pad=10)
 
 
 def young_diagram_single(partition, filename, label='', box_labels=None):
@@ -169,7 +169,7 @@ def young_diagram_partition_examples():
     
     diagrams = [
         ([3], '(3)\nOne row', 'Symmetric'),
-        ([2, 1], '(2,1)\nMixed', 'Mixed'),
+        ([2, 1], '(2,1)', 'Mixed'),
         ([1, 1, 1], '(1,1,1)\nOne column', 'Antisymmetric'),
         ([4], '(4)\nOne row', 'Totally Symmetric'),
         ([2, 2], '(2,2)\nSquare', 'Mixed'),
