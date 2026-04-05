@@ -914,9 +914,12 @@ For $n$ spin-1/2 particles:
 A partition of $n$ is a way of writing $n$ as a sum of positive integers: $n = \lambda_1 + \lambda_2 + ...$ where $\lambda_1 \geq \lambda_2 \geq ...$. Each partition corresponds to a unique Young diagram with row lengths $\lambda_i$.
 
 **Examples:**
-- Partition $(2)$: Two boxes in one row $\square\square$ → symmetric
-- Partition $(1,1)$: Two boxes in one column $\begin{matrix}\square\\\square\end{matrix}$ → antisymmetric
-- Partition $(2,1)$: $\begin{matrix}\square&\square\\\square\end{matrix}$ → mixed symmetry
+
+| Partition | Young Diagram (Image) | Description | Symmetry Type |
+|:---------:|:---------------------:|:-----------:|:-------------:|
+| $(2)$ | <img src="/images/angular-momentum/two_particle_young_new.png" width="80px"> (left) | Two boxes in one row | Symmetric |
+| $(1,1)$ | <img src="/images/angular-momentum/two_particle_young_new.png" width="80px"> (right) | Two boxes in one column | Antisymmetric |
+| $(2,1)$ | <img src="/images/angular-momentum/young_21_mixed.png" width="60px"> | Two boxes in first row, one in second | Mixed symmetry |
 
 **Young Diagrams for Two Particles:**
 
@@ -981,10 +984,15 @@ For three spin-1/2 particles, the Young diagrams and their properties are:
 
 **Step 1: Identify the Partition**
 
-Count the number of boxes in each row. For example:
-- $\square\square\square$ → partition $(3)$
-- $\begin{matrix}\square&\square\\\square\end{matrix}$ → partition $(2,1)$
-- $\begin{matrix}\square&\square\\\square&\square\end{matrix}$ → partition $(2,2)$
+Count the number of boxes in each row:
+
+| Visual Description | Row Counts | Partition |
+|:------------------:|:----------:|:---------:|
+| Three boxes in one row | (3) | $(3)$ |
+| Two boxes in first row, one in second | (2,1) | $(2,1)$ |
+| Two boxes in each of two rows | (2,2) | $(2,2)$ |
+
+Refer to the images above to see what these diagrams look like visually.
 
 **Step 2: Determine the Symmetry Type**
 
@@ -1019,13 +1027,15 @@ For spin-1/2 particles:
 
 **Complete Analysis Table for Two and Three Spin-1/2 Particles:**
 
-| Particles | Partition | Diagram | Symmetry | Spin $S$ | Dim $(2S+1)$ |
-|:---------:|:---------:|:-------:|:--------:|:--------:|:------------:|
-| 2 | $(2)$ | $\square\square$ | Symmetric | 1 (Triplet) | 3 |
-| 2 | $(1,1)$ | $\begin{matrix}\square\\\square\end{matrix}$ | Antisymmetric | 0 (Singlet) | 1 |
-| 3 | $(3)$ | $\square\square\square$ | Totally Symmetric | 3/2 (Quartet) | 4 |
-| 3 | $(2,1)$ | $\begin{matrix}\square&\square\\\square\end{matrix}$ | Mixed | 1/2 (Doublet) | 2 |
-| 3 | $(1,1,1)$ | $\begin{matrix}\square\\\square\\\square\end{matrix}$ | Totally Antisymmetric | — | 0 (impossible for spin-1/2) |
+| Particles | Partition | Shape Description | Symmetry | Spin $S$ | Dim $(2S+1)$ |
+|:---------:|:---------:|:-----------------:|:--------:|:--------:|:------------:|
+| 2 | $(2)$ | One row of 2 boxes | Symmetric | 1 (Triplet) | 3 |
+| 2 | $(1,1)$ | One column of 2 boxes | Antisymmetric | 0 (Singlet) | 1 |
+| 3 | $(3)$ | One row of 3 boxes | Totally Symmetric | 3/2 (Quartet) | 4 |
+| 3 | $(2,1)$ | 2 boxes in row 1, 1 in row 2 | Mixed | 1/2 (Doublet) | 2 |
+| 3 | $(1,1,1)$ | One column of 3 boxes | Totally Antisymmetric | — | 0 (impossible) |
+
+*Visual reference: See the Young diagram images in the sections above for what these shapes look like.*
 
 **Key Observations:**
 
