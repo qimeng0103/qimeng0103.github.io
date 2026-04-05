@@ -16,7 +16,7 @@ from plot_style import setup_style, COLORS
 OUTPUT_DIR = 'docs/images/angular-momentum'
 
 def draw_young_diagram(ax, partition, labels=None, title='', box_size=1.0, 
-                       linewidth=2, edgecolor='black', facecolor='white',
+                       linewidth=1.5, edgecolor='black', facecolor='white',
                        label_color='black', label_fontsize=14):
     """
     Draw a Young diagram on the given axes.
@@ -27,6 +27,7 @@ def draw_young_diagram(ax, partition, labels=None, title='', box_size=1.0,
         labels: optional labels to put inside boxes
         title: title above the diagram
         box_size: size of each box
+        linewidth: line width for box edges (default 1.5, thinner)
     """
     # Calculate dimensions
     n_rows = len(partition)
@@ -67,7 +68,7 @@ def draw_young_diagram(ax, partition, labels=None, title='', box_size=1.0,
         ax.set_title(title, fontsize=12, pad=10, fontweight='normal')
 
 
-def draw_young_diagram_pure(ax, partition, box_size=1.0, linewidth=2, 
+def draw_young_diagram_pure(ax, partition, box_size=1.0, linewidth=1.5, 
                             edgecolor='black', facecolor='white'):
     """
     Draw a Young diagram without any labels or titles - just the boxes.
@@ -76,6 +77,7 @@ def draw_young_diagram_pure(ax, partition, box_size=1.0, linewidth=2,
         ax: matplotlib axes
         partition: list of row lengths
         box_size: size of each box
+        linewidth: line width for box edges (default 1.5, thinner)
     """
     # Calculate dimensions
     n_rows = len(partition)
@@ -193,25 +195,25 @@ def young_diagram_2particle_comparison():
 
 
 def young_diagram_with_hook_lengths():
-    """Generate minimal hook length diagram - very small, minimal whitespace."""
+    """Generate minimal hook length diagram - thin lines, minimal whitespace."""
     setup_style()
     
-    # Very small figure - minimal whitespace
-    fig = plt.figure(figsize=(1.6, 1.5))
-    # [left, bottom, width, height] - very tight
-    ax = fig.add_axes([0.05, 0.18, 0.9, 0.72])
+    # Small figure - minimal whitespace
+    fig = plt.figure(figsize=(1.4, 1.35))
+    # [left, bottom, width, height] - very tight, higher bottom to reduce top whitespace
+    ax = fig.add_axes([0.08, 0.25, 0.84, 0.68])
     
-    # Draw (2,1) diagram with hook length labels
+    # Draw (2,1) diagram with hook length labels - thin lines
     partition = [2, 1]
     hook_lengths = ['3', '1', '1']
     
-    # Draw the diagram with smaller labels
+    # Draw the diagram with thinner lines and smaller labels
     draw_young_diagram(ax, partition, labels=hook_lengths, title='',
-                       label_color='darkred', label_fontsize=11)
+                       label_color='darkred', label_fontsize=10, linewidth=1.2)
     
-    # Caption below - smaller font
-    fig.text(0.5, 0.06, r'$d = 3!/(3 \cdot 1 \cdot 1) = 2$',
-             ha='center', fontsize=8)
+    # Caption below - smaller font, positioned lower
+    fig.text(0.5, 0.08, r'$d = 3!/(3 \cdot 1 \cdot 1) = 2$',
+             ha='center', fontsize=7)
     
     filepath = os.path.join(OUTPUT_DIR, 'young_21_hook_lengths.png')
     fig.savefig(filepath, dpi=200, facecolor='white', edgecolor='none')
