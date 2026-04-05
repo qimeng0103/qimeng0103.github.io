@@ -53,7 +53,8 @@ def draw_young_diagram(ax, partition, labels=None, title='', box_size=1.0,
                        labels[i * max_cols + j],
                        ha='center', va='center',
                        fontsize=label_fontsize,
-                       color=label_color)
+                       color=label_color,
+                       fontweight='normal')  # Ensure no bold
     
     # Set limits and aspect
     ax.set_xlim(-0.2, max_cols * box_size + 0.2)
@@ -63,7 +64,7 @@ def draw_young_diagram(ax, partition, labels=None, title='', box_size=1.0,
     
     # Add title
     if title:
-        ax.set_title(title, fontsize=12, pad=10)
+        ax.set_title(title, fontsize=12, pad=10, fontweight='normal')
 
 
 def draw_young_diagram_pure(ax, partition, box_size=1.0, linewidth=2, 
@@ -192,55 +193,35 @@ def young_diagram_2particle_comparison():
 
 
 def young_diagram_with_hook_lengths():
-    """Generate diagram showing hook lengths for (2,1) partition - improved design."""
+    """Generate diagram showing hook lengths for (2,1) partition - clean design."""
     setup_style()
     
-    fig = plt.figure(figsize=(10, 5))
-    
-    # Create grid layout: left for diagram, right for explanation
-    gs = fig.add_gridspec(1, 2, width_ratios=[1, 1.2], wspace=0.3)
-    ax_diagram = fig.add_subplot(gs[0])
-    ax_text = fig.add_subplot(gs[1])
-    ax_text.axis('off')
+    fig, ax = plt.subplots(figsize=(6, 4))
     
     # Draw (2,1) diagram with hook length labels
     partition = [2, 1]
     hook_lengths = ['3', '1', '1']
     
-    # Draw diagram with colored labels
-    draw_young_diagram(ax_diagram, partition, labels=hook_lengths, 
-                       title='Partition (2,1) with Hook Lengths',
-                       label_color='darkred', label_fontsize=18)
+    # Draw the diagram
+    draw_young_diagram(ax, partition, labels=hook_lengths, title='',
+                       label_color='darkred', label_fontsize=20)
     
-    # Add visual hook illustration
-    # Top-left box hook
-    ax_diagram.annotate('', xy=(1.9, -0.1), xytext=(0.1, -0.9),
-                arrowprops=dict(arrowstyle='->', color='blue', lw=1.5))
-    ax_diagram.annotate('', xy=(0.1, -1.9), xytext=(0.9, -1.1),
-                arrowprops=dict(arrowstyle='->', color='green', lw=1.5))
+    # Draw hook illustrations - L-shaped hooks
+    # Top-left box hook (length 3): goes right 1 and down 1
+    # Draw L-shape in the box
+    ax.plot([0.1, 0.9], [-0.5, -0.5], 'b-', linewidth=2, alpha=0.6)  # horizontal
+    ax.plot([0.5, 0.5], [-0.9, -0.1], 'b-', linewidth=2, alpha=0.6)  # vertical
     
-    # Explanation text on the right
-    explanation_text = (
-        "Hook Length Formula:\n"
-        "$d = \\frac{n!}{\\prod_i h_i}$\n\n"
-        "For partition (2,1):\n"
-        "• $h_1 = 3$ (top-left)\n"
-        "• $h_2 = 1$ (top-right)\n"
-        "• $h_3 = 1$ (bottom-left)\n\n"
-        "Dimension:\n"
-        "$d = \\frac{3!}{3 \\times 1 \\times 1} = 2$\n\n"
-        "This gives two doublet states ($S=1/2$)"
-    )
+    # Add title with formula
+    ax.set_title('Partition (2,1) with Hook Lengths\n$d = 3!/(3 \\cdot 1 \\cdot 1) = 2$', 
+                 fontsize=12, pad=10)
     
-    ax_text.text(0.1, 0.95, explanation_text, transform=ax_text.transAxes,
-                fontsize=11, verticalalignment='top', family='monospace',
-                bbox=dict(boxstyle='round', facecolor='wheat', alpha=0.3))
-    
-    # Add hook length definition at bottom
+    # Add explanation below
     fig.text(0.5, 0.02, 
              'Hook length = 1 (self) + boxes to right + boxes below',
              ha='center', fontsize=10, style='italic')
     
+    plt.tight_layout()
     filepath = os.path.join(OUTPUT_DIR, 'young_21_hook_lengths.png')
     fig.savefig(filepath, dpi=200, bbox_inches='tight',
                 facecolor='white', edgecolor='none')
@@ -278,6 +259,32 @@ def young_diagram_partition_examples():
     return filepath
 
 
+def young_diagram_individual_with_label(partition, filename, label_text):
+    """Generate individual diagram with custom label - no bold."""
+    setup_style()
+    
+    n_rows = len(partition)
+    max_cols = max(partition) if partition else 0
+    
+    fig_width = max(4, max_cols * 1.5)
+    fig_height = max(2.5, n_rows * 1.2 + 0.5)
+    
+    fig, ax = plt.subplots(figsize=(fig_width, fig_height))
+    
+    partition_str = '(' + ','.join(map(str, partition)) + ')'
+    title = f'{partition_str} {label_text}'
+    
+    draw_young_diagram(ax, partition, title=title)
+    
+    plt.tight_layout()
+    filepath = os.path.join(OUTPUT_DIR, filename)
+    fig.savefig(filepath, dpi=200, bbox_inches='tight',
+                facecolor='white', edgecolor='none')
+    print(f"Saved: {filepath}")
+    plt.close()
+    return filepath
+
+
 if __name__ == '__main__':
     print("Generating Young diagram figures...")
     
@@ -290,12 +297,12 @@ if __name__ == '__main__':
     young_diagram_with_hook_lengths()
     young_diagram_partition_examples()
     
-    # Generate individual diagrams with labels for reference
-    young_diagram_single([2], 'young_2_symmetric_single.png', 'Symmetric')
-    young_diagram_single([1, 1], 'young_11_antisymmetric_single.png', 'Antisymmetric')
-    young_diagram_single([3], 'young_3_symmetric_single.png', 'Totally Symmetric')
-    young_diagram_single([2, 1], 'young_21_mixed_single.png', 'Mixed')
-    young_diagram_single([1, 1, 1], 'young_111_antisymmetric_single.png', 'Totally Antisymmetric')
+    # Generate individual diagrams with labels for reference - NO BOLD
+    young_diagram_individual_with_label([2], 'young_2_symmetric_single.png', 'Symmetric')
+    young_diagram_individual_with_label([1, 1], 'young_11_antisymmetric_single.png', 'Antisymmetric')
+    young_diagram_individual_with_label([3], 'young_3_symmetric.png', 'Symmetric')
+    young_diagram_individual_with_label([2, 1], 'young_21_mixed.png', 'Mixed Symmetry')
+    young_diagram_individual_with_label([1, 1, 1], 'young_111_antisymmetric_single.png', 'Antisymmetric')
     
     # Generate pure diagram versions (no labels) for table use
     young_diagram_pure([2], 'young_2_pure.png')

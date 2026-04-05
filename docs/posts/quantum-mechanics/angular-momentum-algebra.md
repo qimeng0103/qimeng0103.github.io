@@ -1006,21 +1006,21 @@ The number of such fillings equals the dimension of the representation.
 
 Possible standard Young tableaux:
 
+Possible standard Young tableaux for partition $(2,1)$:
+
 $$
 \begin{array}{|c|c|}
 \hline 1 & 2 \\
 \hline 3 \\
 \cline{1-1}
 \end{array}
-\quad
+\qquad
 \begin{array}{|c|c|}
 \hline 1 & 3 \\
 \hline 2 \\
 \cline{1-1}
 \end{array}
 $$
-
-There are exactly 2 such fillings, so the dimension is 2. This matches our calculation using the hook length formula!
 
 There are exactly 2 such fillings, so the dimension is 2. This matches our calculation using the hook length formula!
 
