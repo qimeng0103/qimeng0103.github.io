@@ -193,11 +193,12 @@ def young_diagram_2particle_comparison():
 
 
 def young_diagram_with_hook_lengths():
-    """Generate simple diagram showing hook lengths for (2,1) partition."""
+    """Generate minimal hook length diagram - only 3 numbers on the diagram."""
     setup_style()
     
-    fig = plt.figure(figsize=(4.5, 3))
-    ax = fig.add_axes([0.1, 0.15, 0.5, 0.75])  # [left, bottom, width, height]
+    # Very simple figure: just the diagram with 3 numbers
+    fig = plt.figure(figsize=(3, 2.8))
+    ax = fig.add_axes([0.12, 0.08, 0.76, 0.65])  # Tight layout
     
     # Draw (2,1) diagram with hook length labels only
     partition = [2, 1]
@@ -205,16 +206,11 @@ def young_diagram_with_hook_lengths():
     
     # Draw the diagram
     draw_young_diagram(ax, partition, labels=hook_lengths, title='',
-                       label_color='darkred', label_fontsize=20)
+                       label_color='darkred', label_fontsize=18)
     
-    # Title at top
-    fig.text(0.5, 0.95, 'Partition (2,1) with Hook Lengths', 
-             ha='center', fontsize=12, fontweight='normal')
-    fig.text(0.5, 0.88, r'$d = 3!/(3 \cdot 1 \cdot 1) = 2$',
-             ha='center', fontsize=11, style='italic')
-    
-    # Simple explanation on the right
-    fig.text(0.65, 0.65, r'$h_i = 1 + $(right + below)', fontsize=10)
+    # Minimal caption below
+    fig.text(0.5, 0.02, r'$d = 3!/(3 \cdot 1 \cdot 1) = 2$',
+             ha='center', fontsize=11)
     
     filepath = os.path.join(OUTPUT_DIR, 'young_21_hook_lengths.png')
     fig.savefig(filepath, dpi=200, facecolor='white', edgecolor='none')
