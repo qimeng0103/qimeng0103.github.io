@@ -1015,14 +1015,14 @@ Possible standard Young tableaux:
 $$
 \begin{array}{|c|c|}
 \hline 1 & 2 \\
-\hline 3 \\
-\cline{1-1}
+\hline 3 & \multicolumn{1}{c}{} \\
+\hline
 \end{array}
 \qquad
 \begin{array}{|c|c|}
 \hline 1 & 3 \\
-\hline 2 \\
-\cline{1-1}
+\hline 2 & \multicolumn{1}{c}{} \\
+\hline
 \end{array}
 $$
 

@@ -193,10 +193,11 @@ def young_diagram_2particle_comparison():
 
 
 def young_diagram_with_hook_lengths():
-    """Generate diagram showing hook lengths for (2,1) partition - clean design."""
+    """Generate diagram showing hook lengths for (2,1) partition - compact design."""
     setup_style()
     
-    fig, ax = plt.subplots(figsize=(6, 4))
+    fig = plt.figure(figsize=(5, 3.5))
+    ax = fig.add_axes([0.15, 0.15, 0.4, 0.7])  # [left, bottom, width, height]
     
     # Draw (2,1) diagram with hook length labels
     partition = [2, 1]
@@ -204,27 +205,40 @@ def young_diagram_with_hook_lengths():
     
     # Draw the diagram
     draw_young_diagram(ax, partition, labels=hook_lengths, title='',
-                       label_color='darkred', label_fontsize=20)
+                       label_color='darkred', label_fontsize=18)
     
-    # Draw hook illustrations - L-shaped hooks
-    # Top-left box hook (length 3): goes right 1 and down 1
-    # Draw L-shape in the box
-    ax.plot([0.1, 0.9], [-0.5, -0.5], 'b-', linewidth=2, alpha=0.6)  # horizontal
-    ax.plot([0.5, 0.5], [-0.9, -0.1], 'b-', linewidth=2, alpha=0.6)  # vertical
+    # Draw hook illustrations - small L-shapes in corner of each box
+    # Top-left box: hook goes right and down
+    ax.plot([0.15, 0.85], [-0.15, -0.15], 'b-', linewidth=1.5, alpha=0.7)
+    ax.plot([0.15, 0.15], [-0.15, -0.85], 'b-', linewidth=1.5, alpha=0.7)
     
-    # Add title with formula
-    ax.set_title('Partition (2,1) with Hook Lengths\n$d = 3!/(3 \\cdot 1 \\cdot 1) = 2$', 
-                 fontsize=12, pad=10)
+    # Top-right box: hook is just a point (no extension)
+    ax.plot([1.5], [-0.5], 'b.', markersize=8, alpha=0.7)
     
-    # Add explanation below
-    fig.text(0.5, 0.02, 
-             'Hook length = 1 (self) + boxes to right + boxes below',
-             ha='center', fontsize=10, style='italic')
+    # Bottom-left box: hook is just a point (no extension)
+    ax.plot([0.5], [-1.5], 'b.', markersize=8, alpha=0.7)
     
-    plt.tight_layout()
+    # Title
+    fig.text(0.5, 0.92, 'Partition (2,1) with Hook Lengths', 
+             ha='center', fontsize=12, fontweight='normal')
+    fig.text(0.5, 0.85, r'$d = 3!/(3 \cdot 1 \cdot 1) = 2$',
+             ha='center', fontsize=11, style='italic')
+    
+    # Explanation on the right side
+    fig.text(0.62, 0.65, 'Hook Lengths:', fontsize=10, fontweight='bold')
+    fig.text(0.62, 0.55, r'$h_1 = 3$ (top-left)', fontsize=9)
+    fig.text(0.62, 0.48, r'$h_2 = 1$ (top-right)', fontsize=9)
+    fig.text(0.62, 0.41, r'$h_3 = 1$ (bottom-left)', fontsize=9)
+    
+    fig.text(0.62, 0.30, 'Formula:', fontsize=10, fontweight='bold')
+    fig.text(0.62, 0.22, r'$d = \frac{n!}{\prod h_i}$', fontsize=10)
+    
+    # Bottom note
+    fig.text(0.5, 0.05, 'Hook = self + right + below', 
+             ha='center', fontsize=9, style='italic')
+    
     filepath = os.path.join(OUTPUT_DIR, 'young_21_hook_lengths.png')
-    fig.savefig(filepath, dpi=200, bbox_inches='tight',
-                facecolor='white', edgecolor='none')
+    fig.savefig(filepath, dpi=200, facecolor='white', edgecolor='none')
     print(f"Saved: {filepath}")
     plt.close()
     return filepath
@@ -260,26 +274,29 @@ def young_diagram_partition_examples():
 
 
 def young_diagram_individual_with_label(partition, filename, label_text):
-    """Generate individual diagram with custom label - no bold."""
+    """Generate individual diagram with custom label - no bold, compact."""
     setup_style()
     
     n_rows = len(partition)
     max_cols = max(partition) if partition else 0
     
-    fig_width = max(4, max_cols * 1.5)
-    fig_height = max(2.5, n_rows * 1.2 + 0.5)
+    # Tight figure size
+    fig_width = max(3, max_cols * 1.2)
+    fig_height = max(2, n_rows * 0.8 + 0.6)
     
-    fig, ax = plt.subplots(figsize=(fig_width, fig_height))
+    fig = plt.figure(figsize=(fig_width, fig_height))
+    ax = fig.add_axes([0.05, 0.15, 0.9, 0.6])  # Tight layout
     
     partition_str = '(' + ','.join(map(str, partition)) + ')'
     title = f'{partition_str} {label_text}'
     
-    draw_young_diagram(ax, partition, title=title)
+    draw_young_diagram(ax, partition, title='')
     
-    plt.tight_layout()
+    # Add title as fig text for better control
+    fig.text(0.5, 0.88, title, ha='center', fontsize=14, fontweight='normal')
+    
     filepath = os.path.join(OUTPUT_DIR, filename)
-    fig.savefig(filepath, dpi=200, bbox_inches='tight',
-                facecolor='white', edgecolor='none')
+    fig.savefig(filepath, dpi=200, facecolor='white', edgecolor='none')
     print(f"Saved: {filepath}")
     plt.close()
     return filepath
@@ -297,7 +314,7 @@ if __name__ == '__main__':
     young_diagram_with_hook_lengths()
     young_diagram_partition_examples()
     
-    # Generate individual diagrams with labels for reference - NO BOLD
+    # Generate individual diagrams with labels - compact, no bold
     young_diagram_individual_with_label([2], 'young_2_symmetric_single.png', 'Symmetric')
     young_diagram_individual_with_label([1, 1], 'young_11_antisymmetric_single.png', 'Antisymmetric')
     young_diagram_individual_with_label([3], 'young_3_symmetric.png', 'Symmetric')
