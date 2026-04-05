@@ -257,6 +257,30 @@ Other conventions exist (e.g., making $J_x$ or $J_y$ diagonal), but Condon-Short
 
 **Warning:** When looking up CG coefficients in tables or using software, always check which convention is being used. The signs of CG coefficients depend on this choice.
 
+### 2.6 Products and Powers of Ladder Operators
+
+The ladder operators can be combined to create useful identities for calculations.
+
+**Products of Ladder Operators:**
+
+Using $J_-J_+ = J^2 - J_z^2 - \hbar J_z$ and $J_+J_- = J^2 - J_z^2 + \hbar J_z$:
+
+$$L_-L_+|lm\rangle = [l(l+1) - m(m+1)]\hbar^2|lm\rangle$$
+
+$$L_+L_-|lm\rangle = [l(l+1) - m(m-1)]\hbar^2|lm\rangle$$
+
+These identities are useful when calculating expectation values or when applying ladder operators successively.
+
+**Double-Step Operators:**
+
+Applying $J_+$ twice:
+$$L_+^2|lm\rangle = \sqrt{[l(l+1)-m(m+1)][l(l+1)-(m+1)(m+2)]}\hbar^2|l,m+2\rangle$$
+
+Similarly for $L_-^2$:
+$$L_-^2|lm\rangle = \sqrt{[l(l+1)-m(m-1)][l(l+1)-(m-1)(m-2)]}\hbar^2|l,m-2\rangle$$
+
+These formulas are essential for calculating higher-order expectation values and transition matrix elements.
+
 ---
 
 ## Part III: Spin Systems and Matrix Representations
@@ -340,123 +364,11 @@ The off-diagonal matrix elements follow the general formula $\hbar\sqrt{(j-m)(j+
 
 ---
 
-## Part IV: Applications of Angular Momentum Algebra
-
-This section explores practical applications of angular momentum algebra, including expectation value calculations, measurement probabilities, and symmetry properties in quantum systems.
-
-### 4.1 Fourth Power Expectation Values of Angular Momentum Components
-
-For a particle in the orbital angular momentum state $|lm\rangle$ with $l = 1$, the expectation value $\langle L_x^4 \rangle$ can be calculated using the ladder operator representation.
-
-**Ladder Operator Method**
-
-The $L_x$ operator can be expressed in terms of ladder operators:
-$$L_x = \frac{1}{2}(L_+ + L_-)$$
-
-Therefore:
-$$L_x^4 = \frac{1}{16}(L_+ + L_-)^4$$
-
-When expanding $(L_+ + L_-)^4$, the non-zero terms in the $|lm\rangle$ state are those with equal numbers of $L_+$ and $L_-$ operators. For $l = 1$, a useful property in this subspace is:
-$$L_x^3 = L_x, \quad L_y^3 = L_y$$
-
-This implies the pattern:
-$$L_x^{2m+1} = L_x, \quad L_x^{2m} = L_x^2$$
-
-**General Result for $\langle L_x^2 \rangle$ and $\langle L_y^2 \rangle$**
-
-Using the angular momentum algebra:
-$$\langle L_x^2 \rangle = \langle L_y^2 \rangle = \frac{1}{2}[l(l+1) - m^2]\hbar^2$$
-
-For $l = 1$:
-$$\langle L_x^2 \rangle = \langle L_y^2 \rangle = \frac{1}{2}(2 - m^2)\hbar^2$$
-
-Therefore:
-$$\langle L_x^4 \rangle = \langle L_x^2 \rangle = \frac{1}{2}(2 - m^2)\hbar^4$$
-
-**Specific Values:**
-- For $m = 0$: $\langle L_x^4 \rangle = \hbar^4$
-- For $m = \pm 1$: $\langle L_x^4 \rangle = \frac{1}{2}\hbar^4$
-
-### 4.2 Measurement Probabilities for $L_x$ in $Y_{20}$ State
-
-When a particle is in the common eigenstate $Y_{20}$ of $(L^2, L_z)$, we can determine the possible measured values of $L_x$ and their corresponding probabilities using coordinate rotation methods.
-
-**Rotation Method**
-
-The spherical harmonics $Y_{2m}(\theta, \phi)$ are eigenfunctions of $L_z$. To find $L_x$ eigenstates, we perform a coordinate rotation $x \to y$, $y \to z$, $z \to x$.
-
-**Explicit Forms of $Y_{2m}$:**
-
-$$Y_{2,\pm 2} = \frac{1}{2}\sqrt{\frac{15}{8\pi}}\frac{(x \pm iy)^2}{r^2}$$
-
-$$Y_{2,\pm 1} = \mp\sqrt{\frac{15}{8\pi}}\frac{(x \pm iy)z}{r^2}$$
-
-$$Y_{2,0} = \sqrt{\frac{5}{16\pi}}\frac{2z^2 - x^2 - y^2}{r^2}$$
-
-**Eigenstates of $L_x$ (denoted $Y_{2m}^x$):**
-
-By cyclic permutation:
-
-$$Y_{2,0}^x = -\frac{1}{2}Y_{2,0} + \frac{\sqrt{3}}{2\sqrt{2}}(Y_{2,-2} + Y_{2,2})$$
-
-$$Y_{2,\pm 1}^x = \pm\frac{i}{2}(Y_{2,2} - Y_{2,-2}) + \frac{i}{2}(Y_{2,1} - Y_{2,-1})$$
-
-$$Y_{2,\pm 2}^x = -\frac{\sqrt{3}}{2\sqrt{2}}Y_{2,0} \mp \frac{1}{2}(Y_{2,1} + Y_{2,-1}) - \frac{1}{4}(Y_{2,-2} + Y_{2,2})$$
-
-**Expanding $Y_{2,0}$ in $L_x$ Eigenstates:**
-
-From the expression for $Y_{2,0}^x$, we can invert to find:
-
-$$Y_{2,0} = -\frac{1}{2}Y_{2,0}^x - \frac{\sqrt{3}}{2\sqrt{2}}(Y_{2,-2}^x + Y_{2,2}^x)$$
-
-**Measurement Probabilities:**
-
-The possible measured values of $L_x$ are $0, \pm\hbar, \pm 2\hbar$ with probabilities:
-
-| $L_x$ Value | Probability |
-|-------------|-------------|
-| $0$ | $\frac{1}{4}$ |
-| $\pm\hbar$ | $0$ |
-| $\pm 2\hbar$ | $\frac{3}{8}$ each |
-
-**Alternative Method using Expectation Values**
-
-The probabilities $P_m^{(20)}$ for measuring $L_x = m\hbar$ satisfy:
-
-1. Normalization: $P_0 + 2P_1 + 2P_2 = 1$
-2. $\langle L_x^2 \rangle = 2\hbar^2$: $2P_1 \cdot \hbar^2 + 2P_2 \cdot 4\hbar^2 = 2\hbar^2$
-3. $\langle L_x^4 \rangle = 12\hbar^4$: $2P_1 \cdot \hbar^4 + 2P_2 \cdot 16\hbar^4 = 12\hbar^4$
-
-Solving this system yields:
-$$P_0 = \frac{1}{4}, \quad P_1 = 0, \quad P_2 = \frac{3}{8}$$
-
-### 4.3 Action of Ladder Operators on Angular Momentum States
-
-**General Formulas (Condon-Shortley Phase Convention):**
-
-$$J_{\pm}|jm\rangle = \sqrt{(j \mp m)(j \pm m + 1)}\hbar|j, m \pm 1\rangle$$
-
-**Products of Ladder Operators:**
-
-$$L_-L_+|lm\rangle = [l(l+1) - m(m+1)]\hbar^2|lm\rangle$$
-
-$$L_+L_-|lm\rangle = [l(l+1) - m(m-1)]\hbar^2|lm\rangle$$
-
-**Double-Step Operators:**
-
-$$L_+^2|lm\rangle = \sqrt{[l(l+1)-m(m+1)][l(l+1)-(m+1)(m+2)]}\hbar^2|l,m+2\rangle$$
-
-$$L_-^2|lm\rangle = \sqrt{[l(l+1)-m(m-1)][l(l+1)-(m-1)(m-2)]}\hbar^2|l,m-2\rangle$$
-
-These formulas are essential for calculating higher-order expectation values and transition matrix elements.
-
----
-
-## Part V: Addition of Angular Momenta and Clebsch-Gordan Coefficients
+## Part IV: Addition of Angular Momenta and Clebsch-Gordan Coefficients
 
 Having established the algebraic structure of angular momentum and explored its matrix representations, we now turn to the problem of combining multiple angular momenta. This is essential for systems with multiple particles or for coupling orbital and spin angular momenta. The key mathematical tool for this is the **Clebsch-Gordan decomposition**, which expresses the tensor product of two angular momentum representations as a direct sum of irreducible representations.
 
-### 5.1 Tensor Product Space
+### 4.1 Tensor Product Space
 
 Consider two independent angular momenta $\mathbf{J}_1$ and $\mathbf{J}_2$ with:
 
@@ -467,7 +379,7 @@ $$|j_1, m_1; j_2, m_2\rangle = |j_1, m_1\rangle \otimes |j_2, m_2\rangle$$
 
 with $(2j_1+1)(2j_2+1)$ states.
 
-### 5.2 Total Angular Momentum
+### 4.2 Total Angular Momentum
 
 Define the total angular momentum:
 
@@ -483,7 +395,7 @@ $$= i\hbar\varepsilon_{ijk}J_{1k} + 0 + 0 + i\hbar\varepsilon_{ijk}J_{2k} = i\hb
 
 $$= i\hbar\varepsilon_{ijk}J_k$$
 
-### 5.3 Clebsch-Gordan Expansion
+### 4.3 Clebsch-Gordan Expansion
 
 The total angular momentum $J^2$ and $J_z$ have eigenstates:
 
@@ -493,7 +405,7 @@ where $\langle j_1, m_1; j_2, m_2|j, m\rangle$ are the **Clebsch-Gordan (CG) coe
 
 **Selection Rule**: $m = m_1 + m_2$
 
-### 5.4 Determining Allowed Values of Total $j$
+### 4.4 Determining Allowed Values of Total $j$
 
 **Constraint**: $m = m_1 + m_2$ since $J_z = J_{1z} + J_{2z}$.
 
@@ -534,7 +446,7 @@ While this looks similar to classical vector addition ($|\mathbf{J}_1 - \mathbf{
 
 The "triangle rule" name comes from the geometric picture where the three angular momentum vectors form a triangle, but remember that in quantum mechanics, the lengths of these vectors are quantized as $\sqrt{j(j+1)}\hbar$, not arbitrary values.
 
-### 5.5 General CG Coefficient Derivation from Matrix Elements
+### 4.5 General CG Coefficient Derivation from Matrix Elements
 
 **Setting Up the Problem:**
 
@@ -625,7 +537,7 @@ where the sum is over all integers $k$ that keep all factorial arguments non-neg
 
 ---
 
-### 5.6 Two Spin-1/2 System: Detailed CG Coefficient Calculation
+### 4.6 Two Spin-1/2 System: Detailed CG Coefficient Calculation
 
 Now let's apply the general method to the specific case of two spin-1/2 particles ($j_1 = j_2 = 1/2$):
 
@@ -683,7 +595,7 @@ $$J^2|0,0\rangle = \left(\frac{3\hbar^2}{2} + \frac{\hbar^2}{2}\right)|0,0\rangl
 
 This confirms $|0,0\rangle$ has $j = 0$.
 
-### 5.7 CG Coefficient Table for Two Spin-1/2
+### 4.7 CG Coefficient Table for Two Spin-1/2
 
 The CG coefficients for coupling two spin-1/2 particles are summarized below:
 
@@ -702,7 +614,7 @@ The CG coefficients for coupling two spin-1/2 particles are summarized below:
 **Singlet State (Antisymmetric, S=0):**
 - |0,0⟩ = (|↑↓⟩ - |↓↑⟩)/√2
 
-### 5.8 Orbital-Spin Coupling (j = l ± 1/2)
+### 4.8 Orbital-Spin Coupling (j = l ± 1/2)
 
 **Is $j$ the Coupling of $l$ and $s$? Yes!**
 
@@ -736,7 +648,7 @@ $$|j = l - 1/2, m_j\rangle = -\sqrt{\frac{l - m_j + 1/2}{2l + 1}}|l, m_j - 1/2; 
 
 ## Part VI: Group Representation Theory and Young Tableaux
 
-The addition of angular momenta discussed in Part V has a deep group-theoretic interpretation. The different values of total angular momentum $j$ that result from coupling $j_1$ and $j_2$ correspond to the **irreducible representations** that appear in the decomposition of the tensor product representation. This part develops the mathematical framework of rotation groups and introduces Young tableaux as a powerful tool for classifying symmetry types in multi-particle systems.
+The addition of angular momenta discussed in Part IV has a deep group-theoretic interpretation. The different values of total angular momentum $j$ that result from coupling $j_1$ and $j_2$ correspond to the **irreducible representations** that appear in the decomposition of the tensor product representation. This part develops the mathematical framework of rotation groups and introduces Young tableaux as a powerful tool for classifying symmetry types in multi-particle systems.
 
 ### 6.1 Rotation Groups SO(3) and SU(2)
 
@@ -1121,7 +1033,57 @@ The magnetic quantum number $m$ determines the orientation:
 - For $m = 0$: Maximum amplitude along $z$-axis
 - For $m = \pm l$: Maximum amplitude in $xy$-plane (toroidal shape for large $l$)
 
-### 7.3 Angular Momentum in Central Force Fields: Key Theorems
+### 7.3 Measurement Probabilities for $L_x$ in $Y_{20}$ State
+
+As an application of spherical harmonics and angular momentum algebra, consider a particle in the $Y_{20}$ eigenstate. While this state is an eigenstate of $L_z$ with $m = 0$, it is **not** an eigenstate of $L_x$. We can determine the possible measured values of $L_x$ and their corresponding probabilities.
+
+**Rotation Method**
+
+To find $L_x$ eigenstates, we can use coordinate rotation. The spherical harmonics transform under rotation according to the representation $D^{(l)}$.
+
+**Explicit Forms of $Y_{2m}$:**
+
+$$Y_{2,\pm 2} = \frac{1}{2}\sqrt{\frac{15}{8\pi}}\frac{(x \pm iy)^2}{r^2}$$
+
+$$Y_{2,\pm 1} = \mp\sqrt{\frac{15}{8\pi}}\frac{(x \pm iy)z}{r^2}$$
+
+$$Y_{2,0} = \sqrt{\frac{5}{16\pi}}\frac{2z^2 - x^2 - y^2}{r^2}$$
+
+**Eigenstates of $L_x$ (denoted $Y_{2m}^x$):**
+
+By cyclic permutation $x \to y$, $y \to z$, $z \to x$:
+
+$$Y_{2,0}^x = -\frac{1}{2}Y_{2,0} + \frac{\sqrt{3}}{2\sqrt{2}}(Y_{2,-2} + Y_{2,2})$$
+
+**Expanding $Y_{2,0}$ in $L_x$ Eigenstates:**
+
+Inverting the above relation:
+
+$$Y_{2,0} = -\frac{1}{2}Y_{2,0}^x - \frac{\sqrt{3}}{2\sqrt{2}}(Y_{2,-2}^x + Y_{2,2}^x)$$
+
+**Measurement Probabilities:**
+
+When measuring $L_x$ in the $Y_{20}$ state, the possible values and their probabilities are:
+
+| $L_x$ Value | Probability |
+|-------------|-------------|
+| $0$ | $\frac{1}{4}$ |
+| $\pm\hbar$ | $0$ |
+| $\pm 2\hbar$ | $\frac{3}{8}$ each |
+
+**Alternative Method using Expectation Values**
+
+The probabilities can also be found by solving the system:
+
+1. Normalization: $P_0 + 2P_1 + 2P_2 = 1$
+2. $\langle L_x^2 \rangle = 2\hbar^2$: $2P_1 \cdot \hbar^2 + 2P_2 \cdot 4\hbar^2 = 2\hbar^2$
+3. $\langle L_x^4 \rangle = 12\hbar^4$: $2P_1 \cdot \hbar^4 + 2P_2 \cdot 16\hbar^4 = 12\hbar^4$
+
+Solving yields: $P_0 = \frac{1}{4}$, $P_1 = 0$, $P_2 = \frac{3}{8}$.
+
+This example illustrates how eigenstates of one angular momentum component ($L_z$) can be expressed as superpositions of eigenstates of another component ($L_x$).
+
+### 7.4 Angular Momentum in Central Force Fields: Key Theorems
 
 **Theorem 1: Degeneracy with respect to magnetic quantum number $m$**
 
@@ -1162,7 +1124,7 @@ $$R_{nl}(r) \xrightarrow{r \to 0} r^l$$
 
 The centrifugal barrier $\frac{\hbar^2 l(l+1)}{2\mu r^2}$ prevents particles with $l \geq 1$ from reaching the origin. Only s-waves ($l = 0$) have non-zero probability density at $r = 0$.
 
-### 7.4 Radial Equation and Angular Momentum Barrier
+### 7.5 Radial Equation and Angular Momentum Barrier
 
 Substituting into the Schrödinger equation:
 
@@ -1190,7 +1152,7 @@ $$R_{nl}(r) \xrightarrow{r \to 0} r^l$$
 
 This shows that higher angular momentum states are increasingly suppressed near the origin.
 
-### 7.5 Runge-Lenz Vector and Hydrogen Atom Degeneracy
+### 7.6 Runge-Lenz Vector and Hydrogen Atom Degeneracy
 
 The hydrogen atom possesses an additional conserved quantity beyond angular momentum—the Runge-Lenz vector.
 
@@ -1221,7 +1183,7 @@ These relations, combined with the angular momentum algebra, form an SO(4) symme
 
 The existence of the Runge-Lenz vector as a conserved quantity is special to the $1/r$ potential (Coulomb and gravitational). It implies closed elliptical orbits in classical mechanics and the degeneracy in quantum mechanics.
 
-### 7.6 Hydrogen Atom Energy Levels and Angular Momentum
+### 7.7 Hydrogen Atom Energy Levels and Angular Momentum
 
 For the Coulomb potential $V(r) = -\frac{e^2}{4\pi\varepsilon_0 r}$:
 
@@ -1238,7 +1200,7 @@ For each $l$, there are $2l+1$ values of $m$.
 The total degeneracy of level $n$ is:
 $$g_n = \sum_{l=0}^{n-1}(2l+1) = n^2$$
 
-### 7.7 Three-Dimensional Isotropic Harmonic Oscillator
+### 7.8 Three-Dimensional Isotropic Harmonic Oscillator
 
 For $V(r) = \frac{1}{2}\mu\omega^2 r^2$:
 
