@@ -125,6 +125,31 @@ my-blog/
 - **图题格式**：图片说明使用斜体 `*描述*` 放在图片下方
 - **组合图**：相关图表应组合成一张图（如并排显示三种Young图），避免多个独立图片
 
+**⚠️ MathJax 数学公式渲染规范（重要教训）：**
+- **禁止使用 Unicode 特殊字符在公式内**：如 `✓` (U+2713)、`✗` (U+2717) 等会导致 MathJax 渲染失败，后续内容可能无法正确显示
+  ```markdown
+  ❌ $$... = 0$$ ✓          # 不要在公式后直接使用 unicode 对勾
+  ✅ $$... = 0 \quad \checkmark$$  # 使用 LaTeX 命令替代
+  ```
+- **行内标记用 LaTeX 命令**：
+  - 对勾：使用 `\checkmark` (需 `\usepackage{amssymb}`，VitePress MathJax 默认支持)
+  - 叉号：使用 `\times` 或 `\cancel{...}`
+  - 点乘：使用 `\cdot` 而非 `·`
+- **公式内的文本**：使用 `\text{...}` 包裹，如 `$E = mc^2 \text{ (Einstein)}$`
+- **多行公式**：使用 `aligned` 环境，不要用多个 `$$` 块拼接
+  ```markdown
+  $$
+  \begin{aligned}
+  A &= B \\
+    &= C
+  \end{aligned}
+  $$
+  ```
+- **构建后验证**：每次修改公式后必须执行 `npm run docs:build` 并检查生成的 HTML，确保：
+  1. 公式渲染正确，无乱码或截断
+  2. 公式后的内容正常显示（没有被吞掉或错位）
+  3. 特别是检查 `Step X` 等标题是否正确分割
+
 #### 文章头部格式
 
 ```markdown
