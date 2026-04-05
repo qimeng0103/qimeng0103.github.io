@@ -102,8 +102,6 @@ $$J_z|j, m\rangle = \hbar m|j, m\rangle$$
 
 where $j$ is the total angular momentum quantum number and $m$ is the magnetic quantum number.
 
-The allowed values of $j$ and $m$ are determined by the algebraic structure. Starting from the constraint that $J^2 \geq J_z^2$ as positive operators, we obtain $-j \leq m \leq j$. The requirement that ladder operators terminate the sequence leads to $j = 0, 1/2, 1, 3/2, ...$.
-
 ---
 
 ## Part II: Ladder Operators and Eigenvalue Spectrum
