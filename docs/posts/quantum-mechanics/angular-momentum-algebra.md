@@ -889,14 +889,34 @@ When we say "the spin-1 representation," we are referring to the **three-dimensi
 
 ### 5.3 Young Tableaux for Permutation Symmetry
 
-Young tableaux provide a graphical method to classify the symmetry types of many-particle states under particle exchange.
+**Where Do Young Diagrams Come From?**
+
+Young diagrams originated in the representation theory of the **symmetric group** $S_n$ (the group of all permutations of $n$ objects). When we have $n$ identical particles, exchanging them corresponds to the action of $S_n$. The wavefunction's symmetry properties under particle exchange are classified by the irreducible representations of $S_n$.
+
+**Key Insight:** For spin-1/2 particles, the total spin states (singlet, triplet, etc.) are intimately connected to the permutation symmetry of the spin wavefunction. Young diagrams provide a visual way to classify these symmetry types.
+
+**The Connection to Angular Momentum:**
+
+For $n$ spin-1/2 particles:
+- The total spin $S$ determines the permutation symmetry of the spin state
+- Young diagrams with $n$ boxes classify the irreducible representations of $S_n$
+- Each diagram corresponds to a specific total spin $S$ and degeneracy $(2S+1)$
 
 **Basic Rules for Constructing Young Diagrams:**
 
-1. Each box represents one particle
-2. Rows represent symmetric combinations
-3. Columns represent antisymmetric combinations
-4. The number of boxes equals the number of particles
+1. **Each box represents one particle** — $n$ boxes for $n$ particles
+2. **Rows represent symmetric combinations** — particles in the same row are symmetrized
+3. **Columns represent antisymmetric combinations** — particles in the same column are antisymmetrized
+4. **Diagrams are left-justified** — rows cannot be longer than the row above
+
+**Partitions and Young Diagrams:**
+
+A partition of $n$ is a way of writing $n$ as a sum of positive integers: $n = \lambda_1 + \lambda_2 + ...$ where $\lambda_1 \geq \lambda_2 \geq ...$. Each partition corresponds to a unique Young diagram with row lengths $\lambda_i$.
+
+**Examples:**
+- Partition $(2)$: Two boxes in one row $\square\square$ → symmetric
+- Partition $(1,1)$: Two boxes in one column $\begin{matrix}\square\\\square\end{matrix}$ → antisymmetric
+- Partition $(2,1)$: $\begin{matrix}\square&\square\\\square\end{matrix}$ → mixed symmetry
 
 **Young Diagrams for Two Particles:**
 
@@ -956,6 +976,66 @@ For three spin-1/2 particles, the Young diagrams and their properties are:
 <img src="/images/angular-momentum/young_21_mixed.png" width="180px" alt="Mixed symmetry diagram (2,1)">
 
 *Mixed symmetry diagram (2,1): Hook lengths are 3, 1, 1. Dimension: $\frac{3!}{3 \cdot 1 \cdot 1} = 2$ (two doublet states)*
+
+**How to Read a Young Diagram: Step-by-Step Analysis**
+
+**Step 1: Identify the Partition**
+
+Count the number of boxes in each row. For example:
+- $\square\square\square$ → partition $(3)$
+- $\begin{matrix}\square&\square\\\square\end{matrix}$ → partition $(2,1)$
+- $\begin{matrix}\square&\square\\\square&\square\end{matrix}$ → partition $(2,2)$
+
+**Step 2: Determine the Symmetry Type**
+
+- **More rows → more antisymmetric**: A tall, thin diagram represents mostly antisymmetric states
+- **More columns → more symmetric**: A short, wide diagram represents mostly symmetric states
+- **Square-ish → mixed symmetry**: Intermediate shapes represent states with both symmetric and antisymmetric character
+
+**Step 3: Calculate the Dimension (Number of Standard Young Tableaux)**
+
+A **standard Young tableau** is a filling of the boxes with numbers $1, 2, ..., n$ such that:
+- Numbers increase left to right along rows
+- Numbers increase top to bottom down columns
+
+The number of such fillings equals the dimension of the representation.
+
+**Example: Partition (2,1) for 3 particles**
+
+Possible standard Young tableaux:
+```
+1  2      1  3
+3        2
+```
+
+There are exactly 2 such fillings, so the dimension is 2. This matches our calculation using the hook length formula!
+
+**Step 4: Connect to Physical States**
+
+For spin-1/2 particles:
+1. Count the dimension $d$ using hook lengths
+2. The total spin degeneracy is $(2S+1) = d$
+3. Solve for $S$: $S = (d-1)/2$
+
+**Complete Analysis Table for Two and Three Spin-1/2 Particles:**
+
+| Particles | Partition | Diagram | Symmetry | Spin $S$ | Dim $(2S+1)$ |
+|:---------:|:---------:|:-------:|:--------:|:--------:|:------------:|
+| 2 | $(2)$ | $\square\square$ | Symmetric | 1 (Triplet) | 3 |
+| 2 | $(1,1)$ | $\begin{matrix}\square\\\square\end{matrix}$ | Antisymmetric | 0 (Singlet) | 1 |
+| 3 | $(3)$ | $\square\square\square$ | Totally Symmetric | 3/2 (Quartet) | 4 |
+| 3 | $(2,1)$ | $\begin{matrix}\square&\square\\\square\end{matrix}$ | Mixed | 1/2 (Doublet) | 2 |
+| 3 | $(1,1,1)$ | $\begin{matrix}\square\\\square\\\square\end{matrix}$ | Totally Antisymmetric | — | 0 (impossible for spin-1/2) |
+
+**Key Observations:**
+
+1. **Pauli Exclusion Principle**: For spin-1/2, we cannot have three particles in a totally antisymmetric spin state. This is why the partition $(1,1,1)$ has dimension 0 for spin-1/2 (you'd need at least spin-1 particles).
+
+2. **Spin-Statistics Connection**: The symmetry of the spin wavefunction determines the symmetry required of the spatial wavefunction:
+   - Symmetric spin (triplet, $S=1$) → Antisymmetric spatial
+   - Antisymmetric spin (singlet, $S=0$) → Symmetric spatial
+
+3. **Maximum Spin**: The totally symmetric diagram always corresponds to the maximum possible spin ($S = n/2$ for $n$ spin-1/2 particles).
 
 ### 5.5 Connection to Angular Momentum Addition
 
