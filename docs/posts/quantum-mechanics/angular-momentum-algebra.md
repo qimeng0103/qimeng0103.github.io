@@ -513,7 +513,7 @@ We already have one linear combination (the $j = j_1+j_2$ state). The orthogonal
 $$|j_1+j_2-1, j_1+j_2-1\rangle = \sqrt{\frac{j_2}{j_1+j_2}}|j_1, j_1-1; j_2, j_2\rangle - \sqrt{\frac{j_1}{j_1+j_2}}|j_1, j_1; j_2, j_2-1\rangle$$
 
 Verify: The overlap with $|j_1+j_2, j_1+j_2-1\rangle$ is:
-$$\sqrt{\frac{j_2}{j_1+j_2}}\sqrt{\frac{j_1}{j_1+j_2}} - \sqrt{\frac{j_1}{j_1+j_2}}\sqrt{\frac{j_2}{j_1+j_2}} = 0$$ ✓
+$$\sqrt{\frac{j_2}{j_1+j_2}}\sqrt{\frac{j_1}{j_1+j_2}} - \sqrt{\frac{j_1}{j_1+j_2}}\sqrt{\frac{j_2}{j_1+j_2}} = 0 \quad \checkmark$$
 
 **Step 4: General Recursion Relation**
 
@@ -531,9 +531,13 @@ This recursion, combined with the normalization condition $\sum_{m_1}|C^{j, m}_{
 
 The general closed-form expression is:
 
-$$\langle j_1, m_1; j_2, m_2|j, m\rangle = \delta_{m, m_1+m_2} \sqrt{\frac{(2j+1)(j_1+j_2-j)!(j+j_1-j_2)!(j+j_2-j_1)!}{(j_1+j_2+j+1)!}}$$
-$$\times \sqrt{(j_1+m_1)!(j_1-m_1)!(j_2+m_2)!(j_2-m_2)!(j+m)!(j-m)!}$$
-$$\times \sum_k \frac{(-1)^k}{k!(j_1+j_2-j-k)!(j_1-m_1-k)!(j_2+m_2-k)!(j-j_2+m_1+k)!(j-j_1-m_2+k)!}$$
+$$
+\begin{aligned}
+\langle j_1, m_1; j_2, m_2|j, m\rangle &= \delta_{m, m_1+m_2} \sqrt{\frac{(2j+1)(j_1+j_2-j)!(j+j_1-j_2)!(j+j_2-j_1)!}{(j_1+j_2+j+1)!}} \\
+&\quad \times \sqrt{(j_1+m_1)!(j_1-m_1)!(j_2+m_2)!(j_2-m_2)!(j+m)!(j-m)!} \\
+&\quad \times \sum_k \frac{(-1)^k}{k!(j_1+j_2-j-k)!(j_1-m_1-k)!(j_2+m_2-k)!(j-j_2+m_1+k)!(j-j_1-m_2+k)!}
+\end{aligned}
+$$
 
 where the sum is over all integers $k$ that keep all factorial arguments non-negative.
 
