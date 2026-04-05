@@ -927,20 +927,18 @@ $$h_i = 1 + (\text{boxes to right}) + (\text{boxes below})$$
 
 **Visual Example:**
 
-For the diagram (2,1) with three boxes:
-```
-┌───┬───┐
-│ A │ B │
-├───┼───┘
-│ C │
-└───┘
-```
+<img src="/images/angular-momentum/young_21_mixed.png" width="120px" alt="Mixed symmetry diagram (2,1)">
 
-- **Box A:** 1 (self) + 1 (right, box B) + 1 (below, box C) = **3**
-- **Box B:** 1 (self) + 0 (right) + 0 (below) = **1**  
-- **Box C:** 1 (self) + 0 (right) + 0 (below) = **1**
+*Young diagram for partition (2,1). Numbers indicate hook lengths for each box.*
 
-**The +1 is essential**—it accounts for the box itself. Without it, the formula would give incorrect dimensions.
+For the diagram (2,1) with three boxes, the hook lengths are calculated as follows:
+
+**Box positions and hook lengths:**
+- **Top-left box:** hook length = 3 (1 self + 1 right + 1 below)
+- **Top-right box:** hook length = 1 (1 self + 0 right + 0 below)
+- **Bottom-left box:** hook length = 1 (1 self + 0 right + 0 below)
+
+**The +1 is essential**—it accounts for the box itself (the box at the "elbow" of the hook). Without this +1, the formula would give incorrect dimensions.
 
 **Dimension Calculation:**
 $$d = \frac{3!}{3 \cdot 1 \cdot 1} = 2$$
