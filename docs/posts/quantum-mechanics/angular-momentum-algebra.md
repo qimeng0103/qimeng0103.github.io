@@ -151,40 +151,46 @@ This justifies the names "raising" (creation) and "lowering" (annihilation) oper
 
 ### 2.4 Determining the Eigenvalue Spectrum
 
-**Step 1: Constraint from $J^2$**
+**Step 1: Constraint from Positivity**
 
-Since $J^2 = J_x^2 + J_y^2 + J_z^2 \geq J_z^2$ (all terms are positive operators):
+Since $J_x^2$ and $J_y^2$ are positive operators:
 
-$$\langle j, m|J^2|j, m\rangle \geq \langle j, m|J_z^2|j, m\rangle$$
+$$J^2 - J_z^2 = J_x^2 + J_y^2 \geq 0$$
 
-$$\hbar^2 j(j+1) \geq \hbar^2 m^2$$
+This gives:
+$$j(j+1) \geq m^2$$
 
-Therefore:
-$$\boxed{-j \leq m \leq j}$$
-
-For a given $j$, there are $2j + 1$ possible values of $m$.
+This constrains $m$ for a given $j$, but does not yet determine the allowed values.
 
 **Step 2: Finding the Maximum $m$**
 
-Since $m$ is bounded above by $j$, there must exist a state $|j, j\rangle$ such that:
+Since $m^2 \leq j(j+1)$, the eigenvalue $m$ is bounded. There must exist a maximum value $m_{\max}$ such that:
 
-$$J_+|j, j\rangle = 0$$
+$$J_+|j, m_{\max}\rangle = 0$$
 
-**Step 3: Using the Operator Identity**
+Otherwise, repeated application of $J_+$ would produce arbitrarily large $m$, violating the bound.
 
-$$J_-J_+ = (J_x - iJ_y)(J_x + iJ_y) = J_x^2 + J_y^2 + i[J_x, J_y] = J^2 - J_z^2 - \hbar J_z$$
+**Step 3: Determining $m_{\max}$**
 
-Applying to $|j, j\rangle$:
+Using the operator identity:
 
-$$J_-J_+|j, j\rangle = (J^2 - J_z^2 - \hbar J_z)|j, j\rangle = 0$$
+$$J_-J_+ = J_x^2 + J_y^2 + i[J_x, J_y] = J^2 - J_z^2 - \hbar J_z$$
 
-$$\hbar^2 j(j+1) - \hbar^2 j^2 - \hbar^2 j = \hbar^2[j(j+1) - j^2 - j] = 0$$
+Applying to $|j, m_{\max}\rangle$:
 
-This is satisfied for any $j$.
+$$J_-J_+|j, m_{\max}\rangle = (J^2 - J_z^2 - \hbar J_z)|j, m_{\max}\rangle = 0$$
+
+$$\hbar^2 j(j+1) - \hbar^2 m_{\max}^2 - \hbar^2 m_{\max} = 0$$
+
+$$j(j+1) = m_{\max}(m_{\max} + 1)$$
+
+This quadratic equation has solutions $m_{\max} = j$ or $m_{\max} = -j - 1$ (rejected since $-j-1 < -j$). Therefore:
+
+$$\boxed{m_{\max} = j}$$
 
 **Step 4: Finding the Minimum $m$**
 
-Similarly, there must be a lowest state $|j, m_{\min}\rangle$ with:
+Similarly, there must exist a minimum value $m_{\min}$ such that:
 
 $$J_-|j, m_{\min}\rangle = 0$$
 
@@ -199,6 +205,8 @@ $$j(j+1) = m_{\min}(m_{\min} - 1)$$
 This quadratic has solutions $m_{\min} = j + 1$ (impossible since $m \leq j$) or:
 
 $$\boxed{m_{\min} = -j}$$
+
+Therefore, for a given $j$, the allowed values of $m$ range from $-j$ to $+j$ in integer steps, giving $2j + 1$ states.
 
 **Step 5: Quantization Condition**
 
