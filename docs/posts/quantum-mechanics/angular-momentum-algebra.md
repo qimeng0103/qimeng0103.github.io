@@ -988,6 +988,12 @@ For three spin-1/2 particles, the Young diagrams and their properties are:
 
 **Step 1: Identify the Partition**
 
+Count the number of boxes in each row. The partition is written as $(\lambda_1, \lambda_2, ...)$ where $\lambda_i$ is the number of boxes in row $i$.
+
+- One row of $n$ boxes → partition $(n)$ (totally symmetric)
+- $n$ rows of 1 box → partition $(1,1,...,1)$ (totally antisymmetric)
+- Intermediate shapes → mixed symmetry
+
 **Step 2: Determine the Symmetry Type**
 
 - **More rows → more antisymmetric**: A tall, thin diagram represents mostly antisymmetric states
@@ -1005,8 +1011,6 @@ The number of such fillings equals the dimension of the representation.
 **Example: Partition (2,1) for 3 particles**
 
 Possible standard Young tableaux:
-
-Possible standard Young tableaux for partition $(2,1)$:
 
 $$
 \begin{array}{|c|c|}
