@@ -193,13 +193,13 @@ def young_diagram_2particle_comparison():
 
 
 def young_diagram_with_hook_lengths():
-    """Generate very small hook length diagram - minimal size."""
+    """Generate minimal hook length diagram - very small, minimal whitespace."""
     setup_style()
     
-    # Very small figure
-    fig = plt.figure(figsize=(1.8, 1.6))
-    # Tight layout - no margins
-    ax = fig.add_axes([0.02, 0.22, 0.96, 0.68])
+    # Very small figure - minimal whitespace
+    fig = plt.figure(figsize=(1.6, 1.5))
+    # [left, bottom, width, height] - very tight
+    ax = fig.add_axes([0.05, 0.18, 0.9, 0.72])
     
     # Draw (2,1) diagram with hook length labels
     partition = [2, 1]
@@ -207,11 +207,11 @@ def young_diagram_with_hook_lengths():
     
     # Draw the diagram with smaller labels
     draw_young_diagram(ax, partition, labels=hook_lengths, title='',
-                       label_color='darkred', label_fontsize=12)
+                       label_color='darkred', label_fontsize=11)
     
-    # Caption below
+    # Caption below - smaller font
     fig.text(0.5, 0.06, r'$d = 3!/(3 \cdot 1 \cdot 1) = 2$',
-             ha='center', fontsize=9)
+             ha='center', fontsize=8)
     
     filepath = os.path.join(OUTPUT_DIR, 'young_21_hook_lengths.png')
     fig.savefig(filepath, dpi=200, facecolor='white', edgecolor='none')
