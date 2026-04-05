@@ -180,7 +180,7 @@ $$\hbar^2 j(j+1) - \hbar^2 m_{\max}^2 - \hbar^2 m_{\max} = 0$$
 
 $$j(j+1) = m_{\max}(m_{\max} + 1)$$
 
-This quadratic equation has solutions $m_{\max} = j$ or $m_{\max} = -j - 1$. The second solution is rejected because $(-j-1)^2 = (j+1)^2 > j(j+1)$ for $j > 0$, violating the constraint $m^2 \leq j(j+1)$. Therefore:
+This quadratic equation has solutions $m_{\max} = j$ or $m_{\max} = -j - 1$. The second solution is rejected because $(-j-1)^2 = (j+1)^2 > j(j+1)$ for all $j \geq 0$, violating the constraint $m^2 \leq j(j+1)$. Therefore:
 
 $$\boxed{m_{\max} = j}$$
 
