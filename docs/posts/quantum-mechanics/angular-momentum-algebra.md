@@ -168,11 +168,7 @@ Since $m^2 \leq j(j+1)$, the eigenvalue $m$ is bounded. There must exist a maxim
 
 $$J_+|j, m_{\max}\rangle = 0$$
 
-Otherwise, repeated application of $J_+$ would produce arbitrarily large $m$, violating the bound.
-
-**Step 3: Determining $m_{\max}$**
-
-Using the operator identity:
+Otherwise, repeated application of $J_+$ would produce arbitrarily large $m$, violating the bound. To find the value of $m_{\max}$, we use the operator identity:
 
 $$J_-J_+ = J_x^2 + J_y^2 + i[J_x, J_y] = J^2 - J_z^2 - \hbar J_z$$
 
@@ -184,7 +180,7 @@ $$\hbar^2 j(j+1) - \hbar^2 m_{\max}^2 - \hbar^2 m_{\max} = 0$$
 
 $$j(j+1) = m_{\max}(m_{\max} + 1)$$
 
-This quadratic equation has solutions $m_{\max} = j$ or $m_{\max} = -j - 1$ (rejected since $-j-1 < -j$). Therefore:
+This quadratic equation has solutions $m_{\max} = j$ or $m_{\max} = -j - 1$. The second solution is rejected because $(-j-1)^2 = (j+1)^2 > j(j+1)$ for $j > 0$, violating the constraint $m^2 \leq j(j+1)$. Therefore:
 
 $$\boxed{m_{\max} = j}$$
 
@@ -202,7 +198,7 @@ $$\hbar^2 j(j+1) - \hbar^2 m_{\min}^2 + \hbar^2 m_{\min} = 0$$
 
 $$j(j+1) = m_{\min}(m_{\min} - 1)$$
 
-This quadratic has solutions $m_{\min} = j + 1$ (impossible since $m \leq j$) or:
+This quadratic has solutions $m_{\min} = j + 1$ (rejected because $(j+1)^2 > j(j+1)$, violating the constraint) or:
 
 $$\boxed{m_{\min} = -j}$$
 
