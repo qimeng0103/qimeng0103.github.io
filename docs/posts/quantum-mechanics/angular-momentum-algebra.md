@@ -210,7 +210,7 @@ $$\hbar^2 j(j+1) - \hbar^2 m_{\min}^2 + \hbar^2 m_{\min} = 0$$
 
 $$j(j+1) = m_{\min}(m_{\min} - 1)$$
 
-This quadratic has solutions $m_{\min} = j + 1$ (rejected because $(j+1)^2 > j(j+1)$, violating the constraint) or:
+This quadratic has solutions $m_{\min} = j + 1$ or $m_{\min} = -j$. Since $j \geq 0$, we have $j + 1 > j = m_{\max}$, which would make $m_{\min} > m_{\max}$—a contradiction. Therefore:
 
 $$\boxed{m_{\min} = -j}$$
 
