@@ -641,41 +641,43 @@ $$|0,0\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\upar
 
 ### 4.7 The Condon-Shortley Phase Convention
 
-**Why Phase Choices Matter**
+**The Convention Defined**
 
-The relative phases between different $|j, m\rangle$ states are arbitrary—we could redefine $|j, m\rangle \to e^{i\phi_m}|j, m\rangle$ without changing physical predictions. However, this phase choice **does** affect the CG coefficients when we couple angular momenta.
+The Condon-Shortley convention is a **choice of phase for the ladder operator matrix elements**. Specifically, it requires that:
+$$\langle j,m+1|J_+|j,m\rangle = \hbar\sqrt{(j-m)(j+m+1)}$$
+be **real and positive** for all $j$ and $m$.
 
-**The Phase Ambiguity in Practice**
+Since $J_- = J_+^\dagger$, this also fixes the matrix elements of $J_-$ to be real and positive.
 
-In the calculation above, we used the Condon-Shortley convention where all matrix elements of $J_+$ and $J_-$ are real and positive. Let's see what happens if we choose different conventions for the two particles.
+**How This Fixes State Phases**
 
-Recall that $|\uparrow\rangle \equiv |j=1/2, m=1/2\rangle$ and $|\downarrow\rangle \equiv |j=1/2, m=-1/2\rangle$. Suppose we use different phase conventions:
-$$|\uparrow\rangle_1' = e^{i\phi_{1\uparrow}}|\uparrow\rangle_1, \quad |\downarrow\rangle_1' = e^{i\phi_{1\downarrow}}|\downarrow\rangle_1$$
-$$|\uparrow\rangle_2' = e^{i\phi_{2\uparrow}}|\uparrow\rangle_2, \quad |\downarrow\rangle_2' = e^{i\phi_{2\downarrow}}|\downarrow\rangle_2$$
+The action of $J_+$ on a state $|j,m\rangle$ is:
+$$J_+|j,m\rangle = \hbar\sqrt{(j-m)(j+m+1)}|j,m+1\rangle$$
 
-**The Singlet State with Different Phases**
+This recursion relation determines the relative phase of $|j,m+1\rangle$ relative to $|j,m\rangle$. Starting from the highest weight state $|j,j\rangle$ (which is fixed by $J_+|j,j\rangle = 0$), successive application of $J_-$ generates all states $|j,m\rangle$ with **definite relative phases**.
 
-The physical singlet state $|0,0\rangle$ is defined by being orthogonal to $|1,0\rangle$ and having $j=0$. In the primed basis, if we blindly apply the orthogonalization procedure without accounting for phase differences, we get:
+**The Problem with Inconsistent Conventions**
 
-$$|0,0\rangle' = \frac{1}{\sqrt{2}}(|\downarrow\uparrow\rangle' - |\uparrow\downarrow\rangle')$$
+When coupling two angular momenta, if particle 1 and particle 2 use different phase conventions for their $J_+$ matrix elements, the CG coefficients will acquire spurious phase factors.
 
-But transforming back to the standard (unprimed) basis:
-$$|0,0\rangle' = \frac{1}{\sqrt{2}}\left(e^{i(\phi_{1\downarrow}+\phi_{2\uparrow})}|\downarrow\uparrow\rangle - e^{i(\phi_{1\uparrow}+\phi_{2\downarrow})}|\uparrow\downarrow\rangle\right) = \frac{e^{i(\phi_{1\downarrow}+\phi_{2\uparrow})}}{\sqrt{2}}\left(|\downarrow\uparrow\rangle - e^{i\Delta\phi}|\uparrow\downarrow\rangle\right)$$
+For example, suppose particle 1 uses:
+$$J_+^{(1)}|1/2, -1/2\rangle_1' = \hbar e^{i\phi_1}|1/2, 1/2\rangle_1'$$
+while particle 2 uses:
+$$J_+^{(2)}|1/2, -1/2\rangle_2' = \hbar e^{i\phi_2}|1/2, 1/2\rangle_2'$$
 
-where $\Delta\phi = (\phi_{1\uparrow} - \phi_{1\downarrow}) - (\phi_{2\uparrow} - \phi_{2\downarrow})$.
+When we construct the singlet state $|0,0\rangle$ using the standard orthogonalization procedure, transforming back to a common basis reveals:
+$$|0,0\rangle \propto |\downarrow\uparrow\rangle - e^{i(\phi_1-\phi_2)}|\uparrow\downarrow\rangle$$
 
-**The Key Point**
+The CG coefficient of $|\uparrow\downarrow\rangle$ acquires a phase factor $e^{i(\phi_1-\phi_2)}$ relative to the standard real value.
 
-Unless the relative phase between $|\uparrow\rangle$ and $|\downarrow\rangle$ is the same for both particles ($\Delta\phi = 0$), the CG coefficient for $|\uparrow\downarrow\rangle$ acquires a spurious phase factor $e^{i\Delta\phi}$. This makes the coefficients complex and convention-dependent.
+**Why This Matters**
 
-**The Condon-Shortley Solution**
+The Condon-Shortley convention fixes $\phi = 0$ for all particles, ensuring:
+1. All ladder operator matrix elements are real and positive
+2. All CG coefficients are real (up to an overall sign for each $j$)
+3. Results from different textbooks and software are directly comparable
 
-The Condon-Shortley convention fixes this by requiring:
-1. $J_+$ matrix elements are real and positive for all angular momenta
-2. This fixes the relative phases of all $|j,m\rangle$ states within each multiplet
-3. Consequently, all CG coefficients are real (up to an overall sign for each $j$)
-
-When looking up CG coefficients in tables or using software, always verify that the Condon-Shortley convention is being used.
+When looking up CG coefficients in tables, always verify that the Condon-Shortley convention is being used.
 
 ### 4.8 Orbital-Spin Coupling ($j = l \pm 1/2$)
 
