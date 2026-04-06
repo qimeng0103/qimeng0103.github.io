@@ -921,12 +921,12 @@ $$\frac{\Gamma_{E(L+1)}}{\Gamma_{EL}} \sim (kR)^2 \ll 1$$
 
 Using $kR \sim 0.1$ for typical nuclear $\gamma$-rays:
 
-| Multipole | Scaling | Relative Rate | Typical Lifetime |
-|-----------|---------|---------------|------------------|
-| E1 | $\sim (kR)^2 \sim 10^{-2}$ | 1 (baseline) | $10^{-12} - 10^{-15}$ s |
-| M1 | $\sim (kR)^2 \sim 10^{-2}$ | $\sim 1$ | similar to E1 |
-| E2 | $\sim (kR)^4 \sim 10^{-4}$ | $\sim 10^{-2}$ | $10^{-10} - 10^{-12}$ s |
-| M2/E3 | $\sim (kR)^6 \sim 10^{-6}$ | $\sim 10^{-4}$ | $10^{-8} - 10^{-10}$ s |
+| Multipole | Relative Rate | Typical Lifetime |
+|-----------|---------------|------------------|
+| E1 | 1 (baseline) | $10^{-15} - 10^{-12}$ s (fast) |
+| M1 | $\sim 0.1 - 1$ | $10^{-14} - 10^{-11}$ s |
+| E2 | $\sim 10^{-2} - 10^{-4}$ | $10^{-11} - 10^{-8}$ s |
+| E3/M2 | $\sim 10^{-4} - 10^{-6}$ | $10^{-7} - 10^{-3}$ s (slow, isomeric) |
 
 M1 has the same $kR$ scaling as E1 but is typically weaker due to spin-flip nature ($\mu \sim e\hbar/m$ vs $er$).
 
