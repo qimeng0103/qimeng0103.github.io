@@ -818,11 +818,280 @@ $$W(\theta) = \frac{1}{2j_i+1} \sum_{m_i} W_{m_i}(\theta) = \frac{|\langle j_f |
 
 ---
 
-## Part V: Group Representation Theory and Young Tableaux
+## Part V: Group Representation Theory and Its Physical Applications
 
-The addition of angular momenta discussed in Part IV has a deep group-theoretic interpretation. The different values of total angular momentum $j$ that result from coupling $j_1$ and $j_2$ correspond to the **irreducible representations** that appear in the decomposition of the tensor product representation. This part develops the mathematical framework of rotation groups and introduces Young tableaux as a powerful tool for classifying symmetry types in multi-particle systems.
+The addition of angular momenta discussed in Part IV has a deep group-theoretic interpretation. This part develops the mathematical framework of group representations, Lie algebras, and their applications across atomic, nuclear, and particle physics.
 
-### 5.1 Rotation Groups SO(3) and SU(2)
+### 5.1 Foundations of Group Representation Theory
+
+**What is a Group Representation?**
+
+A **representation** of a group $G$ is a homomorphism from $G$ to the group of linear operators on a vector space $V$. In physics terms: we map abstract group elements to concrete matrices that act on quantum states.
+
+$$D: G \to \text{GL}(V)$$
+
+where $\text{GL}(V)$ is the general linear group on $V$.
+
+**Example: Rotation Group SO(3)**
+- Abstract group element: rotation by angle $\theta$ about axis $\mathbf{n}$
+- Representation: $3 \times 3$ rotation matrix $R(\mathbf{n}, \theta)$ acting on 3D vectors
+- Quantum representation: operator $e^{-i\theta \mathbf{n} \cdot \mathbf{J}/\hbar}$ acting on Hilbert space
+
+**Faithful vs. Non-Faithful Representations**
+
+A representation is **faithful** if different group elements map to different operators (injective homomorphism):
+$$g_1 \neq g_2 \implies D(g_1) \neq D(g_2)$$
+
+**Example of faithful representation:** The spin-1/2 representation of SU(2). Every SU(2) element $\pm U$ corresponds to a distinct operator on the 2D spinor space.
+
+**Example of non-faithful representation:** The spin-1 representation of SO(3). Rotations by $2\pi$ and $4\pi$ about any axis both map to the identity operator, even though they are different group elements.
+
+**Reducible vs. Irreducible Representations**
+
+A representation is **reducible** if the vector space $V$ can be decomposed into invariant subspaces:
+$$V = V_1 \oplus V_2 \oplus \cdots$$
+where each $V_i$ is mapped to itself under all group operations.
+
+A representation is **irreducible** if no such decomposition exists—the space $V$ is "as small as possible" under the group action.
+
+**Physical Significance:**
+- **Irreducible representations** correspond to "elementary" multiplet structures
+- In angular momentum theory, each value of $j$ labels an irreducible representation of SO(3)
+- The $(2j+1)$ states $|j, m\rangle$ with $m = -j, ..., j$ form a basis for this irreducible space
+
+**Direct Sum and Tensor Product**
+
+When we combine two systems with angular momenta $j_1$ and $j_2$:
+- **Direct sum:** $D^{(j_1)} \oplus D^{(j_2)}$ describes a system that is EITHER in state $j_1$ OR in state $j_2$ (incoherent mixture)
+- **Tensor product:** $D^{(j_1)} \otimes D^{(j_2)}$ describes a system composed of BOTH angular momenta (composite system)
+
+The tensor product decomposes into irreducible representations:
+$$D^{(j_1)} \otimes D^{(j_2)} = \bigoplus_{j=|j_1-j_2|}^{j_1+j_2} D^{(j)}$$
+This is the group-theoretic statement of angular momentum addition.
+
+### 5.2 Lie Algebras and Their Structure
+
+**From Lie Group to Lie Algebra**
+
+A Lie group is a continuous group where group elements can be parameterized smoothly. The **Lie algebra** is the tangent space at the identity, consisting of the generators of infinitesimal transformations.
+
+For a group element $g(\theta)$ depending on parameter $\theta$:
+$$\text{Generator} \propto \frac{d}{d\theta}g(\theta)\bigg|_{\theta=0}$$
+
+**Structure Constants**
+
+The generators $\{T_a\}$ satisfy commutation relations:
+$$[T_a, T_b] = i\sum_c f_{abc} T_c$$
+
+The coefficients $f_{abc}$ are the **structure constants** that completely characterize the Lie algebra.
+
+**SU(2) and SO(3) Algebras**
+
+Both SU(2) and SO(3) share the same Lie algebra structure:
+$$[J_i, J_j] = i\hbar\varepsilon_{ijk}J_k$$
+
+Structure constants: $f_{ijk} = \varepsilon_{ijk}$ (Levi-Civita symbol)
+
+**Key difference:**
+- SO(3): $R_z(2\pi) = I$ (identity)
+- SU(2): $U_z(2\pi) = -I$ (minus identity)
+
+SU(2) is the **universal covering group** of SO(3). The relationship is:
+$$\text{SU(2)}/\mathbb{Z}_2 \cong \text{SO(3)}$$
+
+For integer $j$, representations of SU(2) factor through to SO(3). For half-integer $j$, they do not—they are "projective representations" of SO(3).
+
+### 5.3 SU(3) and the Eightfold Way
+
+**SU(3) Algebra**
+
+SU(3) is the group of $3 \times 3$ unitary matrices with determinant 1. It has 8 generators (compared to 3 for SU(2)).
+
+The standard basis uses Gell-Mann matrices $\lambda_a$ ($a = 1, ..., 8$):
+$$T_a = \frac{1}{2}\lambda_a$$
+
+Commutation relations:
+$$[T_a, T_b] = i\sum_c f_{abc} T_c$$
+
+where $f_{abc}$ are the SU(3) structure constants.
+
+**Physical Application: Quark Model**
+
+In particle physics, SU(3) flavor symmetry organizes hadrons into multiplets:
+- **Quarks:** Up, down, strange form a triplet (fundamental representation $\mathbf{3}$)
+- **Baryons:** Proton, neutron, etc. form octets and decuplets
+- **Mesons:** Pions, kaons, etc. form octets and singlets
+
+The SU(3) representations are labeled by two integers $(p, q)$:
+- $(1, 0)$: Triplet $\mathbf{3}$ (quarks)
+- $(0, 1)$: Antitriplet $\bar{\mathbf{3}}$ (antiquarks)
+- $(1, 1)$: Octet $\mathbf{8}$ (octet baryons like proton, neutron)
+- $(3, 0)$: Decuplet $\mathbf{10}$ (decuplet baryons like $\Delta$, $\Omega^-$)
+
+**Tensor Product in SU(3):**
+$$\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$$
+
+This explains why baryons (3 quarks) appear as singlets, octets, and decuplets.
+
+### 5.4 Roots and Weights
+
+**Cartan Subalgebra**
+
+For a Lie algebra of rank $r$, the **Cartan subalgebra** is the maximal set of commuting generators $\{H_i\}$ ($i = 1, ..., r$).
+
+- SU(2): Rank 1, one Cartan generator $J_z$
+- SU(3): Rank 2, two Cartan generators $I_3$ (isospin) and $Y$ (hypercharge)
+
+**Weights**
+
+In a representation, the **weight vectors** are the eigenvalues of the Cartan generators:
+$$H_i |\Lambda\rangle = \Lambda_i |\Lambda\rangle$$
+
+The collection $(\Lambda_1, ..., \Lambda_r)$ is the weight.
+
+**Example for SU(2):**
+- States $|j, m\rangle$ have weight $m$ (eigenvalue of $J_z$)
+- For $j = 1/2$: weights are $\pm 1/2$
+- For $j = 1$: weights are $-1, 0, +1$
+
+**Roots**
+
+**Root vectors** are the weights of the **adjoint representation** (the representation where the Lie algebra acts on itself).
+
+For SU(2):
+- The adjoint representation has dimension 3 (generators $J_+, J_-, J_z$)
+- Root vectors: $\pm 1$ (from $[J_z, J_\pm] = \pm J_\pm$)
+
+For SU(3):
+- The adjoint representation is the octet (dimension 8)
+- Roots form a hexagon in the weight space
+- Simple roots: $\vec{\alpha}_1 = (1, 0)$ and $\vec{\alpha}_2 = (-1/2, \sqrt{3}/2)$
+
+**Physical Interpretation:**
+- Roots represent the "building blocks" of symmetry transformations
+- Weights label states within representations
+- The highest weight uniquely identifies an irreducible representation
+
+### 5.5 Atomic Physics: LS and jj Coupling
+
+**Term Symbols**
+
+In atomic physics, electron configurations are described by **term symbols**:
+$$^{2S+1}L_J$$
+
+where:
+- $S$ = total spin angular momentum
+- $L$ = total orbital angular momentum (S=0, P=1, D=2, F=3, ...)
+- $J$ = total angular momentum ($|L-S| \leq J \leq L+S$)
+- $2S+1$ = spin multiplicity (singlet, doublet, triplet, ...)
+
+**Example:** The ground state of carbon ($1s^2 2s^2 2p^2$) has terms including $^3P_0$, $^3P_1$, $^3P_2$, $^1D_2$, $^1S_0$.
+
+**LS Coupling (Russell-Saunders Coupling)**
+
+For light atoms, spin-orbit coupling is weak:
+1. Couple orbital angular momenta: $\mathbf{L} = \sum_i \mathbf{l}_i$
+2. Couple spins: $\mathbf{S} = \sum_i \mathbf{s}_i$
+3. Couple $L$ and $S$ to get total $J$: $\mathbf{J} = \mathbf{L} + \mathbf{S}$
+
+Selection rules for electric dipole transitions:
+- $\Delta L = 0, \pm 1$ (but $L=0 \to L=0$ forbidden)
+- $\Delta S = 0$ (spin doesn't change in electric dipole)
+- $\Delta J = 0, \pm 1$ (but $J=0 \to J=0$ forbidden)
+
+**jj Coupling**
+
+For heavy atoms, spin-orbit coupling is strong:
+1. Each electron couples its own $l$ and $s$: $\mathbf{j}_i = \mathbf{l}_i + \mathbf{s}_i$
+2. Couple individual $j_i$ to get total $J$: $\mathbf{J} = \sum_i \mathbf{j}_i$
+
+This scheme is used for heavy elements (large $Z$) where relativistic effects are important.
+
+**Hund's Rules**
+
+For determining the ground state term:
+1. Maximum $S$ (maximize parallel spins)
+2. For given $S$, maximum $L$
+3. For less than half-filled subshell: minimum $J$; for more than half-filled: maximum $J$
+
+**Example: Nitrogen ($2p^3$)**
+- Three electrons in $p$ orbitals ($l=1, s=1/2$)
+- By rule 1: Maximum $S = 3/2$ (all spins parallel)
+- By rule 2: For $S=3/2$, the spatial wavefunction must be antisymmetric, giving $L=0$
+- By rule 3: Half-filled ($p^3$), so minimum $J = |L-S| = 3/2$
+- Ground term: $^4S_{3/2}$
+
+### 5.6 Isospin and SU(2) Flavor Symmetry
+
+**Nucleon Isospin**
+
+Proton and neutron are nearly identical in their strong interactions—they form an isospin doublet:
+$$|I=1/2, I_3=+1/2\rangle = |p\rangle$$
+$$|I=1/2, I_3=-1/2\rangle = |n\rangle$$
+
+Isospin is mathematically identical to spin, with operators $I_1, I_2, I_3$ satisfying:
+$$[I_i, I_j] = i\varepsilon_{ijk}I_k$$
+
+**Pions**
+
+The three pions form an isospin triplet:
+$$|I=1, I_3=+1\rangle = |\pi^+\rangle$$
+$$|I=1, I_3=0\rangle = |\pi^0\rangle$$
+$$|I=1, I_3=-1\rangle = |\pi^-\rangle$$
+
+**Isospin in Reactions**
+
+Strong interactions conserve isospin. Example:
+$$p + p \to d + \pi^+$$
+
+Initial state: Two protons in $I=1$ state (antisymmetric space, symmetric isospin)
+Final state: Deuteron ($I=0$) + $\pi^+$ ($I=1, I_3=+1$)
+
+Isospin analysis helps predict reaction cross sections and branching ratios.
+
+**Gell-Mann–Nishijima Formula**
+
+For hadrons:
+$$Q = I_3 + \frac{B+S}{2}$$
+
+where $Q$ = charge, $I_3$ = isospin projection, $B$ = baryon number, $S$ = strangeness.
+
+This formula, extended to SU(3), led to the prediction of the $\Omega^-$ baryon.
+
+### 5.7 Orbital Symmetries and Atomic Structure
+
+**Central Field Approximation**
+
+In multi-electron atoms, each electron moves in an effective central potential $V(r)$ created by the nucleus and other electrons. This preserves orbital angular momentum:
+$$[H, L^2] = 0, \quad [H, L_z] = 0$$
+
+**Electron Configuration Notation**
+
+Electrons are labeled by $(n, l)$ with $l = 0, 1, 2, ...$ designated as $s, p, d, f, g, ...$
+
+- $n$ = principal quantum number (shell)
+- $l$ = orbital angular momentum
+- Maximum $2(2l+1)$ electrons per subshell (Pauli principle)
+
+**Filling Order:**
+$$1s \to 2s \to 2p \to 3s \to 3p \to 4s \to 3d \to 4p \to ...$$
+
+**Periodic Table Structure**
+
+- **s-block:** Groups 1-2 ($ns^1$ or $ns^2$)
+- **p-block:** Groups 13-18 ($ns^2 np^{1-6}$)
+- **d-block:** Transition metals ($(n-1)d^{1-10} ns^{0-2}$)
+- **f-block:** Lanthanides/Actinides ($(n-2)f$)
+
+**Symmetry and Selection Rules**
+
+Electric dipole transitions require:
+- $\Delta l = \pm 1$ (parity change)
+- $\Delta m = 0, \pm 1$
+
+These rules arise from the properties of spherical harmonics under rotations.
+
+### 5.8 Rotation Groups SO(3) and SU(2)
 
 Angular momentum operators generate rotations in quantum mechanics. The commutation relations $[J_i, J_j] = i\hbar\varepsilon_{ijk}J_k$ define the Lie algebra of the rotation group.
 
