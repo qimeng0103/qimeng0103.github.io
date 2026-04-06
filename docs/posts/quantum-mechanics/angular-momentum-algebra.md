@@ -1113,7 +1113,7 @@ $$W(\theta) = \frac{1}{2j_i+1} \sum_{m_i} W_{m_i}(\theta) = \frac{|\langle j_f |
 
 Angular momentum theory is deeply rooted in group representation theory. This part explains the mathematical structures underlying symmetries and their physical interpretations.
 
-### 5.1 Representations: The Mathematical Structure of Symmetry
+### 5.1 Representations: From Definition to Decomposition
 
 **What is a Representation?**
 
@@ -1126,68 +1126,62 @@ $$D: G \to \text{GL}(V)$$
 - $D(g)$ = operator that acts on quantum states when symmetry transformation $g$ is applied
 - The representation **is** the specific form of this action
 
-**Key Distinction: Same Group, Different Representations**
+**Single-Particle Representations**
 
-| System | Hilbert Space | Representation | Physical Meaning |
-|--------|--------------|----------------|------------------|
-| Spin-0 particle | 1D complex space | $D^{(0)}$ | Trivial: rotations do nothing to state |
-| Spin-1/2 particle | 2D complex space | $D^{(1/2)}$ | State transforms as SU(2) spinor |
-| Spin-1 particle | 3D complex space | $D^{(1)}$ | State transforms as 3D vector |
+For a spin-$j$ particle, the representation $D^{(j)}$ has:
+- Dimension $2j+1$
+- Basis states $|j,m\rangle$ with $m = -j, ..., j$
+- Angular momentum operators $J_x, J_y, J_z$ as generators
 
-All three systems have the **same** rotational symmetry (described by SO(3) or SU(2)), but the **action** of rotations on their states differs—these are different representations.
+| System | Dimension | Representation | Physical Meaning |
+|--------|-----------|----------------|------------------|
+| Spin-0 | 1 | $D^{(0)}$ | Rotations do nothing |
+| Spin-1/2 | 2 | $D^{(1/2)}$ | State transforms as spinor |
+| Spin-1 | 3 | $D^{(1)}$ | State transforms as vector |
 
-**Within One Representation: States and Operators**
+**Combining Systems: Tensor Product and Decomposition**
 
-For a spin-$j$ particle (fixed representation $D^{(j)}$):
-- The representation space has dimension $2j+1$
-- States $|j,m\rangle$ with $m = -j, ..., j$ form a basis
-- The angular momentum operators $J_x, J_y, J_z$ are the generators of the representation
+When two particles with spins $j_1$ and $j_2$ combine, their Hilbert spaces multiply:
+$$\dim(D^{(j_1)} \otimes D^{(j_2)}) = (2j_1+1)(2j_2+1)$$
+
+**The Key Result:** This product space is NOT irreducible. It decomposes:
+
+$$D^{(j_1)} \otimes D^{(j_2)} = \bigoplus_{j=|j_1-j_2|}^{j_1+j_2} D^{(j)}$$
+
+**What This Means:**
+
+The composite system (tensor product) can be reorganized into invariant subspaces, each transforming independently under rotations.
+
+**Example: Two Spin-1/2 Particles**
+
+Product space: 4D (spanned by $|\uparrow\uparrow\rangle$, $|\uparrow\downarrow\rangle$, $|\downarrow\uparrow\rangle$, $|\downarrow\downarrow\rangle$)
+
+Decomposition:
+- **Triplet** ($j=1$, 3D): Symmetric subspace
+  $$|1,1\rangle = |\uparrow\uparrow\rangle$$
+  $$|1,0\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle + |\downarrow\uparrow\rangle)$$
+  $$|1,-1\rangle = |\downarrow\downarrow\rangle$$
+- **Singlet** ($j=0$, 1D): Antisymmetric subspace
+  $$|0,0\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle)$$
+
+A general state is a superposition:
+$$|\psi\rangle = \underbrace{a|\text{triplet}\rangle}_{j=1} + \underbrace{b|\text{singlet}\rangle}_{j=0}$$
+
+Under rotation, the triplet and singlet parts transform independently—each is a separate representation.
+
+**Two Meanings of Direct Sum:**
+
+1. **Decomposition of product** ($\otimes$ becomes $\oplus$): A composite system contains multiple irreducible components that evolve independently
+
+2. **True direct sum** ($D^{(j_1)} \oplus D^{(j_2)}$): A system that is either in one representation or the other (incoherent mixture)
 
 **Summary:**
 - **Group** = abstract symmetry structure
-- **Representation** = concrete action of that symmetry on a specific Hilbert space
-- Different representations = different Hilbert spaces with different symmetry actions
+- **Representation** = concrete action on a Hilbert space
+- **Irreducible representation** = minimal invariant subspace (system cannot be decomposed further)
+- **Tensor product** = combining systems; **Decomposition** = finding independent transformation patterns
 
-### 5.2 Combining Systems: Tensor Product vs. Direct Sum
-
-**The Logical Gap Clarified**
-
-When combining two angular momenta $j_1$ and $j_2$, we use the **tensor product**:
-$$D^{(j_1)} \otimes D^{(j_2)}$$
-
-But the result is a **direct sum**:
-$$D^{(j_1)} \otimes D^{(j_2)} = \bigoplus_{j=|j_1-j_2|}^{j_1+j_2} D^{(j)}$$
-
-**Why "and" becomes "or"?**
-
-The tensor product describes the **composite system** (particle 1 AND particle 2). But this composite system is NOT irreducible—it can exist in different "modes":
-
-| Notation | Meaning | Physical Picture |
-|----------|---------|------------------|
-| $\otimes$ | "AND" | System contains BOTH $j_1$ and $j_2$ |
-| $\oplus$ | "OR" | The composite CAN BE in any of the coupled states $j$ |
-
-**Example: Two spin-1/2 particles**
-- Tensor product space: 4-dimensional ($\uparrow\uparrow$, $\uparrow\downarrow$, $\downarrow\uparrow$, $\downarrow\downarrow$)
-- This 4D space decomposes into invariant subspaces:
-  - **Triplet subspace** ($j=1$, dimension 3): Spanned by symmetric combinations
-  - **Singlet subspace** ($j=0$, dimension 1): Spanned by antisymmetric combination
-
-**Physical Interpretation:**
-
-The triplet and singlet are **subspaces of the same composite system**. A general two-particle state is a superposition:
-
-$$|\psi\rangle = \underbrace{a|\text{triplet}\rangle}_{j=1 \text{ component}} + \underbrace{b|\text{singlet}\rangle}_{j=0 \text{ component}}$$
-
-Under rotation, the triplet part transforms among itself (3D representation), and the singlet part remains unchanged (1D representation). The total Hilbert space is the direct sum of these invariant subspaces.
-
-**Direct Sum (Alternative Meaning)**
-
-True direct sum $D^{(j_1)} \oplus D^{(j_2)}$ describes a system that is **either** $j_1$ **or** $j_2$, but not both simultaneously:
-- A particle with uncertain angular momentum: "50% probability spin-0, 50% probability spin-1"
-- Incoherent mixture, not a composite system
-
-### 5.3 Lie Algebras: Why the Identity?
+### 5.2 Lie Algebras: Why the Identity?
 
 **The Tangent Space Insight**
 
@@ -1205,7 +1199,7 @@ $$g(\theta) = e^{-i\theta T}$$
 $$[T_a, T_b] = i\sum_c f_{abc} T_c$$
 capture all essential group properties.
 
-### 5.4 SU(2) vs. SO(3): Double Cover and Projective Representations
+### 5.3 SU(2) vs. SO(3): Double Cover and Projective Representations
 
 **Same Algebra, Different Groups**
 
@@ -1242,7 +1236,7 @@ For half-integer $j$, a $2\pi$ rotation gives $-1$ (a phase factor). Since quant
 - But SU(2) has "extra" representations (half-integer $j$) that don't come from SO(3)
 - These are precisely the spin-1/2, spin-3/2, ... representations essential for fermions
 
-### 5.5 SU(3) Flavor vs. SU(3) Color: Two Different Symmetries
+### 5.4 SU(3) Flavor vs. SU(3) Color: Two Different Symmetries
 
 **Important Distinction**
 
@@ -1269,7 +1263,7 @@ $$|\text{color}\rangle = \frac{1}{\sqrt{6}}(rgb - rbg + gbr - grb + brg - bgr)$$
 
 This is the **totally antisymmetric** combination of three colors—mathematically identical to the Levi-Civita symbol $\varepsilon_{ijk}$.
 
-### 5.6 Young Diagrams: Permutation Symmetry Meets Angular Momentum
+### 5.5 Young Diagrams: Permutation Symmetry Meets Angular Momentum
 
 **The Connection**
 
@@ -1357,7 +1351,7 @@ For SU(N), the same Young diagrams apply, but:
 - A column of height $N$ is a singlet (can be removed)
 - This is why SU(3) only has diagrams with at most 2 rows (not 3)
 
-### 5.7 SU(3) Weight Diagrams: Visualizing Representations
+### 5.6 SU(3) Weight Diagrams: Visualizing Representations
 
 **The SU(3) Weight Space**
 
@@ -1403,7 +1397,7 @@ The 6 roots form a hexagon in weight space. Each root corresponds to a raising/l
 - **Multiplicity** at a point indicates degeneracy (e.g., center of octet has $\Sigma^0$ and $\Lambda$)
 - The **outer boundary** is determined by the highest weight state
 
-### 5.9 Roots and Weights: Labeling States
+### 5.8 Roots and Weights: Labeling States
 
 **Cartan Subalgebra and Quantum Numbers**
 
@@ -1455,7 +1449,7 @@ The six outer points are the roots (raising/lowering operators). The center repr
 **Highest Weight Theorem:**
 Each irreducible representation has a unique highest weight state. All other states are reached by applying lowering operators. This is why SU(3) representations are labeled by $(p,q)$—these integers specify the highest weight.
 
-### 5.10 Atomic Physics: Coupling Schemes
+### 5.9 Atomic Physics: Coupling Schemes
 
 **Term Symbols and Multi-Electron Atoms**
 
@@ -1478,7 +1472,7 @@ Both are group-theoretically valid; the choice depends on which interaction domi
 2. Maximum $L$ for that $S$
 3. $J$ depends on shell filling (minimum for $<$ half, maximum for $>$ half)
 
-### 5.11 Isospin: SU(2) in Nuclear Physics
+### 5.10 Isospin: SU(2) in Nuclear Physics
 
 **Nucleons as an SU(2) Doublet**
 
@@ -1496,7 +1490,7 @@ This is **not** real spin—it's an internal symmetry (flavor symmetry) with ide
 $$Q = I_3 + \frac{B+S}{2}$$
 relates charge $Q$, isospin projection $I_3$, baryon number $B$, and strangeness $S$.
 
-### 5.12 Generators and Rotations
+### 5.11 Generators and Rotations
 
 **Why Angular Momentum Generates Rotations**
 
