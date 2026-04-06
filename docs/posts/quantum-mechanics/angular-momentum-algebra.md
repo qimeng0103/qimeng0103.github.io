@@ -901,21 +901,34 @@ Why do higher multipoles have smaller transition probabilities? The key is the r
 The decay rate $\Gamma$ follows from Fermi's Golden Rule:
 $$\Gamma = \frac{2\pi}{\hbar} |\mathcal{M}|^2 \rho(E_f)$$
 
-For electric $L$-pole transitions, dimensional analysis gives the **Weisskopf estimate**:
+For electric $L$-pole transitions, the **Weisskopf estimate** gives:
 $$\Gamma_{EL} \sim \frac{e^2}{\hbar c} \cdot c k \cdot (kR)^{2L}$$
 
 **Where does $(kR)^{2L}$ come from?**
 
-The factor $(kR)^{2L}$ is the square of $(kR)^L$, which represents the ratio of nuclear size to photon wavelength, raised to the multipolarity $L$. Physically:
-- The matrix element involves integrals $\langle f | \hat{O}_{EL} | i \rangle$ over the nuclear volume
-- The $EL$ operator contains $L$ factors of the position operator $\mathbf{r}$ (e.g., E1: $\mathbf{r}$, E2: $\mathbf{r}\mathbf{r}$)
-- Each $\mathbf{r}$ contributes a factor of $R$ (nuclear size) to the matrix element
-- Photon field normalization and phase space together contribute $L$ powers of $k$
+This factor arises from comparing the nuclear size $R$ to the photon wavelength $\lambda \sim 1/k$:
 
-Combining these: $|\mathcal{M}|^2 \rho(E) \propto k (kR)^{2L}$, and with the prefactor $c$ from dimensional analysis:
-$$\Gamma_{EL} \propto c k (kR)^{2L}$$
+**1. Matrix element $|\mathcal{M}|$:**
+The $EL$ transition operator involves matrix elements of the form $\langle f | \hat{O}_{EL} | i \rangle$. For electric multipoles:
+- E1: Operator $\propto \mathbf{r}$ → matrix element $\sim R$
+- E2: Operator $\propto \mathbf{r}(\mathbf{k}\cdot\mathbf{r})$ → matrix element $\sim R \cdot (kR) = kR^2$
+- E$L$: Operator involves $L$ powers of $\mathbf{r}$, with $(L-1)$ of them coming from expanding $e^{-i\mathbf{k}\cdot\mathbf{r}}$ → matrix element $\sim R \cdot (kR)^{L-1} = k^{L-1}R^L$
 
-The factor $ck$ has dimensions $[L/T] \cdot [L^{-1}] = [T^{-1}]$ (correct for a rate).
+**2. Photon density of states $\rho(E)$:**
+In 3D, $\rho(E) \propto k^2$ (phase space factor).
+
+**3. Photon field normalization:**
+The quantized photon field contributes $1/\sqrt{\omega} \propto 1/\sqrt{k}$, giving $|\mathcal{M}|^2 \propto 1/k$.
+
+**Combining for E$L$:**
+$$\Gamma_{EL} \propto \underbrace{\frac{1}{k}}_{\text{field norm}} \cdot \underbrace{k^2}_{\text{phase space}} \cdot \underbrace{(k^{L-1}R^L)^2}_{\text{matrix element}^2} = k \cdot k^{2L-2} R^{2L} = c k (kR)^{2L}$$
+
+where we insert the factor $c$ for dimensional correctness ($[ck] = T^{-1}$).
+
+**Key insight:** Each increase in multipolarity by 1 adds a factor of $(kR)^2$ suppression because:
+- One additional $\mathbf{r}$ in the operator → factor of $R$ in matrix element
+- One additional $\mathbf{k}\cdot\mathbf{r}$ from expansion → factor of $kR$ in matrix element
+- Together: $(kR)^2$ in the transition probability $|\mathcal{M}|^2$
 
 For relative comparison at the same photon energy:
 $$\frac{\Gamma_{E(L+1)}}{\Gamma_{EL}} \sim (kR)^2 \ll 1$$
