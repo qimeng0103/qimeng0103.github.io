@@ -829,7 +829,7 @@ where:
 - $\boldsymbol{\varepsilon}$ is the photon polarization vector
 - $\mathbf{k}$ is the photon wave vector
 
-**Long-wavelength approximation:** For nuclear $\gamma$-decay, the photon wavelength $\lambda = 2\pi/k$ is much larger than the nuclear size ($R \sim 5$ fm). Since $kR \ll 1$, we can set $e^{-i\mathbf{k}\cdot\mathbf{r}} \approx 1$ in the E1 operator, which then becomes proportional to the nuclear position operator $\hat{\mathbf{R}} = \sum_p \mathbf{r}_p$.
+**Long-wavelength approximation:** For nuclear $\gamma$-decay, the photon wavelength $\lambda = 2\pi/k$ is much larger than the nuclear size ($R \sim 5$ fm). Since $kR \ll 1$, we can set $e^{-i\mathbf{k}\cdot\mathbf{r}} \approx 1$ in the interaction operator, simplifying the E1 operator to depend only on the nuclear position coordinates.
 
 **Spherical Components:**
 
@@ -896,38 +896,26 @@ Why do higher multipoles have smaller transition probabilities? The key is the r
 
 **Physical picture:** For nuclear $\gamma$-rays, photon wavelength $\lambda = 2\pi/k$ is much larger than the nuclear size $R \sim 5$ fm. Thus $kR \ll 1$, and each additional factor of $kR$ strongly suppresses the transition.
 
-**Origin of the scaling:**
+**Origin of the scaling (Weisskopf estimate):**
 
-The decay rate $\Gamma$ (probability per unit time) comes from Fermi's Golden Rule:
+The decay rate $\Gamma$ follows from Fermi's Golden Rule:
 $$\Gamma = \frac{2\pi}{\hbar} |\mathcal{M}|^2 \rho(E_f)$$
 
-where $\rho(E_f)$ is the density of final photon states.
+For electric $L$-pole transitions, dimensional analysis gives the **Weisskopf estimate**:
+$$\Gamma_{EL} \sim \frac{e^2}{\hbar c} \cdot c k \cdot (kR)^{2L}$$
 
-**Where does each factor come from?**
+**Where does $(kR)^{2L}$ come from?**
 
-**1. Photon density of states $\rho(E)$:**
+The factor $(kR)^{2L}$ is the square of $(kR)^L$, which represents the ratio of nuclear size to photon wavelength, raised to the multipolarity $L$. Physically:
+- The matrix element involves integrals $\langle f | \hat{O}_{EL} | i \rangle$ over the nuclear volume
+- The $EL$ operator contains $L$ factors of the position operator $\mathbf{r}$ (e.g., E1: $\mathbf{r}$, E2: $\mathbf{r}\mathbf{r}$)
+- Each $\mathbf{r}$ contributes a factor of $R$ (nuclear size) to the matrix element
+- Photon field normalization and phase space together contribute $L$ powers of $k$
 
-In a quantization volume $V$, the number of photon states with wavevector between $k$ and $k+dk$ is:
-$$dN = \frac{V}{(2\pi)^3} 4\pi k^2 dk$$
+Combining these: $|\mathcal{M}|^2 \rho(E) \propto k (kR)^{2L}$, and with the prefactor $c$ from dimensional analysis:
+$$\Gamma_{EL} \propto c k (kR)^{2L}$$
 
-Since photon energy $E = \hbar c k$, the energy density of states is:
-$$\rho(E) = \frac{dN}{dE} = \frac{V}{(2\pi)^3} \frac{4\pi k^2}{\hbar c} \propto \frac{k^2}{\hbar c}$$
-
-**2. Matrix element $|\mathcal{M}|^2$:**
-
-For electric multipole transitions, the interaction Hamiltonian involves the photon field $\mathbf{A}$. In Coulomb gauge, the quantized vector potential for a photon with momentum $\mathbf{k}$ is:
-$$\mathbf{A} \propto \frac{1}{\sqrt{\omega}} \boldsymbol{\varepsilon} \, e^{i\mathbf{k}\cdot\mathbf{r}}$$
-
-Since $\omega = ck$, the normalization gives $|\mathcal{M}|^2 \propto 1/\omega = 1/(ck)$.
-
-Additionally, the $EL$ operator brings a factor $(kR)^L$ from the multipole expansion, so:
-$$|\mathcal{M}|^2 \propto \frac{1}{ck} (kR)^{2L}$$
-
-**3. Combining everything:**
-
-$$\Gamma_{EL} \propto \frac{1}{\hbar} \cdot \frac{k^2}{\hbar c} \cdot \frac{1}{ck} \cdot (kR)^{2L} \propto c k \cdot (kR)^{2L}$$
-
-The factor $ck$ has dimensions of $[L/T] \cdot [L^{-1}] = [T^{-1}]$, giving $\Gamma$ the correct dimensions of probability per unit time.
+The factor $ck$ has dimensions $[L/T] \cdot [L^{-1}] = [T^{-1}]$ (correct for a rate).
 
 For relative comparison at the same photon energy:
 $$\frac{\Gamma_{E(L+1)}}{\Gamma_{EL}} \sim (kR)^2 \ll 1$$
