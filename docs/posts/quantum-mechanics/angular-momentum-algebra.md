@@ -741,32 +741,71 @@ This treats all three magnetic quantum numbers symmetrically—none is singled o
 
 **Application: Angular Correlations in Nuclear $\gamma$-Decay**
 
-Consider an excited nucleus with spin $j_i$ that emits a photon (angular momentum 1) and decays to a state with spin $j_f$. The transition amplitude is:
+Consider an excited nucleus with spin $j_i$ that emits a photon (angular momentum 1) and decays to a state with spin $j_f$. We want to compute the angular distribution of the emitted photon relative to the nuclear spin quantization axis.
 
-$$\mathcal{M} \propto \langle j_f m_f | \hat{O} | j_i m_i \rangle$$
+**Step 1: The Transition Amplitude**
 
-where $\hat{O}$ is the photon emission operator with spherical components labeled by $m_\gamma = -1, 0, +1$. By the Wigner-Eckart theorem, this matrix element factors as:
+The photon emission is described by an operator $\hat{O}$ that carries angular momentum $L=1$ (and projection $m_\gamma$). The transition amplitude is:
 
-$$\langle j_f m_f | \hat{O}_{m_\gamma} | j_i m_i \rangle = \langle j_f m_f; 1 m_\gamma | j_i m_i \rangle \times \langle j_f || \hat{O} || j_i \rangle$$
+$$\mathcal{M}_{m_i \to m_f, m_\gamma} = \langle j_f m_f; 1 m_\gamma | \hat{O} | j_i m_i \rangle$$
 
-The reduced matrix element $\langle j_f || \hat{O} || j_i \rangle$ contains the physics (transition strength), while the CG coefficient contains the angular dependence.
+where $|j_i m_i\rangle$ is the initial nuclear state, $|j_f m_f\rangle$ is the final nuclear state, and the photon state carries angular momentum $|1 m_\gamma\rangle$ with $m_\gamma = -1, 0, +1$.
 
-**Computing the angular distribution:**
+**Step 2: The Wigner-Eckart Theorem**
 
-The probability of emitting a photon at angle $\theta$ relative to the nuclear spin axis is:
+The matrix element involves the product of nuclear and photon angular momenta. To separate the geometry (angular dependence) from the physics (transition strength), we use the Wigner-Eckart theorem.
 
-$$W(\theta) = \sum_{m_i, m_f, m_\gamma} \left| \langle j_f m_f; 1 m_\gamma | j_i m_i \rangle \right|^2 |Y_1^{m_\gamma}(\theta)|^2$$
+For a tensor operator $\hat{T}^{(k)}$ of rank $k$, the theorem states:
+$$\langle j' m' | \hat{T}^{(k)}_q | j m \rangle = \frac{\langle j m; k q | j' m' \rangle}{\sqrt{2j'+1}} \times \langle j' || \hat{T}^{(k)} || j \rangle$$
 
-Converting to 3j symbols:
-$$W(\theta) = (2j_i + 1) \sum_{m_i, m_f, m_\gamma} \left|\begin{pmatrix} j_f & 1 & j_i \\ m_f & m_\gamma & -m_i \end{pmatrix}\right|^2 |Y_1^{m_\gamma}(\theta)|^2$$
+The key insight is that the dependence on $m, m', q$ factorizes into a CG coefficient, while the "physics" is contained in the **reduced matrix element** $\langle j' || \hat{T}^{(k)} || j \rangle$, which is independent of magnetic quantum numbers.
 
-**Advantages of the 3j form:**
+For our photon emission operator $\hat{O}$ (rank $k=1$), we couple the final nuclear state with the photon to match the initial state:
+$$\langle j_f m_f; 1 m_\gamma | \hat{O} | j_i m_i \rangle = \frac{\langle j_f m_f; 1 m_\gamma | j_i m_i \rangle}{\sqrt{2j_i+1}} \times \langle j_i || \hat{O} || j_f \rangle$$
 
-1. **Symmetry:** The 3j symbol treats $j_i$, $j_f$, and the photon (1) equally. For example, if we swap initial and final states, the 3j symbol simply picks up a phase factor $(-1)^{j_f + 1 + j_i}$, whereas the CG form requires reordering.
+Note: $\hat{O}$ acts on both the nucleus and the photon field, so we write the coupling as if the photon is being "absorbed" into the final state to reach the initial state.
 
-2. **Selection rule visibility:** The condition $m_f + m_\gamma - m_i = 0$ (conservation of $J_z$) appears as the sum-to-zero rule $m_1 + m_2 + m_3 = 0$ in the 3j symbol.
+**Step 3: Computing the Angular Distribution**
 
-3. **Computational efficiency:** The 3j symbol has well-known symmetry and orthogonality properties that simplify sums over magnetic quantum numbers.
+The probability of emitting a photon with quantum numbers $(m_\gamma)$ when the nucleus transitions from $m_i$ to $m_f$ is proportional to $|\mathcal{M}|^2$:
+
+$$P(m_i \to m_f, m_\gamma) = |\mathcal{M}_{m_i \to m_f, m_\gamma}|^2 = \frac{|\langle j_i || \hat{O} || j_f \rangle|^2}{2j_i+1} \times |\langle j_f m_f; 1 m_\gamma | j_i m_i \rangle|^2$$
+
+The angular distribution of the photon is given by the spherical harmonic $Y_1^{m_\gamma}(\theta, \phi)$. For a given initial state $m_i$, the probability of emission at angle $\theta$ is:
+
+$$W_{m_i}(\theta) = \sum_{m_f, m_\gamma} P(m_i \to m_f, m_\gamma) \times |Y_1^{m_\gamma}(\theta, 0)|^2$$
+
+where we set $\phi=0$ by azimuthal symmetry around the spin axis.
+
+**Step 4: Converting to 3j Symbols**
+
+Using the definition of the 3j symbol:
+$$\begin{pmatrix} j_1 & j_2 & j_3 \\ m_1 & m_2 & m_3 \end{pmatrix} = \frac{(-1)^{j_1 - j_2 - m_3}}{\sqrt{2j_3 + 1}} \langle j_1, m_1; j_2, m_2 | j_3, -m_3 \rangle$$
+
+we can rewrite:
+$$\langle j_f m_f; 1 m_\gamma | j_i m_i \rangle = (-1)^{j_f - 1 + m_i} \sqrt{2j_i+1} \begin{pmatrix} j_f & 1 & j_i \\ m_f & m_\gamma & -m_i \end{pmatrix}$$
+
+Therefore:
+$$|\langle j_f m_f; 1 m_\gamma | j_i m_i \rangle|^2 = (2j_i+1) \left|\begin{pmatrix} j_f & 1 & j_i \\ m_f & m_\gamma & -m_i \end{pmatrix}\right|^2$$
+
+(The phase factor vanishes when taking the modulus squared.)
+
+The angular distribution becomes:
+$$W_{m_i}(\theta) = |\langle j_i || \hat{O} || j_f \rangle|^2 \sum_{m_f, m_\gamma} \left|\begin{pmatrix} j_f & 1 & j_i \\ m_f & m_\gamma & -m_i \end{pmatrix}\right|^2 |Y_1^{m_\gamma}(\theta, 0)|^2$$
+
+**Step 5: Averaging Over Initial States**
+
+If the initial nuclei are unoriented (random $m_i$), we average over $m_i$:
+
+$$W(\theta) = \frac{1}{2j_i+1} \sum_{m_i} W_{m_i}(\theta) = |\langle j_i || \hat{O} || j_f \rangle|^2 \sum_{m_i, m_f, m_\gamma} \left|\begin{pmatrix} j_f & 1 & j_i \\ m_f & m_\gamma & -m_i \end{pmatrix}\right|^2 |Y_1^{m_\gamma}(\theta, 0)|^2$$
+
+**Why use 3j symbols?**
+
+1. **Symmetric treatment:** The CG coefficient $\langle j_f m_f; 1 m_\gamma | j_i m_i \rangle$ treats $j_i$ as the "result" of coupling $j_f$ and 1. But physically, all three angular momenta are on equal footing—the initial state, final state, and photon each play a role. The 3j symbol with its sum-to-zero condition $m_f + m_\gamma + (-m_i) = 0$ reflects this symmetry.
+
+2. **Selection rule visibility:** The conservation of $J_z$ ($m_i = m_f + m_\gamma$) is immediately apparent from the condition $m_1 + m_2 + m_3 = 0$ in the 3j symbol.
+
+3. **Computational efficiency:** The sum over $m_i$ and $m_f$ can be performed using the orthogonality relation of 3j symbols, giving a simple result in terms of a single 3j symbol with $(\theta)$-dependent coefficients.
 
 **Key properties:**
 
