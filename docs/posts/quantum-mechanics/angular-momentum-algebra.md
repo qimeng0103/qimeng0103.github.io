@@ -254,41 +254,6 @@ $$\boxed{J_+|j, m\rangle = \hbar\sqrt{(j-m)(j+m+1)}|j, m+1\rangle}$$
 Similarly:
 $$\boxed{J_-|j, m\rangle = \hbar\sqrt{(j+m)(j-m+1)}|j, m-1\rangle}$$
 
-**The Condon-Shortley Phase Convention**
-
-The ladder operator matrix elements contain square roots with an overall sign ambiguity. The **Condon-Shortley convention** fixes this by choosing all matrix elements to be **real and positive**.
-
-**Why Phase Choices Matter:**
-
-The relative phases between different $|j, m\rangle$ states are arbitrary—we could redefine $|j, m\rangle \to e^{i\phi_m}|j, m\rangle$ without changing physical predictions. However, this phase choice **does** affect the CG coefficients when we couple angular momenta.
-
-**Example: Two Spin-1/2 Particles**
-
-Consider coupling two spin-1/2 particles. In the Condon-Shortley convention, the singlet state is:
-$$|0, 0\rangle = \frac{1}{\sqrt{2}}\left(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle\right)$$
-
-with **both coefficients real** (one positive, one negative).
-
-Now suppose we use a different phase convention where:
-$$|\uparrow\rangle_1' = e^{i\phi_{1\uparrow}}|\uparrow\rangle_1, \quad |\downarrow\rangle_1' = e^{i\phi_{1\downarrow}}|\downarrow\rangle_1$$
-$$|\uparrow\rangle_2' = e^{i\phi_{2\uparrow}}|\uparrow\rangle_2, \quad |\downarrow\rangle_2' = e^{i\phi_{2\downarrow}}|\downarrow\rangle_2$$
-
-The same physical singlet state, expressed in this new basis, becomes:
-
-$$|0, 0\rangle = \frac{1}{\sqrt{2}}\left(e^{-i(\phi_{1\uparrow}+\phi_{2\downarrow})}|\uparrow\downarrow\rangle' - e^{-i(\phi_{1\downarrow}+\phi_{2\uparrow})}|\downarrow\uparrow\rangle'\right)$$
-
-$$= \frac{e^{-i(\phi_{1\downarrow}+\phi_{2\uparrow})}}{\sqrt{2}}\left(e^{i\Delta\phi}|\uparrow\downarrow\rangle' - |\downarrow\uparrow\rangle'\right)$$
-
-where $\Delta\phi = (\phi_{1\uparrow} - \phi_{1\downarrow}) - (\phi_{2\uparrow} - \phi_{2\downarrow})$.
-
-**The Phase Effect:**
-
-Unless $\Delta\phi = 0$, the CG coefficient of $|\uparrow\downarrow\rangle'$ acquires a **non-trivial phase** $e^{i\Delta\phi}$ relative to that of $|\downarrow\uparrow\rangle'$. The Condon-Shortley convention fixes $\phi_{\uparrow} = \phi_{\downarrow} = 0$ for all particles, ensuring all CG coefficients are real and comparable across different calculations.
-
-**Alternative Conventions:**
-
-Other conventions exist (e.g., making $J_x$ or $J_y$ diagonal), but Condon-Shortley is nearly universal because it makes $J_z$ diagonal and leads to the simplest CG coefficient formulas. When looking up CG coefficients in tables, always verify which convention is used.
-
 ---
 
 ## Part III: Spin Systems and Matrix Representations
@@ -522,6 +487,8 @@ $$|j_1+j_2, j_1+j_2-1\rangle = \sqrt{\frac{j_1}{j_1+j_2}}|j_1, j_1-1; j_2, j_2\r
 
 **Deriving the General Formula by Induction:**
 
+*Note: This induction derives the explicit formula for CG coefficients of the maximum $j = j_1 + j_2$ multiplet, which complements the general recursion relation in Step 4 that works for any $j$.*
+
 We prove by mathematical induction that for the $j = j_1 + j_2$ multiplet:
 
 $$|j_1+j_2, m\rangle = \sum_{m_1+m_2=m} C_{m_1,m_2}^{(m)} |j_1, m_1; j_2, m_2\rangle$$
@@ -533,19 +500,23 @@ $$C_{m_1,m_2}^{(m)} = \sqrt{\frac{(2j_1)!(2j_2)!(j_1+j_2+m)!(j_1+j_2-m)!}{(2j_1+
 Only $m_1 = j_1, m_2 = j_2$ contributes. The formula gives $C_{j_1,j_2}^{(j_1+j_2)} = 1$, which matches Step 1.
 
 **Inductive step:**
-Assume the formula holds for $m+1$. Apply $J_-$ to $|j_1+j_2, m+1\rangle$:
+Assume the formula holds for $m+1$. Apply $J_- = J_{1-} + J_{2-}$ to $|j_1+j_2, m+1\rangle$:
 
+On the coupled side:
 $$J_-|j_1+j_2, m+1\rangle = \hbar\sqrt{(j_1+j_2+m+1)(j_1+j_2-m)}|j_1+j_2, m\rangle$$
 
-Expanding the left side using $J_- = J_{1-} + J_{2-}$ and the induction hypothesis:
-
+On the uncoupled side (using induction hypothesis):
 $$\sum_{m_1'+m_2'=m+1} C_{m_1',m_2'}^{(m+1)} \left[\hbar\sqrt{(j_1+m_1')(j_1-m_1'+1)}|j_1,m_1'-1;j_2,m_2'\rangle + \hbar\sqrt{(j_2+m_2')(j_2-m_2'+1)}|j_1,m_1';j_2,m_2'-1\rangle\right]$$
 
-After reindexing ($m_1 = m_1'-1$ in first term, $m_2 = m_2'-1$ in second), we collect terms with $|j_1,m_1;j_2,m_2\rangle$ where $m_1 + m_2 = m$. The coefficient becomes:
+After reindexing ($m_1 = m_1'-1$ in first term, $m_2 = m_2'-1$ in second), we collect terms with $|j_1,m_1;j_2,m_2\rangle$ where $m_1 + m_2 = m$. Equating both sides:
 
-$$C_{m_1,m_2}^{(m)} \propto \sqrt{(j_1+m_1+1)(j_1-m_1)}C_{m_1+1,m_2}^{(m+1)} + \sqrt{(j_2+m_2+1)(j_2-m_2)}C_{m_1,m_2+1}^{(m+1)}$$
+$$\sqrt{(j_1+j_2+m+1)(j_1+j_2-m)} C_{m_1,m_2}^{(m)} = \sqrt{(j_1+m_1+1)(j_1-m_1)}C_{m_1+1,m_2}^{(m+1)} + \sqrt{(j_2+m_2+1)(j_2-m_2)}C_{m_1,m_2+1}^{(m+1)}$$
 
-Substituting the induction hypothesis and simplifying using factorial identities verifies the formula for $m$. By induction, the formula holds for all $m$ from $j_1+j_2$ down to $-(j_1+j_2)$.
+Substituting the induction hypothesis for $C_{m_1+1,m_2}^{(m+1)}$ and $C_{m_1,m_2+1}^{(m+1)}$, and using factorial identities, the right-hand side simplifies to:
+
+$$\sqrt{(j_1+j_2+m+1)(j_1+j_2-m)} \sqrt{\frac{(2j_1)!(2j_2)!(j_1+j_2+m)!(j_1+j_2-m)!}{(2j_1+2j_2)!(j_1+m_1)!(j_1-m_1)!(j_2+m_2)!(j_2-m_2)!}}$$
+
+Dividing both sides by $\sqrt{(j_1+j_2+m+1)(j_1+j_2-m)}$ verifies the formula for $C_{m_1,m_2}^{(m)}$. By induction, the formula holds for all $m$.
 
 **General Formula for $j = j_1 + j_2$:**
 
@@ -703,6 +674,44 @@ $$|1,-1\rangle = |\downarrow\downarrow\rangle$$
 **Singlet State (Antisymmetric, $S=0$):**
 $$|0,0\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle)$$
 
+### 4.7 The Condon-Shortley Phase Convention
+
+**Why Phase Choices Matter**
+
+The relative phases between different $|j, m\rangle$ states are arbitrary—we could redefine $|j, m\rangle \to e^{i\phi_m}|j, m\rangle$ without changing physical predictions. However, this phase choice **does** affect the CG coefficients when we couple angular momenta.
+
+**The Phase Ambiguity in Practice**
+
+In the calculation above, we used the Condon-Shortley convention where all matrix elements of $J_+$ and $J_-$ are real and positive. Let's see what happens if we choose different conventions for the two particles.
+
+Recall that $|\uparrow\rangle \equiv |j=1/2, m=1/2\rangle$ and $|\downarrow\rangle \equiv |j=1/2, m=-1/2\rangle$. Suppose we use different phase conventions:
+$$|\uparrow\rangle_1' = e^{i\phi_{1\uparrow}}|\uparrow\rangle_1, \quad |\downarrow\rangle_1' = e^{i\phi_{1\downarrow}}|\downarrow\rangle_1$$
+$$|\uparrow\rangle_2' = e^{i\phi_{2\uparrow}}|\uparrow\rangle_2, \quad |\downarrow\rangle_2' = e^{i\phi_{2\downarrow}}|\downarrow\rangle_2$$
+
+**The Singlet State with Different Phases**
+
+The physical singlet state $|0,0\rangle$ is defined by being orthogonal to $|1,0\rangle$ and having $j=0$. In the primed basis, if we blindly apply the orthogonalization procedure without accounting for phase differences, we get:
+
+$$|0,0\rangle' = \frac{1}{\sqrt{2}}(|\downarrow\uparrow\rangle' - |\uparrow\downarrow\rangle')$$
+
+But transforming back to the standard (unprimed) basis:
+$$|0,0\rangle' = \frac{1}{\sqrt{2}}\left(e^{i(\phi_{1\downarrow}+\phi_{2\uparrow})}|\downarrow\uparrow\rangle - e^{i(\phi_{1\uparrow}+\phi_{2\downarrow})}|\uparrow\downarrow\rangle\right) = \frac{e^{i(\phi_{1\downarrow}+\phi_{2\uparrow})}}{\sqrt{2}}\left(|\downarrow\uparrow\rangle - e^{i\Delta\phi}|\uparrow\downarrow\rangle\right)$$
+
+where $\Delta\phi = (\phi_{1\uparrow} - \phi_{1\downarrow}) - (\phi_{2\uparrow} - \phi_{2\downarrow})$.
+
+**The Key Point**
+
+Unless the relative phase between $|\uparrow\rangle$ and $|\downarrow\rangle$ is the same for both particles ($\Delta\phi = 0$), the CG coefficient for $|\uparrow\downarrow\rangle$ acquires a spurious phase factor $e^{i\Delta\phi}$. This makes the coefficients complex and convention-dependent.
+
+**The Condon-Shortley Solution**
+
+The Condon-Shortley convention fixes this by requiring:
+1. $J_+$ matrix elements are real and positive for all angular momenta
+2. This fixes the relative phases of all $|j,m\rangle$ states within each multiplet
+3. Consequently, all CG coefficients are real (up to an overall sign for each $j$)
+
+When looking up CG coefficients in tables or using software, always verify that the Condon-Shortley convention is being used.
+
 ### 4.8 Orbital-Spin Coupling ($j = l \pm 1/2$)
 
 **Is $j$ the Coupling of $l$ and $s$? Yes!**
@@ -733,9 +742,9 @@ where:
 
 Applying the triangle rule with $j_1 = l$ and $j_2 = 1/2$:
 - $j_{\max} = l + 1/2$
-- $j_{\min} = l - 1/2$ (for $l \geq 1$)
+- $j_{\min} = |l - 1/2| = l - 1/2$ (for $l \geq 1$)
 
-For $l = 0$ (s-orbital), only $j = 1/2$ is possible.
+For $l = 0$ (s-orbital), the triangle rule gives $j_{\min} = |0 - 1/2| = 1/2$, so only $j = 1/2$ is possible.
 
 **States with $j = l + 1/2$:**
 
@@ -756,31 +765,44 @@ When coupling three angular momenta $\mathbf{J} = \mathbf{J}_1 + \mathbf{J}_2 + 
 **Scheme 1 ($j_{12}$ coupling):** First couple $\mathbf{J}_1$ and $\mathbf{J}_2$ to get $\mathbf{J}_{12}$, then couple with $\mathbf{J}_3$:
 $$\mathbf{J}_{12} = \mathbf{J}_1 + \mathbf{J}_2, \quad \mathbf{J} = \mathbf{J}_{12} + \mathbf{J}_3$$
 
-The basis states are labeled as $|(j_1 j_2)j_{12}, j_3; j, m\rangle$, where:
-- $j_{12}$ takes values $|j_1 - j_2|, ..., j_1 + j_2$
-- $j$ takes values $|j_{12} - j_3|, ..., j_{12} + j_3$
+The basis states are labeled as $|(j_1 j_2)j_{12}, j_3; j, m\rangle$. This notation means:
+- First $j_1$ and $j_2$ are coupled to intermediate $j_{12}$
+- Then $j_{12}$ is coupled with $j_3$ to give total $j$
+- The state has magnetic quantum number $m$
+
+The allowed values are:
+- $j_{12} \in \{|j_1 - j_2|, ..., j_1 + j_2\}$
+- $j \in \{|j_{12} - j_3|, ..., j_{12} + j_3\}$
 
 **Scheme 2 ($j_{23}$ coupling):** First couple $\mathbf{J}_2$ and $\mathbf{J}_3$ to get $\mathbf{J}_{23}$, then couple with $\mathbf{J}_1$:
 $$\mathbf{J}_{23} = \mathbf{J}_2 + \mathbf{J}_3, \quad \mathbf{J} = \mathbf{J}_1 + \mathbf{J}_{23}$$
 
 The basis states are labeled as $|j_1, (j_2 j_3)j_{23}; j, m\rangle$, where:
-- $j_{23}$ takes values $|j_2 - j_3|, ..., j_2 + j_3$
-- $j$ takes values $|j_1 - j_{23}|, ..., j_1 + j_{23}$
+- $j_{23} \in \{|j_2 - j_3|, ..., j_2 + j_3\}$
+- $j \in \{|j_1 - j_{23}|, ..., j_1 + j_{23}\}$
 
 **Why These Bases Are Different:**
 
-The operators $\mathbf{J}_{12}^2$ and $\mathbf{J}_{23}^2$ do not commute:
-$$[\mathbf{J}_{12}^2, \mathbf{J}_{23}^2] \neq 0$$
+The operators $\mathbf{J}_{12}^2$ and $\mathbf{J}_{23}^2$ do not commute. To see this, expand:
+$$\mathbf{J}_{12}^2 = (\mathbf{J}_1 + \mathbf{J}_2)^2 = J_1^2 + J_2^2 + 2\mathbf{J}_1 \cdot \mathbf{J}_2$$
+$$\mathbf{J}_{23}^2 = (\mathbf{J}_2 + \mathbf{J}_3)^2 = J_2^2 + J_3^2 + 2\mathbf{J}_2 \cdot \mathbf{J}_3$$
 
-This means we cannot simultaneously diagonalize both operators. A state with definite $j_{12}$ does NOT have definite $j_{23}$, and vice versa. The two coupling schemes define different orthonormal bases for the same $(2j_1+1)(2j_2+1)(2j_3+1)$-dimensional Hilbert space.
+The cross term contains $\mathbf{J}_1 \cdot \mathbf{J}_2$ versus $\mathbf{J}_2 \cdot \mathbf{J}_3$. Since $[J_{1i}, J_{2j}] = 0$ but $[J_{2i}, J_{2j}] = i\hbar\varepsilon_{ijk}J_{2k}$, these operators do not commute.
+
+**Key consequence:** When two Hermitian operators do not commute, they cannot be simultaneously diagonalized. This means:
+- A state with definite $j_{12}$ does NOT have definite $j_{23}$
+- The two coupling schemes define different orthonormal bases
+- Both bases span the same $(2j_1+1)(2j_2+1)(2j_3+1)$-dimensional Hilbert space
 
 **Recoupling Transformation:**
 
 The two bases are related by a unitary transformation:
 
-$$|j_1, (j_2 j_3)j_{23}; j, m\rangle = \sum_{j_{12}} \langle (j_1 j_2)j_{12}, j_3; j | j_1, (j_2 j_3)j_{23}; j \rangle |(j_1 j_2)j_{12}, j_3; j, m\rangle$$
+$$|j_1, (j_2 j_3)j_{23}; j, m\rangle = \sum_{j_{12}} U_{j_{12}, j_{23}} |(j_1 j_2)j_{12}, j_3; j, m\rangle$$
 
-The transformation coefficients are independent of $m$ (by the Wigner-Eckart theorem) and are conventionally expressed in terms of **Racah coefficients** or **Wigner 6j symbols**.
+The transformation coefficients $U_{j_{12}, j_{23}}$ depend on $j_1, j_2, j_3, j_{12}, j_{23}, j$ but **not on $m$**. This $m$-independence is a general result: when transforming between bases that both have definite total $J^2$ and $J_z$, the coefficients cannot depend on the specific $m$ value. This is related to the fact that $J_+$ and $J_-$ act as raising/lowering operators in the same way in both bases.
+
+These coefficients are conventionally expressed as **Wigner 6j symbols** (see Section 4.10).
 
 **Counting States:**
 
@@ -788,56 +810,73 @@ For given $j_1, j_2, j_3$, both bases must span the same space with $(2j_1+1)(2j
 
 ### 4.10 Wigner Symbols: Symmetric Notation for CG Coefficients
 
-**Motivation: Symmetry and Simplicity**
+**Motivation: Why Wigner Symbols?**
 
-The standard CG coefficients $\langle j_1, m_1; j_2, m_2 | j_3, m_3 \rangle$ are somewhat asymmetric—the third angular momentum $j_3$ plays a special role as the "result" of coupling $j_1$ and $j_2$. The **Wigner 3j symbol** provides a more symmetric notation that treats all three angular momenta on equal footing.
+**The 3j Symbol: Symmetric Treatment of Three Angular Momenta**
+
+The standard CG coefficient $\langle j_1, m_1; j_2, m_2 | j_3, m_3 \rangle$ treats $j_3$ as the "result" of coupling $j_1$ and $j_2$. But in many physical situations, all three angular momenta are on equal footing—for example, in the matrix element of a scalar operator that depends on three angular momenta, or when considering the coupling of three angular momenta with zero total angular momentum.
 
 **The Wigner 3j Symbol:**
 
 $$\begin{pmatrix} j_1 & j_2 & j_3 \\ m_1 & m_2 & m_3 \end{pmatrix} = \frac{(-1)^{j_1 - j_2 - m_3}}{\sqrt{2j_3 + 1}} \langle j_1, m_1; j_2, m_2 | j_3, -m_3 \rangle$$
 
-**Key Properties:**
+**Application: Three-Particle States with $J=0$**
+
+Consider coupling three angular momenta to get total $J=0$ and $M=0$. In the uncoupled basis:
+$$|j_1, m_1; j_2, m_2; j_3, m_3\rangle$$
+
+The condition $J_z|J=0, M=0\rangle = 0$ requires $m_1 + m_2 + m_3 = 0$. The CG expansion is:
+$$|J=0, M=0\rangle = \sum_{m_1, m_2, m_3} C_{m_1, m_2, m_3} |j_1, m_1; j_2, m_2; j_3, m_3\rangle \delta_{m_1+m_2+m_3, 0}$$
+
+The coefficients $C_{m_1, m_2, m_3}$ are proportional to the **Wigner 3j symbol**:
+$$C_{m_1, m_2, m_3} \propto \begin{pmatrix} j_1 & j_2 & j_3 \\ m_1 & m_2 & m_3 \end{pmatrix}$$
+
+This appears in the calculation of three-body matrix elements, angular correlations in decays, and the evaluation of Racah recoupling coefficients.
+
+**Key Properties of 3j Symbols:**
 
 1. **Selection Rules:** The 3j symbol is zero unless:
    - $m_1 + m_2 + m_3 = 0$ (magnetic quantum numbers sum to zero)
    - $|j_1 - j_2| \leq j_3 \leq j_1 + j_2$ (triangle condition for each triad)
-   - $j_1 + j_2 + j_3$ is an integer (parity condition)
 
 2. **Symmetry:** Under permutation of columns:
    - Even permutation: unchanged
    - Odd permutation: multiplied by $(-1)^{j_1 + j_2 + j_3}$
-   - Sign change of all $m_i$: multiplied by $(-1)^{j_1 + j_2 + j_3}$
 
-**The Wigner 6j Symbol:**
+**The 6j Symbol: Recoupling Coefficients**
 
-For recoupling three angular momenta, the transformation coefficients form the **Wigner 6j symbol**:
+When we have three angular momenta and want to transform between different coupling schemes, the coefficients form the **Wigner 6j symbol**:
 
 $$\begin{Bmatrix} j_1 & j_2 & j_{12} \\ j_3 & j & j_{23} \end{Bmatrix}$$
+
+**Why This Form?**
+
+The 6j symbol has six entries because the recoupling from $(j_1 j_2)j_{12}$ coupling to $(j_2 j_3)j_{23}$ coupling involves:
+- The three original angular momenta: $j_1, j_2, j_3$
+- The two intermediate couplings: $j_{12}, j_{23}$
+- The total angular momentum: $j$
 
 **Definition:**
 
 $$|j_1, (j_2 j_3)j_{23}; j, m\rangle = \sum_{j_{12}} (-1)^{j_1 + j_2 + j_3 + j} \sqrt{(2j_{12}+1)(2j_{23}+1)} \begin{Bmatrix} j_1 & j_2 & j_{12} \\ j_3 & j & j_{23} \end{Bmatrix} |(j_1 j_2)j_{12}, j_3; j, m\rangle$$
 
-**Key Properties:**
-
-1. **Triangle Conditions:** The 6j symbol is non-zero only if all four triads $(j_1, j_2, j_{12})$, $(j_3, j, j_{23})$, $(j_1, j, j_{23})$, and $(j_2, j_3, j_{23})$ satisfy the triangle condition.
-
-2. **Symmetry:** Invariant under any permutation of columns and under interchange of upper and lower arguments in any two columns.
-
-3. **Orthogonality:**
-   $$\sum_{j_{12}} (2j_{12}+1)(2j_{23}+1) \begin{Bmatrix} j_1 & j_2 & j_{12} \\ j_3 & j & j_{23} \end{Bmatrix} \begin{Bmatrix} j_1 & j_2 & j_{12} \\ j_3 & j & j_{23}' \end{Bmatrix} = \delta_{j_{23} j_{23}'}$$
+The phase factor $(-1)^{j_1 + j_2 + j_3 + j}$ and the normalization factors $\sqrt{(2j_{12}+1)(2j_{23}+1)}$ ensure the transformation is unitary.
 
 **Physical Application: Three-Electron System**
 
 Consider three electrons in an atom with total spin $\mathbf{S} = \mathbf{S}_1 + \mathbf{S}_2 + \mathbf{S}_3$:
 
-**Scheme 1:** First couple electrons 1 and 2 into $S_{12} = 0$ (singlet) or $S_{12} = 1$ (triplet), then add electron 3. The resulting states are:
-- $S_{12} = 0$ gives total $S = 1/2$ (doublet)
-- $S_{12} = 1$ gives total $S = 1/2$ (doublet) or $S = 3/2$ (quartet)
+**Scheme 1:** First couple electrons 1 and 2 into $S_{12}$, then add electron 3:
+- $|S_{12}=0, S=1/2\rangle$: Singlet for 1-2, combined with electron 3 → doublet
+- $|S_{12}=1, S=1/2\rangle$: Triplet for 1-2, combined with electron 3 → doublet
+- $|S_{12}=1, S=3/2\rangle$: Triplet for 1-2, combined with electron 3 → quartet
 
-**Scheme 2:** First couple electrons 2 and 3 into $S_{23} = 0$ or $1$, then add electron 1. This gives the same total $S$ values but different intermediate states.
+**Scheme 2:** First couple electrons 2 and 3 into $S_{23}$, then add electron 1. This gives the same total $S$ values but different intermediate states.
 
-The 6j symbol gives the transformation between these two coupling schemes. For example, the amplitude to find the system in $S_{23} = 0$ given that it was prepared in $S_{12} = 0$ involves a 6j symbol.
+The 6j symbol tells us the overlap between these two descriptions. For example:
+$$\langle (S_{12}=0), S=1/2 | S_{23}=0, S=1/2 \rangle \propto \begin{Bmatrix} 1/2 & 1/2 & 0 \\ 1/2 & 1/2 & 0 \end{Bmatrix}$$
+
+This is essential in atomic physics when calculating matrix elements of two-electron operators (like Coulomb repulsion) in systems with three or more electrons.
 
 **Higher-Order Symbols:**
 
