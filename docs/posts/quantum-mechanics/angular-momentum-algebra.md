@@ -751,7 +751,22 @@ Before diving into the nuclear decay calculation, let's establish the general Wi
 - The "physics" (transition strength, coupling constants)
 - The "geometry" (how the states and operator are oriented in space)
 
-The Wigner-Eckart theorem states that these dependencies **factorize**:
+The Wigner-Eckart theorem states that these dependencies **factorize**.
+
+**Irreducible Tensor Operators**
+
+An **irreducible tensor operator** $T^{(k)}$ of rank $k$ is a set of $2k+1$ operators $\{T^{(k)}_q : q = -k, -k+1, ..., k\}$ that transform under rotations in the same way as the angular momentum eigenstates $|k, q\rangle$.
+
+Specifically, under a rotation $R$, the operators transform as:
+$$R T^{(k)}_q R^{-1} = \sum_{q'} D^{(k)}_{q'q}(R) T^{(k)}_{q'}$$
+
+where $D^{(k)}(R)$ is the Wigner D-matrix for angular momentum $k$.
+
+**Commutation relations with angular momentum:**
+$$[J_z, T^{(k)}_q] = \hbar q T^{(k)}_q$$
+$$[J_\pm, T^{(k)}_q] = \hbar \sqrt{k(k+1) - q(q\pm 1)} \, T^{(k)}_{q\pm 1}$$
+
+These are the operator analogs of $J_z |k,q\rangle = \hbar q |k,q\rangle$ and $J_\pm |k,q\rangle \propto |k,q\pm 1\rangle$.
 
 **Theorem (Wigner-Eckart):** For an irreducible tensor operator $T^{(k)}_q$ of rank $k$ (component $q$), the matrix element between angular momentum states factorizes as:
 
@@ -766,10 +781,6 @@ where:
 $$\begin{pmatrix} j & k & j' \\ m & q & -m' \end{pmatrix} = \frac{(-1)^{j-k+m'}}{\sqrt{2j'+1}} \langle j m; k q | j' m' \rangle$$
 
 The $\sqrt{2j'+1}$ in the Wigner-Eckart theorem combines with the $\sqrt{2j'+1}$ in the 3j symbol definition to give simple orthogonality relations.
-
-**Proof Sketch:** The key insight is that both $T^{(k)}_q |j m\rangle$ and the coupled state $|j' m'\rangle$ transform under rotations as direct product representations. The CG coefficient $\langle j m; k q | j' m' \rangle$ is the unique (up to normalization) rotationally invariant way to combine these angular momenta. By the Wigner-Eckart theorem, all matrix elements with the same $j, k, j'$ but different $m, q, m'$ are proportional to this single CG coefficient.
-
-The proportionality constant—the reduced matrix element—can be extracted by evaluating any convenient matrix element (typically the one with $m = j, m' = j', q = j'-j$).
 
 **Step 1: The Transition Amplitude**
 
@@ -787,25 +798,65 @@ The transition amplitude $\mathcal{M} = \langle j_f m_f | \hat{O} | j_i m_i \ran
 
 For electric dipole (E1) transitions, the operator takes the form:
 
-$$\hat{O}_{E1} \propto \mathbf{r} \cdot \boldsymbol{\varepsilon}^* = \sum_{q=-1}^{+1} (-1)^q r_q \varepsilon^*_{-q}$$
+$$\hat{O}_{E1} = e \sum_{p=1}^{Z} \mathbf{r}_p \cdot \boldsymbol{\varepsilon}^* e^{-i\mathbf{k}\cdot\mathbf{r}_p}$$
 
 where:
-- $\mathbf{r}$ is the nuclear position operator (or more precisely, the proton position coordinates weighted by charge)
+- $e$ is the proton charge
+- $\mathbf{r}_p$ is the position of the $p$-th proton in the nucleus (neutrons don't contribute to electric transitions)
+- $Z$ is the proton number
 - $\boldsymbol{\varepsilon}$ is the photon polarization vector
-- $r_q$ are the spherical components of $\mathbf{r}$:
-  $$r_{\pm 1} = \mp \frac{1}{\sqrt{2}}(x \pm iy), \quad r_0 = z$$
+- $\mathbf{k}$ is the photon wave vector
 
-**Why "E1"?** The notation uses:
-- **E** for Electric (vs. **M** for Magnetic)
-- **1** for the multipolarity (angular momentum $L=1$)
+**Long-wavelength approximation:** For nuclear $\gamma$-decay, the photon wavelength $\lambda = 2\pi/k$ is much larger than the nuclear size ($R \sim 5$ fm). Since $kR \ll 1$:
+$$e^{-i\mathbf{k}\cdot\mathbf{r}} \approx 1 - i\mathbf{k}\cdot\mathbf{r} + ...$$
 
-The general electromagnetic multipole operator of type $(\sigma, L)$ where $\sigma = E$ or $M$ and $L = 0, 1, 2, ...$ has parity selection rule:
-- Electric multipole $EL$: parity changes by $(-1)^L$
-- Magnetic multipole $ML$: parity changes by $(-1)^{L+1}$
+The leading term (constant 1) gives **electric dipole (E1)** transitions. Higher order terms give electric quadrupole (E2), magnetic dipole (M1), etc.
 
-E1 transitions ($L=1$, parity changes) are typically the fastest allowed electromagnetic transitions in nuclei and atoms.
+**Spherical Components:**
 
-The spherical components $r_q$ transform as a rank-1 irreducible tensor. This operator carries angular momentum $L=1$ with projection $q$.
+To apply angular momentum theory, we need the **spherical components** of vectors. Given a vector $\mathbf{V} = (V_x, V_y, V_z)$, its spherical components are:
+
+$$V_{+1} = -\frac{1}{\sqrt{2}}(V_x + iV_y)$$
+$$V_0 = V_z$$
+$$V_{-1} = \frac{1}{\sqrt{2}}(V_x - iV_y)$$
+
+**Why this form?** Under rotations about the $z$-axis by angle $\phi$:
+- $V_{\pm 1} \to e^{\pm i\phi} V_{\pm 1}$ (transforms like $e^{\pm i\phi}$, i.e., $m = \pm 1$)
+- $V_0 \to V_0$ (invariant, $m = 0$)
+
+These are the eigenfunctions of $L_z$ (the generator of rotations about $z$) with eigenvalues $\pm\hbar$ and $0$.
+
+The E1 operator in spherical components becomes:
+$$\hat{O}_{E1} \propto \sum_{q=-1}^{+1} (-1)^q \hat{r}_q \varepsilon^*_{-q}$$
+
+where $\hat{r}_q = \sum_p \mathbf{r}_{p,q}$ (sum over proton spherical components).
+
+**Irreducible Tensor Property:**
+
+The spherical components $\hat{r}_q$ satisfy the commutation relations of a rank-1 irreducible tensor operator:
+$$[J_z, \hat{r}_q] = \hbar q \, \hat{r}_q$$
+$$[J_\pm, \hat{r}_q] = \hbar \sqrt{2 - q(q\pm 1)} \, \hat{r}_{q\pm 1}$$
+
+Therefore, $\hat{\mathbf{r}} = \{\hat{r}_{+1}, \hat{r}_0, \hat{r}_{-1}\}$ is a **rank-1 irreducible tensor operator**. In the Wigner-Eckart theorem, this means $k = 1$ (rank) and $q = m_\gamma$ (projection, determined by photon polarization).
+
+**Multipolarity and Parity:**
+
+Electromagnetic transitions are classified by **multipolarity** $L$ (angular momentum carried by photon) and **type** (E=electric, M=magnetic):
+
+| Type | Notation | Parity Change | Relative Strength |
+|------|----------|---------------|-------------------|
+| Electric | $EL$ | $(-1)^L$ | $\sim (kR)^{2L}$ |
+| Magnetic | $ML$ | $(-1)^{L+1}$ | $\sim (kR)^{2L}$ |
+
+For E1 ($L=1$): parity changes by $(-1)^1 = -1$ (odd parity change).
+
+**Why E1 is fastest:** The transition probability scales as $(kR)^{2L}$. For nuclear transitions:
+- $kR \sim 0.1 - 0.01$ (typical nuclear size vs. photon wavelength)
+- E1: $\sim (kR)^2$ (largest)
+- E2/M1: $\sim (kR)^4$ (100-10000× smaller)
+- E3: $\sim (kR)^6$ (even more suppressed)
+
+Thus, when E1 is allowed (selection rules permit), it dominates.
 
 **Applying Wigner-Eckart:**
 
@@ -830,7 +881,7 @@ $$P(m_i \to m_f, m_\gamma) = C \times |\langle j_i m_i; 1 m_\gamma | j_f m_f \ra
 
 where $C = |\langle j_f || \hat{O} || j_i \rangle|^2 / (2j_f+1)$ is a constant.
 
-**The Photon Angular Dependence:**
+**The Photon Angular Dependence and Polarization:**
 
 The photon is emitted with angular momentum projection $m_\gamma$ relative to the nuclear spin quantization axis. The probability of finding this photon at angle $(\theta, \phi)$ relative to the spin axis is given by $|Y_1^{m_\gamma}(\theta, \phi)|^2$.
 
@@ -849,8 +900,36 @@ $$Y_1^{\pm 1}(\theta, \phi) = \mp \sqrt{\frac{3}{8\pi}} \sin\theta \, e^{\pm i\p
 $$Y_1^0(\theta, \phi) = \sqrt{\frac{3}{4\pi}} \cos\theta$$
 
 The intensity (probability density) is $|Y_1^{m_\gamma}|^2$:
-- $|Y_1^{\pm 1}|^2 \propto \sin^2\theta$ (emission perpendicular to spin axis, circular polarization)
-- $|Y_1^0|^2 \propto \cos^2\theta$ (emission along spin axis, linear polarization)
+- $|Y_1^{\pm 1}|^2 \propto \sin^2\theta$ (emission perpendicular to spin axis)
+- $|Y_1^0|^2 \propto \cos^2\theta$ (emission along spin axis)
+
+**Polarization and Angular Momentum Projection:**
+
+The polarization of the emitted photon depends on $m_\gamma$:
+
+**$m_\gamma = \pm 1$: Circular Polarization**
+
+The photon polarization vector for $m_\gamma = \pm 1$ is:
+$$\boldsymbol{\varepsilon}_{\pm 1} = \mp \frac{1}{\sqrt{2}}(\hat{x} \pm i\hat{y})$$
+
+These are the **circular polarization vectors** (helicity $\pm 1$):
+- $\boldsymbol{\varepsilon}_{+1}$: Right-circular polarization (photon spin aligned with propagation)
+- $\boldsymbol{\varepsilon}_{-1}$: Left-circular polarization (photon spin anti-aligned with propagation)
+
+When $m_\gamma = \pm 1$, the photon's intrinsic angular momentum (spin) has projection $\pm\hbar$ along the quantization axis. This corresponds to circular polarization because the electric field vector rotates in a circle in the plane perpendicular to the propagation direction.
+
+**$m_\gamma = 0$: Linear Polarization**
+
+The photon polarization vector for $m_\gamma = 0$ is:
+$$\boldsymbol{\varepsilon}_0 = \hat{z}$$
+
+This is **linear polarization** along the $z$-axis (quantization axis). When the photon propagates in the $x$-$y$ plane (perpendicular to the spin axis), the electric field oscillates along $\hat{z}$, which is a linear polarization.
+
+Alternatively, when propagating along $z$, $m_\gamma = 0$ corresponds to linear polarization in the $x$-$y$ plane (superposition of $\pm 1$ states with definite relative phase).
+
+**Physical Picture:**
+- **$m_\gamma = \pm 1$**: Photon spin is aligned with the nuclear spin axis; emitted preferentially perpendicular to the axis ($\sin^2\theta$); circularly polarized
+- **$m_\gamma = 0$**: Photon has no angular momentum along the spin axis; emitted preferentially along the axis ($\cos^2\theta$); linearly polarized
 
 Therefore, the joint probability of the specific transition AND photon emission at angle $\theta$ is:
 $$P(m_i \to m_f, m_\gamma; \theta) = C \times |\langle j_i m_i; 1 m_\gamma | j_f m_f \rangle|^2 \times |Y_1^{m_\gamma}(\theta)|^2$$
