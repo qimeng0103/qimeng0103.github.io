@@ -901,14 +901,36 @@ Why do higher multipoles have smaller transition probabilities? The key is the r
 
 **Origin of the scaling:**
 
-The decay rate $\Gamma$ (probability per unit time) depends on:
-1. **Matrix element squared:** The $EL$ operator $\sim \hat{R}^L$ gives $|\mathcal{M}|^2 \sim R^{2L}$
-2. **Photon flux/phase space:** Contributes a factor $\sim c \cdot k^{2L+1}$ (the factor $c$ ensures correct dimensions)
+The decay rate $\Gamma$ (probability per unit time) comes from Fermi's Golden Rule:
+$$\Gamma = \frac{2\pi}{\hbar} |\mathcal{M}|^2 \rho(E_f)$$
 
-Combining these (Weisskopf estimate):
-$$\Gamma_{EL} \propto c \cdot k^{2L+1} \cdot R^{2L} = c k \cdot (kR)^{2L}$$
+where $\rho(E_f)$ is the density of final photon states.
 
-The dimensions are correct: $[c] = L/T$, $[k] = L^{-1}$, so $[ck] = T^{-1}$.
+**Where does each factor come from?**
+
+**1. Photon density of states $\rho(E)$:**
+
+In a quantization volume $V$, the number of photon states with wavevector between $k$ and $k+dk$ is:
+$$dN = \frac{V}{(2\pi)^3} 4\pi k^2 dk$$
+
+Since photon energy $E = \hbar c k$, the energy density of states is:
+$$\rho(E) = \frac{dN}{dE} = \frac{V}{(2\pi)^3} \frac{4\pi k^2}{\hbar c} \propto \frac{k^2}{\hbar c}$$
+
+**2. Matrix element $|\mathcal{M}|^2$:**
+
+For electric multipole transitions, the interaction Hamiltonian involves the photon field $\mathbf{A}$. In Coulomb gauge, the quantized vector potential for a photon with momentum $\mathbf{k}$ is:
+$$\mathbf{A} \propto \frac{1}{\sqrt{\omega}} \boldsymbol{\varepsilon} \, e^{i\mathbf{k}\cdot\mathbf{r}}$$
+
+Since $\omega = ck$, the normalization gives $|\mathcal{M}|^2 \propto 1/\omega = 1/(ck)$.
+
+Additionally, the $EL$ operator brings a factor $(kR)^L$ from the multipole expansion, so:
+$$|\mathcal{M}|^2 \propto \frac{1}{ck} (kR)^{2L}$$
+
+**3. Combining everything:**
+
+$$\Gamma_{EL} \propto \frac{1}{\hbar} \cdot \frac{k^2}{\hbar c} \cdot \frac{1}{ck} \cdot (kR)^{2L} \propto c k \cdot (kR)^{2L}$$
+
+The factor $ck$ has dimensions of $[L/T] \cdot [L^{-1}] = [T^{-1}]$, giving $\Gamma$ the correct dimensions of probability per unit time.
 
 For relative comparison at the same photon energy:
 $$\frac{\Gamma_{E(L+1)}}{\Gamma_{EL}} \sim (kR)^2 \ll 1$$
