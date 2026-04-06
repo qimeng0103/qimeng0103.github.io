@@ -769,6 +769,19 @@ $$T^{(k)}_q \to R T^{(k)}_q R^{-1} = \sum_{q'} D^{(k)}_{q'q}(R) T^{(k)}_{q'}$$
 
 The same D-matrix appears because both the states $|k,q\rangle$ and the operators $T^{(k)}_q$ carry angular momentum $k$ and transform identically under rotations.
 
+**Example: Rotation about the z-axis**
+
+For a rotation by angle $\phi$ about the $z$-axis, the Wigner D-matrix is diagonal:
+$$D^{(k)}_{q'q}(R_z(\phi)) = e^{-iq\phi} \delta_{q'q}$$
+
+Therefore:
+$$R_z(\phi) |k, q\rangle = e^{-iq\phi} |k, q\rangle$$
+
+and for operators:
+$$R_z(\phi) T^{(k)}_q R_z^{-1}(\phi) = e^{-iq\phi} T^{(k)}_q$$
+
+This confirms that both states and operators acquire the same phase factor $e^{-iq\phi}$ under $z$-rotations.
+
 **Commutation relations with angular momentum:**
 $$[J_z, T^{(k)}_q] = \hbar q \, T^{(k)}_q$$
 $$[J_\pm, T^{(k)}_q] = \hbar \sqrt{k(k+1) - q(q\pm 1)} \, T^{(k)}_{q\pm 1}$$
@@ -836,17 +849,29 @@ $$V_{-1} = \frac{1}{\sqrt{2}}(V_x - iV_y)$$
 These are the eigenfunctions of $L_z$ (the generator of rotations about $z$) with eigenvalues $\pm\hbar$ and $0$.
 
 The E1 operator in spherical components becomes:
-$$\hat{O}_{E1} = e \sum_{q=-1}^{+1} (-1)^q \left(\sum_{p=1}^{Z} \hat{r}_{p,q}\right) \varepsilon^*_{-q}$$
+$$\hat{O}_{E1} = e \sum_{q=-1}^{+1} (-1)^q \hat{R}_q \, \varepsilon^*_{-q}$$
 
-where $\hat{r}_{p,q}$ is the $q$-th spherical component of the $p$-th proton's position operator.
+where:
+$$\hat{R}_q = \sum_{p=1}^{Z} \hat{r}_{p,q}$$
+is the total nuclear position operator in spherical component $q$, and $\hat{r}_{p,q}$ is the $q$-th spherical component of the $p$-th proton's position operator.
 
 **Irreducible Tensor Property:**
 
-The spherical components $\hat{r}_q$ satisfy the commutation relations of a rank-1 irreducible tensor operator:
-$$[J_z, \hat{r}_q] = \hbar q \, \hat{r}_q$$
-$$[J_\pm, \hat{r}_q] = \hbar \sqrt{2 - q(q\pm 1)} \, \hat{r}_{q\pm 1}$$
+Define the total nuclear position operator in spherical basis:
+$$\hat{\mathbf{R}} = \{\hat{R}_{+1}, \hat{R}_0, \hat{R}_{-1}\}$$
 
-Therefore, $\hat{\mathbf{r}} = \{\hat{r}_{+1}, \hat{r}_0, \hat{r}_{-1}\}$ is a **rank-1 irreducible tensor operator**. In the Wigner-Eckart theorem, this means $k = 1$ (rank) and $q = m_\gamma$ (projection, determined by photon polarization).
+These components satisfy the commutation relations of a rank-1 irreducible tensor operator:
+$$[J_z, \hat{R}_q] = \hbar q \, \hat{R}_q$$
+$$[J_\pm, \hat{R}_q] = \hbar \sqrt{2 - q(q\pm 1)} \, \hat{R}_{q\pm 1}$$
+
+Therefore, $\hat{\mathbf{R}}$ is a **rank-1 irreducible tensor operator**.
+
+**Connection to Wigner-Eckart:**
+
+In the Wigner-Eckart theorem applied to E1 transitions:
+- The operator is $\hat{R}_q$ with $k = 1$ (rank)
+- The component $q$ is determined by the photon polarization: $q = m_\gamma$
+- The matrix element $\langle j_f m_f | \hat{R}_{m_\gamma} | j_i m_i \rangle$ factorizes via the CG coefficient $\langle j_i m_i; 1 m_\gamma | j_f m_f \rangle$
 
 **Multipolarity, Parity, and Selection Rules:**
 
@@ -870,19 +895,37 @@ $$\pi_f \cdot (-1) \cdot \pi_i = +1 \implies \pi_i \pi_f = -1$$
 
 **Transition Probability Scaling:**
 
-The factor $(kR)^{2L}$ arises from the long-wavelength expansion. The matrix element of the multipole operator involves:
-$$\langle f | \hat{O}_{EL} | i \rangle \sim \langle f | (kr)^L Y_L^m(\hat{r}) | i \rangle$$
+The factor $(kR)^{2L}$ arises from the long-wavelength expansion. Let's clarify what each multipole corresponds to:
 
-Since $r \sim R$ (nuclear radius) within the nucleus:
-$$|\langle f | \hat{O}_{EL} | i \rangle|^2 \sim (kR)^{2L}$$
+**Long-wavelength expansion of the photon phase factor:**
+$$e^{-i\mathbf{k}\cdot\mathbf{r}} = 1 - i\mathbf{k}\cdot\mathbf{r} + \frac{(-i\mathbf{k}\cdot\mathbf{r})^2}{2!} + ...$$
 
-For nuclear $\gamma$-decay:
-- Typical photon energy: $E_\gamma \sim 0.1 - 10$ MeV
-- Photon wave number: $k = E_\gamma / \hbar c \sim (10^{-3} - 10^{-1})$ fm$^{-1}$
+**Multipole content:**
+| Term | Operator | Multipole | Scaling | Status |
+|------|----------|-----------|---------|--------|
+| $1$ | constant | E0 (monopole) | 1 | Forbidden (charge conservation) |
+| $\mathbf{k}\cdot\mathbf{r}$ | $\sim r Y_1^m$ | E1 (dipole) | $kR$ | Allowed (if selection rules permit) |
+| $(\mathbf{k}\cdot\mathbf{r})^2$ | $\sim (kr)^2 Y_2^m$ | E2 (quadrupole) | $(kR)^2$ | Allowed |
+| ... | ... | $EL$ | $(kR)^L$ | Allowed |
+
+**Key point:** The E1 operator is the **linear term** $\mathbf{k}\cdot\mathbf{r} \sim kR$, not the constant term. The constant term would be E0 (electric monopole), but this is forbidden by charge conservation (it would correspond to changing the total charge, which photon emission cannot do).
+
+The matrix element of the E1 operator involves:
+$$\langle f | \hat{O}_{E1} | i \rangle \sim \langle f | \mathbf{k}\cdot\hat{\mathbf{R}} | i \rangle \sim k \langle f | \hat{R} | i \rangle$$
+
+Since $\hat{R}$ is of order nuclear radius $R$ within the nucleus:
+$$|\langle f | \hat{O}_{E1} | i \rangle|^2 \sim (kR)^2$$
+
+For E2 (quadrupole):
+$$|\langle f | \hat{O}_{E2} | i \rangle|^2 \sim (kR)^4$$
+
+**Typical values for nuclear $\gamma$-decay:**
+- Photon energy: $E_\gamma \sim 0.1 - 10$ MeV
+- Photon wave number: $k = E_\gamma / \hbar c \sim 10^{-3} - 10^{-1}$ fm$^{-1}$
 - Nuclear radius: $R \sim 5$ fm
 - Therefore: $kR \sim 0.005 - 0.5$ (typically $\sim 0.1$)
 
-**Relative strengths:**
+**Relative transition probabilities:**
 - E1: $\sim (kR)^2 \sim 10^{-2}$
 - E2/M1: $\sim (kR)^4 \sim 10^{-4}$ (100× smaller)
 - E3: $\sim (kR)^6 \sim 10^{-6}$ (10000× smaller)
@@ -890,25 +933,42 @@ For nuclear $\gamma$-decay:
 **When is E1 Forbidden? Selection Rules:**
 
 E1 transitions require:
-1. **Angular momentum:** $|j_i - j_f| \leq 1 \leq j_i + j_f$ (triangle rule)
+1. **Angular momentum:** $|j_i - j_f| \leq 1 \leq j_i + j_f$ (triangle rule with $L=1$)
 2. **Parity:** $\pi_i \neq \pi_f$ (parity must change)
 
-**Example 1: E1 Allowed**
-$^{17}$O: $1d_{5/2} \to 2p_{3/2}$ (proton hole)
-- $j_i = 5/2$, $j_f = 3/2$: $|5/2 - 3/2| = 1 \leq 1 \leq 4$ ✓
-- Parity: $d$-orbital ($l=2$, even) $\to$ $p$-orbital ($l=1$, odd): parity changes ✓
-- **Result:** E1 allowed, dominates
+**Nuclear Physics Notation Guide:**
+- $^{A}X$: Nucleus with mass number $A$ and element $X$
+- $nl_j$: Single-particle orbital with principal quantum number $n$, orbital $l$ ($s,p,d,f,...$ for $l=0,1,2,3,...$), and total angular momentum $j$
+- $J^\pi$: State with total angular momentum $J$ and parity $\pi$ ($+$ = even, $-$ = odd)
 
-**Example 2: E1 Forbidden**
-$^{17}$O: $1d_{5/2} \to 1d_{3/2}$ (proton hole)
-- $j_i = 5/2$, $j_f = 3/2$: triangle rule satisfied ✓
-- Parity: $d$-orbital $\to$ $d$-orbital (both even): parity does NOT change ✗
-- **Result:** E1 forbidden. Transition proceeds via M1 or E2 (much slower)
+**Example 1: E1 Allowed — Oxygen-17**
+$^{17}$O: $1d_{5/2} \to 2p_{3/2}$ 
 
-**Example 3: E1 Forbidden**
-$^{12}$C: $0^+ \to 0^+$ (ground state to first excited $0^+$)
-- $j_i = 0$, $j_f = 0$: $|0-0| = 0$, but E1 requires $L=1$ ✗
-- **Result:** E1 absolutely forbidden (cannot conserve angular momentum). Transition is E2.
+**Reaction:** Proton transitions from $d$-shell to $p$-shell.
+- $j_i = 5/2$ (initial, $d_{5/2}$ orbital), $j_f = 3/2$ (final, $p_{3/2}$ orbital)
+- Angular momentum check: $|5/2 - 3/2| = 1 \leq 1 \leq 5/2 + 3/2 = 4$ ✓ (satisfied)
+- Parity check: $l_i = 2$ ($d$-orbital, parity $(-1)^2 = +1$), $l_f = 1$ ($p$-orbital, parity $(-1)^1 = -1$)
+- Parity changes: $(+1) \times (-1) = -1$ ✓ (satisfied)
+- **Result:** E1 allowed, dominates the decay
+
+**Example 2: E1 Forbidden by Parity — Oxygen-17**
+$^{17}$O: $1d_{5/2} \to 1d_{3/2}$ 
+
+**Reaction:** Proton stays in $d$-shell but changes $j$ from $5/2$ to $3/2$.
+- $j_i = 5/2$, $j_f = 3/2$: $|5/2 - 3/2| = 1 \leq 1 \leq 4$ ✓ (angular momentum OK)
+- Parity check: $l_i = l_f = 2$ (both $d$-orbitals, parity $(-1)^2 = +1$)
+- Parity product: $(+1) \times (+1) = +1$ ✗ (does NOT change; E1 requires $-1$)
+- **Result:** E1 forbidden. Transition proceeds via M1 (magnetic dipole) or E2 (electric quadrupole), which are $\sim 100\times$ slower.
+
+**Example 3: E1 Forbidden by Angular Momentum — Carbon-12**
+$^{12}$C: $0^+_1 \to 0^+_2$ (first excited $0^+$ state decaying to ground state)
+
+**Reaction:** Collective excitation of the nucleus with $J=0$ decays to ground state $J=0$.
+- $j_i = 0$, $j_f = 0$: E1 requires $L=1$, but $|0-0| = 0 \nleq 1$ (triangle rule violated)
+- **Physical reason:** A vector operator (E1 has $L=1$) cannot connect two states both with $J=0$. The photon must carry away angular momentum, but $0 = 0 + 1$ is impossible.
+- **Result:** E1 absolutely forbidden. This transition proceeds via E2 (electric quadrupole), with a lifetime much longer than typical E1 transitions.
+
+**Note:** The $0^+ \to 0^+$ transition cannot occur via single-photon emission at all because a photon always carries at least $L=1$ (one unit of angular momentum). Such transitions proceed via internal conversion (energy transfer to atomic electrons) or two-photon emission.
 
 **Conclusion:** E1 dominates **only when both angular momentum and parity selection rules are satisfied**. When either is violated, the transition must proceed via higher multipolarity (E2, M1, etc.) and is much slower.
 
