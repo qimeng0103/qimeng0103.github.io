@@ -256,7 +256,7 @@ $$\boxed{J_-|j, m\rangle = \hbar\sqrt{(j+m)(j-m+1)}|j, m-1\rangle}$$
 
 **The Condon-Shortley Convention**
 
-This convention chooses all matrix elements of $J_+$ and $J_-$ to be real and positive. Since $J_- = J_+^\dagger$, this is consistent. The convention ensures that CG coefficients are real numbers, making results from different textbooks and software directly comparable.
+This convention chooses all matrix elements of $J_+$ and $J_-$ to be real and positive, ensuring that CG coefficients are real numbers and results from different textbooks and software are directly comparable.
 
 ---
 
