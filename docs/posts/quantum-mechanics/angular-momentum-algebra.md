@@ -794,7 +794,7 @@ $$\begin{pmatrix} j_1 & j_2 & j_3 \\ m_1 & m_2 & m_3 \end{pmatrix} = \frac{(-1)^
 We identify $j_1 = j_i, m_1 = m_i, j_2 = 1, m_2 = m_\gamma, j_3 = j_f, -m_3 = m_f$ (so $m_3 = -m_f$). Therefore:
 $$\langle j_i m_i; 1 m_\gamma | j_f m_f \rangle = (-1)^{j_i - 1 + m_f} \sqrt{2j_f+1} \begin{pmatrix} j_i & 1 & j_f \\ m_i & m_\gamma & -m_f \end{pmatrix}$$
 
-Taking the modulus squared (the phase factor $(-1)^{j_i-1+m_f}$ vanishes):
+Taking the modulus squared (the phase factor has unit modulus $|(-1)^{j_i-1+m_f}|^2 = 1$):
 $$|\langle j_i m_i; 1 m_\gamma | j_f m_f \rangle|^2 = (2j_f+1) \left|\begin{pmatrix} j_i & 1 & j_f \\ m_i & m_\gamma & -m_f \end{pmatrix}\right|^2$$
 
 Substituting into $W_{m_i}(\theta)$:
