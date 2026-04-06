@@ -755,18 +755,27 @@ The Wigner-Eckart theorem states that these dependencies **factorize**.
 
 **Irreducible Tensor Operators**
 
-An **irreducible tensor operator** $T^{(k)}$ of rank $k$ is a set of $2k+1$ operators $\{T^{(k)}_q : q = -k, -k+1, ..., k\}$ that transform under rotations in the same way as the angular momentum eigenstates $|k, q\rangle$.
+An **irreducible tensor operator** $T^{(k)}$ of rank $k$ is a set of $2k+1$ operators $\{T^{(k)}_q : q = -k, -k+1, ..., k\}$ that transform under rotations in the same way as the angular momentum eigenstates $\{|k, q\rangle : q = -k, -k+1, ..., k\}$.
 
-Specifically, under a rotation $R$, the operators transform as:
-$$R T^{(k)}_q R^{-1} = \sum_{q'} D^{(k)}_{q'q}(R) T^{(k)}_{q'}$$
+**Connection to State Transformation:**
 
-where $D^{(k)}(R)$ is the Wigner D-matrix for angular momentum $k$.
+Under a rotation $R$, an angular momentum eigenstate transforms as:
+$$R |k, q\rangle = \sum_{q'} D^{(k)}_{q'q}(R) |k, q'\rangle$$
+
+where $D^{(k)}(R)$ is the Wigner D-matrix. The state "mixes" with other $m$ values according to the D-matrix elements.
+
+Similarly, for operators, we use the **active transformation** (operators change, states fixed):
+$$T^{(k)}_q \to R T^{(k)}_q R^{-1} = \sum_{q'} D^{(k)}_{q'q}(R) T^{(k)}_{q'}$$
+
+The same D-matrix appears because both the states $|k,q\rangle$ and the operators $T^{(k)}_q$ carry angular momentum $k$ and transform identically under rotations.
 
 **Commutation relations with angular momentum:**
-$$[J_z, T^{(k)}_q] = \hbar q T^{(k)}_q$$
+$$[J_z, T^{(k)}_q] = \hbar q \, T^{(k)}_q$$
 $$[J_\pm, T^{(k)}_q] = \hbar \sqrt{k(k+1) - q(q\pm 1)} \, T^{(k)}_{q\pm 1}$$
 
-These are the operator analogs of $J_z |k,q\rangle = \hbar q |k,q\rangle$ and $J_\pm |k,q\rangle \propto |k,q\pm 1\rangle$.
+These are the operator analogs of:
+- $J_z |k,q\rangle = \hbar q |k,q\rangle$
+- $J_\pm |k,q\rangle = \hbar \sqrt{k(k+1) - q(q\pm 1)} |k,q\pm 1\rangle$
 
 **Theorem (Wigner-Eckart):** For an irreducible tensor operator $T^{(k)}_q$ of rank $k$ (component $q$), the matrix element between angular momentum states factorizes as:
 
@@ -827,9 +836,9 @@ $$V_{-1} = \frac{1}{\sqrt{2}}(V_x - iV_y)$$
 These are the eigenfunctions of $L_z$ (the generator of rotations about $z$) with eigenvalues $\pm\hbar$ and $0$.
 
 The E1 operator in spherical components becomes:
-$$\hat{O}_{E1} \propto \sum_{q=-1}^{+1} (-1)^q \hat{r}_q \varepsilon^*_{-q}$$
+$$\hat{O}_{E1} = e \sum_{q=-1}^{+1} (-1)^q \left(\sum_{p=1}^{Z} \hat{r}_{p,q}\right) \varepsilon^*_{-q}$$
 
-where $\hat{r}_q = \sum_p \mathbf{r}_{p,q}$ (sum over proton spherical components).
+where $\hat{r}_{p,q}$ is the $q$-th spherical component of the $p$-th proton's position operator.
 
 **Irreducible Tensor Property:**
 
@@ -839,24 +848,69 @@ $$[J_\pm, \hat{r}_q] = \hbar \sqrt{2 - q(q\pm 1)} \, \hat{r}_{q\pm 1}$$
 
 Therefore, $\hat{\mathbf{r}} = \{\hat{r}_{+1}, \hat{r}_0, \hat{r}_{-1}\}$ is a **rank-1 irreducible tensor operator**. In the Wigner-Eckart theorem, this means $k = 1$ (rank) and $q = m_\gamma$ (projection, determined by photon polarization).
 
-**Multipolarity and Parity:**
+**Multipolarity, Parity, and Selection Rules:**
 
 Electromagnetic transitions are classified by **multipolarity** $L$ (angular momentum carried by photon) and **type** (E=electric, M=magnetic):
 
-| Type | Notation | Parity Change | Relative Strength |
-|------|----------|---------------|-------------------|
-| Electric | $EL$ | $(-1)^L$ | $\sim (kR)^{2L}$ |
-| Magnetic | $ML$ | $(-1)^{L+1}$ | $\sim (kR)^{2L}$ |
+| Type | Notation | Parity Change of Nuclear States | Relative Strength |
+|------|----------|--------------------------------|-------------------|
+| Electric | $EL$ | $\pi_i \pi_f = (-1)^L$ | $\sim (kR)^{2L}$ |
+| Magnetic | $ML$ | $\pi_i \pi_f = (-1)^{L+1}$ | $\sim (kR)^{2L}$ |
 
-For E1 ($L=1$): parity changes by $(-1)^1 = -1$ (odd parity change).
+**Parity Change Explained:**
 
-**Why E1 is fastest:** The transition probability scales as $(kR)^{2L}$. For nuclear transitions:
-- $kR \sim 0.1 - 0.01$ (typical nuclear size vs. photon wavelength)
-- E1: $\sim (kR)^2$ (largest)
-- E2/M1: $\sim (kR)^4$ (100-10000× smaller)
-- E3: $\sim (kR)^6$ (even more suppressed)
+The "parity change" refers to the product of initial and final nuclear state parities $\pi_i \cdot \pi_f$:
+- If $\pi_i \pi_f = +1$: no parity change (even)
+- If $\pi_i \pi_f = -1$: parity changes (odd)
 
-Thus, when E1 is allowed (selection rules permit), it dominates.
+For E1 ($L=1$): parity must change ($\pi_i \pi_f = -1$).
+
+**Why this selection rule?** The E1 operator is proportional to $\mathbf{r}$ (position), which is a **polar vector**. Under parity inversion ($\mathbf{r} \to -\mathbf{r}$), the E1 operator changes sign (odd parity). For the matrix element $\langle f | \hat{O}_{E1} | i \rangle$ to be non-zero, the integrand must have even parity:
+$$\pi_f \cdot (-1) \cdot \pi_i = +1 \implies \pi_i \pi_f = -1$$
+
+**Transition Probability Scaling:**
+
+The factor $(kR)^{2L}$ arises from the long-wavelength expansion. The matrix element of the multipole operator involves:
+$$\langle f | \hat{O}_{EL} | i \rangle \sim \langle f | (kr)^L Y_L^m(\hat{r}) | i \rangle$$
+
+Since $r \sim R$ (nuclear radius) within the nucleus:
+$$|\langle f | \hat{O}_{EL} | i \rangle|^2 \sim (kR)^{2L}$$
+
+For nuclear $\gamma$-decay:
+- Typical photon energy: $E_\gamma \sim 0.1 - 10$ MeV
+- Photon wave number: $k = E_\gamma / \hbar c \sim (10^{-3} - 10^{-1})$ fm$^{-1}$
+- Nuclear radius: $R \sim 5$ fm
+- Therefore: $kR \sim 0.005 - 0.5$ (typically $\sim 0.1$)
+
+**Relative strengths:**
+- E1: $\sim (kR)^2 \sim 10^{-2}$
+- E2/M1: $\sim (kR)^4 \sim 10^{-4}$ (100× smaller)
+- E3: $\sim (kR)^6 \sim 10^{-6}$ (10000× smaller)
+
+**When is E1 Forbidden? Selection Rules:**
+
+E1 transitions require:
+1. **Angular momentum:** $|j_i - j_f| \leq 1 \leq j_i + j_f$ (triangle rule)
+2. **Parity:** $\pi_i \neq \pi_f$ (parity must change)
+
+**Example 1: E1 Allowed**
+$^{17}$O: $1d_{5/2} \to 2p_{3/2}$ (proton hole)
+- $j_i = 5/2$, $j_f = 3/2$: $|5/2 - 3/2| = 1 \leq 1 \leq 4$ ✓
+- Parity: $d$-orbital ($l=2$, even) $\to$ $p$-orbital ($l=1$, odd): parity changes ✓
+- **Result:** E1 allowed, dominates
+
+**Example 2: E1 Forbidden**
+$^{17}$O: $1d_{5/2} \to 1d_{3/2}$ (proton hole)
+- $j_i = 5/2$, $j_f = 3/2$: triangle rule satisfied ✓
+- Parity: $d$-orbital $\to$ $d$-orbital (both even): parity does NOT change ✗
+- **Result:** E1 forbidden. Transition proceeds via M1 or E2 (much slower)
+
+**Example 3: E1 Forbidden**
+$^{12}$C: $0^+ \to 0^+$ (ground state to first excited $0^+$)
+- $j_i = 0$, $j_f = 0$: $|0-0| = 0$, but E1 requires $L=1$ ✗
+- **Result:** E1 absolutely forbidden (cannot conserve angular momentum). Transition is E2.
+
+**Conclusion:** E1 dominates **only when both angular momentum and parity selection rules are satisfied**. When either is violated, the transition must proceed via higher multipolarity (E2, M1, etc.) and is much slower.
 
 **Applying Wigner-Eckart:**
 
