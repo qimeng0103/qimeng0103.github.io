@@ -256,7 +256,7 @@ $$\boxed{J_-|j, m\rangle = \hbar\sqrt{(j+m)(j-m+1)}|j, m-1\rangle}$$
 
 **The Condon-Shortley Convention**
 
-This choice fixes the **phase of ladder operator matrix elements** to be real and positive. Since $J_- = J_+^\dagger$, the matrix elements of both operators are real and positive. This convention ensures that all CG coefficients are real (up to an overall sign), making results from different textbooks and software directly comparable.
+This convention chooses all matrix elements of $J_+$ and $J_-$ to be real and positive. Since $J_- = J_+^\dagger$, this is consistent. The convention ensures that CG coefficients are real numbers, making results from different textbooks and software directly comparable.
 
 ---
 
@@ -727,91 +727,42 @@ The cross term contains $\mathbf{J}_1 \cdot \mathbf{J}_2$ versus $\mathbf{J}_2 \
 - The two coupling schemes define different orthonormal bases
 - Both bases span the same $(2j_1+1)(2j_2+1)(2j_3+1)$-dimensional Hilbert space
 
-The transformation between these two bases involves **Wigner 6j symbols**, which we discuss in Section 4.10.
+### 4.10 Wigner 3j Symbols: Symmetric Notation for CG Coefficients
 
-### 4.10 Wigner Symbols: Symmetric Notation for CG Coefficients
+**From CG to 3j**
 
-**Motivation: Why Wigner Symbols?**
-
-**The 3j Symbol: Symmetric Treatment of Three Angular Momenta**
-
-The standard CG coefficient $\langle j_1, m_1; j_2, m_2 | j_3, m_3 \rangle$ treats $j_3$ as the "result" of coupling $j_1$ and $j_2$. But in many physical situations, all three angular momenta are on equal footing—for example, in the matrix element of a scalar operator that depends on three angular momenta, or when considering the coupling of three angular momenta with zero total angular momentum.
-
-**The Wigner 3j Symbol:**
+The standard CG coefficient $\langle j_1, m_1; j_2, m_2 | j_3, m_3 \rangle$ treats $j_3$ as the "result" of coupling $j_1$ and $j_2$. The **Wigner 3j symbol** provides a symmetric alternative:
 
 $$\begin{pmatrix} j_1 & j_2 & j_3 \\ m_1 & m_2 & m_3 \end{pmatrix} = \frac{(-1)^{j_1 - j_2 - m_3}}{\sqrt{2j_3 + 1}} \langle j_1, m_1; j_2, m_2 | j_3, -m_3 \rangle$$
 
-**Application: Three-Particle Systems with Total $J=0$**
+The factor $(-1)^{j_1-j_2-m_3}$ ensures the 3j symbol has simple symmetry properties.
 
-A classic example is the **$|jjj; J=0\rangle$ state** (three particles each with angular momentum $j$, coupled to total $J=0$). Such states appear in nuclear physics (three-nucleon systems) and atomic physics (three-electron states).
+**Application: Angular Correlations in Nuclear Decay**
 
-**Why the 3j symbol appears:**
+Consider a nuclear $\gamma$-decay: an excited nucleus with spin $j_i$ emits a photon (spin 1) and transitions to a final state with spin $j_f$. The angular distribution of the emitted photon depends on the matrix element:
 
-In the uncoupled basis $|j,m_1; j,m_2; j,m_3\rangle$, the $J=0$ state satisfies $m_1 + m_2 + m_3 = 0$. Using CG coefficients to couple all three:
-$$|jjj; J=0, M=0\rangle = \sum_{m_1,m_2,m_3} \langle j,m_1; j,m_2 | j', m_1+m_2 \rangle \langle j', m_1+m_2; j, m_3 | 0, 0 \rangle |j,m_1; j,m_2; j,m_3\rangle$$
+$$\langle j_f m_f; 1 m_\gamma | j_i m_i \rangle$$
 
-This involves a sum over the intermediate $j'$ and is cumbersome. But due to the symmetric nature of the $J=0$ state, the coefficients simplify to:
-$$|jjj; J=0, M=0\rangle \propto \sum_{m_1,m_2,m_3} \begin{pmatrix} j & j & j \\ m_1 & m_2 & m_3 \end{pmatrix} |j,m_1; j,m_2; j,m_3\rangle \delta_{m_1+m_2+m_3,0}$$
+In experiments with oriented nuclei (where $m_i$ has a definite value), we measure the correlation between the nuclear spin direction and the photon direction. This involves summing over final states and integrating over photon emission angles.
 
-**Why use 3j instead of CG?**
+The angular correlation function $W(\theta)$ can be written as:
+$$W(\theta) \propto \sum_{m_i, m_f, m_\gamma} \left|\begin{pmatrix} j_f & 1 & j_i \\ m_f & m_\gamma & -m_i \end{pmatrix}\right|^2 |Y_1^{m_\gamma}(\theta, \phi)|^2$$
 
-1. **Symmetry:** The 3j symbol treats all three angular momenta equally—no "intermediate" coupling is singled out
-2. **Compactness:** One sum instead of nested CG coefficients with intermediate $j'$
-3. **Selection rules:** The condition $m_1+m_2+m_3=0$ is built into the 3j symbol's definition
+**Why use 3j instead of CG here?**
 
-The 3j symbol is also essential in **angular correlation calculations** (e.g., $\gamma$-ray emission from oriented nuclei), where three angular momenta (initial state, photon, final state) must be coupled with specific geometric constraints.
+1. **Geometric symmetry:** The 3j symbol treats the three angular momenta (initial nucleus, photon, final nucleus) on equal footing, which matches the physical symmetry of the problem
+2. **Selection rules:** The condition $m_f + m_\gamma - m_i = 0$ (i.e., $m_i = m_f + m_\gamma$) is built into the 3j symbol's definition
+3. **Standard tables:** Angular correlation coefficients in nuclear physics are conventionally expressed using 3j symbols
 
 **Key Properties of 3j Symbols:**
 
 1. **Selection Rules:** The 3j symbol is zero unless:
    - $m_1 + m_2 + m_3 = 0$ (magnetic quantum numbers sum to zero)
-   - $|j_1 - j_2| \leq j_3 \leq j_1 + j_2$ (triangle condition for each triad)
+   - $|j_1 - j_2| \leq j_3 \leq j_1 + j_2$ (triangle condition)
 
 2. **Symmetry:** Under permutation of columns:
    - Even permutation: unchanged
    - Odd permutation: multiplied by $(-1)^{j_1 + j_2 + j_3}$
-
-**The 6j Symbol: Recoupling Coefficients**
-
-When we have three angular momenta and want to transform between different coupling schemes, the coefficients form the **Wigner 6j symbol**:
-
-$$\begin{Bmatrix} j_1 & j_2 & j_{12} \\ j_3 & j & j_{23} \end{Bmatrix}$$
-
-**Why This Form?**
-
-The 6j symbol has six entries because the recoupling from $(j_1 j_2)j_{12}$ coupling to $(j_2 j_3)j_{23}$ coupling involves:
-- The three original angular momenta: $j_1, j_2, j_3$
-- The two intermediate couplings: $j_{12}, j_{23}$
-- The total angular momentum: $j$
-
-**Definition:**
-
-$$|j_1, (j_2 j_3)j_{23}; j, m\rangle = \sum_{j_{12}} (-1)^{j_1 + j_2 + j_3 + j} \sqrt{(2j_{12}+1)(2j_{23}+1)} \begin{Bmatrix} j_1 & j_2 & j_{12} \\ j_3 & j & j_{23} \end{Bmatrix} |(j_1 j_2)j_{12}, j_3; j, m\rangle$$
-
-The phase factor $(-1)^{j_1 + j_2 + j_3 + j}$ and the normalization factors $\sqrt{(2j_{12}+1)(2j_{23}+1)}$ ensure the transformation is unitary.
-
-**Physical Application: Three-Electron System**
-
-Consider three electrons in an atom with total spin $\mathbf{S} = \mathbf{S}_1 + \mathbf{S}_2 + \mathbf{S}_3$:
-
-**Scheme 1:** First couple electrons 1 and 2 into $S_{12}$, then add electron 3:
-- $|S_{12}=0, S=1/2\rangle$: Singlet for 1-2, combined with electron 3 → doublet
-- $|S_{12}=1, S=1/2\rangle$: Triplet for 1-2, combined with electron 3 → doublet
-- $|S_{12}=1, S=3/2\rangle$: Triplet for 1-2, combined with electron 3 → quartet
-
-**Scheme 2:** First couple electrons 2 and 3 into $S_{23}$, then add electron 1. This gives the same total $S$ values but different intermediate states.
-
-The 6j symbol tells us the overlap between these two descriptions. For example:
-$$\langle (S_{12}=0), S=1/2 | S_{23}=0, S=1/2 \rangle \propto \begin{Bmatrix} 1/2 & 1/2 & 0 \\ 1/2 & 1/2 & 0 \end{Bmatrix}$$
-
-This is essential in atomic physics when calculating matrix elements of two-electron operators (like Coulomb repulsion) in systems with three or more electrons.
-
-**Higher-Order Symbols:**
-
-For four angular momenta, the **Wigner 9j symbol** appears:
-$$\begin{Bmatrix} j_1 & j_2 & j_{12} \\ j_3 & j_4 & j_{34} \\ j_{13} & j_{24} & j \end{Bmatrix}$$
-
-This describes the transformation between different coupling schemes for four angular momenta, such as coupling $(j_1 + j_2)$ with $(j_3 + j_4)$ versus coupling $(j_1 + j_3)$ with $(j_2 + j_4)$.
 
 ---
 
