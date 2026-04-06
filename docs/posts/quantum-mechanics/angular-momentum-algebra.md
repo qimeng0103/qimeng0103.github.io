@@ -1113,53 +1113,46 @@ $$W(\theta) = \frac{1}{2j_i+1} \sum_{m_i} W_{m_i}(\theta) = \frac{|\langle j_f |
 
 Angular momentum theory is deeply rooted in group representation theory. This part explains the mathematical structures underlying symmetries and their physical interpretations.
 
-### 5.1 Representations: What Do They Represent?
+### 5.1 Representations: The Mathematical Structure of Symmetry
 
-**Two Perspectives on Representations**
+**What is a Representation?**
 
-**External Perspective: Classification**
+A **representation** of a group $G$ is a homomorphism from $G$ to the group of linear operators on a vector space $V$:
 
-From outside, representations classify systems by their symmetry properties:
+$$D: G \to \text{GL}(V)$$
 
-| External View | Example |
-|--------------|---------|
-| **Same system, different states** | $|j,m\rangle$ for fixed $j$, varying $m$ = ONE representation |
-| **Different systems, same symmetry** | Spin-1/2 vs. spin-1 particles = DIFFERENT representations of SO(3) |
+**Physical Interpretation:**
+- $V$ = Hilbert space of the quantum system
+- $D(g)$ = operator that acts on quantum states when symmetry transformation $g$ is applied
+- The representation **is** the specific form of this action
 
-**Internal Perspective: The "Operating System" of Symmetry**
+**Key Distinction: Same Group, Different Representations**
 
-From inside the system, the representation **is** how the symmetry manifests:
+| System | Hilbert Space | Representation | Physical Meaning |
+|--------|--------------|----------------|------------------|
+| Spin-0 particle | 1D complex space | $D^{(0)}$ | Trivial: rotations do nothing to state |
+| Spin-1/2 particle | 2D complex space | $D^{(1/2)}$ | State transforms as SU(2) spinor |
+| Spin-1 particle | 3D complex space | $D^{(1)}$ | State transforms as 3D vector |
 
-> **The representation is the system's specific "operating mode" under a given symmetry.**
+All three systems have the **same** rotational symmetry (described by SO(3) or SU(2)), but the **action** of rotations on their states differs—these are different representations.
 
-Think of it this way:
-- The **group** (e.g., SO(3)) is the abstract symmetry law
-- The **representation** is how that law is implemented in this particular system
-- Different representations = different ways the same symmetry law can be realized
+**Within One Representation: States and Operators**
 
-**Concrete Example: Rotation of a Particle**
+For a spin-$j$ particle (fixed representation $D^{(j)}$):
+- The representation space has dimension $2j+1$
+- States $|j,m\rangle$ with $m = -j, ..., j$ form a basis
+- The angular momentum operators $J_x, J_y, J_z$ are the generators of the representation
 
-| What Happens | Group Theory Language | Physical Meaning |
-|-------------|----------------------|------------------|
-| System has spin-1/2 | In representation $D^{(1/2)}$ of SU(2) | The system "runs" in the $j=1/2$ mode |
-| Rotate by angle $\theta$ | Apply group element $R(\theta)$ | State vector transforms accordingly |
-| Measure $J_z$ | Act with Cartan generator | Get eigenvalue $m\hbar$ |
-| State is $|\psi\rangle = a|\uparrow\rangle + b|\downarrow\rangle$ | Vector in representation space | Superposition of basis states |
+**Why This Matters: Selection Rules**
 
-**The Key Insight:**
+The representation structure constrains physical processes:
+- A spin-1/2 system has no state with $J_z = 2\hbar$ — the representation space simply doesn't contain such a vector
+- Electric dipole transitions connect representations differing by $j = \pm 1$ — this is a property of how representations tensor together
 
-The representation **constrains the system's behavior**:
-- A spin-1/2 system **cannot** have $J_z = 2\hbar$ — the representation simply doesn't have that eigenvalue
-- A scalar particle ($j=0$) **cannot** distinguish rotation axis directions — its representation is trivial (1D)
-- Transitions between states follow selection rules determined by how representations connect
-
-**Analogy: Software and Hardware**
-
-- **Group** = Operating system specification (the rules)
-- **Representation** = Specific hardware running that OS (the implementation)
-- Different representations = Same OS running on different hardware (PC vs. Mac vs. Phone)
-
-A spin-1/2 particle and a spin-1 particle both "run" the rotation symmetry "OS," but on different "hardware" (2D vs. 3D Hilbert space).
+**Summary:**
+- **Group** = abstract symmetry structure
+- **Representation** = concrete action of that symmetry on a specific Hilbert space
+- Different representations = different Hilbert spaces with different symmetry actions
 
 ### 5.2 Combining Systems: Tensor Product vs. Direct Sum
 
@@ -1182,11 +1175,17 @@ The tensor product describes the **composite system** (particle 1 AND particle 2
 
 **Example: Two spin-1/2 particles**
 - Tensor product space: 4-dimensional ($\uparrow\uparrow$, $\uparrow\downarrow$, $\downarrow\uparrow$, $\downarrow\downarrow$)
-- This 4D space splits into:
-  - **Triplet** ($j=1$, 3 states): Symmetric combination
-  - **Singlet** ($j=0$, 1 state): Antisymmetric combination
+- This 4D space decomposes into invariant subspaces:
+  - **Triplet subspace** ($j=1$, dimension 3): Spanned by symmetric combinations
+  - **Singlet subspace** ($j=0$, dimension 1): Spanned by antisymmetric combination
 
-The triplet and singlet are NOT different systems—they are different ways the SAME two-particle system can organize its total angular momentum.
+**Physical Interpretation:**
+
+The triplet and singlet are **subspaces of the same composite system**. A general two-particle state is a superposition:
+
+$$|\psi\rangle = \underbrace{a|\text{triplet}\rangle}_{j=1 \text{ component}} + \underbrace{b|\text{singlet}\rangle}_{j=0 \text{ component}}$$
+
+Under rotation, the triplet part transforms among itself (3D representation), and the singlet part remains unchanged (1D representation). The total Hilbert space is the direct sum of these invariant subspaces.
 
 **Direct Sum (Alternative Meaning)**
 
