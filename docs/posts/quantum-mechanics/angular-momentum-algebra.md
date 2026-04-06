@@ -751,47 +751,40 @@ $$\mathcal{M}_{m_i \to m_f, m_\gamma} = \langle j_f m_f; 1 m_\gamma | \hat{O} | 
 
 where $|j_i m_i\rangle$ is the initial nuclear state, $|j_f m_f\rangle$ is the final nuclear state, and the photon state carries angular momentum $|1 m_\gamma\rangle$ with $m_\gamma = -1, 0, +1$.
 
-**Step 2: The Wigner-Eckart Theorem**
+**Step 2: Factorizing the Matrix Element**
 
-The transition amplitude $\mathcal{M} = \langle j_f m_f; 1 m_\gamma | \hat{O} | j_i m_i \rangle$ describes the matrix element of operator $\hat{O}$ between initial state $|j_i m_i\rangle$ and final state $|j_f m_f\rangle$ with emitted photon $|1 m_\gamma\rangle$.
+The transition amplitude $\mathcal{M} = \langle j_f m_f | \hat{O} | j_i m_i \rangle$ describes the photon emission process. Here $\hat{O}$ is the photon emission operator.
 
-The Wigner-Eckart theorem states that for a tensor operator $\hat{O}$ of rank $k=1$:
-$$\langle j' m' | \hat{O}_q | j m \rangle = \frac{\langle j m; k q | j' m' \rangle}{\sqrt{2j'+1}} \langle j' || \hat{O} || j \rangle$$
+The Wigner-Eckart theorem tells us this matrix element factorizes:
+$$\mathcal{M} = \text{(Geometric factor)} \times \text{(Physical factor)}$$
 
-where $\hat{O}_q$ is the $q$-th spherical component of $\hat{O}$.
+The **geometric factor** is the CG coefficient for angular momentum coupling:
+$$\text{Geometric factor} = \langle j_i m_i; 1 m_\gamma | j_f m_f \rangle$$
 
-In our decay process, we interpret this as follows:
-- The initial nuclear state $|j_i m_i\rangle$ has angular momentum $(j_i, m_i)$
-- The operator $\hat{O}$ (photon emission) carries angular momentum $(1, m_\gamma)$
-- These combine to produce the final nuclear state $|j_f m_f\rangle$ with angular momentum $(j_f, m_f)$
+This describes how the initial nuclear angular momentum $(j_i, m_i)$ combines with the photon's angular momentum $(1, m_\gamma)$ to produce the final nuclear state $(j_f, m_f)$. This factor contains all the dependence on the orientations (the $m$ values).
 
-Applying the theorem with $j=j_i$, $j'=j_f$, $m=m_i$, $m'=m_f$, and $q=m_\gamma$:
-$$\langle j_f m_f | \hat{O}_{m_\gamma} | j_i m_i \rangle = \frac{\langle j_i m_i; 1 m_\gamma | j_f m_f \rangle}{\sqrt{2j_f+1}} \langle j_f || \hat{O} || j_i \rangle$$
+The **physical factor** is the reduced matrix element:
+$$\text{Physical factor} = \frac{\langle j_f || \hat{O} || j_i \rangle}{\sqrt{2j_f+1}}$$
 
-Note: We use $\langle j_i m_i; 1 m_\gamma | j_f m_f \rangle$ (coupling initial state with photon to get final state) rather than $\langle j_f m_f; 1 m_\gamma | j_i m_i \rangle$.
-
-The factorization reveals:
-- **Geometric part:** The CG coefficient $\langle j_i m_i; 1 m_\gamma | j_f m_f \rangle$ contains all dependence on the orientation (magnetic quantum numbers $m_i, m_f, m_\gamma$)
-- **Physical part:** The reduced matrix element $\langle j_f || \hat{O} || j_i \rangle$ contains the intrinsic transition strength and is independent of all $m$ values
+This contains the intrinsic transition strength (how likely the transition is) but does NOT depend on $m_i, m_f,$ or $m_\gamma$.
 
 **Step 3: Computing the Angular Distribution**
 
-The probability of a specific transition is:
-$$P(m_i \to m_f, m_\gamma) = |\mathcal{M}|^2 = \left| \frac{\langle j_i m_i; 1 m_\gamma | j_f m_f \rangle}{\sqrt{2j_f+1}} \langle j_f || \hat{O} || j_i \rangle \right|^2$$
+The probability of a specific transition is $P = |\mathcal{M}|^2$:
+$$P(m_i \to m_f, m_\gamma) = C \times |\langle j_i m_i; 1 m_\gamma | j_f m_f \rangle|^2$$
 
-Since $|\langle j_f || \hat{O} || j_i \rangle|^2$ is a constant (independent of $m$ values):
-$$P(m_i \to m_f, m_\gamma) = \frac{|\langle j_f || \hat{O} || j_i \rangle|^2}{2j_f+1} \times |\langle j_i m_i; 1 m_\gamma | j_f m_f \rangle|^2$$
+where $C = |\langle j_f || \hat{O} || j_i \rangle|^2 / (2j_f+1)$ is a constant.
 
-**The photon angular distribution:** A photon with angular momentum projection $m_\gamma$ has a wave function proportional to the spherical harmonic $Y_1^{m_\gamma}(\theta, \phi)$. The probability density for emission at angle $(\theta, \phi)$ is the modulus squared $|Y_1^{m_\gamma}(\theta, \phi)|^2$.
+**The photon angular dependence:** The photon is emitted with angular momentum projection $m_\gamma$. The probability of finding this photon at angle $\theta$ relative to the spin axis is given by $|Y_1^{m_\gamma}(\theta)|^2$, where $Y_1^{m_\gamma}$ is the spherical harmonic.
 
-For a transition with specific $(m_i, m_f, m_\gamma)$, the probability of photon emission at angle $\theta$ is:
-$$P(m_i \to m_f, m_\gamma; \theta) \propto P(m_i \to m_f, m_\gamma) \times |Y_1^{m_\gamma}(\theta, 0)|^2$$
+Therefore, the joint probability of the specific transition AND photon emission at angle $\theta$ is:
+$$P(m_i \to m_f, m_\gamma; \theta) = C \times |\langle j_i m_i; 1 m_\gamma | j_f m_f \rangle|^2 \times |Y_1^{m_\gamma}(\theta)|^2$$
 
-where we set $\phi=0$ by azimuthal symmetry around the nuclear spin axis.
+where we use $\phi=0$ by symmetry around the spin axis.
 
-For a given initial state $m_i$, we sum over all possible final nuclear states $m_f$ and photon polarizations $m_\gamma$ to get the total angular distribution:
+To get the total angular distribution for a given initial state $m_i$, we sum over all possible final states $m_f$ and photon polarizations $m_\gamma$:
 
-$$W_{m_i}(\theta) = \sum_{m_f, m_\gamma} P(m_i \to m_f, m_\gamma) \times |Y_1^{m_\gamma}(\theta, 0)|^2$$
+$$W_{m_i}(\theta) = \sum_{m_f, m_\gamma} P(m_i \to m_f, m_\gamma; \theta)$$
 
 **Step 4: Converting to 3j Symbols**
 
