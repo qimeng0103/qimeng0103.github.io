@@ -897,41 +897,32 @@ $$\pi_f \cdot (-1) \cdot \pi_i = +1 \implies \pi_i \pi_f = -1$$
 
 Why do higher multipoles have smaller transition probabilities? The key is the ratio of photon wavelength to nuclear size.
 
-**Physical picture:** 
-- Photon wavelength: $\lambda = 2\pi/k$
-- Nuclear size: $R \sim 5$ fm
-- For nuclear $\gamma$-rays: $\lambda \gg R$, so $kR \ll 1$
+**Physical picture:** For nuclear $\gamma$-rays, photon wavelength $\lambda = 2\pi/k$ is much larger than the nuclear size $R \sim 5$ fm. Thus $kR \ll 1$, and each additional factor of $kR$ strongly suppresses the transition.
 
-**Matrix element scaling:**
+**Origin of the scaling:**
 
-The E1 operator $\hat{O}_{E1} \propto \hat{\mathbf{R}}$ (position operator) has matrix elements:
-$$\langle f | \hat{R} | i \rangle \sim R$$
+The transition probability $\Gamma \propto |\mathcal{M}|^2$ has two contributions:
+1. **Matrix element:** The $EL$ operator scales as $\hat{R}^L$, giving $\langle f|\hat{R}^L|i\rangle \sim R^L$
+2. **Phase space:** Photon density of states contributes a factor $k^{2L+1}$
 
-The E2 operator involves $\hat{R}^2$:
-$$\langle f | \hat{R}^2 | i \rangle \sim R^2$$
+Combining these:
+$$\Gamma_{EL} \propto k^{2L+1} \cdot R^{2L} = k \cdot (kR)^{2L}$$
 
-In general, $EL$ transitions involve operators $\sim \hat{R}^L$ with matrix elements $\sim R^L$.
+For comparison between multipoles at the same photon energy:
+$$\frac{\Gamma_{E(L+1)}}{\Gamma_{EL}} \sim (kR)^2 \ll 1$$
 
-**Transition probability:**
-
-The decay rate $\Gamma \propto |\mathcal{M}|^2$ includes:
-1. Matrix element squared: $\sim R^{2L}$
-2. Photon density of states factor: $\sim k^{2L+1}$ (energy dependence)
-
-Combining these: $\Gamma_{EL} \propto (kR)^{2L+1}$. For relative comparison at fixed photon energy:
-
-$$\frac{\Gamma_{E2}}{\Gamma_{E1}} \sim \frac{(kR)^5}{(kR)^3} = (kR)^2 \ll 1$$
-
-**Typical numbers for nuclear $\gamma$-decay:**
+**Typical numbers:**
 - Photon energy: $E_\gamma \sim 0.1 - 10$ MeV
-- Wave number: $k \sim 10^{-3} - 10^{-1}$ fm$^{-1}$  
+- Wave number: $k = E_\gamma/\hbar c \sim 10^{-3} - 10^{-1}$ fm$^{-1}$
 - Nuclear radius: $R \sim 5$ fm
-- Result: $kR \sim 0.005 - 0.5$, typically $\sim 0.1$
+- Ratio: $kR \sim 0.005 - 0.5$ (typically $\sim 0.1$)
 
-**Hierarchy:**
-- E1: $\sim (kR)^2 \sim 10^{-2}$ (fastest when allowed)
-- E2/M1: $\sim (kR)^4 \sim 10^{-4}$ (100$\times$ slower)
-- E3: $\sim (kR)^6 \sim 10^{-6}$ (10000$\times$ slower)
+**Resulting hierarchy:**
+| Multipole | Scaling | Relative Rate |
+|-----------|---------|---------------|
+| E1 | $(kR)^2 \sim 10^{-2}$ | 1 (baseline) |
+| E2/M1 | $(kR)^4 \sim 10^{-4}$ | $\sim 10^{-2}$ (100$\times$ slower) |
+| E3 | $(kR)^6 \sim 10^{-6}$ | $\sim 10^{-4}$ (10000$\times$ slower) |
 
 **Typical values for nuclear $\gamma$-decay:**
 - Photon energy: $E_\gamma \sim 0.1 - 10$ MeV
@@ -950,10 +941,10 @@ E1 transitions require:
 1. **Angular momentum:** $|j_i - j_f| \leq 1 \leq j_i + j_f$ (triangle rule with $L=1$)
 2. **Parity:** $\pi_i \neq \pi_f$ (parity must change)
 
-**Nuclear Physics Notation Guide:**
+**Nuclear Physics Notation:**
 - $^{A}X$: Nucleus with mass number $A$ and element $X$
-- $nl_j$: Single-particle orbital with principal quantum number $n$, orbital $l$ ($s,p,d,f,...$ for $l=0,1,2,3,...$), and total angular momentum $j$
-- $J^\pi_n$: The $n$-th state with total angular momentum $J$ and parity $\pi$ ($+$ = even, $-$ = odd). Example: $0^+_1$ = ground state, $0^+_2$ = first excited $0^+$ state.
+- $nl_j$: Single-particle orbital ($n$=principal quantum number, $l$=orbital angular momentum with $s,p,d,f,...$ for $l=0,1,2,3,...$, $j$=total angular momentum)
+- $J^\pi_n$: Nuclear state with total angular momentum $J$, parity $\pi$ ($+$=even, $-$=odd), and excitation index $n$ ($n=1$=ground state, $n=2$=first excited, etc.)
 
 **Example 1: E1 Allowed — Oxygen-17**
 
