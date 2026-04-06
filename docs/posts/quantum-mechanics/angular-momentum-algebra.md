@@ -753,7 +753,7 @@ where $|j_i m_i\rangle$ is the initial nuclear state, $|j_f m_f\rangle$ is the f
 
 **Step 2: Factorizing the Matrix Element**
 
-The transition amplitude $\mathcal{M} = \langle j_f m_f | \hat{O} | j_i m_i \rangle$ describes the photon emission process. Here $\hat{O}$ is the photon emission operator.
+The transition amplitude $\mathcal{M} = \langle j_f m_f | \hat{O} | j_i m_i \rangle$ describes the photon emission process. Here $\hat{O}$ is the photon emission operator, which for electric dipole (E1) transitions takes the form $\hat{O} \propto \mathbf{r} \cdot \mathbf{\epsilon}^*$, where $\mathbf{r}$ is the nuclear position operator and $\mathbf{\epsilon}$ is the photon polarization vector. This operator carries angular momentum $L=1$.
 
 The Wigner-Eckart theorem tells us this matrix element factorizes:
 $$\mathcal{M} = \text{(Geometric factor)} \times \text{(Physical factor)}$$
