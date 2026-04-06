@@ -807,11 +807,6 @@ $$W(\theta) = \frac{1}{2j_i+1} \sum_{m_i} W_{m_i}(\theta) = |\langle j_i || \hat
 
 3. **Computational efficiency:** The sum over $m_i$ and $m_f$ can be performed using the orthogonality relation of 3j symbols, giving a simple result in terms of a single 3j symbol with $(\theta)$-dependent coefficients.
 
-**Key properties:**
-
-- **Selection rules:** Zero unless $m_1 + m_2 + m_3 = 0$ and triangle condition holds
-- **Symmetry:** Even column permutations leave it unchanged; odd permutations multiply by $(-1)^{j_1+j_2+j_3}$
-
 ---
 
 ## Part V: Group Representation Theory and Young Tableaux
