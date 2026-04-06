@@ -1143,12 +1143,6 @@ For a spin-$j$ particle (fixed representation $D^{(j)}$):
 - States $|j,m\rangle$ with $m = -j, ..., j$ form a basis
 - The angular momentum operators $J_x, J_y, J_z$ are the generators of the representation
 
-**Why This Matters: Selection Rules**
-
-The representation structure constrains physical processes:
-- A spin-1/2 system has no state with $J_z = 2\hbar$ — the representation space simply doesn't contain such a vector
-- Electric dipole transitions connect representations differing by $j = \pm 1$ — this is a property of how representations tensor together
-
 **Summary:**
 - **Group** = abstract symmetry structure
 - **Representation** = concrete action of that symmetry on a specific Hilbert space
