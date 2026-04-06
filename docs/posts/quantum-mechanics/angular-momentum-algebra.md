@@ -895,44 +895,43 @@ $$\pi_f \cdot (-1) \cdot \pi_i = +1 \implies \pi_i \pi_f = -1$$
 
 **Transition Probability Scaling:**
 
-Where does the factor $(kR)^{2L}$ come from? Let's connect the long-wavelength expansion to our E1 operator.
+Why do higher multipoles have smaller transition probabilities? The key is the ratio of photon wavelength to nuclear size.
 
-**From expansion to operator:**
+**Physical picture:** 
+- Photon wavelength: $\lambda = 2\pi/k$
+- Nuclear size: $R \sim 5$ fm
+- For nuclear $\gamma$-rays: $\lambda \gg R$, so $kR \ll 1$
 
-Starting from the full interaction with phase factor $e^{-i\mathbf{k}\cdot\mathbf{r}}$:
-$$\hat{O} = e\sum_p \mathbf{r}_p \cdot \boldsymbol{\varepsilon}^* \, e^{-i\mathbf{k}\cdot\mathbf{r}_p}$$
+**Matrix element scaling:**
 
-Expand the exponential:
-$$e^{-i\mathbf{k}\cdot\mathbf{r}} = 1 \underbrace{- i\mathbf{k}\cdot\mathbf{r} + ...}_{\text{E1 and higher}}$$
+The E1 operator $\hat{O}_{E1} \propto \hat{\mathbf{R}}$ (position operator) has matrix elements:
+$$\langle f | \hat{R} | i \rangle \sim R$$
 
-For E1, we keep the **first-order term**:
-$$\hat{O}_{E1} \propto \mathbf{r} \, (\mathbf{k}\cdot\mathbf{r}) \,?$$
+The E2 operator involves $\hat{R}^2$:
+$$\langle f | \hat{R}^2 | i \rangle \sim R^2$$
 
-Wait—this seems to give $r^2$. Let's be more careful. The photon field normalization brings out a factor of $k$.
+In general, $EL$ transitions involve operators $\sim \hat{R}^L$ with matrix elements $\sim R^L$.
 
-**Correct derivation:**
+**Transition probability:**
 
-In time-dependent perturbation theory, the transition amplitude involves the interaction Hamiltonian. For electric multipole transitions, the matrix element has the structure:
+The decay rate $\Gamma \propto |\mathcal{M}|^2$ includes:
+1. Matrix element squared: $\sim R^{2L}$
+2. Photon density of states factor: $\sim k^{2L+1}$ (energy dependence)
 
-$$\mathcal{M}_{fi} \propto \langle f | \hat{O}_{EL} | i \rangle \times (\text{photon factors})$$
+Combining these: $\Gamma_{EL} \propto (kR)^{2L+1}$. For relative comparison at fixed photon energy:
 
-The photon polarization vector $\boldsymbol{\varepsilon}$ and the quantization volume introduce factors of $k$ such that:
+$$\frac{\Gamma_{E2}}{\Gamma_{E1}} \sim \frac{(kR)^5}{(kR)^3} = (kR)^2 \ll 1$$
 
-| Multipole | Operator | Origin | Matrix Element Scaling |
-|-----------|----------|--------|----------------------|
-| E1 | $\hat{\mathbf{R}}$ | Linear in $\mathbf{r}$ from $H_{int}$ | $\langle f|\hat{R}|i\rangle \sim R$ |
-| E2 | $\hat{Q}_{2q}$ | Quadratic in $\mathbf{r}$ or from $\mathbf{k}\cdot\mathbf{r}$ expansion | $\langle f|\hat{R}^2|i\rangle \sim R^2$ |
+**Typical numbers for nuclear $\gamma$-decay:**
+- Photon energy: $E_\gamma \sim 0.1 - 10$ MeV
+- Wave number: $k \sim 10^{-3} - 10^{-1}$ fm$^{-1}$  
+- Nuclear radius: $R \sim 5$ fm
+- Result: $kR \sim 0.005 - 0.5$, typically $\sim 0.1$
 
-The transition **probability** $|\mathcal{M}|^2$ includes the photon density of states (proportional to $k^2 dk$ for 3D) and the square of the matrix element:
-
-**For E1:**
-$$|\mathcal{M}_{E1}|^2 \propto k^2 \cdot |\langle f|\hat{R}|i\rangle|^2 \sim k^2 R^2 = (kR)^2$$
-
-**For E2:**
-$$|\mathcal{M}_{E2}|^2 \propto k^2 \cdot |\langle f|\hat{R}^2|i\rangle|^2 \sim k^2 R^4 = (kR)^4$$
-
-The general pattern:
-$$|\mathcal{M}_{EL}|^2 \sim (kR)^{2L}$$
+**Hierarchy:**
+- E1: $\sim (kR)^2 \sim 10^{-2}$ (fastest when allowed)
+- E2/M1: $\sim (kR)^4 \sim 10^{-4}$ (100$\times$ slower)
+- E3: $\sim (kR)^6 \sim 10^{-6}$ (10000$\times$ slower)
 
 **Typical values for nuclear $\gamma$-decay:**
 - Photon energy: $E_\gamma \sim 0.1 - 10$ MeV
@@ -954,8 +953,7 @@ E1 transitions require:
 **Nuclear Physics Notation Guide:**
 - $^{A}X$: Nucleus with mass number $A$ and element $X$
 - $nl_j$: Single-particle orbital with principal quantum number $n$, orbital $l$ ($s,p,d,f,...$ for $l=0,1,2,3,...$), and total angular momentum $j$
-- $J^\pi$: State with total angular momentum $J$ and parity $\pi$ ($+$ = even, $-$ = odd)
-- $J^\pi_n$: The $n$-th state with spin $J$ and parity $\pi$ (e.g., $0^+_1$ = ground state, $0^+_2$ = first excited $0^+$ state)
+- $J^\pi_n$: The $n$-th state with total angular momentum $J$ and parity $\pi$ ($+$ = even, $-$ = odd). Example: $0^+_1$ = ground state, $0^+_2$ = first excited $0^+$ state.
 
 **Example 1: E1 Allowed — Oxygen-17**
 
