@@ -829,10 +829,10 @@ where:
 - $\boldsymbol{\varepsilon}$ is the photon polarization vector
 - $\mathbf{k}$ is the photon wave vector
 
-**Long-wavelength approximation:** For nuclear $\gamma$-decay, the photon wavelength $\lambda = 2\pi/k$ is much larger than the nuclear size ($R \sim 5$ fm). Since $kR \ll 1$:
+**Long-wavelength approximation:** For nuclear $\gamma$-decay, the photon wavelength $\lambda = 2\pi/k$ is much larger than the nuclear size ($R \sim 5$ fm). Since $kR \ll 1$, we expand:
 $$e^{-i\mathbf{k}\cdot\mathbf{r}} \approx 1 - i\mathbf{k}\cdot\mathbf{r} + ...$$
 
-The leading term (constant 1) gives **electric dipole (E1)** transitions. Higher order terms give electric quadrupole (E2), magnetic dipole (M1), etc.
+The **linear term** ($\mathbf{k}\cdot\mathbf{r}$) gives **electric dipole (E1)** transitions. The constant term corresponds to E0 (monopole), which is forbidden by charge conservation. Higher order terms give E2, M1, etc.
 
 **Spherical Components:**
 
@@ -895,29 +895,44 @@ $$\pi_f \cdot (-1) \cdot \pi_i = +1 \implies \pi_i \pi_f = -1$$
 
 **Transition Probability Scaling:**
 
-The factor $(kR)^{2L}$ arises from the long-wavelength expansion. Let's clarify what each multipole corresponds to:
+Where does the factor $(kR)^{2L}$ come from? Let's connect the long-wavelength expansion to our E1 operator.
 
-**Long-wavelength expansion of the photon phase factor:**
-$$e^{-i\mathbf{k}\cdot\mathbf{r}} = 1 - i\mathbf{k}\cdot\mathbf{r} + \frac{(-i\mathbf{k}\cdot\mathbf{r})^2}{2!} + ...$$
+**From expansion to operator:**
 
-**Multipole content:**
-| Term | Operator | Multipole | Scaling |
-|------|----------|-----------|---------|
-| $1$ | constant | E0 (monopole) | $1$ (forbidden by charge conservation) |
-| $\mathbf{k}\cdot\mathbf{r}$ | $\sim r Y_1^m$ | E1 (dipole) | $kR$ |
-| $(\mathbf{k}\cdot\mathbf{r})^2$ | $\sim (kr)^2 Y_2^m$ | E2 (quadrupole) | $(kR)^2$ |
-| ... | ... | $EL$ | $(kR)^L$ |
+Starting from the full interaction with phase factor $e^{-i\mathbf{k}\cdot\mathbf{r}}$:
+$$\hat{O} = e\sum_p \mathbf{r}_p \cdot \boldsymbol{\varepsilon}^* \, e^{-i\mathbf{k}\cdot\mathbf{r}_p}$$
 
-**Key point:** The E1 operator is the **linear term** $\mathbf{k}\cdot\mathbf{r} \sim kR$, not the constant term. The constant term would be E0 (electric monopole), but this is forbidden by charge conservation (it would correspond to changing the total charge, which photon emission cannot do).
+Expand the exponential:
+$$e^{-i\mathbf{k}\cdot\mathbf{r}} = 1 \underbrace{- i\mathbf{k}\cdot\mathbf{r} + ...}_{\text{E1 and higher}}$$
 
-The matrix element of the E1 operator involves:
-$$\langle f | \hat{O}_{E1} | i \rangle \sim \langle f | \mathbf{k}\cdot\hat{\mathbf{R}} | i \rangle \sim k \langle f | \hat{R} | i \rangle$$
+For E1, we keep the **first-order term**:
+$$\hat{O}_{E1} \propto \mathbf{r} \, (\mathbf{k}\cdot\mathbf{r}) \,?$$
 
-Since $\hat{R}$ is of order nuclear radius $R$ within the nucleus:
-$$|\langle f | \hat{O}_{E1} | i \rangle|^2 \sim (kR)^2$$
+Wait—this seems to give $r^2$. Let's be more careful. The photon field normalization brings out a factor of $k$.
 
-For E2 (quadrupole):
-$$|\langle f | \hat{O}_{E2} | i \rangle|^2 \sim (kR)^4$$
+**Correct derivation:**
+
+In time-dependent perturbation theory, the transition amplitude involves the interaction Hamiltonian. For electric multipole transitions, the matrix element has the structure:
+
+$$\mathcal{M}_{fi} \propto \langle f | \hat{O}_{EL} | i \rangle \times (\text{photon factors})$$
+
+The photon polarization vector $\boldsymbol{\varepsilon}$ and the quantization volume introduce factors of $k$ such that:
+
+| Multipole | Operator | Origin | Matrix Element Scaling |
+|-----------|----------|--------|----------------------|
+| E1 | $\hat{\mathbf{R}}$ | Linear in $\mathbf{r}$ from $H_{int}$ | $\langle f|\hat{R}|i\rangle \sim R$ |
+| E2 | $\hat{Q}_{2q}$ | Quadratic in $\mathbf{r}$ or from $\mathbf{k}\cdot\mathbf{r}$ expansion | $\langle f|\hat{R}^2|i\rangle \sim R^2$ |
+
+The transition **probability** $|\mathcal{M}|^2$ includes the photon density of states (proportional to $k^2 dk$ for 3D) and the square of the matrix element:
+
+**For E1:**
+$$|\mathcal{M}_{E1}|^2 \propto k^2 \cdot |\langle f|\hat{R}|i\rangle|^2 \sim k^2 R^2 = (kR)^2$$
+
+**For E2:**
+$$|\mathcal{M}_{E2}|^2 \propto k^2 \cdot |\langle f|\hat{R}^2|i\rangle|^2 \sim k^2 R^4 = (kR)^4$$
+
+The general pattern:
+$$|\mathcal{M}_{EL}|^2 \sim (kR)^{2L}$$
 
 **Typical values for nuclear $\gamma$-decay:**
 - Photon energy: $E_\gamma \sim 0.1 - 10$ MeV
@@ -940,6 +955,7 @@ E1 transitions require:
 - $^{A}X$: Nucleus with mass number $A$ and element $X$
 - $nl_j$: Single-particle orbital with principal quantum number $n$, orbital $l$ ($s,p,d,f,...$ for $l=0,1,2,3,...$), and total angular momentum $j$
 - $J^\pi$: State with total angular momentum $J$ and parity $\pi$ ($+$ = even, $-$ = odd)
+- $J^\pi_n$: The $n$-th state with spin $J$ and parity $\pi$ (e.g., $0^+_1$ = ground state, $0^+_2$ = first excited $0^+$ state)
 
 **Example 1: E1 Allowed — Oxygen-17**
 
