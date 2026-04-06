@@ -186,12 +186,7 @@ $$j(j+1) = m_{\max}(m_{\max} + 1)$$
 
 This quadratic equation has solutions $m_{\max} = j$ or $m_{\max} = -j - 1$. 
 
-**Rejecting the second solution:**
-If $m_{\max} = -j-1$ were the maximum, then we would require $-j-1 \geq j$ (since $m_{\max}$ must be at least as large as any other $m$ value, including $j$ itself if $j$ is a valid $m$ value). This gives $j \leq -1/2$.
-
-But for $j < 0$, consider $j = -3/2$: then $j(j+1) = 3/4$, and the constraint $m^2 \leq 3/4$ means $|m| \leq \sqrt{3}/2 \approx 0.87$. However, $m_{\max} = -j-1 = 1/2$, and we could apply $J_+$ repeatedly to get $m = 3/2, 5/2, ...$, which would eventually violate $m^2 \leq j(j+1)$.
-
-More fundamentally, we will show below that $m_{\min} = -j$, so $m_{\max} \geq m_{\min}$ requires $j \geq -j$, i.e., $j \geq 0$. With $j \geq 0$, the second solution gives $m_{\max} = -j-1 < 0$, and $(-j-1)^2 = (j+1)^2 > j(j+1)$ for all $j \geq 0$, violating the constraint $m^2 \leq j(j+1)$. Therefore:
+The second solution is rejected: if $m_{\max} = -j-1$, then the constraint $m_{\max}^2 \leq j(j+1)$ becomes $(j+1)^2 \leq j(j+1)$, which requires $j+1 \leq j$ (for $j \geq 0$) or $j+1 \geq j$ (for $j \leq -1$). Both cases lead to contradictions. Therefore:
 
 $$\boxed{m_{\max} = j}$$
 
