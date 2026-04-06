@@ -731,38 +731,47 @@ The cross term contains $\mathbf{J}_1 \cdot \mathbf{J}_2$ versus $\mathbf{J}_2 \
 
 **From CG to 3j**
 
-The standard CG coefficient $\langle j_1, m_1; j_2, m_2 | j_3, m_3 \rangle$ treats $j_3$ as the "result" of coupling $j_1$ and $j_2$. The **Wigner 3j symbol** provides a symmetric alternative:
+The CG coefficient $\langle j_1, m_1; j_2, m_2 | j_3, m_3 \rangle$ couples $j_1$ and $j_2$ to give $j_3$ with $m_3 = m_1 + m_2$. The **Wigner 3j symbol** rewrites this as a symmetric quantity where all three angular momenta appear on equal footing:
 
 $$\begin{pmatrix} j_1 & j_2 & j_3 \\ m_1 & m_2 & m_3 \end{pmatrix} = \frac{(-1)^{j_1 - j_2 - m_3}}{\sqrt{2j_3 + 1}} \langle j_1, m_1; j_2, m_2 | j_3, -m_3 \rangle$$
 
-The factor $(-1)^{j_1-j_2-m_3}$ ensures the 3j symbol has simple symmetry properties.
+**Why $-m_3$ instead of $m_3$?** The CG coefficient requires $m_1 + m_2 = m_3$. The 3j symbol uses $-m_3$ so that the selection rule becomes:
+$$m_1 + m_2 + m_3 = 0$$
+This treats all three magnetic quantum numbers symmetrically—none is singled out as the "result."
 
-**Application: Angular Correlations in Nuclear Decay**
+**Application: Angular Correlations in Nuclear $\gamma$-Decay**
 
-Consider a nuclear $\gamma$-decay: an excited nucleus with spin $j_i$ emits a photon (spin 1) and transitions to a final state with spin $j_f$. The angular distribution of the emitted photon depends on the matrix element:
+Consider an excited nucleus with spin $j_i$ that emits a photon (angular momentum 1) and decays to a state with spin $j_f$. The transition amplitude is:
 
-$$\langle j_f m_f; 1 m_\gamma | j_i m_i \rangle$$
+$$\mathcal{M} \propto \langle j_f m_f | \hat{O} | j_i m_i \rangle$$
 
-In experiments with oriented nuclei (where $m_i$ has a definite value), we measure the correlation between the nuclear spin direction and the photon direction. This involves summing over final states and integrating over photon emission angles.
+where $\hat{O}$ is the photon emission operator with spherical components labeled by $m_\gamma = -1, 0, +1$. By the Wigner-Eckart theorem, this matrix element factors as:
 
-The angular correlation function $W(\theta)$ can be written as:
-$$W(\theta) \propto \sum_{m_i, m_f, m_\gamma} \left|\begin{pmatrix} j_f & 1 & j_i \\ m_f & m_\gamma & -m_i \end{pmatrix}\right|^2 |Y_1^{m_\gamma}(\theta, \phi)|^2$$
+$$\langle j_f m_f | \hat{O}_{m_\gamma} | j_i m_i \rangle = \langle j_f m_f; 1 m_\gamma | j_i m_i \rangle \times \langle j_f || \hat{O} || j_i \rangle$$
 
-**Why use 3j instead of CG here?**
+The reduced matrix element $\langle j_f || \hat{O} || j_i \rangle$ contains the physics (transition strength), while the CG coefficient contains the angular dependence.
 
-1. **Geometric symmetry:** The 3j symbol treats the three angular momenta (initial nucleus, photon, final nucleus) on equal footing, which matches the physical symmetry of the problem
-2. **Selection rules:** The condition $m_f + m_\gamma - m_i = 0$ (i.e., $m_i = m_f + m_\gamma$) is built into the 3j symbol's definition
-3. **Standard tables:** Angular correlation coefficients in nuclear physics are conventionally expressed using 3j symbols
+**Computing the angular distribution:**
 
-**Key Properties of 3j Symbols:**
+The probability of emitting a photon at angle $\theta$ relative to the nuclear spin axis is:
 
-1. **Selection Rules:** The 3j symbol is zero unless:
-   - $m_1 + m_2 + m_3 = 0$ (magnetic quantum numbers sum to zero)
-   - $|j_1 - j_2| \leq j_3 \leq j_1 + j_2$ (triangle condition)
+$$W(\theta) = \sum_{m_i, m_f, m_\gamma} \left| \langle j_f m_f; 1 m_\gamma | j_i m_i \rangle \right|^2 |Y_1^{m_\gamma}(\theta)|^2$$
 
-2. **Symmetry:** Under permutation of columns:
-   - Even permutation: unchanged
-   - Odd permutation: multiplied by $(-1)^{j_1 + j_2 + j_3}$
+Converting to 3j symbols:
+$$W(\theta) = (2j_i + 1) \sum_{m_i, m_f, m_\gamma} \left|\begin{pmatrix} j_f & 1 & j_i \\ m_f & m_\gamma & -m_i \end{pmatrix}\right|^2 |Y_1^{m_\gamma}(\theta)|^2$$
+
+**Advantages of the 3j form:**
+
+1. **Symmetry:** The 3j symbol treats $j_i$, $j_f$, and the photon (1) equally. For example, if we swap initial and final states, the 3j symbol simply picks up a phase factor $(-1)^{j_f + 1 + j_i}$, whereas the CG form requires reordering.
+
+2. **Selection rule visibility:** The condition $m_f + m_\gamma - m_i = 0$ (conservation of $J_z$) appears as the sum-to-zero rule $m_1 + m_2 + m_3 = 0$ in the 3j symbol.
+
+3. **Computational efficiency:** The 3j symbol has well-known symmetry and orthogonality properties that simplify sums over magnetic quantum numbers.
+
+**Key properties:**
+
+- **Selection rules:** Zero unless $m_1 + m_2 + m_3 = 0$ and triangle condition holds
+- **Symmetry:** Even column permutations leave it unchanged; odd permutations multiply by $(-1)^{j_1+j_2+j_3}$
 
 ---
 
