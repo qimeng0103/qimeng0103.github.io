@@ -901,12 +901,12 @@ The factor $(kR)^{2L}$ arises from the long-wavelength expansion. Let's clarify 
 $$e^{-i\mathbf{k}\cdot\mathbf{r}} = 1 - i\mathbf{k}\cdot\mathbf{r} + \frac{(-i\mathbf{k}\cdot\mathbf{r})^2}{2!} + ...$$
 
 **Multipole content:**
-| Term | Operator | Multipole | Scaling | Status |
-|------|----------|-----------|---------|--------|
-| $1$ | constant | E0 (monopole) | 1 | Forbidden (charge conservation) |
-| $\mathbf{k}\cdot\mathbf{r}$ | $\sim r Y_1^m$ | E1 (dipole) | $kR$ | Allowed (if selection rules permit) |
-| $(\mathbf{k}\cdot\mathbf{r})^2$ | $\sim (kr)^2 Y_2^m$ | E2 (quadrupole) | $(kR)^2$ | Allowed |
-| ... | ... | $EL$ | $(kR)^L$ | Allowed |
+| Term | Operator | Multipole | Scaling |
+|------|----------|-----------|---------|
+| $1$ | constant | E0 (monopole) | $1$ (forbidden by charge conservation) |
+| $\mathbf{k}\cdot\mathbf{r}$ | $\sim r Y_1^m$ | E1 (dipole) | $kR$ |
+| $(\mathbf{k}\cdot\mathbf{r})^2$ | $\sim (kr)^2 Y_2^m$ | E2 (quadrupole) | $(kR)^2$ |
+| ... | ... | $EL$ | $(kR)^L$ |
 
 **Key point:** The E1 operator is the **linear term** $\mathbf{k}\cdot\mathbf{r} \sim kR$, not the constant term. The constant term would be E0 (electric monopole), but this is forbidden by charge conservation (it would correspond to changing the total charge, which photon emission cannot do).
 
@@ -942,33 +942,34 @@ E1 transitions require:
 - $J^\pi$: State with total angular momentum $J$ and parity $\pi$ ($+$ = even, $-$ = odd)
 
 **Example 1: E1 Allowed — Oxygen-17**
+
 $^{17}$O: $1d_{5/2} \to 2p_{3/2}$ 
 
-**Reaction:** Proton transitions from $d$-shell to $p$-shell.
-- $j_i = 5/2$ (initial, $d_{5/2}$ orbital), $j_f = 3/2$ (final, $p_{3/2}$ orbital)
-- Angular momentum check: $|5/2 - 3/2| = 1 \leq 1 \leq 5/2 + 3/2 = 4$ ✓ (satisfied)
-- Parity check: $l_i = 2$ ($d$-orbital, parity $(-1)^2 = +1$), $l_f = 1$ ($p$-orbital, parity $(-1)^1 = -1$)
-- Parity changes: $(+1) \times (-1) = -1$ ✓ (satisfied)
-- **Result:** E1 allowed, dominates the decay
+A proton transitions from $d$-shell to $p$-shell:
+- Initial: $j_i = 5/2$ ($d_{5/2}$ orbital), Final: $j_f = 3/2$ ($p_{3/2}$ orbital)
+- Angular momentum: $|5/2 - 3/2| = 1 \leq 1 \leq 4$ ✓
+- Parity: $l_i = 2$ (even) $\to$ $l_f = 1$ (odd), changes ✓
+- **Result:** E1 allowed
 
 **Example 2: E1 Forbidden by Parity — Oxygen-17**
+
 $^{17}$O: $1d_{5/2} \to 1d_{3/2}$ 
 
-**Reaction:** Proton stays in $d$-shell but changes $j$ from $5/2$ to $3/2$.
-- $j_i = 5/2$, $j_f = 3/2$: $|5/2 - 3/2| = 1 \leq 1 \leq 4$ ✓ (angular momentum OK)
-- Parity check: $l_i = l_f = 2$ (both $d$-orbitals, parity $(-1)^2 = +1$)
-- Parity product: $(+1) \times (+1) = +1$ ✗ (does NOT change; E1 requires $-1$)
-- **Result:** E1 forbidden. Transition proceeds via M1 (magnetic dipole) or E2 (electric quadrupole), which are $\sim 100\times$ slower.
+A proton stays in $d$-shell, only $j$ changes:
+- Angular momentum: $|5/2 - 3/2| = 1 \leq 1 \leq 4$ ✓
+- Parity: $l_i = l_f = 2$ (both even), does NOT change ✗
+- **Result:** E1 forbidden; proceeds via M1 or E2
 
-**Example 3: E1 Forbidden by Angular Momentum — Carbon-12**
-$^{12}$C: $0^+_1 \to 0^+_2$ (first excited $0^+$ state decaying to ground state)
+**Example 3: E1 Forbidden by Angular Momentum — Oxygen-16**
 
-**Reaction:** Collective excitation of the nucleus with $J=0$ decays to ground state $J=0$.
-- $j_i = 0$, $j_f = 0$: E1 requires $L=1$, but $|0-0| = 0 \nleq 1$ (triangle rule violated)
-- **Physical reason:** A vector operator (E1 has $L=1$) cannot connect two states both with $J=0$. The photon must carry away angular momentum, but $0 = 0 + 1$ is impossible.
-- **Result:** E1 absolutely forbidden. This transition proceeds via E2 (electric quadrupole), with a lifetime much longer than typical E1 transitions.
+$^{16}$O: $0^+_2 \to 0^+_1$ (excited state $\to$ ground state)
 
-**Note:** The $0^+ \to 0^+$ transition cannot occur via single-photon emission at all because a photon always carries at least $L=1$ (one unit of angular momentum). Such transitions proceed via internal conversion (energy transfer to atomic electrons) or two-photon emission.
+Both states have $J = 0$:
+- Angular momentum: $J_i = 0$, $J_f = 0$; cannot satisfy $0 = 0 + 1$ ✗
+- E1 requires photon with $L = 1$, but no angular momentum to spare
+- **Result:** E1 forbidden; proceeds via E2
+
+**Note:** $0^+ \to 0^+$ transitions cannot emit single photons (photon always has $L \geq 1$). They decay via internal conversion or two-photon emission.
 
 **Conclusion:** E1 dominates **only when both angular momentum and parity selection rules are satisfied**. When either is violated, the transition must proceed via higher multipolarity (E2, M1, etc.) and is much slower.
 
