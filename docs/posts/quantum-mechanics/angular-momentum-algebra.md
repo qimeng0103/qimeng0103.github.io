@@ -737,6 +737,8 @@ The basis states are labeled as $|(j_1 j_2)j_{12}, j_3; j, m\rangle$. This notat
 - Then $j_{12}$ is coupled with $j_3$ to give total $j$
 - The state has magnetic quantum number $m$
 
+**Note on notation:** This compact notation focuses on the $j$ quantum numbers. The intermediate $m_{12}$ values are implicitly summed over in the CG expansion—the basis state is a superposition over all $m_1, m_2$ such that $m_1 + m_2 = m_{12}$ and $m_{12} + m_3 = m$.
+
 The allowed values are:
 - $j_{12} \in \{|j_1 - j_2|, ..., j_1 + j_2\}$
 - $j \in \{|j_{12} - j_3|, ..., j_{12} + j_3\}$
@@ -761,19 +763,7 @@ The cross term contains $\mathbf{J}_1 \cdot \mathbf{J}_2$ versus $\mathbf{J}_2 \
 - The two coupling schemes define different orthonormal bases
 - Both bases span the same $(2j_1+1)(2j_2+1)(2j_3+1)$-dimensional Hilbert space
 
-**Recoupling Transformation:**
-
-The two bases are related by a unitary transformation:
-
-$$|j_1, (j_2 j_3)j_{23}; j, m\rangle = \sum_{j_{12}} U_{j_{12}, j_{23}} |(j_1 j_2)j_{12}, j_3; j, m\rangle$$
-
-The transformation coefficients $U_{j_{12}, j_{23}}$ depend on $j_1, j_2, j_3, j_{12}, j_{23}, j$ but **not on $m$**. This $m$-independence is a general result: when transforming between bases that both have definite total $J^2$ and $J_z$, the coefficients cannot depend on the specific $m$ value. This is related to the fact that $J_+$ and $J_-$ act as raising/lowering operators in the same way in both bases.
-
-These coefficients are conventionally expressed as **Wigner 6j symbols** (see Section 4.10).
-
-**Counting States:**
-
-For given $j_1, j_2, j_3$, both bases must span the same space with $(2j_1+1)(2j_2+1)(2j_3+1)$ dimensions. The recoupling transformation is a change of basis within this fixed space.
+The transformation between these two bases involves **Wigner 6j symbols**, which we discuss in Section 4.10.
 
 ### 4.10 Wigner Symbols: Symmetric Notation for CG Coefficients
 
