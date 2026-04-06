@@ -801,7 +801,7 @@ $$W(\theta) = \frac{1}{2j_i+1} \sum_{m_i} W_{m_i}(\theta) = |\langle j_i || \hat
 
 **Why use 3j symbols?**
 
-1. **Symmetric treatment:** The CG coefficient $\langle j_f m_f; 1 m_\gamma | j_i m_i \rangle$ treats $j_i$ as the "result" of coupling $j_f$ and 1. But physically, all three angular momenta are on equal footing—the initial state, final state, and photon each play a role. The 3j symbol with its sum-to-zero condition $m_f + m_\gamma + (-m_i) = 0$ reflects this symmetry.
+1. **Symmetric treatment:** The CG coefficient $\langle j_f m_f; 1 m_\gamma | j_i m_i \rangle$ treats $j_i$ as the "result" of coupling $j_f$ and 1. But physically, all three angular momenta are on equal footing. The 3j symbol treats them equally: even permutations of columns leave it unchanged, while odd permutations multiply by $(-1)^{j_1+j_2+j_3}$.
 
 2. **Selection rule visibility:** The conservation of $J_z$ ($m_i = m_f + m_\gamma$) is immediately apparent from the condition $m_1 + m_2 + m_3 = 0$ in the 3j symbol.
 
