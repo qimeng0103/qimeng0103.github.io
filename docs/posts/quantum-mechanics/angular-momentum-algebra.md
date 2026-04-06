@@ -743,6 +743,34 @@ This treats all three magnetic quantum numbers symmetrically—none is singled o
 
 Consider an excited nucleus with spin $j_i$ that emits a photon (angular momentum 1) and decays to a state with spin $j_f$. We want to compute the angular distribution of the emitted photon relative to the nuclear spin quantization axis.
 
+**Step 0: The Wigner-Eckart Theorem — General Form**
+
+Before diving into the nuclear decay calculation, let's establish the general Wigner-Eckart theorem. This is one of the most powerful results in angular momentum theory.
+
+**Background:** In quantum mechanics, we often need to calculate matrix elements of tensor operators between angular momentum eigenstates. These matrix elements depend on:
+- The "physics" (transition strength, coupling constants)
+- The "geometry" (how the states and operator are oriented in space)
+
+The Wigner-Eckart theorem states that these dependencies **factorize**:
+
+**Theorem (Wigner-Eckart):** For an irreducible tensor operator $T^{(k)}_q$ of rank $k$ (component $q$), the matrix element between angular momentum states factorizes as:
+
+$$\langle j' m' | T^{(k)}_q | j m \rangle = \frac{\langle j m; k q | j' m' \rangle}{\sqrt{2j'+1}} \langle j' || T^{(k)} || j \rangle$$
+
+where:
+- $\langle j m; k q | j' m' \rangle$ is the **Clebsch-Gordan coefficient**
+- $\langle j' || T^{(k)} || j \rangle$ is the **reduced matrix element** (independent of $m, m', q$)
+- The factor $1/\sqrt{2j'+1}$ is a **conventional normalization**
+
+**Why this factor?** Different textbooks use different conventions for the reduced matrix element. The Racah convention includes $1/\sqrt{2j'+1}$, which ensures that when we convert to 3j symbols, the dimensional factors cancel cleanly. Specifically, using the 3j symbol definition:
+$$\begin{pmatrix} j & k & j' \\ m & q & -m' \end{pmatrix} = \frac{(-1)^{j-k+m'}}{\sqrt{2j'+1}} \langle j m; k q | j' m' \rangle$$
+
+The $\sqrt{2j'+1}$ in the Wigner-Eckart theorem combines with the $\sqrt{2j'+1}$ in the 3j symbol definition to give simple orthogonality relations.
+
+**Proof Sketch:** The key insight is that both $T^{(k)}_q |j m\rangle$ and the coupled state $|j' m'\rangle$ transform under rotations as direct product representations. The CG coefficient $\langle j m; k q | j' m' \rangle$ is the unique (up to normalization) rotationally invariant way to combine these angular momenta. By the Wigner-Eckart theorem, all matrix elements with the same $j, k, j'$ but different $m, q, m'$ are proportional to this single CG coefficient.
+
+The proportionality constant—the reduced matrix element—can be extracted by evaluating any convenient matrix element (typically the one with $m = j, m' = j', q = j'-j$).
+
 **Step 1: The Transition Amplitude**
 
 The photon emission is described by an operator $\hat{O}$ that carries angular momentum $L=1$ (and projection $m_\gamma$). The transition amplitude is:
@@ -751,11 +779,36 @@ $$\mathcal{M}_{m_i \to m_f, m_\gamma} = \langle j_f m_f; 1 m_\gamma | \hat{O} | 
 
 where $|j_i m_i\rangle$ is the initial nuclear state, $|j_f m_f\rangle$ is the final nuclear state, and the photon state carries angular momentum $|1 m_\gamma\rangle$ with $m_\gamma = -1, 0, +1$.
 
-**Step 2: Factorizing the Matrix Element**
+**Step 2: Factorizing the Matrix Element — E1 Transition**
 
-The transition amplitude $\mathcal{M} = \langle j_f m_f | \hat{O} | j_i m_i \rangle$ describes the photon emission process. Here $\hat{O}$ is the photon emission operator, which for electric dipole (E1) transitions takes the form $\hat{O} \propto \mathbf{r} \cdot \mathbf{\epsilon}^*$, where $\mathbf{r}$ is the nuclear position operator and $\mathbf{\epsilon}$ is the photon polarization vector. This operator carries angular momentum $L=1$.
+The transition amplitude $\mathcal{M} = \langle j_f m_f | \hat{O} | j_i m_i \rangle$ describes the photon emission process. Here $\hat{O}$ is the photon emission operator.
 
-The Wigner-Eckart theorem tells us this matrix element factorizes:
+**Electric Dipole (E1) Operator:**
+
+For electric dipole (E1) transitions, the operator takes the form:
+
+$$\hat{O}_{E1} \propto \mathbf{r} \cdot \boldsymbol{\varepsilon}^* = \sum_{q=-1}^{+1} (-1)^q r_q \varepsilon^*_{-q}$$
+
+where:
+- $\mathbf{r}$ is the nuclear position operator (or more precisely, the proton position coordinates weighted by charge)
+- $\boldsymbol{\varepsilon}$ is the photon polarization vector
+- $r_q$ are the spherical components of $\mathbf{r}$:
+  $$r_{\pm 1} = \mp \frac{1}{\sqrt{2}}(x \pm iy), \quad r_0 = z$$
+
+**Why "E1"?** The notation uses:
+- **E** for Electric (vs. **M** for Magnetic)
+- **1** for the multipolarity (angular momentum $L=1$)
+
+The general electromagnetic multipole operator of type $(\sigma, L)$ where $\sigma = E$ or $M$ and $L = 0, 1, 2, ...$ has parity selection rule:
+- Electric multipole $EL$: parity changes by $(-1)^L$
+- Magnetic multipole $ML$: parity changes by $(-1)^{L+1}$
+
+E1 transitions ($L=1$, parity changes) are typically the fastest allowed electromagnetic transitions in nuclei and atoms.
+
+The spherical components $r_q$ transform as a rank-1 irreducible tensor. This operator carries angular momentum $L=1$ with projection $q$.
+
+**Applying Wigner-Eckart:**
+
 $$\mathcal{M} = \text{(Geometric factor)} \times \text{(Physical factor)}$$
 
 The **geometric factor** is the CG coefficient for angular momentum coupling:
@@ -768,6 +821,8 @@ $$\text{Physical factor} = \frac{\langle j_f || \hat{O} || j_i \rangle}{\sqrt{2j
 
 This contains the intrinsic transition strength (how likely the transition is) but does NOT depend on $m_i, m_f,$ or $m_\gamma$.
 
+**Normalization Convention Note:** The factor $\sqrt{2j_f+1}$ in the denominator is a convention (the Racah convention). When we compute $|\mathcal{M}|^2$, this gives a factor of $2j_f+1$ in the denominator. This precisely cancels the $2j_f+1$ factor that appears when we convert CG coefficients to 3j symbols (Step 4), leaving a clean formula. Different conventions (e.g., Edmonds) omit this factor, leading to different-looking but equivalent final results.
+
 **Step 3: Computing the Angular Distribution**
 
 The probability of a specific transition is $P = |\mathcal{M}|^2$:
@@ -775,7 +830,27 @@ $$P(m_i \to m_f, m_\gamma) = C \times |\langle j_i m_i; 1 m_\gamma | j_f m_f \ra
 
 where $C = |\langle j_f || \hat{O} || j_i \rangle|^2 / (2j_f+1)$ is a constant.
 
-**The photon angular dependence:** The photon is emitted with angular momentum projection $m_\gamma$. The probability of finding this photon at angle $\theta$ relative to the spin axis is given by $|Y_1^{m_\gamma}(\theta)|^2$, where $Y_1^{m_\gamma}$ is the spherical harmonic.
+**The Photon Angular Dependence:**
+
+The photon is emitted with angular momentum projection $m_\gamma$ relative to the nuclear spin quantization axis. The probability of finding this photon at angle $(\theta, \phi)$ relative to the spin axis is given by $|Y_1^{m_\gamma}(\theta, \phi)|^2$.
+
+**Where does this come from?** 
+
+The photon wavefunction in the far-field (radiation zone) is a spherical wave with angular dependence given by vector spherical harmonics. For an E1 transition:
+- The photon carries away one unit of angular momentum ($L=1$)
+- The angular distribution is determined by the angular momentum eigenstate $|1, m_\gamma\rangle$
+- In position representation, this eigenstate is proportional to the spherical harmonic $Y_1^{m_\gamma}(\theta, \phi)$
+
+The spherical harmonics $Y_L^m(\theta, \phi)$ are the angular momentum eigenfunctions:
+$$\langle \theta, \phi | L, m \rangle = Y_L^m(\theta, \phi)$$
+
+For $L=1$:
+$$Y_1^{\pm 1}(\theta, \phi) = \mp \sqrt{\frac{3}{8\pi}} \sin\theta \, e^{\pm i\phi}$$
+$$Y_1^0(\theta, \phi) = \sqrt{\frac{3}{4\pi}} \cos\theta$$
+
+The intensity (probability density) is $|Y_1^{m_\gamma}|^2$:
+- $|Y_1^{\pm 1}|^2 \propto \sin^2\theta$ (emission perpendicular to spin axis, circular polarization)
+- $|Y_1^0|^2 \propto \cos^2\theta$ (emission along spin axis, linear polarization)
 
 Therefore, the joint probability of the specific transition AND photon emission at angle $\theta$ is:
 $$P(m_i \to m_f, m_\gamma; \theta) = C \times |\langle j_i m_i; 1 m_\gamma | j_f m_f \rangle|^2 \times |Y_1^{m_\gamma}(\theta)|^2$$
