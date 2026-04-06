@@ -172,9 +172,13 @@ Otherwise, repeated application of $J_+$ would produce arbitrarily large $m$, vi
 
 $$J_-J_+ = J_x^2 + J_y^2 + i[J_x, J_y] = J^2 - J_z^2 - \hbar J_z$$
 
-Applying to $|j, m_{\max}\rangle$:
+Applying this operator to $|j, m_{\max}\rangle$, we note that since $J_+|j, m_{\max}\rangle = 0$, we have:
 
-$$J_-J_+|j, m_{\max}\rangle = (J^2 - J_z^2 - \hbar J_z)|j, m_{\max}\rangle = 0$$
+$$J_-J_+|j, m_{\max}\rangle = J_-(J_+|j, m_{\max}\rangle) = J_- \cdot 0 = 0$$
+
+Therefore:
+
+$$(J^2 - J_z^2 - \hbar J_z)|j, m_{\max}\rangle = 0$$
 
 $$\hbar^2 j(j+1) - \hbar^2 m_{\max}^2 - \hbar^2 m_{\max} = 0$$
 
@@ -223,9 +227,13 @@ To find the proportionality constants, assume:
 
 $$J_+|j, m\rangle = C_+|j, m+1\rangle$$
 
-Using $J_-J_+ = J^2 - J_z^2 - \hbar J_z$:
+Using $J_-J_+ = J^2 - J_z^2 - \hbar J_z$, we take the inner product of $J_+|j, m\rangle$ with itself. Recall that $\langle j,m|J_-$ is the Hermitian conjugate of $J_+|j,m\rangle$:
 
-$$\langle j, m|J_-J_+|j, m\rangle = |C_+|^2\langle j, m+1|j, m+1\rangle = |C_+|^2$$
+$$(J_+|j, m\rangle)^\dagger = \langle j, m|J_+^\dagger = \langle j, m|J_-$$
+
+Therefore:
+
+$$\langle j, m|J_-J_+|j, m\rangle = (J_+|j, m\rangle)^\dagger (J_+|j, m\rangle) = |C_+|^2\langle j, m+1|j, m+1\rangle = |C_+|^2$$
 
 $$= \langle j, m|(J^2 - J_z^2 - \hbar J_z)|j, m\rangle = \hbar^2[j(j+1) - m^2 - m]$$
 
