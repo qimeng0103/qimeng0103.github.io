@@ -254,6 +254,10 @@ $$\boxed{J_+|j, m\rangle = \hbar\sqrt{(j-m)(j+m+1)}|j, m+1\rangle}$$
 Similarly:
 $$\boxed{J_-|j, m\rangle = \hbar\sqrt{(j+m)(j-m+1)}|j, m-1\rangle}$$
 
+**The Condon-Shortley Convention**
+
+This choice fixes the **phase of ladder operator matrix elements** to be real and positive. Since $J_- = J_+^\dagger$, the matrix elements of both operators are real and positive. This convention ensures that all CG coefficients are real (up to an overall sign), making results from different textbooks and software directly comparable.
+
 ---
 
 ## Part III: Spin Systems and Matrix Representations
@@ -639,47 +643,7 @@ $$|1,-1\rangle = |\downarrow\downarrow\rangle$$
 **Singlet State (Antisymmetric, $S=0$):**
 $$|0,0\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle)$$
 
-### 4.7 The Condon-Shortley Phase Convention
-
-**The Convention Defined**
-
-The Condon-Shortley convention is a **choice of phase for the ladder operator matrix elements**. Specifically, it requires that:
-$$\langle j,m+1|J_+|j,m\rangle = \hbar\sqrt{(j-m)(j+m+1)}$$
-be **real and positive** for all $j$ and $m$.
-
-Since $J_- = J_+^\dagger$, this also fixes the matrix elements of $J_-$ to be real and positive.
-
-**How This Fixes State Phases**
-
-The action of $J_+$ on a state $|j,m\rangle$ is:
-$$J_+|j,m\rangle = \hbar\sqrt{(j-m)(j+m+1)}|j,m+1\rangle$$
-
-This recursion relation determines the relative phase of $|j,m+1\rangle$ relative to $|j,m\rangle$. Starting from the highest weight state $|j,j\rangle$ (which is fixed by $J_+|j,j\rangle = 0$), successive application of $J_-$ generates all states $|j,m\rangle$ with **definite relative phases**.
-
-**The Problem with Inconsistent Conventions**
-
-When coupling two angular momenta, if particle 1 and particle 2 use different phase conventions for their $J_+$ matrix elements, the CG coefficients will acquire spurious phase factors.
-
-For example, suppose particle 1 uses:
-$$J_+^{(1)}|1/2, -1/2\rangle_1' = \hbar e^{i\phi_1}|1/2, 1/2\rangle_1'$$
-while particle 2 uses:
-$$J_+^{(2)}|1/2, -1/2\rangle_2' = \hbar e^{i\phi_2}|1/2, 1/2\rangle_2'$$
-
-When we construct the singlet state $|0,0\rangle$ using the standard orthogonalization procedure, transforming back to a common basis reveals:
-$$|0,0\rangle \propto |\downarrow\uparrow\rangle - e^{i(\phi_1-\phi_2)}|\uparrow\downarrow\rangle$$
-
-The CG coefficient of $|\uparrow\downarrow\rangle$ acquires a phase factor $e^{i(\phi_1-\phi_2)}$ relative to the standard real value.
-
-**Why This Matters**
-
-The Condon-Shortley convention fixes $\phi = 0$ for all particles, ensuring:
-1. All ladder operator matrix elements are real and positive
-2. All CG coefficients are real (up to an overall sign for each $j$)
-3. Results from different textbooks and software are directly comparable
-
-When looking up CG coefficients in tables, always verify that the Condon-Shortley convention is being used.
-
-### 4.8 Orbital-Spin Coupling ($j = l \pm 1/2$)
+### 4.7 Orbital-Spin Coupling ($j = l \pm 1/2$)
 
 **Is $j$ the Coupling of $l$ and $s$? Yes!**
 
@@ -777,18 +741,25 @@ The standard CG coefficient $\langle j_1, m_1; j_2, m_2 | j_3, m_3 \rangle$ trea
 
 $$\begin{pmatrix} j_1 & j_2 & j_3 \\ m_1 & m_2 & m_3 \end{pmatrix} = \frac{(-1)^{j_1 - j_2 - m_3}}{\sqrt{2j_3 + 1}} \langle j_1, m_1; j_2, m_2 | j_3, -m_3 \rangle$$
 
-**Application: Three-Particle States with $J=0$**
+**Application: Three-Particle Systems with Total $J=0$**
 
-Consider coupling three angular momenta to get total $J=0$ and $M=0$. In the uncoupled basis:
-$$|j_1, m_1; j_2, m_2; j_3, m_3\rangle$$
+A classic example is the **$|jjj; J=0\rangle$ state** (three particles each with angular momentum $j$, coupled to total $J=0$). Such states appear in nuclear physics (three-nucleon systems) and atomic physics (three-electron states).
 
-The condition $J_z|J=0, M=0\rangle = 0$ requires $m_1 + m_2 + m_3 = 0$. The CG expansion is:
-$$|J=0, M=0\rangle = \sum_{m_1, m_2, m_3} C_{m_1, m_2, m_3} |j_1, m_1; j_2, m_2; j_3, m_3\rangle \delta_{m_1+m_2+m_3, 0}$$
+**Why the 3j symbol appears:**
 
-The coefficients $C_{m_1, m_2, m_3}$ are proportional to the **Wigner 3j symbol**:
-$$C_{m_1, m_2, m_3} \propto \begin{pmatrix} j_1 & j_2 & j_3 \\ m_1 & m_2 & m_3 \end{pmatrix}$$
+In the uncoupled basis $|j,m_1; j,m_2; j,m_3\rangle$, the $J=0$ state satisfies $m_1 + m_2 + m_3 = 0$. Using CG coefficients to couple all three:
+$$|jjj; J=0, M=0\rangle = \sum_{m_1,m_2,m_3} \langle j,m_1; j,m_2 | j', m_1+m_2 \rangle \langle j', m_1+m_2; j, m_3 | 0, 0 \rangle |j,m_1; j,m_2; j,m_3\rangle$$
 
-This appears in the calculation of three-body matrix elements, angular correlations in decays, and the evaluation of Racah recoupling coefficients.
+This involves a sum over the intermediate $j'$ and is cumbersome. But due to the symmetric nature of the $J=0$ state, the coefficients simplify to:
+$$|jjj; J=0, M=0\rangle \propto \sum_{m_1,m_2,m_3} \begin{pmatrix} j & j & j \\ m_1 & m_2 & m_3 \end{pmatrix} |j,m_1; j,m_2; j,m_3\rangle \delta_{m_1+m_2+m_3,0}$$
+
+**Why use 3j instead of CG?**
+
+1. **Symmetry:** The 3j symbol treats all three angular momenta equally—no "intermediate" coupling is singled out
+2. **Compactness:** One sum instead of nested CG coefficients with intermediate $j'$
+3. **Selection rules:** The condition $m_1+m_2+m_3=0$ is built into the 3j symbol's definition
+
+The 3j symbol is also essential in **angular correlation calculations** (e.g., $\gamma$-ray emission from oriented nuclei), where three angular momenta (initial state, photon, final state) must be coupled with specific geometric constraints.
 
 **Key Properties of 3j Symbols:**
 
