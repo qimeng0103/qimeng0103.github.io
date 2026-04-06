@@ -901,14 +901,16 @@ Why do higher multipoles have smaller transition probabilities? The key is the r
 
 **Origin of the scaling:**
 
-The transition probability $\Gamma \propto |\mathcal{M}|^2$ has two contributions:
-1. **Matrix element:** The $EL$ operator scales as $\hat{R}^L$, giving $\langle f|\hat{R}^L|i\rangle \sim R^L$
-2. **Phase space:** Photon density of states contributes a factor $k^{2L+1}$
+The decay rate $\Gamma$ (probability per unit time) depends on:
+1. **Matrix element squared:** The $EL$ operator $\sim \hat{R}^L$ gives $|\mathcal{M}|^2 \sim R^{2L}$
+2. **Photon flux/phase space:** Contributes a factor $\sim c \cdot k^{2L+1}$ (the factor $c$ ensures correct dimensions)
 
-Combining these:
-$$\Gamma_{EL} \propto k^{2L+1} \cdot R^{2L} = k \cdot (kR)^{2L}$$
+Combining these (Weisskopf estimate):
+$$\Gamma_{EL} \propto c \cdot k^{2L+1} \cdot R^{2L} = c k \cdot (kR)^{2L}$$
 
-For comparison between multipoles at the same photon energy:
+The dimensions are correct: $[c] = L/T$, $[k] = L^{-1}$, so $[ck] = T^{-1}$.
+
+For relative comparison at the same photon energy:
 $$\frac{\Gamma_{E(L+1)}}{\Gamma_{EL}} \sim (kR)^2 \ll 1$$
 
 **Typical numbers:**
