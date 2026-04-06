@@ -753,29 +753,35 @@ where $|j_i m_i\rangle$ is the initial nuclear state, $|j_f m_f\rangle$ is the f
 
 **Step 2: The Wigner-Eckart Theorem**
 
-The matrix element involves the product of nuclear and photon angular momenta. To separate the geometry (angular dependence) from the physics (transition strength), we use the Wigner-Eckart theorem.
+The transition amplitude $\langle j_f m_f; 1 m_\gamma | \hat{O} | j_i m_i \rangle$ involves angular momentum coupling. The Wigner-Eckart theorem allows us to factor this into a geometric part (CG coefficient) and a physical part (reduced matrix element).
 
-For a tensor operator $\hat{T}^{(k)}$ of rank $k$, the theorem states:
-$$\langle j' m' | \hat{T}^{(k)}_q | j m \rangle = \frac{\langle j m; k q | j' m' \rangle}{\sqrt{2j'+1}} \times \langle j' || \hat{T}^{(k)} || j \rangle$$
+For an operator $\hat{O}$ that transforms as a tensor of rank $k=1$, the theorem states:
+$$\langle (j_f, 1) j_i m_i | \hat{O} | j_i m_i \rangle = \frac{\langle j_f m_f; 1 m_\gamma | j_i m_i \rangle}{\sqrt{2j_i+1}} \times \langle j_f || \hat{O} || j_i \rangle$$
 
-The key insight is that the dependence on $m, m', q$ factorizes into a CG coefficient, while the "physics" is contained in the **reduced matrix element** $\langle j' || \hat{T}^{(k)} || j \rangle$, which is independent of magnetic quantum numbers.
+Here:
+- $\langle j_f m_f; 1 m_\gamma | j_i m_i \rangle$ is the CG coefficient for coupling $j_f$ and $1$ to get $j_i$
+- $\langle j_f || \hat{O} || j_i \rangle$ is the **reduced matrix element**, which contains the transition strength but is independent of $m_f, m_\gamma, m_i$
+- The factor $1/\sqrt{2j_i+1}$ is a normalization convention
 
-For our photon emission operator $\hat{O}$ (rank $k=1$), we couple the final nuclear state with the photon to match the initial state:
-$$\langle j_f m_f; 1 m_\gamma | \hat{O} | j_i m_i \rangle = \frac{\langle j_f m_f; 1 m_\gamma | j_i m_i \rangle}{\sqrt{2j_i+1}} \times \langle j_i || \hat{O} || j_f \rangle$$
-
-Note: $\hat{O}$ acts on both the nucleus and the photon field, so we write the coupling as if the photon is being "absorbed" into the final state to reach the initial state.
+The key insight: the dependence on the magnetic quantum numbers ($m_f, m_\gamma, m_i$) is entirely contained in the CG coefficient, while the "physics" (transition strength) is in the reduced matrix element.
 
 **Step 3: Computing the Angular Distribution**
 
-The probability of emitting a photon with quantum numbers $(m_\gamma)$ when the nucleus transitions from $m_i$ to $m_f$ is proportional to $|\mathcal{M}|^2$:
+The probability of a specific transition is proportional to the squared amplitude:
 
-$$P(m_i \to m_f, m_\gamma) = |\mathcal{M}_{m_i \to m_f, m_\gamma}|^2 = \frac{|\langle j_i || \hat{O} || j_f \rangle|^2}{2j_i+1} \times |\langle j_f m_f; 1 m_\gamma | j_i m_i \rangle|^2$$
+$$P(m_i \to m_f, m_\gamma) = |\mathcal{M}_{m_i \to m_f, m_\gamma}|^2$$
 
-The angular distribution of the photon is given by the spherical harmonic $Y_1^{m_\gamma}(\theta, \phi)$. For a given initial state $m_i$, the probability of emission at angle $\theta$ is:
+Substituting from Step 2:
+$$P(m_i \to m_f, m_\gamma) = \left| \frac{\langle j_f m_f; 1 m_\gamma | j_i m_i \rangle}{\sqrt{2j_i+1}} \times \langle j_f || \hat{O} || j_i \rangle \right|^2$$
+
+Since the reduced matrix element is independent of magnetic quantum numbers:
+$$P(m_i \to m_f, m_\gamma) = \frac{|\langle j_f || \hat{O} || j_i \rangle|^2}{2j_i+1} \times |\langle j_f m_f; 1 m_\gamma | j_i m_i \rangle|^2$$
+
+The photon emitted with quantum number $m_\gamma$ has angular distribution given by the spherical harmonic $|Y_1^{m_\gamma}(\theta, \phi)|^2$. By azimuthal symmetry around the spin axis, we can set $\phi=0$.
+
+For a given initial state $m_i$, the total probability of emission at angle $\theta$ is obtained by summing over all possible final states $m_f$ and photon polarizations $m_\gamma$:
 
 $$W_{m_i}(\theta) = \sum_{m_f, m_\gamma} P(m_i \to m_f, m_\gamma) \times |Y_1^{m_\gamma}(\theta, 0)|^2$$
-
-where we set $\phi=0$ by azimuthal symmetry around the spin axis.
 
 **Step 4: Converting to 3j Symbols**
 
