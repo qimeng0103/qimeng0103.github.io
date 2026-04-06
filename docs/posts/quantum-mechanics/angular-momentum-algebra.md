@@ -918,22 +918,17 @@ $$\frac{\Gamma_{E(L+1)}}{\Gamma_{EL}} \sim (kR)^2 \ll 1$$
 - Ratio: $kR \sim 0.005 - 0.5$ (typically $\sim 0.1$)
 
 **Resulting hierarchy:**
-| Multipole | Scaling | Relative Rate |
-|-----------|---------|---------------|
-| E1 | $(kR)^2 \sim 10^{-2}$ | 1 (baseline) |
-| E2/M1 | $(kR)^4 \sim 10^{-4}$ | $\sim 10^{-2}$ (100$\times$ slower) |
-| E3 | $(kR)^6 \sim 10^{-6}$ | $\sim 10^{-4}$ (10000$\times$ slower) |
 
-**Typical values for nuclear $\gamma$-decay:**
-- Photon energy: $E_\gamma \sim 0.1 - 10$ MeV
-- Photon wave number: $k = E_\gamma / \hbar c \sim 10^{-3} - 10^{-1}$ fm$^{-1}$
-- Nuclear radius: $R \sim 5$ fm
-- Therefore: $kR \sim 0.005 - 0.5$ (typically $\sim 0.1$)
+Using $kR \sim 0.1$ for typical nuclear $\gamma$-rays:
 
-**Relative transition probabilities:**
-- E1: $\sim (kR)^2 \sim 10^{-2}$
-- E2/M1: $\sim (kR)^4 \sim 10^{-4}$ (100× smaller)
-- E3: $\sim (kR)^6 \sim 10^{-6}$ (10000× smaller)
+| Multipole | Scaling | Relative Rate | Typical Lifetime |
+|-----------|---------|---------------|------------------|
+| E1 | $\sim (kR)^2 \sim 10^{-2}$ | 1 (baseline) | $10^{-12} - 10^{-15}$ s |
+| M1 | $\sim (kR)^2 \sim 10^{-2}$ | $\sim 1$ | similar to E1 |
+| E2 | $\sim (kR)^4 \sim 10^{-4}$ | $\sim 10^{-2}$ | $10^{-10} - 10^{-12}$ s |
+| M2/E3 | $\sim (kR)^6 \sim 10^{-6}$ | $\sim 10^{-4}$ | $10^{-8} - 10^{-10}$ s |
+
+M1 has the same $kR$ scaling as E1 but is typically weaker due to spin-flip nature ($\mu \sim e\hbar/m$ vs $er$).
 
 **When is E1 Forbidden? Selection Rules:**
 
