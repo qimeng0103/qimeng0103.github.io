@@ -263,15 +263,88 @@ The relative phases between different $|j, m\rangle$ states are arbitrary—we c
 
 **Quantitative Effect of Phase Choice:**
 
-Suppose we choose a different phase convention where:
+Suppose we choose a different phase convention where the matrix elements of $J_+$ contain additional phase factors:
 $$J_+|j, m\rangle = \hbar\sqrt{(j-m)(j+m+1)} \, e^{i\alpha_m} |j, m+1\rangle$$
 
-The CG coefficients would then acquire additional phase factors. For example, when coupling two spin-1/2 particles, the singlet state would become:
-$$|0, 0\rangle = \frac{1}{\sqrt{2}}\left(e^{i\phi_{\uparrow\downarrow}}|\uparrow\downarrow\rangle - e^{i\phi_{\downarrow\uparrow}}|\downarrow\uparrow\rangle\right)$$
+where $\alpha_m$ are arbitrary real phases. This means we are using a different basis:
+$$|j, m\rangle' = e^{i\phi_m}|j, m\rangle$$
 
-instead of the standard form with both coefficients real.
+with $\phi_{m+1} - \phi_m = \alpha_m$.
 
-The Condon-Shortley convention fixes $\alpha_m = 0$ for all $m$, ensuring all CG coefficients are real (up to an overall sign choice for each $j$ multiplet). We will see the practical importance of this convention in Section 4.6 when we calculate specific CG coefficients.
+**Example: Two Spin-1/2 Particles**
+
+Let's see how this affects the CG coefficients for coupling two spin-1/2 particles. We use primes to denote states in the non-standard phase convention.
+
+**Step 1: The $j=1$ Multiplet (Triplet States)**
+
+Starting from $|1, 1\rangle' = |\uparrow\uparrow\rangle'$ (unchanged, as it's the unique highest state), we apply $J_-$:
+
+$$J_-'|1, 1\rangle' = \hbar\sqrt{2} e^{i\alpha_{1}^{(j=1)}} |1, 0\rangle'$$
+
+On the uncoupled basis:
+$$J_-'|\uparrow\uparrow\rangle' = (J_{1-}' + J_{2-}')|\uparrow\uparrow\rangle' = \hbar e^{i\alpha_{\uparrow}^{(j_1=1/2)}}|\downarrow\uparrow\rangle' + \hbar e^{i\alpha_{\uparrow}^{(j_2=1/2)}}|\uparrow\downarrow\rangle'$$
+
+For simplicity, assume the same phase convention for both particles: $\alpha_{\uparrow}^{(1/2)} = \alpha_{\uparrow}$. Then:
+
+$$|1, 0\rangle' = \frac{1}{\sqrt{2}}\left(e^{i(\alpha_{\uparrow} - \alpha_{1}^{(1)})}|\downarrow\uparrow\rangle' + e^{i(\alpha_{\uparrow} - \alpha_{1}^{(1)})}|\uparrow\downarrow\rangle'\right)$$
+
+If we choose $\alpha_1^{(1)} = \alpha_{\uparrow}$ (matching the phase conventions), we recover the standard form with real coefficients.
+
+**Step 2: The $j=0$ Singlet State**
+
+The singlet state $|0, 0\rangle'$ must be orthogonal to $|1, 0\rangle'$ and normalized. With the phases above:
+
+$$|1, 0\rangle' = \frac{1}{\sqrt{2}}\left(|\downarrow\uparrow\rangle' + |\uparrow\downarrow\rangle'\right)$$
+
+The orthogonal combination is:
+
+$$|0, 0\rangle' = \frac{1}{\sqrt{2}}\left(|\downarrow\uparrow\rangle' - |\uparrow\downarrow\rangle'\right)$$
+
+**Step 3: Transforming Back to Standard Basis**
+
+Now we relate the primed states to the standard (unprimed) Condon-Shortley basis:
+
+$$|\uparrow\rangle' = e^{i\phi_{\uparrow}}|\uparrow\rangle, \quad |\downarrow\rangle' = e^{i\phi_{\downarrow}}|\downarrow\rangle$$
+
+In the standard basis, the singlet becomes:
+
+$$|0, 0\rangle' = \frac{1}{\sqrt{2}}\left(e^{i\phi_{\downarrow}}e^{i\phi_{\uparrow}}|\downarrow\uparrow\rangle - e^{i\phi_{\uparrow}}e^{i\phi_{\downarrow}}|\uparrow\downarrow\rangle\right) = \frac{e^{i(\phi_{\uparrow} + \phi_{\downarrow})}}{\sqrt{2}}\left(|\downarrow\uparrow\rangle - |\uparrow\downarrow\rangle\right)$$
+
+The overall phase $e^{i(\phi_{\uparrow} + \phi_{\downarrow})}$ is physically irrelevant, so we recover the standard form.
+
+**Step 4: General Case with Different Particle Phases**
+
+Now consider a more general phase choice where particles 1 and 2 use different conventions:
+$$|\uparrow\rangle_1' = e^{i\phi_{1\uparrow}}|\uparrow\rangle_1, \quad |\downarrow\rangle_1' = e^{i\phi_{1\downarrow}}|\downarrow\rangle_1$$
+$$|\uparrow\rangle_2' = e^{i\phi_{2\uparrow}}|\uparrow\rangle_2, \quad |\downarrow\rangle_2' = e^{i\phi_{2\downarrow}}|\downarrow\rangle_2$$
+
+The uncoupled basis states transform as:
+$$|\uparrow\downarrow\rangle' = e^{i(\phi_{1\uparrow} + \phi_{2\downarrow})}|\uparrow\downarrow\rangle$$
+$$|\downarrow\uparrow\rangle' = e^{i(\phi_{1\downarrow} + \phi_{2\uparrow})}|\downarrow\uparrow\rangle$$
+
+In the standard Condon-Shortley basis, the singlet is:
+$$|0, 0\rangle = \frac{1}{\sqrt{2}}\left(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle\right)$$
+
+But if we compute CG coefficients using the primed basis without accounting for the phase differences:
+
+$$|0, 0\rangle' = \frac{1}{\sqrt{2}}\left(|\downarrow\uparrow\rangle' - |\uparrow\downarrow\rangle'\right) = \frac{1}{\sqrt{2}}\left(e^{i(\phi_{1\downarrow} + \phi_{2\uparrow})}|\downarrow\uparrow\rangle - e^{i(\phi_{1\uparrow} + \phi_{2\downarrow})}|\uparrow\downarrow\rangle\right)$$
+
+$$= \frac{e^{i(\phi_{1\downarrow} + \phi_{2\uparrow})}}{\sqrt{2}}\left(|\downarrow\uparrow\rangle - e^{i\Delta\phi}|\uparrow\downarrow\rangle\right)$$
+
+where $\Delta\phi = (\phi_{1\uparrow} - \phi_{1\downarrow}) - (\phi_{2\uparrow} - \phi_{2\downarrow})$.
+
+**Key Result:**
+
+Unless $\Delta\phi = 0$ (i.e., both particles use the same relative phase between $|\uparrow\rangle$ and $|\downarrow\rangle$), the CG coefficient for $|\uparrow\downarrow\rangle$ acquires a non-trivial phase relative to that for $|\downarrow\uparrow\rangle$. The Condon-Shortley convention fixes $\phi_{\uparrow} = \phi_{\downarrow} = 0$ for all particles, ensuring $\Delta\phi = 0$ and all CG coefficients are real.
+
+**Physical Consequences:**
+
+When calculating matrix elements of operators that couple different angular momenta (like in scattering or decay processes), consistent use of the Condon-Shortley convention ensures that:
+1. All CG coefficients are real
+2. The relative signs between terms are unambiguous
+3. Results from different textbooks/software are comparable
+
+Changing phase conventions introduces spurious phase factors that must be tracked carefully to avoid errors in multi-step calculations.
 
 **Alternative Conventions:**
 
