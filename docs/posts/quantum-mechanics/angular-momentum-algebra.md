@@ -829,10 +829,10 @@ where:
 - $\boldsymbol{\varepsilon}$ is the photon polarization vector
 - $\mathbf{k}$ is the photon wave vector
 
-**Long-wavelength approximation:** For nuclear $\gamma$-decay, the photon wavelength $\lambda = 2\pi/k$ is much larger than the nuclear size ($R \sim 5$ fm). Since $kR \ll 1$, we expand:
-$$e^{-i\mathbf{k}\cdot\mathbf{r}} \approx 1 - i\mathbf{k}\cdot\mathbf{r} + ...$$
+**Long-wavelength approximation:** For nuclear $\gamma$-decay, the photon wavelength $\lambda = 2\pi/k$ is much larger than the nuclear size ($R \sim 5$ fm). Since $kR \ll 1$, we expand the photon phase factor:
+$$e^{-i\mathbf{k}\cdot\mathbf{r}} \approx 1 \underbrace{- i\mathbf{k}\cdot\mathbf{r}}_{\text{E2, M1, ...}} + ...$$
 
-The **linear term** ($\mathbf{k}\cdot\mathbf{r}$) gives **electric dipole (E1)** transitions. The constant term corresponds to E0 (monopole), which is forbidden by charge conservation. Higher order terms give E2, M1, etc.
+The **constant term (1)** gives **electric dipole (E1)** transitions (the E1 operator is $\propto \mathbf{r}$, independent of $k$). The linear term $\mathbf{k}\cdot\mathbf{r}$ gives higher multipoles like E2 (electric quadrupole). A true E0 (monopole) transition would violate charge conservation and is forbidden.
 
 **Spherical Components:**
 
