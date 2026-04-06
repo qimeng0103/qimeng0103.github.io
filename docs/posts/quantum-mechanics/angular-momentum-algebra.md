@@ -1217,47 +1217,168 @@ For half-integer $j$, a $2\pi$ rotation gives $-1$ (a phase factor). Since quant
 - But SU(2) has "extra" representations (half-integer $j$) that don't come from SO(3)
 - These are precisely the spin-1/2, spin-3/2, ... representations essential for fermions
 
-### 5.5 SU(3) and the Quark Model: Tensor Products with Meaning
+### 5.5 SU(3) Flavor vs. SU(3) Color: Two Different Symmetries
 
-**SU(3) Fundamentals**
+**Important Distinction**
 
-SU(3) has 8 generators (Gell-Mann matrices). Unlike SU(2) where representations are labeled by single $j$, SU(3) representations use two integers $(p, q)$:
+In particle physics, there are **two different SU(3) symmetries**:
 
-| Representation | Dimension | Particles |
-|----------------|-----------|-----------|
-| $\mathbf{3}$ = $(1,0)$ | 3 | Up, down, strange quarks |
-| $\bar{\mathbf{3}}$ = $(0,1)$ | 3 | Antiquarks |
-| $\mathbf{8}$ = $(1,1)$ | 8 | Octet baryons (p, n, $\Lambda$, ...) |
-| $\mathbf{10}$ = $(3,0)$ | 10 | Decuplet baryons ($\Delta$, $\Omega^-$, ...) |
-| $\mathbf{1}$ = $(0,0)$ | 1 | Singlet states |
+1. **Flavor SU(3):** Approximate symmetry (up, down, strange quarks have similar masses)
+2. **Color SU(3):** Exact gauge symmetry (strong interaction)
 
-**The Baryon Decomposition: Physical Interpretation**
+| Property | Flavor SU(3) | Color SU(3) |
+|----------|-------------|-------------|
+| Type | Global symmetry | Local gauge symmetry |
+| Approximate? | Yes (broken by mass differences) | Exact |
+| Physical role | Classifies hadrons | Explains confinement |
+| Quark content | 3 flavors | 3 colors (red, green, blue) |
 
-$$\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$$
+**The Color Singlet Rule**
 
-**What does this mean physically?**
+All observable hadrons are **color singlets**. This is why:
+- Mesons: quark + antiquark in color singlet ($\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$)
+- Baryons: three quarks in color singlet
 
-1. **Left side (tensor product):** Three quarks bound together (proton, neutron, etc.)
-2. **Right side (direct sum):** The three-quark system can exist in DIFFERENT symmetry configurations:
+The color wavefunction for baryons is:
+$$|\text{color}\rangle = \frac{1}{\sqrt{6}}(rgb - rbg + gbr - grb + brg - bgr)$$
 
-| Representation | Symmetry Type | Physical Baryons |
-|----------------|---------------|------------------|
-| $\mathbf{10}$ | Totally symmetric | $\Delta^{++}, \Delta^+, \Delta^0, \Delta^-, \Sigma^*, \Xi^*, \Omega^-$ (spin-3/2) |
-| $\mathbf{8}$ | Mixed symmetry (two types) | Proton, neutron, $\Lambda, \Sigma, \Xi$ (spin-1/2) |
-| $\mathbf{1}$ | Totally antisymmetric | No low-lying physical baryons (too symmetric, high energy) |
+This is the **totally antisymmetric** combination of three colors—mathematically identical to the Levi-Civita symbol $\varepsilon_{ijk}$.
 
-**Key Insight:** The direct sum decomposition reveals the **internal symmetry structure** of composite particles. Just as two spin-1/2 can form singlet or triplet, three quarks can organize their flavor symmetry in different ways—each way corresponds to a different representation.
+### 5.6 Young Diagrams: Permutation Symmetry Meets Angular Momentum
 
-**Why do we get specific representations?**
+**The Connection**
 
-Quarks are fermions. The total wavefunction (flavor $\times$ spin $\times$ color $\times$ spatial) must be antisymmetric under exchange:
-- Color is always antisymmetric (color singlet)
-- Therefore flavor $\times$ spin $\times$ spatial must be symmetric
-- Ground state (spatial symmetric) $\Rightarrow$ flavor $\times$ spin symmetric
+Young diagrams describe the **representation of the permutation group** $S_n$ (symmetric group). But they also label **irreducible representations of SU(N)**. This is profound:
 
-This symmetry constraint selects which representations appear in the low-energy spectrum.
+- **Permutation symmetry** (exchange of identical particles)
+- **SU(N) representation** (quantum numbers under internal symmetry)
 
-### 5.6 Roots and Weights: Labeling States
+are classified by the same mathematical objects!
+
+**Systematic Approach to Combinatorics: A Recipe**
+
+You mentioned struggling with counting problems—not knowing whether to start with labels, "seats," or something else. Here's a **systematic recipe** using Young diagrams:
+
+**The Problem: Counting States with Symmetry**
+
+When combining identical quantum systems (e.g., 3 spin-1/2 particles), we need to count states with specific symmetry properties under particle exchange.
+
+**Step-by-Step Recipe:**
+
+**Step 1: Identify the partition from symmetry requirements**
+
+| Desired Symmetry | Partition | Young Diagram Shape |
+|------------------|-----------|---------------------|
+| Totally symmetric | $(n)$ | Single row $\ydiagram{3}$ |
+| Totally antisymmetric | $(1^n)$ | Single column $\ydiagram{1,1,1}$ |
+| Mixed symmetry | $(n-k,k)$ | Hook shape $\ydiagram{2,1}$ |
+
+**Step 2: Calculate dimension using hook length formula**
+
+For each box, compute its **hook length**:
+$$h = 1 + \text{(boxes to right)} + \text{(boxes below)}$$
+
+Then:
+$$d = \frac{n!}{\prod h_i}$$
+
+**Example for 3 particles:**
+- Partition (3): hook lengths are 3, 2, 1 → $d = 3!/6 = 1$ state
+- Partition (2,1): hook lengths are 3, 1, 1 → $d = 3!/3 = 2$ states
+
+**Step 3: Construct explicit states (standard Young tableaux)**
+
+Fill boxes with numbers 1, 2, ..., $n$ such that:
+- Numbers increase left-to-right along rows
+- Numbers increase top-to-bottom down columns
+
+For partition (2,1) with 3 particles:
+```
+┌───┬───┐    ┌───┬───┐
+│ 1 │ 2 │    │ 1 │ 3 │
+├───┼───┘    ├───┼───┘
+│ 3 │        │ 2 │
+└───┘        └───┘
+```
+These two tableaux correspond to the two doublet states in the decomposition of three spin-1/2 particles.
+
+**Why This Works (The Key Connection):**
+
+The same Young diagram classifies:
+1. **Irreducible representations of $S_n$** (permutation group)
+2. **Irreducible representations of SU(N)** (unitary group)
+
+This is **Schur-Weyl duality**. For SU(2), the diagram with $k$ boxes in the first row labels spin $j = k/2$.
+
+**From SU(2) to SU(N)**
+
+For SU(N), the same Young diagrams apply, but with a constraint:
+- **Maximum column height is N** (columns taller than N are forbidden/reducible)
+- For SU(2): max 2 rows
+- For SU(3): max 3 rows (but effectively 2 due to determinant constraint)
+
+**Summary Table:**
+
+| Particles | Diagram | SU(2) Spin | SU(3) Rep |
+|-----------|---------|------------|-----------|
+| 2 | $\ydiagram{2}$ | $j=1$ (triplet) | $\mathbf{6}$ |
+| 2 | $\ydiagram{1,1}$ | $j=0$ (singlet) | $\bar{\mathbf{3}}$ |
+| 3 | $\ydiagram{3}$ | $j=3/2$ | $\mathbf{10}$ |
+| 3 | $\ydiagram{2,1}$ | $j=1/2$ (×2) | $\mathbf{8}$ (×2) |
+
+**From SU(2) to SU(N)**
+
+For SU(N), the same Young diagrams apply, but:
+- Each box can have $N$ "colors" (states)
+- A column of height $N$ is a singlet (can be removed)
+- This is why SU(3) only has diagrams with at most 2 rows (not 3)
+
+### 5.7 SU(3) Weight Diagrams: Visualizing Representations
+
+**The SU(3) Weight Space**
+
+SU(3) has rank 2, so weights are 2D vectors $(i_3, y)$ where:
+- $i_3$ = isospin projection (horizontal axis)
+- $y$ = hypercharge (vertical axis)
+
+**The Root Diagram (Adjoint Representation)**
+
+The 6 roots form a hexagon in weight space. Each root corresponds to a raising/lowering operator:
+
+<img src="/images/angular-momentum/su3_root_diagram.png" width="500px" alt="SU(3) Root Diagram">
+
+*The SU(3) root diagram. The six outer points are the root vectors ($I_\pm, U_\pm, V_\pm$) corresponding to ladder operators. The origin contains the two Cartan generators $(I_3, Y)$.*
+
+**The Fundamental Representation $\mathbf{3}$ (Quarks):**
+
+<img src="/images/angular-momentum/su3_fundamental_triplet.png" width="450px" alt="SU(3) Quark Triplet">
+
+*The quark triplet in weight space. The $u$ and $d$ quarks form an isospin doublet, while $s$ is an isosinglet with different hypercharge.*
+
+**The Octet $\mathbf{8}$ (Baryons):**
+
+<img src="/images/angular-momentum/su3_octet_baryons.png" width="550px" alt="SU(3) Baryon Octet">
+
+*The baryon octet forms a hexagon in weight space. Note that the center contains two states ($\Sigma^0$ and $\Lambda$) at the same position—this is a 2D representation of an 8D space.*
+
+**The Decuplet $\mathbf{10}$ (Spin-3/2 Baryons):**
+
+<img src="/images/angular-momentum/su3_decuplet_baryons.png" width="600px" alt="SU(3) Baryon Decuplet">
+
+*The baryon decuplet forms a triangular pattern. The $\Delta$ resonances form a quartet, $\Sigma^*$ a triplet, $\Xi^*$ a doublet, and $\Omega^-$ is a singlet.*
+
+**All Representations Comparison:**
+
+<img src="/images/angular-momentum/su3_all_representations.png" width="700px" alt="SU(3) All Representations">
+
+*Comparison of SU(3) representations. Notice how the dimension increases with the complexity of the shape.*
+
+**Reading Weight Diagrams:**
+- **Points** are states (particles), labeled by $(I_3, Y)$ quantum numbers
+- **Lines** connect states differing by one root (ladder operators move along these lines)
+- **Multiplicity** at a point indicates degeneracy (e.g., center of octet has $\Sigma^0$ and $\Lambda$)
+- The **outer boundary** is determined by the highest weight state
+
+### 5.9 Roots and Weights: Labeling States
 
 **Cartan Subalgebra and Quantum Numbers**
 
@@ -1283,12 +1404,33 @@ $$H_i |\Lambda\rangle = \Lambda_i |\Lambda\rangle$$
 
 Roots are weights of the **adjoint representation** (generators themselves). They tell us how ladder operators change quantum numbers:
 - SU(2): $J_\pm$ changes $m$ by $\pm 1$ → root vectors $\pm 1$
-- SU(3): $Ladder$ operators move between states in the $(i_3, y)$ plane
+- SU(3): Ladder operators move between states in the $(i_3, y)$ plane
+
+**SU(3) Root Diagram:**
+
+The 8 generators of SU(3) form a hexagon in weight space:
+
+```
+          $I_+$ (1, 0)
+            /
+           /
+$V_+$ (1/2, 3/2) ---- $U_-$ (-1/2, 3/2)
+     \               /
+      \   (0, 0)    /
+       \    ×     /
+        \        /
+$U_+$ (1/2, -3/2) ---- $V_-$ (-1/2, -3/2)
+           \
+            \
+          $I_-$ (-1, 0)
+```
+
+The six outer points are the roots (raising/lowering operators). The center represents the two Cartan generators $(I_3, Y)$.
 
 **Highest Weight Theorem:**
 Each irreducible representation has a unique highest weight state. All other states are reached by applying lowering operators. This is why SU(3) representations are labeled by $(p,q)$—these integers specify the highest weight.
 
-### 5.7 Atomic Physics: Coupling Schemes
+### 5.10 Atomic Physics: Coupling Schemes
 
 **Term Symbols and Multi-Electron Atoms**
 
@@ -1311,7 +1453,7 @@ Both are group-theoretically valid; the choice depends on which interaction domi
 2. Maximum $L$ for that $S$
 3. $J$ depends on shell filling (minimum for $<$ half, maximum for $>$ half)
 
-### 5.8 Isospin: SU(2) in Nuclear Physics
+### 5.11 Isospin: SU(2) in Nuclear Physics
 
 **Nucleons as an SU(2) Doublet**
 
@@ -1329,7 +1471,7 @@ This is **not** real spin—it's an internal symmetry (flavor symmetry) with ide
 $$Q = I_3 + \frac{B+S}{2}$$
 relates charge $Q$, isospin projection $I_3$, baryon number $B$, and strangeness $S$.
 
-### 5.9 Generators and Rotations
+### 5.12 Generators and Rotations
 
 **Why Angular Momentum Generates Rotations**
 
