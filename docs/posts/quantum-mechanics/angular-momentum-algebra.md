@@ -485,9 +485,7 @@ $$(J_{1-} + J_{2-})|j_1, j_1; j_2, j_2\rangle = \hbar\sqrt{2j_1}|j_1, j_1-1; j_2
 Therefore:
 $$|j_1+j_2, j_1+j_2-1\rangle = \sqrt{\frac{j_1}{j_1+j_2}}|j_1, j_1-1; j_2, j_2\rangle + \sqrt{\frac{j_2}{j_1+j_2}}|j_1, j_1; j_2, j_2-1\rangle$$
 
-**General Formula for $j = j_1 + j_2$:**
-
-$$|j_1+j_2, m\rangle = \sum_{m_1+m_2=m} \sqrt{\frac{(2j_1)!(2j_2)!(j_1+j_2+m)!(j_1+j_2-m)!}{(2j_1+2j_2)!(j_1+m_1)!(j_1-m_1)!(j_2+m_2)!(j_2-m_2)!}} |j_1, m_1; j_2, m_2\rangle$$
+By successively applying $J_-$, we can construct all states in the $j = j_1 + j_2$ multiplet.
 
 **Step 3: Finding Lower $j$ States by Orthogonality**
 
