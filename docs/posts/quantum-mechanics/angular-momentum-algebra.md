@@ -1612,26 +1612,197 @@ Given any three of the four quantum numbers, the fourth is determined. Strong in
 
 ## Part VI: Atomic Physics: Coupling Schemes
 
-**Term Symbols and Multi-Electron Atoms**
+Multi-electron atoms present a fundamental problem: how do the individual angular momenta of electrons combine? Each electron has orbital angular momentum $\mathbf{l}_i$ and spin $\mathbf{s}_i$, and there are $(2l_i+1)(2s_i+1)$ states per electron. For $N$ electrons, the total number of states grows exponentially, but the symmetries of identical fermions and the hierarchy of electromagnetic interactions allow us to organize these into physically meaningful term symbols.
+
+### 6.1 Term Symbols: The Notation
 
 Atomic states are labeled by term symbols $^{2S+1}L_J$:
-- $S$ = total spin
-- $L$ = total orbital angular momentum (S, P, D, F for $L=0,1,2,3$)
-- $J$ = total angular momentum
+- **$S$** = total spin quantum number
+- **$L$** = total orbital angular momentum quantum number (S=0, P=1, D=2, F=3, G=4...)
+- **$J$** = total angular momentum quantum number
+- **$2S+1$** = spin multiplicity (singlet, doublet, triplet, etc.)
 
-**LS vs. jj Coupling: Two Ways to Couple**
+**Examples:**
+- $^2P_{3/2}$: Doublet (S=1/2), P-wave (L=1), J=3/2
+- $^3D_2$: Triplet (S=1), D-wave (L=2), J=2
+- $^1S_0$: Singlet (S=0), S-wave (L=0), J=0
 
-| Scheme | Order of Coupling | Applies To |
-|--------|-------------------|------------|
-| **LS** (Russell-Saunders) | $\mathbf{L} = \sum \mathbf{l}_i$, then $\mathbf{J} = \mathbf{L} + \mathbf{S}$ | Light atoms (weak spin-orbit) |
-| **jj** | $\mathbf{j}_i = \mathbf{l}_i + \mathbf{s}_i$, then $\mathbf{J} = \sum \mathbf{j}_i$ | Heavy atoms (strong spin-orbit) |
+### 6.2 LS (Russell-Saunders) Coupling
 
-Both are group-theoretically valid; the choice depends on which interaction dominates.
+**The Hierarchy of Interactions**
 
-**Hund's Rules:** From group theory, the ground state maximizes symmetry:
-1. Maximum $S$ (symmetric spin state)
-2. Maximum $L$ for that $S$
-3. $J$ depends on shell filling (minimum for $<$ half, maximum for $>$ half)
+In light atoms (roughly $Z < 30$), the electrostatic repulsion between electrons dominates over spin-orbit coupling. This leads to the LS coupling scheme:
+
+1. **First**: Individual orbital angular momenta couple to total $L$
+   $$\mathbf{L} = \sum_{i} \mathbf{l}_i$$
+   
+2. **Second**: Individual spins couple to total $S$
+   $$\mathbf{S} = \sum_{i} \mathbf{s}_i$$
+   
+3. **Finally**: $\mathbf{L}$ and $\mathbf{S}$ couple via spin-orbit interaction
+   $$\mathbf{J} = \mathbf{L} + \mathbf{S}$$
+
+**Why This Order?**
+
+The electrostatic repulsion depends on spatial configuration, which is determined by orbital angular momentum. Electrons with the same $l$ but different $m_l$ experience different Coulomb repulsion due to their spatial distribution. Spins couple separately because the exchange interaction (a quantum effect of fermion antisymmetry) strongly correlates spins.
+
+**Mathematical Structure**
+
+The Hamiltonian in LS coupling approximation:
+$$H = H_0 + \sum_{i<j} \frac{e^2}{|\mathbf{r}_i - \mathbf{r}_j|} + H_{\text{SO}}$$
+
+where $H_0$ is the central field approximation and $H_{\text{SO}}$ is treated as a perturbation. The electrostatic term splits configurations into terms (same $L$ and $S$), and spin-orbit splits terms into levels (different $J$).
+
+### 6.3 Deriving Term Symbols: Detailed Examples
+
+**Example 1: Two p-electrons (p² configuration)**
+
+Consider two equivalent p-electrons (same $n$ and $l=1$), as in carbon ($2p^2$), nitrogen ($2p^3$ - actually three electrons), or oxygen ($2p^4$).
+
+For a single p-electron: $l=1$, $s=1/2$, giving $m_l = -1, 0, +1$ and $m_s = \pm 1/2$.
+
+**Step 1: List all microstates**
+
+Two equivalent p-electrons: we must respect the Pauli exclusion principle. The possible $(m_{l1}, m_{s1}; m_{l2}, m_{s2})$ combinations where the total state is antisymmetric.
+
+Actually, a better approach is to use the vector model for $L$ and $S$:
+- $l_1 = l_2 = 1$, so $L = |l_1 - l_2|, ..., l_1 + l_2 = 0, 1, 2$ (S, P, D)
+- $s_1 = s_2 = 1/2$, so $S = 0$ or $1$ (singlet or triplet)
+
+But we must enforce antisymmetry for equivalent electrons. The rule is:
+- If $S=1$ (symmetric spin, triplet), spatial part must be antisymmetric
+- If $S=0$ (antisymmetric spin, singlet), spatial part must be symmetric
+
+For two p-electrons:
+- $L=0$ (S): symmetric under exchange
+- $L=1$ (P): antisymmetric under exchange  
+- $L=2$ (D): symmetric under exchange
+
+Therefore:
+- **Triplet states** ($S=1$, symmetric spin): can only combine with $L=1$ (P)
+  - $^3P$ with $J = |L-S|, ..., L+S = 0, 1, 2$
+  - Terms: $^3P_0$, $^3P_1$, $^3P_2$
+  
+- **Singlet states** ($S=0$, antisymmetric spin): can combine with $L=0$ or $L=2$
+  - $^1S$ with $J=0$: $^1S_0$
+  - $^1D$ with $J=2$: $^1D_2$
+
+**Result for p²:** $^3P_{0,1,2}$, $^1D_2$, $^1S_0$
+
+Counting states: $3 + 5 + 1 + 5 + 1 = 15$ microstates. This equals $\binom{6}{2} = 15$, confirming we have all states.
+
+**Example 2: Carbon Ground State ($1s^2 2s^2 2p^2$)**
+
+Closed shells ($1s^2$, $2s^2$) contribute $L=0$, $S=0$, so we only consider the $2p^2$ valence electrons.
+
+From above, possible terms: $^3P$, $^1D$, $^1S$.
+
+**Hund's First Rule**: The term with maximum multiplicity (maximum $S$) lies lowest in energy.
+- $^3P$ has $S=1$ (triplet)
+- $^1D$ and $^1S$ have $S=0$ (singlets)
+
+Therefore, the ground term is $^3P$.
+
+**Hund's Second Rule**: For a given $S$, the term with maximum $L$ lies lowest.
+- Among singlets: $^1D$ ($L=2$) vs $^1S$ ($L=0$)
+- So $^1D$ is lower than $^1S$
+
+Energy ordering: $^3P < {}^1D < {}^1S$
+
+**Hund's Third Rule**: The ground level $J$ depends on shell filling:
+- Less than half-filled: lowest $J$ is lowest in energy
+- More than half-filled: highest $J$ is lowest in energy
+
+For $p^2$ (2 out of 6 possible electrons, less than half), the ground level is $^3P_0$.
+
+**Final answer**: Carbon ground state is $^3P_0$.
+
+**Example 3: Oxygen Ground State ($1s^2 2s^2 2p^4$)**
+
+Four p-electrons. We can think of this as two p-holes in a filled $p^6$ shell. Holes have the same term structure as electrons, so $p^4$ gives the same terms as $p^2$: $^3P$, $^1D$, $^1S$.
+
+Ground term is still $^3P$ (Hund's first rule).
+
+But $p^4$ is more than half-filled (4 out of 6), so Hund's third rule gives the highest $J$ as ground level: $^3P_2$.
+
+**Final answer**: Oxygen ground state is $^3P_2$.
+
+### 6.4 jj Coupling
+
+**When Spin-Orbit Dominates**
+
+In heavy atoms ($Z > 50$), the spin-orbit interaction for each electron becomes stronger than the electrostatic repulsion between electrons. Each electron's $\mathbf{l}_i$ and $\mathbf{s}_i$ couple first:
+
+$$\mathbf{j}_i = \mathbf{l}_i + \mathbf{s}_i$$
+
+giving $j_i = l_i \pm 1/2$ (for $l_i \neq 0$).
+
+Then the individual $j_i$ couple to total $J$:
+$$\mathbf{J} = \sum_{i} \mathbf{j}_i$$
+
+**Example: Lead ($6p^2$ configuration)**
+
+For each p-electron:
+- $l=1$, $s=1/2$
+- $j = 1/2$ or $3/2$
+
+Two equivalent p-electrons in jj coupling:
+- Both $j=1/2$: $(1/2)^2$ gives $J=0$ (only antisymmetric combination allowed)
+- Both $j=3/2$: $(3/2)^2$ gives $J=0, 2$ (antisymmetric: $J=0, 2$; symmetric would give $J=1, 3$ but forbidden for equivalent electrons)
+- One $j=1/2$, one $j=3/2$: $(1/2)(3/2)$ gives $J=1, 2$
+
+The resulting levels are labeled as $(j_1, j_2)_J$:
+- $(1/2, 1/2)_0$
+- $(3/2, 3/2)_0$, $(3/2, 3/2)_2$
+- $(1/2, 3/2)_1$, $(1/2, 3/2)_2$
+
+Note: jj coupling doesn't use $L$ and $S$ quantum numbers—these are not good quantum numbers when spin-orbit dominates.
+
+### 6.5 Comparison and Physical Interpretation
+
+| Feature | LS Coupling | jj Coupling |
+|:-------:|:-----------:|:-----------:|
+| **Dominant interaction** | Electrostatic repulsion | Spin-orbit coupling |
+| **Good quantum numbers** | $L$, $S$, $J$ | $j_i$, $J$ only |
+| **Level labeling** | $^{2S+1}L_J$ | $(j_1, j_2, ...)J$ |
+| **Applies to** | Light atoms ($Z < 30$) | Heavy atoms ($Z > 50$) |
+| **Example elements** | C, N, O, Fe | Pb, Hg, rare earths |
+
+**Intermediate Coupling**
+
+In the transition region ($Z \approx 30-50$), neither pure LS nor pure jj coupling applies. The actual eigenstates are mixtures of LS terms. This is called intermediate coupling. The energy levels cannot be simply labeled by pure term symbols, though they may still be approximately characterized by dominant LS components.
+
+**The Physical Origin**
+
+LS coupling works when electrons "feel" each other's spatial distribution more strongly than their own spin-orbit interaction. jj coupling works when each electron's own spin-orbit interaction dominates, so they act more independently.
+
+### 6.6 Hund's Rules: Complete Statement and Physical Origin
+
+**The Rules:**
+
+1. **Maximum Spin Rule**: The term with the highest multiplicity (maximum $S$) has the lowest energy.
+   
+   *Physical origin*: The exchange interaction favors parallel spins (symmetric spin state), which requires antisymmetric spatial wavefunction, keeping electrons apart and reducing Coulomb repulsion.
+
+2. **Maximum Orbital Rule**: For a given spin multiplicity, the term with the maximum $L$ has the lowest energy.
+   
+   *Physical origin*: Higher $L$ means electrons orbit more in the same direction, staying apart on average (classical picture: same angular momentum means orbiting on the same side of nucleus).
+
+3. **Minimum/Maximum $J$ Rule**: 
+   - Less than half-filled subshell: level with minimum $J$ is lowest
+   - More than half-filled subshell: level with maximum $J$ is lowest
+   
+   *Physical origin*: This comes from the sign of the spin-orbit coupling constant. For less than half-filled, spin-orbit coupling is "normal" ($\zeta > 0$), favoring $J = |L-S|$. For more than half-filled, the effective $\zeta < 0$ (hole picture), favoring $J = L+S$.
+
+**Example Applications:**
+
+| Atom | Config | Ground Term | Ground Level | Reason |
+|:----:|:------:|:-----------:|:------------:|:------:|
+| C | $2p^2$ | $^3P$ | $^3P_0$ | < half, min J |
+| N | $2p^3$ | $^4S$ | $^4S_{3/2}$ | Only one J |
+| O | $2p^4$ | $^3P$ | $^3P_2$ | > half, max J |
+| Fe | $3d^6$ | $^5D$ | $^5D_4$ | > half, max J |
+| Ce | $4f^1 5d^1$ | - | $^1G_4$ (jj-like) | Heavy atom |
 
 ---
 
