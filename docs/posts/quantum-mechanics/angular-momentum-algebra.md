@@ -1660,47 +1660,29 @@ where $P_l^m$ are the associated Legendre polynomials.
 
 **Visualization:**
 
-<img src="/images/angular-momentum/spherical_harmonics_overview.png" width="700px" alt="Spherical harmonics visualization">
+<img src="/images/angular-momentum/spherical_harmonics_overview.png" width="700px" alt="Spherical harmonics probability density">
 
-*Visualization of $|Y_l^m|^2$ (probability density) for s, p, and d orbitals in the x-z plane. The radial distance from the origin represents the probability density in that direction.*
+*Angular probability density $|Y_l^m|^2$ for s, p, and d states. The radial distance from the origin represents the probability density in that direction (x-z plane cross-section).*
 
-**Note on the Visualization:**
-- All plots show **$|Y_l^m|^2$** (modulus squared), which is the physical probability density
-- **$|Y_1^1|^2$ vs $|Y_2^2|^2$**: Both appear as "dumbbell" shapes in the x-z plane because $m \neq 0$ states have their maximum probability in the equatorial ($xy$) plane. The x-z cross-section shows the edge-on view of these toroidal distributions. The difference is in their angular dependence: $|Y_1^1|^2 \propto \sin^2\theta$ while $|Y_2^2|^2 \propto \sin^4\theta$, giving the latter a more flattened appearance.
-- **Direction labels**: $z$ is vertical (up), $x$ is horizontal (right)
+**What is Being Shown:**
+
+The figure displays **$|Y_l^m(\theta, \phi)|^2$**, the angular probability density. This is the physical quantity that describes where the particle can be found—the quantum analog of the classical orbital shape.
+
+**Key Features:**
+- **$|Y_0^0|^2$**: Spherical (s-state)
+- **$|Y_1^0|^2$**: Dumbbell along $z$-axis (p$_z$)  
+- **$|Y_1^{\pm 1}|^2$**: Torus in $xy$-plane; the x-z cross-section shows a "dumbbell" edge-on view
+- **$|Y_2^0|^2$**: Two lobes along $z$-axis with equatorial ring (d$_{z^2}$)
+- **$|Y_2^{\pm 2}|^2$**: More pronounced torus than $l=1$
 
 **Complex vs. Real Spherical Harmonics**
 
-The figure shows **$|Y_l^m|^2$** (complex spherical harmonics modulus squared), which are eigenstates of $L_z$. In chemistry, **real spherical harmonics** are often used:
+| Type | Form | Eigenstate of | Used in |
+|:----:|:----:|:-------------:|:-------:|
+| Complex $Y_l^m$ | Eigenfunctions of $L_z$ | $L_z$ | Physics (angular momentum) |
+| Real orbitals | Linear combinations of $Y_l^{\pm m}$ | $L^2$ only | Chemistry (bonding) |
 
-| Real Orbital | Combination of Complex $Y_l^m$ | Angular Dependence |
-|:------------:|:------------------------------:|:------------------:|
-| s | $Y_0^0$ | constant |
-| p$_z$ | $Y_1^0$ | $\propto z/r$ |
-| p$_x$ | $\frac{1}{\sqrt{2}}(Y_1^1 - Y_1^{-1})$ | $\propto x/r$ |
-| p$_y$ | $\frac{i}{\sqrt{2}}(Y_1^1 + Y_1^{-1})$ | $\propto y/r$ |
-| d$_{z^2}$ | $Y_2^0$ | $\propto (3z^2-r^2)/r^2$ |
-| d$_{xz}$ | $\frac{1}{\sqrt{2}}(Y_2^1 - Y_2^{-1})$ | $\propto xz/r^2$ |
-| d$_{yz}$ | $\frac{i}{\sqrt{2}}(Y_2^1 + Y_2^{-1})$ | $\propto yz/r^2$ |
-| d$_{xy}$ | $\frac{i}{\sqrt{2}}(Y_2^2 - Y_2^{-2})$ | $\propto xy/r^2$ |
-| d$_{x^2-y^2}$ | $\frac{1}{\sqrt{2}}(Y_2^2 + Y_2^{-2})$ | $\propto (x^2-y^2)/r^2$ |
-
-**Key distinction:** 
-- **Complex $Y_l^m$**: Eigenstates of $L_z$ with eigenvalue $m\hbar$; $|Y_l^m|^2$ has azimuthal symmetry (no $\phi$ dependence)
-- **Real orbitals**: Linear combinations with definite parity under coordinate reflections; preferred in chemistry for directional bonding
-
-The figure labels indicate the corresponding real orbital notation for each $|Y_l^m|^2$ pattern.
-
-**Physical Interpretation:**
-
-- **$|Y_l^m|^2$** gives the angular probability distribution
-- **$l = 0$ (s-wave):** Spherically symmetric
-- **$l = 1$ (p-wave):** Has nodal planes (dumbbell shape)
-- **$l = 2$ (d-wave):** More complex angular structure
-
-The magnetic quantum number $m$ determines the orientation:
-- For $m = 0$: Maximum amplitude along $z$-axis
-- For $m = \pm l$: Maximum amplitude in $xy$-plane (toroidal shape for large $l$)
+Real orbitals (p$_x$, p$_y$, d$_{xy}$, etc.) are formed by combining $Y_l^{+m}$ and $Y_l^{-m}$ to create standing waves with definite nodal planes. The figure labels indicate which real orbital corresponds to each $|Y_l^m|^2$ pattern.
 
 ### 6.3 Angular Momentum in Central Force Fields: Key Theorems
 
