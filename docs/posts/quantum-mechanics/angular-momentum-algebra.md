@@ -1732,9 +1732,20 @@ The second term is the **centrifugal barrier**. For $r \to 0$, assuming $V(r)$ i
 
 $$\frac{d^2u}{dr^2} - \frac{l(l+1)}{r^2}u = 0$$
 
-Trying $u \propto r^s$ gives the indicial equation $s(s-1) = l(l+1)$, with solutions $s = l+1$ or $s = -l$. The $s = -l$ solution is non-normalizable, so:
+Trying $u \propto r^s$ gives the indicial equation $s(s-1) = l(l+1)$, with solutions $s = l+1$ or $s = -l$. 
 
-$$u_{nl}(r) \propto r^{l+1} \quad \Rightarrow \quad R_{nl}(r) = \frac{u_{nl}}{r} \propto r^l$$
+**Why $s = -l$ is Non-Normalizable:**
+
+For $s = -l$, we have $u \propto r^{-l}$ and thus $R = u/r \propto r^{-l-1}$. The normalization integral for the radial wavefunction is:
+$$\int_0^\infty |R_{nl}(r)|^2 r^2 dr = \int_0^\infty |u_{nl}(r)|^2 dr$$
+
+Near $r = 0$, the $s = -l$ solution gives:
+$$\int_0^{\epsilon} |u|^2 dr \propto \int_0^{\epsilon} r^{-2l} dr$$
+
+For $l \geq 1$, this integral diverges at the origin since $-2l \leq -2 < -1$. Even for $l = 0$ (where $R \propto r^{-1}$), the integral $\int_0^\epsilon r^{-2} \cdot r^2 dr = \int_0^\epsilon dr$ appears finite, but the wavefunction itself is singular and the kinetic energy expectation value diverges. Therefore, the $s = -l$ solution must be discarded on physical grounds.
+
+The regular solution is:
+$$\boxed{u_{nl}(r) \propto r^{l+1} \quad \Rightarrow \quad R_{nl}(r) = \frac{u_{nl}}{r} \propto r^l}$$
 
 **Behavior Summary:**
 - **s-waves ($l=0$)**: $R_{n0}(0) \neq 0$, finite probability at origin
@@ -1747,112 +1758,7 @@ Higher angular momentum states are increasingly excluded from the nucleus by the
 
 The Coulomb potential $V(r) = -e^2/r$ possesses a **hidden symmetry** that goes beyond the obvious rotational symmetry. This additional symmetry explains the "accidental" degeneracy of hydrogen energy levels: states with the same principal quantum number $n$ but different orbital angular momentum $l$ are degenerate, even though $[H, L^2] \neq 0$ for a generic central potential.
 
-#### 6.4.1 The Classical Runge-Lenz Vector
-
-In classical mechanics, the **Laplace-Runge-Lenz vector** (or simply Runge-Lenz vector) is defined as:
-
-$$\mathbf{A} = \mathbf{p} \times \mathbf{L} - \mu k \frac{\mathbf{r}}{r}$$
-
-where $k = e^2$ (in Gaussian units) or $k = e^2/(4\pi\varepsilon_0)$ (in SI units), and $\mu$ is the reduced mass.
-
-**Physical Interpretation: Why the Runge-Lenz Vector Points Along the Major Axis**
-
-For an elliptical orbit in a $1/r$ potential, the Runge-Lenz vector has a remarkable geometric property: **it points from the focus (where the central mass is located) toward the perihelion (closest approach point)**—that is, along the major axis of the ellipse.
-
-To see this explicitly, consider the equation of an elliptical orbit in polar coordinates:
-
-$$r(\theta) = \frac{a(1-e^2)}{1 + e\cos\theta}$$
-
-where $a$ is the semi-major axis and $e$ is the eccentricity. At perihelion ($\theta = 0$), $r = a(1-e)$; at aphelion ($\theta = \pi$), $r = a(1+e)$.
-
-**Explicit Calculation of Direction:**
-
-At any point in the orbit, the angular momentum is $\mathbf{L} = \mu \mathbf{r} \times \mathbf{v}$, so $\mathbf{p} \times \mathbf{L}$ lies in the orbital plane. Let us evaluate $\mathbf{A}$ at perihelion, where the velocity is purely tangential:
-
-$$\mathbf{v}_{\text{peri}} = v_{\text{max}} \hat{\boldsymbol{\phi}}, \quad \mathbf{r}_{\text{peri}} = r_{\text{min}} \hat{\mathbf{r}}$$
-
-At perihelion:
-- $\mathbf{L} = \mu r_{\text{min}} v_{\text{max}} \hat{\mathbf{z}}$ (perpendicular to the orbital plane)
-- $\mathbf{p} \times \mathbf{L} = \mu v_{\text{max}} \hat{\boldsymbol{\phi}} \times (\mu r_{\text{min}} v_{\text{max}} \hat{\mathbf{z}}) = \mu^2 r_{\text{min}} v_{\text{max}}^2 \hat{\mathbf{r}}$
-
-The centripetal force at perihelion gives:
-$$\frac{\mu v_{\text{max}}^2}{r_{\text{min}}} = \frac{k}{r_{\text{min}}^2} + \frac{L^2}{\mu r_{\text{min}}^3}$$
-
-Using $L = \mu r_{\text{min}} v_{\text{max}}$:
-$$\mu^2 r_{\text{min}} v_{\text{max}}^2 = \mu k + \frac{L^2}{r_{\text{min}}}$$
-
-Therefore:
-$$\mathbf{A} = \left(\mu k + \frac{L^2}{r_{\text{min}}}\right)\hat{\mathbf{r}} - \mu k \hat{\mathbf{r}} = \frac{L^2}{r_{\text{min}}}\hat{\mathbf{r}}$$
-
-This confirms that at perihelion, $\mathbf{A}$ points radially outward—along the major axis toward the perihelion point.
-
-**Conservation and Orbital Precession**
-
-For a generic central potential $V(r) \propto r^n$, the time derivative of $\mathbf{A}$ is:
-
-$$\frac{d\mathbf{A}}{dt} = \frac{d\mathbf{p}}{dt} \times \mathbf{L} + \mathbf{p} \times \frac{d\mathbf{L}}{dt} - \mu k \frac{d}{dt}\left(\frac{\mathbf{r}}{r}\right)$$
-
-Since $\mathbf{L}$ is conserved for any central force, and $d\mathbf{p}/dt = -\nabla V = -V'(r)\hat{\mathbf{r}}$:
-
-$$\frac{d\mathbf{A}}{dt} = -V'(r)\hat{\mathbf{r}} \times \mathbf{L} - \mu k \frac{\mathbf{v}}{r} + \mu k \frac{\mathbf{r}(\mathbf{r} \cdot \mathbf{v})}{r^3}$$
-
-Using $\hat{\mathbf{r}} \times \mathbf{L} = \hat{\mathbf{r}} \times (\mathbf{r} \times \mathbf{p}) = r\mathbf{p} - (\hat{\mathbf{r}} \cdot \mathbf{p})\mathbf{r} = \mu r \mathbf{v} - \mu (\mathbf{r} \cdot \mathbf{v})\hat{\mathbf{r}}$:
-
-$$\frac{d\mathbf{A}}{dt} = -V'(r)[\mu r \mathbf{v} - \mu (\mathbf{r} \cdot \mathbf{v})\hat{\mathbf{r}}] - \frac{\mu k \mathbf{v}}{r} + \frac{\mu k (\mathbf{r} \cdot \mathbf{v})\hat{\mathbf{r}}}{r^3}$$
-
-Collecting terms:
-$$\frac{d\mathbf{A}}{dt} = -\mu r V'(r) \mathbf{v} + \mu V'(r) (\mathbf{r} \cdot \mathbf{v})\hat{\mathbf{r}} - \frac{\mu k \mathbf{v}}{r} + \frac{\mu k (\mathbf{r} \cdot \mathbf{v})\hat{\mathbf{r}}}{r^3}$$
-
-For the Coulomb potential $V(r) = -k/r$:
-$$V'(r) = \frac{k}{r^2}$$
-
-Substituting:
-$$\frac{d\mathbf{A}}{dt} = -\frac{\mu k}{r} \mathbf{v} + \frac{\mu k (\mathbf{r} \cdot \mathbf{v})}{r^2}\hat{\mathbf{r}} - \frac{\mu k \mathbf{v}}{r} + \frac{\mu k (\mathbf{r} \cdot \mathbf{v})\hat{\mathbf{r}}}{r^3}$$
-
-Wait—this gives a factor of 2 error. Let me recalculate more carefully using the vector identity:
-
-$$\frac{d}{dt}\left(\frac{\mathbf{r}}{r}\right) = \frac{\mathbf{v}}{r} - \frac{\mathbf{r}(\mathbf{r} \cdot \mathbf{v})}{r^3}$$
-
-And:
-$$\frac{d\mathbf{p}}{dt} \times \mathbf{L} = -\frac{k}{r^2}\hat{\mathbf{r}} \times (\mathbf{r} \times \mathbf{p}) = -\frac{k}{r^2}[r\mathbf{p} - (\hat{\mathbf{r}} \cdot \mathbf{p})\mathbf{r}] = -\frac{k\mathbf{p}}{r} + \frac{k(\hat{\mathbf{r}} \cdot \mathbf{p})\hat{\mathbf{r}}}{r}$$
-
-Combining:
-$$\frac{d\mathbf{A}}{dt} = -\frac{k\mathbf{p}}{r} + \frac{k(\hat{\mathbf{r}} \cdot \mathbf{p})\hat{\mathbf{r}}}{r} - \mu k\left(\frac{\mathbf{v}}{r} - \frac{\mathbf{r}(\mathbf{r} \cdot \mathbf{v})}{r^3}\right)$$
-
-Since $\mathbf{p} = \mu \mathbf{v}$ and $\hat{\mathbf{r}} \cdot \mathbf{p} = \mu \hat{\mathbf{r}} \cdot \mathbf{v} = \mu (\mathbf{r} \cdot \mathbf{v})/r$:
-
-$$\frac{d\mathbf{A}}{dt} = -\frac{k\mu\mathbf{v}}{r} + \frac{k\mu(\mathbf{r} \cdot \mathbf{v})\hat{\mathbf{r}}}{r^2} - \frac{\mu k\mathbf{v}}{r} + \frac{\mu k(\mathbf{r} \cdot \mathbf{v})\hat{\mathbf{r}}}{r^3} \cdot r$$
-
-Hmm, I need to be more careful. Actually, the standard derivation uses:
-
-$$\frac{d\mathbf{A}}{dt} = \dot{\mathbf{p}} \times \mathbf{L} - k\mu\frac{d}{dt}\left(\frac{\mathbf{r}}{r}\right)$$
-
-For $V = -k/r$:
-$$\dot{\mathbf{p}} = -\nabla V = -\frac{k\mathbf{r}}{r^3}$$
-
-So:
-$$\dot{\mathbf{p}} \times \mathbf{L} = -\frac{k}{r^3}\mathbf{r} \times (\mathbf{r} \times \mathbf{p}) = -\frac{k}{r^3}[\mathbf{r}(\mathbf{r} \cdot \mathbf{p}) - r^2\mathbf{p}] = -\frac{k(\mathbf{r} \cdot \mathbf{p})\mathbf{r}}{r^3} + \frac{k\mathbf{p}}{r}$$
-
-And:
-$$\frac{d}{dt}\left(\frac{\mathbf{r}}{r}\right) = \frac{\mathbf{p}}{\mu r} - \frac{(\mathbf{r} \cdot \mathbf{p})\mathbf{r}}{\mu r^3}$$
-
-Therefore:
-$$\frac{d\mathbf{A}}{dt} = -\frac{k(\mathbf{r} \cdot \mathbf{p})\mathbf{r}}{r^3} + \frac{k\mathbf{p}}{r} - k\mu\left(\frac{\mathbf{p}}{\mu r} - \frac{(\mathbf{r} \cdot \mathbf{p})\mathbf{r}}{\mu r^3}\right) = 0$$
-
-$$\boxed{\frac{d\mathbf{A}}{dt} = 0}$$
-
-**Physical Meaning of Conservation:**
-
-The conservation of $\mathbf{A}$ means that **the orbit does not precess**. For a generic central potential (e.g., $V \propto 1/r^{1+\epsilon}$ due to general relativistic corrections), the ellipse slowly rotates—the perihelion precesses. But for the pure $1/r$ potential, the ellipse remains fixed in space: closed orbits are maintained.
-
-The magnitude of $\mathbf{A}$ is related to the eccentricity:
-$$A^2 = \mu^2 k^2 + 2\mu E L^2$$
-
-$$e = \frac{A}{\mu k} = \sqrt{1 + \frac{2EL^2}{\mu k^2}}$$
-
-where $E$ is the total energy (negative for bound states).
-
-#### 6.4.2 Quantum Mechanical Runge-Lenz Vector
+#### 6.4.1 The Quantum Runge-Lenz Vector
 
 In quantum mechanics, the Runge-Lenz vector operator is defined as:
 
@@ -1875,7 +1781,7 @@ $$[\hat{H}, \hat{\mathbf{A}}] = 0$$
 
 This means $\hat{\mathbf{A}}$ is a conserved quantity, generating a symmetry of the system.
 
-#### 6.4.3 The Rescaled Runge-Lenz Vector and SO(4) Algebra
+#### 6.4.2 The Rescaled Runge-Lenz Vector and SO(4) Algebra
 
 To reveal the algebraic structure, define the **rescaled Runge-Lenz vector**:
 
@@ -1970,7 +1876,7 @@ $$E = \langle T + V \rangle = -E + 2E = E \quad \checkmark$$
 
 The scaling factor $\sqrt{-\mu/(2E)}$ is chosen precisely to normalize the $\mathbf{K}$ commutator to the standard form.
 
-#### 6.4.4 Casimir Operators
+#### 6.4.3 Casimir Operators
 
 **Definition:** A **Casimir operator** is an operator that commutes with all generators of a Lie algebra. For the angular momentum algebra so(3), the Casimir operator is:
 
@@ -2004,7 +1910,7 @@ $$\mathbf{M}^2 = \hbar^2 m(m+1), \quad \mathbf{N}^2 = \hbar^2 n(n+1)$$
 Since $C_2 = 0$, we have $m = n$, and:
 $$C_1 = \hbar^2 [m(m+1) + n(n+1)] = 2\hbar^2 n(n+1)$$
 
-#### 6.4.5 The Accidental Degeneracy Explained
+#### 6.4.4 The Accidental Degeneracy Explained
 
 **Energy Formula from SO(4):**
 
@@ -2058,7 +1964,7 @@ In a generic central potential, the energy would depend on both $n$ and $l$ (e.g
 
 The larger SO(4) symmetry explains why hydrogen has more degeneracy than required by rotational symmetry alone. This "accidental" degeneracy is actually a signature of the hidden dynamical symmetry of the $1/r$ potential.
 
-#### 6.4.6 Connection to 4D Spherical Harmonics
+#### 6.4.5 Connection to 4D Spherical Harmonics
 
 The SO(4) symmetry allows us to map the hydrogen problem to a free particle on a 3-sphere $S^3$. Define:
 
@@ -2069,29 +1975,3 @@ The momentum space wavefunctions of hydrogen are 4D spherical harmonics, and the
 
 This connection demonstrates the deep geometric structure underlying the hydrogen atom: bound states correspond to harmonics on a sphere in 4D momentum space, with the principal quantum number $n$ labeling the "degree" of the harmonic.
 
----
-
-## Part VII: Summary and Connections
-
-### Key Results
-
-1. **Angular Momentum Algebra:** $[J_i, J_j] = i\hbar \varepsilon_{ijk} J_k$ defines the fundamental structure.
-
-2. **Casimir Operator:** $\mathbf{J}^2$ commutes with all $J_i$, labeling irreducible representations by $j$.
-
-3. **Ladder Operators:** $J_{\pm}$ raise/lower $m$ values, generating the full multiplet from the highest weight state.
-
-4. **Addition of Angular Momenta:** The tensor product decomposes as $D^{(j_1)} \otimes D^{(j_2)} = \bigoplus_{j=|j_1-j_2|}^{j_1+j_2} D^{(j)}$.
-
-5. **Hidden Symmetries:** The hydrogen atom's SO(4) symmetry (generated by $\mathbf{L}$ and $\mathbf{K}$) explains the accidental degeneracy $E_n \propto -1/n^2$.
-
-### Physical Applications
-
-| System | Angular Momentum | Key Feature |
-|--------|-----------------|-------------|
-| Spin-1/2 | $\mathbf{S} = \frac{\hbar}{2}\boldsymbol{\sigma}$ | Pauli exclusion principle |
-| Hydrogen atom | $\mathbf{L}$, $\mathbf{K}$ | SO(4) degeneracy |
-| Nuclei | Isospin $\mathbf{I}$ | Charge independence |
-| Particle physics | SU(3) flavor/color | Quark model |
-
-The algebraic methods developed here are fundamental tools across quantum physics, from atomic spectroscopy to particle physics and quantum field theory.
