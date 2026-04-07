@@ -1109,19 +1109,41 @@ $$W(\theta) = \frac{1}{2j_i+1} \sum_{m_i} W_{m_i}(\theta) = \frac{|\langle j_f |
 
 **Demonstration: Closed-Form Angular Distribution**
 
-Using the orthogonality relation for 3j symbols:
-$$\sum_{m_1 m_2} \begin{pmatrix} j_1 & j_2 & j_3 \\ m_1 & m_2 & m_3 \end{pmatrix} \begin{pmatrix} j_1 & j_2 & j_3' \\ m_1 & m_2 & m_3' \end{pmatrix} = \frac{\delta_{j_3 j_3'} \delta_{m_3 m_3'}}{2j_3 + 1}$$
+The 3j symbol orthogonality relation states:
+$$\sum_{m_1, m_2} \begin{pmatrix} j_1 & j_2 & j_3 \\ m_1 & m_2 & m_3 \end{pmatrix} \begin{pmatrix} j_1 & j_2 & j_3' \\ m_1 & m_2 & m_3' \end{pmatrix} = \frac{\delta_{j_3 j_3'} \delta_{m_3 m_3'}}{2j_3 + 1}$$
 
-For our case with $j_2 = 1$ (photon) and $m_3 = -m_f$:
-$$\sum_{m_i, m_f} \left|\begin{pmatrix} j_i & 1 & j_f \\ m_i & m_\gamma & -m_f \end{pmatrix}\right|^2 = \frac{1}{2j_f + 1}$$
+This sums over the first two magnetic quantum numbers ($m_1, m_2$), leaving the third fixed. To apply this to our problem, we need the initial and final nuclear magnetic quantum numbers ($m_i, m_f$) in the first two positions.
 
-This is independent of $m_\gamma$! The angular distribution becomes:
-$$W(\theta) = \frac{|\langle j_f || \hat{O} || j_i \rangle|^2}{(2j_i+1)(2j_f+1)} \sum_{m_\gamma} |Y_1^{m_\gamma}(\theta, 0)|^2$$
+**Step 1: Rearrange the 3j Symbol**
 
-Using $\sum_{m=-1}^{1} |Y_1^m(\theta)|^2 = \frac{3}{4\pi}$ (constant), we get:
-$$W(\theta) = \text{constant}$$
+Starting from our angular distribution:
+$$W(\theta) \propto \sum_{m_i, m_f} \left|\begin{pmatrix} j_i & 1 & j_f \\ m_i & m_\gamma & -m_f \end{pmatrix}\right|^2 |Y_1^{m_\gamma}(\theta)|^2$$
 
-**Result:** For unoriented nuclei, the angular distribution is **isotropic** (uniform in all directions). The 3j symbol orthogonality cleanly gives this result without tedious summation.
+We use the 3j symbol symmetry: swapping columns 1 and 3 introduces a phase $(-1)^{j_i+1+j_f}$, and changing all signs introduces $(-1)^{j_i+1+j_f}$. The combined phase is $(-1)^{2(j_i+1+j_f)} = +1$:
+$$\begin{pmatrix} j_i & 1 & j_f \\ m_i & m_\gamma & -m_f \end{pmatrix} = (-1)^{j_i+1+j_f} \begin{pmatrix} j_f & 1 & j_i \\ -m_f & m_\gamma & m_i \end{pmatrix} = \begin{pmatrix} j_i & j_f & 1 \\ m_i & -m_f & m_\gamma \end{pmatrix}$$
+
+Now $m_i$ and $-m_f$ (equivalently $m_f$) occupy the first two positions.
+
+**Step 2: Apply Orthogonality**
+
+With $j_1 = j_i$, $j_2 = j_f$, $j_3 = 1$, and $m_3 = m_\gamma$:
+$$\sum_{m_i, m_f} \left|\begin{pmatrix} j_i & j_f & 1 \\ m_i & -m_f & m_\gamma \end{pmatrix}\right|^2 = \frac{1}{2(1)+1} = \frac{1}{3}$$
+
+**Step 3: Evaluate the Angular Distribution**
+
+The sum over magnetic quantum numbers becomes:
+$$W(\theta) = \frac{|\langle j_f || \hat{O} || j_i \rangle|^2}{(2j_i+1)} \sum_{m_\gamma} \left[\sum_{m_i, m_f} \left|\begin{pmatrix} j_i & j_f & 1 \\ m_i & -m_f & m_\gamma \end{pmatrix}\right|^2\right] |Y_1^{m_\gamma}(\theta)|^2$$
+
+$$= \frac{|\langle j_f || \hat{O} || j_i \rangle|^2}{(2j_i+1)} \cdot \frac{1}{3} \sum_{m_\gamma=-1}^{1} |Y_1^{m_\gamma}(\theta)|^2$$
+
+Using the spherical harmonic addition theorem: $\sum_{m=-1}^{1} |Y_1^m(\theta, \phi)|^2 = \frac{3}{4\pi}$ (independent of angles):
+
+$$W(\theta) = \frac{|\langle j_f || \hat{O} || j_i \rangle|^2}{4\pi(2j_i+1)}$$
+
+**Result:** The angular distribution is **independent of $\theta$**:
+$$\boxed{W(\theta) = \text{constant}}$$
+
+For unoriented nuclei (randomly oriented initial spins), the gamma emission is **isotropic** (uniform in all directions). The 3j symbol orthogonality provides this closed-form result directly, avoiding tedious summation over all magnetic sub-states.
 
 ---
 
