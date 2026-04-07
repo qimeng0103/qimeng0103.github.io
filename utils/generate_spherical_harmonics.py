@@ -91,20 +91,14 @@ def plot_spherical_harmonic_2d(l, m, filename, title=None):
     
     fig, ax = plt.subplots(figsize=(8, 8), subplot_kw=dict(projection='polar'))
     
-    # Draw radial grid lines first with low zorder so they appear behind fill
-    max_r = Y_vals.max()
-    for angle in [0, np.pi/4, np.pi/2, 3*np.pi/4, np.pi, 5*np.pi/4, 3*np.pi/2, 7*np.pi/4]:
-        ax.plot([angle, angle], [0, max_r], color='gray', linewidth=0.5, alpha=0.5, zorder=1)
+    # Fill and outline (axes drawn by matplotlib will be hidden by fill)
+    ax.fill_between(theta, 0, Y_vals, alpha=0.3)
+    ax.plot(theta, Y_vals, linewidth=2, label=f'$|Y_{{{l}}}^{{{m}}}|^2$')
     
-    # Fill and outline with higher zorder
-    ax.fill_between(theta, 0, Y_vals, alpha=0.3, zorder=2)
-    ax.plot(theta, Y_vals, linewidth=2, label=f'$|Y_{{{l}}}^{{{m}}}|^2$', zorder=3)
-    
-    ax.set_rticks([])  # Remove radial ticks
-    ax.set_xticks([0, np.pi/4, np.pi/2, 3*np.pi/4, np.pi, 5*np.pi/4, 3*np.pi/2, 7*np.pi/4])
-    ax.set_xticklabels(['0°', '45°', '90°', '135°', '180°', '225°', '270°', '315°'])
-    
-    # Remove polar spine to fix visual artifacts
+    # Turn off all ticks and frame
+    ax.set_rticks([])
+    ax.set_thetagrids([])  # No theta grids
+    ax.patch.set_visible(False)
     ax.spines['polar'].set_visible(False)
     
     if title:
@@ -130,12 +124,12 @@ def plot_all_spherical_harmonics():
     axes = axes.flatten()
     
     orbitals = [
-        (0, 0, 's ($l=0, m=0$)'),
-        (1, 0, 'p$_z$ ($l=1, m=0$)'),
-        (1, 1, 'p$_{+1}$ ($l=1, m=1$)'),
-        (2, 0, 'd$_{z^2}$ ($l=2, m=0$)'),
-        (2, 1, 'd$_{xz}$ ($l=2, m=1$)'),
-        (2, 2, 'd$_{x^2-y^2}$ ($l=2, m=2$)'),
+        (0, 0, '$Y_0^0$ ($l=0, m=0$)'),
+        (1, 0, '$Y_1^0$ ($l=1, m=0$)'),
+        (1, 1, '$|Y_1^1|^2$ ($l=1, m=1$)'),
+        (2, 0, '$Y_2^0$ ($l=2, m=0$)'),
+        (2, 1, '$|Y_2^1|^2$ ($l=2, m=1$)'),
+        (2, 2, '$|Y_2^2|^2$ ($l=2, m=2$)'),
     ]
     
     from scipy.special import sph_harm_y
@@ -162,11 +156,17 @@ def plot_all_spherical_harmonics():
         ax.fill_between(theta, 0, Y_vals, alpha=0.3, color='blue', zorder=2)
         ax.plot(theta, Y_vals, linewidth=2, color='darkblue', zorder=3)
         
+        # Turn off all ticks and frame
         ax.set_rticks([])
-        ax.set_xticks([0, np.pi/2, np.pi, 3*np.pi/2])
-        ax.set_xticklabels(['z', 'x', '-z', '-x'])
-        # Remove polar spine to fix visual artifacts
+        ax.set_thetagrids([])  # No theta grids
+        ax.patch.set_visible(False)
         ax.spines['polar'].set_visible(False)
+        # Manually add labels without lines
+        max_r = Y_vals.max() * 1.05
+        label_positions = [(0, max_r, 'z'), (np.pi/2, max_r, 'x'), 
+                          (np.pi, max_r, '-z'), (3*np.pi/2, max_r, '-x')]
+        for angle, r, text in label_positions:
+            ax.text(angle, r, text, ha='center', va='center', fontsize=10)
         ax.set_title(label, fontsize=12, pad=15)
     
     plt.tight_layout()
