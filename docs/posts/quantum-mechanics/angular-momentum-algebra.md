@@ -1116,13 +1116,35 @@ This sums over the first two magnetic quantum numbers ($m_1, m_2$), leaving the 
 
 **Step 1: Rearrange the 3j Symbol**
 
-Starting from our angular distribution:
+Our starting point is:
 $$W(\theta) \propto \sum_{m_i, m_f} \left|\begin{pmatrix} j_i & 1 & j_f \\ m_i & m_\gamma & -m_f \end{pmatrix}\right|^2 |Y_1^{m_\gamma}(\theta)|^2$$
 
-We use the 3j symbol symmetry: swapping columns 1 and 3 introduces a phase $(-1)^{j_i+1+j_f}$, and changing all signs introduces $(-1)^{j_i+1+j_f}$. The combined phase is $(-1)^{2(j_i+1+j_f)} = +1$:
-$$\begin{pmatrix} j_i & 1 & j_f \\ m_i & m_\gamma & -m_f \end{pmatrix} = (-1)^{j_i+1+j_f} \begin{pmatrix} j_f & 1 & j_i \\ -m_f & m_\gamma & m_i \end{pmatrix} = \begin{pmatrix} j_i & j_f & 1 \\ m_i & -m_f & m_\gamma \end{pmatrix}$$
+The orthogonality relation sums over the first two magnetic quantum numbers, but here $m_i$ and $m_f$ are in positions 1 and 3. We need to rearrange.
 
-Now $m_i$ and $-m_f$ (equivalently $m_f$) occupy the first two positions.
+**Method:** Cyclic permutation of columns $(1,2,3) \to (2,3,1)$
+
+The 3j symbol has the symmetry property that cyclic permutation of columns leaves it unchanged:
+$$\begin{pmatrix} j_1 & j_2 & j_3 \\ m_1 & m_2 & m_3 \end{pmatrix} = \begin{pmatrix} j_2 & j_3 & j_1 \\ m_2 & m_3 & m_1 \end{pmatrix} = \begin{pmatrix} j_3 & j_1 & j_2 \\ m_3 & m_1 & m_2 \end{pmatrix}$$
+
+Applying $(1,2,3) \to (2,3,1)$ to our symbol:
+$$\begin{pmatrix} j_i & 1 & j_f \\ m_i & m_\gamma & -m_f \end{pmatrix} = \begin{pmatrix} 1 & j_f & j_i \\ m_\gamma & -m_f & m_i \end{pmatrix}$$
+
+We want $m_i$ in position 1 and $m_f$ (or $-m_f$) in position 2. Another cyclic permutation $(1,2,3) \to (3,1,2)$:
+$$\begin{pmatrix} 1 & j_f & j_i \\ m_\gamma & -m_f & m_i \end{pmatrix} = \begin{pmatrix} j_i & 1 & j_f \\ m_i & m_\gamma & -m_f \end{pmatrix}$$
+
+This brings us back. Let's try a different approach: **swap columns 2 and 3**, then rearrange.
+
+**Alternative: Direct target form**
+
+We want the form $\begin{pmatrix} j_i & j_f & 1 \\ m_i & -m_f & m_\gamma \end{pmatrix}$ where $m_i$ and $-m_f$ are in the first two positions (to be summed over).
+
+Using the symmetry under column interchange (anti-symmetric for odd permutations, symmetric for even):
+- Swap columns 2 and 3: $\begin{pmatrix} j_i & j_f & 1 \\ m_i & -m_f & m_\gamma \end{pmatrix} = (-1)^{j_i+j_f+1} \begin{pmatrix} j_i & 1 & j_f \\ m_i & m_\gamma & -m_f \end{pmatrix}$
+
+Since we square the 3j symbol, the phase factor $(-1)^{2(j_i+j_f+1)} = +1$ disappears. Therefore:
+$$\left|\begin{pmatrix} j_i & 1 & j_f \\ m_i & m_\gamma & -m_f \end{pmatrix}\right|^2 = \left|\begin{pmatrix} j_i & j_f & 1 \\ m_i & -m_f & m_\gamma \end{pmatrix}\right|^2$$
+
+Now $m_i$ and $-m_f$ are in the first two positions, ready for orthogonality summation.
 
 **Step 2: Apply Orthogonality**
 
