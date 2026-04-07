@@ -95,11 +95,12 @@ def plot_spherical_harmonic_2d(l, m, filename, title=None):
     ax.fill_between(theta, 0, Y_vals, alpha=0.3)
     ax.plot(theta, Y_vals, linewidth=2, label=f'$|Y_{{{l}}}^{{{m}}}|^2$')
     
-    # Turn off all ticks and frame
+    # Only show outer circle frame, no axis lines
     ax.set_rticks([])
-    ax.set_thetagrids([])  # No theta grids
-    ax.patch.set_visible(False)
-    ax.spines['polar'].set_visible(False)
+    ax.set_thetagrids([])
+    ax.spines['polar'].set_visible(True)
+    ax.spines['polar'].set_linewidth(1)
+    ax.spines['polar'].set_edgecolor('gray')
     
     if title:
         ax.set_title(title, fontsize=14, pad=20)
@@ -116,11 +117,10 @@ def plot_spherical_harmonic_2d(l, m, filename, title=None):
 
 
 def plot_all_spherical_harmonics():
-    """Generate comparison figure for s, p, d orbitals."""
+    """Generate comparison figure for s, p, d orbitals using Cartesian coords."""
     setup_style()
     
-    fig, axes = plt.subplots(2, 3, figsize=(14, 9), 
-                            subplot_kw=dict(projection='polar'))
+    fig, axes = plt.subplots(2, 3, figsize=(14, 9))
     axes = axes.flatten()
     
     orbitals = [
@@ -136,7 +136,7 @@ def plot_all_spherical_harmonics():
     
     for idx, (l, m, label) in enumerate(orbitals):
         ax = axes[idx]
-        theta = np.linspace(0, 2*np.pi, 200)
+        theta = np.linspace(0, 2*np.pi, 400)
         phi = 0  # Fix phi=0 for 2D projection
         
         Y_vals = []
@@ -145,29 +145,24 @@ def plot_all_spherical_harmonics():
             Y_vals.append(np.abs(Y)**2)
         Y_vals = np.array(Y_vals)
         
-        # Draw the z-axis (0° line) first with low zorder so it appears behind fill
+        # Convert to Cartesian coordinates
+        x = Y_vals * np.sin(theta)  # x = r * sin(theta) in spherical
+        y = Y_vals * np.cos(theta)  # z = r * cos(theta) in spherical
+        
+        # Fill and outline
+        ax.fill(x, y, alpha=0.3, color='blue')
+        ax.plot(x, y, linewidth=2, color='darkblue')
+        
+        # Draw outer circle reference
         max_r = Y_vals.max()
-        ax.plot([0, 0], [0, max_r], color='gray', linewidth=0.8, alpha=0.7, zorder=1)
+        circle_theta = np.linspace(0, 2*np.pi, 100)
+        ax.plot(max_r * np.sin(circle_theta), max_r * np.cos(circle_theta), 
+                'k-', linewidth=0.8, alpha=0.5)
         
-        # Draw x-axis (90° line) as well
-        ax.plot([np.pi/2, np.pi/2], [0, max_r], color='gray', linewidth=0.8, alpha=0.7, zorder=1)
-        
-        # Fill and outline with higher zorder
-        ax.fill_between(theta, 0, Y_vals, alpha=0.3, color='blue', zorder=2)
-        ax.plot(theta, Y_vals, linewidth=2, color='darkblue', zorder=3)
-        
-        # Turn off all ticks and frame
-        ax.set_rticks([])
-        ax.set_thetagrids([])  # No theta grids
-        ax.patch.set_visible(False)
-        ax.spines['polar'].set_visible(False)
-        # Manually add labels without lines
-        max_r = Y_vals.max() * 1.05
-        label_positions = [(0, max_r, 'z'), (np.pi/2, max_r, 'x'), 
-                          (np.pi, max_r, '-z'), (3*np.pi/2, max_r, '-x')]
-        for angle, r, text in label_positions:
-            ax.text(angle, r, text, ha='center', va='center', fontsize=10)
-        ax.set_title(label, fontsize=12, pad=15)
+        # Set equal aspect and remove axes
+        ax.set_aspect('equal')
+        ax.axis('off')
+        ax.set_title(label, fontsize=12, pad=10)
     
     plt.tight_layout()
     filepath = os.path.join(OUTPUT_DIR, 'spherical_harmonics_overview.png')
