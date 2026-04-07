@@ -18,7 +18,7 @@ def draw_fundamental_triplet():
     """Draw quark triplet weight diagram."""
     setup_style()
     
-    fig, ax = plt.subplots(figsize=(7, 6.5))
+    fig, ax = plt.subplots(figsize=(7.5, 6.5))
     
     # Positions
     u_pos = np.array([0.5, 1/3])
@@ -41,72 +41,73 @@ def draw_fundamental_triplet():
     
     # ===== LADDER OPERATORS =====
     
-    # I+/- : horizontal arrows between u and d
-    arrow_y = 1/3
-    # Right arrow (I+)
-    ax.annotate('', xy=(0.28, arrow_y), xytext=(0.08, arrow_y),
+    # I+ : d -> u (rightward)
+    ax.annotate('', xy=(0.35, 1/3), xytext=(-0.15, 1/3),
                arrowprops=dict(arrowstyle='->', color='#8E44AD', lw=1.8), zorder=2)
-    # Left arrow (I-)
-    ax.annotate('', xy=(-0.28, arrow_y), xytext=(-0.08, arrow_y),
-               arrowprops=dict(arrowstyle='->', color='#8E44AD', lw=1.8), zorder=2)
-    # Label in middle
-    ax.text(0, arrow_y + 0.12, r'$I_\pm$', fontsize=12, ha='center', 
+    ax.text(0.10, 1/3 + 0.12, r'$I_+$', fontsize=12, ha='center', 
            va='bottom', color='#8E44AD')
     
-    # V+/- : diagonal arrows between d and s (left side)
-    # Direction: from d (-0.5, 1/3) to s (0, -2/3)
-    # Vector: (0.5, -1)
-    # Unit vector normalized
-    vx, vy = 0.5, -1
-    v_len = np.sqrt(vx**2 + vy**2)
-    ux, uy = vx/v_len, vy/v_len
+    # I- : u -> d (leftward)
+    ax.annotate('', xy=(-0.35, 1/3), xytext=(0.15, 1/3),
+               arrowprops=dict(arrowstyle='->', color='#8E44AD', lw=1.8), zorder=2)
+    ax.text(-0.10, 1/3 + 0.12, r'$I_-$', fontsize=12, ha='center', 
+           va='bottom', color='#8E44AD')
     
-    # Start from d, go toward s (but stop before reaching)
-    d_start = np.array([-0.5 + 0.22*ux, 1/3 + 0.22*uy])
-    s_end = np.array([0 - 0.22*ux, -2/3 - 0.22*uy])
-    mid = (d_start + s_end) / 2
+    # V+ : s -> d (raises I3 and Y, upward-left)
+    # V- : d -> s (lowers I3 and Y, downward-right)
+    dx, dy = -0.5, 1  # s to d direction
+    vlen = np.sqrt(dx**2 + dy**2)
+    ux, uy = dx/vlen, dy/vlen
     
-    # Arrow from d toward s
-    ax.annotate('', xy=(mid[0] - 0.08*ux, mid[1] - 0.08*uy), 
-               xytext=(d_start[0], d_start[1]),
+    s_edge_v = s_pos + 0.22 * np.array([ux, uy])
+    d_edge_v = d_pos - 0.22 * np.array([ux, uy])
+    
+    # V+ label position (upper part of the line)
+    label_v_plus = s_pos + 0.55 * np.array([ux, uy])
+    # V- label position (lower part of the line)
+    label_v_minus = s_pos + 0.35 * np.array([ux, uy])
+    
+    # V+ arrow: s -> d
+    ax.annotate('', xy=(d_edge_v[0], d_edge_v[1]), 
+               xytext=(s_edge_v[0], s_edge_v[1]),
                arrowprops=dict(arrowstyle='->', color='#E67E22', lw=1.8), zorder=2)
-    # Arrow from s toward d
-    ax.annotate('', xy=(mid[0] + 0.08*ux, mid[1] + 0.08*uy), 
-               xytext=(s_end[0], s_end[1]),
-               arrowprops=dict(arrowstyle='->', color='#E67E22', lw=1.8), zorder=2)
-    # Label in middle
-    # Offset label slightly to the left of the line
-    ax.text(mid[0] - 0.12, mid[1], r'$V_\pm$', fontsize=12, ha='center', 
-           va='center', color='#E67E22',
-           bbox=dict(boxstyle='round,pad=0.15', facecolor='white', 
-                    edgecolor='none', alpha=0.9))
+    ax.text(label_v_plus[0] - 0.06, label_v_plus[1], r'$V_+$', fontsize=12, ha='center', 
+           va='center', color='#E67E22')
     
-    # U+/- : diagonal arrows between u and s (right side)
-    # Direction: from u (0.5, 1/3) to s (0, -2/3)
-    # Vector: (-0.5, -1)
-    vx, vy = -0.5, -1
-    v_len = np.sqrt(vx**2 + vy**2)
-    ux, uy = vx/v_len, vy/v_len
+    # V- arrow: d -> s
+    ax.annotate('', xy=(s_edge_v[0], s_edge_v[1]), 
+               xytext=(d_edge_v[0], d_edge_v[1]),
+               arrowprops=dict(arrowstyle='->', color='#E67E22', lw=1.8, ls='--'), zorder=2)
+    ax.text(label_v_minus[0] - 0.06, label_v_minus[1] - 0.12, r'$V_-$', fontsize=12, ha='center', 
+           va='center', color='#E67E22')
     
-    # Start from u, go toward s
-    u_start = np.array([0.5 + 0.22*ux, 1/3 + 0.22*uy])
-    s_end = np.array([0 - 0.22*ux, -2/3 - 0.22*uy])
-    mid = (u_start + s_end) / 2
+    # U+ : s -> u (raises I3 and Y, upward-right)
+    # U- : u -> s (lowers I3 and Y, downward-left)
+    dx, dy = 0.5, 1  # s to u direction
+    vlen = np.sqrt(dx**2 + dy**2)
+    ux, uy = dx/vlen, dy/vlen
     
-    # Arrow from u toward s
-    ax.annotate('', xy=(mid[0] - 0.08*ux, mid[1] - 0.08*uy), 
-               xytext=(u_start[0], u_start[1]),
+    s_edge_u = s_pos + 0.22 * np.array([ux, uy])
+    u_edge_u = u_pos - 0.22 * np.array([ux, uy])
+    
+    # U+ label position (upper part of the line)
+    label_u_plus = s_pos + 0.55 * np.array([ux, uy])
+    # U- label position (lower part of the line)
+    label_u_minus = s_pos + 0.35 * np.array([ux, uy])
+    
+    # U+ arrow: s -> u
+    ax.annotate('', xy=(u_edge_u[0], u_edge_u[1]), 
+               xytext=(s_edge_u[0], s_edge_u[1]),
                arrowprops=dict(arrowstyle='->', color='#16A085', lw=1.8), zorder=2)
-    # Arrow from s toward u
-    ax.annotate('', xy=(mid[0] + 0.08*ux, mid[1] + 0.08*uy), 
-               xytext=(s_end[0], s_end[1]),
-               arrowprops=dict(arrowstyle='->', color='#16A085', lw=1.8), zorder=2)
-    # Label in middle
-    # Offset label slightly to the right of the line
-    ax.text(mid[0] + 0.12, mid[1], r'$U_\pm$', fontsize=12, ha='center', 
-           va='center', color='#16A085',
-           bbox=dict(boxstyle='round,pad=0.15', facecolor='white', 
-                    edgecolor='none', alpha=0.9))
+    ax.text(label_u_plus[0] + 0.06, label_u_plus[1], r'$U_+$', fontsize=12, ha='center', 
+           va='center', color='#16A085')
+    
+    # U- arrow: u -> s
+    ax.annotate('', xy=(s_edge_u[0], s_edge_u[1]), 
+               xytext=(u_edge_u[0], u_edge_u[1]),
+               arrowprops=dict(arrowstyle='->', color='#16A085', lw=1.8, ls='--'), zorder=2)
+    ax.text(label_u_minus[0] + 0.06, label_u_minus[1] - 0.12, r'$U_-$', fontsize=12, ha='center', 
+           va='center', color='#16A085')
     
     # ===== QUARK CIRCLES =====
     r = 0.18
@@ -148,11 +149,9 @@ def draw_fundamental_triplet():
     ax.set_xlim(-0.85, 0.85)
     ax.set_ylim(-1.05, 0.65)
     
-    # Title - no bold
     ax.set_title(r'Fundamental Representation $\mathbf{3}$ (Quarks)', 
                 fontsize=14, pad=10)
     
-    # Full frame
     for spine in ax.spines.values():
         spine.set_visible(True)
         spine.set_color('#95A5A6')
