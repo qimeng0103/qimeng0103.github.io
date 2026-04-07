@@ -1671,6 +1671,12 @@ where $P_l^m$ are the associated Legendre polynomials.
 | 1 | $\pm 1$ | $\mp\sqrt{\frac{3}{8\pi}}\sin\theta e^{\pm i\phi}$ | p$_{\pm}$ |
 | 2 | 0 | $\sqrt{\frac{5}{16\pi}}(3\cos^2\theta - 1)$ | d$_{z^2}$ |
 
+**Visualization:**
+
+<img src="/images/angular-momentum/spherical_harmonics_overview.png" width="700px" alt="Spherical harmonics visualization">
+
+*Polar plots of $|Y_l^m|^2$ for s, p, and d orbitals. The distance from the origin represents the probability density in that direction.*
+
 **Physical Interpretation:**
 
 - **$|Y_l^m|^2$** gives the angular probability distribution
@@ -2286,7 +2292,23 @@ The Slater determinant formalism is essential for:
 - Understanding Hund's rules
 - Calculating term symbols ($^{2S+1}L_J$)
 
-For example, the carbon atom ground state configuration $(1s)^2(2s)^2(2p)^2$ has possible terms $^1S$, $^1D$, and $^3P$, with $^3P_0$ being the ground state according to Hund's rules.
+**Example: Two-Electron Slater Determinant and One-Body Operators**
+
+Consider two electrons in states $\phi_1$ and $\phi_2$. The Slater determinant is:
+
+$$\Psi(1,2) = \frac{1}{\sqrt{2}}\begin{vmatrix} \phi_1(1) & \phi_1(2) \\ \phi_2(1) & \phi_2(2) \end{vmatrix} = \frac{1}{\sqrt{2}}[\phi_1(1)\phi_2(2) - \phi_2(1)\phi_1(2)]$$
+
+**Calculating the expectation value of a one-body operator $O = o(1) + o(2)$:**
+
+$$\langle\Psi|O|\Psi\rangle = \int \Psi^*(1,2)[o(1) + o(2)]\Psi(1,2)d\tau_1d\tau_2$$
+
+Expanding:
+$$= \frac{1}{2}\int [\phi_1^*(1)\phi_2^*(2) - \phi_2^*(1)\phi_1^*(2)][o(1) + o(2)][\phi_1(1)\phi_2(2) - \phi_2(1)\phi_1(2)]d\tau_1d\tau_2$$
+
+**Key simplification:** Due to antisymmetry, the cross terms vanish and we get:
+$$\langle\Psi|O|\Psi\rangle = \langle\phi_1|o|\phi_1\rangle + \langle\phi_2|o|\phi_2\rangle$$
+
+This is the **sum of one-particle expectation values**—no cross terms survive for one-body operators in a Slater determinant basis. This makes Hartree-Fock calculations tractable.
 
 ---
 
