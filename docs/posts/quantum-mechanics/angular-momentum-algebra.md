@@ -1113,73 +1113,43 @@ $$W(\theta) = \frac{1}{2j_i+1} \sum_{m_i} W_{m_i}(\theta) = \frac{|\langle j_f |
 
 Angular momentum theory is deeply rooted in group representation theory. This part explains the mathematical structures underlying symmetries and their physical interpretations.
 
-### 5.1 Representations: From Definition to Decomposition
+### 5.1 Representations and Irreducibility
 
-**What is a Representation?**
+**Definition**
 
-A **representation** of a group $G$ is a homomorphism from $G$ to the group of linear operators on a vector space $V$:
+A **representation** of a group $G$ is a homomorphism $D: G \to \text{GL}(V)$, where $V$ is the Hilbert space and $D(g)$ is the operator implementing symmetry transformation $g$.
 
-$$D: G \to \text{GL}(V)$$
+**Irreducible Representations as Classification**
 
-**Physical Interpretation:**
-- $V$ = Hilbert space of the quantum system
-- $D(g)$ = operator that acts on quantum states when symmetry transformation $g$ is applied
-- The representation **is** the specific form of this action
+An **irreducible representation** cannot be decomposed into smaller invariant subspaces. These are the fundamental building blocks:
 
-**Single-Particle Representations**
+| Label | Dimension | Physical System |
+|-------|-----------|-----------------|
+| $D^{(0)}$ | 1 | Spin-0 particle |
+| $D^{(1/2)}$ | 2 | Spin-1/2 particle |
+| $D^{(1)}$ | 3 | Spin-1 particle |
+| $D^{(j)}$ | $2j+1$ | Spin-$j$ particle |
 
-For a spin-$j$ particle, the representation $D^{(j)}$ has:
-- Dimension $2j+1$
-- Basis states $|j,m\rangle$ with $m = -j, ..., j$
-- Angular momentum operators $J_x, J_y, J_z$ as generators
+Each physical system with definite total angular momentum $j$ occupies ONE irreducible representation. The quantum number $m = -j, ..., j$ labels states within that representation.
 
-| System | Dimension | Representation | Physical Meaning |
-|--------|-----------|----------------|------------------|
-| Spin-0 | 1 | $D^{(0)}$ | Rotations do nothing |
-| Spin-1/2 | 2 | $D^{(1/2)}$ | State transforms as spinor |
-| Spin-1 | 3 | $D^{(1)}$ | State transforms as vector |
+**Key Point:** Different irreducible representations are orthogonal. A spin-1/2 system never "mixes" with spin-1 under rotation—they are distinct sectors.
 
-**Combining Systems: Tensor Product and Decomposition**
+**Tensor Product: Building Composite Systems**
 
-When two particles with spins $j_1$ and $j_2$ combine, their Hilbert spaces multiply:
-$$\dim(D^{(j_1)} \otimes D^{(j_2)}) = (2j_1+1)(2j_2+1)$$
-
-**The Key Result:** This product space is NOT irreducible. It decomposes:
+When two systems combine, their representations multiply:
 
 $$D^{(j_1)} \otimes D^{(j_2)} = \bigoplus_{j=|j_1-j_2|}^{j_1+j_2} D^{(j)}$$
 
-**What This Means:**
+**Example:** Two spin-1/2 particles
+- Product space: 4-dimensional
+- Decomposes into: $D^{(1)}$ (triplet, 3D) $\oplus$ $D^{(0)}$ (singlet, 1D)
 
-The composite system (tensor product) can be reorganized into invariant subspaces, each transforming independently under rotations.
-
-**Example: Two Spin-1/2 Particles**
-
-Product space: 4D (spanned by $|\uparrow\uparrow\rangle$, $|\uparrow\downarrow\rangle$, $|\downarrow\uparrow\rangle$, $|\downarrow\downarrow\rangle$)
-
-Decomposition:
-- **Triplet** ($j=1$, 3D): Symmetric subspace
-  $$|1,1\rangle = |\uparrow\uparrow\rangle$$
-  $$|1,0\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle + |\downarrow\uparrow\rangle)$$
-  $$|1,-1\rangle = |\downarrow\downarrow\rangle$$
-- **Singlet** ($j=0$, 1D): Antisymmetric subspace
-  $$|0,0\rangle = \frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle - |\downarrow\uparrow\rangle)$$
-
-A general state is a superposition:
-$$|\psi\rangle = \underbrace{a|\text{triplet}\rangle}_{j=1} + \underbrace{b|\text{singlet}\rangle}_{j=0}$$
-
-Under rotation, the triplet and singlet parts transform independently—each is a separate representation.
-
-**Two Meanings of Direct Sum:**
-
-1. **Decomposition of product** ($\otimes$ becomes $\oplus$): A composite system contains multiple irreducible components that evolve independently
-
-2. **True direct sum** ($D^{(j_1)} \oplus D^{(j_2)}$): A system that is either in one representation or the other (incoherent mixture)
+**Physical Interpretation:** The composite system's Hilbert space contains TWO independent sectors. A state in the triplet sector remains there under rotation; a state in the singlet sector remains there. The decomposition reveals what total angular momentum values ($j=1$ or $j=0$) are possible for the composite system.
 
 **Summary:**
-- **Group** = abstract symmetry structure
-- **Representation** = concrete action on a Hilbert space
-- **Irreducible representation** = minimal invariant subspace (system cannot be decomposed further)
-- **Tensor product** = combining systems; **Decomposition** = finding independent transformation patterns
+- **Irreducible representation** = fundamental classification label ($j$)
+- **States within representation** = degenerate subspace labeled by $m$
+- **Tensor product decomposition** = what total $j$ values can result from combining systems
 
 ### 5.2 Lie Algebras: Why the Identity?
 
