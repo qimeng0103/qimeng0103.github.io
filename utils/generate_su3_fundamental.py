@@ -41,16 +41,18 @@ def draw_fundamental_triplet():
     
     # ===== LADDER OPERATORS =====
     
-    # I+ : d -> u (rightward)
-    ax.annotate('', xy=(0.35, 1/3), xytext=(-0.15, 1/3),
+    # I+ : d -> u (rightward), shorter arrow with gap in middle
+    # Starts near d, ends before center
+    ax.annotate('', xy=(-0.08, 1/3), xytext=(-0.32, 1/3),
                arrowprops=dict(arrowstyle='->', color='#8E44AD', lw=1.8), zorder=2)
-    ax.text(0.10, 1/3 + 0.12, r'$I_+$', fontsize=12, ha='center', 
+    ax.text(-0.20, 1/3 + 0.12, r'$I_+$', fontsize=12, ha='center', 
            va='bottom', color='#8E44AD')
     
-    # I- : u -> d (leftward)
-    ax.annotate('', xy=(-0.35, 1/3), xytext=(0.15, 1/3),
+    # I- : u -> d (leftward), shorter arrow with gap in middle
+    # Starts near u, ends after center
+    ax.annotate('', xy=(0.08, 1/3), xytext=(0.32, 1/3),
                arrowprops=dict(arrowstyle='->', color='#8E44AD', lw=1.8), zorder=2)
-    ax.text(-0.10, 1/3 + 0.12, r'$I_-$', fontsize=12, ha='center', 
+    ax.text(0.20, 1/3 + 0.12, r'$I_-$', fontsize=12, ha='center', 
            va='bottom', color='#8E44AD')
     
     # V+ : s -> d (raises I3 and Y, upward-left)
@@ -59,26 +61,26 @@ def draw_fundamental_triplet():
     vlen = np.sqrt(dx**2 + dy**2)
     ux, uy = dx/vlen, dy/vlen
     
-    s_edge_v = s_pos + 0.22 * np.array([ux, uy])
-    d_edge_v = d_pos - 0.22 * np.array([ux, uy])
+    # Points along the line from s to d
+    # V+ starts near s, goes upward
+    s_start_v = s_pos + 0.22 * np.array([ux, uy])
+    v_plus_end = s_pos + 0.42 * np.array([ux, uy])
+    # V- starts near d, goes downward  
+    d_start_v = d_pos - 0.22 * np.array([ux, uy])
+    v_minus_end = d_pos - 0.42 * np.array([ux, uy])
     
-    # V+ label position (upper part of the line)
-    label_v_plus = s_pos + 0.55 * np.array([ux, uy])
-    # V- label position (lower part of the line)
-    label_v_minus = s_pos + 0.35 * np.array([ux, uy])
-    
-    # V+ arrow: s -> d
-    ax.annotate('', xy=(d_edge_v[0], d_edge_v[1]), 
-               xytext=(s_edge_v[0], s_edge_v[1]),
+    # V+ arrow: s -> d (upward)
+    ax.annotate('', xy=(v_plus_end[0], v_plus_end[1]), 
+               xytext=(s_start_v[0], s_start_v[1]),
                arrowprops=dict(arrowstyle='->', color='#E67E22', lw=1.8), zorder=2)
-    ax.text(label_v_plus[0] - 0.06, label_v_plus[1], r'$V_+$', fontsize=12, ha='center', 
+    ax.text(s_pos[0] + 0.32*ux - 0.06, s_pos[1] + 0.32*uy, r'$V_+$', fontsize=12, ha='center', 
            va='center', color='#E67E22')
     
-    # V- arrow: d -> s
-    ax.annotate('', xy=(s_edge_v[0], s_edge_v[1]), 
-               xytext=(d_edge_v[0], d_edge_v[1]),
+    # V- arrow: d -> s (downward)
+    ax.annotate('', xy=(v_minus_end[0], v_minus_end[1]), 
+               xytext=(d_start_v[0], d_start_v[1]),
                arrowprops=dict(arrowstyle='->', color='#E67E22', lw=1.8, ls='--'), zorder=2)
-    ax.text(label_v_minus[0] - 0.06, label_v_minus[1] - 0.12, r'$V_-$', fontsize=12, ha='center', 
+    ax.text(d_pos[0] - 0.32*ux - 0.06, d_pos[1] - 0.32*uy, r'$V_-$', fontsize=12, ha='center', 
            va='center', color='#E67E22')
     
     # U+ : s -> u (raises I3 and Y, upward-right)
@@ -87,26 +89,26 @@ def draw_fundamental_triplet():
     vlen = np.sqrt(dx**2 + dy**2)
     ux, uy = dx/vlen, dy/vlen
     
-    s_edge_u = s_pos + 0.22 * np.array([ux, uy])
-    u_edge_u = u_pos - 0.22 * np.array([ux, uy])
+    # Points along the line from s to u
+    # U+ starts near s, goes upward
+    s_start_u = s_pos + 0.22 * np.array([ux, uy])
+    u_plus_end = s_pos + 0.42 * np.array([ux, uy])
+    # U- starts near u, goes downward
+    u_start_u = u_pos - 0.22 * np.array([ux, uy])
+    u_minus_end = u_pos - 0.42 * np.array([ux, uy])
     
-    # U+ label position (upper part of the line)
-    label_u_plus = s_pos + 0.55 * np.array([ux, uy])
-    # U- label position (lower part of the line)
-    label_u_minus = s_pos + 0.35 * np.array([ux, uy])
-    
-    # U+ arrow: s -> u
-    ax.annotate('', xy=(u_edge_u[0], u_edge_u[1]), 
-               xytext=(s_edge_u[0], s_edge_u[1]),
+    # U+ arrow: s -> u (upward)
+    ax.annotate('', xy=(u_plus_end[0], u_plus_end[1]), 
+               xytext=(s_start_u[0], s_start_u[1]),
                arrowprops=dict(arrowstyle='->', color='#16A085', lw=1.8), zorder=2)
-    ax.text(label_u_plus[0] + 0.06, label_u_plus[1], r'$U_+$', fontsize=12, ha='center', 
+    ax.text(s_pos[0] + 0.32*ux + 0.06, s_pos[1] + 0.32*uy, r'$U_+$', fontsize=12, ha='center', 
            va='center', color='#16A085')
     
-    # U- arrow: u -> s
-    ax.annotate('', xy=(s_edge_u[0], s_edge_u[1]), 
-               xytext=(u_edge_u[0], u_edge_u[1]),
+    # U- arrow: u -> s (downward)
+    ax.annotate('', xy=(u_minus_end[0], u_minus_end[1]), 
+               xytext=(u_start_u[0], u_start_u[1]),
                arrowprops=dict(arrowstyle='->', color='#16A085', lw=1.8, ls='--'), zorder=2)
-    ax.text(label_u_minus[0] + 0.06, label_u_minus[1] - 0.12, r'$U_-$', fontsize=12, ha='center', 
+    ax.text(u_pos[0] - 0.32*ux + 0.06, u_pos[1] - 0.32*uy, r'$U_-$', fontsize=12, ha='center', 
            va='center', color='#16A085')
     
     # ===== QUARK CIRCLES =====
