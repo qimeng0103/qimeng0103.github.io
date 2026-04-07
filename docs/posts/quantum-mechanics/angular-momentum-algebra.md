@@ -1558,17 +1558,17 @@ While weight diagrams visualize representations, **Young tableaux** provide a sy
 
 | Dimension | Label | Young Tableau | Symmetry |
 |:---------:|:-----:|:-------------:|:--------:|
-| 1 | $\mathbf{1}$ | <img src="/images/angular-momentum/young_singlet.png" width="20px"> | Trivial |
-| 3 | $\mathbf{3}$ | <img src="/images/angular-momentum/young_3.png" width="25px"> | Single box |
-| $\bar{3}$ | $\bar{\mathbf{3}}$ | <img src="/images/angular-momentum/young_3bar.png" width="25px"> | Single column, 2 boxes |
-| 6 | $\mathbf{6}$ | <img src="/images/angular-momentum/young_6.png" width="45px"> | Two symmetric boxes |
-| 8 | $\mathbf{8}$ | <img src="/images/angular-momentum/young_8.png" width="45px"> | Mixed symmetry |
-| 10 | $\mathbf{10}$ | <img src="/images/angular-momentum/young_10.png" width="70px"> | Three symmetric boxes |
+| 1 | $\mathbf{1}$ | (empty) | Trivial |
+| 3 | $\mathbf{3}$ | [□] | Single box |
+| $\bar{3}$ | $\bar{\mathbf{3}}$ | [□/□] | Single column, 2 boxes |
+| 6 | $\mathbf{6}$ | [□□] | Two symmetric boxes |
+| 8 | $\mathbf{8}$ | [□/□] with hook | Mixed symmetry (3 boxes) |
+| 10 | $\mathbf{10}$ | [□□□] | Three symmetric boxes |
 
 **Computing Tensor Products with Young Tableaux:**
 
 The product $\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$ is computed by:
-1. Start with the first tableau: <img src="/images/angular-momentum/young_3.png" width="25px">
+1. Start with the first tableau: [□]
 2. Add boxes from the second tableau in all allowed positions
 3. Enforce: no two added boxes in same column (antisymmetry constraint)
 4. Discard any column with 3 boxes (vanishes in SU(3))
