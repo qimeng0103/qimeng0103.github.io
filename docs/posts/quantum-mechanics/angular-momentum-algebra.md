@@ -1146,10 +1146,30 @@ $$D^{(j_1)} \otimes D^{(j_2)} = \bigoplus_{j=|j_1-j_2|}^{j_1+j_2} D^{(j)}$$
 
 **Physical Interpretation:** The composite system's Hilbert space contains TWO independent sectors. A state in the triplet sector remains there under rotation; a state in the singlet sector remains there. The decomposition reveals what total angular momentum values ($j=1$ or $j=0$) are possible for the composite system.
 
+**Types of Representations**
+
+| Type | Definition | Example |
+|------|------------|---------|
+| **Faithful** | Different group elements map to different operators | SU(2) on spin-1/2: $U \neq U' \Rightarrow D(U) \neq D(U')$ |
+| **Projective** | $D(g_1)D(g_2) = e^{i\omega(g_1,g_2)}D(g_1g_2)$, up to phase | Half-integer spin representations of SO(3) |
+| **Fundamental** | The defining representation (smallest non-trivial) | SU(2) on $\mathbb{C}^2$, SU(3) on $\mathbb{C}^3$ |
+| **Adjoint** | Representation on the Lie algebra itself (dimension = number of generators) | SU(2): 3D (generators $J_x, J_y, J_z$); SU(3): 8D |
+
+**Properties of Representations**
+
+**Dimension:** Number of linearly independent states, equal to the number of possible $m$ values:
+$$\dim D^{(j)} = 2j + 1$$
+
+**Character:** The trace $\chi^{(j)}(\theta) = \text{Tr}[D^{(j)}(R(\theta))]$ depends only on rotation angle $\theta$, not axis. It acts as a "fingerprint" for identifying representations.
+
+**Orthogonality Relation:**
+$$\int d\mu(g) \, \chi^{(j)}(g)^* \chi^{(j')}(g) = \delta_{jj'}$$
+where $d\mu(g)$ is the Haar measure. This allows decomposition of tensor products by projecting onto irreducible components.
+
 **Summary:**
 - **Irreducible representation** = fundamental classification label ($j$)
-- **States within representation** = degenerate subspace labeled by $m$
-- **Tensor product decomposition** = what total $j$ values can result from combining systems
+- **Multiplet** = set of states within one representation (degenerate under symmetry)
+- **Tensor product decomposition** = finding which $j$ values appear when systems combine
 
 ### 5.2 Lie Algebras: Why the Identity?
 
@@ -1169,159 +1189,114 @@ $$g(\theta) = e^{-i\theta T}$$
 $$[T_a, T_b] = i\sum_c f_{abc} T_c$$
 capture all essential group properties.
 
+**Generators and Exponentiation**
+
+The generator $J_z$ is extracted from the rotation operator by differentiation at the identity:
+$$J_z = i\hbar \frac{d R_z(\theta)}{d \theta}\bigg|_{\theta=0}$$
+
+This derivative extracts the "tangent vector" to the group manifold at the identity—the Lie algebra element. Finite rotations are built by exponentiation:
+$$R_z(\theta) = e^{-i\theta J_z/\hbar}$$
+
+The commutation relations $[J_i, J_j] = i\hbar\varepsilon_{ijk}J_k$ reflect the geometric structure of rotations: performing two rotations in different order differs by a third rotation.
+
 ### 5.3 SU(2) vs. SO(3): Double Cover and Projective Representations
 
 **Same Algebra, Different Groups**
 
-SU(2) and SO(3) have **identical Lie algebras**:
-$$[J_i, J_j] = i\hbar\varepsilon_{ijk}J_k$$
-
-But they are different groups:
+SU(2) and SO(3) have **identical Lie algebras** but different global topology:
 
 | Property | SO(3) | SU(2) |
 |----------|-------|-------|
-| Topology | $S^2$ with antipodal identification | 3-sphere $S^3$ |
-| Fundamental group | $\mathbb{Z}_2$ | Trivial (simply connected) |
+| Group elements | 3×3 real orthogonal matrices | 2×2 complex unitary matrices with $\det = 1$ |
+| Topology | 3D ball with antipodal surface points identified | 3-sphere $S^3$ (no identifications) |
+| Fundamental group | $\pi_1 = \mathbb{Z}_2$ (has non-contractible loops) | $\pi_1 = \{e\}$ (simply connected) |
 | Periodicity | $R(2\pi) = I$ | $U(2\pi) = -I$, $U(4\pi) = I$ |
 
-**The Double Cover**
+**Topology Explained:**
 
-SU(2) is the **universal covering group** of SO(3). Each SO(3) rotation corresponds to **two** SU(2) elements ($\pm U$):
-$$\text{SU(2)}/\mathbb{Z}_2 \cong \text{SO(3)}$$
+- **SO(3):** Can be visualized as a ball of radius $\pi$. A rotation by angle $\theta$ about axis $\mathbf{n}$ is point $\theta\mathbf{n}$. Opposite points on the surface ($\pi\mathbf{n}$ and $-\pi\mathbf{n}$) represent the same rotation—this is **antipodal identification**.
 
-**Projective Representations Explained**
+- **SU(2):** Is a 3-sphere. Each point corresponds to a unique matrix $U = a_0 I + i\mathbf{a} \cdot \boldsymbol{\sigma}$ with $a_0^2 + |\mathbf{a}|^2 = 1$. No identifications needed.
 
-In quantum mechanics, states are defined up to a phase. A **projective representation** satisfies:
+**The Double Cover:**
+
+$$
+\text{SU(2)}/\mathbb{Z}_2 \cong \text{SO(3)}
+$$
+
+The map: For $U = e^{-i\theta \mathbf{n}\cdot\boldsymbol{\sigma}/2} \in$ SU(2), the corresponding SO(3) element rotates by angle $\theta$ about axis $\mathbf{n}$. Both $U$ and $-U$ map to the same SO(3) rotation.
+
+**Example:** For rotation about $z$-axis:
+- SU(2): $U(\theta) = \begin{pmatrix} e^{-i\theta/2} & 0 \\ 0 & e^{i\theta/2} \end{pmatrix}$
+- SO(3): $R_z(\theta) = \begin{pmatrix} \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1 \end{pmatrix}$
+
+Note: $U(2\pi) = -I$ but $R_z(2\pi) = I$.
+
+**Projective Representations:**
+
+In quantum mechanics, $|\psi\rangle$ and $e^{i\phi}|\psi\rangle$ represent the same physical state. A **projective representation** satisfies:
 $$D(g_1)D(g_2) = e^{i\omega(g_1,g_2)} D(g_1 g_2)$$
 
-**The key insight:**
-- Integer $j$: $U(2\pi) = +I$ (same as SO(3)) — ordinary representation
-- Half-integer $j$: $U(2\pi) = -I$ ( differs from SO(3) where $R(2\pi) = I$)
+where $\omega(g_1, g_2)$ is a phase factor (cocycle).
 
-For half-integer $j$, a $2\pi$ rotation gives $-1$ (a phase factor). Since quantum states are rays in Hilbert space, $|\psi\rangle$ and $-|\psi\rangle$ represent the SAME physical state. This is a **projective representation** of SO(3).
+**Key Result:**
+- **Integer $j$:** $U(2\pi) = +I$ — this is a true representation of SO(3)
+- **Half-integer $j$:** $U(2\pi) = -I$ — this is only a projective representation of SO(3)
+
+For half-integer spin, a $2\pi$ rotation produces a phase factor $-1$. Since $|\psi\rangle$ and $-|\psi\rangle$ are the same quantum state, this is acceptable for SO(3).
+
+**Lifting Representations:**
+
+Every representation of SO(3) "lifts" to SU(2): given $D_{\text{SO(3)}}$, we can construct $D_{\text{SU(2)}}(U) = D_{\text{SO(3)}}(R)$ where $R$ is the rotation corresponding to $U$.
+
+Conversely, a representation of SU(2) descends to SO(3) **only if** $D(-U) = D(U)$. This holds for integer $j$ but fails for half-integer $j$ (where $D(-U) = -D(U)$).
 
 **Why SU(2) is fundamental:**
-- SU(2) is simply connected (no "holes")
-- Every representation of SO(3) lifts to SU(2)
-- But SU(2) has "extra" representations (half-integer $j$) that don't come from SO(3)
-- These are precisely the spin-1/2, spin-3/2, ... representations essential for fermions
+- SU(2) is simply connected—no "holes" in its topology
+- Every representation of SO(3) comes from a representation of SU(2)
+- But SU(2) has additional representations (half-integer $j$) with no SO(3) counterpart
+- These "extra" representations describe fermions (electrons, quarks, etc.)
 
 ### 5.4 SU(3) Flavor vs. SU(3) Color: Two Different Symmetries
 
-**Important Distinction**
-
-In particle physics, there are **two different SU(3) symmetries**:
-
-1. **Flavor SU(3):** Approximate symmetry (up, down, strange quarks have similar masses)
-2. **Color SU(3):** Exact gauge symmetry (strong interaction)
+**Global vs. Local (Gauge) Symmetry**
 
 | Property | Flavor SU(3) | Color SU(3) |
 |----------|-------------|-------------|
-| Type | Global symmetry | Local gauge symmetry |
-| Approximate? | Yes (broken by mass differences) | Exact |
-| Physical role | Classifies hadrons | Explains confinement |
-| Quark content | 3 flavors | 3 colors (red, green, blue) |
+| Type | **Global** symmetry | **Local** gauge symmetry |
+| Transformation | Same at all spacetime points | Different at each point: $U(x)$ |
+| Connection | No gauge field | Requires gluon field $A_\mu^a(x)$ |
+| Approximate? | Yes (broken by quark mass differences) | Exact |
+| Physical role | Classifies hadrons | Generates strong interaction |
+
+**Local Symmetry (Gauge Principle):** For a symmetry to hold independently at every spacetime point, a compensating field (the gauge field) must exist. For SU(3) color, this field is the **gluon**, and the symmetry requires quarks interact via gluon exchange.
 
 **The Color Singlet Rule**
 
-All observable hadrons are **color singlets**. This is why:
-- Mesons: quark + antiquark in color singlet ($\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$)
-- Baryons: three quarks in color singlet
+All observable hadrons must be **color singlets** (invariant under SU(3) color transformations). This explains:
 
-The color wavefunction for baryons is:
-$$|\text{color}\rangle = \frac{1}{\sqrt{6}}(rgb - rbg + gbr - grb + brg - bgr)$$
+1. **Mesons:** Quark + antiquark
+   $$\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$$
+   The singlet $\mathbf{1}$ is the physical meson.
 
-This is the **totally antisymmetric** combination of three colors—mathematically identical to the Levi-Civita symbol $\varepsilon_{ijk}$.
+2. **Baryons:** Three quarks
+   $$\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$$
+   The singlet $\mathbf{1}$ is the physical baryon.
 
-### 5.5 Young Diagrams: Permutation Symmetry Meets Angular Momentum
+**Why the color singlet?** Only color-singlet states have finite energy. Color-charged states (octet, decuplet, etc.) have infinite energy due to confinement—they cannot exist as isolated particles.
 
-**The Connection**
+**The Baryon Color Wavefunction:**
 
-Young diagrams describe the **representation of the permutation group** $S_n$ (symmetric group). But they also label **irreducible representations of SU(N)**. This is profound:
+For three quarks with colors $c_1, c_2, c_3 \in \{r, g, b\}$:
 
-- **Permutation symmetry** (exchange of identical particles)
-- **SU(N) representation** (quantum numbers under internal symmetry)
+$$|\text{color singlet}\rangle = \frac{1}{\sqrt{6}} \varepsilon_{c_1 c_2 c_3} |c_1 c_2 c_3\rangle$$
 
-are classified by the same mathematical objects!
+Explicitly:
+$$= \frac{1}{\sqrt{6}}(|rgb\rangle - |rbg\rangle + |gbr\rangle - |grb\rangle + |brg\rangle - |bgr\rangle)$$
 
-**Systematic Approach to Combinatorics: A Recipe**
+This is the **Levi-Civita symbol** $\varepsilon_{c_1 c_2 c_3}$, which is totally antisymmetric. When you apply any SU(3) color transformation, the state remains unchanged (singlet property).
 
-You mentioned struggling with counting problems—not knowing whether to start with labels, "seats," or something else. Here's a **systematic recipe** using Young diagrams:
-
-**The Problem: Counting States with Symmetry**
-
-When combining identical quantum systems (e.g., 3 spin-1/2 particles), we need to count states with specific symmetry properties under particle exchange.
-
-**Step-by-Step Recipe:**
-
-**Step 1: Identify the partition from symmetry requirements**
-
-| Desired Symmetry | Partition | Young Diagram Shape |
-|------------------|-----------|---------------------|
-| Totally symmetric | $(n)$ | Single row $\ydiagram{3}$ |
-| Totally antisymmetric | $(1^n)$ | Single column $\ydiagram{1,1,1}$ |
-| Mixed symmetry | $(n-k,k)$ | Hook shape $\ydiagram{2,1}$ |
-
-**Step 2: Calculate dimension using hook length formula**
-
-For each box, compute its **hook length**:
-$$h = 1 + \text{(boxes to right)} + \text{(boxes below)}$$
-
-Then:
-$$d = \frac{n!}{\prod h_i}$$
-
-**Example for 3 particles:**
-- Partition (3): hook lengths are 3, 2, 1 → $d = 3!/6 = 1$ state
-- Partition (2,1): hook lengths are 3, 1, 1 → $d = 3!/3 = 2$ states
-
-**Step 3: Construct explicit states (standard Young tableaux)**
-
-Fill boxes with numbers 1, 2, ..., $n$ such that:
-- Numbers increase left-to-right along rows
-- Numbers increase top-to-bottom down columns
-
-For partition (2,1) with 3 particles:
-```
-┌───┬───┐    ┌───┬───┐
-│ 1 │ 2 │    │ 1 │ 3 │
-├───┼───┘    ├───┼───┘
-│ 3 │        │ 2 │
-└───┘        └───┘
-```
-These two tableaux correspond to the two doublet states in the decomposition of three spin-1/2 particles.
-
-**Why This Works (The Key Connection):**
-
-The same Young diagram classifies:
-1. **Irreducible representations of $S_n$** (permutation group)
-2. **Irreducible representations of SU(N)** (unitary group)
-
-This is **Schur-Weyl duality**. For SU(2), the diagram with $k$ boxes in the first row labels spin $j = k/2$.
-
-**From SU(2) to SU(N)**
-
-For SU(N), the same Young diagrams apply, but with a constraint:
-- **Maximum column height is N** (columns taller than N are forbidden/reducible)
-- For SU(2): max 2 rows
-- For SU(3): max 3 rows (but effectively 2 due to determinant constraint)
-
-**Summary Table:**
-
-| Particles | Diagram | SU(2) Spin | SU(3) Rep |
-|-----------|---------|------------|-----------|
-| 2 | $\ydiagram{2}$ | $j=1$ (triplet) | $\mathbf{6}$ |
-| 2 | $\ydiagram{1,1}$ | $j=0$ (singlet) | $\bar{\mathbf{3}}$ |
-| 3 | $\ydiagram{3}$ | $j=3/2$ | $\mathbf{10}$ |
-| 3 | $\ydiagram{2,1}$ | $j=1/2$ (×2) | $\mathbf{8}$ (×2) |
-
-**From SU(2) to SU(N)**
-
-For SU(N), the same Young diagrams apply, but:
-- Each box can have $N$ "colors" (states)
-- A column of height $N$ is a singlet (can be removed)
-- This is why SU(3) only has diagrams with at most 2 rows (not 3)
-
-### 5.6 SU(3) Weight Diagrams: Visualizing Representations
+### 5.5 SU(3) Weight Diagrams: Visualizing Representations
 
 **The SU(3) Weight Space**
 
@@ -1367,8 +1342,6 @@ The 6 roots form a hexagon in weight space. Each root corresponds to a raising/l
 - **Multiplicity** at a point indicates degeneracy (e.g., center of octet has $\Sigma^0$ and $\Lambda$)
 - The **outer boundary** is determined by the highest weight state
 
-### 5.8 Roots and Weights: Labeling States
-
 **Cartan Subalgebra and Quantum Numbers**
 
 The Cartan subalgebra consists of mutually commuting generators. Its eigenvalues label states:
@@ -1395,31 +1368,10 @@ Roots are weights of the **adjoint representation** (generators themselves). The
 - SU(2): $J_\pm$ changes $m$ by $\pm 1$ → root vectors $\pm 1$
 - SU(3): Ladder operators move between states in the $(i_3, y)$ plane
 
-**SU(3) Root Diagram:**
-
-The 8 generators of SU(3) form a hexagon in weight space:
-
-```
-          $I_+$ (1, 0)
-            /
-           /
-$V_+$ (1/2, 3/2) ---- $U_-$ (-1/2, 3/2)
-     \               /
-      \   (0, 0)    /
-       \    ×     /
-        \        /
-$U_+$ (1/2, -3/2) ---- $V_-$ (-1/2, -3/2)
-           \
-            \
-          $I_-$ (-1, 0)
-```
-
-The six outer points are the roots (raising/lowering operators). The center represents the two Cartan generators $(I_3, Y)$.
-
 **Highest Weight Theorem:**
 Each irreducible representation has a unique highest weight state. All other states are reached by applying lowering operators. This is why SU(3) representations are labeled by $(p,q)$—these integers specify the highest weight.
 
-### 5.9 Atomic Physics: Coupling Schemes
+### 5.6 Atomic Physics: Coupling Schemes
 
 **Term Symbols and Multi-Electron Atoms**
 
@@ -1442,7 +1394,7 @@ Both are group-theoretically valid; the choice depends on which interaction domi
 2. Maximum $L$ for that $S$
 3. $J$ depends on shell filling (minimum for $<$ half, maximum for $>$ half)
 
-### 5.10 Isospin: SU(2) in Nuclear Physics
+### 5.7 Isospin: SU(2) in Nuclear Physics
 
 **Nucleons as an SU(2) Doublet**
 
@@ -1460,98 +1412,30 @@ This is **not** real spin—it's an internal symmetry (flavor symmetry) with ide
 $$Q = I_3 + \frac{B+S}{2}$$
 relates charge $Q$, isospin projection $I_3$, baryon number $B$, and strangeness $S$.
 
-### 5.11 Generators and Rotations
+**Applications:**
+- **Particle identification:** Given any three of the four quantum numbers, the fourth is determined
+- **Reaction constraints:** Strong interactions conserve $I_3$, $B$, and $S$, so charge is automatically conserved
+- **Prediction:** The formula predicted the existence of the $\Omega^-$ baryon (strangeness $-3$, charge $-1$) before its experimental discovery
 
-**Why Angular Momentum Generates Rotations**
+---
 
-For infinitesimal rotation by $\delta\theta$ about axis $\mathbf{n}$:
-$$R(\mathbf{n}, \delta\theta) \approx I - \frac{i}{\hbar}\delta\theta (\mathbf{n} \cdot \mathbf{J})$$
+## Part VI: Advanced Topics and Applications
 
-Finite rotations are built by exponentiation:
-$$R(\mathbf{n}, \theta) = e^{-i\theta \mathbf{n} \cdot \mathbf{J}/\hbar}$$
+### 6.1 Characters and Orthogonality
 
-This connects the algebraic structure (commutation relations) to the geometric action (rotations in space).
+**Character of a Representation**
 
-Rotation operators must be **unitary** (to preserve quantum state normalization) and form a **group** (composition of rotations gives another rotation). The exponential form ensures both:
-$$R(\mathbf{n}, \theta) = e^{-i\theta (\mathbf{n} \cdot \mathbf{J})/\hbar}$$
+The character $\chi_j(\theta)$ is the trace of the representation matrix:
+$$\chi_j(\theta) = \text{Tr}[D^{(j)}(R(\theta))] = \sum_{m=-j}^{j} e^{-im\theta} = \frac{\sin[(j+1/2)\theta]}{\sin(\theta/2)}$$
 
-**Extracting the Generator:**
+Characters depend only on the rotation angle, not the axis, making them useful for identifying representations.
 
-Given the rotation operator $R_z(\theta) = e^{-i\theta J_z/\hbar}$, how do we "find" $J_z$? We differentiate at the identity ($\theta = 0$):
+**Orthogonality Relation**
 
-$$J_z = i\hbar \frac{d R_z(\theta)}{d \theta}\bigg|_{\theta=0}$$
+$$\int_0^{2\pi} \chi_{j_1}(\theta) \chi_{j_2}(\theta) \sin^2\frac{\theta}{2} d\theta = \pi \delta_{j_1 j_2}$$
 
-This is a derivative with respect to the **group parameter** $\theta$, evaluated at the identity element of the group. It extracts the "tangent vector" to the group manifold at the identity—this is precisely the Lie algebra element (generator).
-
-**Physical Interpretation:**
-
-- $R_z(\theta)$ describes "where you end up" after rotating by angle $\theta$
-- $J_z$ describes "which direction you're initially moving" as you start to rotate
-- Just as velocity is the derivative of position with respect to time, $J_z$ is the derivative of the rotation operator with respect to the rotation angle
-
-**Analogy with Momentum:**
-
-This is directly analogous to how momentum generates spatial translations:
-$$T(a) = e^{-iap_x/\hbar}, \quad p_x = i\hbar \frac{dT(a)}{da}\bigg|_{a=0}$$
-
-Just as $p_x$ generates translations in $x$, the angular momentum components $J_i$ generate rotations about their respective axes. Both are generators of symmetry transformations—momentum for translations, angular momentum for rotations.
-
-**Why the Commutation Relations?**
-
-The commutation relations $[J_i, J_j] = i\hbar\varepsilon_{ijk}J_k$ reflect the structure of the rotation group. If we perform two infinitesimal rotations in different orders, the difference is a third rotation:
-- Rotate by $\delta\alpha$ about $x$, then by $\delta\beta$ about $y$
-- vs. rotate by $\delta\beta$ about $y$, then by $\delta\alpha$ about $x$
-
-The difference is a rotation by $\delta\alpha\delta\beta$ about $z$. This geometric fact translates directly into the algebraic commutation relations.
-
-**Lie Algebra Structure:**
-
-The generators $\{J_i\}$ form a **Lie algebra**—a vector space with a bilinear operation (the commutator) satisfying:
-1. Antisymmetry: $[J_i, J_j] = -[J_j, J_i]$
-2. Jacobi identity: $[J_i, [J_j, J_k]] + [J_j, [J_k, J_i]] + [J_k, [J_i, J_j]] = 0$
-
-The commutation relations define the structure constants ($\varepsilon_{ijk}$ for angular momentum), which completely characterize the local structure of the rotation group.
-
-**SU(2) - The Special Unitary Group**
-
-SU(2) is the group of $2 \times 2$ unitary matrices with determinant 1. It is the double cover of SO(3):
-- Every SO(3) rotation corresponds to two SU(2) elements ($\pm U$)
-- For integer $j$, the representations correspond to SO(3)
-- For half-integer $j$, the representations correspond to SU(2)
-
-**The Double Cover: SU(2) vs SO(3)**
-
-The relationship $\text{SU(2)}/\mathbb{Z}_2 \cong \text{SO(3)}$ means that SU(2) "covers" SO(3) twice. This is a subtle but crucial point:
-
-**The Physical Picture:**
-- SO(3) describes rotations in 3D space. A rotation by $2\pi$ (360°) returns to the identity.
-- SU(2) describes how spinors transform. A rotation by $2\pi$ gives a *minus sign*: $|\psi\rangle \to -|\psi\rangle$. You need a rotation by $4\pi$ (720°) to return to the original state!
-
-**Why This Happens:**
-
-Consider a rotation by angle $\theta$ about the $z$-axis:
-- In SO(3): $R_z(2\pi) = I$ (identity)
-- In SU(2): $U_z(2\pi) = -I$ (minus identity)
-
-The SU(2) matrix $U$ and $-U$ correspond to the *same* SO(3) rotation. This is the "double cover": each SO(3) rotation has two SU(2) representatives.
-
-**Physical Manifestation:**
-
-This isn't just mathematics—it has physical consequences:
-- **Fermions** (spin-1/2, 3/2, ...) pick up a minus sign under $2\pi$ rotation. This is why they obey Fermi-Dirac statistics and the Pauli exclusion principle.
-- **Bosons** (spin-0, 1, 2, ...) return to their original state after $2\pi$ rotation.
-
-**The Neutron Interference Experiment:**
-In 1975, Werner et al. demonstrated this by splitting a neutron beam, rotating one path by $2\pi$ using a magnetic field, and recombining the beams. The observed interference pattern confirmed the sign change—neutrons (spin-1/2) truly need a $4\pi$ rotation to return to their original state.
-
-**Relationship:**
-$$\text{SU(2)}/\mathbb{Z}_2 \cong \text{SO(3)}$$
-
-The quotient by $\mathbb{Z}_2$ means we identify $U \sim -U$ in SU(2), giving us SO(3). For integer spin representations, $U$ and $-U$ act identically (since $e^{-im\theta}$ with $m$ integer is unchanged by $\theta \to \theta + 2\pi$), so these representations are "faithful" representations of SO(3). For half-integer spins, they are representations of SU(2) but not of SO(3).
-
-### 5.2 Irreducible Representations and the Meaning of "Representation"
-
-**What is a "Representation"?**
+This orthogonality allows decomposition of tensor products by computing multiplicities:
+$$n_j = \int d\theta \, \chi_{j_1}(\theta)\chi_{j_2}(\theta)\chi_j^*(\theta) \times (\text{measure})$$
 
 The term "representation" in group theory can be confusing. Intuitively, a representation is a concrete realization of abstract group elements as matrices acting on a vector space. For the rotation group, instead of thinking about abstract rotations, we represent each rotation as a matrix that transforms quantum states.
 
