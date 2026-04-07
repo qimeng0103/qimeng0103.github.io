@@ -1497,116 +1497,72 @@ The 6 roots form a hexagon in weight space. Each root corresponds to a raising/l
 
 *The baryon octet forms a hexagon in weight space. Note that the center contains two states ($\Sigma^0$ and $\Lambda$) at the same position—this is a 2D representation of an 8D space.*
 
-**The Decuplet $\mathbf{10}$ (Spin-3/2 Baryons):**
+**The Decuplet $\mathbf{10}$ (Spin-$\frac{3}{2}$ Baryons)**
+
+The symmetric combination of three quarks forms the decuplet:
 
 <img src="/images/angular-momentum/su3_decuplet_baryons.png" width="600px" alt="SU(3) Baryon Decuplet">
 
-*The baryon decuplet forms a triangular pattern. The $\Delta$ resonances form a quartet, $\Sigma^*$ a triplet, $\Xi^*$ a doublet, and $\Omega^-$ is a singlet.*
+*The baryon decuplet forms a triangular pattern. The $\Delta$ resonances form a quartet, $\Sigma^*$ a triplet, $\Xi^*$ a doublet, and $\Omega^-$ is a singlet. All states are symmetric in flavor and spin ($S=3/2$).*
 
-**All Representations Comparison:**
+| Level | Baryons | Isospin | Quark Content |
+|:-----:|:-------:|:-------:|:-------------:|
+| $Y=1$ | $\Delta^{++}, \Delta^{+}, \Delta^{0}, \Delta^{-}$ | $I=\frac{3}{2}$ | $uuu, uud, udd, ddd$ |
+| $Y=0$ | $\Sigma^{*+}, \Sigma^{*0}, \Sigma^{*-}$ | $I=1$ | $uus, uds, dds$ |
+| $Y=-1$ | $\Xi^{*0}, \Xi^{*-}$ | $I=\frac{1}{2}$ | $uss, dss$ |
+| $Y=-2$ | $\Omega^{-}$ | $I=0$ | $sss$ |
 
-<img src="/images/angular-momentum/su3_all_representations.png" width="700px" alt="SU(3) All Representations">
+The $\Omega^-$ was predicted by SU(3) flavor symmetry before its experimental discovery in 1964.
 
-*Comparison of SU(3) representations. Notice how the dimension increases with the complexity of the shape.*
+---
 
-**Reading Weight Diagrams:**
-- **Points** are states (particles), labeled by $(I_3, Y)$ quantum numbers
-- **Lines** connect states differing by one root (ladder operators move along these lines)
-- **Multiplicity** at a point indicates degeneracy (e.g., center of octet has $\Sigma^0$ and $\Lambda$)
-- The **outer boundary** is determined by the highest weight state
+**Young Tableaux: Symmetry and Tensor Products**
 
-**Cartan Subalgebra and Quantum Numbers**
-
-The Cartan subalgebra consists of mutually commuting generators. Its eigenvalues label states:
-
-- **SU(2):** One Cartan generator $J_z$ → one quantum number $m$
-- **SU(3):** Two Cartan generators $I_3$ (isospin) and $Y$ (hypercharge) → two quantum numbers $(i_3, y)$
-
-**Weights: State Labels within a Representation**
-
-In a representation, weights are the eigenvalues of Cartan generators:
-$$H_i |\Lambda\rangle = \Lambda_i |\Lambda\rangle$$
-
-**Example (SU(3) octet baryons):**
-| Baryon | $I_3$ | $Y$ | Weight $(i_3, y)$ |
-|--------|-------|-----|-------------------|
-| $p$ | +1/2 | 1 | $(+1/2, 1)$ |
-| $n$ | -1/2 | 1 | $(-1/2, 1)$ |
-| $\Lambda$ | 0 | 0 | $(0, 0)$ |
-| $\Sigma^+$ | +1 | 0 | $(+1, 0)$ |
-
-**Roots: How Generators Move Between States**
-
-Roots are weights of the **adjoint representation** (generators themselves). They tell us how ladder operators change quantum numbers:
-- SU(2): $J_\pm$ changes $m$ by $\pm 1$ → root vectors $\pm 1$
-- SU(3): Ladder operators move between states in the $(i_3, y)$ plane
-
-**Highest Weight Theorem:**
-Each irreducible representation has a unique highest weight state. All other states are reached by applying lowering operators. This is why SU(3) representations are labeled by $(p,q)$—these integers specify the highest weight.
-
-**Young Tableaux: Systematic Tensor Product Decomposition**
-
-While weight diagrams visualize representations, **Young tableaux** provide a systematic way to compute tensor products. They represent the symmetry pattern of tensor indices.
+While weight diagrams visualize representations, **Young tableaux** provide a systematic way to compute tensor products. They encode the symmetry pattern of tensor indices.
 
 **Basic Rules:**
 - Each box represents a tensor index
-- A row of $n$ boxes = totally symmetric combination of $n$ indices
-- A column of $n$ boxes = totally antisymmetric combination of $n$ indices
-- For SU($N$), columns can have at most $N$ boxes (more would vanish by antisymmetry)
+- A row of $n$ boxes = totally symmetric combination
+- A column of $n$ boxes = totally antisymmetric combination
+- For SU($N$), columns can have at most $N$ boxes
 
-**SU(3) Representations as Young Tableaux:**
+**SU(3) Representations:**
 
-| Dimension | Label | Young Tableau | Symmetry |
-|:---------:|:-----:|:-------------:|:--------:|
-| 1 | $\mathbf{1}$ | (empty) | Trivial |
-| 3 | $\mathbf{3}$ | [□] | Single box |
-| $\bar{3}$ | $\bar{\mathbf{3}}$ | [□/□] | Single column, 2 boxes |
-| 6 | $\mathbf{6}$ | [□□] | Two symmetric boxes |
-| 8 | $\mathbf{8}$ | [□/□] with hook | Mixed symmetry (3 boxes) |
-| 10 | $\mathbf{10}$ | [□□□] | Three symmetric boxes |
+| Dim | Label | Young Tableau | Symmetry |
+|:---:|:-----:|:-------------:|:--------:|
+| 1 | $\mathbf{1}$ | <img src="/images/angular-momentum/young_1_pure.png" width="20px" style="vertical-align:middle"> | Trivial |
+| 3 | $\mathbf{3}$ | <img src="/images/angular-momentum/young_3_pure.png" width="20px" style="vertical-align:middle"> | Single box |
+| $\bar{3}$ | $\bar{\mathbf{3}}$ | <img src="/images/angular-momentum/young_3bar_pure.png" width="20px" style="vertical-align:middle"> | 2-box column |
+| 6 | $\mathbf{6}$ | <img src="/images/angular-momentum/young_6_pure.png" width="40px" style="vertical-align:middle"> | Symmetric |
+| 8 | $\mathbf{8}$ | <img src="/images/angular-momentum/young_8_pure.png" width="40px" style="vertical-align:middle"> | Mixed (2,1) |
+| 10 | $\mathbf{10}$ | <img src="/images/angular-momentum/young_10_pure.png" width="60px" style="vertical-align:middle"> | 3-box symmetric |
 
-**Computing Tensor Products with Young Tableaux:**
+**Computing $\mathbf{3} \otimes \mathbf{3}$:**
 
-The product $\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$ is computed by:
-1. Start with the first tableau: [□]
-2. Add boxes from the second tableau in all allowed positions
-3. Enforce: no two added boxes in same column (antisymmetry constraint)
-4. Discard any column with 3 boxes (vanishes in SU(3))
+Start with <img src="/images/angular-momentum/young_3_pure.png" width="18px" style="vertical-align:middle"> and add a second box:
 
-**Example: Meson Octet from $\mathbf{3} \otimes \bar{\mathbf{3}}$**
+| Position | Result | Representation |
+|:--------:|:------:|:--------------:|
+| Right | <img src="/images/angular-momentum/young_6_pure.png" width="35px" style="vertical-align:middle"> | $\mathbf{6}$ (symmetric) |
+| Below | <img src="/images/angular-momentum/young_3bar_pure.png" width="18px" style="vertical-align:middle"> | $\bar{\mathbf{3}}$ (antisymmetric) |
 
+$$\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$$
+
+**Physical Applications:**
+
+**Mesons** ($\mathbf{3} \otimes \bar{\mathbf{3}}$):
 $$\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$$
+The octet contains pions ($\pi^\pm, \pi^0$), kaons ($K^\pm, K^0, \bar{K}^0$), and eta ($\eta$). The singlet is $\eta'$.
 
-This is the quark-antiquark combination giving mesons. The singlet is a scalar meson; the octet contains the pions, kaons, and eta meson.
-
-**Example: Baryon Decuplet from $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3}$**
-
+**Baryons** ($\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3}$):
 $$\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$$
 
-Three quarks combine to give the decuplet (spin-3/2 baryons), two octets (spin-1/2 baryons), and a singlet (forbidden by spin-statistics for three identical fermions).
+For three identical fermions with antisymmetric color:
+- **Decuplet** ($\mathbf{10}$): Symmetric flavor $\times$ symmetric spin
+- **Octet** ($\mathbf{8}$): Mixed flavor $\times$ mixed spin
+- **Singlet** ($\mathbf{1}$): Antisymmetric flavor (forbidden for 3 identical quarks)
 
-**Key Insight:** Young tableaux encode the permutation symmetry of identical particles. For multi-quark systems, the color, flavor, and spin wavefunctions must combine to give overall antisymmetry (for fermions).
-
-### 5.6 Isospin: SU(2) in Nuclear Physics
-
-**Nucleons as an SU(2) Doublet**
-
-Proton and neutron are nearly identical under strong interactions:
-$$|p\rangle = |I=1/2, I_3=+1/2\rangle, \quad |n\rangle = |I=1/2, I_3=-1/2\rangle$$
-
-This is **not** real spin—it's an internal symmetry (flavor symmetry) with identical SU(2) algebra.
-
-**Physical Consequences:**
-- Mirror nuclei (e.g., $^3$He and $^3$H) have similar energy levels
-- Isospin conservation in strong interactions constrains reaction cross sections
-- The neutron-proton mass difference ($\sim 1.3$ MeV) is electromagnetic, not strong interaction
-
-**Gell-Mann–Nishijima Formula:**
-$$Q = I_3 + \frac{B+S}{2}$$
-relates charge $Q$, isospin projection $I_3$, baryon number $B$, and strangeness $S$.
-
-**Application:**
-Given any three of the four quantum numbers, the fourth is determined. Strong interactions conserve $I_3$, $B$, and $S$, so charge is automatically conserved.
+**Key Insight:** Young tableaux encode permutation symmetry. For physical hadrons (color singlets), flavor $\times$ spin must be symmetric for baryons.
 
 ---
 
