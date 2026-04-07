@@ -91,8 +91,14 @@ def plot_spherical_harmonic_2d(l, m, filename, title=None):
     
     fig, ax = plt.subplots(figsize=(8, 8), subplot_kw=dict(projection='polar'))
     
-    ax.plot(theta, Y_vals, linewidth=2, label=f'$|Y_{{{l}}}^{{{m}}}|^2$')
-    ax.fill_between(theta, 0, Y_vals, alpha=0.3)
+    # Draw radial grid lines first with low zorder so they appear behind fill
+    max_r = Y_vals.max()
+    for angle in [0, np.pi/4, np.pi/2, 3*np.pi/4, np.pi, 5*np.pi/4, 3*np.pi/2, 7*np.pi/4]:
+        ax.plot([angle, angle], [0, max_r], color='gray', linewidth=0.5, alpha=0.5, zorder=1)
+    
+    # Fill and outline with higher zorder
+    ax.fill_between(theta, 0, Y_vals, alpha=0.3, zorder=2)
+    ax.plot(theta, Y_vals, linewidth=2, label=f'$|Y_{{{l}}}^{{{m}}}|^2$', zorder=3)
     
     ax.set_rticks([])  # Remove radial ticks
     ax.set_xticks([0, np.pi/4, np.pi/2, 3*np.pi/4, np.pi, 5*np.pi/4, 3*np.pi/2, 7*np.pi/4])
@@ -145,8 +151,16 @@ def plot_all_spherical_harmonics():
             Y_vals.append(np.abs(Y)**2)
         Y_vals = np.array(Y_vals)
         
-        ax.plot(theta, Y_vals, linewidth=2, color='darkblue')
-        ax.fill_between(theta, 0, Y_vals, alpha=0.3, color='blue')
+        # Draw the z-axis (0° line) first with low zorder so it appears behind fill
+        max_r = Y_vals.max()
+        ax.plot([0, 0], [0, max_r], color='gray', linewidth=0.8, alpha=0.7, zorder=1)
+        
+        # Draw x-axis (90° line) as well
+        ax.plot([np.pi/2, np.pi/2], [0, max_r], color='gray', linewidth=0.8, alpha=0.7, zorder=1)
+        
+        # Fill and outline with higher zorder
+        ax.fill_between(theta, 0, Y_vals, alpha=0.3, color='blue', zorder=2)
+        ax.plot(theta, Y_vals, linewidth=2, color='darkblue', zorder=3)
         
         ax.set_rticks([])
         ax.set_xticks([0, np.pi/2, np.pi, 3*np.pi/2])
