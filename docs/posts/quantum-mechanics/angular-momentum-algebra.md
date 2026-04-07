@@ -1148,23 +1148,120 @@ $$D^{(j_1)} \otimes D^{(j_2)} = \bigoplus_{j=|j_1-j_2|}^{j_1+j_2} D^{(j)}$$
 
 **Types of Representations**
 
-| Type | Definition | Example |
-|------|------------|---------|
-| **Faithful** | Different group elements map to different operators | SU(2) on spin-1/2: $U \neq U' \Rightarrow D(U) \neq D(U')$ |
-| **Projective** | $D(g_1)D(g_2) = e^{i\omega(g_1,g_2)}D(g_1g_2)$, up to phase | Half-integer spin representations of SO(3) |
-| **Fundamental** | The defining representation (smallest non-trivial) | SU(2) on $\mathbb{C}^2$, SU(3) on $\mathbb{C}^3$ |
-| **Adjoint** | Representation on the Lie algebra itself (dimension = number of generators) | SU(2): 3D (generators $J_x, J_y, J_z$); SU(3): 8D |
+**1. Faithful Representation**
+
+A representation is **faithful** if different group elements always map to different operators:
+$$g_1 \neq g_2 \implies D(g_1) \neq D(g_2)$$
+
+**Example:** SU(2) on spin-1/2 is faithful. Consider two different SU(2) elements:
+$$U_1 = e^{-i\theta_1 \sigma_z/2}, \quad U_2 = e^{-i\theta_2 \sigma_z/2}$$
+If $\theta_1 \neq \theta_2$ (mod $4\pi$), then $D(U_1) \neq D(U_2)$ as $2 \times 2$ matrices. The representation is injective.
+
+**Counter-example:** The trivial representation $D(g) = 1$ for all $g$ is NOT faithful—all group elements map to the same number 1.
+
+**2. Projective Representation**
+
+In quantum mechanics, states are rays: $|\psi\rangle$ and $e^{i\phi}|\psi\rangle$ represent the same physical state. A **projective representation** satisfies:
+$$D(g_1)D(g_2) = e^{i\omega(g_1,g_2)} D(g_1g_2)$$
+
+The product is only required up to a phase factor.
+
+**Example:** Half-integer spin representations of SO(3) are projective. For spin-1/2:
+- SO(3) rotation $R_z(2\pi) = I$ (identity)
+- But the quantum operator is $D^{(1/2)}(R_z(2\pi)) = -I$
+
+So $D(I) = I$ but $D(R_z(2\pi)) = -I$, even though $R_z(2\pi) = I$ in SO(3). This is NOT a true representation of SO(3), but it IS a projective representation because $-I$ differs from $I$ only by a phase ($-1 = e^{i\pi}$).
+
+**3. Fundamental Representation**
+
+The **fundamental representation** is the defining representation of the group—the smallest one used to define the group itself.
+
+**Example 1 (SU(2)):** SU(2) is defined as $2 \times 2$ unitary matrices with $\det = 1$. The fundamental representation is these matrices acting on $\mathbb{C}^2$ (2-component spinors):
+$$\psi = \begin{pmatrix} \psi_1 \\ \psi_2 \end{pmatrix} \xrightarrow{U} U\psi$$
+
+**Example 2 (SU(3)):** SU(3) is defined as $3 \times 3$ unitary matrices with $\det = 1$. The fundamental representation acts on $\mathbb{C}^3$ (quark triplet: up, down, strange).
+
+**4. Adjoint Representation**
+
+The **adjoint representation** is a representation where the group acts on its own Lie algebra (the space of generators).
+
+**Understanding the Adjoint Representation:**
+
+A Lie group $G$ has generators $\{T_a\}$ forming a vector space $\mathfrak{g}$ (the Lie algebra). For SU(2), the generators are $\{J_x, J_y, J_z\}$—a 3D vector space.
+
+A group element $g \in G$ acts on a generator $T \in \mathfrak{g}$ by conjugation:
+$$T \xrightarrow{g} g T g^{-1}$$
+
+This defines the adjoint representation: $D_{\text{adj}}(g) T = g T g^{-1}$
+
+**Why it is a representation:** Check that $D(g_1g_2) = D(g_1)D(g_2)$:
+$$D_{\text{adj}}(g_1g_2)T = (g_1g_2)T(g_1g_2)^{-1} = g_1(g_2 T g_2^{-1})g_1^{-1} = D_{\text{adj}}(g_1)[D_{\text{adj}}(g_2)T]$$
+
+**Example (SU(2)):** The adjoint representation has dimension 3 (equal to the number of generators $J_x, J_y, J_z$). For a rotation $R_z(\theta)$ about the $z$-axis:
+$$J_x \to \cos\theta \, J_x + \sin\theta \, J_y$$
+$$J_y \to -\sin\theta \, J_x + \cos\theta \, J_y$$
+$$J_z \to J_z$$
+
+In matrix form (basis $\{J_x, J_y, J_z\}$):
+$$D_{\text{adj}}(R_z(\theta)) = \begin{pmatrix} \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1 \end{pmatrix}$$
+
+This is just the standard $3 \times 3$ rotation matrix! For SU(2), the adjoint representation is the spin-1 (vector) representation.
+
+**Summary of Dimensions:**
+- SU(2): Fundamental = 2D (spin-1/2), Adjoint = 3D (spin-1)
+- SU(3): Fundamental = 3D (quark), Adjoint = 8D (gluon)
+
+---
 
 **Properties of Representations**
 
-**Dimension:** Number of linearly independent states, equal to the number of possible $m$ values:
-$$\dim D^{(j)} = 2j + 1$$
+**Character**
 
-**Character:** The trace $\chi^{(j)}(\theta) = \text{Tr}[D^{(j)}(R(\theta))]$ depends only on rotation angle $\theta$, not axis. It acts as a "fingerprint" for identifying representations.
+The **character** of a representation is the trace:
+$$\chi_j(g) = \text{Tr}[D^{(j)}(g)]$$
 
-**Orthogonality Relation:**
-$$\int d\mu(g) \, \chi^{(j)}(g)^* \chi^{(j')}(g) = \delta_{jj'}$$
-where $d\mu(g)$ is the Haar measure. This allows decomposition of tensor products by projecting onto irreducible components.
+Characters are powerful because they depend only on the **conjugacy class** of $g$ (elements related by $g' = hgh^{-1}$ have the same character). For rotations, this means $\chi_j$ depends only on the rotation angle $\theta$, not the axis.
+
+**Example (Spin-1/2):**
+For rotation by angle $\theta$ about any axis:
+$$D^{(1/2)}(\theta) = \begin{pmatrix} e^{-i\theta/2} & 0 \\ 0 & e^{i\theta/2} \end{pmatrix}$$
+$$\chi_{1/2}(\theta) = e^{-i\theta/2} + e^{i\theta/2} = 2\cos(\theta/2)$$
+
+**Orthogonality Relation and Haar Measure**
+
+Characters of different irreducible representations are orthogonal:
+$$\int_G dg \, \chi_j^*(g)\chi_{j'}(g) = \delta_{jj'}$$
+
+**Why the Haar measure?**
+
+The **Haar measure** $dg$ is the unique measure on the group that is invariant under group multiplication:
+$$\int_G f(g)dg = \int_G f(hg)dg = \int_G f(gh)dg$$
+
+For SO(3), the Haar measure is:
+$$dg = \frac{1}{2}\sin^2\frac{\theta}{2} \frac{d\theta}{2\pi} \frac{d\Omega}{4\pi}$$
+
+where $d\Omega$ is the solid angle for the rotation axis. The $\sin^2(\theta/2)$ factor accounts for the Jacobian when parameterizing rotations.
+
+**Example: Decomposing Tensor Products**
+
+To find how many times $D^{(j)}$ appears in $D^{(j_1)} \otimes D^{(j_2)}$:
+$$n_j = \int_0^{2\pi} \frac{d\theta}{\pi} \sin^2\frac{\theta}{2} \, \chi_{j_1}(\theta)\chi_{j_2}(\theta)\chi_j^*(\theta)$$
+
+For $j_1 = j_2 = 1/2$:
+- $\chi_{1/2}(\theta) = 2\cos(\theta/2)$
+- $\chi_0(\theta) = 1$ (singlet)
+- $\chi_1(\theta) = 1 + 2\cos\theta$ (triplet)
+
+Checking $n_0$ (singlet):
+$$n_0 \propto \int \sin^2\frac{\theta}{2} \cdot 4\cos^2\frac{\theta}{2} \cdot 1 \, d\theta$$
+$$= \int_0^{2\pi} \sin^2\theta \, d\theta = \pi$$
+
+Checking $n_1$ (triplet):
+$$n_1 \propto \int \sin^2\frac{\theta}{2} \cdot 4\cos^2\frac{\theta}{2} \cdot (1 + 2\cos\theta) \, d\theta$$
+Using $\sin^2(\theta/2)\cos^2(\theta/2) = \frac{1}{4}\sin^2\theta$:
+$$= \int_0^{2\pi} \sin^2\theta (1 + 2\cos\theta) d\theta = \pi$$
+
+So $n_0 = n_1 = 1$, confirming $\frac{1}{2} \otimes \frac{1}{2} = 0 \oplus 1$.
 
 **Summary:**
 - **Irreducible representation** = fundamental classification label ($j$)
