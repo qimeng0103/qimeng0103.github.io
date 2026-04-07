@@ -98,6 +98,9 @@ def plot_spherical_harmonic_2d(l, m, filename, title=None):
     ax.set_xticks([0, np.pi/4, np.pi/2, 3*np.pi/4, np.pi, 5*np.pi/4, 3*np.pi/2, 7*np.pi/4])
     ax.set_xticklabels(['0°', '45°', '90°', '135°', '180°', '225°', '270°', '315°'])
     
+    # Remove polar spine to fix visual artifacts
+    ax.spines['polar'].set_visible(False)
+    
     if title:
         ax.set_title(title, fontsize=14, pad=20)
     else:
@@ -148,6 +151,8 @@ def plot_all_spherical_harmonics():
         ax.set_rticks([])
         ax.set_xticks([0, np.pi/2, np.pi, 3*np.pi/2])
         ax.set_xticklabels(['z', 'x', '-z', '-x'])
+        # Remove polar spine to fix visual artifacts
+        ax.spines['polar'].set_visible(False)
         ax.set_title(label, fontsize=12, pad=15)
     
     plt.tight_layout()

@@ -1105,7 +1105,23 @@ $$W(\theta) = \frac{1}{2j_i+1} \sum_{m_i} W_{m_i}(\theta) = \frac{|\langle j_f |
 
 2. **Selection rule visibility:** The conservation of $J_z$ ($m_f = m_i + m_\gamma$, or equivalently $m_i + m_\gamma + (-m_f) = 0$) is immediately apparent from the sum-to-zero condition in the 3j symbol.
 
-3. **Computational efficiency:** The sum over $m_i$ and $m_f$ can be performed using the orthogonality relation of 3j symbols, giving a simple closed-form result for the angular distribution.
+3. **Computational efficiency:** The sum over $m_i$ and $m_f$ can be performed using the orthogonality relation of 3j symbols.
+
+**Demonstration: Closed-Form Angular Distribution**
+
+Using the orthogonality relation for 3j symbols:
+$$\sum_{m_1 m_2} \begin{pmatrix} j_1 & j_2 & j_3 \\ m_1 & m_2 & m_3 \end{pmatrix} \begin{pmatrix} j_1 & j_2 & j_3' \\ m_1 & m_2 & m_3' \end{pmatrix} = \frac{\delta_{j_3 j_3'} \delta_{m_3 m_3'}}{2j_3 + 1}$$
+
+For our case with $j_2 = 1$ (photon) and $m_3 = -m_f$:
+$$\sum_{m_i, m_f} \left|\begin{pmatrix} j_i & 1 & j_f \\ m_i & m_\gamma & -m_f \end{pmatrix}\right|^2 = \frac{1}{2j_f + 1}$$
+
+This is independent of $m_\gamma$! The angular distribution becomes:
+$$W(\theta) = \frac{|\langle j_f || \hat{O} || j_i \rangle|^2}{(2j_i+1)(2j_f+1)} \sum_{m_\gamma} |Y_1^{m_\gamma}(\theta, 0)|^2$$
+
+Using $\sum_{m=-1}^{1} |Y_1^m(\theta)|^2 = \frac{3}{4\pi}$ (constant), we get:
+$$W(\theta) = \text{constant}$$
+
+**Result:** For unoriented nuclei, the angular distribution is **isotropic** (uniform in all directions). The 3j symbol orthogonality cleanly gives this result without tedious summation.
 
 ---
 
@@ -1514,11 +1530,7 @@ relates charge $Q$, isospin projection $I_3$, baryon number $B$, and strangeness
 - **Reaction constraints:** Strong interactions conserve $I_3$, $B$, and $S$, so charge is automatically conserved
 - **Prediction:** The formula predicted the existence of the $\Omega^-$ baryon (strangeness $-3$, charge $-1$) before its experimental discovery
 
----
-
-## Part VI: Advanced Topics and Applications
-
-### 6.1 Characters and Orthogonality
+### 5.8 Characters and Orthogonality
 
 **Character of a Representation**
 
@@ -1534,184 +1546,35 @@ $$\int_0^{2\pi} \chi_{j_1}(\theta) \chi_{j_2}(\theta) \sin^2\frac{\theta}{2} d\t
 This orthogonality allows decomposition of tensor products by computing multiplicities:
 $$n_j = \int d\theta \, \chi_{j_1}(\theta)\chi_{j_2}(\theta)\chi_j^*(\theta) \times (\text{measure})$$
 
-The term "representation" in group theory can be confusing. Intuitively, a representation is a concrete realization of abstract group elements as matrices acting on a vector space. For the rotation group, instead of thinking about abstract rotations, we represent each rotation as a matrix that transforms quantum states.
+**Representation Space vs. Basis Choice**
 
-**Crucial Distinction: The Representation Space vs. the Choice of Basis**
-
-For a fixed angular momentum $j$, the **representation space** is the $(2j+1)$-dimensional Hilbert space spanned by the states $\{|j, m\rangle\}$ where $m = -j, -j+1, \ldots, j$. This space is **unique** for a given $j$—it is not something we choose for convenience, but a property determined by the algebraic structure.
+For a fixed angular momentum $j$, the **representation space** is the $(2j+1)$-dimensional Hilbert space spanned by the states $\{|j, m\rangle\}$. This space is **unique** for a given $j$—it is determined by the algebraic structure, not a choice.
 
 However, **within this fixed space**, we can choose different bases:
 - The standard basis $\{|j, m\rangle\}$ (eigenstates of $J_z$)
 - The eigenstates of $J_x$ or $J_y$
 - Any rotated basis
 
-These different bases are related by unitary transformations *within* the same representation space. The representation is like a vector space with a specific dimension; the basis is like choosing coordinate axes within that space.
+These different bases are related by unitary transformations *within* the same representation space.
 
-**Why Fixed $j$ Corresponds to a Fixed Representation:**
+**Singlet, Doublet, Triplet: What the "-let" Terms Mean**
 
-When we fix $j$, we are selecting a specific irreducible representation $D^{(j)}$. All states with this $j$ transform into each other under rotations, but they never mix with states of different $j$. The different $m$ values are not different representations—they are different *states within the same representation*.
-
-Think of it this way:
-- **Representation** = the "species" of angular momentum (spin-0, spin-1/2, spin-1, etc.)
-- **States $|j, m\rangle$** = the "members" of that species with different orientations
-
-**Singlet, Doublet, Triplet, Quartet: What do these "-let" terms mean?**
-
-The suffix "-let" indicates a multiplet—a collection of states that are related by symmetry operations. The prefix indicates the number of states:
+The suffix "-let" indicates a multiplet—a collection of states related by symmetry operations:
 
 | Term | $j$ | Number of States $(2j+1)$ | Meaning |
 |:----:|:---:|:------------------------:|:--------|
 | **Singlet** | 0 | 1 | Single state (no orientation degree of freedom) |
 | **Doublet** | 1/2 | 2 | Two states (spin up/down) |
 | **Triplet** | 1 | 3 | Three states ($m = -1, 0, +1$) |
-| **Quartet** | 3/2 | 4 | Four states ($m = -3/2, -1/2, +1/2, +3/2$) |
+| **Quartet** | 3/2 | 4 | Four states |
 
-These terms originated in atomic spectroscopy:
-- A "singlet" state has $S = 0$ (total spin zero)
-- A "doublet" has $S = 1/2$ (like a single electron)
-- A "triplet" has $S = 1$ (like two parallel spins)
-
-**Important:** A particle with spin-$1/2$ *is* a doublet; the two states $|\uparrow\rangle$ and $|\downarrow\rangle$ are not two different representations, but two basis states within the same spin-1/2 representation.
-
-**Dimension of Representation:**
-$$d_j = 2j + 1$$
-
-This is the number of linearly independent states in the representation, equal to the number of possible $m$ values.
-
-**Character of Rotation: What Is It and Why Do We Care?**
-
-The **character** $\chi_j(\theta)$ is defined as the **trace** (sum of diagonal elements) of the representation matrix for a rotation by angle $\theta$:
-
-$$\chi_j(\theta) = \text{Tr}[D^{(j)}(R(\theta))] = \sum_{m=-j}^{j} \langle j,m|D^{(j)}(R(\theta))|j,m\rangle$$
-
-**Key Property: Characters are Class Functions**
-
-In group theory, rotations by the same angle about different axes are called **conjugate elements** (they belong to the same "conjugacy class"). A fundamental theorem states that the trace of a matrix is invariant under similarity transformations:
-
-$$\text{Tr}[U^{-1}AU] = \text{Tr}[A]$$
-
-This means the character depends **only on the rotation angle** $\theta$, not on the specific axis of rotation. This is a huge simplification—it means we can characterize representations without worrying about the infinite number of possible rotation axes!
-
-**Explicit Formula:**
-
-$$\chi_j(\theta) = \sum_{m=-j}^{j} e^{-im\theta} = \frac{\sin[(j+1/2)\theta]}{\sin(\theta/2)}$$
-
-The first form comes from summing the diagonal matrix elements $D^{(j)}_{mm}(\theta) = e^{-im\theta}$ (for rotations about the $z$-axis). The second form is a closed-form expression obtained by summing the geometric series.
+**Explicit Character Formula:**
+$$\chi_j(\theta) = \frac{\sin[(j+1/2)\theta]}{\sin(\theta/2)}$$
 
 **Example:** For spin-1/2 ($j = 1/2$):
-$$\chi_{1/2}(\theta) = e^{-i\theta/2} + e^{i\theta/2} = 2\cos(\theta/2)$$
+$$\chi_{1/2}(\theta) = 2\cos(\theta/2)$$
 
-**Orthogonality Relation: The "Fingerprint" of Representations**
-
-The orthogonality relation:
-$$\int_0^{2\pi} \chi_{j_1}(\theta) \chi_{j_2}(\theta) \sin^2\frac{\theta}{2} d\theta = \pi \delta_{j_1 j_2}$$
-
-is a powerful tool in representation theory. Here's what it means:
-
-1. **Different representations are orthogonal:** If $j_1 \neq j_2$, the integral is zero. This mathematically proves that different $j$ values correspond to genuinely different, independent representations.
-
-2. **Characters form an orthogonal basis:** The characters $\chi_j(\theta)$ can be viewed as functions of $\theta$. This relation says these functions are orthogonal with respect to the measure $\sin^2(\theta/2)d\theta$.
-
-**Physical Interpretation:**
-
-Think of the character as a "fingerprint" of the representation. Just as different people have different fingerprints, different representations have different character functions. The orthogonality relation is like saying "no two fingerprints match"—each representation is uniquely identified by its character.
-
-**Application:** Characters simplify tensor product decomposition without explicit matrix multiplication.
-
-### 6.2 SO(4) and Higher-Dimensional Rotations
-
-**SO(4) Structure**
-
-SO(4) is the rotation group in 4 dimensions. Unlike SO(3), it can be decomposed:
-$$\text{SO}(4) \cong \text{SU}(2) \times \text{SU}(2) / \mathbb{Z}_2$$
-
-This means rotations in 4D can be described by two independent SU(2) elements. The generators split into two commuting sets:
-$$\mathbf{J}^+ = \frac{1}{2}(\mathbf{J} + \mathbf{K}), \quad \mathbf{J}^- = \frac{1}{2}(\mathbf{J} - \mathbf{K})$$
-
-where $\mathbf{J}$ are angular momentum generators and $\mathbf{K}$ are boost-like generators.
-
-**Physical Relevance:**
-- Hydrogen atom: The accidental SO(4) symmetry explains the $n^2$-fold degeneracy
-- The Runge-Lenz vector is conserved and generates SO(4) with angular momentum
-
-### 6.3 Young Tableaux for Permutation Symmetry
-
-**Where Do Young Diagrams Come From?**
-
-Young diagrams originated in the representation theory of the **symmetric group** $S_n$ (the group of all permutations of $n$ objects). When we have $n$ identical particles, exchanging them corresponds to the action of $S_n$. The wavefunction's symmetry properties under particle exchange are classified by the irreducible representations of $S_n$.
-
-**Connection to Angular Momentum:**
-
-For $n$ spin-1/2 particles, Young diagrams with $n$ boxes classify the irreducible representations of the permutation group $S_n$:
-
-| Partition | Diagram | Spin | Dimension |
-|-----------|---------|------|-----------|
-| $(n)$ | Single row | $S=n/2$ | $n!/(n\cdot(n-1)\cdots1) = 1$ |
-| $(n-1,1)$ | Hook shape | $S=n/2-1$ | Various |
-| $(1^n)$ | Single column | 0 (if $n$ even) or 1/2 (if $n$ odd) | 1 |
-
-**Hook Length Formula:**
-
-$$d = \frac{n!}{\prod_{\text{boxes}} h_i}, \quad h_i = 1 + (\text{boxes to right}) + (\text{boxes below})$$
-
-<img src="/images/angular-momentum/young_21_hook_lengths.png" width="250px" alt="Hook lengths example">
-
-*Example: Partition (2,1) has hook lengths 3, 1, 1, giving $d = 3!/3 = 2$.*
-
-**Step-by-Step Analysis**
-
-**Step 1: Identify the Partition**
-
-Count the number of boxes in each row. The partition is written as $(\lambda_1, \lambda_2, ...)$ where $\lambda_i$ is the number of boxes in row $i$.
-
-- One row of $n$ boxes → partition $(n)$ (totally symmetric)
-- $n$ rows of 1 box → partition $(1,1,...,1)$ (totally antisymmetric)
-- Intermediate shapes → mixed symmetry
-
-**Step 2: Determine the Symmetry Type**
-
-- **More rows → more antisymmetric**: A tall, thin diagram represents mostly antisymmetric states
-- **More columns → more symmetric**: A short, wide diagram represents mostly symmetric states
-- **Square-ish → mixed symmetry**: Intermediate shapes represent states with both symmetric and antisymmetric character
-
-**Step 3: Calculate the Dimension (Number of Standard Young Tableaux)**
-
-A **standard Young tableau** is a filling of the boxes with numbers $1, 2, ..., n$ such that:
-- Numbers increase left to right along rows
-- Numbers increase top to bottom down columns
-
-The number of such fillings equals the dimension of the representation.
-
-**Example: Partition (2,1) for 3 particles**
-
-Possible standard Young tableaux for partition $(2,1)$:
-
-<img src="/images/angular-momentum/young_tableaux_21_example.png" width="280px" alt="Standard Young tableaux for partition (2,1)">
-
-*There are exactly 2 such fillings, so the dimension is 2. This matches our calculation using the hook length formula!*
-
-**Step 4: Connect to Physical States**
-
-For spin-1/2 particles:
-1. Count the dimension $d$ using hook lengths
-2. The total spin degeneracy is $(2S+1) = d$
-3. Solve for $S$: $S = (d-1)/2$
-
-**Complete Analysis Table for Two and Three Spin-1/2 Particles:**
-
-| Particles | Partition | Symmetry | Spin $S$ | Dim $(2S+1)$ | Visual |
-|:---------:|:---------:|:--------:|:--------:|:------------:|:------:|
-| 2 | $(2)$ | Symmetric | 1 (Triplet) | 3 | <img src="/images/angular-momentum/young_2_pure.png" width="40px"> |
-| 2 | $(1,1)$ | Antisymmetric | 0 (Singlet) | 1 | <img src="/images/angular-momentum/young_11_pure.png" width="20px"> |
-| 3 | $(3)$ | Totally Symmetric | 3/2 (Quartet) | 4 | <img src="/images/angular-momentum/young_3_pure.png" width="60px"> |
-| 3 | $(2,1)$ | Mixed | 1/2 (Doublet) | 2 | <img src="/images/angular-momentum/young_21_pure.png" width="40px"> |
-| 3 | $(1,1,1)$ | Totally Antisymmetric | — | 0 (impossible) | <img src="/images/angular-momentum/young_111_pure.png" width="20px"> |
-
-**Key Observations:**
-
-1. **Pauli Exclusion Principle**: For spin-1/2, partition $(1,1,1)$ has dimension 0—three spin-1/2 particles cannot be totally antisymmetric in spin.
-
-2. **Spin-Statistics**: Symmetric spin ($S=1$) requires antisymmetric spatial; antisymmetric spin ($S=0$) requires symmetric spatial.
+**Physical Interpretation:** The character is a "fingerprint" of the representation—different representations have orthogonal character functions, just as different people have different fingerprints.
 
 ---
 
@@ -1774,6 +1637,20 @@ where $P_l^m$ are the associated Legendre polynomials.
 
 *Polar plots of $|Y_l^m|^2$ for s, p, and d orbitals. The distance from the origin represents the probability density in that direction.*
 
+**Orbital Naming Convention:**
+
+The labels like $d_{z^2}$, $d_{x^2-y^2}$ describe **real spherical harmonics** obtained from linear combinations of complex $Y_l^m$:
+
+| Label | Combination | Angular Dependence |
+|:-----:|:-----------:|:------------------:|
+| $d_{z^2}$ | $Y_2^0$ | $\propto (3z^2-r^2)/r^2$ |
+| $d_{xz}$ | $\frac{1}{\sqrt{2}}(Y_2^1 - Y_2^{-1})$ | $\propto xz/r^2$ |
+| $d_{yz}$ | $\frac{1}{\sqrt{2}i}(Y_2^1 + Y_2^{-1})$ | $\propto yz/r^2$ |
+| $d_{xy}$ | $\frac{1}{\sqrt{2}i}(Y_2^2 - Y_2^{-2})$ | $\propto xy/r^2$ |
+| $d_{x^2-y^2}$ | $\frac{1}{\sqrt{2}}(Y_2^2 + Y_2^{-2})$ | $\propto (x^2-y^2)/r^2$ |
+
+The subscript indicates the **Cartesian angular dependence** (e.g., $x^2-y^2$), which determines the orbital's symmetry and orientation. Real spherical harmonics are preferred in chemistry because they have direct geometric interpretations.
+
 **Physical Interpretation:**
 
 - **$|Y_l^m|^2$** gives the angular probability distribution
@@ -1785,57 +1662,7 @@ The magnetic quantum number $m$ determines the orientation:
 - For $m = 0$: Maximum amplitude along $z$-axis
 - For $m = \pm l$: Maximum amplitude in $xy$-plane (toroidal shape for large $l$)
 
-### 6.3 Measurement Probabilities for $L_x$ in $Y_{20}$ State
-
-As an application of spherical harmonics and angular momentum algebra, consider a particle in the $Y_{20}$ eigenstate. While this state is an eigenstate of $L_z$ with $m = 0$, it is **not** an eigenstate of $L_x$. We can determine the possible measured values of $L_x$ and their corresponding probabilities.
-
-**Rotation Method**
-
-To find $L_x$ eigenstates, we can use coordinate rotation. The spherical harmonics transform under rotation according to the representation $D^{(l)}$.
-
-**Explicit Forms of $Y_{2m}$:**
-
-$$Y_{2,\pm 2} = \frac{1}{2}\sqrt{\frac{15}{8\pi}}\frac{(x \pm iy)^2}{r^2}$$
-
-$$Y_{2,\pm 1} = \mp\sqrt{\frac{15}{8\pi}}\frac{(x \pm iy)z}{r^2}$$
-
-$$Y_{2,0} = \sqrt{\frac{5}{16\pi}}\frac{2z^2 - x^2 - y^2}{r^2}$$
-
-**Eigenstates of $L_x$ (denoted $Y_{2m}^x$):**
-
-By cyclic permutation $x \to y$, $y \to z$, $z \to x$:
-
-$$Y_{2,0}^x = -\frac{1}{2}Y_{2,0} + \frac{\sqrt{3}}{2\sqrt{2}}(Y_{2,-2} + Y_{2,2})$$
-
-**Expanding $Y_{2,0}$ in $L_x$ Eigenstates:**
-
-Inverting the above relation:
-
-$$Y_{2,0} = -\frac{1}{2}Y_{2,0}^x - \frac{\sqrt{3}}{2\sqrt{2}}(Y_{2,-2}^x + Y_{2,2}^x)$$
-
-**Measurement Probabilities:**
-
-When measuring $L_x$ in the $Y_{20}$ state, the possible values and their probabilities are:
-
-| $L_x$ Value | Probability |
-|-------------|-------------|
-| $0$ | $\frac{1}{4}$ |
-| $\pm\hbar$ | $0$ |
-| $\pm 2\hbar$ | $\frac{3}{8}$ each |
-
-**Alternative Method using Expectation Values**
-
-The probabilities can also be found by solving the system:
-
-1. Normalization: $P_0 + 2P_1 + 2P_2 = 1$
-2. $\langle L_x^2 \rangle = 2\hbar^2$: $2P_1 \cdot \hbar^2 + 2P_2 \cdot 4\hbar^2 = 2\hbar^2$
-3. $\langle L_x^4 \rangle = 12\hbar^4$: $2P_1 \cdot \hbar^4 + 2P_2 \cdot 16\hbar^4 = 12\hbar^4$
-
-Solving yields: $P_0 = \frac{1}{4}$, $P_1 = 0$, $P_2 = \frac{3}{8}$.
-
-This example illustrates how eigenstates of one angular momentum component ($L_z$) can be expressed as superpositions of eigenstates of another component ($L_x$).
-
-### 6.4 Angular Momentum in Central Force Fields: Key Theorems
+### 6.3 Angular Momentum in Central Force Fields: Key Theorems
 
 **Theorem 1: Degeneracy with respect to magnetic quantum number $m$**
 
@@ -1876,7 +1703,7 @@ $$R_{nl}(r) \xrightarrow{r \to 0} r^l$$
 
 The centrifugal barrier $\frac{\hbar^2 l(l+1)}{2\mu r^2}$ prevents particles with $l \geq 1$ from reaching the origin. Only s-waves ($l = 0$) have non-zero probability density at $r = 0$.
 
-### 6.5 Radial Equation and Angular Momentum Barrier
+### 6.4 Radial Equation and Angular Momentum Barrier
 
 Substituting into the Schrödinger equation:
 
@@ -1904,68 +1731,45 @@ $$R_{nl}(r) \xrightarrow{r \to 0} r^l$$
 
 This shows that higher angular momentum states are increasingly suppressed near the origin.
 
-### 6.6 Runge-Lenz Vector and Hydrogen Atom Degeneracy
+### 6.5 SO(4) Symmetry and the Runge-Lenz Vector
 
-The hydrogen atom possesses an additional conserved quantity beyond angular momentum—the Runge-Lenz vector.
+**SO(4) Structure**
 
-**Definition of the Runge-Lenz Vector**
+SO(4) is the rotation group in 4 dimensions. Unlike SO(3), it can be decomposed:
+$$\text{SO}(4) \cong \text{SU}(2) \times \text{SU}(2) / \mathbb{Z}_2$$
 
-$$\mathbf{A} = \frac{1}{2\mu}(\mathbf{p} \times \mathbf{L} - \mathbf{L} \times \mathbf{p}) - \frac{e^2}{4\pi\varepsilon_0}\frac{\mathbf{r}}{r}$$
+This means rotations in 4D can be described by two independent SU(2) elements. The generators split into two commuting sets:
+$$\mathbf{J}^+ = \frac{1}{2}(\mathbf{J} + \mathbf{K}), \quad \mathbf{J}^- = \frac{1}{2}(\mathbf{J} - \mathbf{K})$$
 
-For the Coulomb potential, this simplifies to:
+where $\mathbf{J}$ are angular momentum generators and $\mathbf{K}$ are boost-like generators.
+
+**The Runge-Lenz Vector**
+
+The hydrogen atom possesses an additional conserved quantity beyond angular momentum—the Runge-Lenz vector:
 
 $$\mathbf{A} = \frac{1}{\mu}\mathbf{p} \times \mathbf{L} - \frac{e^2}{4\pi\varepsilon_0}\frac{\mathbf{r}}{r}$$
 
-**Conservation of the Runge-Lenz Vector**
-
+**Conservation:**
 $$[H, \mathbf{A}] = 0$$
 
 This conservation law is responsible for the "accidental" degeneracy of hydrogen energy levels—all states with the same principal quantum number $n$ but different $l$ have the same energy.
 
-**Connection to Angular Momentum**
+**SO(4) Symmetry of the Hydrogen Atom**
 
 The Runge-Lenz vector satisfies:
 $$\mathbf{A} \cdot \mathbf{L} = \mathbf{L} \cdot \mathbf{A} = 0$$
 
 $$\mathbf{A}^2 = \left(\frac{e^2}{4\pi\varepsilon_0}\right)^2 + \frac{2H}{\mu}(L^2 + \hbar^2)$$
 
-These relations, combined with the angular momentum algebra, form an SO(4) symmetry group that explains the $n^2$ degeneracy of hydrogen levels.
+Together with angular momentum, the Runge-Lenz vector generates an SO(4) symmetry group:
+- Define $\mathbf{M} = \sqrt{-\frac{\mu}{2E}} \mathbf{A}$ for bound states ($E < 0$)
+- Both $\mathbf{J}$ and $\mathbf{M}$ satisfy SU(2) algebras: $[J_i, J_j] = i\hbar\epsilon_{ijk}J_k$, $[M_i, M_j] = i\hbar\epsilon_{ijk}J_k$
+- They commute with each other: $[J_i, M_j] = 0$
 
-**Physical Significance**
+This $\text{SU}(2) \times \text{SU}(2)$ structure is exactly SO(4), explaining the $n^2$ degeneracy of hydrogen levels.
 
-The existence of the Runge-Lenz vector as a conserved quantity is special to the $1/r$ potential (Coulomb and gravitational). It implies closed elliptical orbits in classical mechanics and the degeneracy in quantum mechanics.
-
-### 6.7 Hydrogen Atom Energy Levels and Angular Momentum
-
-For the Coulomb potential $V(r) = -\frac{e^2}{4\pi\varepsilon_0 r}$:
-
-The energy eigenvalues are:
-
-$$\boxed{E_n = -\frac{\mu e^4}{2(4\pi\varepsilon_0)^2\hbar^2}\frac{1}{n^2} = -\frac{13.6 \text{ eV}}{n^2}}$$
-
-where $n = 1, 2, 3, ...$ is the principal quantum number.
-
-For each $n$, the allowed values of $l$ are $l = 0, 1, 2, ..., n-1$.
-
-For each $l$, there are $2l+1$ values of $m$.
-
-The total degeneracy of level $n$ is:
-$$g_n = \sum_{l=0}^{n-1}(2l+1) = n^2$$
-
-### 6.8 Three-Dimensional Isotropic Harmonic Oscillator
-
-For $V(r) = \frac{1}{2}\mu\omega^2 r^2$:
-
-The energy eigenvalues are:
-
-$$\boxed{E_N = \left(N + \frac{3}{2}\right)\hbar\omega}$$
-
-where $N = 2n_r + l = 0, 1, 2, ...$ with $n_r = 0, 1, 2, ...$ being the radial quantum number.
-
-For a given $N$, the allowed values of $l$ are $l = N, N-2, N-4, ..., 1$ or $0$.
-
-The degeneracy of level $N$ is:
-$$g_N = \frac{(N+1)(N+2)}{2}$$
+**Physical Significance:**
+The SO(4) symmetry is special to the $1/r$ potential (Coulomb and gravitational). It implies closed elliptical orbits in classical mechanics and the "accidental" degeneracy in quantum mechanics.
 
 ---
 
