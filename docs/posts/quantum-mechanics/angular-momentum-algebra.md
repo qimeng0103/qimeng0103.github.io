@@ -1669,19 +1669,27 @@ where $P_l^m$ are the associated Legendre polynomials.
 - **$|Y_1^1|^2$ vs $|Y_2^2|^2$**: Both appear as "dumbbell" shapes in the x-z plane because $m \neq 0$ states have their maximum probability in the equatorial ($xy$) plane. The x-z cross-section shows the edge-on view of these toroidal distributions. The difference is in their angular dependence: $|Y_1^1|^2 \propto \sin^2\theta$ while $|Y_2^2|^2 \propto \sin^4\theta$, giving the latter a more flattened appearance.
 - **Direction labels**: $z$ is vertical (up), $x$ is horizontal (right)
 
-**Orbital Naming Convention:**
+**Complex vs. Real Spherical Harmonics**
 
-The labels like $d_{z^2}$, $d_{x^2-y^2}$ describe **real spherical harmonics** obtained from linear combinations of complex $Y_l^m$:
+The figure shows **$|Y_l^m|^2$** (complex spherical harmonics modulus squared), which are eigenstates of $L_z$. In chemistry, **real spherical harmonics** are often used:
 
-| Label | Combination | Angular Dependence |
-|:-----:|:-----------:|:------------------:|
-| $d_{z^2}$ | $Y_2^0$ | $\propto (3z^2-r^2)/r^2$ |
-| $d_{xz}$ | $\frac{1}{\sqrt{2}}(Y_2^1 - Y_2^{-1})$ | $\propto xz/r^2$ |
-| $d_{yz}$ | $\frac{1}{\sqrt{2}i}(Y_2^1 + Y_2^{-1})$ | $\propto yz/r^2$ |
-| $d_{xy}$ | $\frac{1}{\sqrt{2}i}(Y_2^2 - Y_2^{-2})$ | $\propto xy/r^2$ |
-| $d_{x^2-y^2}$ | $\frac{1}{\sqrt{2}}(Y_2^2 + Y_2^{-2})$ | $\propto (x^2-y^2)/r^2$ |
+| Real Orbital | Combination of Complex $Y_l^m$ | Angular Dependence |
+|:------------:|:------------------------------:|:------------------:|
+| s | $Y_0^0$ | constant |
+| p$_z$ | $Y_1^0$ | $\propto z/r$ |
+| p$_x$ | $\frac{1}{\sqrt{2}}(Y_1^1 - Y_1^{-1})$ | $\propto x/r$ |
+| p$_y$ | $\frac{i}{\sqrt{2}}(Y_1^1 + Y_1^{-1})$ | $\propto y/r$ |
+| d$_{z^2}$ | $Y_2^0$ | $\propto (3z^2-r^2)/r^2$ |
+| d$_{xz}$ | $\frac{1}{\sqrt{2}}(Y_2^1 - Y_2^{-1})$ | $\propto xz/r^2$ |
+| d$_{yz}$ | $\frac{i}{\sqrt{2}}(Y_2^1 + Y_2^{-1})$ | $\propto yz/r^2$ |
+| d$_{xy}$ | $\frac{i}{\sqrt{2}}(Y_2^2 - Y_2^{-2})$ | $\propto xy/r^2$ |
+| d$_{x^2-y^2}$ | $\frac{1}{\sqrt{2}}(Y_2^2 + Y_2^{-2})$ | $\propto (x^2-y^2)/r^2$ |
 
-The subscript indicates the **Cartesian angular dependence** (e.g., $x^2-y^2$), which determines the orbital's symmetry and orientation. Real spherical harmonics are preferred in chemistry because they have direct geometric interpretations.
+**Key distinction:** 
+- **Complex $Y_l^m$**: Eigenstates of $L_z$ with eigenvalue $m\hbar$; $|Y_l^m|^2$ has azimuthal symmetry (no $\phi$ dependence)
+- **Real orbitals**: Linear combinations with definite parity under coordinate reflections; preferred in chemistry for directional bonding
+
+The figure labels indicate the corresponding real orbital notation for each $|Y_l^m|^2$ pattern.
 
 **Physical Interpretation:**
 
