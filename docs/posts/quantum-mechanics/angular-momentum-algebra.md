@@ -1519,140 +1519,49 @@ is a powerful tool in representation theory. Here's what it means:
 
 Think of the character as a "fingerprint" of the representation. Just as different people have different fingerprints, different representations have different character functions. The orthogonality relation is like saying "no two fingerprints match"—each representation is uniquely identified by its character.
 
-**Application: Decomposing Tensor Products**
+**Application:** Characters simplify tensor product decomposition without explicit matrix multiplication.
 
-One major use of characters is to decompose tensor products. When we combine two angular momenta:
-$$D^{(j_1)} \otimes D^{(j_2)} = \bigoplus_j n_j D^{(j)}$$
+### 6.2 SO(4) and Higher-Dimensional Rotations
 
-The multiplicities $n_j$ (how many times each $j$ appears) can be computed using characters:
-$$n_j = \int d\theta \, \chi_{j_1}(\theta)\chi_{j_2}(\theta)\chi_j^*(\theta) \times (\text{measure factor})$$
+**SO(4) Structure**
 
-This is much easier than working with the full matrix representations!
+SO(4) is the rotation group in 4 dimensions. Unlike SO(3), it can be decomposed:
+$$\text{SO}(4) \cong \text{SU}(2) \times \text{SU}(2) / \mathbb{Z}_2$$
 
-**Summary: Understanding "Representation" in Context**
+This means rotations in 4D can be described by two independent SU(2) elements. The generators split into two commuting sets:
+$$\mathbf{J}^+ = \frac{1}{2}(\mathbf{J} + \mathbf{K}), \quad \mathbf{J}^- = \frac{1}{2}(\mathbf{J} - \mathbf{K})$$
 
-To solidify the concept of representation, here's a comprehensive summary:
+where $\mathbf{J}$ are angular momentum generators and $\mathbf{K}$ are boost-like generators.
 
-**What a Representation IS:**
-- A concrete matrix realization of an abstract group
-- A vector space with a specific dimension $(2j+1)$ where group elements act as linear operators
-- The set of transformation rules for a physical quantity under symmetry operations
+**Physical Relevance:**
+- Hydrogen atom: The accidental SO(4) symmetry explains the $n^2$-fold degeneracy
+- The Runge-Lenz vector is conserved and generates SO(4) with angular momentum
 
-**What a Representation is NOT:**
-- Not a choice of basis (bases are choices *within* a representation)
-- Not a specific state (states are vectors *in* the representation space)
-- Not optional—it is determined by the algebraic structure
-
-**Physical Analogies:**
-
-| Concept | Analogy | Meaning |
-|:--------|:--------|:--------|
-| **Representation** | The "species" of particle | Spin-0, spin-1/2, spin-1, etc. |
-| **Representation Space** | The "arena" where states live | All possible orientations of that spin |
-| **Basis States $\|j,m\rangle$** | Specific "stances" or "poses" | Pointing up, down, or in superposition |
-| **Rotation Operator** | The "machinery" of transformation | How states change when you rotate the system |
-
-**Why This Matters:**
-
-When we say "the spin-1 representation," we are referring to the **three-dimensional vector space** of all possible spin-1 states. The three states $|1,1\rangle$, $|1,0\rangle$, $|1,-1\rangle$ are not three different representations—they are three orthogonal directions in the *same* representation space. Just as $\hat{x}$, $\hat{y}$, $\hat{z}$ are three basis vectors in 3D space, these $|j,m\rangle$ states are basis vectors in the spin-1 representation space.
-
-### 5.3 Young Tableaux for Permutation Symmetry
+### 6.3 Young Tableaux for Permutation Symmetry
 
 **Where Do Young Diagrams Come From?**
 
 Young diagrams originated in the representation theory of the **symmetric group** $S_n$ (the group of all permutations of $n$ objects). When we have $n$ identical particles, exchanging them corresponds to the action of $S_n$. The wavefunction's symmetry properties under particle exchange are classified by the irreducible representations of $S_n$.
 
-**Key Insight:** For spin-1/2 particles, the total spin states (singlet, triplet, etc.) are intimately connected to the permutation symmetry of the spin wavefunction. Young diagrams provide a visual way to classify these symmetry types.
+**Connection to Angular Momentum:**
 
-**The Connection to Angular Momentum:**
+For $n$ spin-1/2 particles, Young diagrams with $n$ boxes classify the irreducible representations of the permutation group $S_n$:
 
-For $n$ spin-1/2 particles:
-- The total spin $S$ determines the permutation symmetry of the spin state
-- Young diagrams with $n$ boxes classify the irreducible representations of $S_n$
-- Each diagram corresponds to a specific total spin $S$ and degeneracy $(2S+1)$
+| Partition | Diagram | Spin | Dimension |
+|-----------|---------|------|-----------|
+| $(n)$ | Single row | $S=n/2$ | $n!/(n\cdot(n-1)\cdots1) = 1$ |
+| $(n-1,1)$ | Hook shape | $S=n/2-1$ | Various |
+| $(1^n)$ | Single column | 0 (if $n$ even) or 1/2 (if $n$ odd) | 1 |
 
-**Basic Rules for Constructing Young Diagrams:**
+**Hook Length Formula:**
 
-1. **Each box represents one particle** — $n$ boxes for $n$ particles
-2. **Rows represent symmetric combinations** — particles in the same row are symmetrized
-3. **Columns represent antisymmetric combinations** — particles in the same column are antisymmetrized
-4. **Diagrams are left-justified** — rows cannot be longer than the row above
+$$d = \frac{n!}{\prod_{\text{boxes}} h_i}, \quad h_i = 1 + (\text{boxes to right}) + (\text{boxes below})$$
 
-**Partitions and Young Diagrams:**
+<img src="/images/angular-momentum/young_21_hook_lengths.png" width="250px" alt="Hook lengths example">
 
-A partition of $n$ is a way of writing $n$ as a sum of positive integers: $n = \lambda_1 + \lambda_2 + ...$ where $\lambda_1 \geq \lambda_2 \geq ...$. Each partition corresponds to a unique Young diagram with row lengths $\lambda_i$.
+*Example: Partition (2,1) has hook lengths 3, 1, 1, giving $d = 3!/3 = 2$.*
 
-**Examples:**
-
-<img src="/images/angular-momentum/young_partition_examples.png" width="700px" alt="Young diagram examples for various partitions">
-
-*Young diagrams for different partitions. Top row: 3-particle partitions. Bottom row: 4-particle partitions. The shape determines the symmetry type: horizontal rows give symmetric combinations, vertical columns give antisymmetric combinations.*
-
-**Young Diagrams for Two Particles:**
-
-<img src="/images/angular-momentum/two_particle_young_new.png" width="350px" alt="Young Diagrams for Two Particles">
-
-*Left: Symmetric representation (partition (2), triplet $S=1$, dimension 3). Right: Antisymmetric representation (partition (1,1), singlet $S=0$, dimension 1)*
-
-**Young Diagrams for Three Particles:**
-
-<img src="/images/angular-momentum/young_3_all_combined.png" width="600px" alt="Young Diagrams for Three Particles">
-
-*Left: Totally symmetric (quartet, $S=3/2$, dim=4). Center: Mixed symmetry (doublet, $S=1/2$, dim=2). Right: Totally antisymmetric (not for spin-1/2)*
-
-### 5.4 Hook Length Formula
-
-The dimension of a representation corresponding to a Young diagram with $n$ boxes is given by the hook length formula:
-
-$$d = \frac{n!}{\prod_{\text{boxes}} h_i}$$
-
-**Understanding the Hook Length $h_i$:**
-
-For each box in the Young diagram, draw a "hook"—a line going right along the row and down along the column. The hook length $h_i$ counts:
-- The box itself (= 1)
-- Boxes to the right in the same row
-- Boxes below in the same column
-
-$$h_i = 1 + (\text{boxes to right}) + (\text{boxes below})$$
-
-**Visual Example: Hook Lengths for Partition (2,1)**
-
-<img src="/images/angular-momentum/young_21_hook_lengths.png" width="350px" alt="Young diagram (2,1) with hook lengths labeled">
-
-*The partition (2,1) with hook lengths labeled in each box. The dimension is calculated as $d = 3!/(3 \cdot 1 \cdot 1) = 2$.*
-
-**How to calculate each hook length:**
-
-For each box, draw a "hook" line going right along the row and down along the column. Count:
-- The box itself (= 1)
-- Boxes to the right in the same row
-- Boxes below in the same column
-
-**Box positions and hook lengths:**
-- **Top-left box (labeled 3):** 1 (self) + 1 (right) + 1 (below) = **3**
-- **Top-right box (labeled 1):** 1 (self) + 0 (right) + 0 (below) = **1**
-- **Bottom-left box (labeled 1):** 1 (self) + 0 (right) + 0 (below) = **1**
-
-**The +1 is essential**—it accounts for the box itself (the box at the "elbow" of the hook). Without this +1, the formula would give incorrect dimensions.
-
-**Dimension Calculation:**
-$$d = \frac{3!}{3 \cdot 1 \cdot 1} = 2$$
-
-This matches our knowledge that the mixed symmetry representation for three spin-1/2 particles has dimension 2 (two doublet states).
-
-**Hook Length Calculation Example: Three Spin-1/2 Particles**
-
-For three spin-1/2 particles, the Young diagrams and their properties are:
-
-<img src="/images/angular-momentum/young_3_symmetric.png" width="200px" alt="Symmetric diagram (3)">
-
-*Symmetric diagram (3): Hook lengths are 3, 2, 1. Dimension: $\frac{3!}{3 \cdot 2 \cdot 1} = 1$ (for each $m$ value, total $2S+1 = 4$)*
-
-<img src="/images/angular-momentum/young_21_mixed.png" width="180px" alt="Mixed symmetry diagram (2,1)">
-
-*Mixed symmetry diagram (2,1): Hook lengths are 3, 1, 1. Dimension: $\frac{3!}{3 \cdot 1 \cdot 1} = 2$ (two doublet states)*
-
-**How to Read a Young Diagram: Step-by-Step Analysis**
+**Step-by-Step Analysis**
 
 **Step 1: Identify the Partition**
 
@@ -1703,27 +1612,13 @@ For spin-1/2 particles:
 
 **Key Observations:**
 
-1. **Pauli Exclusion Principle**: For spin-1/2, we cannot have three particles in a totally antisymmetric spin state. This is why the partition $(1,1,1)$ has dimension 0 for spin-1/2 (you'd need at least spin-1 particles).
+1. **Pauli Exclusion Principle**: For spin-1/2, partition $(1,1,1)$ has dimension 0—three spin-1/2 particles cannot be totally antisymmetric in spin.
 
-2. **Spin-Statistics Connection**: The symmetry of the spin wavefunction determines the symmetry required of the spatial wavefunction:
-   - Symmetric spin (triplet, $S=1$) → Antisymmetric spatial
-   - Antisymmetric spin (singlet, $S=0$) → Symmetric spatial
-
-3. **Maximum Spin**: The totally symmetric diagram always corresponds to the maximum possible spin ($S = n/2$ for $n$ spin-1/2 particles).
-
-### 5.5 Connection to Angular Momentum Addition
-
-The CG decomposition derived in Part IV has an elegant group-theoretic interpretation. When adding angular momenta $\mathbf{J} = \mathbf{J}_1 + \mathbf{J}_2$, the tensor product of representations decomposes into irreducible representations according to:
-
-$$D^{(j_1)} \otimes D^{(j_2)} = \bigoplus_{j=|j_1-j_2|}^{j_1+j_2} D^{(j)}$$
-
-This is precisely the **Clebsch-Gordan series**. The triangle rule $|j_1 - j_2| \leq j \leq j_1 + j_2$ reflects which irreducible representations appear in the decomposition. The dimension check $(2j_1+1)(2j_2+1) = \sum_{j}(2j+1)$ confirms that the total number of states is conserved in the decomposition.
-
-**Physical Interpretation:** The coupled basis states $|j, m\rangle$ transform as the irreducible representation $D^{(j)}$ under rotations, while the uncoupled basis $|j_1, m_1; j_2, m_2\rangle$ transforms as the tensor product $D^{(j_1)} \otimes D^{(j_2)}$. The CG coefficients are the unitary transformation matrix elements between these two bases.
+2. **Spin-Statistics**: Symmetric spin ($S=1$) requires antisymmetric spatial; antisymmetric spin ($S=0$) requires symmetric spatial.
 
 ---
 
-## Part VI: Central Force Field Problems
+## Part VI: Spherical Harmonics and Central Potentials
 
 The algebraic machinery developed so far finds immediate application in the physics of central force fields, where the potential depends only on the radial coordinate $V(r)$. Angular momentum plays a central role because the spherical symmetry of such systems guarantees that $[H, L^2] = [H, L_z] = 0$, allowing simultaneous eigenstates of energy and angular momentum. This leads to the separation of the Schrödinger equation into radial and angular parts.
 
