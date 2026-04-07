@@ -123,13 +123,14 @@ def plot_all_spherical_harmonics():
     fig, axes = plt.subplots(2, 3, figsize=(14, 9))
     axes = axes.flatten()
     
+    # All plotted as |Y_lm|^2 (probability density)
     orbitals = [
-        (0, 0, '$Y_0^0$ ($l=0, m=0$)'),
-        (1, 0, '$Y_1^0$ ($l=1, m=0$)'),
-        (1, 1, '$|Y_1^1|^2$ ($l=1, m=1$)'),
-        (2, 0, '$Y_2^0$ ($l=2, m=0$)'),
-        (2, 1, '$|Y_2^1|^2$ ($l=2, m=1$)'),
-        (2, 2, '$|Y_2^2|^2$ ($l=2, m=2$)'),
+        (0, 0, r's ($|Y_0^0|^2$)'),
+        (1, 0, r'p$_z$ ($|Y_1^0|^2$)'),
+        (1, 1, r'p$_{\pm 1}$ ($|Y_1^1|^2$)'),
+        (2, 0, r'd$_{z^2}$ ($|Y_2^0|^2$)'),
+        (2, 1, r'd$_{xz}$ ($|Y_2^1|^2$)'),
+        (2, 2, r'd$_{x^2-y^2}$ ($|Y_2^2|^2$)'),
     ]
     
     from scipy.special import sph_harm_y
@@ -159,9 +160,19 @@ def plot_all_spherical_harmonics():
         ax.plot(max_r * np.sin(circle_theta), max_r * np.cos(circle_theta), 
                 'k-', linewidth=0.8, alpha=0.5)
         
+        # Add direction labels
+        max_r = Y_vals.max()
+        offset = max_r * 0.12
+        ax.text(0, max_r + offset, 'z', ha='center', va='center', fontsize=11, fontweight='bold')
+        ax.text(0, -max_r - offset, '-z', ha='center', va='center', fontsize=11, fontweight='bold')
+        ax.text(max_r + offset, 0, 'x', ha='center', va='center', fontsize=11, fontweight='bold')
+        ax.text(-max_r - offset, 0, '-x', ha='center', va='center', fontsize=11, fontweight='bold')
+        
         # Set equal aspect and remove axes
         ax.set_aspect('equal')
         ax.axis('off')
+        ax.set_xlim(-max_r*1.25, max_r*1.25)
+        ax.set_ylim(-max_r*1.25, max_r*1.25)
         ax.set_title(label, fontsize=12, pad=10)
     
     plt.tight_layout()

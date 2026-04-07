@@ -1662,7 +1662,12 @@ where $P_l^m$ are the associated Legendre polynomials.
 
 <img src="/images/angular-momentum/spherical_harmonics_overview.png" width="700px" alt="Spherical harmonics visualization">
 
-*Visualization of $|Y_l^m|^2$ for s, p, and d orbitals in the x-z plane. The radial distance from the origin represents the probability density in that direction.*
+*Visualization of $|Y_l^m|^2$ (probability density) for s, p, and d orbitals in the x-z plane. The radial distance from the origin represents the probability density in that direction.*
+
+**Note on the Visualization:**
+- All plots show **$|Y_l^m|^2$** (modulus squared), which is the physical probability density
+- **$|Y_1^1|^2$ vs $|Y_2^2|^2$**: Both appear as "dumbbell" shapes in the x-z plane because $m \neq 0$ states have their maximum probability in the equatorial ($xy$) plane. The x-z cross-section shows the edge-on view of these toroidal distributions. The difference is in their angular dependence: $|Y_1^1|^2 \propto \sin^2\theta$ while $|Y_2^2|^2 \propto \sin^4\theta$, giving the latter a more flattened appearance.
+- **Direction labels**: $z$ is vertical (up), $x$ is horizontal (right)
 
 **Orbital Naming Convention:**
 
@@ -1730,33 +1735,33 @@ $$R_{nl}(r) \xrightarrow{r \to 0} r^l$$
 
 The centrifugal barrier $\frac{\hbar^2 l(l+1)}{2\mu r^2}$ prevents particles with $l \geq 1$ from reaching the origin. Only s-waves ($l = 0$) have non-zero probability density at $r = 0$.
 
-### 6.4 Radial Equation and Angular Momentum Barrier
+### 6.4 Radial Equation and Centrifugal Barrier
 
-Substituting into the Schrödinger equation:
+Substituting $\psi = R_{nl}(r)Y_l^m(\theta,\phi)$ into the Schrödinger equation gives the radial equation:
 
 $$\left[-\frac{\hbar^2}{2\mu}\frac{1}{r^2}\frac{d}{dr}\left(r^2\frac{d}{dr}\right) + \frac{\hbar^2 l(l+1)}{2\mu r^2} + V(r)\right]R_{nl}(r) = E R_{nl}(r)$$
 
-Define $u_{nl}(r) = r R_{nl}(r)$:
+Define $u_{nl}(r) = r R_{nl}(r)$ to obtain a 1D Schrödinger-like equation:
 
 $$\left[-\frac{\hbar^2}{2\mu}\frac{d^2}{dr^2} + V_{\text{eff}}(r)\right]u_{nl}(r) = E u_{nl}(r)$$
 
-with the effective potential:
+with the **effective potential**:
 
 $$\boxed{V_{\text{eff}}(r) = V(r) + \frac{\hbar^2 l(l+1)}{2\mu r^2}}$$
 
-The second term is the **centrifugal barrier** arising from angular momentum. This term effectively prevents the particle from reaching the origin when $l \neq 0$.
+The second term is the **centrifugal barrier**. For $l \geq 1$, this barrier diverges as $r \to 0$, preventing the particle from reaching the origin.
 
-**Physical Interpretation of the Centrifugal Barrier**
+**Behavior Near the Origin**
 
-The radial equation describes one-dimensional motion in the effective potential. The centrifugal term $\frac{\hbar^2 l(l+1)}{2\mu r^2}$ acts as a repulsive barrier that:
-- Diverges as $r \to 0$ for $l \geq 1$
-- Pushes the wavefunction away from the origin
-- Explains why s-states ($l = 0$) have non-zero probability at $r = 0$ while higher angular momentum states vanish at the origin
-
-For small $r$, the behavior of the radial function is:
+Solving the radial equation near $r = 0$ shows:
 $$R_{nl}(r) \xrightarrow{r \to 0} r^l$$
 
-This shows that higher angular momentum states are increasingly suppressed near the origin.
+This demonstrates that:
+- **s-waves ($l=0$)**: $R_{n0}(0) \neq 0$, non-zero probability at origin
+- **p-waves ($l=1$)**: $R_{n1} \propto r$, linear suppression
+- **d-waves ($l=2$)**: $R_{n2} \propto r^2$, quadratic suppression
+
+Higher angular momentum states are increasingly suppressed near the nucleus.
 
 ### 6.5 SO(4) Symmetry and the Runge-Lenz Vector
 
@@ -1766,54 +1771,69 @@ The hydrogen atom possesses an additional conserved quantity beyond angular mome
 
 $$\mathbf{A} = \frac{1}{\mu}\mathbf{p} \times \mathbf{L} - \frac{e^2}{4\pi\varepsilon_0}\frac{\mathbf{r}}{r}$$
 
-For the Coulomb potential, this satisfies:
+**Proof of Conservation:** $[H, \mathbf{A}] = 0$
+
+For the Coulomb Hamiltonian $H = \frac{\mathbf{p}^2}{2\mu} - \frac{e^2}{4\pi\varepsilon_0 r}$, we compute:
+$$[H, \mathbf{A}] = \frac{1}{\mu}[H, \mathbf{p} \times \mathbf{L}] - \frac{e^2}{4\pi\varepsilon_0}\left[H, \frac{\mathbf{r}}{r}\right]$$
+
+Using $[H, L_i] = 0$ and detailed calculation (involving the virial theorem for $1/r$ potential), the commutator vanishes:
 $$[H, \mathbf{A}] = 0$$
 
-This conservation law is responsible for the "accidental" degeneracy of hydrogen energy levels—all states with the same principal quantum number $n$ but different $l$ have the same energy.
+This conservation law explains the "accidental" degeneracy—states with the same $n$ but different $l$ have the same energy.
 
-The Runge-Lenz vector is perpendicular to angular momentum:
-$$\mathbf{A} \cdot \mathbf{L} = 0$$
-
-And its magnitude is related to the Hamiltonian:
-$$\mathbf{A}^2 = \left(\frac{e^2}{4\pi\varepsilon_0}\right)^2 + \frac{2H}{\mu}(L^2 + \hbar^2)$$
+**Key Properties:**
+- Perpendicularity: $\mathbf{A} \cdot \mathbf{L} = 0$ (follows from $\mathbf{L} \cdot (\mathbf{p} \times \mathbf{L}) = 0$)
+- Magnitude relation: $\mathbf{A}^2 = \left(\frac{e^2}{4\pi\varepsilon_0}\right)^2 + \frac{2H}{\mu}(L^2 + \hbar^2)$
 
 **Constructing the SO(4) Algebra**
 
-To reveal the SO(4) structure, we define rescaled generators for bound states ($E < 0$):
+For bound states ($E < 0$), define rescaled generators:
 $$\mathbf{K} = \sqrt{-\frac{\mu}{2E}} \mathbf{A}$$
 
-Now form two commuting SU(2) algebras:
+Form two combinations:
 $$\mathbf{J}^{(+)} = \frac{1}{2}(\mathbf{L} + \mathbf{K}), \quad \mathbf{J}^{(-)} = \frac{1}{2}(\mathbf{L} - \mathbf{K})$$
 
-These satisfy:
-$$[J^{(+)}_i, J^{(+)}_j] = i\hbar\epsilon_{ijk}J^{(+)}_k, \quad [J^{(-)}_i, J^{(-)}_j] = i\hbar\epsilon_{ijk}J^{(-)}_k$$
-$$[J^{(+)}_i, J^{(-)}_j] = 0$$
+**Verification of SU(2) Algebras:**
 
-The two algebras commute, giving the structure $\text{SU}(2) \times \text{SU}(2)$.
+Compute using $[L_i, L_j] = i\hbar\epsilon_{ijk}L_k$ and $[K_i, K_j] = i\hbar\epsilon_{ijk}L_k$ (note the cross relations):
 
-**From SU(2)×SU(2) to SO(4)**
+$$[J^{(+)}_i, J^{(+)}_j] = \frac{1}{4}[L_i + K_i, L_j + K_j] = \frac{1}{4}\left([L_i, L_j] + [K_i, K_j]\right) = i\hbar\epsilon_{ijk}J^{(+)}_k$$
 
-The rotation group in 4D relates to these generators as:
+Similarly for $\mathbf{J}^{(-)}$. The cross commutator vanishes:
+$$[J^{(+)}_i, J^{(-)}_j] = \frac{1}{4}[L_i + K_i, L_j - K_j] = \frac{1}{4}\left([L_i, L_j] - [K_i, K_j]\right) = 0$$
+
+This confirms $\text{SU}(2) \times \text{SU}(2)$ structure.
+
+**From SU(2)×SU(2) to SO(4): The $\mathbb{Z}_2$ Quotient**
+
+The isomorphism is:
 $$\text{SO}(4) \cong [\text{SU}(2) \times \text{SU}(2)] / \mathbb{Z}_2$$
 
-The $\mathbb{Z}_2$ quotient arises because a simultaneous $2\pi$ rotation in both SU(2) factors (giving $(-1) \times (-1) = +1$) corresponds to the identity in SO(4). This means:
-- $(\mathbf{J}^{(+)}, \mathbf{J}^{(-)})$ and $(-\mathbf{J}^{(+)}, -\mathbf{J}^{(-)})$ represent the same SO(4) rotation
-- Each SO(4) representation appears twice in the product space
+**Proof of the quotient:** Under a $2\pi$ rotation:
+- Each SU(2) element transforms as $U \to -U$ (spinor property)
+- The product transforms as $(U_+, U_-) \to (-U_+, -U_-)$
+- But $(-U_+)(-U_-) = U_+ U_-$ represents the same SO(4) rotation
 
-**Quantum Numbers and Degeneracy**
+Therefore, $(\mathbf{J}^{(+)}, \mathbf{J}^{(-)})$ and $(-\mathbf{J}^{(+)}, -\mathbf{J}^{(-)})$ are identified, giving the $\mathbb{Z}_2$ quotient.
 
-For the hydrogen atom:
-$$j^{(+)} = j^{(-)} = \frac{n-1}{2}$$
+**Quantum Numbers and $n^2$ Degeneracy**
+
+For hydrogen, the constraint $\mathbf{A}^2 + \frac{2E}{\mu}(L^2 + \hbar^2) = \text{const}$ leads to:
+$$j^{(+)} = j^{(-)} = j$$
+
+The principal quantum number relates to $j$ via:
+$$n = 2j + 1 \quad \Rightarrow \quad j = \frac{n-1}{2}$$
+
+**Explanation:** The energy depends only on $n = n_r + l + 1$ (radial + angular + 1). The SO(4) Casimir operators $C_+ = \mathbf{J}^{(+)}\cdot\mathbf{J}^{(+)}$ and $C_- = \mathbf{J}^{(-)}\cdot\mathbf{J}^{(-)}$ both give the same eigenvalue $j(j+1)\hbar^2$, fixing $j^{(+)} = j^{(-)}$.
 
 The degeneracy is:
-$$g_n = (2j^{(+)} + 1)(2j^{(-)} + 1) = n^2$$
+$$g_n = (2j^{(+)} + 1)(2j^{(-)} + 1) = n \times n = n^2$$
 
-This explains the $n^2$ degeneracy: it's the product of dimensions of two SU(2) representations with $j = (n-1)/2$.
+**Physical Interpretation:**
 
-**Physical Significance:**
-- The SO(4) symmetry is unique to the $1/r$ potential (Coulomb and Newtonian gravity)
-- In classical mechanics: explains closed elliptical orbits (no precession)
-- In quantum mechanics: explains the "accidental" $n^2$ degeneracy beyond the $(2l+1)$ degeneracy from SO(3)
+*Classical Mechanics:* The Runge-Lenz vector points along the major axis of the elliptical orbit. Its conservation means the orbit doesn't precess—closed ellipses are maintained.
+
+*Quantum Mechanics:* The $n^2$ degeneracy arises because SO(4) has larger multiplets than SO(3). While SO(3) gives $(2l+1)$ degeneracy for each $l$, SO(4) combines different $l$ values (with same $n$) into a single irreducible representation of dimension $n^2$.
 
 ---
 
