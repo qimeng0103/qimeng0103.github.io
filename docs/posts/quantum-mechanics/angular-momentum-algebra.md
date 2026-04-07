@@ -9,9 +9,9 @@ math: true
 
 # Angular Momentum Algebra and Its Applications
 
-This article presents a systematic treatment of angular momentum theory in quantum mechanics. We begin with the fundamental algebraic structure—commutation relations and ladder operators—then develop the matrix representations and explicit wave function formalism (spherical harmonics) for orbital angular momentum. Building on this foundation, we explore the addition of angular momenta and the resulting Clebsch-Gordan theory. The latter half of the article develops the deeper group-theoretic perspective (rotation groups SO(3) and SU(2)), and concludes with applications to many-particle systems using Young tableaux.
+This article presents a systematic treatment of angular momentum theory in quantum mechanics. We begin with the fundamental algebraic structure—commutation relations and ladder operators—then develop the matrix representations and explicit wave function formalism (spherical harmonics) for orbital angular momentum. Building on this foundation, we explore the addition of angular momenta and the resulting Clebsch-Gordan theory. The middle sections develop the deeper group-theoretic perspective (rotation groups SO(3) and SU(2)), including SU(3) flavor and color symmetries. The article concludes with applications to atomic physics coupling schemes and central force fields, including the hidden SO(4) symmetry of the hydrogen atom.
 
-The logical progression follows: **Algebraic Structure** → **Representation Theory** → **Wave Function Realization** → **Angular Momentum Addition** → **Group Theory** → **Many-Particle Applications**.
+The logical progression follows: **Algebraic Structure** → **Representation Theory** → **Wave Function Realization** → **Angular Momentum Addition** → **Group Theory** → **Atomic Physics Applications** → **Central Force Fields**.
 
 ---
 
@@ -1397,6 +1397,23 @@ Conversely, a representation of SU(2) descends to SO(3) **only if** $D(-U) = D(U
 - But SU(2) has additional representations (half-integer $j$) with no SO(3) counterpart
 - These "extra" representations describe fermions (electrons, quarks, etc.)
 
+**SO(4) and SU(2) × SU(2): The Hydrogen Connection**
+
+The SO(4) symmetry of hydrogen (section 7.4) is deeply connected to SU(2). The six generators of SO(4) can be organized into two sets of three:
+$$\mathbf{M} = \frac{1}{2}(\mathbf{L} + \mathbf{K}), \quad \mathbf{N} = \frac{1}{2}(\mathbf{L} - \mathbf{K})$$
+
+These satisfy:
+$$[M_i, M_j] = i\hbar \varepsilon_{ijk} M_k, \quad [N_i, N_j] = i\hbar \varepsilon_{ijk} N_k, \quad [M_i, N_j] = 0$$
+
+This is the algebra of **SU(2) × SU(2)**—two independent SU(2) algebras that commute. Therefore:
+$$\text{SO(4)} \cong \text{SU(2)} \times \text{SU(2)}$$
+
+**Physical Significance:**
+- Each SU(2) factor contributes a quantum number ($m$ and $n$ in the text)
+- For hydrogen, the constraint $\mathbf{L} \cdot \mathbf{K} = 0$ forces $m = n$
+- The principal quantum number is $n = 2m + 1$ (in the text's convention)
+- This explains why the hydrogen spectrum depends only on $n$: both SU(2) factors contribute equally.
+
 ### 5.4 SU(3) Flavor vs. SU(3) Color: Two Different Symmetries
 
 **Global vs. Local (Gauge) Symmetry**
@@ -1436,7 +1453,23 @@ $$= \frac{1}{\sqrt{6}}(|rgb\rangle - |rbg\rangle + |gbr\rangle - |grb\rangle + |
 
 This is the **Levi-Civita symbol** $\varepsilon_{c_1 c_2 c_3}$, which is totally antisymmetric. When you apply any SU(3) color transformation, the state remains unchanged (singlet property).
 
-### 5.5 SU(3) Weight Diagrams: Visualizing Representations
+### 5.5 SU(3): Weight Diagrams and Young Tableaux
+
+**Purpose: Why SU(3) is More Complex than SU(2)**
+
+SU(2) has rank 1 (one Cartan generator $J_z$), so representations are labeled by a single quantum number $j$, and states within a representation by $m$. The tensor product decomposition for SU(2) is simple: $j_1 \otimes j_2 = |j_1-j_2| \oplus \cdots \oplus (j_1+j_2)$.
+
+SU(3) has rank 2 (two Cartan generators). This means:
+1. Representations need **two** labels $(p,q)$ to specify them
+2. States within a representation need **two** quantum numbers $(i_3, y)$ to label them
+3. The tensor product decomposition is more complex—we need systematic methods
+
+**Two Tools for SU(3): Weight Diagrams and Young Tableaux**
+
+| Tool | What It Shows | Best For |
+|:----:|:-------------:|:--------:|
+| **Weight diagrams** | States as points in $(i_3, y)$ space | Visualizing representations, understanding particle multiplets |
+| **Young tableaux** | Symmetry patterns of tensor indices | Computing tensor products systematically |
 
 **The SU(3) Weight Space**
 
@@ -1511,7 +1544,73 @@ Roots are weights of the **adjoint representation** (generators themselves). The
 **Highest Weight Theorem:**
 Each irreducible representation has a unique highest weight state. All other states are reached by applying lowering operators. This is why SU(3) representations are labeled by $(p,q)$—these integers specify the highest weight.
 
-### 5.6 Atomic Physics: Coupling Schemes
+**Young Tableaux: Systematic Tensor Product Decomposition**
+
+While weight diagrams visualize representations, **Young tableaux** provide a systematic way to compute tensor products. They represent the symmetry pattern of tensor indices.
+
+**Basic Rules:**
+- Each box represents a tensor index
+- A row of $n$ boxes = totally symmetric combination of $n$ indices
+- A column of $n$ boxes = totally antisymmetric combination of $n$ indices
+- For SU($N$), columns can have at most $N$ boxes (more would vanish by antisymmetry)
+
+**SU(3) Representations as Young Tableaux:**
+
+| Dimension | Label | Young Tableau | Symmetry |
+|:---------:|:-----:|:-------------:|:--------:|
+| 1 | $\mathbf{1}$ | <img src="/images/angular-momentum/young_singlet.png" width="20px"> | Trivial |
+| 3 | $\mathbf{3}$ | <img src="/images/angular-momentum/young_3.png" width="25px"> | Single box |
+| $\bar{3}$ | $\bar{\mathbf{3}}$ | <img src="/images/angular-momentum/young_3bar.png" width="25px"> | Single column, 2 boxes |
+| 6 | $\mathbf{6}$ | <img src="/images/angular-momentum/young_6.png" width="45px"> | Two symmetric boxes |
+| 8 | $\mathbf{8}$ | <img src="/images/angular-momentum/young_8.png" width="45px"> | Mixed symmetry |
+| 10 | $\mathbf{10}$ | <img src="/images/angular-momentum/young_10.png" width="70px"> | Three symmetric boxes |
+
+**Computing Tensor Products with Young Tableaux:**
+
+The product $\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$ is computed by:
+1. Start with the first tableau: <img src="/images/angular-momentum/young_3.png" width="25px">
+2. Add boxes from the second tableau in all allowed positions
+3. Enforce: no two added boxes in same column (antisymmetry constraint)
+4. Discard any column with 3 boxes (vanishes in SU(3))
+
+**Example: Meson Octet from $\mathbf{3} \otimes \bar{\mathbf{3}}$**
+
+$$\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$$
+
+This is the quark-antiquark combination giving mesons. The singlet is a scalar meson; the octet contains the pions, kaons, and eta meson.
+
+**Example: Baryon Decuplet from $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3}$**
+
+$$\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$$
+
+Three quarks combine to give the decuplet (spin-3/2 baryons), two octets (spin-1/2 baryons), and a singlet (forbidden by spin-statistics for three identical fermions).
+
+**Key Insight:** Young tableaux encode the permutation symmetry of identical particles. For multi-quark systems, the color, flavor, and spin wavefunctions must combine to give overall antisymmetry (for fermions).
+
+### 5.6 Isospin: SU(2) in Nuclear Physics
+
+**Nucleons as an SU(2) Doublet**
+
+Proton and neutron are nearly identical under strong interactions:
+$$|p\rangle = |I=1/2, I_3=+1/2\rangle, \quad |n\rangle = |I=1/2, I_3=-1/2\rangle$$
+
+This is **not** real spin—it's an internal symmetry (flavor symmetry) with identical SU(2) algebra.
+
+**Physical Consequences:**
+- Mirror nuclei (e.g., $^3$He and $^3$H) have similar energy levels
+- Isospin conservation in strong interactions constrains reaction cross sections
+- The neutron-proton mass difference ($\sim 1.3$ MeV) is electromagnetic, not strong interaction
+
+**Gell-Mann–Nishijima Formula:**
+$$Q = I_3 + \frac{B+S}{2}$$
+relates charge $Q$, isospin projection $I_3$, baryon number $B$, and strangeness $S$.
+
+**Application:**
+Given any three of the four quantum numbers, the fourth is determined. Strong interactions conserve $I_3$, $B$, and $S$, so charge is automatically conserved.
+
+---
+
+## Part VI: Atomic Physics: Coupling Schemes
 
 **Term Symbols and Multi-Electron Atoms**
 
@@ -1534,82 +1633,13 @@ Both are group-theoretically valid; the choice depends on which interaction domi
 2. Maximum $L$ for that $S$
 3. $J$ depends on shell filling (minimum for $<$ half, maximum for $>$ half)
 
-### 5.7 Isospin: SU(2) in Nuclear Physics
-
-**Nucleons as an SU(2) Doublet**
-
-Proton and neutron are nearly identical under strong interactions:
-$$|p\rangle = |I=1/2, I_3=+1/2\rangle, \quad |n\rangle = |I=1/2, I_3=-1/2\rangle$$
-
-This is **not** real spin—it's an internal symmetry (flavor symmetry) with identical SU(2) algebra.
-
-**Physical Consequences:**
-- Mirror nuclei (e.g., $^3$He and $^3$H) have similar energy levels
-- Isospin conservation in strong interactions constrains reaction cross sections
-- The neutron-proton mass difference ($\sim 1.3$ MeV) is electromagnetic, not strong interaction
-
-**Gell-Mann–Nishijima Formula:**
-$$Q = I_3 + \frac{B+S}{2}$$
-relates charge $Q$, isospin projection $I_3$, baryon number $B$, and strangeness $S$.
-
-**Applications:**
-- **Particle identification:** Given any three of the four quantum numbers, the fourth is determined
-- **Reaction constraints:** Strong interactions conserve $I_3$, $B$, and $S$, so charge is automatically conserved
-- **Prediction:** The formula predicted the existence of the $\Omega^-$ baryon (strangeness $-3$, charge $-1$) before its experimental discovery
-
-### 5.8 Characters and Orthogonality
-
-**Character of a Representation**
-
-The character $\chi_j(\theta)$ is the trace of the representation matrix:
-$$\chi_j(\theta) = \text{Tr}[D^{(j)}(R(\theta))] = \sum_{m=-j}^{j} e^{-im\theta} = \frac{\sin[(j+1/2)\theta]}{\sin(\theta/2)}$$
-
-Characters depend only on the rotation angle, not the axis, making them useful for identifying representations.
-
-**Orthogonality Relation**
-
-$$\int_0^{2\pi} \chi_{j_1}(\theta) \chi_{j_2}(\theta) \sin^2\frac{\theta}{2} d\theta = \pi \delta_{j_1 j_2}$$
-
-This orthogonality allows decomposition of tensor products by computing multiplicities:
-$$n_j = \int d\theta \, \chi_{j_1}(\theta)\chi_{j_2}(\theta)\chi_j^*(\theta) \times (\text{measure})$$
-
-**Representation Space vs. Basis Choice**
-
-For a fixed angular momentum $j$, the **representation space** is the $(2j+1)$-dimensional Hilbert space spanned by the states $\{|j, m\rangle\}$. This space is **unique** for a given $j$—it is determined by the algebraic structure, not a choice.
-
-However, **within this fixed space**, we can choose different bases:
-- The standard basis $\{|j, m\rangle\}$ (eigenstates of $J_z$)
-- The eigenstates of $J_x$ or $J_y$
-- Any rotated basis
-
-These different bases are related by unitary transformations *within* the same representation space.
-
-**Singlet, Doublet, Triplet: What the "-let" Terms Mean**
-
-The suffix "-let" indicates a multiplet—a collection of states related by symmetry operations:
-
-| Term | $j$ | Number of States $(2j+1)$ | Meaning |
-|:----:|:---:|:------------------------:|:--------|
-| **Singlet** | 0 | 1 | Single state (no orientation degree of freedom) |
-| **Doublet** | 1/2 | 2 | Two states (spin up/down) |
-| **Triplet** | 1 | 3 | Three states ($m = -1, 0, +1$) |
-| **Quartet** | 3/2 | 4 | Four states |
-
-**Explicit Character Formula:**
-$$\chi_j(\theta) = \frac{\sin[(j+1/2)\theta]}{\sin(\theta/2)}$$
-
-**Example:** For spin-1/2 ($j = 1/2$):
-$$\chi_{1/2}(\theta) = 2\cos(\theta/2)$$
-
-**Physical Interpretation:** The character is a "fingerprint" of the representation—different representations have orthogonal character functions, just as different people have different fingerprints.
-
 ---
 
-## Part VI: Spherical Harmonics and Central Potentials
+## Part VII: Spherical Harmonics and Central Potentials
 
 The algebraic machinery developed so far finds immediate application in the physics of central force fields, where the potential depends only on the radial coordinate $V(r)$. Angular momentum plays a central role because the spherical symmetry of such systems guarantees that $[H, L^2] = [H, L_z] = 0$, allowing simultaneous eigenstates of energy and angular momentum. This leads to the separation of the Schrödinger equation into radial and angular parts.
 
-### 6.1 Separation of Variables in Spherical Coordinates
+### 7.1 Separation of Variables in Spherical Coordinates
 
 For a particle in a central potential $V(r)$, the Hamiltonian is:
 
@@ -1626,7 +1656,7 @@ $$L^2 = -\hbar^2\left[\frac{1}{\sin\theta}\frac{\partial}{\partial\theta}\left(\
 Therefore:
 $$H = -\frac{\hbar^2}{2\mu}\frac{1}{r^2}\frac{\partial}{\partial r}\left(r^2\frac{\partial}{\partial r}\right) + \frac{L^2}{2\mu r^2} + V(r)$$
 
-### 6.2 Simultaneous Eigenfunctions and Spherical Harmonics
+### 7.2 Simultaneous Eigenfunctions and Spherical Harmonics
 
 Since $[H, L^2] = [H, L_z] = [L^2, L_z] = 0$, we have simultaneous eigenfunctions:
 
@@ -1682,9 +1712,23 @@ The figure displays **$|Y_l^m(\theta, \phi)|^2$**, the angular probability densi
 | Complex $Y_l^m$ | Eigenfunctions of $L_z$ | $L_z$ | Physics (angular momentum) |
 | Real orbitals | Linear combinations of $Y_l^{\pm m}$ | $L^2$ only | Chemistry (bonding) |
 
-Real orbitals (p$_x$, p$_y$, d$_{xy}$, etc.) are formed by combining $Y_l^{+m}$ and $Y_l^{-m}$ to create standing waves with definite nodal planes. The figure labels indicate which real orbital corresponds to each $|Y_l^m|^2$ pattern.
+**Important Distinction:**
 
-### 6.3 Angular Momentum in Central Force Fields: Key Theorems
+The figure displays $|Y_l^m|^2$, which is the **probability density** for finding the electron at a given angular position. This is NOT the same as the "real orbitals" (p$_x$, p$_y$, etc.) used in chemistry.
+
+| Quantity | What It Is | Physical Meaning |
+|:--------:|:----------:|:----------------:|
+| $|Y_l^m|^2$ | Modulus squared of spherical harmonic | Probability density as function of angle |
+| Real orbitals (p$_x$, p$_y$) | Linear combinations: $Y_l^{\pm m} \pm Y_l^{\mp m}$ | Standing waves with definite nodal planes |
+
+**Key Point:** The labels like "p$_z$" and "d$_{z^2}$" in the figure indicate which real orbital has the SAME probability density pattern as $|Y_l^m|^2$. But mathematically:
+- p$_z$ orbital $\propto Y_1^0$ (real, proportional to $\cos\theta$)
+- p$_x$ orbital $\propto Y_1^{-1} - Y_1^{+1}$ (real combination)
+- p$_y$ orbital $\propto Y_1^{-1} + Y_1^{+1}$ (real combination, with $i$ factors)
+
+Real orbitals are used in chemistry because they create standing waves along specific axes, useful for understanding chemical bonding along bond directions.
+
+### 7.3 Angular Momentum in Central Force Fields: Key Theorems
 
 **Theorem 1: Degeneracy with respect to magnetic quantum number $m$**
 
@@ -1734,7 +1778,7 @@ $$\frac{d^2u}{dr^2} - \frac{l(l+1)}{r^2}u = 0$$
 
 Trying $u \propto r^s$ gives the indicial equation $s(s-1) = l(l+1)$, with solutions $s = l+1$ or $s = -l$. 
 
-**Why $s = -l$ is Non-Normalizable:**
+**Why $s = -l$ is Unphysical:**
 
 For $s = -l$, we have $u \propto r^{-l}$ and thus $R = u/r \propto r^{-l-1}$. The normalization integral for the radial wavefunction is:
 $$\int_0^\infty |R_{nl}(r)|^2 r^2 dr = \int_0^\infty |u_{nl}(r)|^2 dr$$
@@ -1742,7 +1786,11 @@ $$\int_0^\infty |R_{nl}(r)|^2 r^2 dr = \int_0^\infty |u_{nl}(r)|^2 dr$$
 Near $r = 0$, the $s = -l$ solution gives:
 $$\int_0^{\epsilon} |u|^2 dr \propto \int_0^{\epsilon} r^{-2l} dr$$
 
-For $l \geq 1$, this integral diverges at the origin since $-2l \leq -2 < -1$. Even for $l = 0$ (where $R \propto r^{-1}$), the integral $\int_0^\epsilon r^{-2} \cdot r^2 dr = \int_0^\epsilon dr$ appears finite, but the wavefunction itself is singular and the kinetic energy expectation value diverges. Therefore, the $s = -l$ solution must be discarded on physical grounds.
+For $l \geq 1$, this integral diverges at the origin since $-2l \leq -2 < -1$. 
+
+For $l = 0$, we have $R \propto r^{-1}$. While the probability integral $\int_0^\epsilon |R|^2 r^2 dr = \int_0^\epsilon dr$ appears finite, the wavefunction $R \propto 1/r$ is singular at the origin. More importantly, the kinetic energy expectation value:
+$$\langle T \rangle \propto \int_0^\epsilon \left|\frac{d}{dr}(rR)\right|^2 dr = \int_0^\epsilon \left|\frac{d}{dr}(1)\right|^2 dr$$
+diverges because the derivative of a constant is zero... actually, let us be more careful. With $u = rR = $ constant, we have $u' = 0$ for $r > 0$, but the discontinuity at $r=0$ gives a delta function contribution. The correct calculation shows the kinetic energy is infinite. Therefore, the $s = -l$ solution must be discarded on physical grounds.
 
 The regular solution is:
 $$\boxed{u_{nl}(r) \propto r^{l+1} \quad \Rightarrow \quad R_{nl}(r) = \frac{u_{nl}}{r} \propto r^l}$$
@@ -1754,11 +1802,11 @@ $$\boxed{u_{nl}(r) \propto r^{l+1} \quad \Rightarrow \quad R_{nl}(r) = \frac{u_{
 
 Higher angular momentum states are increasingly excluded from the nucleus by the centrifugal barrier.
 
-### 6.4 The Hidden Symmetry of the Hydrogen Atom: SO(4) and the Runge-Lenz Vector
+### 7.4 The Hidden Symmetry of the Hydrogen Atom: SO(4) and the Runge-Lenz Vector
 
 The Coulomb potential $V(r) = -e^2/r$ possesses a **hidden symmetry** that goes beyond the obvious rotational symmetry. This additional symmetry explains the "accidental" degeneracy of hydrogen energy levels: states with the same principal quantum number $n$ but different orbital angular momentum $l$ are degenerate, even though $[H, L^2] \neq 0$ for a generic central potential.
 
-#### 6.4.1 The Quantum Runge-Lenz Vector
+#### 7.4.1 The Quantum Runge-Lenz Vector
 
 In quantum mechanics, the Runge-Lenz vector operator is defined as:
 
@@ -1781,7 +1829,7 @@ $$[\hat{H}, \hat{\mathbf{A}}] = 0$$
 
 This means $\hat{\mathbf{A}}$ is a conserved quantity, generating a symmetry of the system.
 
-#### 6.4.2 The Rescaled Runge-Lenz Vector and SO(4) Algebra
+#### 7.4.2 The Rescaled Runge-Lenz Vector and SO(4) Algebra
 
 To reveal the algebraic structure, define the **rescaled Runge-Lenz vector**:
 
@@ -1835,48 +1883,22 @@ $$[K_i, K_j] = -\frac{\mu}{2E} [A_i, A_j] = -\frac{\mu}{2E} (-2i\hbar H \varepsi
 
 where we used $H = E$ (on energy eigenstates) in the last step.
 
-**Detailed Calculation of $[A_i, A_j]$:**
+**Sketch of the Calculation:**
 
-Let us compute $[A_x, A_y]$ explicitly. Write:
-$$\mathbf{A} = \mathbf{p} \times \mathbf{L} - i\hbar\mathbf{p} - \mu k \hat{\mathbf{r}}$$
+Computing $[A_i, A_j]$ involves lengthy but straightforward commutator algebra using:
+- $[r_i, p_j] = i\hbar \delta_{ij}$
+- $[r_i, p^2] = 2i\hbar p_i$  
+- $[p_i, r] = -i\hbar r_i/r$
 
-First, note that:
-$$\mathbf{p} \times \mathbf{L} = \mathbf{p} \times (\mathbf{r} \times \mathbf{p}) = \mathbf{r} p^2 - (\mathbf{p} \cdot \mathbf{r})\mathbf{p}$$
-
-Using the commutator $[r_i, p_j] = i\hbar \delta_{ij}$:
-$$\mathbf{p} \cdot \mathbf{r} = \mathbf{r} \cdot \mathbf{p} - 3i\hbar$$
-
-So:
-$$\mathbf{p} \times \mathbf{L} = \mathbf{r} p^2 - (\mathbf{r} \cdot \mathbf{p})\mathbf{p} + 3i\hbar\mathbf{p}$$
-
-And:
-$$\mathbf{A} = \mathbf{r} p^2 - (\mathbf{r} \cdot \mathbf{p})\mathbf{p} + 2i\hbar\mathbf{p} - \mu k \hat{\mathbf{r}}$$
-
-Now compute $[A_x, A_y]$. This is tedious but straightforward. The key identities are:
-
-1. $[r_i, p^2] = 2i\hbar p_i$
-2. $[p_i, r] = -i\hbar r_i/r$
-3. The virial theorem for $1/r$ potential: $\langle p^2/2\mu \rangle = -E$, $\langle k/r \rangle = 2E$
-
-After a lengthy calculation involving these commutators, one finds:
-
+The key result is:
 $$[A_i, A_j] = -2i\hbar H \varepsilon_{ijk} L_k$$
 
-The appearance of $H$ in this commutator is crucial—it means that when we restrict to an energy eigenspace (where $H = E$), the commutator becomes:
-
+On an energy eigenspace ($H = E$), this becomes:
 $$[A_i, A_j] = -2i\hbar E \varepsilon_{ijk} L_k$$
 
-**Using the Virial Theorem:**
+The scaling factor $\sqrt{-\mu/(2E)}$ in $\mathbf{K} = \sqrt{-\mu/(2E)}\mathbf{A}$ is chosen to normalize this to the standard angular momentum commutator form.
 
-For the Coulomb potential $V = -k/r$, the virial theorem states:
-$$\langle T \rangle = -E, \quad \langle V \rangle = 2E$$
-
-where $T = p^2/(2\mu)$ is kinetic energy. This confirms:
-$$E = \langle T + V \rangle = -E + 2E = E \quad \checkmark$$
-
-The scaling factor $\sqrt{-\mu/(2E)}$ is chosen precisely to normalize the $\mathbf{K}$ commutator to the standard form.
-
-#### 6.4.3 Casimir Operators
+#### 7.4.3 Casimir Operators
 
 **Definition:** A **Casimir operator** is an operator that commutes with all generators of a Lie algebra. For the angular momentum algebra so(3), the Casimir operator is:
 
@@ -1910,7 +1932,7 @@ $$\mathbf{M}^2 = \hbar^2 m(m+1), \quad \mathbf{N}^2 = \hbar^2 n(n+1)$$
 Since $C_2 = 0$, we have $m = n$, and:
 $$C_1 = \hbar^2 [m(m+1) + n(n+1)] = 2\hbar^2 n(n+1)$$
 
-#### 6.4.4 The Accidental Degeneracy Explained
+#### 7.4.4 The Accidental Degeneracy Explained
 
 **Energy Formula from SO(4):**
 
@@ -1964,14 +1986,5 @@ In a generic central potential, the energy would depend on both $n$ and $l$ (e.g
 
 The larger SO(4) symmetry explains why hydrogen has more degeneracy than required by rotational symmetry alone. This "accidental" degeneracy is actually a signature of the hidden dynamical symmetry of the $1/r$ potential.
 
-#### 6.4.5 Connection to 4D Spherical Harmonics
 
-The SO(4) symmetry allows us to map the hydrogen problem to a free particle on a 3-sphere $S^3$. Define:
-
-$$u_1 = \frac{r}{r_0}\sin\theta\cos\phi = \frac{x}{r_0}, \quad u_2 = \frac{r}{r_0}\sin\theta\sin\phi = \frac{y}{r_0}$$
-$$u_3 = \frac{r}{r_0}\cos\theta = \frac{z}{r_0}, \quad u_4 = \sqrt{1 - \frac{r^2}{r_0^2}}$$
-
-The momentum space wavefunctions of hydrogen are 4D spherical harmonics, and the energy spectrum corresponds to the eigenvalues of the Laplacian on $S^3$.
-
-This connection demonstrates the deep geometric structure underlying the hydrogen atom: bound states correspond to harmonics on a sphere in 4D momentum space, with the principal quantum number $n$ labeling the "degree" of the harmonic.
 
