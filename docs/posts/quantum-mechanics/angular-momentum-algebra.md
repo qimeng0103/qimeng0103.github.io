@@ -1662,7 +1662,7 @@ where $P_l^m$ are the associated Legendre polynomials.
 
 <img src="/images/angular-momentum/spherical_harmonics_overview.png" width="700px" alt="Spherical harmonics visualization">
 
-*Polar plots of $|Y_l^m|^2$ for s, p, and d orbitals. The distance from the origin represents the probability density in that direction.*
+*Visualization of $|Y_l^m|^2$ for s, p, and d orbitals in the x-z plane. The radial distance from the origin represents the probability density in that direction.*
 
 **Orbital Naming Convention:**
 
@@ -1760,43 +1760,60 @@ This shows that higher angular momentum states are increasingly suppressed near 
 
 ### 6.5 SO(4) Symmetry and the Runge-Lenz Vector
 
-**SO(4) Structure**
+**The Runge-Lenz Vector: A Hidden Conservation Law**
 
-SO(4) is the rotation group in 4 dimensions. Unlike SO(3), it can be decomposed:
-$$\text{SO}(4) \cong \text{SU}(2) \times \text{SU}(2) / \mathbb{Z}_2$$
-
-This means rotations in 4D can be described by two independent SU(2) elements. The generators split into two commuting sets:
-$$\mathbf{J}^+ = \frac{1}{2}(\mathbf{J} + \mathbf{K}), \quad \mathbf{J}^- = \frac{1}{2}(\mathbf{J} - \mathbf{K})$$
-
-where $\mathbf{J}$ are angular momentum generators and $\mathbf{K}$ are boost-like generators.
-
-**The Runge-Lenz Vector**
-
-The hydrogen atom possesses an additional conserved quantity beyond angular momentum—the Runge-Lenz vector:
+The hydrogen atom possesses an additional conserved quantity beyond angular momentum—the **Runge-Lenz vector**:
 
 $$\mathbf{A} = \frac{1}{\mu}\mathbf{p} \times \mathbf{L} - \frac{e^2}{4\pi\varepsilon_0}\frac{\mathbf{r}}{r}$$
 
-**Conservation:**
+For the Coulomb potential, this satisfies:
 $$[H, \mathbf{A}] = 0$$
 
 This conservation law is responsible for the "accidental" degeneracy of hydrogen energy levels—all states with the same principal quantum number $n$ but different $l$ have the same energy.
 
-**SO(4) Symmetry of the Hydrogen Atom**
+The Runge-Lenz vector is perpendicular to angular momentum:
+$$\mathbf{A} \cdot \mathbf{L} = 0$$
 
-The Runge-Lenz vector satisfies:
-$$\mathbf{A} \cdot \mathbf{L} = \mathbf{L} \cdot \mathbf{A} = 0$$
-
+And its magnitude is related to the Hamiltonian:
 $$\mathbf{A}^2 = \left(\frac{e^2}{4\pi\varepsilon_0}\right)^2 + \frac{2H}{\mu}(L^2 + \hbar^2)$$
 
-Together with angular momentum, the Runge-Lenz vector generates an SO(4) symmetry group:
-- Define $\mathbf{M} = \sqrt{-\frac{\mu}{2E}} \mathbf{A}$ for bound states ($E < 0$)
-- Both $\mathbf{J}$ and $\mathbf{M}$ satisfy SU(2) algebras: $[J_i, J_j] = i\hbar\epsilon_{ijk}J_k$, $[M_i, M_j] = i\hbar\epsilon_{ijk}J_k$
-- They commute with each other: $[J_i, M_j] = 0$
+**Constructing the SO(4) Algebra**
 
-This $\text{SU}(2) \times \text{SU}(2)$ structure is exactly SO(4), explaining the $n^2$ degeneracy of hydrogen levels.
+To reveal the SO(4) structure, we define rescaled generators for bound states ($E < 0$):
+$$\mathbf{K} = \sqrt{-\frac{\mu}{2E}} \mathbf{A}$$
+
+Now form two commuting SU(2) algebras:
+$$\mathbf{J}^{(+)} = \frac{1}{2}(\mathbf{L} + \mathbf{K}), \quad \mathbf{J}^{(-)} = \frac{1}{2}(\mathbf{L} - \mathbf{K})$$
+
+These satisfy:
+$$[J^{(+)}_i, J^{(+)}_j] = i\hbar\epsilon_{ijk}J^{(+)}_k, \quad [J^{(-)}_i, J^{(-)}_j] = i\hbar\epsilon_{ijk}J^{(-)}_k$$
+$$[J^{(+)}_i, J^{(-)}_j] = 0$$
+
+The two algebras commute, giving the structure $\text{SU}(2) \times \text{SU}(2)$.
+
+**From SU(2)×SU(2) to SO(4)**
+
+The rotation group in 4D relates to these generators as:
+$$\text{SO}(4) \cong [\text{SU}(2) \times \text{SU}(2)] / \mathbb{Z}_2$$
+
+The $\mathbb{Z}_2$ quotient arises because a simultaneous $2\pi$ rotation in both SU(2) factors (giving $(-1) \times (-1) = +1$) corresponds to the identity in SO(4). This means:
+- $(\mathbf{J}^{(+)}, \mathbf{J}^{(-)})$ and $(-\mathbf{J}^{(+)}, -\mathbf{J}^{(-)})$ represent the same SO(4) rotation
+- Each SO(4) representation appears twice in the product space
+
+**Quantum Numbers and Degeneracy**
+
+For the hydrogen atom:
+$$j^{(+)} = j^{(-)} = \frac{n-1}{2}$$
+
+The degeneracy is:
+$$g_n = (2j^{(+)} + 1)(2j^{(-)} + 1) = n^2$$
+
+This explains the $n^2$ degeneracy: it's the product of dimensions of two SU(2) representations with $j = (n-1)/2$.
 
 **Physical Significance:**
-The SO(4) symmetry is special to the $1/r$ potential (Coulomb and gravitational). It implies closed elliptical orbits in classical mechanics and the "accidental" degeneracy in quantum mechanics.
+- The SO(4) symmetry is unique to the $1/r$ potential (Coulomb and Newtonian gravity)
+- In classical mechanics: explains closed elliptical orbits (no precession)
+- In quantum mechanics: explains the "accidental" $n^2$ degeneracy beyond the $(2l+1)$ degeneracy from SO(3)
 
 ---
 
