@@ -1643,8 +1643,17 @@ The figure displays **$|Y_l^m(\theta, \phi)|^2$**, the angular probability densi
 **Key Features:**
 - **$|Y_0^0|^2$**: Spherical (s-state)
 - **$|Y_1^0|^2$**: Dumbbell along $z$-axis (p$_z$)  
-- **$|Y_1^{\pm 1}|^2$**: Torus in $xy$-plane
+- **$|Y_1^{\pm 1}|^2$**: Torus in $xy$-plane (p$_x$, p$_y$ when combined)
 - **$|Y_2^0|^2$**: Two lobes along $z$-axis with equatorial ring (d$_{z^2}$)
+- **$|Y_2^{\pm 1}|^2$**: Four-lobe cloverleaf in $yz$ and $xz$ planes (d$_{xz}$, d$_{yz}$ when combined)
+- **$|Y_2^{\pm 2}|^2$**: Four-lobe cloverleaf in $xy$-plane (d$_{x^2-y^2}$, d$_{xy}$ when combined)
+
+**Real d-orbitals (chemistry notation):**
+- **d$_{z^2}$**: $\propto Y_2^0$ — two lobes along $z$-axis with torus in $xy$-plane
+- **d$_{x^2-y^2}$**: $\propto (Y_2^{+2} + Y_2^{-2})/\sqrt{2}$ — four lobes along $x$ and $y$ axes
+- **d$_{xy}$**: $\propto (Y_2^{+2} - Y_2^{-2})/(i\sqrt{2})$ — four lobes in $xy$-plane, rotated 45°
+- **d$_{xz}$**: $\propto (Y_2^{+1} - Y_2^{-1})/\sqrt{2}$ — four lobes in $xz$-plane
+- **d$_{yz}$**: $\propto (Y_2^{+1} + Y_2^{-1})/(i\sqrt{2})$ — four lobes in $yz$-plane
 
 **Complex vs. Real Spherical Harmonics**
 
@@ -1657,6 +1666,16 @@ The figure displays **$|Y_l^m(\theta, \phi)|^2$**, the angular probability densi
 - The figure shows $|Y_l^m|^2$ (probability density)
 - Real orbitals (p$_x$, p$_y$) are linear combinations with the **same** $|Y|^2$ pattern
 - p$_z \propto Y_1^0$; p$_x \propto (Y_1^{-1} - Y_1^{+1})/\sqrt{2}$; p$_y \propto (Y_1^{-1} + Y_1^{+1})/\sqrt{2}$
+
+**Why $|Y_l^m|^2 = |Y_l^{-m}|^2$:**
+
+The spherical harmonics satisfy the property:
+$$Y_l^{-m}(\theta, \phi) = (-1)^m \left[Y_l^m(\theta, \phi)\right]^*$$
+
+Therefore:
+$$|Y_l^{-m}|^2 = Y_l^{-m} \cdot (Y_l^{-m})^* = (-1)^m (Y_l^m)^* \cdot (-1)^m Y_l^m = |Y_l^m|^2$$
+
+This is why $m = \pm 1$ (and in general $\pm m$) have identical probability densities, just rotated.
 
 ### 6.3 Angular Momentum in Central Force Fields: Key Theorems
 
@@ -2292,9 +2311,22 @@ $$I_3 |\psi\rangle = i_3 |\psi\rangle, \quad Y |\psi\rangle = y |\psi\rangle$$
 In SU(2), there's only one raising operator $J_+$ and one lowering operator $J_-$, giving 2 roots $(\pm 1)$ in 1D weight space.
 
 In SU(3), there are **three independent raising operators**: $I_+$, $U_+$, $V_+$ (and their lowering partners), giving 6 roots in 2D weight space:
-- $\vec{\alpha}_{I_\pm} = (\pm 1, 0)$ — change $I_3$ by $\pm 1$
-- $\vec{\alpha}_{U_\pm} = (\mp 1/2, \pm 1)$ — change both quantum numbers
-- $\vec{\alpha}_{V_\pm} = (\pm 1/2, \pm 1)$ — change both quantum numbers
+- $\vec{\alpha}_{I_\pm} = (\pm 1, 0)$ — change $I_3$ by $\pm 1$, $Y$ unchanged
+- $\vec{\alpha}_{U_\pm} = (\mp 1/2, \pm 1)$ — change $I_3$ by $\mp 1/2$, $Y$ by $\pm 1$
+- $\vec{\alpha}_{V_\pm} = (\pm 1/2, \pm 1)$ — change $I_3$ by $\pm 1/2$, $Y$ by $\pm 1$
+
+**Why 3 ladders for 2 quantum numbers?**
+
+The key constraint is that the generators must satisfy the SU(3) algebra. Given two Cartan generators $I_3$ and $Y$, we can ask: how many independent ways can we change $(i_3, y)$ while staying in a representation?
+
+The answer is determined by the **root structure**: each root corresponds to a generator that changes the weight by a specific amount. In SU(3), the constraint that these generators close under commutation forces exactly 3 pairs of roots (forming a hexagon)—not 2, not 4.
+
+Physical interpretation: 
+- $I_\pm$ changes $u \leftrightarrow d$ (isospin, same hypercharge)
+- $U_\pm$ changes $d \leftrightarrow s$ 
+- $V_\pm$ changes $u \leftrightarrow s$
+
+These three are independent because $(u, d, s)$ is a triangle—no single ladder can connect all three states.
 
 These form a **hexagon** in the $(i_3, y)$ plane:
 
@@ -2310,17 +2342,22 @@ Start from a **highest weight state** (annihilated by all raising operators). Ap
 
 <img src="/images/angular-momentum/su3_fundamental_triplet.png" width="400px" alt="SU(3) Quark Triplet">
 
-- Highest weight: $u$ quark at $(1/2, 1/3)$
-- Apply $I_-$: get $d$ quark at $(-1/2, 1/3)$
-- Apply $V_-$: get $s$ quark at $(0, -2/3)$
+**Construction from highest weight:**
+1. Start with $u$ at $(1/2, 1/3)$ — highest weight (annihilated by all raising ops)
+2. Apply $I_-$: move horizontally to $d$ at $(-1/2, 1/3)$
+3. Apply $V_-$: move diagonally to $s$ at $(0, -2/3)$
+
+The arrows show the action of lowering operators that generate the representation from the highest weight state.
 
 **Adjoint $\mathbf{8}$:**
 
 <img src="/images/angular-momentum/su3_octet_baryons.png" width="500px" alt="SU(3) Baryon Octet">
 
-- Contains the 6 roots (at the hexagon vertices) 
-- Plus 2 states at the origin ($\Sigma^0$ and $\Lambda$ with different wavefunction symmetry)
-- The octet forms a hexagon with a doubly-occupied center
+**Structure:**
+- 6 states at the hexagon vertices ($p, n, \Sigma^+, \Sigma^-, \Xi^0, \Xi^-$) — correspond to the 6 root vectors
+- 2 states at the origin ($\Sigma^0$ and $\Lambda$) — two orthogonal ways to combine $u\bar{u}, d\bar{d}, s\bar{s}$ with $I_3=Y=0$
+
+**Why two states at the center?** Both $\Sigma^0$ and $\Lambda$ have $(I_3, Y) = (0, 0)$, but they differ in isospin: $\Sigma^0$ is part of the isospin triplet $(\Sigma^+, \Sigma^0, \Sigma^-)$, while $\Lambda$ is an isospin singlet.
 
 **Young Tableaux: Systematic Tensor Products**
 

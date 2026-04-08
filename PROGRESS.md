@@ -13,7 +13,13 @@
 
 - [x] 第五次修改 - 用户审阅反馈
 - [x] 构建检查 - 通过
+- [x] 推送部署 - 完成
+
+- [x] 第六次修改 - SU(3)图像和Spherical Harmonics
+- [x] 构建检查 - 通过
 - [ ] 推送部署
+
+- [ ] Young Tableaux图像修复（等待用户提供程序或具体需求）
 
 ### 中优先级  
 - [ ] 
@@ -24,6 +30,32 @@
 ---
 
 ## 📝 会话记录
+
+### 2026-04-08 - 第六次修改（SU(3)图像和Spherical Harmonics）
+
+**用户反馈的问题及修复：**
+
+1. **SU(3) ladder operators解释** (Line 2290)
+   - 添加解释：为什么2个量子数需要3个independent ladders
+   - 解释物理意义：$(u, d, s)$是三角形，没有单个ladder能连接所有三个态
+
+2. **SU(3)图像修复**
+   - Fundamental triplet：显示从highest weight构建过程，只标注用到的lowering operators ($I_-$, $V_-$)
+   - Adjoint octet：修复对齐问题，使用精确坐标绘制六边形
+   - 重新生成所有SU(3)图像
+
+3. **Spherical Harmonics证明** (Line 1656)
+   - 添加$|Y_l^m|^2 = |Y_l^{-m}|^2$的显式证明
+   - 使用性质$Y_l^{-m} = (-1)^m (Y_l^m)^*$
+
+4. **d-orbitals介绍** (Line 1643)
+   - 添加$d_{xz}$, $d_{yz}$, $d_{xy}$, $d_{x^2-y^2}$的详细描述
+   - 说明它们与$Y_2^{\pm 1}$, $Y_2^{\pm 2}$的线性组合关系
+
+**待处理：**
+- Young Tableaux图像修复（需要用户提供Python程序或具体需求）
+
+---
 
 ### 2026-04-08 - 第五次修改（用户审阅反馈）
 
