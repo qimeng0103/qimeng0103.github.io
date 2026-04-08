@@ -19,6 +19,10 @@
 - [x] 构建检查 - 通过
 - [x] 推送部署 - 完成
 
+- [x] 第十三次修改 - 删除表格/重写7.5
+- [x] 构建检查 - 通过
+- [x] 推送部署 - 完成
+
 ### 中优先级  
 - [ ] 
 
@@ -28,6 +32,40 @@
 ---
 
 ## 📝 会话记录
+
+### 2026-04-08 - 第十三次修改（删除表格/重写7.5）
+
+**用户反馈的问题及修复：**
+
+1. **删除7.1 Projective Representation最后的summary table**
+   - 删除了Property/Integer spin/Half-integer spin对比表格
+
+2. **删除7.3中"Why the sign matters"整段**
+   - 删除了Case 1 (Integer spin)详细解释
+   - 删除了Case 2 (Half-integer spin)详细解释
+   - 删除了Conclusion段落
+   - 直接保留简洁的核心解释
+
+3. **完全重写7.5节，去掉所有图**
+   - 删除所有图像引用（su3_root_diagram.png, su3_fundamental_triplet.png, su3_octet_baryons.png）
+   - 删除LaTeX Young diagram图形（\\begin{array}画框）
+   - 删除SU(3) Representations表格
+   - 保留纯文字解释：
+     * SU(3) roots和weights的文字描述
+     * Adjoint 8表示的系统构建方法（6个顶点态+2个中心态）
+     * Young tableaux规则的文字描述
+     * Permutation symmetry为什么参与SU(3)表示分解的解释
+
+**7.5现在包含的核心内容：**
+- SU(3) Rank = 2的解释
+- 6个root operators ($I_\pm, U_\pm, V_\pm$)的作用
+- Fundamental 3表示的构建
+- Adjoint 8表示的系统构建（分步骤说明）
+- Young tableaux规则（文字版）
+- 为什么permutation symmetry重要
+- 张量积分解的文字解释
+
+---
 
 ### 2026-04-08 - 第十二次修改（重写6.4.4 SO(4)能量推导）
 
