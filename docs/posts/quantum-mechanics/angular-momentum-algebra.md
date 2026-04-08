@@ -1388,14 +1388,6 @@ For each p-electron:
 - $l=1$, $s=1/2$
 - $j = l \pm 1/2 = 1/2$ or $3/2$
 
-**Determining symmetric vs. antisymmetric combinations:**
-
-For two equivalent electrons, the total wavefunction must be antisymmetric. For angular momentum coupling of two identical $j$ values, the exchange symmetry is determined by:
-- **Even $J$**: symmetric under exchange $(-1)^{2j-J} = +1$ when $J$ is even
-- **Odd $J$**: antisymmetric under exchange $(-1)^{2j-J} = -1$ when $J$ is odd
-
-More precisely, for two identical particles with angular momentum $j$, the allowed total $J$ values are restricted by the Pauli principle.
-
 **jj Coupling for Two Equivalent Electrons:**
 
 For two equivalent electrons with individual angular momentum $j$, a total $J$ state is allowed if $(-1)^{2j-J} = -1$ (antisymmetric).
