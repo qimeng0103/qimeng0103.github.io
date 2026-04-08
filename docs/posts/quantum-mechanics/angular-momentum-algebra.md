@@ -1186,20 +1186,44 @@ In light atoms (roughly $Z < 30$), the electrostatic repulsion between electrons
 
 **Why This Order?**
 
-The electrostatic repulsion depends on spatial configuration, which is determined by orbital angular momentum. Electrons with the same $l$ but different $m_l$ experience different Coulomb repulsion due to their spatial distribution. Spins couple separately because the exchange interaction (a quantum effect of fermion antisymmetry) strongly correlates spins.
+The electrostatic repulsion depends on spatial configuration, which is determined by orbital angular momentum. This is because the electrostatic energy is computed from the Coulomb integral $\langle \psi | \frac{e^2}{|\mathbf{r}_i - \mathbf{r}_j|} | \psi \rangle$, which depends on the spatial wavefunction—and the spatial wavefunction is characterized by orbital angular momentum quantum numbers $l$ and $m_l$.
+
+**Why same $l$ but different $m_l$ have different spatial distributions:**
+
+The magnetic quantum number $m_l$ determines the orientation of the orbital in space. For example:
+- $p_z$ ($m_l = 0$): electron density concentrated along the $z$-axis
+- $p_x$ ($m_l = \pm 1$ combinations): electron density in the $xy$-plane
+
+Two electrons with the same $l$ but different $m_l$ have their charge distributed differently in space, leading to different average separations $\langle |\mathbf{r}_i - \mathbf{r}_j| \rangle$ and therefore different Coulomb repulsion energies.
+
+**The Exchange Interaction:**
+
+The exchange interaction is a purely quantum mechanical effect arising from the antisymmetry requirement of identical fermions. When electrons have parallel spins (same $m_s$), they can occupy the same spatial region only if their spatial wavefunction is antisymmetric—this keeps them apart and reduces Coulomb repulsion. When spins are antiparallel, the symmetric spatial wavefunction allows them to come closer, increasing repulsion. This energy difference creates an effective "exchange force" that favors parallel spin alignment.
 
 **Mathematical Structure**
 
 The Hamiltonian in LS coupling approximation:
-$$H = H_0 + \sum_{i<j} \frac{e^2}{|\mathbf{r}_i - \mathbf{r}_j|} + H_{\text{SO}}$$
+$$H = H_0 + \underbrace{\sum_{i<j} \frac{e^2}{|\mathbf{r}_i - \mathbf{r}_j|}}_{\text{dominant in light atoms}} + \underbrace{H_{\text{SO}}}_{\text{perturbation}}$$
 
-where $H_0$ is the central field approximation and $H_{\text{SO}}$ is treated as a perturbation. The electrostatic term splits configurations into terms (same $L$ and $S$), and spin-orbit splits terms into levels (different $J$).
+where:
+- $H_0$ is the central field approximation (independent electron model)
+- The electrostatic repulsion term couples the orbital motions of electrons
+- $H_{\text{SO}}$ is the spin-orbit coupling, treated as a perturbation
+
+**Energy splitting hierarchy:**
+1. **Configuration**: Electrons in specific shells (e.g., $2p^2$) — largest energy scale
+2. **Term**: Same $L$ and $S$ — split by electrostatic repulsion
+3. **Level**: Same $L$, $S$, different $J$ — split by spin-orbit coupling
+
+For example, the $2p^2$ configuration splits into terms $^3P$, $^1D$, $^1S$, and the $^3P$ term further splits into levels $^3P_0$, $^3P_1$, $^3P_2$.
 
 ### 5.3 Deriving Term Symbols: Detailed Examples
 
+**Goal:** Determine the possible quantum states (terms) for multi-electron atoms and find the ground state configuration using Hund's rules.
+
 **Example 1: Two p-electrons (p² configuration)**
 
-Consider two equivalent p-electrons (same $n$ and $l=1$), as in carbon ($2p^2$), nitrogen ($2p^3$ - actually three electrons), or oxygen ($2p^4$).
+Consider two equivalent p-electrons (same $n$ and $l=1$), as in carbon ($2p^2$) or oxygen ($2p^4$).
 
 For a single p-electron: $l=1$, $s=1/2$, giving $m_l = -1, 0, +1$ and $m_s = \pm 1/2$.
 
@@ -1211,14 +1235,31 @@ Actually, a better approach is to use the vector model for $L$ and $S$:
 - $l_1 = l_2 = 1$, so $L = |l_1 - l_2|, ..., l_1 + l_2 = 0, 1, 2$ (S, P, D)
 - $s_1 = s_2 = 1/2$, so $S = 0$ or $1$ (singlet or triplet)
 
-But we must enforce antisymmetry for equivalent electrons. The rule is:
-- If $S=1$ (symmetric spin, triplet), spatial part must be antisymmetric
-- If $S=0$ (antisymmetric spin, singlet), spatial part must be symmetric
+**Pauli Principle and Symmetry:**
+
+For equivalent electrons (same $n$ and $l$), the total wavefunction must be antisymmetric under exchange. The total wavefunction factors as:
+$$\Psi_{\text{total}} = \psi_{\text{space}} \otimes \chi_{\text{spin}}$$
+
+where:
+- $\psi_{\text{space}}$ depends on orbital angular momentum $L$
+- $\chi_{\text{spin}}$ depends on total spin $S$
+
+**Symmetry of $L$ states under particle exchange:**
+
+The total orbital wavefunction with definite $L$ transforms under particle exchange according to $(-1)^L$:
+- **Even $L$ (S, D, ...): symmetric** under exchange $(-1)^L = +1$
+- **Odd $L$ (P, F, ...): antisymmetric** under exchange $(-1)^L = -1$
 
 For two p-electrons:
-- $L=0$ (S): symmetric under exchange
-- $L=1$ (P): antisymmetric under exchange  
-- $L=2$ (D): symmetric under exchange
+- $L=0$ (S): even → symmetric spatial wavefunction
+- $L=1$ (P): odd → antisymmetric spatial wavefunction  
+- $L=2$ (D): even → symmetric spatial wavefunction
+
+**Combining with spin symmetry:**
+
+Since $\Psi_{\text{total}}$ must be antisymmetric:
+- If $S=1$ (symmetric spin, triplet), spatial part must be **antisymmetric** → only $L=1$ (P) allowed
+- If $S=0$ (antisymmetric spin, singlet), spatial part must be **symmetric** → $L=0$ or $L=2$ allowed
 
 Therefore:
 - **Triplet states** ($S=1$, symmetric spin): can only combine with $L=1$ (P)
@@ -1231,17 +1272,56 @@ Therefore:
 
 **Result for p²:** $^3P_{0,1,2}$, $^1D_2$, $^1S_0$
 
-Counting states: $3 + 5 + 1 + 5 + 1 = 15$ microstates. This equals $\binom{6}{2} = 15$, confirming we have all states.
+**State Counting:**
+
+Each term $^{2S+1}L_J$ has $(2J+1)$ magnetic sublevels ($m_J = -J, ..., +J$). Counting all states:
+- $^3P$: $J = 0, 1, 2$ → $(1 + 3 + 5) = 9$ states
+- $^1D$: $J = 2$ → $5$ states  
+- $^1S$: $J = 0$ → $1$ state
+
+Total: $9 + 5 + 1 = 15$ microstates.
+
+**Verification:** Two equivalent p-electrons, each with 6 possible states ($m_l = -1, 0, 1$ and $m_s = \pm 1/2$). The number of ways to choose 2 states from 6 is:
+$$\binom{6}{2} = \frac{6 \times 5}{2} = 15$$
+
+This confirms we have found all possible states.
 
 **Example 2: Carbon Ground State ($1s^2 2s^2 2p^2$)**
 
-Closed shells ($1s^2$, $2s^2$) contribute $L=0$, $S=0$, so we only consider the $2p^2$ valence electrons.
+**Why closed shells contribute $L=0$, $S=0$:**
+
+A closed shell (filled subshell) has all possible $m_l$ and $m_s$ values occupied. For each electron with $(m_l, m_s)$, there is another electron with $(-m_l, -m_s)$ (for the same spin orientation, actually all pairs cancel).
+
+More precisely, in a filled subshell:
+- For every electron with $m_l$, there is one with $-m_l$
+- For every electron with $m_s = +1/2$, there is one with $m_s = -1/2$
+
+Summing over all electrons: $M_L = \sum m_l = 0$ and $M_S = \sum m_s = 0$.
+
+Since the only state with $M_L = 0$ and $M_S = 0$ for the closed shell configuration is the state with $L=0$ and $S=0$ (no other combinations are possible—all angular momenta are "paired off"), the closed shell has $L=0$ and $S=0$.
+
+Therefore, closed shells don't contribute to the total angular momentum, and we only need to consider the valence electrons ($2p^2$ for carbon).
 
 From above, possible terms: $^3P$, $^1D$, $^1S$.
 
 **Hund's First Rule**: The term with maximum multiplicity (maximum $S$) lies lowest in energy.
-- $^3P$ has $S=1$ (triplet)
-- $^1D$ and $^1S$ have $S=0$ (singlets)
+
+**Why multiplicity = $2S+1$ corresponds to $S$:**
+
+The multiplicity is defined as the number of $m_S$ values for a given $S$: $2S+1$.
+- $S=0$: singlet (1 state, $m_S = 0$)
+- $S=1$: triplet (3 states, $m_S = -1, 0, +1$)
+- $S=2$: quintet (5 states)
+
+Higher multiplicity means larger $S$, which means more parallel spins.
+
+**Why not $L$ multiplicity?**
+
+$L$ describes orbital angular momentum, not spin alignment. While different $L$ values do affect energy (Hund's second rule), the term "multiplicity" specifically refers to spin degeneracy $2S+1$ because it directly counts the number of spin states.
+
+**Application to carbon:**
+- $^3P$ has $S=1$ (triplet, multiplicity 3) — highest $S$
+- $^1D$ and $^1S$ have $S=0$ (singlets, multiplicity 1)
 
 Therefore, the ground term is $^3P$.
 
@@ -1261,11 +1341,21 @@ For $p^2$ (2 out of 6 possible electrons, less than half), the ground level is $
 
 **Example 3: Oxygen Ground State ($1s^2 2s^2 2p^4$)**
 
-Four p-electrons. We can think of this as two p-holes in a filled $p^6$ shell. Holes have the same term structure as electrons, so $p^4$ gives the same terms as $p^2$: $^3P$, $^1D$, $^1S$.
+Four p-electrons in a shell that can hold 6 electrons (2 per orbital × 3 orbitals). 
 
-Ground term is still $^3P$ (Hund's first rule).
+**Hole picture:** A filled $p^6$ shell has $L=0$, $S=0$. Removing 2 electrons (creating 2 holes) leaves 4 electrons. The term structure of $p^4$ is identical to $p^2$ because holes have the same angular momentum coupling properties as electrons:
+- $p^2$ (2 electrons in 6 states) → 15 microstates
+- $p^4$ (4 electrons in 6 states) → also 15 microstates (by particle-hole symmetry)
 
-But $p^4$ is more than half-filled (4 out of 6), so Hund's third rule gives the highest $J$ as ground level: $^3P_2$.
+Therefore $p^4$ gives the same terms as $p^2$: $^3P$, $^1D$, $^1S$.
+
+Ground term is still $^3P$ (Hund's first rule, maximum $S$).
+
+**Applying Hund's third rule:**
+- $p^4$ is more than half-filled (4 out of 6 > 3)
+- For more than half-filled shells, the level with **maximum** $J$ has lowest energy
+- For $^3P$: $J = |L-S|, ..., L+S = 0, 1, 2$
+- Maximum $J = 2$
 
 **Final answer**: Oxygen ground state is $^3P_2$.
 
@@ -1273,8 +1363,26 @@ But $p^4$ is more than half-filled (4 out of 6), so Hund's third rule gives the 
 
 **When Spin-Orbit Dominates**
 
-In heavy atoms ($Z > 50$), the spin-orbit interaction for each electron becomes stronger than the electrostatic repulsion between electrons. Each electron's $\mathbf{l}_i$ and $\mathbf{s}_i$ couple first:
+In heavy atoms ($Z > 50$), the spin-orbit interaction for each electron becomes stronger than the electrostatic repulsion between electrons. This leads to a different coupling scheme where the order of angular momentum addition is reversed.
 
+**LS vs. jj: Different Coupling Schemes as Different Bases**
+
+Both LS and jj coupling describe the same physical system, but they use different bases (sets of basis states):
+
+| Coupling | First Coupling | Second Coupling | Basis States |
+|----------|---------------|-----------------|--------------|
+| **LS** | $\mathbf{L} = \sum_i \mathbf{l}_i$ | $\mathbf{S} = \sum_i \mathbf{s}_i$ | $|L, M_L; S, M_S\rangle$ |
+| **jj** | $\mathbf{j}_i = \mathbf{l}_i + \mathbf{s}_i$ | $\mathbf{J} = \sum_i \mathbf{j}_i$ | $|j_1, m_{j1}; j_2, m_{j2}; ...\rangle$ |
+
+For a given configuration, both bases span the same Hilbert space, but:
+- In LS coupling, $L^2$ and $S^2$ are good quantum numbers (commute with the dominant part of $H$)
+- In jj coupling, $j_i^2$ are good quantum numbers
+
+When spin-orbit dominates, the jj basis diagonalizes the Hamiltonian more naturally.
+
+**jj Coupling Scheme:**
+
+Each electron's orbital and spin first couple to form individual total angular momentum:
 $$\mathbf{j}_i = \mathbf{l}_i + \mathbf{s}_i$$
 
 giving $j_i = l_i \pm 1/2$ (for $l_i \neq 0$).
@@ -1286,12 +1394,40 @@ $$\mathbf{J} = \sum_{i} \mathbf{j}_i$$
 
 For each p-electron:
 - $l=1$, $s=1/2$
-- $j = 1/2$ or $3/2$
+- $j = l \pm 1/2 = 1/2$ or $3/2$
+
+**Determining symmetric vs. antisymmetric combinations:**
+
+For two equivalent electrons, the total wavefunction must be antisymmetric. For angular momentum coupling of two identical $j$ values, the exchange symmetry is determined by:
+- **Even $J$**: symmetric under exchange $(-1)^{2j-J} = +1$ when $J$ is even
+- **Odd $J$**: antisymmetric under exchange $(-1)^{2j-J} = -1$ when $J$ is odd
+
+More precisely, for two identical particles with angular momentum $j$, the allowed total $J$ values are restricted by the Pauli principle.
 
 Two equivalent p-electrons in jj coupling:
-- Both $j=1/2$: $(1/2)^2$ gives $J=0$ (only antisymmetric combination allowed)
-- Both $j=3/2$: $(3/2)^2$ gives $J=0, 2$ (antisymmetric: $J=0, 2$; symmetric would give $J=1, 3$ but forbidden for equivalent electrons)
-- One $j=1/2$, one $j=3/2$: $(1/2)(3/2)$ gives $J=1, 2$
+
+1. **Both $j=1/2$** (denoted $(1/2)^2$):
+   - Possible $J$ from coupling two $j=1/2$: $J = 0, 1$
+   - For $j=1/2$, both particles are identical
+   - $J=0$: even → symmetric spatial, needs antisymmetric spin? Actually, for two equivalent electrons in jj coupling, we must ensure overall antisymmetry.
+   - The antisymmetric combination gives $J=0$ only.
+
+2. **Both $j=3/2$** (denoted $(3/2)^2$):
+   - Possible $J$: $0, 1, 2, 3$
+   - Antisymmetric states (allowed for equivalent electrons): $J = 0, 2$
+   - Symmetric states (forbidden): $J = 1, 3$
+
+3. **One $j=1/2$, one $j=3/2$** (denoted $(1/2)(3/2)$):
+   - These electrons are distinguishable by their $j$ values
+   - Both $J=1, 2$ are allowed (no Pauli restriction)
+
+**Energy level ordering in jj coupling:**
+
+In jj coupling, the energy ordering depends on:
+1. The $j$ values of individual electrons (spin-orbit energy)
+2. The residual electrostatic interaction between $j$-coupled electrons
+
+For heavy atoms, larger $j$ typically has lower energy due to spin-orbit coupling ($j = l + 1/2$ lower than $j = l - 1/2$).
 
 The resulting levels are labeled as $(j_1, j_2)_J$:
 - $(1/2, 1/2)_0$
@@ -1299,6 +1435,51 @@ The resulting levels are labeled as $(j_1, j_2)_J$:
 - $(1/2, 3/2)_1$, $(1/2, 3/2)_2$
 
 Note: jj coupling doesn't use $L$ and $S$ quantum numbers—these are not good quantum numbers when spin-orbit dominates.
+
+**Detailed Example: Cerium ($4f^1 5d^1$) in jj Coupling**
+
+Cerium has one electron in the $4f$ shell and one in the $5d$ shell.
+
+**Step 1: Individual $j$ values**
+
+For the $4f$ electron ($l=3$):
+- $j = l \pm 1/2 = 5/2$ or $7/2$
+- Spin-orbit splits these: $j=5/2$ is lower in energy for less than half-filled shells
+
+For the $5d$ electron ($l=2$):
+- $j = l \pm 1/2 = 3/2$ or $5/2$
+
+**Step 2: Coupling to total $J$**
+
+Since the electrons are in different shells ($n=4$ vs $n=5$), they are distinguishable. All combinations are allowed:
+
+| $j_f$ | $j_d$ | Possible $J$ | Label |
+|:-----:|:-----:|:------------:|:-----:|
+| $5/2$ | $3/2$ | $1, 2, 3, 4$ | $(5/2, 3/2)_J$ |
+| $5/2$ | $5/2$ | $0, 1, 2, 3, 4, 5$ | $(5/2, 5/2)_J$ |
+| $7/2$ | $3/2$ | $2, 3, 4, 5$ | $(7/2, 3/2)_J$ |
+| $7/2$ | $5/2$ | $1, 2, 3, 4, 5, 6$ | $(7/2, 5/2)_J$ |
+
+**Step 3: Energy ordering**
+
+In heavy atoms like Ce, the lowest energy configuration typically has the lowest individual $j$ values:
+- $4f$ electron: $j_f = 5/2$ (lower)
+- $5d$ electron: $j_d = 3/2$ (lower)
+
+Coupling these gives levels $(5/2, 3/2)_J$ with $J = 1, 2, 3, 4$.
+
+The lowest total $J$ from this group is $J=1$, but the actual ground state depends on the residual interaction between the $j$-coupled electrons.
+
+**Comparison with LS coupling:**
+
+In LS coupling for $f^1 d^1$:
+- $L = 3 + 2, 3 + 2 - 1, ..., |3-2| = 5, 4, 3, 2, 1$ (H, G, F, D, P)
+- $S = 0$ or $1$ (singlet or triplet)
+- Possible terms: $^3H$, $^1H$, $^3G$, $^1G$, $^3F$, $^1F$, $^3D$, $^1D$, $^3P$, $^1P$
+
+The ground term is $^3H$ (maximum $S$, then maximum $L$), giving levels $^3H_4$, $^3H_5$, $^3H_6$.
+
+**In Ce**, neither pure scheme applies perfectly, but jj coupling provides a better description due to the strong spin-orbit interaction in the $4f$ electron.
 
 ### 5.5 Comparison and Physical Interpretation
 
@@ -1312,7 +1493,23 @@ Note: jj coupling doesn't use $L$ and $S$ quantum numbers—these are not good q
 
 **Intermediate Coupling**
 
-In the transition region ($Z \approx 30-50$), neither pure LS nor pure jj coupling applies. The actual eigenstates are mixtures of LS terms. This is called intermediate coupling. The energy levels cannot be simply labeled by pure term symbols, though they may still be approximately characterized by dominant LS components.
+In the transition region ($Z \approx 30-50$), neither pure LS nor pure jj coupling applies. This is called **intermediate coupling**.
+
+**What does "mixtures of LS terms" mean?**
+
+In pure LS coupling, the eigenstates are eigenstates of $L^2$ and $S^2$. But when neither electrostatic nor spin-orbit interaction dominates, the true Hamiltonian eigenstates are superpositions of different LS terms.
+
+For example, in intermediate coupling, the ground state might be:
+$$|\Psi_{\text{ground}}\rangle = \alpha |^3P\rangle + \beta |^1D\rangle + \gamma |^1S\rangle$$
+
+where $\alpha$, $\beta$, $\gamma$ are mixing coefficients determined by the relative strengths of the interactions.
+
+**Physical picture:**
+- In LS coupling: $L$ and $S$ are approximately conserved separately
+- In jj coupling: individual $j_i$ are approximately conserved
+- In intermediate coupling: no angular momentum is perfectly conserved; all are partially mixed
+
+The energy levels cannot be simply labeled by pure term symbols, though they may still be approximately characterized by their dominant LS or jj character.
 
 **The Physical Origin**
 
@@ -1324,11 +1521,58 @@ LS coupling works when electrons "feel" each other's spatial distribution more s
 
 1. **Maximum Spin Rule**: The term with the highest multiplicity (maximum $S$) has the lowest energy.
    
-   *Physical origin*: The exchange interaction favors parallel spins (symmetric spin state), which requires antisymmetric spatial wavefunction, keeping electrons apart and reducing Coulomb repulsion.
+   *Physical origin*: 
+   
+   **Why does symmetric spin = maximum $S$?**
+   
+   For $N$ electrons, the maximum total spin $S = N/2$ occurs when all spins are parallel (all $m_s = +1/2$ or all $m_s = -1/2$). The spin wavefunction for this state is:
+   $$\chi_{S=N/2, M_S=N/2} = |\uparrow\uparrow\uparrow...\uparrow\rangle$$
+   
+   This is symmetric under any pair exchange because swapping two up spins doesn't change the state.
+   
+   In general, for a given number of electrons:
+   - Higher $S$ means more parallel spins
+   - More parallel spins → more symmetric spin wavefunction
+   - Maximum $S$ = completely symmetric spin wavefunction
+   
+   **Why does antisymmetric spatial wavefunction keep electrons apart?**
+   
+   An antisymmetric spatial wavefunction satisfies:
+   $$\psi_{\text{space}}(\mathbf{r}_1, \mathbf{r}_2) = -\psi_{\text{space}}(\mathbf{r}_2, \mathbf{r}_1)$$
+   
+   At $\mathbf{r}_1 = \mathbf{r}_2$ (same position):
+   $$\psi_{\text{space}}(\mathbf{r}, \mathbf{r}) = -\psi_{\text{space}}(\mathbf{r}, \mathbf{r}) \implies \psi_{\text{space}}(\mathbf{r}, \mathbf{r}) = 0$$
+   
+   **The probability of finding two electrons at the same position is zero!**
+   
+   This creates a "Fermi hole"—a region around each electron where the other electron is excluded. The average electron-electron separation is larger, reducing the Coulomb repulsion energy:
+   $$\langle V_{\text{rep}} \rangle = \int d^3r_1 d^3r_2 \, \frac{e^2}{|\mathbf{r}_1 - \mathbf{r}_2|} |\psi(\mathbf{r}_1, \mathbf{r}_2)|^2$$
+   
+   When electrons are kept apart (larger $|\mathbf{r}_1 - \mathbf{r}_2|$ on average), this integral gives a smaller value—lower energy.
 
 2. **Maximum Orbital Rule**: For a given spin multiplicity, the term with the maximum $L$ has the lowest energy.
    
-   *Physical origin*: Higher $L$ means electrons orbit more in the same direction, staying apart on average (classical picture: same angular momentum means orbiting on the same side of nucleus).
+   *Physical origin*: 
+   
+   **Why higher $L$ means electrons stay apart:**
+   
+   For a given spin state (fixed $S$), different values of total orbital angular momentum $L$ correspond to different spatial correlations between electrons.
+   
+   Consider two electrons in a p-shell. The possible total $L$ values are $L = 0, 1, 2$ (S, P, D terms). 
+   
+   **The key insight:** Electrons with higher $L$ have their angular momentum vectors more aligned. In the semiclassical picture:
+   - High $L$ ($L = l_1 + l_2$): Both electrons orbit in the same direction
+   - Low $L$ ($L = |l_1 - l_2|$): Electrons orbit in opposite directions
+   
+   When electrons orbit in the same direction (high $L$), they tend to stay on the same side of the nucleus relative to each other, but because they are moving together, they actually have a larger effective separation in the rotating frame. More importantly, the **correlation** in the spatial wavefunction creates regions where the electrons avoid each other.
+   
+   Mathematically, the electrostatic repulsion matrix element depends on the spatial overlap. States with higher $L$ have spatial wavefunctions with more nodes in the relative coordinate, reducing the average repulsion.
+   
+   **Intuitive picture:** Imagine two runners on a circular track:
+   - Running in the same direction (high $L$): They maintain a roughly constant separation
+   - Running in opposite directions (low $L$): They pass each other frequently, coming close often
+   
+   The same-direction runners have less "collision" (repulsion), so their energy is lower.
 
 3. **Minimum/Maximum $J$ Rule**: 
    - Less than half-filled subshell: level with minimum $J$ is lowest
@@ -1344,7 +1588,7 @@ LS coupling works when electrons "feel" each other's spatial distribution more s
 | N | $2p^3$ | $^4S$ | $^4S_{3/2}$ | Only one J |
 | O | $2p^4$ | $^3P$ | $^3P_2$ | > half, max J |
 | Fe | $3d^6$ | $^5D$ | $^5D_4$ | > half, max J |
-| Ce | $4f^1 5d^1$ | $^1G$ | $^1G_4$ | jj-coupling |
+| Ce | $4f^1 5d^1$ | $^3H$ | $^3H_4$ | jj-coupling |
 
 ---
 
@@ -1414,32 +1658,20 @@ The figure displays **$|Y_l^m(\theta, \phi)|^2$**, the angular probability densi
 **Key Features:**
 - **$|Y_0^0|^2$**: Spherical (s-state)
 - **$|Y_1^0|^2$**: Dumbbell along $z$-axis (p$_z$)  
-- **$|Y_1^{\pm 1}|^2$**: Torus in $xy$-plane; the x-z cross-section shows a "dumbbell" edge-on view
+- **$|Y_1^{\pm 1}|^2$**: Torus in $xy$-plane
 - **$|Y_2^0|^2$**: Two lobes along $z$-axis with equatorial ring (d$_{z^2}$)
-- **$|Y_2^{\pm 2}|^2$**: More pronounced torus than $l=1$
 
 **Complex vs. Real Spherical Harmonics**
 
 | Type | Form | Eigenstate of | Used in |
 |:----:|:----:|:-------------:|:-------:|
-| Complex $Y_l^m$ | Eigenfunctions of $L_z$ | $L_z$ | Physics (angular momentum) |
-| Real orbitals | Linear combinations of $Y_l^{\pm m}$ | $L^2$ only | Chemistry (bonding) |
+| Complex $Y_l^m$ | $Y_l^m(\theta, \phi)$ | $L^2$, $L_z$ | Physics |
+| Real orbitals | $\frac{1}{\sqrt{2}}(Y_l^m \pm Y_l^{-m})$ | $L^2$ only | Chemistry |
 
-**Important Distinction:**
-
-The figure displays $|Y_l^m|^2$, which is the **probability density** for finding the electron at a given angular position. This is NOT the same as the "real orbitals" (p$_x$, p$_y$, etc.) used in chemistry.
-
-| Quantity | What It Is | Physical Meaning |
-|:--------:|:----------:|:----------------:|
-| $|Y_l^m|^2$ | Modulus squared of spherical harmonic | Probability density as function of angle |
-| Real orbitals (p$_x$, p$_y$) | Linear combinations: $Y_l^{\pm m} \pm Y_l^{\mp m}$ | Standing waves with definite nodal planes |
-
-**Key Point:** The labels like "p$_z$" and "d$_{z^2}$" in the figure indicate which real orbital has the SAME probability density pattern as $|Y_l^m|^2$. But mathematically:
-- p$_z$ orbital $\propto Y_1^0$ (real, proportional to $\cos\theta$)
-- p$_x$ orbital $\propto Y_1^{-1} - Y_1^{+1}$ (real combination)
-- p$_y$ orbital $\propto Y_1^{-1} + Y_1^{+1}$ (real combination, with $i$ factors)
-
-Real orbitals are used in chemistry because they create standing waves along specific axes, useful for understanding chemical bonding along bond directions.
+**Key distinction:** 
+- The figure shows $|Y_l^m|^2$ (probability density)
+- Real orbitals (p$_x$, p$_y$) are linear combinations with the **same** $|Y|^2$ pattern
+- p$_z \propto Y_1^0$; p$_x \propto (Y_1^{-1} - Y_1^{+1})/\sqrt{2}$; p$_y \propto (Y_1^{-1} + Y_1^{+1})/\sqrt{2}$
 
 ### 6.3 Angular Momentum in Central Force Fields: Key Theorems
 
@@ -1493,17 +1725,15 @@ Trying $u \propto r^s$ gives the indicial equation $s(s-1) = l(l+1)$, with solut
 
 **Why $s = -l$ is Unphysical:**
 
-For $s = -l$, we have $u \propto r^{-l}$ and thus $R = u/r \propto r^{-l-1}$. The normalization integral for the radial wavefunction is:
-$$\int_0^\infty |R_{nl}(r)|^2 r^2 dr = \int_0^\infty |u_{nl}(r)|^2 dr$$
+The solution $u \propto r^{-l}$ gives $R = u/r \propto r^{-l-1}$, which is singular at $r = 0$ for all $l$.
 
-Near $r = 0$, the $s = -l$ solution gives:
-$$\int_0^{\epsilon} |u|^2 dr \propto \int_0^{\epsilon} r^{-2l} dr$$
+**For $l \geq 1$:** The probability integral
+$$\int_0^\epsilon |R|^2 r^2 dr \propto \int_0^\epsilon r^{-2l} dr$$
+diverges at the origin, so the wavefunction cannot be normalized.
 
-For $l \geq 1$, this integral diverges at the origin since $-2l \leq -2 < -1$. 
+**For $l = 0$:** $R \propto 1/r$ while the probability integral appears finite, the wavefunction itself diverges at the origin. More importantly, the kinetic energy involves $\nabla^2 R$ which produces a delta function singularity at $r=0$, leading to infinite kinetic energy expectation value.
 
-For $l = 0$, we have $R \propto r^{-1}$. While the probability integral $\int_0^\epsilon |R|^2 r^2 dr = \int_0^\epsilon dr$ appears finite, the wavefunction $R \propto 1/r$ is singular at the origin. More importantly, the kinetic energy expectation value:
-$$\langle T \rangle \propto \int_0^\epsilon \left|\frac{d}{dr}(rR)\right|^2 dr = \int_0^\epsilon \left|\frac{d}{dr}(1)\right|^2 dr$$
-diverges because the derivative of a constant is zero... actually, let us be more careful. With $u = rR = $ constant, we have $u' = 0$ for $r > 0$, but the discontinuity at $r=0$ gives a delta function contribution. The correct calculation shows the kinetic energy is infinite. Therefore, the $s = -l$ solution must be discarded on physical grounds.
+**Physical requirement:** A physical wavefunction must be finite everywhere and have finite energy. The $s = -l$ solution fails both criteria and must be discarded.
 
 The regular solution is:
 $$\boxed{u_{nl}(r) \propto r^{l+1} \quad \Rightarrow \quad R_{nl}(r) = \frac{u_{nl}}{r} \propto r^l}$$
@@ -1525,19 +1755,29 @@ In quantum mechanics, the Runge-Lenz vector operator is defined as:
 
 $$\boxed{\hat{\mathbf{A}} = \frac{1}{2}(\hat{\mathbf{p}} \times \hat{\mathbf{L}} - \hat{\mathbf{L}} \times \hat{\mathbf{p}}) - \mu k \frac{\hat{\mathbf{r}}}{r}}$$
 
+where $k = e^2/(4\pi\varepsilon_0)$ is the Coulomb constant (in Gaussian units, $k = e^2$).
+
 The symmetric ordering is required because $\hat{\mathbf{p}}$ and $\hat{\mathbf{L}}$ do not commute. Using $\hat{\mathbf{L}} \times \hat{\mathbf{p}} = -\hat{\mathbf{p}} \times \hat{\mathbf{L}} + 2i\hbar\hat{\mathbf{p}}$:
 
 $$\hat{\mathbf{A}} = \hat{\mathbf{p}} \times \hat{\mathbf{L}} - i\hbar\hat{\mathbf{p}} - \mu k \frac{\hat{\mathbf{r}}}{r}$$
-
-Or equivalently:
-$$\hat{\mathbf{A}} = \frac{1}{\mu}\hat{\mathbf{p}} \times \hat{\mathbf{L}} - \frac{k\hat{\mathbf{r}}}{r} - \frac{i\hbar}{\mu}\hat{\mathbf{p}}$$
 
 **Commutation with Hamiltonian:**
 
 For the hydrogen Hamiltonian:
 $$\hat{H} = \frac{\hat{\mathbf{p}}^2}{2\mu} - \frac{k}{r}$$
 
-One can show that:
+One can show that $[\hat{H}, \hat{\mathbf{A}}] = 0$.
+
+**Sketch of proof:**
+
+Computing $[\hat{H}, \hat{\mathbf{A}}]$ requires evaluating:
+$$\left[\frac{\hat{\mathbf{p}}^2}{2\mu}, \hat{\mathbf{p}} \times \hat{\mathbf{L}}\right] - \left[\frac{k}{r}, \hat{\mathbf{p}} \times \hat{\mathbf{L}}\right] + \text{other terms}$$
+
+The key identities are:
+- $[\hat{p}^2, \hat{\mathbf{p}} \times \hat{\mathbf{L}}] = 0$ (since $\hat{p}^2$ commutes with both $\hat{\mathbf{p}}$ and $\hat{\mathbf{L}}$)
+- The commutator with $1/r$ cancels the $i\hbar\hat{\mathbf{p}}$ terms after careful calculation
+
+The full calculation involves lengthy commutator algebra, but the result is:
 $$[\hat{H}, \hat{\mathbf{A}}] = 0$$
 
 This means $\hat{\mathbf{A}}$ is a conserved quantity, generating a symmetry of the system.
@@ -1570,12 +1810,15 @@ Now consider $[L_i, A_j]$ where $\mathbf{A} = \mathbf{p} \times \mathbf{L} - i\h
 
 - $[L_i, p_j] = i\hbar \varepsilon_{ijk} p_k$ (vector)
 - $[L_i, L_j] = i\hbar \varepsilon_{ijk} L_k$ (vector)
-- $[L_i, r_j/r] = i\hbar \varepsilon_{ijk} r_k/r$ (scalar $r$ commutes with $L_i$)
+- $[L_i, r_j/r] = i\hbar \varepsilon_{ijk} r_k/r$ 
+
+**Why:** Since $r = \sqrt{x^2+y^2+z^2}$ is rotationally invariant, it commutes with $L_i$. Therefore:
+$$[L_i, r_j/r] = \frac{1}{r}[L_i, r_j] = \frac{i\hbar \varepsilon_{ijk} r_k}{r}$$
 
 Therefore, each term in $\mathbf{A}$ transforms as a vector:
 $$[L_i, A_j] = i\hbar \varepsilon_{ijk} A_k$$
 
-Since $\mathbf{K}$ is proportional to $\mathbf{A}$ (with a factor that commutes with $\mathbf{L}$ because $[\mathbf{L}, H] = 0$ and thus $[\mathbf{L}, E] = 0$ for eigenstates):
+Since $\mathbf{K} = \sqrt{-\mu/(2E)}\,\mathbf{A}$ and $\sqrt{-\mu/(2E)}$ is just a number (the eigenvalue $E$ is a constant for a given energy level), it commutes with $\mathbf{L}$:
 
 $$[L_i, K_j] = i\hbar \varepsilon_{ijk} K_k \quad \checkmark$$
 
@@ -1587,29 +1830,22 @@ $$\boxed{[K_i, K_j] = i\hbar \varepsilon_{ijk} L_k}$$
 
 **Proof:**
 
-This is the most involved calculation. Using $\hat{\mathbf{K}} = \sqrt{-\mu/(2E)}\hat{\mathbf{A}}$ and the definition of $\hat{\mathbf{A}}$:
+Using $\hat{\mathbf{K}} = \sqrt{-\mu/(2E)}\hat{\mathbf{A}}$, where $E$ is the eigenvalue of $\hat{H}$ for the state being considered:
 
-$$[A_i, A_j] = -2i\hbar H \varepsilon_{ijk} L_k$$
+$$[K_i, K_j] = \left(-\frac{\mu}{2E}\right)[A_i, A_j]$$
+
+The key intermediate result (derived via lengthy commutator algebra) is:
+$$[A_i, A_j] = -2i\hbar \hat{H} \varepsilon_{ijk} L_k$$
+
+Note this involves the **operator** $\hat{H}$, not the eigenvalue $E$. The commutator $[A_i, A_j]$ is an operator equation.
+
+When this acts on an energy eigenstate $|\psi\rangle$ with $\hat{H}|\psi\rangle = E|\psi\rangle$:
+$$[A_i, A_j]|\psi\rangle = -2i\hbar E \varepsilon_{ijk} L_k |\psi\rangle$$
 
 Therefore:
-$$[K_i, K_j] = -\frac{\mu}{2E} [A_i, A_j] = -\frac{\mu}{2E} (-2i\hbar H \varepsilon_{ijk} L_k) = i\hbar \varepsilon_{ijk} L_k$$
+$$[K_i, K_j] = \left(-\frac{\mu}{2E}\right)(-2i\hbar E) \varepsilon_{ijk} L_k = i\hbar \varepsilon_{ijk} L_k$$
 
-where we used $H = E$ (on energy eigenstates) in the last step.
-
-**Sketch of the Calculation:**
-
-Computing $[A_i, A_j]$ involves lengthy but straightforward commutator algebra using:
-- $[r_i, p_j] = i\hbar \delta_{ij}$
-- $[r_i, p^2] = 2i\hbar p_i$  
-- $[p_i, r] = -i\hbar r_i/r$
-
-The key result is:
-$$[A_i, A_j] = -2i\hbar H \varepsilon_{ijk} L_k$$
-
-On an energy eigenspace ($H = E$), this becomes:
-$$[A_i, A_j] = -2i\hbar E \varepsilon_{ijk} L_k$$
-
-The scaling factor $\sqrt{-\mu/(2E)}$ in $\mathbf{K} = \sqrt{-\mu/(2E)}\mathbf{A}$ is chosen to normalize this to the standard angular momentum commutator form.
+The eigenvalue $E$ cancels, giving the pure commutator relation $[K_i, K_j] = i\hbar\varepsilon_{ijk}L_k$ on the energy eigenspace.
 
 #### 6.4.3 Casimir Operators
 
@@ -1624,12 +1860,27 @@ The eigenvalue of $\mathbf{L}^2$ labels the irreducible representations: $\mathb
 
 **SO(4) Casimir Operators:**
 
-The algebra generated by $\mathbf{L}$ and $\mathbf{K}$ is isomorphic to so(4), the Lie algebra of rotations in 4 dimensions. Define:
+The algebra generated by $\mathbf{L}$ and $\mathbf{K}$ is isomorphic to so(4), the Lie algebra of rotations in 4 dimensions.
 
+**Why introduce $\mathbf{M}$ and $\mathbf{N}$:**
+
+The commutation relations show:
+- $[L_i, L_j] = i\hbar\varepsilon_{ijk}L_k$ (SO(3))
+- $[K_i, K_j] = i\hbar\varepsilon_{ijk}L_k$ (mixed!)
+
+The cross-relation $[K_i, K_j] \propto L_k$ means $\mathbf{L}$ and $\mathbf{K}$ are "coupled" in the Lie algebra—they don't generate independent symmetries.
+
+To decouple them, define:
 $$\mathbf{M} = \frac{1}{2}(\mathbf{L} + \mathbf{K}), \quad \mathbf{N} = \frac{1}{2}(\mathbf{L} - \mathbf{K})$$
 
-These satisfy two independent so(3) algebras:
-$$[M_i, M_j] = i\hbar \varepsilon_{ijk} M_k, \quad [N_i, N_j] = i\hbar \varepsilon_{ijk} N_k, \quad [M_i, N_j] = 0$$
+**Verification:** Computing the commutators:
+- $[M_i, M_j] = \frac{1}{4}([L_i, L_j] + [L_i, K_j] + [K_i, L_j] + [K_i, K_j])$
+- Using the known relations, this gives $[M_i, M_j] = i\hbar\varepsilon_{ijk}M_k$
+- Similarly $[N_i, N_j] = i\hbar\varepsilon_{ijk}N_k$
+- And $[M_i, N_j] = 0$ (they commute!)
+
+Thus $\mathbf{M}$ and $\mathbf{N}$ generate **two independent** SO(3) algebras:
+$$\text{SO(4)} \cong \text{SO(3)}_M \times \text{SO(3)}_N$$
 
 The Casimir operators of so(4) are:
 
@@ -1649,37 +1900,43 @@ $$C_1 = \hbar^2 [m(m+1) + n(n+1)] = 2\hbar^2 n(n+1)$$
 
 **Energy Formula from SO(4):**
 
-Using the identity:
-$$\mathbf{A}^2 = \mu^2 k^2 + 2\mu H(\mathbf{L}^2 + \hbar^2)$$
+**Step 1: Compute $\mathbf{A}^2$**
 
-(This includes a quantum correction $\hbar^2$ not present classically.)
+Using the definition of $\mathbf{A}$ and careful commutator algebra:
+$$\mathbf{A}^2 = \mu^2 k^2 + 2\mu \hat{H}(\mathbf{L}^2 + \hbar^2)$$
 
-Therefore:
+**Note on the $\hbar^2$ term:** Classically, the Runge-Lenz vector satisfies $\mathbf{A}^2 = \mu^2 k^2 + 2\mu H L^2$. The extra $\hbar^2$ is a **quantum correction** arising from operator ordering in the quantum definition of $\mathbf{A}$.
+
+**Step 2: Express in terms of $\mathbf{K}$**
+
 $$\mathbf{K}^2 = -\frac{\mu}{2E} \mathbf{A}^2 = -\frac{\mu}{2E}[\mu^2 k^2 + 2\mu E(\mathbf{L}^2 + \hbar^2)]$$
 
-The first Casimir:
-$$C_1 = \frac{1}{2}(\mathbf{L}^2 + \mathbf{K}^2) = \frac{1}{2}\mathbf{L}^2 - \frac{\mu^3 k^2}{4E} - \frac{\mu}{2}(\mathbf{L}^2 + \hbar^2)$$
+where we used $\hat{H} = E$ on energy eigenstates.
 
-$$= -\frac{\mu^3 k^2}{4E} - \frac{\mu\hbar^2}{2}$$
+**Step 3: Compute $C_1$**
 
-Setting $C_1 = 2\hbar^2 n(n+1)$ (with $n = m$ from $C_2 = 0$):
+$$C_1 = \frac{1}{2}(\mathbf{L}^2 + \mathbf{K}^2) = -\frac{\mu^3 k^2}{4E} - \frac{\mu\hbar^2}{2}$$
 
-$$2\hbar^2 n(n+1) = -\frac{\mu^3 k^2}{4E} - \frac{\mu\hbar^2}{2}$$
+**Step 4: Relate to SO(4) representation**
 
-Solving for $E$:
+For SO(4) representation labeled by $(j, j)$ (since $m=n$):
+$$C_1 = 2\hbar^2 j(j+1)$$
 
-$$-\frac{\mu^3 k^2}{4E} = 2\hbar^2 n(n+1) + \frac{\mu\hbar^2}{2} = \hbar^2(2n^2 + 2n + \frac{1}{2})$$
-
-Actually, the standard convention uses the principal quantum number $n = 0, 1, 2, ...$ where the irreducible representation is labeled by $(j, j)$ with $j = (n-1)/2$. Then:
-
+The principal quantum number is related to $j$ by $n = 2j + 1$, or equivalently $j = (n-1)/2$. Substituting:
 $$C_1 = 2\hbar^2 \cdot \frac{n-1}{2} \cdot \frac{n+1}{2} = \frac{\hbar^2(n^2-1)}{2}$$
 
-Equating:
+**Step 5: Solve for $E$**
+
+Equating the two expressions for $C_1$:
 $$\frac{\hbar^2(n^2-1)}{2} = -\frac{\mu^3 k^2}{4E} - \frac{\mu\hbar^2}{2}$$
 
-$$\frac{\hbar^2 n^2}{2} = -\frac{\mu^3 k^2}{4E}$$
+Multiplying by 2 and rearranging:
+$$\hbar^2 n^2 - \hbar^2 = -\frac{\mu^3 k^2}{2E} - \mu\hbar^2$$
 
-$$\boxed{E_n = -\frac{\mu k^2}{2\hbar^2 n^2} = -\frac{\mu e^4}{2(4\pi\varepsilon_0)^2\hbar^2 n^2} = -\frac{13.6 \text{ eV}}{n^2}}$$
+$$
+\hbar^2 n^2 = -\frac{\mu^3 k^2}{2E}$$
+
+$$\boxed{E_n = -\frac{\mu k^2}{2\hbar^2 n^2} = -\frac{13.6 \text{ eV}}{n^2}}$$
 
 **Why is this degeneracy "accidental"?**
 
@@ -1688,7 +1945,15 @@ The energy depends **only on $n$**, not on $l$. For a given $n$:
 - For each $l$, there are $2l+1$ values of $m$
 - The total degeneracy is $\sum_{l=0}^{n-1}(2l+1) = n^2$
 
-In a generic central potential, the energy would depend on both $n$ and $l$ (e.g., in alkali atoms, the penetrating $s$-orbitals have lower energy due to core penetration). The Coulomb potential is special because its SO(4) symmetry makes $[H, \mathbf{K}] = 0$, and since $\mathbf{K}^2$ depends only on $n$, all states with the same $n$ are degenerate regardless of $l$.
+In a generic central potential, the energy depends on both $n$ and $l$. For example, in alkali atoms (Li, Na, K, etc.), the valence electron sees an effective potential that deviates from pure $1/r$ at small distances due to the inner core electrons. This breaks the SO(4) symmetry:
+
+**Alkali atoms vs. Hydrogen:**
+- **Hydrogen:** Pure $1/r$ potential → SO(4) symmetry → $E$ depends only on $n$
+- **Alkali atoms:** Effective potential $V_{\text{eff}}(r) = -\frac{e^2}{r} + V_{\text{core}}(r)$ → only SO(3) symmetry → $E$ depends on both $n$ and $l$
+
+In alkali atoms, $s$-orbitals ($l=0$) penetrate closer to the nucleus, feeling a stronger effective nuclear charge, and thus have lower energy than $p$, $d$ orbitals with the same $n$.
+
+The Coulomb potential is special because its exact SO(4) symmetry makes $[H, \mathbf{K}] = 0$, and since $\mathbf{K}^2$ depends only on $n$, all states with the same $n$ are degenerate regardless of $l$.
 
 **Summary of the Symmetry Structure:**
 
