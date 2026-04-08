@@ -1290,34 +1290,26 @@ This confirms we have found all possible states.
 
 **Why closed shells contribute $L=0$, $S=0$:**
 
-A closed shell (filled subshell) has all possible $m_l$ and $m_s$ values occupied. For each electron with $(m_l, m_s)$, there is another electron with $(-m_l, -m_s)$ (for the same spin orientation, actually all pairs cancel).
-
-More precisely, in a filled subshell:
+In a filled subshell (e.g., $p^6$, $d^{10}$), all possible $(m_l, m_s)$ combinations are occupied:
 - For every electron with $m_l$, there is one with $-m_l$
 - For every electron with $m_s = +1/2$, there is one with $m_s = -1/2$
 
-Summing over all electrons: $M_L = \sum m_l = 0$ and $M_S = \sum m_s = 0$.
+Therefore, the total projections are:
+$$M_L = \sum_i m_{l,i} = 0, \quad M_S = \sum_i m_{s,i} = 0$$
 
-Since the only state with $M_L = 0$ and $M_S = 0$ for the closed shell configuration is the state with $L=0$ and $S=0$ (no other combinations are possible—all angular momenta are "paired off"), the closed shell has $L=0$ and $S=0$.
-
-Therefore, closed shells don't contribute to the total angular momentum, and we only need to consider the valence electrons ($2p^2$ for carbon).
+A closed shell is spherically symmetric. The only spherically symmetric state has $L=0$ and $S=0$. Thus closed shells don't contribute to the total angular momentum, and we only consider valence electrons ($2p^2$ for carbon).
 
 From above, possible terms: $^3P$, $^1D$, $^1S$.
 
 **Hund's First Rule**: The term with maximum multiplicity (maximum $S$) lies lowest in energy.
 
-**Why multiplicity = $2S+1$ corresponds to $S$:**
+**Multiplicity = spin degeneracy = $2S+1$:**
 
-The multiplicity is defined as the number of $m_S$ values for a given $S$: $2S+1$.
-- $S=0$: singlet (1 state, $m_S = 0$)
-- $S=1$: triplet (3 states, $m_S = -1, 0, +1$)
-- $S=2$: quintet (5 states)
+- $S=0$: singlet (1 state) — multiplicity 1
+- $S=1$: triplet (3 states) — multiplicity 3  
+- $S=2$: quintet (5 states) — multiplicity 5
 
-Higher multiplicity means larger $S$, which means more parallel spins.
-
-**Why not $L$ multiplicity?**
-
-$L$ describes orbital angular momentum, not spin alignment. While different $L$ values do affect energy (Hund's second rule), the term "multiplicity" specifically refers to spin degeneracy $2S+1$ because it directly counts the number of spin states.
+Higher multiplicity $\Rightarrow$ larger $S$ $\Rightarrow$ more parallel spins.
 
 **Application to carbon:**
 - $^3P$ has $S=1$ (triplet, multiplicity 3) — highest $S$
@@ -1451,7 +1443,7 @@ For the $5d$ electron ($l=2$):
 
 **Step 2: Coupling to total $J$**
 
-Since the electrons are in different shells ($n=4$ vs $n=5$), they are distinguishable. All combinations are allowed:
+**Important:** Since the electrons are in different shells ($n=4$ for $4f$ vs $n=5$ for $5d$), they are **distinguishable** by their principal quantum number. This means the Pauli exclusion principle does not restrict their coupling—all $J$ values from coupling $j_f$ and $j_d$ are allowed.
 
 | $j_f$ | $j_d$ | Possible $J$ | Label |
 |:-----:|:-----:|:------------:|:-----:|
@@ -1567,12 +1559,6 @@ LS coupling works when electrons "feel" each other's spatial distribution more s
    When electrons orbit in the same direction (high $L$), they tend to stay on the same side of the nucleus relative to each other, but because they are moving together, they actually have a larger effective separation in the rotating frame. More importantly, the **correlation** in the spatial wavefunction creates regions where the electrons avoid each other.
    
    Mathematically, the electrostatic repulsion matrix element depends on the spatial overlap. States with higher $L$ have spatial wavefunctions with more nodes in the relative coordinate, reducing the average repulsion.
-   
-   **Intuitive picture:** Imagine two runners on a circular track:
-   - Running in the same direction (high $L$): They maintain a roughly constant separation
-   - Running in opposite directions (low $L$): They pass each other frequently, coming close often
-   
-   The same-direction runners have less "collision" (repulsion), so their energy is lower.
 
 3. **Minimum/Maximum $J$ Rule**: 
    - Less than half-filled subshell: level with minimum $J$ is lowest
@@ -1588,7 +1574,6 @@ LS coupling works when electrons "feel" each other's spatial distribution more s
 | N | $2p^3$ | $^4S$ | $^4S_{3/2}$ | Only one J |
 | O | $2p^4$ | $^3P$ | $^3P_2$ | > half, max J |
 | Fe | $3d^6$ | $^5D$ | $^5D_4$ | > half, max J |
-| Ce | $4f^1 5d^1$ | $^3H$ | $^3H_4$ | jj-coupling |
 
 ---
 
@@ -2041,14 +2026,17 @@ $$D^{(1/2)}(R_z(2\pi)) = \begin{pmatrix} e^{-i\pi} & 0 \\ 0 & e^{i\pi} \end{pmat
 
 So:
 - $D(I) = I$ (identity maps to identity)
-- $D(R_z(2\pi)) = -I$ (but $R_z(2\pi) = I$ in the group!)
+- $D(R_z(2\pi)) = -I$ (but $R_z(2\pi) = I$ in SO(3)!)
+
+**Key point:** The rotation group itself is SO(3), where $R_z(2\pi) = I$. But when we try to represent SO(3) on spin-1/2 states, we find $D(R_z(2\pi)) = -I \neq D(I)$. This violates the definition of a true representation ($D(g_1g_2) = D(g_1)D(g_2)$ exactly).
 
 **This is a projective representation** because:
-$$D(R_z(2\pi)) = -I = e^{i\pi} \cdot I = e^{i\pi} D(I) = e^{i\pi} D(R_z(2\pi) \cdot I)$$
+$$D(R_z(2\pi)) = -I = e^{i\pi} \cdot I = e^{i\pi} D(I)$$
 
-The phase factor $\omega = \pi$ appears when we try to enforce $D(g_1)D(g_2) = D(g_1g_2)$.
+The phase factor $\omega = \pi$ appears. In a projective representation:
+$$D(g_1)D(g_2) = e^{i\omega(g_1,g_2)} D(g_1g_2)$$
 
-**Physical interpretation:** In quantum mechanics, $|\psi\rangle$ and $-\psi\rangle$ represent the same physical state. A $2\pi$ rotation produces a "$-1$ phase," which is unobservable. This is why spin-1/2 can be described projectively by SO(3) even though it doesn't form a true representation.
+**Physical interpretation:** In quantum mechanics, $|\psi\rangle$ and $-\psi\rangle$ represent the same physical state (they give the same probabilities $|\langle\phi|\psi\rangle|^2$). A $2\pi$ rotation produces a "$-1$ phase," which is unobservable. Thus spin-1/2 forms a **projective representation** of SO(3), not a true representation.
 
 **3. Fundamental Representation**
 
@@ -2073,13 +2061,37 @@ For SU(2), this is the spin-1 (vector) representation. For SU(3), the adjoint is
 
 The **character** of a representation is the trace: $\chi_j(g) = \text{Tr}[D^{(j)}(g)]$. Characters depend only on the **conjugacy class** (e.g., rotation angle $\theta$, not axis).
 
-**Example:** For spin-$j$ rotation by angle $\theta$:
-$$\chi_j(\theta) = \sum_{m=-j}^{j} e^{-im\theta} = \frac{\sin((j+1/2)\theta)}{\sin(\theta/2)}$$
+**Deriving the character formula:**
 
-**Orthogonality:** Characters of different irreps are orthogonal under group integration:
-$$\int_G dg \, \chi_j^*(g)\chi_{j'}(g) = \delta_{jj'}$$
+For spin-$j$, the rotation about any axis by angle $\theta$ has eigenvalues $e^{-im\theta}$ for $m = -j, ..., j$. Therefore:
+$$\chi_j(\theta) = \sum_{m=-j}^{j} e^{-im\theta}$$
 
-**Application:** Decompose $\frac{1}{2} \otimes \frac{1}{2}$ by checking orthogonality with $\chi_0 = 1$ and $\chi_1 = 1 + 2\cos\theta$ — confirms $= 0 \oplus 1$.
+This geometric series sums to:
+$$\chi_j(\theta) = \frac{\sin((j+1/2)\theta)}{\sin(\theta/2)}$$
+
+**Examples:**
+- **Spin-0:** $\chi_0(\theta) = 1$
+- **Spin-1/2:** $\chi_{1/2}(\theta) = 2\cos(\theta/2)$
+- **Spin-1:** $\chi_1(\theta) = 1 + 2\cos\theta$
+
+**Orthogonality relation:**
+
+Characters of different irreps are orthogonal when integrated over the group:
+$$\int_0^{2\pi} d\theta \, \sin^2\frac{\theta}{2} \, \chi_j(\theta)\chi_{j'}(\theta) \propto \delta_{jj'}$$
+
+**Application: Decompose $\frac{1}{2} \otimes \frac{1}{2}$**
+
+For two spin-1/2 particles, the product character is:
+$$\chi_{1/2}(\theta) \cdot \chi_{1/2}(\theta) = 4\cos^2(\theta/2) = 2 + 2\cos\theta$$
+
+Check overlap with $\chi_0 = 1$:
+$$\int_0^{2\pi} d\theta \, \sin^2\frac{\theta}{2} \cdot (2 + 2\cos\theta) \cdot 1 = \pi$$
+
+Check overlap with $\chi_1 = 1 + 2\cos\theta$:
+$$\int_0^{2\pi} d\theta \, \sin^2\frac{\theta}{2} \cdot (2 + 2\cos\theta) \cdot (1 + 2\cos\theta) = \pi$$
+
+Both integrals give the same result, confirming:
+$$\frac{1}{2} \otimes \frac{1}{2} = 0 \oplus 1$$
 
 ### 7.2 Lie Algebras: Why the Identity?
 
@@ -2122,24 +2134,43 @@ SU(2) and SO(3) have identical Lie algebras but different global topology:
 | Loops | Non-contractible loops exist | Simply connected |
 | Periodicity | $R(2\pi) = I$ | $U(2\pi) = -I$, $U(4\pi) = I$ |
 
-**Fundamental Group (Brief Intro):**
+**Fundamental Group Explained:**
 
-The **fundamental group** $\pi_1$ classifies "loops" in the group manifold:
-- **SO(3):** $\pi_1 = \mathbb{Z}_2$ — there are two classes of loops: contractible and non-contractible. A $2\pi$ rotation is a non-contractible loop (you can't shrink it to a point without cutting).
-- **SU(2):** $\pi_1 = \{e\}$ — all loops are contractible. SU(2) is **simply connected**.
+The **fundamental group** $\pi_1$ classifies "loops" (closed paths) in the group manifold:
 
-**The Double Cover Map:**
+**SO(3):** $\pi_1 = \mathbb{Z}_2$ (two elements)
+- Visualize SO(3) as a solid ball of radius $\pi$: a rotation by angle $\theta$ about axis $\mathbf{n}$ is the point $\theta\mathbf{n}$
+- Antipodal points on the surface are identified: $\pi\mathbf{n} \sim -\pi\mathbf{n}$ (same rotation)
+- **Contractible loop:** A loop that can be shrunk to a point
+- **Non-contractible loop:** A path from center to surface point $\pi\mathbf{n}$, "jumps" to $-\pi\mathbf{n}$ (identified), then returns to center. This cannot be shrunk!
+- The $2\pi$ rotation is a non-contractible loop
+
+**SU(2):** $\pi_1 = \{e\}$ (only identity)
+- SU(2) is a 3-sphere $S^3$: $U = a_0 I + i\mathbf{a}\cdot\boldsymbol{\sigma}$ with $a_0^2 + |\mathbf{a}|^2 = 1$
+- No identifications—all points are distinct
+- Every loop can be shrunk to a point (simply connected)
+
+**The Double Cover:**
 
 $$
 \text{SU(2)}/\mathbb{Z}_2 \cong \text{SO(3)}
 $$
 
-**Angle correspondence:** For SU(2) element $U = e^{-i\theta \mathbf{n}\cdot\boldsymbol{\sigma}/2}$:
-- The **same** angle $\theta$ appears in the SO(3) rotation matrix
-- But SU(2) has periodicity $4\pi$ while SO(3) has $2\pi$
-- Both $U(\theta)$ and $U(\theta + 2\pi) = -U(\theta)$ map to the **same** SO(3) rotation
+This means: Identify $U \sim -U$ in SU(2), and the result is SO(3).
 
-**Why this matters:**
+**Explicit map from SU(2) to SO(3):**
+
+Take SU(2) element: $U(\theta, \mathbf{n}) = e^{-i\theta \mathbf{n}\cdot\boldsymbol{\sigma}/2}$
+
+The corresponding SO(3) rotation $R(\theta, \mathbf{n})$ rotates by angle $\theta$ about axis $\mathbf{n}$.
+
+**Key observations:**
+1. Both use the **same** angle $\theta$ and axis $\mathbf{n}$
+2. SU(2): $U(\theta + 4\pi, \mathbf{n}) = U(\theta, \mathbf{n})$ (period $4\pi$)
+3. SO(3): $R(\theta + 2\pi, \mathbf{n}) = R(\theta, \mathbf{n})$ (period $2\pi$)
+4. **Two-to-one:** Both $U(\theta, \mathbf{n})$ and $U(\theta + 2\pi, \mathbf{n}) = -U(\theta, \mathbf{n})$ map to the same $R(\theta, \mathbf{n})$
+
+**Representation types:**
 - Integer spin ($j$): $D^{(j)}(-U) = D^{(j)}(U)$ → true SO(3) representation
 - Half-integer spin ($j$): $D^{(j)}(-U) = -D^{(j)}(U)$ → projective representation only
 
@@ -2148,10 +2179,13 @@ $$
 The SO(4) algebra decomposes as:
 $$\mathbf{M} = \frac{1}{2}(\mathbf{L} + \mathbf{K}), \quad \mathbf{N} = \frac{1}{2}(\mathbf{L} - \mathbf{K})$$
 
-giving $[M_i, N_j] = 0$. Therefore:
-$$\text{SO(4)} \cong \text{SU(2)} \times \text{SU(2)}/\mathbb{Z}_2$$
+giving $[M_i, N_j] = 0$. This suggests:
+$$\text{SO(4)} \cong \text{SU(2)}_M \times \text{SU(2)}_N$$
 
-(The $\mathbb{Z}_2$ quotient because $(U, V) \sim (-U, -V)$ gives the same SO(4) element.)
+But with a subtlety: if $(U_M, U_N)$ generates an SO(4) element, then $(-U_M, -U_N)$ generates the **same** SO(4) element (both signs flip together). This identification is written as:
+$$\text{SO(4)} \cong (\text{SU(2)} \times \text{SU(2)})/\mathbb{Z}_2$$
+
+**What does $/\mathbb{Z}_2$ mean?** It means we identify $(U, V) \sim (-U, -V)$—the two pairs differing by overall sign represent the same group element.
 
 ### 7.4 SU(3) Flavor vs. SU(3) Color
 
@@ -2191,48 +2225,65 @@ Only **color singlets** (states invariant under SU(3) color) have finite energy.
 
 ### 7.5 SU(3): Weight Diagrams and Young Tableaux
 
-**SU(3) Rank and Cartan Generators**
+**SU(3) Rank = 2: Why Two Quantum Numbers?**
 
-**Rank = 2:** SU(3) has two commuting generators (Cartan subalgebra), usually chosen as:
-- $I_3$ (isospin projection)  
-- $Y$ (hypercharge)
+The **rank** of a Lie group is the dimension of its **Cartan subalgebra** (the maximal set of commuting generators).
 
-This is why we need **two** quantum numbers $(i_3, y)$ to label states. (SU(2) has rank 1, needing only one quantum number $m$.)
+- **SU(2):** Rank 1. One Cartan generator $J_z$. States labeled by one quantum number $m$.
+- **SU(3):** Rank 2. Two commuting generators (usually $I_3$ and $Y$). States need two quantum numbers $(i_3, y)$.
 
-**Weight Space:** States are points in the 2D $(i_3, y)$ plane.
+**Why rank 2?** The SU(3) Lie algebra has 8 generators. Among them, the maximum number that mutually commute is 2.
 
-**Root Vectors and the Root Diagram**
+**Weights and Roots:**
 
-**Roots** are the "difference vectors" between weights. They correspond to **ladder operators** that move between states:
-- $I_\pm$: Change $i_3$ by $\pm 1$, $y$ unchanged (horizontal moves)
-- $U_\pm$, $V_\pm$: Change both $i_3$ and $y$ (diagonal moves)
+In a representation, each state $|\psi\rangle$ has a **weight** $(i_3, y)$ defined by:
+$$I_3 |\psi\rangle = i_3 |\psi\rangle, \quad Y |\psi\rangle = y |\psi\rangle$$
 
-The 6 roots form a **hexagon** in weight space—this is the **root diagram**.
+**Root vectors** are the "step vectors" that take you from one weight to another via ladder operators. For SU(3), the 6 root vectors are:
+- $\vec{\alpha}_I = (\pm 1, 0)$ — $I_\pm$ operators
+- $\vec{\alpha}_U = (\pm 1/2, \pm 1)$ — $U_\pm$ operators  
+- $\vec{\alpha}_V = (\mp 1/2, \pm 1)$ — $V_\pm$ operators
 
-<img src="/images/angular-momentum/su3_root_diagram.png" width="500px" alt="SU(3) Root Diagram">
+These form a hexagon in the $(i_3, y)$ plane—the **root diagram**.
 
-*The SU(3) root diagram: 6 root vectors (ladder operators) form a hexagon. The origin contains the two Cartan generators $(I_3, Y)$.*
+**Building Representations:**
 
-**Key Representations:**
+Start from a **highest weight state** (annihilated by all raising operators). Apply lowering operators to generate all states.
 
-- **Fundamental $\mathbf{3}$:** Triangle $(u, d, s)$ quarks
-- **Octet $\mathbf{8}$:** Hexagon (pions, kaons, nucleons)
-- **Decuplet $\mathbf{10}$:** Triangle ($\Delta$, $\Sigma^*$, $\Xi^*$, $\Omega^-$)
+- **Fundamental $\mathbf{3}$:** Highest weight $(1/2, 1/3)$ for $u$ quark. Apply $I_-$ to get $d$ at $(-1/2, 1/3)$. Apply $V_-$ to get $s$ at $(0, -2/3)$. Forms a triangle.
 
-**Young Tableaux:**
+- **Adjoint $\mathbf{8}$:** Contains the 6 roots plus 2 Cartan generators at origin. Forms a hexagon.
 
-Boxes encode **permutation symmetry** of tensor indices:
-- Row = symmetric
-- Column = antisymmetric
-- Max 3 boxes per column for SU(3)
+**Young Tableaux: Systematic Tensor Products**
 
-| Dim | Label | Young | Symmetry |
-|:---:|:-----:|:-----:|:--------:|
-| 1 | $\mathbf{1}$ | [empty] | Trivial |
-| 3 | $\mathbf{3}$ | □ | Single index |
-| 8 | $\mathbf{8}$ | □□/□ | Mixed (2,1) |
-| 10 | $\mathbf{10}$ | □□□ | Fully symmetric |
+Young tableaux encode **permutation symmetry** of tensor indices and provide a mechanical way to compute tensor products.
 
-**Tensor Products:**
+**Rules:**
+- Each box = one tensor index
+- Row of $n$ boxes = totally symmetric in those indices
+- Column of $n$ boxes = totally antisymmetric in those indices
+- For SU($N$), columns have at most $N$ boxes (antisymmetrizing $N+1$ indices gives zero)
+
+**SU(3) Representations:**
+
+| Dim | Label | Young Diagram | Symmetry |
+|:---:|:-----:|:-------------:|:--------:|
+| 1 | $\mathbf{1}$ | (empty) | Trivial |
+| 3 | $\mathbf{3}$ | single box | One index |
+| $\bar{\mathbf{3}}$ | two stacked boxes | Antisymmetric pair |
+| 8 | $\mathbf{8}$ | 2 boxes + 1 box below | Mixed symmetry |
+| 10 | $\mathbf{10}$ | 3 boxes in row | Fully symmetric |
+
+**Why Young tableaux are useful:** They convert the abstract problem of decomposing tensor products into a visual, mechanical procedure of adding boxes according to simple rules.
+
+**Example: $\mathbf{3} \otimes \mathbf{3}$ using Young tableaux**
+
+Add a box to the fundamental tableau in all allowed positions:
+- Add to the right: two boxes in a row = $\mathbf{6}$ (symmetric)
+- Add below: two stacked boxes = $\bar{\mathbf{3}}$ (antisymmetric)
+
+Result: $\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$
+
+**Physical applications:**
 - Mesons: $\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$
 - Baryons: $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$
