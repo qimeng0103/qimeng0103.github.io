@@ -2373,7 +2373,7 @@ Can be placed in two positions:
 
 From the row extension (3): adding below gives (3,1)
 
-<img src="/images/angular-momentum/young_31_clean.png" width="80px">
+<img src="/images/angular-momentum/young_31_clean.png" width="200px">
 
 This is the only admissible configuration. The alternative (adding to the same row to make 4 boxes in a row) would violate SU(3)'s maximum 3-row constraint.
 
