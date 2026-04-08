@@ -2323,6 +2323,71 @@ The two octets arise from different construction paths:
 
 Both paths yield the same final Young diagram shape <img src="/images/angular-momentum/young_21_clean.png" width="40px">, but they correspond to different subspaces in the full tensor product space $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3}$. The dimension formula confirms there are two distinct octets.
 
+**Example 3: Detailed Calculation of $\mathbf{6} \otimes \bar{\mathbf{3}} = \mathbf{15} \oplus \mathbf{3}$**
+
+This example demonstrates the full procedure for computing tensor products with Young diagrams.
+
+**Step 1: Identify the diagrams**
+- $\mathbf{6}$: Two boxes in a row <img src="/images/angular-momentum/young_2_row_clean.png" width="60px"> (symmetric)
+- $\bar{\mathbf{3}}$: Two boxes in a column <img src="/images/angular-momentum/young_2_col_clean.png" width="30px"> (antisymmetric)
+
+**Step 2: Apply the tensor product rules**
+
+We add the boxes from $\bar{\mathbf{3}}$ (the "second factor") to $\mathbf{6}$ (the "first factor") one at a time, following:
+1. Boxes with the same label (from the column) cannot appear in the same row
+2. At each stage, the diagram must remain valid (non-increasing row lengths)
+
+**Adding the first box** (from $\bar{\mathbf{3}}$):
+
+Can be placed in two positions:
+- Position A: extend the row → diagram (3) — gives $\mathbf{10}$
+- Position B: start a new row → diagram (2,1) — gives $\mathbf{8}$
+
+**Adding the second box** (must maintain antisymmetry of the column):
+
+From the row extension (3): adding below gives (3,1)
+
+<img src="/images/angular-momentum/young_31_clean.png" width="80px">
+
+This is the only admissible configuration. The alternative (adding to the same row to make 4 boxes in a row) would violate SU(3)'s maximum 3-row constraint.
+
+**Step 3: Compute the dimension using hook-length formula**
+
+For the (3,1) diagram with $N=3$:
+
+$$
+\dim = \prod_{\text{boxes}} \frac{N + c - r}{h}
+$$
+
+Labeling the boxes:
+```
+A B C
+D
+```
+
+| Box | $(r,c)$ | Right | Below | Hook $h$ | Factor $\frac{N+c-r}{h}$ |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| A | (0,0) | 2 | 1 | 4 | $\frac{3+0-0}{4} = \frac{3}{4}$ |
+| B | (0,1) | 1 | 0 | 2 | $\frac{3+1-0}{2} = 2$ |
+| C | (0,2) | 0 | 0 | 1 | $\frac{3+2-0}{1} = 5$ |
+| D | (1,0) | 0 | 0 | 1 | $\frac{3+0-1}{1} = 2$ |
+
+$$
+\dim(\mathbf{15}) = \frac{3}{4} \times 2 \times 5 \times 2 = 15
+$$
+
+**Forbidden configurations:**
+
+The two boxes from $\bar{\mathbf{3}}$ cannot both be placed in:
+- The same row (would impose symmetry, conflicting with antisymmetry)
+- The same column extending down (no column exists to extend in $\mathbf{6}$)
+
+**Final result:**
+
+$$\mathbf{6} \otimes \bar{\mathbf{3}} = \mathbf{15} \oplus \mathbf{3}$$
+
+The remaining $\mathbf{3}$ comes from the path where the first box creates (2,1) and the second box completes it differently, giving back the fundamental representation.
+
 **Why Young Diagrams Are Useful:**
 
 Young diagrams provide an immediate visual handle on symmetry properties, making it possible to identify allowed representations without lengthy algebraic manipulations. They do not determine which particles exist, but rather which symmetry patterns are allowed—the group SU(3) fixes the structure, and Young diagrams offer the most transparent way to read it.
