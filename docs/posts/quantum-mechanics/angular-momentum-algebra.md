@@ -2055,15 +2055,6 @@ $$D(R_z(2\pi)) = -I = e^{i\pi} D(I)$$
 
 Since $|\psi\rangle$ and $-|\psi\rangle$ give the same probabilities, this $-1$ phase is unobservable. Thus spin-1/2 forms a **projective representation** of SO(3).
 
-**Summary table:**
-
-| Property | Integer spin ($j = 0, 1, 2, ...$) | Half-integer spin ($j = 1/2, 3/2, ...$) |
-|:---------|:---------------------------------|:---------------------------------------|
-| $D(-U)$ | $= D(U)$ | $= -D(U)$ |
-| SO(3) rep | **True representation** | **Projective representation** |
-| $D(R_z(2\pi))$ | $+I$ | $-I$ |
-| Physical effect | No sign change | Sign change (unobservable) |
-
 **3. Fundamental Representation**
 
 The **fundamental representation** is the defining representation of the group—the matrix representation used to define the group itself.
@@ -2224,30 +2215,6 @@ The corresponding SO(3) rotation $R(\theta, \mathbf{n})$ rotates by angle $\thet
 3. SO(3): $R(\theta + 2\pi, \mathbf{n}) = R(\theta, \mathbf{n})$ (period $2\pi$)
 4. **Two-to-one:** Both $U(\theta, \mathbf{n})$ and $U(\theta + 2\pi, \mathbf{n}) = -U(\theta, \mathbf{n})$ map to the same $R(\theta, \mathbf{n})$
 
-**Why the sign matters for representations:**
-
-When we try to "descend" a SU(2) representation to SO(3), we need $D(U) = D(-U)$ because both $U$ and $-U$ represent the same SO(3) element.
-
-**Case 1: Integer spin ($j = 0, 1, 2, ...$)**
-
-Here $D^{(j)}(U)$ is the $(2j+1) \times (2j+1)$ representation matrix of SU(2) element $U$, acting on the spin-$j$ Hilbert space with basis $\{|j,m\rangle : m = -j, ..., j\}$.
-
-$$D^{(j)}(-U) = (-1)^{2j} D^{(j)}(U) = (+1) D^{(j)}(U) = D^{(j)}(U)$$
-
-Since $2j$ is even, the sign is $+1$. Therefore $D^{(j)}(U) = D^{(j)}(-U)$, meaning both $U$ and $-U$ in SU(2) map to the same matrix in the representation. This gives a **true representation** of SO(3) (where $U \sim -U$ are identified).
-
-Example: For $j=1$ (vector representation, 3D space), a $2\pi$ rotation gives $D(R_z(2\pi)) = +I_{3\times 3}$.
-
-**Case 2: Half-integer spin ($j = 1/2, 3/2, ...$)**
-
-$$D^{(j)}(-U) = (-1)^{2j} D^{(j)}(U) = (-1) D^{(j)}(U) = -D^{(j)}(U)$$
-
-Since $2j$ is odd, we get a minus sign. Therefore $D^{(j)}(U) \neq D^{(j)}(-U)$—the matrices for $U$ and $-U$ are distinct. This cannot be a true representation of SO(3) because $U$ and $-U$ represent the same SO(3) element but map to different matrices.
-
-Example: For $j=1/2$ (spinor, 2D space), $D(R_z(2\pi)) = -I_{2\times 2} \neq I_{2\times 2} = D(I)$, even though $R_z(2\pi) = I$ in SO(3).
-
-**Conclusion:** Half-integer spin representations are **projective representations** of SO(3)—they represent SO(3) elements only up to a phase factor.
-
 **SO(4) and SU(2) × SU(2):**
 
 The SO(4) algebra decomposes as:
@@ -2297,189 +2264,109 @@ Only **color singlets** (states invariant under SU(3) color) have finite energy.
 
 **Baryons:** $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$ — singlet $\mathbf{1}$ is physical
 
-### 7.5 SU(3): Weight Diagrams and Young Tableaux
+### 7.5 SU(3): Roots, Weights, and Young Tableaux
 
-**SU(3) Rank = 2: Why Two Quantum Numbers?**
+**SU(3) Rank = 2: Two Quantum Numbers**
 
-The **rank** of a Lie group is the dimension of its **Cartan subalgebra** (the maximal set of commuting generators).
+SU(3) has 8 generators. The maximal set of commuting generators (Cartan subalgebra) has dimension 2, typically chosen as $I_3$ (third component of isospin) and $Y$ (hypercharge). This means states in SU(3) representations need **two quantum numbers** $(i_3, y)$ to label them.
 
-- **SU(2):** Rank 1. One Cartan generator $J_z$. States labeled by one quantum number $m$.
-- **SU(3):** Rank 2. Two commuting generators (usually $I_3$ and $Y$). States need two quantum numbers $(i_3, y)$.
+**Roots: The 6 Ladder Operators**
 
-**Why rank 2?** The SU(3) Lie algebra has 8 generators. Among them, the maximum number that mutually commute is 2.
+Unlike SU(2) which has just one raising operator $J_+$, SU(3) has three independent raising operators ($I_+, U_+, V_+$) plus their lowering partners, giving 6 root vectors in the 2D weight space:
+- $I_\pm$: change $(i_3, y)$ by $(\pm 1, 0)$ — horizontal in weight space
+- $U_\pm$: change $(i_3, y)$ by $(\mp 1/2, \pm 1)$ — diagonal
+- $V_\pm$: change $(i_3, y)$ by $(\pm 1/2, \pm 1)$ — diagonal
 
-**Weights and Roots:**
+**Why exactly 6 roots?** The algebra must close under commutation. In 2D weight space, only a hexagon configuration (60° angles) satisfies all algebraic constraints. A square (4 roots, 90°) or other polygons violate the structure constants of SU(3).
 
-In a representation, each state $|\psi\rangle$ has a **weight** $(i_3, y)$ defined by:
-$$I_3 |\psi\rangle = i_3 |\psi\rangle, \quad Y |\psi\rangle = y |\psi\rangle$$
-
-**Why SU(3) has 6 root vectors (vs. 2 for SU(2)):**
-
-In SU(2), there's only one raising operator $J_+$ and one lowering operator $J_-$, giving 2 roots $(\pm 1)$ in 1D weight space.
-
-In SU(3), there are **three independent raising operators**: $I_+$, $U_+$, $V_+$ (and their lowering partners), giving 6 roots in 2D weight space:
-- $\vec{\alpha}_{I_\pm} = (\pm 1, 0)$ — change $I_3$ by $\pm 1$, $Y$ unchanged
-- $\vec{\alpha}_{U_\pm} = (\mp 1/2, \pm 1)$ — change $I_3$ by $\mp 1/2$, $Y$ by $\pm 1$
-- $\vec{\alpha}_{V_\pm} = (\pm 1/2, \pm 1)$ — change $I_3$ by $\pm 1/2$, $Y$ by $\pm 1$
-
-**Why exactly 3 ladders for 2 quantum numbers?**
-
-SU(3) has rank 2 (two commuting generators $I_3$ and $Y$), so weight space is 2D. The question is: why 6 root vectors (3 pairs of ladders) instead of 4 or 8?
-
-**Step-by-step reasoning:**
-
-1. **Root vectors connect different weights.** Each ladder operator $E_{\vec{\alpha}}$ changes the weight by $\vec{\alpha} = (\Delta I_3, \Delta Y)$.
-
-2. **Algebraic closure constrains the geometry.** The commutator $[E_{\vec{\alpha}}, E_{\vec{\beta}}]$ must produce another generator. This forces:
-   - Roots come in pairs ($\pm\vec{\alpha}$) for hermitian conjugate ladders
-   - The angle between roots is quantized: $\cos^2\theta \in \{0, \frac{1}{4}, \frac{1}{2}, \frac{3}{4}, 1\}$
-
-3. **SU(3) specifically:** The only consistent configuration in 2D with these constraints is 6 roots at 60° intervals forming a hexagon.
-   - 2 roots would be insufficient (can't span 2D space)
-   - 4 roots (square) would give 90° angles, incompatible with SU(3)'s structure constants
-   - 6 roots (hexagon) with 60°/120° angles is the unique solution
-
-4. **The three ladder types correspond to the three edges of the quark triangle:**
-   - $I_\pm$: horizontal edge ($u \leftrightarrow d$, $\Delta Y = 0$)
-   - $U_\pm$: lower-left edge ($d \leftrightarrow s$)
-   - $V_\pm$: lower-right edge ($u \leftrightarrow s$)
-
-No fewer than 3 independent directions can connect all 3 quark states; no more than 3 are allowed by the algebra.
-
-These form a **hexagon** in the $(i_3, y)$ plane:
-
-<img src="/images/angular-momentum/su3_root_diagram.png" width="500px" alt="SU(3) Root Diagram">
-
-*The SU(3) root diagram: 6 root vectors (ladder operators) form a hexagon in the $(I_3, Y)$ plane.*
-
-**Building Representations:**
+**Building Representations**
 
 Start from a **highest weight state** (annihilated by all raising operators). Apply lowering operators to generate all states.
 
 **Fundamental $\mathbf{3}$ (quark triplet):**
 
-<img src="/images/angular-momentum/su3_fundamental_triplet.png" width="400px" alt="SU(3) Quark Triplet">
+The highest weight state is $u$ with $(i_3, y) = (1/2, 1/3)$. Applying lowering operators:
+- $I_-$ takes $u \to d$ at $(-1/2, 1/3)$
+- $V_-$ takes $u \to s$ at $(0, -2/3)$
 
-**Construction from highest weight:**
-1. Start with $u$ at $(1/2, 1/3)$ — highest weight (annihilated by all raising ops)
-2. Apply $I_-$: move horizontally to $d$ at $(-1/2, 1/3)$
-3. Apply $V_-$: move diagonally to $s$ at $(0, -2/3)$
+The three states $(u, d, s)$ form a triangle in weight space.
 
-The arrows show the action of lowering operators that generate the representation from the highest weight state.
+**Adjoint $\mathbf{8}$: Systematic Construction**
 
-**Adjoint $\mathbf{8}$:**
+The adjoint representation is built from $\mathbf{3} \otimes \bar{\mathbf{3}}$ (quark-antiquark pairs). Here's the systematic method:
 
-<img src="/images/angular-momentum/su3_octet_baryons.png" width="500px" alt="SU(3) Baryon Octet">
+**Step 1: Build the 6 off-diagonal states**
 
-**Structure and Construction:**
+These come from quark-antiquark combinations where the flavors differ:
+- $u\bar{d}$ at $(+1, 0)$ — becomes $\Sigma^+$
+- $d\bar{u}$ at $(-1, 0)$ — becomes $\Sigma^-$
+- $u\bar{s}$ at $(+1/2, 1)$ — becomes $p$
+- $s\bar{u}$ at $(-1/2, -1)$ — becomes $\Xi^-$
+- $d\bar{s}$ at $(-1/2, 1)$ — becomes $n$
+- $s\bar{d}$ at $(+1/2, -1)$ — becomes $\Xi^0$
 
-The adjoint representation can be built from $\mathbf{3} \otimes \bar{\mathbf{3}}$ (quark-antiquark pairs). The 8 states are:
+These are the 6 states at the vertices of the weight diagram hexagon.
 
-1. **6 states at hexagon vertices** (from $u\bar{d}, u\bar{s}, d\bar{u}, d\bar{s}, s\bar{u}, s\bar{d}$):
-   - $p = u(ud - du)/\sqrt{2}$ at $(+1/2, 1)$ — isospin doublet
-   - $n = d(ud - du)/\sqrt{2}$ at $(-1/2, 1)$ — isospin doublet
-   - $\Sigma^+ = u(us - su)/\sqrt{2}$ at $(+1, 0)$ — isospin triplet
-   - $\Sigma^- = d(ds - sd)/\sqrt{2}$ at $(-1, 0)$ — isospin triplet
-   - $\Xi^0 = s(us - su)/\sqrt{2}$ at $(+1/2, -1)$ — isospin doublet
-   - $\Xi^- = s(ds - sd)/\sqrt{2}$ at $(-1/2, -1)$ — isospin doublet
+**Step 2: Build the 2 neutral states at the origin**
 
-2. **2 states at origin** ($I_3 = Y = 0$). These come from $u\bar{u}, d\bar{d}, s\bar{s}$ combinations:
-   - $\Sigma^0 = (u\bar{u} - d\bar{d})/\sqrt{2}$ — part of isospin triplet $(\Sigma^+, \Sigma^0, \Sigma^-)$
-   - $\Lambda = (u\bar{u} + d\bar{d} - 2s\bar{s})/\sqrt{6}$ — isospin singlet (antisymmetric under $u \leftrightarrow d$)
+For states with $I_3 = Y = 0$, we have three combinations: $u\bar{u}, d\bar{d}, s\bar{s}$. The physical states are specific orthogonal combinations:
 
-**Why two states at the center?** Both have $(I_3, Y) = (0, 0)$, but different isospin: $\Sigma^0$ ($I=1, I_3=0$) vs $\Lambda$ ($I=0$). They are orthogonal combinations of $u\bar{u}, d\bar{d}, s\bar{s}}$.
+- **$\Sigma^0$** = $(u\bar{u} - d\bar{d})/\sqrt{2}$ — part of isospin triplet $(\Sigma^+, \Sigma^0, \Sigma^-)$
+- **$\Lambda$** = $(u\bar{u} + d\bar{d} - 2s\bar{s})/\sqrt{6}$ — isospin singlet
 
-**Young Tableaux: Systematic Tensor Products**
+The two states differ in isospin: $\Sigma^0$ has $I=1$, while $\Lambda$ has $I=0$.
 
-Young tableaux encode **permutation symmetry** of tensor indices and provide a mechanical way to compute tensor products.
+**Why two states at the center?** Because there are two orthogonal ways to combine $u\bar{u}, d\bar{d}, s\bar{s}$ with the right quantum numbers. The isospin triplet combination (antisymmetric under $u \leftrightarrow d$) and the isospin singlet combination (symmetric under $u \leftrightarrow d$ but orthogonal to the trace).
 
-**Rules:**
-- Each box = one tensor index
-- Row of $n$ boxes = totally symmetric in those indices
-- Column of $n$ boxes = totally antisymmetric in those indices
-- For SU($N$), columns have at most $N$ boxes (antisymmetrizing $N+1$ indices gives zero)
+**Young Tableaux and Permutation Symmetry**
 
-**SU(3) Representations:**
+Young tableaux provide a mechanical way to decompose tensor products based on **permutation symmetry**.
 
-| Dim | Label | Young Diagram | Symmetry |
-|:---:|:-----:|:-------------:|:--------:|
-| 1 | $\mathbf{1}$ | (empty) | Trivial |
-| 3 | $\mathbf{3}$ | $\begin{array}{|c|}\hline \phantom{a} \\ \hline \end{array}$ | One index (covariant) |
-| 3 | $\bar{\mathbf{3}}$ | $\begin{array}{|c|}\hline \phantom{a} \\ \hline \phantom{a} \\ \hline \end{array}$ | One index (contravariant) |
-| 8 | $\mathbf{8}$ | $\begin{array}{|c|c|}\hline \phantom{a} & \phantom{a} \\ \hline \phantom{a} \\ \cline{1-1} \end{array}$ | Mixed symmetry |
-| 10 | $\mathbf{10}$ | $\begin{array}{|c|c|c|}\hline \phantom{a} & \phantom{a} & \phantom{a} \\ \hline \end{array}$ | Fully symmetric |
+**Why permutation matters for SU(3):**
 
-**Covariant vs. Contravariant in Young Diagrams:**
+When we combine multiple quarks ($\mathbf{3} \otimes \mathbf{3} \otimes ...$), the resulting states must be classified by how they transform under exchange of identical quarks. This is permutation symmetry.
 
-- **Single box** $\begin{array}{|c|}\hline \phantom{a} \\ \hline \end{array}$ = covariant index $q_i$ (fundamental $\mathbf{3}$)
-- **Stacked boxes** $\begin{array}{|c|}\hline \phantom{a} \\ \hline \phantom{a} \\ \hline \end{array}$ = contravariant index $\bar{q}^i$ (anti-fundamental $\bar{\mathbf{3}}$)
+SU(3) representations are characterized by their symmetry properties:
+- **Symmetric indices** = boxes in a row
+- **Antisymmetric indices** = boxes in a column
 
-This distinction is crucial: you cannot convert between them by any SU(3) transformation (unlike SU(2) where $\mathbf{2} = \bar{\mathbf{2}}$).
+**The Rules:**
 
-**Why $\bar{\mathbf{3}} \neq \mathbf{3}$ (Mathematical Reason):**
+1. **Each box = one tensor index** (one quark flavor index $i = 1,2,3$)
 
-The fundamental $\mathbf{3}$ and anti-fundamental $\bar{\mathbf{3}}$ are **not equivalent representations** in SU(3). Here's why:
+2. **Row of $n$ boxes** = totally symmetric in those $n$ indices
+   - Example: Two boxes side-by-side = symmetric combination of two $\mathbf{3}$'s = $\mathbf{6}$
 
-**Index notation:**
-- $\mathbf{3}$: covariant index $q_i$ transforms as $q_i \rightarrow U_i{}^j q_j$
-- $\bar{\mathbf{3}}$: contravariant index $\bar{q}^i$ transforms as $\bar{q}^i \rightarrow (U^*)^i{}_j \bar{q}^j$
+3. **Column of $n$ boxes** = totally antisymmetric in those $n$ indices
+   - Example: Two stacked boxes = antisymmetric combination = $\bar{\mathbf{3}}$
 
-For SU(2), $\mathbf{2}$ and $\bar{\mathbf{2}}$ *are* equivalent because $U^* = \epsilon U \epsilon^{-1}$. This property is called **pseudo-real**.
+4. **Maximum column height = 3** for SU(3) (antisymmetrizing 4 indices gives zero in 3D space)
 
-**What does pseudo-real mean?**
+**Why $\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$:**
 
-A representation is pseudo-real if it is equivalent to its complex conjugate, but not through a unitary transformation—instead through an antisymmetric matrix.
+Two quark indices $q_i q_j$ can be combined as:
+- **Symmetric**: $(q_i q_j + q_j q_i)/\sqrt{2}$ — this is the $\mathbf{6}$ (dimension 6)
+- **Antisymmetric**: $(q_i q_j - q_j q_i)/\sqrt{2}$ — this transforms as $\bar{\mathbf{3}}$ (dimension 3)
 
-For SU(2): Any $2 \times 2$ unitary matrix $U$ with $\det U = 1$ satisfies:
-$$U^* = \epsilon U \epsilon^{-1}$$
-where $\epsilon = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$ is the antisymmetric tensor.
+The antisymmetric combination is equivalent to a single contravariant index because $\epsilon^{ijk}q_j q_k$ transforms like $\bar{q}^i$.
 
-This means: if $\psi$ transforms as $\mathbf{2}$ ($\psi \rightarrow U\psi$), then $\epsilon \psi^*$ also transforms as $\mathbf{2}$ (not $\bar{\mathbf{2}}$!):
-$$\epsilon \psi^* \rightarrow \epsilon (U\psi)^* = \epsilon U^* \psi^* = \epsilon (\epsilon U \epsilon^{-1}) \psi^* = U (\epsilon \psi^*)$$
+**Why $\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$:**
 
-So in SU(2), $\mathbf{2}$ and $\bar{\mathbf{2}}$ are the **same representation**—we can use $\epsilon \psi^*$ instead of $\bar{\psi}$.
+A quark $q_i$ and antiquark $\bar{q}^j$ can be combined as:
+- **Traceless mixed tensor**: $q_i \bar{q}^j - \frac{1}{3}\delta_i^j q_k \bar{q}^k$ — this is the $\mathbf{8}$ (octet, dimension 8)
+- **Trace/singlet**: $q_i \bar{q}^i$ (sum over $i$) — this is the $\mathbf{1}$ (singlet, dimension 1)
 
-**SU(3) is NOT pseudo-real:** There is no $3 \times 3$ matrix $M$ such that $U^* = M U M^{-1}$ for all $U \in$ SU(3). Therefore $\mathbf{3}$ and $\bar{\mathbf{3}}$ are distinct representations.
+The octet has "mixed symmetry" — symmetric in some sense but with the trace removed.
 
-**Explicit construction of $\bar{\mathbf{3}}$:**
-The anti-fundamental $\bar{\mathbf{3}}$ can be constructed from two fundamental $\mathbf{3}$'s using the antisymmetric tensor:
-$$\bar{q}^i = \epsilon^{ijk} q_j q_k$$
+**Covariant vs. Contravariant:**
 
-This is why the Young diagram for $\bar{\mathbf{3}}$ has **two stacked boxes**—it's the antisymmetric combination of two $\mathbf{3}$ indices.
+- $\mathbf{3}$ = covariant index $q_i$ (single box)
+- $\bar{\mathbf{3}}$ = contravariant index $\bar{q}^i$ (column of two boxes)
 
-**Physical reason:**
-- $\mathbf{3}$: quarks ($u, d, s$) with charges $+2/3, -1/3, -1/3$
-- $\bar{\mathbf{3}}$: antiquarks ($\bar{u}, \bar{d}, \bar{s}$) with opposite charges $-2/3, +1/3, +1/3$
+SU(3) is **not pseudo-real** (unlike SU(2)), meaning $\mathbf{3}$ and $\bar{\mathbf{3}}$ are distinct representations. No SU(3) transformation can convert quarks to antiquarks — they have opposite quantum numbers (charges, baryon number, etc.).
 
-No SU(3) transformation can turn a quark into an antiquark—they have opposite quantum numbers!
+**Tensor Product Summary:**
+- $\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$ (symmetric + antisymmetric)
+- $\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$ (octet + singlet)
+- $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$ (3-quark states)
 
-**Mechanical Tensor Product: $\mathbf{3} \otimes \mathbf{3}$**
-
-**Step 1:** Start with the first box (fundamental):
-$$\begin{array}{|c|}\hline \phantom{a} \\ \hline \end{array} = \mathbf{3}$$
-
-**Step 2:** Add the second box in all allowed positions:
-
-| Position | Result | Representation |
-|:--------:|:------:|:--------------:|
-| To the right | $\begin{array}{|c|c|}\hline \phantom{a} & \phantom{a} \\ \hline \end{array}$ | $\mathbf{6}$ (symmetric) |
-| Below | $\begin{array}{|c|}\hline \phantom{a} \\ \hline \phantom{a} \\ \hline \end{array}$ | $\bar{\mathbf{3}}$ (antisymmetric) |
-
-**Step 3:** Verify dimensions:
-$$3 \times 3 = 6 + 3 = 9 \quad \checkmark$$
-
-**Result:**
-$$\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$$
-
-**For $\mathbf{3} \otimes \bar{\mathbf{3}}$ (mesons):**
-
-| Diagram | Result |
-|:-------:|:------:|
-| $\begin{array}{|c|c|}\hline \phantom{a} & \phantom{a} \\ \hline \phantom{a} \\ \cline{1-1} \end{array}$ | $\mathbf{8}$ (octet) |
-| (trace/singlet) | $\mathbf{1}$ (singlet) |
-
-Dimension check: $3 \times 3 = 8 + 1 = 9$ ✓
-
-**Physical applications:**
-- Mesons: $\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$
-- Baryons: $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$
