@@ -1587,8 +1587,8 @@ While Young diagrams show symmetry types, **Young tableaux** enumerate the actua
 
 | Symmetry | Young Diagram | Young Tableau | Spin State | $S$ | $M_S$ |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| Symmetric | <img src="/images/angular-momentum/young_2_row_clean.png" width="40px"> | <img src="/images/angular-momentum/tableau_2_symmetric.png" width="40px"> | $\uparrow\uparrow$, $\frac{\uparrow\downarrow+\downarrow\uparrow}{\sqrt{2}}$, $\downarrow\downarrow$ | 1 | +1, 0, -1 |
-| Antisymmetric | <img src="/images/angular-momentum/young_2_col_clean.png" width="20px"> | <img src="/images/angular-momentum/tableau_2_antisymmetric.png" width="20px"> | $\frac{\uparrow\downarrow-\downarrow\uparrow}{\sqrt{2}}$ | 0 | 0 |
+| Symmetric | <img src="/images/angular-momentum/young_2_row_clean.png" width="40px"> | <img src="/images/angular-momentum/tableau_2_symmetric.png" width="60px"> | $\uparrow\uparrow$, $\frac{\uparrow\downarrow+\downarrow\uparrow}{\sqrt{2}}$, $\downarrow\downarrow$ | 1 | +1, 0, -1 |
+| Antisymmetric | <img src="/images/angular-momentum/young_2_col_clean.png" width="20px"> | <img src="/images/angular-momentum/tableau_2_antisymmetric.png" width="35px"> | $\frac{\uparrow\downarrow-\downarrow\uparrow}{\sqrt{2}}$ | 0 | 0 |
 
 The **standard Young tableau** conditions ensure we count each state exactly once:
 - Numbers increase left-to-right in each row
@@ -1600,8 +1600,8 @@ The hook shape <img src="/images/angular-momentum/young_21_clean.png" width="35p
 
 | Tableau | State Label |
 |:---:|:---:|
-| <img src="/images/angular-momentum/tableau_3_hook_1.png" width="35px"> | $\chi_1$ |
-| <img src="/images/angular-momentum/tableau_3_hook_2.png" width="35px"> | $\chi_2$ |
+| <img src="/images/angular-momentum/tableau_3_hook_1.png" width="55px"> | $\chi_1$ |
+| <img src="/images/angular-momentum/tableau_3_hook_2.png" width="55px"> | $\chi_2$ |
 
 These correspond to the two distinct $^2D$ (and $^2P$) terms in the nitrogen atom spectrum.
 
@@ -2350,13 +2350,9 @@ Therefore:
 $$\mathcal{M}(\pi^- p \to \pi^0 n) = \left(\sqrt{\frac{2}{3}}\right) \cdot A_{3/2} \cdot \left(\sqrt{\frac{1}{3}}\right) + \left(\sqrt{\frac{1}{3}}\right) \cdot A_{1/2} \cdot \left(-\sqrt{\frac{2}{3}}\right)$$
 $$= \frac{\sqrt{2}}{3}(A_{3/2} - A_{1/2})$$
 
-**Cross Sections, Branching Ratios, and the $\Delta(1232)$ Resonance:**
+**Cross Sections and the $\Delta(1232)$ Resonance:**
 
-The cross section for a specific reaction channel is proportional to $|\mathcal{M}|^2$. **Reaction channels** are distinct final states accessible from a given initial state—e.g., $\pi^- p$ can scatter elastically or undergo charge exchange to $\pi^0 n$.
-
-**Branching ratios** describe the relative probability of different final states. If a resonance decays, the branching ratio to channel $i$ is:
-$$\text{BR}_i = \frac{\Gamma_i}{\Gamma_{\text{total}}}$$
-where $\Gamma_i$ is the partial width for channel $i$ and $\Gamma_{\text{total}}$ is the total decay width.
+The cross section for a specific reaction is proportional to $|\mathcal{M}|^2$. At the $\Delta(1232)$ resonance, multiple final states are accessible from a given initial state—for example, $\pi^- p$ can scatter elastically or undergo charge exchange to $\pi^0 n$.
 
 **The $\Delta(1232)$ Resonance:**
 
@@ -2387,14 +2383,14 @@ $$\frac{\sigma(\pi^+ + p)}{\sigma_{\text{tot}}(\pi^- + p)} = 3$$
 
 This ratio is experimentally observed near the $\Delta(1232)$ resonance, confirming the isospin structure of strong interactions.
 
-**Branching Ratios at the $\Delta(1232)$ Resonance:**
+**Reaction Channels and Relative Probabilities:**
 
-For $\pi^- p$ scattering at the $\Delta$ resonance ($A_{1/2} \approx 0$), the final state can be either elastic ($\pi^- p$) or charge exchange ($\pi^0 n$). The **branching ratios**—the relative probabilities of these decay channels—follow directly from isospin:
+For $\pi^- p$ scattering at the $\Delta$ resonance, the final state can be either elastic ($\pi^- p$) or charge exchange ($\pi^0 n$). The relative probabilities of these reaction channels follow directly from isospin:
 
-| Channel | Amplitude $\mathcal{M}$ | Rate $|\mathcal{M}|^2$ | Branching Ratio |
+| Reaction | Amplitude | Relative Rate | Probability |
 |:---:|:---:|:---:|:---:|
-| $\pi^- p \to \pi^- p$ | $\frac{1}{3}A_{3/2}$ | $\frac{1}{9}|A_{3/2}|^2$ | $\frac{1/9}{1/9+2/9} = \frac{1}{3}$ |
-| $\pi^- p \to \pi^0 n$ | $\frac{\sqrt{2}}{3}A_{3/2}$ | $\frac{2}{9}|A_{3/2}|^2$ | $\frac{2/9}{1/9+2/9} = \frac{2}{3}$ |
+| $\pi^- p \to \pi^- p$ | $\frac{1}{3}A_{3/2}$ | $\frac{1}{9}|A_{3/2}|^2$ | 1/3 |
+| $\pi^- p \to \pi^0 n$ | $\frac{\sqrt{2}}{3}A_{3/2}$ | $\frac{2}{9}|A_{3/2}|^2$ | 2/3 |
 
-The charge exchange channel is **twice as probable** as elastic scattering—a counterintuitive result from the interference of isospin amplitudes. This prediction (along with the cross-section ratio of 3) was confirmed experimentally in the 1950s, providing strong evidence for the SU(2) isospin symmetry of strong interactions.
+The charge exchange reaction is **twice as probable** as elastic scattering—a counterintuitive result from isospin interference. Combined with the cross-section ratio of 3, these predictions were confirmed experimentally in the 1950s, providing strong evidence for SU(2) isospin symmetry.
 
