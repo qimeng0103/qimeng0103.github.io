@@ -1716,7 +1716,7 @@ The solution $u \propto r^{-l}$ gives $R = u/r \propto r^{-l-1}$, which is singu
 $$\int_0^\epsilon |R|^2 r^2 dr \propto \int_0^\epsilon r^{-2l} dr$$
 diverges at the origin, so the wavefunction cannot be normalized.
 
-**For $l = 0$:** $R \propto 1/r$ while the probability integral appears finite, the wavefunction itself diverges at the origin. More importantly, the kinetic energy involves $\nabla^2 R$ which produces a delta function singularity at $r=0$, leading to infinite kinetic energy expectation value.
+**For $l = 0$:** $R \propto 1/r$ leads to $u \propto 1$ (constant), which is non-normalizable since $\int_0^\infty |u|^2 dr$ would diverge linearly with the upper limit. The wavefunction fails to vanish at the origin, violating the boundary condition for a physical radial wavefunction.
 
 **Physical requirement:** A physical wavefunction must be finite everywhere and have finite energy. The $s = -l$ solution fails both criteria and must be discarded.
 
@@ -1751,21 +1751,7 @@ $$\hat{\mathbf{A}} = \hat{\mathbf{p}} \times \hat{\mathbf{L}} - i\hbar\hat{\math
 For the hydrogen Hamiltonian:
 $$\hat{H} = \frac{\hat{\mathbf{p}}^2}{2\mu} - \frac{k}{r}$$
 
-One can show that $[\hat{H}, \hat{\mathbf{A}}] = 0$.
-
-**Sketch of proof:**
-
-Computing $[\hat{H}, \hat{\mathbf{A}}]$ requires evaluating:
-$$\left[\frac{\hat{\mathbf{p}}^2}{2\mu}, \hat{\mathbf{p}} \times \hat{\mathbf{L}}\right] - \left[\frac{k}{r}, \hat{\mathbf{p}} \times \hat{\mathbf{L}}\right] + \text{other terms}$$
-
-The key identities are:
-- $[\hat{p}^2, \hat{\mathbf{p}} \times \hat{\mathbf{L}}] = 0$ (since $\hat{p}^2$ commutes with both $\hat{\mathbf{p}}$ and $\hat{\mathbf{L}}$)
-- The commutator with $1/r$ cancels the $i\hbar\hat{\mathbf{p}}$ terms after careful calculation
-
-The full calculation involves lengthy commutator algebra, but the result is:
-$$[\hat{H}, \hat{\mathbf{A}}] = 0$$
-
-This means $\hat{\mathbf{A}}$ is a conserved quantity, generating a symmetry of the system.
+The Runge-Lenz vector is conserved: $[\hat{H}, \hat{\mathbf{A}}] = 0$. This can be verified by explicit calculation of the commutator using the definitions of $\hat{H}$ and $\hat{\mathbf{A}}$.
 
 #### 6.4.2 The Rescaled Runge-Lenz Vector and SO(4) Algebra
 
@@ -1819,7 +1805,7 @@ Using $\hat{\mathbf{K}} = \sqrt{-\mu/(2E)}\hat{\mathbf{A}}$, where $E$ is the ei
 
 $$[K_i, K_j] = \left(-\frac{\mu}{2E}\right)[A_i, A_j]$$
 
-The key intermediate result (derived via lengthy commutator algebra) is:
+The key intermediate result is:
 $$[A_i, A_j] = -2i\hbar \hat{H} \varepsilon_{ijk} L_k$$
 
 Note this involves the **operator** $\hat{H}$, not the eigenvalue $E$. The commutator $[A_i, A_j]$ is an operator equation.
@@ -1887,7 +1873,7 @@ $$C_1 = \hbar^2 [m(m+1) + n(n+1)] = 2\hbar^2 n(n+1)$$
 
 **Step 1: Compute $\mathbf{A}^2$**
 
-Using the definition of $\mathbf{A}$ and careful commutator algebra:
+Using the definition of $\mathbf{A}$:
 $$\mathbf{A}^2 = \mu^2 k^2 + 2\mu \hat{H}(\mathbf{L}^2 + \hbar^2)$$
 
 **Note on the $\hbar^2$ term:** Classically, the Runge-Lenz vector satisfies $\mathbf{A}^2 = \mu^2 k^2 + 2\mu H L^2$. The extra $\hbar^2$ is a **quantum correction** arising from operator ordering in the quantum definition of $\mathbf{A}$.
@@ -1904,10 +1890,15 @@ $$C_1 = \frac{1}{2}(\mathbf{L}^2 + \mathbf{K}^2) = -\frac{\mu^3 k^2}{4E} - \frac
 
 **Step 4: Relate to SO(4) representation**
 
-For SO(4) representation labeled by $(j, j)$ (since $m=n$):
-$$C_1 = 2\hbar^2 j(j+1)$$
+We established that for the hydrogen atom, $m = n$ (the two SU(2) quantum numbers are equal). Let's call this common value $j$ (i.e., $j = m = n$). Then:
+$$C_1 = \hbar^2 [j(j+1) + j(j+1)] = 2\hbar^2 j(j+1)$$
 
-The principal quantum number is related to $j$ by $n = 2j + 1$, or equivalently $j = (n-1)/2$. Substituting:
+What is the physical interpretation of $j$? The total degeneracy of a representation labeled by $j$ (for each SU(2)) is $(2j+1)$. Since $\mathbf{L} = \mathbf{M} + \mathbf{N}$, the orbital angular momentum $l$ ranges from $|m-n| = 0$ to $m+n = 2j$. The total number of states is:
+$$\sum_{l=0}^{2j} (2l+1) = (2j+1)^2$$
+
+This matches the hydrogen degeneracy $n^2$ if we identify $n = 2j + 1$, or equivalently $j = (n-1)/2$.
+
+Substituting $j = (n-1)/2$ into $C_1$:
 $$C_1 = 2\hbar^2 \cdot \frac{n-1}{2} \cdot \frac{n+1}{2} = \frac{\hbar^2(n^2-1)}{2}$$
 
 **Step 5: Solve for $E$**
