@@ -2116,6 +2116,89 @@ The remaining orthogonal combination (orthogonal to both singlet and $\Sigma^0$)
 $$\Lambda = \frac{1}{\sqrt{6}}(u\bar{u} + d\bar{d} - 2s\bar{s})$$
 This is symmetric under $u \leftrightarrow d$ and has no isospin ($I=0$).
 
+#### Young Diagrams: A Visual Approach to SU(3) Representations
+
+Young diagrams provide a graphical device to represent SU(3) representations and determine how they combine under tensor products. This method translates abstract algebra into concrete geometric language.
+
+**What is a Young diagram?**
+
+A Young diagram consists of boxes arranged in left-aligned rows, with row lengths that do not increase from top to bottom. For SU(3) flavor symmetry (up, down, strange quarks):
+
+- **Single box** $\boxed{\phantom{x}}$ represents the fundamental $\mathbf{3} = \{u, d, s\}$
+- **Row of boxes** indicates symmetrization of indices
+- **Column of boxes** indicates antisymmetrization of indices
+- **Maximum 3 rows** in SU(3): complete antisymmetrization of 4 indices vanishes identically
+
+**Basic Rules for SU(3):**
+
+1. Each box represents a tensor index transforming as the fundamental $\mathbf{3}$
+2. Boxes in the same row → symmetric indices
+3. Boxes in the same column → antisymmetric indices  
+4. Row lengths are non-increasing from top to bottom
+
+**Dimension Formula:**
+
+To compute the dimension of a multiplet:
+$$\dim = \prod_{\text{boxes}} \frac{N + c - r}{h}$$
+
+where:
+- $N = 3$ (fundamental dimension for SU(3))
+- $r$ = row index (0, 1, 2, ... from top)
+- $c$ = column index (0, 1, 2, ... from left)
+- $h$ = hook length = (boxes to right) + (boxes below) + 1
+
+**Example 1: Two Quarks $\mathbf{3} \otimes \mathbf{3}$**
+
+Add a second box to the first in all admissible ways:
+
+*Configuration A: Two boxes in a row (symmetric)*
+$$\boxed{\phantom{x}}\boxed{\phantom{x}} \rightarrow \mathbf{6}$$
+
+- Box 1: $r=0, c=0, h=2$ → factor = $(3+0-0)/2 = 3/2$
+- Box 2: $r=0, c=1, h=1$ → factor = $(3+1-0)/1 = 4$
+- Dimension: $\frac{3}{2} \times 4 = 6$
+
+The six symmetric states: $uu, dd, ss, (ud+du), (us+su), (ds+sd)$
+
+*Configuration B: Two boxes in a column (antisymmetric)*
+$$\begin{array}{|c|}\hline \phantom{x} \\ \hline \phantom{x} \\ \hline\end{array} \rightarrow \bar{\mathbf{3}}$$
+
+- Box 1: $r=0, c=0, h=2$ → factor = $3/2$
+- Box 2: $r=1, c=0, h=1$ → factor = $(3+0-1)/1 = 2$
+- Dimension: $\frac{3}{2} \times 2 = 3$
+
+The three antisymmetric states: $(ud-du), (us-su), (ds-sd) \sim \bar{u}, \bar{d}, \bar{s}$
+
+Result: $\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$
+
+**Example 2: Three Quarks $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3}$ (Baryons)**
+
+Starting from $\mathbf{3} \otimes \mathbf{3}$ results, add a third box:
+
+*Fully symmetric (three in a row):*
+$$\boxed{\phantom{x}}\boxed{\phantom{x}}\boxed{\phantom{x}} \rightarrow \mathbf{10}$$
+
+- Box 1: $(3+0-0)/3 = 1$
+- Box 2: $(3+1-0)/2 = 2$  
+- Box 3: $(3+2-0)/1 = 5$
+- Dimension: $1 \times 2 \times 5 = 10$ (decuplet)
+
+*Mixed symmetry (hook shape):*
+$$\begin{array}{|c|c|}\hline \phantom{x} & \phantom{x} \\ \hline \phantom{x} \\ \cline{1-1}\end{array} \rightarrow \mathbf{8}$$
+
+This appears twice in the decomposition (dimension 8 each).
+
+*Fully antisymmetric (three in column):*
+$$\begin{array}{|c|}\hline \phantom{x} \\ \hline \phantom{x} \\ \hline \phantom{x} \\ \hline\end{array} \rightarrow \mathbf{1}$$
+
+Dimension: 1 (singlet)
+
+Result: $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$
+
+**Why Young Diagrams Are Useful:**
+
+Young diagrams provide an immediate visual handle on symmetry properties, making it possible to identify allowed representations without lengthy algebraic manipulations. They do not determine which particles exist, but rather which symmetry patterns are allowed—the group SU(3) fixes the structure, and Young diagrams offer the most transparent way to read it.
+
 ### 7.6 Scattering Amplitudes and Isospin: Reaction Channels
 
 Symmetry principles powerfully constrain scattering processes. When a system possesses isospin symmetry, different reaction channels are related by Clebsch-Gordan coefficients.
