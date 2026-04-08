@@ -1658,15 +1658,24 @@ For three spin-1/2 electrons, the Young diagrams give:
 
 **Step 2: Orbital Symmetry**
 
-For three $l=1$ orbitals, the same Young diagrams classify permutation symmetry. The decomposition of $p^3$ spatial states gives:
+For three $l=1$ orbitals, we first decompose the tensor product to find possible $L$ values:
 
-| Young Diagram | Symmetry | $L$ | Term | Degeneracy |
-|:---:|:---:|:---:|:---:|:---:|
-| <img src="/images/angular-momentum/young_3_row_clean.png" width="50px"> | Symmetric | 0, 2 | S, D | 1 + 5 = 6 |
-| <img src="/images/angular-momentum/young_21_clean.png" width="35px"> | Mixed | 1, 2 | P, D | (3 + 5) × 2 = 16 |
-| <img src="/images/angular-momentum/young_3_col_clean.png" width="18px"> | Antisymmetric | 0, 1 | S, P | 1 + 3 = 4 |
+$$\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{1} \oplus \mathbf{3} \oplus \mathbf{3} \oplus \mathbf{7} \oplus \mathbf{5} \oplus \mathbf{5}'$$
 
-**Check**: $6 + 16 + 4 = 26$ spatial states. Combined with 8 spin states (from Step 1), naive product gives $26 \times 8 = 208$ — far more than 20. The Pauli principle drastically restricts allowed combinations.
+In terms of $L$ ($L=0,1,2$ for $l=1$):
+- $L=0$ (S): appears in symmetric (1) and antisymmetric (1) — total 2
+- $L=1$ (P): appears in antisymmetric (1) and mixed (2) — total 3  
+- $L=2$ (D): appears in symmetric (1) and mixed (2) — total 3
+
+Organized by Young symmetry:
+
+| Young Diagram | Symmetry | $L$ values | Degeneracy |
+|:---:|:---:|:---:|:---:|
+| <img src="/images/angular-momentum/young_3_row_clean.png" width="50px"> | Symmetric | $L=0, 2$ (S, D) | $1 + 5 = 6$ |
+| <img src="/images/angular-momentum/young_21_clean.png" width="35px"> | Mixed | $L=1, 2$ (P, D) | $(3 + 5) \times 2 = 16$ |
+| <img src="/images/angular-momentum/young_3_col_clean.png" width="18px"> | Antisymmetric | $L=0, 1$ (S, P) | $1 + 3 = 4$ |
+
+**Check**: $6 + 16 + 4 = 26$ spatial states. Combined with 8 spin states, naive product gives $26 \times 8 = 208$ — far more than 20. The Pauli principle restricts to antisymmetric combinations only.
 
 **Step 3: Pauli-Allowed Combinations**
 
@@ -1688,15 +1697,32 @@ This gives three physical cases:
 - Term: $^4S_{3/2}$
 - States: $2J + 1 = 4$
 
-**Case 2**: Spin mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;"> × Orbital mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;">
-- $S = 1/2$, $L = 2$ (D from mixed orbital)
-- **2 distinct $^2D$ terms** (dimension 2)
-- Each: $J = 3/2, 5/2$, states = $4 + 6 = 10$
+**Case 2 (D states): Mixed × Mixed**
 
-**Case 3**: Spin mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;"> × Orbital mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;">
-- $S = 1/2$, $L = 1$ (P from mixed orbital)
-- **2 distinct $^2P$ terms**
-- Each: $J = 1/2, 3/2$, states = $2 + 4 = 6$
+Spin mixed (dim 2) × Orbital mixed (dim 2 for D, with $L=2$) = 4 combinations.
+
+Decomposition: $\mathbf{M} \times \mathbf{M} = \mathbf{A} + \mathbf{S} + \mathbf{M}_1 + \mathbf{M}_2$
+
+The **antisymmetric part** gives **2 distinct antisymmetric wavefunctions**:
+- Both have $S=1/2$, $L=2$ ($^2D$)
+- Both have $J = 3/2, 5/2$
+- Each is a **complete, independent quantum state**
+
+**The critical insight**: There are 2 distinct $^2D$ terms **in total**, not 2 sets of 10 states each.
+
+The counting works as follows:
+- Spatial mixed-$L=2$ states: 5 magnetic sublevels × 2 symmetry types = 10 states
+- Spin mixed states: 2 magnetic sublevels × 2 symmetry types = 4 states
+- Antisymmetric combinations: Only 2 specific linear combinations survive
+
+These 2 combinations **are** the 2 distinct $^2D$ terms. Together they occupy:
+- $J=3/2$: 4 magnetic sublevels (shared between the 2 terms)
+- $J=5/2$: 6 magnetic sublevels (shared between the 2 terms)
+- **Total: 10 states for both $^2D$ terms combined**
+
+**Case 3 (P states): Mixed × Mixed**
+- 2 distinct $^2P$ terms ($S=1/2$, $L=1$)
+- Together: $J=1/2$ (2 states) + $J=3/2$ (4 states) = **6 states total**
 
 **State counting summary:**
 
