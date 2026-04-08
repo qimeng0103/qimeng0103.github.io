@@ -1629,26 +1629,45 @@ For three spin-1/2 electrons, the Young diagrams give:
 
 **Step 2: Orbital Symmetry**
 
-For three $l=1$ orbitals, the same diagrams apply but with different dimensions. The decomposition of three $p$-orbitals gives $L = 0, 1, 2$ (S, P, D terms) with appropriate symmetries.
+For three $l=1$ orbitals, the same Young diagrams classify permutation symmetry. The decomposition of $p^3$ spatial states gives:
+
+| Young Diagram | Symmetry | $L$ | Term | Degeneracy |
+|:---:|:---:|:---:|:---:|:---:|
+| <img src="/images/angular-momentum/young_3_row_clean.png" width="50px"> | Symmetric | 0, 2 | S, D | 1 + 5 = 6 |
+| <img src="/images/angular-momentum/young_21_clean.png" width="35px"> | Mixed | 1, 2 | P, D | (3 + 5) × 2 = 16 |
+| <img src="/images/angular-momentum/young_3_col_clean.png" width="18px"> | Antisymmetric | 0, 1 | S, P | 1 + 3 = 4 |
+
+**Check**: $6 + 16 + 4 = 26$ spatial states. Combined with 8 spin states (from Step 1), naive product gives $26 \times 8 = 208$ — far more than 20. The Pauli principle drastically restricts allowed combinations.
 
 **Step 3: Pauli-Allowed Combinations**
 
-For three equivalent p-electrons (like nitrogen $2p^3$), the total number of microstates is $C(6,3) = 20$ (choosing 3 electrons from 6 spin-orbitals: 3 spatial × 2 spin). These organize into LS terms as follows:
+For fermions, the **total wavefunction must be totally antisymmetric** under particle exchange:
+$$\Psi_{\text{total}} = \Psi_{\text{spin}} \times \Psi_{\text{orbital}} \times \Psi_{\text{other}} = \text{antisymmetric}$$
+
+For three equivalent p-electrons (nitrogen $2p^3$), total microstates = $C(6,3) = 20$. The allowed combinations follow the rule:
+
+| Spin Symmetry | Orbital Symmetry | Allowed? | Reason |
+|:---:|:---:|:---:|:---|
+| Symmetric (row) | Antisymmetric (column) | ✓ | S × A = A |
+| Mixed (hook) | Mixed (hook) | ✓ | M × M = A + S + M, contains A |
+| Antisymmetric (column) | Symmetric (row) | ✓ | A × S = A |
+
+This gives three physical cases:
 
 **Case 1**: Spin symmetric <img src="/images/angular-momentum/young_3_row_clean.png" width="40px" style="vertical-align:middle;"> × Orbital antisymmetric <img src="/images/angular-momentum/young_3_col_clean.png" width="15px" style="vertical-align:middle;">
-- $S = 3/2$, $L = 0$
-- Term: $^4S$ with $J = 3/2$ only
-- Magnetic substates: $2J + 1 = 4$ states
+- $S = 3/2$, $L = 0$ (from antisymmetric orbital)
+- Term: $^4S_{3/2}$
+- States: $2J + 1 = 4$
 
 **Case 2**: Spin mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;"> × Orbital mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;">
-- $S = 1/2$, $L = 2$
-- The hook diagram has dimension 2, giving **2 distinct $^2D$ terms**
-- Each $^2D$ term has $J = 3/2$ and $J = 5/2$, contributing $4 + 6 = 10$ states total
+- $S = 1/2$, $L = 2$ (D from mixed orbital)
+- **2 distinct $^2D$ terms** (dimension 2)
+- Each: $J = 3/2, 5/2$, states = $4 + 6 = 10$
 
 **Case 3**: Spin mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;"> × Orbital mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;">
-- $S = 1/2$, $L = 1$
-- Similarly, **2 distinct $^2P$ terms**
-- Each with $J = 1/2$ and $J = 3/2$, contributing $2 + 4 = 6$ states total
+- $S = 1/2$, $L = 1$ (P from mixed orbital)
+- **2 distinct $^2P$ terms**
+- Each: $J = 1/2, 3/2$, states = $2 + 4 = 6$
 
 **State counting summary:**
 
