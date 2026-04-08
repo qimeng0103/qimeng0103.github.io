@@ -2161,7 +2161,8 @@ $$\boxed{\phantom{x}}\boxed{\phantom{x}} \rightarrow \mathbf{6}$$
 The six symmetric states: $uu, dd, ss, (ud+du), (us+su), (ds+sd)$
 
 *Configuration B: Two boxes in a column (antisymmetric)*
-$$\begin{array}{|c|}\hline \phantom{x} \\ \hline \phantom{x} \\ \hline\end{array} \rightarrow \bar{\mathbf{3}}$$
+
+$$\begin{array}{|c|} \hline A \\ \hline B \\ \hline \end{array} \rightarrow \bar{\mathbf{3}}$$
 
 - Box 1: $r=0, c=0, h=2$ → factor = $3/2$
 - Box 2: $r=1, c=0, h=1$ → factor = $(3+0-1)/1 = 2$
@@ -2187,14 +2188,9 @@ $$\boxed{\phantom{x}}\boxed{\phantom{x}}\boxed{\phantom{x}} \rightarrow \mathbf{
 
 There are **two distinct hook diagrams**, each giving dimension 8:
 
-**Diagram 2a:** (first two boxes symmetric, third antisymmetric with first)
-```
-┌───┬───┐
-│ A │ B │
-├───┼───┘
-│ C │
-└───┘
-```
+**Diagram 2a:** (hook shape, partition {2,1})
+
+$$\begin{array}{|c|c|} \hline A & B \\ \hline C \\ \cline{1-1} \end{array}$$
 
 - Box A: $r=0, c=0$, 1 box right, 1 below → $h=1+1+1=3$ → factor = $(3+0-0)/3 = 1$
 - Box B: $r=0, c=1$, 0 right, 0 below → $h=0+0+1=1$ → factor = $(3+1-0)/1 = 4$
@@ -2211,15 +2207,8 @@ Actually, the two octets come from two different ways of building the hook—sta
 Both constructions yield the same final diagram shape but represent different combinations in the full tensor product space, hence two distinct $\mathbf{8}$ representations.
 
 *Fully antisymmetric (three in column, partition {1,1,1}):*
-```
-┌───┐
-│ A │
-├───┤
-│ B │
-├───┤
-│ C │
-└───┘
-```
+
+$$\begin{array}{|c|} \hline A \\ \hline B \\ \hline C \\ \hline \end{array}$$
 
 - Box A: $r=0, c=0$, 0 right, 2 below → $h=0+2+1=3$ → factor = $(3+0-0)/3 = 1$
 - Box B: $r=1, c=0$, 0 right, 1 below → $h=0+1+1=2$ → factor = $(3+0-1)/2 = 1$
