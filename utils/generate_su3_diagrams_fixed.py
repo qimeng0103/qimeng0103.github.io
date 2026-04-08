@@ -37,13 +37,15 @@ def draw_fundamental_triplet():
     ax.annotate('', xy=(d_pos[0] + 0.12, d_pos[1]), xytext=(u_pos[0] - 0.12, u_pos[1]),
                arrowprops=dict(arrowstyle='->', color='purple', lw=2.5),
                zorder=2)
-    ax.text(0, 1/3 + 0.12, r'$I_-$', fontsize=13, ha='center', color='purple', fontweight='bold')
+    ax.text(0, 1/3 + 0.15, r'$I_-$', fontsize=13, ha='center', color='purple', fontweight='bold')
     
-    # Arrow from u to s (V_- lowering)  
-    ax.annotate('', xy=(s_pos[0] + 0.06, s_pos[1] + 0.08), xytext=(u_pos[0] - 0.08, u_pos[1] - 0.06),
+    # Arrow from u to s (V_- lowering) - precisely aligned along the triangle edge
+    # Direction vector from u to s: (0 - 0.5, -2/3 - 1/3) = (-0.5, -1)
+    # Normalize and scale
+    ax.annotate('', xy=(s_pos[0] + 0.08, s_pos[1] + 0.10), xytext=(u_pos[0] - 0.04, u_pos[1] - 0.08),
                arrowprops=dict(arrowstyle='->', color='darkorange', lw=2.5),
                zorder=2)
-    ax.text(0.38, -0.08, r'$V_-$', fontsize=12, ha='center', color='darkorange', fontweight='bold',
+    ax.text(0.42, -0.12, r'$V_-$', fontsize=12, ha='center', color='darkorange', fontweight='bold',
            bbox=dict(boxstyle='round,pad=0.15', facecolor='white', alpha=0.9, edgecolor='none'))
     
     # Draw quark circles

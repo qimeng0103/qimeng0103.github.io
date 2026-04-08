@@ -17,6 +17,10 @@
 
 - [x] 第六次修改 - SU(3)图像和Spherical Harmonics
 - [x] 构建检查 - 通过
+- [x] 推送部署 - 完成
+
+- [x] 第七次修改 - 细节修复
+- [x] 构建检查 - 通过
 - [ ] 推送部署
 
 - [ ] Young Tableaux图像修复（等待用户提供程序或具体需求）
@@ -30,6 +34,35 @@
 ---
 
 ## 📝 会话记录
+
+### 2026-04-08 - 第七次修改（细节修复）
+
+**用户反馈的问题及修复：**
+
+1. **7.1 Application: Decompose机理** (Line 2122)
+   - 添加明确的3步机制说明
+   - 解释character orthogonality theorem的公式
+   - 说明$n_j$系数的计算方法
+   - 添加验证：$1 + 3 = 4 = 2 \times 2$
+
+2. **7.3表格ID缩写** (Line 2173)
+   - "antipodal ID" → "antipodal Identification"
+
+3. **Case 1 Integer spin表示等式解释** (Line 2230)
+   - 说明$D^{(j)}(U)$是$(2j+1) \times (2j+1)$表示矩阵
+   - 说明表示空间是$|j,m\rangle$ basis
+   - 添加$I_{3\times 3}$和$I_{2\times 2}$的显式标注
+
+4. **SU(3) root structure具体解释** (Line 2318)
+   - 添加具体代数约束：$[E_{\vec{\alpha}}, E_{\vec{\beta}}] \propto E_{\vec{\alpha}+\vec{\beta}}$
+   - 添加几何证明sketch：角度限制和六边形强制
+   - 解释为什么不是2个或4个roots
+
+5. **Fundamental triplet图像修复**
+   - 修复$V_-$箭头对齐（沿三角形边精确对齐）
+   - $I$标注已经改为$I_-$（之前已修复）
+
+---
 
 ### 2026-04-08 - 第六次修改（SU(3)图像和Spherical Harmonics）
 

@@ -2121,17 +2121,32 @@ $$\int_0^{2\pi} d\theta \, \sin^2\frac{\theta}{2} \, \chi_j(\theta)\chi_{j'}(\th
 
 **Application: Decompose $\frac{1}{2} \otimes \frac{1}{2}$**
 
-For two spin-1/2 particles, the product character is:
+**The mechanism:** When we combine two spin-1/2 particles, the total Hilbert space is $2 \times 2 = 4$ dimensional. We want to decompose this into irreducible representations of the rotation group.
+
+**Step 1: Form the product character**
+
+For two spin-1/2 particles, the product character (trace of the tensor product representation) is:
 $$\chi_{1/2}(\theta) \cdot \chi_{1/2}(\theta) = 4\cos^2(\theta/2) = 2 + 2\cos\theta$$
 
-Check overlap with $\chi_0 = 1$:
-$$\int_0^{2\pi} d\theta \, \sin^2\frac{\theta}{2} \cdot (2 + 2\cos\theta) \cdot 1 = \pi$$
+**Step 2: Project onto irreducible representations**
 
-Check overlap with $\chi_1 = 1 + 2\cos\theta$:
-$$\int_0^{2\pi} d\theta \, \sin^2\frac{\theta}{2} \cdot (2 + 2\cos\theta) \cdot (1 + 2\cos\theta) = \pi$$
+The character orthogonality theorem says: if a representation decomposes as $D = \bigoplus_j n_j D^{(j)}$, then:
+$$n_j = \frac{\int d\theta \, \rho(\theta) \chi(\theta) \chi_j(\theta)}{\int d\theta \, \rho(\theta) \chi_j^2(\theta)}$$
 
-Both integrals give the same result, confirming:
+where $\rho(\theta) = \sin^2(\theta/2)$ is the Haar measure for SU(2).
+
+**Step 3: Calculate coefficients**
+
+For $j=0$ (singlet, $\chi_0 = 1$):
+$$n_0 = \frac{\int_0^{2\pi} d\theta \, \sin^2\frac{\theta}{2} \cdot (2 + 2\cos\theta) \cdot 1}{\int_0^{2\pi} d\theta \, \sin^2\frac{\theta}{2} \cdot 1} = \frac{\pi}{\pi} = 1$$
+
+For $j=1$ (triplet, $\chi_1 = 1 + 2\cos\theta$):
+$$n_1 = \frac{\int_0^{2\pi} d\theta \, \sin^2\frac{\theta}{2} \cdot (2 + 2\cos\theta) \cdot (1 + 2\cos\theta)}{\int_0^{2\pi} d\theta \, \sin^2\frac{\theta}{2} \cdot (1 + 2\cos\theta)^2} = \frac{\pi}{\pi} = 1$$
+
+**Result:** One singlet ($j=0$, dimension 1) and one triplet ($j=1$, dimension 3):
 $$\frac{1}{2} \otimes \frac{1}{2} = 0 \oplus 1$$
+
+This matches the direct counting: $1 + 3 = 4 = 2 \times 2$.
 
 ### 7.2 Lie Algebras: Why the Identity?
 
@@ -2170,7 +2185,7 @@ SU(2) and SO(3) have identical Lie algebras but different global topology:
 | Property | SO(3) | SU(2) |
 |----------|-------|-------|
 | Elements | 3×3 orthogonal matrices | 2×2 unitary, $\det = 1$ |
-| Topology | 3D ball (antipodal ID) | 3-sphere $S^3$ |
+| Topology | 3D ball (antipodal Identification) | 3-sphere $S^3$ |
 | Loops | Non-contractible loops exist | Simply connected |
 | Periodicity | $R(2\pi) = I$ | $U(2\pi) = -I$, $U(4\pi) = I$ |
 
@@ -2228,16 +2243,22 @@ The corresponding SO(3) rotation $R(\theta, \mathbf{n})$ rotates by angle $\thet
 When we try to "descend" a SU(2) representation to SO(3), we need $D(U) = D(-U)$ because both $U$ and $-U$ represent the same SO(3) element.
 
 **Case 1: Integer spin ($j = 0, 1, 2, ...$)**
-$$D^{(j)}(-U) = (-1)^{2j} D^{(j)}(U) = (+1) D^{(j)}(U) = D^{(j)}(U)$$
-Since $2j$ is even, the sign is $+1$. Therefore $D^{(j)}(U) = D^{(j)}(-U)$, and this gives a **true representation** of SO(3).
 
-Example: For $j=1$ (vector representation), a $2\pi$ rotation gives $D(R_z(2\pi)) = +I$.
+Here $D^{(j)}(U)$ is the $(2j+1) \times (2j+1)$ representation matrix of SU(2) element $U$, acting on the spin-$j$ Hilbert space with basis $\{|j,m\rangle : m = -j, ..., j\}$.
+
+$$D^{(j)}(-U) = (-1)^{2j} D^{(j)}(U) = (+1) D^{(j)}(U) = D^{(j)}(U)$$
+
+Since $2j$ is even, the sign is $+1$. Therefore $D^{(j)}(U) = D^{(j)}(-U)$, meaning both $U$ and $-U$ in SU(2) map to the same matrix in the representation. This gives a **true representation** of SO(3) (where $U \sim -U$ are identified).
+
+Example: For $j=1$ (vector representation, 3D space), a $2\pi$ rotation gives $D(R_z(2\pi)) = +I_{3\times 3}$.
 
 **Case 2: Half-integer spin ($j = 1/2, 3/2, ...$)**
-$$D^{(j)}(-U) = (-1)^{2j} D^{(j)}(U) = (-1) D^{(j)}(U) = -D^{(j)}(U)$$
-Since $2j$ is odd, we get a minus sign. Therefore $D^{(j)}(U) \neq D^{(j)}(-U)$. This cannot be a true representation of SO(3).
 
-Example: For $j=1/2$ (spinor), $D(R_z(2\pi)) = -I \neq I = D(I)$, even though $R_z(2\pi) = I$ in SO(3).
+$$D^{(j)}(-U) = (-1)^{2j} D^{(j)}(U) = (-1) D^{(j)}(U) = -D^{(j)}(U)$$
+
+Since $2j$ is odd, we get a minus sign. Therefore $D^{(j)}(U) \neq D^{(j)}(-U)$—the matrices for $U$ and $-U$ are distinct. This cannot be a true representation of SO(3) because $U$ and $-U$ represent the same SO(3) element but map to different matrices.
+
+Example: For $j=1/2$ (spinor, 2D space), $D(R_z(2\pi)) = -I_{2\times 2} \neq I_{2\times 2} = D(I)$, even though $R_z(2\pi) = I$ in SO(3).
 
 **Conclusion:** Half-integer spin representations are **projective representations** of SO(3)—they represent SO(3) elements only up to a phase factor.
 
@@ -2317,11 +2338,20 @@ In SU(3), there are **three independent raising operators**: $I_+$, $U_+$, $V_+$
 
 **Why 3 ladders for 2 quantum numbers?**
 
-The key constraint is that the generators must satisfy the SU(3) algebra. Given two Cartan generators $I_3$ and $Y$, we can ask: how many independent ways can we change $(i_3, y)$ while staying in a representation?
+The key constraint is that the generators must satisfy the SU(3) Lie algebra with 8 generators: 2 Cartan ($I_3$, $Y$) and 6 non-Cartan ($I_\pm, U_\pm, V_\pm$).
 
-The answer is determined by the **root structure**: each root corresponds to a generator that changes the weight by a specific amount. In SU(3), the constraint that these generators close under commutation forces exactly 3 pairs of roots (forming a hexagon)—not 2, not 4.
+**Specific algebraic constraint:** For the algebra to close under commutation, the root vectors must satisfy:
+- $[E_{\vec{\alpha}}, E_{\vec{\beta}}] \propto E_{\vec{\alpha}+\vec{\beta}}$ if $\vec{\alpha} + \vec{\beta}$ is a root
+- $[E_{\vec{\alpha}}, E_{-\vec{\alpha}}] = \vec{\alpha} \cdot \vec{H}$ (Cartan)
 
-Physical interpretation: 
+In 2D weight space, only a hexagon (6 roots at 60° intervals) satisfies these constraints. A square (4 roots) or other polygons would violate the algebra closure.
+
+**Geometric proof sketch:**
+1. The angle $\theta$ between roots is constrained by the algebra: $\cos^2\theta = 0, \frac{1}{4}, \frac{1}{2}, \frac{3}{4}, 1$
+2. For SU(3), the allowed angles are 60°, 90°, 120°
+3. These angles force a hexagonal structure with exactly 6 roots
+
+**Physical interpretation:**
 - $I_\pm$ changes $u \leftrightarrow d$ (isospin, same hypercharge)
 - $U_\pm$ changes $d \leftrightarrow s$ 
 - $V_\pm$ changes $u \leftrightarrow s$
