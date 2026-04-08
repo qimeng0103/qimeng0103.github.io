@@ -2029,22 +2029,26 @@ where $\omega(g_1, g_2)$ is a phase factor that may depend on the group elements
 - True representation: $D(g_1)D(g_2) = D(g_1g_2)$ exactly
 - Projective representation: $D(g_1)D(g_2) = e^{i\omega}D(g_1g_2)$ — same physical state
 
-**Nontrivial example:** Consider three rotations about the z-axis with angles $\theta_1$, $\theta_2$, $\theta_3$ such that $\theta_1 + \theta_2 + \theta_3 = 2\pi$ but individually nonzero.
+**The Simplest Nontrivial Example: Spin-1/2 and 2π Rotations**
 
-For spin-1/2:
-- $D^{(1/2)}(R_z(\theta)) = e^{-i\theta\sigma_z/2}$
-- $D(R_z(\theta_1))D(R_z(\theta_2))D(R_z(\theta_3)) = e^{-i(\theta_1+\theta_2+\theta_3)\sigma_z/2} = e^{-i\pi\sigma_z} = -I$
+For spin-1/2, the rotation operator about z-axis is:
+$$D^{(1/2)}(R_z(\theta)) = e^{-i\theta\sigma_z/2} = \begin{pmatrix} e^{-i\theta/2} & 0 \\ 0 & e^{i\theta/2} \end{pmatrix}$$
 
-But each pair multiplies with a phase. For example, if $\theta_1 = \theta_2 = \theta_3 = 2\pi/3$:
-$$D(\theta_1)D(\theta_2) = e^{-i2\pi/3 \cdot \sigma_z} = e^{i\pi/3} D(\theta_1 + \theta_2)$$
+**Key observation:** A $2\pi$ rotation in SO(3) is the identity: $R_z(2\pi) = I$
 
-The accumulated phase factors create a nontrivial cocycle $\omega(g_1, g_2, g_3)$.
+But for the quantum operator:
+$$D^{(1/2)}(R_z(2\pi)) = \begin{pmatrix} e^{-i\pi} & 0 \\ 0 & e^{i\pi} \end{pmatrix} = \begin{pmatrix} -1 & 0 \\ 0 & -1 \end{pmatrix} = -I$$
 
-**The SO(3) Spin-1/2 Example:**
-- SO(3) rotation $R_z(2\pi) = I$ (identity element)
-- Quantum operator: $D^{(1/2)}(R_z(2\pi)) = e^{-i\pi\sigma_z} = -I$
+So:
+- $D(I) = I$ (identity maps to identity)
+- $D(R_z(2\pi)) = -I$ (but $R_z(2\pi) = I$ in the group!)
 
-So $D(I) = I$ but $D(R_z(2\pi)) = -I$, even though $R_z(2\pi) = I$ in SO(3). This is NOT a true representation, but it IS a projective representation because $-I = e^{i\pi}I$ differs only by a phase.
+**This is a projective representation** because:
+$$D(R_z(2\pi)) = -I = e^{i\pi} \cdot I = e^{i\pi} D(I) = e^{i\pi} D(R_z(2\pi) \cdot I)$$
+
+The phase factor $\omega = \pi$ appears when we try to enforce $D(g_1)D(g_2) = D(g_1g_2)$.
+
+**Physical interpretation:** In quantum mechanics, $|\psi\rangle$ and $-\psi\rangle$ represent the same physical state. A $2\pi$ rotation produces a "$-1$ phase," which is unobservable. This is why spin-1/2 can be described projectively by SO(3) even though it doesn't form a true representation.
 
 **3. Fundamental Representation**
 
