@@ -9,9 +9,9 @@ math: true
 
 # Angular Momentum Algebra and Its Applications
 
-This article presents a systematic treatment of angular momentum theory in quantum mechanics. We begin with the fundamental algebraic structure—commutation relations and ladder operators—then develop the matrix representations for spin systems. Building on this foundation, we explore the addition of angular momenta and the resulting Clebsch-Gordan theory. The subsequent sections develop applications to atomic physics coupling schemes and central force fields, including spherical harmonics and the hidden SO(4) symmetry of the hydrogen atom. The article concludes with a deeper group-theoretic perspective on angular momentum (rotation groups SO(3) and SU(2)), including SU(3) flavor and color symmetries.
+This article presents a systematic treatment of angular momentum theory in quantum mechanics. We begin with the fundamental algebraic structure-commutation relations and ladder operators-then develop the matrix representations for spin systems. Building on this foundation, we explore the addition of angular momenta and the resulting Clebsch-Gordan theory. The subsequent sections develop applications to atomic physics coupling schemes and central force fields, including spherical harmonics and the hidden SO(4) symmetry of the hydrogen atom. The article concludes with a deeper group-theoretic perspective on angular momentum (rotation groups SO(3) and SU(2)), including SU(3) flavor and color symmetries.
 
-The logical progression follows: **Algebraic Structure** → **Ladder Operators** → **Spin Systems** → **Angular Momentum Addition** → **Atomic Physics Applications** → **Central Force Fields** → **Group Theory**.
+The logical progression follows: **Algebraic Structure** -> **Ladder Operators** -> **Spin Systems** -> **Angular Momentum Addition** -> **Atomic Physics Applications** -> **Central Force Fields** -> **Group Theory**.
 
 ---
 
@@ -210,7 +210,7 @@ $$\hbar^2 j(j+1) - \hbar^2 m_{\min}^2 + \hbar^2 m_{\min} = 0$$
 
 $$j(j+1) = m_{\min}(m_{\min} - 1)$$
 
-This quadratic has solutions $m_{\min} = j + 1$ or $m_{\min} = -j$. Since $j \geq 0$, we have $j + 1 > j = m_{\max}$, which would make $m_{\min} > m_{\max}$—a contradiction. Therefore:
+This quadratic has solutions $m_{\min} = j + 1$ or $m_{\min} = -j$. Since $j \geq 0$, we have $j + 1 > j = m_{\max}$, which would make $m_{\min} > m_{\max}$-a contradiction. Therefore:
 
 $$\boxed{m_{\min} = -j}$$
 
@@ -415,7 +415,7 @@ While this looks similar to classical vector addition ($|\mathbf{J}_1 - \mathbf{
 
 **Classically:** The magnitude of the resultant vector can take *any continuous value* within the range.
 
-**Quantum Mechanically:** The total angular momentum quantum number $j$ is **quantized**—it can only take values differing by integers. If $j_1$ and $j_2$ are both integers or both half-integers, $j$ takes integer values. If one is integer and the other half-integer, $j$ takes half-integer values.
+**Quantum Mechanically:** The total angular momentum quantum number $j$ is **quantized**-it can only take values differing by integers. If $j_1$ and $j_2$ are both integers or both half-integers, $j$ takes integer values. If one is integer and the other half-integer, $j$ takes half-integer values.
 
 **Example:** For $j_1 = 2$ and $j_2 = 1$:
 - Classical: $1 \leq J \leq 3$ (any real number)
@@ -450,7 +450,7 @@ Therefore, $C^{j, m}_{j_1, m_1; j_2, m_2} = 0$ unless $m = m_1 + m_2$. This redu
 
 **What is "Highest Weight"?**
 
-In representation theory, a **weight** is the eigenvalue of a state under the action of the Cartan subalgebra—the maximal set of mutually commuting elements in the Lie algebra. 
+In representation theory, a **weight** is the eigenvalue of a state under the action of the Cartan subalgebra-the maximal set of mutually commuting elements in the Lie algebra. 
 
 For angular momentum, we check which operators commute with $J_z$:
 - $[J_z, J_+] = \hbar J_+ \neq 0$
@@ -701,7 +701,7 @@ The basis states are labeled as $|(j_1 j_2)j_{12}, j_3; j, m\rangle$. This notat
 - Then $j_{12}$ is coupled with $j_3$ to give total $j$
 - The state has magnetic quantum number $m$
 
-**Note on notation:** This compact notation focuses on the $j$ quantum numbers. The intermediate $m_{12}$ values are implicitly summed over in the CG expansion—the basis state is a superposition over all $m_1, m_2$ such that $m_1 + m_2 = m_{12}$ and $m_{12} + m_3 = m$.
+**Note on notation:** This compact notation focuses on the $j$ quantum numbers. The intermediate $m_{12}$ values are implicitly summed over in the CG expansion-the basis state is a superposition over all $m_1, m_2$ such that $m_1 + m_2 = m_{12}$ and $m_{12} + m_3 = m$.
 
 The allowed values are:
 - $j_{12} \in \{|j_1 - j_2|, ..., j_1 + j_2\}$
@@ -737,13 +737,13 @@ $$\begin{pmatrix} j_1 & j_2 & j_3 \\ m_1 & m_2 & m_3 \end{pmatrix} = \frac{(-1)^
 
 **Why $-m_3$ instead of $m_3$?** The CG coefficient requires $m_1 + m_2 = m_3$. The 3j symbol uses $-m_3$ so that the selection rule becomes:
 $$m_1 + m_2 + m_3 = 0$$
-This treats all three magnetic quantum numbers symmetrically—none is singled out as the "result."
+This treats all three magnetic quantum numbers symmetrically-none is singled out as the "result."
 
 **Application: Angular Correlations in Nuclear $\gamma$-Decay**
 
 Consider an excited nucleus with spin $j_i$ that emits a photon (angular momentum 1) and decays to a state with spin $j_f$. We want to compute the angular distribution of the emitted photon relative to the nuclear spin quantization axis.
 
-**Step 0: The Wigner-Eckart Theorem — General Form**
+**Step 0: The Wigner-Eckart Theorem - General Form**
 
 Before diving into the nuclear decay calculation, let's establish the general Wigner-Eckart theorem. This is one of the most powerful results in angular momentum theory.
 
@@ -812,7 +812,7 @@ $$\mathcal{M}_{m_i \to m_f, m_\gamma} = \langle j_f m_f; 1 m_\gamma | \hat{O} | 
 
 where $|j_i m_i\rangle$ is the initial nuclear state, $|j_f m_f\rangle$ is the final nuclear state, and the photon state carries angular momentum $|1 m_\gamma\rangle$ with $m_\gamma = -1, 0, +1$.
 
-**Step 2: Factorizing the Matrix Element — E1 Transition**
+**Step 2: Factorizing the Matrix Element - E1 Transition**
 
 The transition amplitude $\mathcal{M} = \langle j_f m_f | \hat{O} | j_i m_i \rangle$ describes the photon emission process. Here $\hat{O}$ is the photon emission operator.
 
@@ -910,9 +910,9 @@ This factor arises from comparing the nuclear size $R$ to the photon wavelength 
 
 **1. Matrix element $|\mathcal{M}|$:**
 The $EL$ transition operator involves matrix elements of the form $\langle f | \hat{O}_{EL} | i \rangle$. For electric multipoles:
-- E1: Operator $\propto \mathbf{r}$ → matrix element $\sim R$
-- E2: Operator $\propto \mathbf{r}(\mathbf{k}\cdot\mathbf{r})$ → matrix element $\sim R \cdot (kR) = kR^2$
-- E$L$: Operator involves $L$ powers of $\mathbf{r}$, with $(L-1)$ of them coming from expanding $e^{-i\mathbf{k}\cdot\mathbf{r}}$ → matrix element $\sim R \cdot (kR)^{L-1} = k^{L-1}R^L$
+- E1: Operator $\propto \mathbf{r}$ -> matrix element $\sim R$
+- E2: Operator $\propto \mathbf{r}(\mathbf{k}\cdot\mathbf{r})$ -> matrix element $\sim R \cdot (kR) = kR^2$
+- E$L$: Operator involves $L$ powers of $\mathbf{r}$, with $(L-1)$ of them coming from expanding $e^{-i\mathbf{k}\cdot\mathbf{r}}$ -> matrix element $\sim R \cdot (kR)^{L-1} = k^{L-1}R^L$
 
 **2. Photon density of states $\rho(E)$:**
 In 3D, $\rho(E) \propto k^2$ (phase space factor).
@@ -926,8 +926,8 @@ $$\Gamma_{EL} \propto \underbrace{\frac{1}{k}}_{\text{field norm}} \cdot \underb
 where we insert the factor $c$ for dimensional correctness ($[ck] = T^{-1}$).
 
 **Key insight:** Each increase in multipolarity by 1 adds a factor of $(kR)^2$ suppression because:
-- One additional $\mathbf{r}$ in the operator → factor of $R$ in matrix element
-- One additional $\mathbf{k}\cdot\mathbf{r}$ from expansion → factor of $kR$ in matrix element
+- One additional $\mathbf{r}$ in the operator -> factor of $R$ in matrix element
+- One additional $\mathbf{k}\cdot\mathbf{r}$ from expansion -> factor of $kR$ in matrix element
 - Together: $(kR)^2$ in the transition probability $|\mathcal{M}|^2$
 
 For relative comparison at the same photon energy:
@@ -963,7 +963,7 @@ E1 transitions require:
 - $nl_j$: Single-particle orbital ($n$=principal quantum number, $l$=orbital angular momentum with $s,p,d,f,...$ for $l=0,1,2,3,...$, $j$=total angular momentum)
 - $J^\pi_n$: Nuclear state with total angular momentum $J$, parity $\pi$ ($+$=even, $-$=odd), and excitation index $n$ ($n=1$=ground state, $n=2$=first excited, etc.)
 
-**Example 1: E1 Allowed — Oxygen-17**
+**Example 1: E1 Allowed - Oxygen-17**
 
 $^{17}$O: $1d_{5/2} \to 2p_{3/2}$ 
 
@@ -973,7 +973,7 @@ A proton transitions from $d$-shell to $p$-shell:
 - Parity: $l_i = 2$ (even) $\to$ $l_f = 1$ (odd), changes ✓
 - **Result:** E1 allowed
 
-**Example 2: E1 Forbidden by Parity — Oxygen-17**
+**Example 2: E1 Forbidden by Parity - Oxygen-17**
 
 $^{17}$O: $1d_{5/2} \to 1d_{3/2}$ 
 
@@ -982,7 +982,7 @@ A proton stays in $d$-shell, only $j$ changes:
 - Parity: $l_i = l_f = 2$ (both even), does NOT change ✗
 - **Result:** E1 forbidden; proceeds via M1 or E2
 
-**Example 3: E1 Forbidden by Angular Momentum — Oxygen-16**
+**Example 3: E1 Forbidden by Angular Momentum - Oxygen-16**
 
 $^{16}$O: $0^+_2 \to 0^+_1$ (excited state $\to$ ground state)
 
@@ -1186,7 +1186,7 @@ In light atoms (roughly $Z < 30$), the electrostatic repulsion between electrons
 
 **Why This Order?**
 
-The electrostatic repulsion depends on spatial configuration, which is determined by orbital angular momentum. This is because the electrostatic energy is computed from the Coulomb integral $\langle \psi | \frac{e^2}{|\mathbf{r}_i - \mathbf{r}_j|} | \psi \rangle$, which depends on the spatial wavefunction—and the spatial wavefunction is characterized by orbital angular momentum quantum numbers $l$ and $m_l$.
+The electrostatic repulsion depends on spatial configuration, which is determined by orbital angular momentum. This is because the electrostatic energy is computed from the Coulomb integral $\langle \psi | \frac{e^2}{|\mathbf{r}_i - \mathbf{r}_j|} | \psi \rangle$, which depends on the spatial wavefunction-and the spatial wavefunction is characterized by orbital angular momentum quantum numbers $l$ and $m_l$.
 
 **Why same $l$ but different $m_l$ have different spatial distributions:**
 
@@ -1198,7 +1198,7 @@ Two electrons with the same $l$ but different $m_l$ have their charge distribute
 
 **The Exchange Interaction:**
 
-The exchange interaction is a purely quantum mechanical effect arising from the antisymmetry requirement of identical fermions. When electrons have parallel spins (same $m_s$), they can occupy the same spatial region only if their spatial wavefunction is antisymmetric—this keeps them apart and reduces Coulomb repulsion. When spins are antiparallel, the symmetric spatial wavefunction allows them to come closer, increasing repulsion. This energy difference creates an effective "exchange force" that favors parallel spin alignment.
+The exchange interaction is a purely quantum mechanical effect arising from the antisymmetry requirement of identical fermions. When electrons have parallel spins (same $m_s$), they can occupy the same spatial region only if their spatial wavefunction is antisymmetric-this keeps them apart and reduces Coulomb repulsion. When spins are antiparallel, the symmetric spatial wavefunction allows them to come closer, increasing repulsion. This energy difference creates an effective "exchange force" that favors parallel spin alignment.
 
 **Mathematical Structure**
 
@@ -1211,9 +1211,9 @@ where:
 - $H_{\text{SO}}$ is the spin-orbit coupling, treated as a perturbation
 
 **Energy splitting hierarchy:**
-1. **Configuration**: Electrons in specific shells (e.g., $2p^2$) — largest energy scale
-2. **Term**: Same $L$ and $S$ — split by electrostatic repulsion
-3. **Level**: Same $L$, $S$, different $J$ — split by spin-orbit coupling
+1. **Configuration**: Electrons in specific shells (e.g., $2p^2$) - largest energy scale
+2. **Term**: Same $L$ and $S$ - split by electrostatic repulsion
+3. **Level**: Same $L$, $S$, different $J$ - split by spin-orbit coupling
 
 For example, the $2p^2$ configuration splits into terms $^3P$, $^1D$, $^1S$, and the $^3P$ term further splits into levels $^3P_0$, $^3P_1$, $^3P_2$.
 
@@ -1251,15 +1251,15 @@ The total orbital wavefunction with definite $L$ transforms under particle excha
 - **Odd $L$ (P, F, ...): antisymmetric** under exchange $(-1)^L = -1$
 
 For two p-electrons:
-- $L=0$ (S): even → symmetric spatial wavefunction
-- $L=1$ (P): odd → antisymmetric spatial wavefunction  
-- $L=2$ (D): even → symmetric spatial wavefunction
+- $L=0$ (S): even -> symmetric spatial wavefunction
+- $L=1$ (P): odd -> antisymmetric spatial wavefunction  
+- $L=2$ (D): even -> symmetric spatial wavefunction
 
 **Combining with spin symmetry:**
 
 Since $\Psi_{\text{total}}$ must be antisymmetric:
-- If $S=1$ (symmetric spin, triplet), spatial part must be **antisymmetric** → only $L=1$ (P) allowed
-- If $S=0$ (antisymmetric spin, singlet), spatial part must be **symmetric** → $L=0$ or $L=2$ allowed
+- If $S=1$ (symmetric spin, triplet), spatial part must be **antisymmetric** -> only $L=1$ (P) allowed
+- If $S=0$ (antisymmetric spin, singlet), spatial part must be **symmetric** -> $L=0$ or $L=2$ allowed
 
 Therefore:
 - **Triplet states** ($S=1$, symmetric spin): can only combine with $L=1$ (P)
@@ -1275,9 +1275,9 @@ Therefore:
 **State Counting:**
 
 Each term $^{2S+1}L_J$ has $(2J+1)$ magnetic sublevels ($m_J = -J, ..., +J$). Counting all states:
-- $^3P$: $J = 0, 1, 2$ → $(1 + 3 + 5) = 9$ states
-- $^1D$: $J = 2$ → $5$ states  
-- $^1S$: $J = 0$ → $1$ state
+- $^3P$: $J = 0, 1, 2$ -> $(1 + 3 + 5) = 9$ states
+- $^1D$: $J = 2$ -> $5$ states  
+- $^1S$: $J = 0$ -> $1$ state
 
 Total: $9 + 5 + 1 = 15$ microstates.
 
@@ -1305,14 +1305,14 @@ From above, possible terms: $^3P$, $^1D$, $^1S$.
 
 **Multiplicity = spin degeneracy = $2S+1$:**
 
-- $S=0$: singlet (1 state) — multiplicity 1
-- $S=1$: triplet (3 states) — multiplicity 3  
-- $S=2$: quintet (5 states) — multiplicity 5
+- $S=0$: singlet (1 state) - multiplicity 1
+- $S=1$: triplet (3 states) - multiplicity 3  
+- $S=2$: quintet (5 states) - multiplicity 5
 
 Higher multiplicity $\Rightarrow$ larger $S$ $\Rightarrow$ more parallel spins.
 
 **Application to carbon:**
-- $^3P$ has $S=1$ (triplet, multiplicity 3) — highest $S$
+- $^3P$ has $S=1$ (triplet, multiplicity 3) - highest $S$
 - $^1D$ and $^1S$ have $S=0$ (singlets, multiplicity 1)
 
 Therefore, the ground term is $^3P$.
@@ -1333,11 +1333,11 @@ For $p^2$ (2 out of 6 possible electrons, less than half), the ground level is $
 
 **Example 3: Oxygen Ground State ($1s^2 2s^2 2p^4$)**
 
-Four p-electrons in a shell that can hold 6 electrons (2 per orbital × 3 orbitals). 
+Four p-electrons in a shell that can hold 6 electrons (2 per orbital \times 3 orbitals). 
 
 **Hole picture:** A filled $p^6$ shell has $L=0$, $S=0$. Removing 2 electrons (creating 2 holes) leaves 4 electrons. The term structure of $p^4$ is identical to $p^2$ because holes have the same angular momentum coupling properties as electrons:
-- $p^2$ (2 electrons in 6 states) → 15 microstates
-- $p^4$ (4 electrons in 6 states) → also 15 microstates (by particle-hole symmetry)
+- $p^2$ (2 electrons in 6 states) -> 15 microstates
+- $p^4$ (4 electrons in 6 states) -> also 15 microstates (by particle-hole symmetry)
 
 Therefore $p^4$ gives the same terms as $p^2$: $^3P$, $^1D$, $^1S$.
 
@@ -1396,7 +1396,7 @@ For two equivalent electrons with individual angular momentum $j$, a total $J$ s
 |:-------------:|:-----------:|:-------------:|
 | $(1/2)^2$ | $J=0$ | $J=1$ |
 | $(3/2)^2$ | $J=0, 2$ | $J=1, 3$ |
-| $(1/2)(3/2)$ | $J=1, 2$ (no restriction) | — |
+| $(1/2)(3/2)$ | $J=1, 2$ (no restriction) | - |
 
 The formula works for all $j$ because $2j$ is always an integer. For non-equivalent electrons (different $j$), there is no Pauli restriction.
 
@@ -1413,7 +1413,7 @@ The resulting levels are labeled as $(j_1, j_2)_J$:
 - $(3/2, 3/2)_0$, $(3/2, 3/2)_2$
 - $(1/2, 3/2)_1$, $(1/2, 3/2)_2$
 
-Note: jj coupling doesn't use $L$ and $S$ quantum numbers—these are not good quantum numbers when spin-orbit dominates.
+Note: jj coupling doesn't use $L$ and $S$ quantum numbers-these are not good quantum numbers when spin-orbit dominates.
 
 **Detailed Example: Cerium ($4f^1 5d^1$) in jj Coupling**
 
@@ -1430,7 +1430,7 @@ For the $5d$ electron ($l=2$):
 
 **Step 2: Coupling to total $J$**
 
-**Important:** Since the electrons are in different shells ($n=4$ for $4f$ vs $n=5$ for $5d$), they are **distinguishable** by their principal quantum number. This means the Pauli exclusion principle does not restrict their coupling—all $J$ values from coupling $j_f$ and $j_d$ are allowed.
+**Important:** Since the electrons are in different shells ($n=4$ for $4f$ vs $n=5$ for $5d$), they are **distinguishable** by their principal quantum number. This means the Pauli exclusion principle does not restrict their coupling-all $J$ values from coupling $j_f$ and $j_d$ are allowed.
 
 | $j_f$ | $j_d$ | Possible $J$ | Label |
 |:-----:|:-----:|:------------:|:-----:|
@@ -1511,7 +1511,7 @@ LS coupling works when electrons "feel" each other's spatial distribution more s
    
    In general, for a given number of electrons:
    - Higher $S$ means more parallel spins
-   - More parallel spins → more symmetric spin wavefunction
+   - More parallel spins -> more symmetric spin wavefunction
    - Maximum $S$ = completely symmetric spin wavefunction
    
    **Why does antisymmetric spatial wavefunction keep electrons apart?**
@@ -1524,10 +1524,10 @@ LS coupling works when electrons "feel" each other's spatial distribution more s
    
    **The probability of finding two electrons at the same position is zero!**
    
-   This creates a "Fermi hole"—a region around each electron where the other electron is excluded. The average electron-electron separation is larger, reducing the Coulomb repulsion energy:
+   This creates a "Fermi hole"-a region around each electron where the other electron is excluded. The average electron-electron separation is larger, reducing the Coulomb repulsion energy:
    $$\langle V_{\text{rep}} \rangle = \int d^3r_1 d^3r_2 \, \frac{e^2}{|\mathbf{r}_1 - \mathbf{r}_2|} |\psi(\mathbf{r}_1, \mathbf{r}_2)|^2$$
    
-   When electrons are kept apart (larger $|\mathbf{r}_1 - \mathbf{r}_2|$ on average), this integral gives a smaller value—lower energy.
+   When electrons are kept apart (larger $|\mathbf{r}_1 - \mathbf{r}_2|$ on average), this integral gives a smaller value-lower energy.
 
 2. **Maximum Orbital Rule**: For a given spin multiplicity, the term with the maximum $L$ has the lowest energy.
    
@@ -1565,7 +1565,7 @@ The total wavefunction is a product of spatial, spin, and other parts. For the $
 - **Orbital part**: Three $l=1$ states with permutation symmetry
 - **Spin part**: Three $s=1/2$ states with permutation symmetry
 
-The constraint is: **orbital × spin must be overall antisymmetric**.
+The constraint is: **orbital \times spin must be overall antisymmetric**.
 
 #### Young Diagrams: Visualizing Permutation Symmetry
 
@@ -1595,7 +1595,7 @@ This gives three symmetry types:
 The dimension of a Young diagram (number of independent basis states with that symmetry) is given by:
 $$d = \frac{n!}{\prod_{\text{all boxes}} h_i}$$
 
-where $n$ is the number of boxes (particles), and $h_i$ is the **hook length** of box $i$ — the number of boxes to the right in the same row, plus boxes below in the same column, plus 1 (the box itself).
+where $n$ is the number of boxes (particles), and $h_i$ is the **hook length** of box $i$ - the number of boxes to the right in the same row, plus boxes below in the same column, plus 1 (the box itself).
 
 **Example: Hook lengths for three-electron diagrams**
 
@@ -1653,8 +1653,8 @@ For three spin-1/2 electrons, the Young diagrams give:
 | Young Diagram | Spin $S$ | Multiplicity | # of States |
 |:---:|:---:|:---:|:---:|
 | <img src="/images/angular-momentum/young_3_row_clean.png" width="50px"> | $3/2$ | 4 | 4 (quartet) |
-| <img src="/images/angular-momentum/young_21_clean.png" width="35px"> | $1/2$ | 2 | 2×2=4 (two doublets) |
-| <img src="/images/angular-momentum/young_3_col_clean.png" width="18px"> | 0 | — | 0 (vanishes for spin-1/2) |
+| <img src="/images/angular-momentum/young_21_clean.png" width="35px"> | $1/2$ | 2 | 2\times2=4 (two doublets) |
+| <img src="/images/angular-momentum/young_3_col_clean.png" width="18px"> | 0 | - | 0 (vanishes for spin-1/2) |
 
 **Step 2: Orbital Symmetry**
 
@@ -1679,13 +1679,13 @@ From $M_{\max} = 3$, we get $L=3$. Working down: $L=3$ (7 states), $L=2$ (10 sta
 | Young Diagram | Symmetry | $L$ values | # States |
 |:---:|:---:|:---:|:---:|
 | <img src="/images/angular-momentum/young_3_row_clean.png" width="50px"> | [3] Symmetric | 0, 2 | 6 |
-| <img src="/images/angular-momentum/young_21_clean.png" width="35px"> | [2,1] Mixed | 1, 2 | 16 (= 8×2) |
+| <img src="/images/angular-momentum/young_21_clean.png" width="35px"> | [2,1] Mixed | 1, 2 | 16 (= 8\times2) |
 | <img src="/images/angular-momentum/young_3_col_clean.png" width="18px"> | [1,1,1] Antisymmetric | 0, 1 | 4 |
 | **Total** | | | **26** |
 
-**Why only 26?** The state $|+1,+1,+1\rangle$ (and $|-1,-1,-1\rangle$) with $L=3$ is excluded for **equivalent electrons**—it would require all three electrons in the same $m$ state, violating Pauli exclusion. For distinguishable particles, $L=3$ would exist (27 total).
+**Why only 26?** The state $|+1,+1,+1\rangle$ (and $|-1,-1,-1\rangle$) with $L=3$ is excluded for **equivalent electrons**-it would require all three electrons in the same $m$ state, violating Pauli exclusion. For distinguishable particles, $L=3$ would exist (27 total).
 
-**Detailed explanation of the hook [2,1] → $L=1, 2$ correspondence:**
+**Detailed explanation of the hook [2,1] -> $L=1, 2$ correspondence:**
 
 The hook-shaped Young diagram has **dimension 2** (two standard tableaux). This means there are **two independent ways** to assign particle labels to the boxes while respecting the ordering rules.
 
@@ -1715,7 +1715,7 @@ For orbital angular momentum:
 
 **How to read the correspondence:**
 - **Row [3]** = symmetric: All three electrons treated equally; includes $|0,0,0\rangle$ ($L=0$) and symmetric $D$ states ($L=2$)
-- **Column [1,1,1]** = antisymmetric: All three $m$ values must be different ($+1, 0, -1$ in some order) → only $L=0, 1$ possible
+- **Column [1,1,1]** = antisymmetric: All three $m$ values must be different ($+1, 0, -1$ in some order) -> only $L=0, 1$ possible
 - **Hook [2,1]** = mixed: Two electrons form a pair (symmetric), third is distinct; supports both $L=1$ and $L=2$
 
 **Step 3: Pauli-Allowed Combinations**
@@ -1729,10 +1729,10 @@ Allowed combinations:
 | Spin | Orbital | Result | Term |
 |:---:|:---:|:---:|:---:|
 | Symmetric ($S=3/2$) | Antisymmetric ($L=0$) | ✓ | **$^4S$** |
-| Mixed ($S=1/2$) | Mixed ($L=2$) | ✓ | **$^2D$ (×2)** |
-| Mixed ($S=1/2$) | Mixed ($L=1$) | ✓ | **$^2P$ (×2)** |
+| Mixed ($S=1/2$) | Mixed ($L=2$) | ✓ | **$^2D$ (\times2)** |
+| Mixed ($S=1/2$) | Mixed ($L=1$) | ✓ | **$^2P$ (\times2)** |
 
-**Why "×2" for $^2D$ and $^2P$?**
+**Why "\times2" for $^2D$ and $^2P$?**
 
 The hook-shaped Young diagram has **dimension 2**, meaning there are 2 independent wavefunctions with mixed symmetry. When both spin and orbital are mixed, we get 2 distinct antisymmetric combinations for each $L$:
 - **Two** different $^2D$ wavefunctions (same $L=2$, same $S=1/2$, different internal symmetry quantum numbers)
@@ -1750,7 +1750,7 @@ The hook-shaped Young diagram has **dimension 2**, meaning there are 2 independe
 
 **Total: 4 + 10 + 6 = 20 states** ✓
 
-**Key clarification**: The two $^2D$ terms (and two $^2P$ terms) are **different wavefunctions** but they **share the same $J$ structure**. The 10 $^2D$ states are distributed among two distinct terms—not 10 states each. Similarly for $^2P$: 6 states total, not 6 each.
+**Key clarification**: The two $^2D$ terms (and two $^2P$ terms) are **different wavefunctions** but they **share the same $J$ structure**. The 10 $^2D$ states are distributed among two distinct terms-not 10 states each. Similarly for $^2P$: 6 states total, not 6 each.
 
 #### Summary: The Role of Young Diagrams
 
@@ -1760,9 +1760,9 @@ Young diagrams and tableaux serve three essential functions in quantum mechanics
 |:---:|:---|:---|
 | **Classify symmetry** | Row = symmetric, column = antisymmetric | Three boxes in a row = totally symmetric spin quartet |
 | **Count states** | Dimension formula + standard tableaux count basis states | Hook shape gives 2 mixed-symmetry doublets |
-| **Enforce constraints** | Total wavefunction must be appropriately symmetric/antisymmetric | Spin (sym) × orbital (antisym) = antisymmetric total for fermions |
+| **Enforce constraints** | Total wavefunction must be appropriately symmetric/antisymmetric | Spin (sym) \times orbital (antisym) = antisymmetric total for fermions |
 
-**Key distinction**: Young diagrams classify *permutation symmetry types* (determined by tensor product structure), while weight diagrams classify *representations* (quantum numbers like $I_3$ or $L_z$). For multi-particle systems, we need both. The power of this approach is that symmetry constraints are **kinematic**—they depend only on group structure, not on detailed dynamics.
+**Key distinction**: Young diagrams classify *permutation symmetry types* (determined by tensor product structure), while weight diagrams classify *representations* (quantum numbers like $I_3$ or $L_z$). For multi-particle systems, we need both. The power of this approach is that symmetry constraints are **kinematic**-they depend only on group structure, not on detailed dynamics.
 
 ---
 
@@ -1949,7 +1949,7 @@ An **irreducible representation** cannot be decomposed into smaller invariant su
 
 Each physical system with definite total angular momentum $j$ occupies ONE irreducible representation. The quantum number $m = -j, ..., j$ labels states within that representation.
 
-**Key Point:** Different irreducible representations are orthogonal. A spin-1/2 system never "mixes" with spin-1 under rotation—they are distinct sectors.
+**Key Point:** Different irreducible representations are orthogonal. A spin-1/2 system never "mixes" with spin-1 under rotation-they are distinct sectors.
 
 **Tensor Product: Building Composite Systems**
 
@@ -1974,7 +1974,7 @@ $$g_1 \neq g_2 \implies D(g_1) \neq D(g_2)$$
 $$U_1 = e^{-i\theta_1 \sigma_z/2}, \quad U_2 = e^{-i\theta_2 \sigma_z/2}$$
 If $\theta_1 \neq \theta_2$ (mod $4\pi$), then $D(U_1) \neq D(U_2)$ as $2 \times 2$ matrices. The representation is injective.
 
-**Counter-example:** The trivial representation $D(g) = 1$ for all $g$ is NOT faithful—all group elements map to the same number 1.
+**Counter-example:** The trivial representation $D(g) = 1$ for all $g$ is NOT faithful-all group elements map to the same number 1.
 
 **2. Projective Representation**
 
@@ -1996,7 +1996,7 @@ Since $|\psi\rangle$ and $-|\psi\rangle$ give the same probabilities, this $-1$ 
 
 **3. Fundamental Representation**
 
-The **fundamental representation** is the defining representation of the group—the matrix representation used to define the group itself.
+The **fundamental representation** is the defining representation of the group-the matrix representation used to define the group itself.
 
 **SU(2):** Defined as $2 \times 2$ unitary matrices with $\det = 1$, acting on $\mathbb{C}^2$ (spinors).
 
@@ -2087,7 +2087,7 @@ capture all essential group properties.
 The generator $J_z$ is extracted from the rotation operator by differentiation at the identity:
 $$J_z = i\hbar \frac{d R_z(\theta)}{d \theta}\bigg|_{\theta=0}$$
 
-This derivative extracts the "tangent vector" to the group manifold at the identity—the Lie algebra element. Finite rotations are built by exponentiation:
+This derivative extracts the "tangent vector" to the group manifold at the identity-the Lie algebra element. Finite rotations are built by exponentiation:
 $$R_z(\theta) = e^{-i\theta J_z/\hbar}$$
 
 The commutation relations $[J_i, J_j] = i\hbar\varepsilon_{ijk}J_k$ reflect the geometric structure of rotations: performing two rotations in different order differs by a third rotation.
@@ -2100,7 +2100,7 @@ SU(2) and SO(3) have identical Lie algebras but different global topology:
 
 | Property | SO(3) | SU(2) |
 |----------|-------|-------|
-| Elements | 3×3 orthogonal matrices | 2×2 unitary, $\det = 1$ |
+| Elements | 3\times3 orthogonal matrices | 2\times2 unitary, $\det = 1$ |
 | Topology | 3D ball (antipodal Identification) | 3-sphere $S^3$ |
 | Loops | Non-contractible loops exist | Simply connected |
 | Periodicity | $R(2\pi) = I$ | $U(2\pi) = -I$, $U(4\pi) = I$ |
@@ -2126,12 +2126,12 @@ This creates a loop that goes from center $\to$ north pole $\to$ (jump to south 
 
 **SU(2):** $\pi_1 = \{e\}$ (only identity)
 - SU(2) is a 3-sphere $S^3$: $U = a_0 I + i\mathbf{a}\cdot\boldsymbol{\sigma}$ with $a_0^2 + |\mathbf{a}|^2 = 1$
-- **No identifications**—all points are distinct
+- **No identifications**-all points are distinct
 - Every loop can be shrunk to a point (simply connected)
 
 **SU(2):** $\pi_1 = \{e\}$ (only identity)
 - SU(2) is a 3-sphere $S^3$: $U = a_0 I + i\mathbf{a}\cdot\boldsymbol{\sigma}$ with $a_0^2 + |\mathbf{a}|^2 = 1$
-- No identifications—all points are distinct
+- No identifications-all points are distinct
 - Every loop can be shrunk to a point (simply connected)
 
 **The Double Cover:**
@@ -2154,7 +2154,7 @@ The corresponding SO(3) rotation $R(\theta, \mathbf{n})$ rotates by angle $\thet
 3. SO(3): $R(\theta + 2\pi, \mathbf{n}) = R(\theta, \mathbf{n})$ (period $2\pi$)
 4. **Two-to-one:** Both $U(\theta, \mathbf{n})$ and $U(\theta + 2\pi, \mathbf{n}) = -U(\theta, \mathbf{n})$ map to the same $R(\theta, \mathbf{n})$
 
-**SO(4) and SU(2) × SU(2):**
+**SO(4) and SU(2) \times SU(2):**
 
 The SO(4) algebra can be decomposed into two commuting SU(2) algebras. Define:
 $$\mathbf{L}^+ = \frac{1}{2}(\mathbf{L} + \mathbf{M}'), \quad \mathbf{L}^- = \frac{1}{2}(\mathbf{L} - \mathbf{M}')$$
@@ -2168,7 +2168,7 @@ $$\text{SO(4)} \cong \text{SU(2)}_+ \times \text{SU(2)}_-$$
 But with a subtlety: if $(U_+, U_-)$ generates an SO(4) element, then $(-U_+, -U_-)$ generates the **same** SO(4) element (both signs flip together). This is written as:
 $$\text{SO(4)} \cong (\text{SU(2)} \times \text{SU(2)})/\mathbb{Z}_2$$
 
-**What does $/\mathbb{Z}_2$ mean?** We identify $(U, V) \sim (-U, -V)$—pairs differing by overall sign represent the same group element.
+**What does $/\mathbb{Z}_2$ mean?** We identify $(U, V) \sim (-U, -V)$-pairs differing by overall sign represent the same group element.
 
 **Connection to the Hydrogen Atom:**
 
@@ -2211,16 +2211,16 @@ The kinetic term $|D_\mu\psi|^2$ then contains interaction terms like $g\bar{\ps
 
 **Color Singlet Rule:**
 
-Only **color singlets** (states invariant under SU(3) color) have finite energy. **Color-charged states** (octet $\mathbf{8}$, decuplet $\mathbf{10}$, etc.) are confined—they have infinite energy and cannot exist as isolated particles.
+Only **color singlets** (states invariant under SU(3) color) have finite energy. **Color-charged states** (octet $\mathbf{8}$, decuplet $\mathbf{10}$, etc.) are confined-they have infinite energy and cannot exist as isolated particles.
 
 **Quark color charges:**
 - Quarks are in fundamental $\mathbf{3}$: they carry color charge (r, g, or b)
 - Gluons are in adjoint $\mathbf{8}$: they also carry color charge
 - Singlets (mesons, baryons) are color-neutral: no net color charge
 
-**Mesons:** $\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$ — singlet $\mathbf{1}$ is physical
+**Mesons:** $\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$ - singlet $\mathbf{1}$ is physical
 
-**Baryons:** $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$ — singlet $\mathbf{1}$ is physical
+**Baryons:** $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$ - singlet $\mathbf{1}$ is physical
 
 ### 7.5 SU(3): Roots, Weights, and Young Tableaux
 
@@ -2262,12 +2262,12 @@ When quark and antiquark have different flavors, we get states with non-zero $(I
 
 **Quark-antiquark combinations:**
 
-- **ud̄**: quark (+1/2, +1/3) + antiquark (+1/2, -1/3) → total (+1, 0) = Σ⁺
-- **dū**: quark (-1/2, +1/3) + antiquark (-1/2, -1/3) → total (-1, 0) = Σ⁻
-- **us̄**: quark (+1/2, +1/3) + antiquark (0, +2/3) → total (+1/2, +1) = p
-- **sū**: quark (0, -2/3) + antiquark (-1/2, +1/3) → total (-1/2, -1) = Ξ⁻
-- **ds̄**: quark (-1/2, +1/3) + antiquark (0, +2/3) → total (-1/2, +1) = n
-- **sd̄**: quark (0, -2/3) + antiquark (+1/2, +1/3) → total (+1/2, -1) = Ξ⁰
+- **ud̄**: quark (+1/2, +1/3) + antiquark (+1/2, -1/3) -> total (+1, 0) = Σ⁺
+- **dū**: quark (-1/2, +1/3) + antiquark (-1/2, -1/3) -> total (-1, 0) = Σ⁻
+- **us̄**: quark (+1/2, +1/3) + antiquark (0, +2/3) -> total (+1/2, +1) = p
+- **sū**: quark (0, -2/3) + antiquark (-1/2, +1/3) -> total (-1/2, -1) = Ξ⁻
+- **ds̄**: quark (-1/2, +1/3) + antiquark (0, +2/3) -> total (-1/2, +1) = n
+- **sd̄**: quark (0, -2/3) + antiquark (+1/2, +1/3) -> total (+1/2, -1) = Ξ⁰
 
 **How the quantum numbers add:**
 - $I_3$ adds algebraically: $I_3(q) + I_3(\bar{q})$
@@ -2279,7 +2279,7 @@ These 6 states sit at the vertices of the weight diagram hexagon.
 
 For $u\bar{u}, d\bar{d}, s\bar{s}$, both $I_3 = 0$ and $Y = 0$. But we can't use these raw combinations because:
 
-1. The trace $u\bar{u} + d\bar{d} + s\bar{s}$ is invariant under SU(3) — this is the singlet $\mathbf{1}$
+1. The trace $u\bar{u} + d\bar{d} + s\bar{s}$ is invariant under SU(3) - this is the singlet $\mathbf{1}$
 2. The remaining 2 orthogonal combinations form part of the octet
 
 **Constructing the physical states:**
@@ -2318,13 +2318,13 @@ For quarks (fermions), the flavor part of the wavefunction can be symmetric, ant
 - **Row of boxes** = symmetric under exchange of those indices
 - **Column of boxes** = antisymmetric under exchange
 
-This is essential for constructing physical baryon states, where the total wavefunction (color × space × spin × flavor) must be antisymmetric.
+This is essential for constructing physical baryon states, where the total wavefunction (color \times space \times spin \times flavor) must be antisymmetric.
 
 **Basic Rules:**
 
 | Diagram | Symmetry | SU(3) Representation |
 |:---:|:---:|:---:|
-| <img src="/images/angular-momentum/young_1_clean.png" width="40px"> | — | $\mathbf{3}$ (fundamental) |
+| <img src="/images/angular-momentum/young_1_clean.png" width="40px"> | - | $\mathbf{3}$ (fundamental) |
 | <img src="/images/angular-momentum/young_2_row_clean.png" width="80px"> | symmetric | $\mathbf{6}$ |
 | <img src="/images/angular-momentum/young_2_col_clean.png" width="40px"> | antisymmetric | $\bar{\mathbf{3}}$ |
 | <img src="/images/angular-momentum/young_3_row_clean.png" width="120px"> | fully symmetric | $\mathbf{10}$ |
@@ -2357,7 +2357,7 @@ Antisymmetric states: $(ud-du), (us-su), (ds-sd) \sim \bar{u}, \bar{d}, \bar{s}$
 | Symmetry | Diagram | Factors | Dimension |
 |:---:|:---:|:---:|:---:|
 | Fully symmetric | <img src="/images/angular-momentum/young_3_row_clean.png" width="90px"> | $1 \times 2 \times 5$ | **10** |
-| Mixed (×2) | <img src="/images/angular-momentum/young_21_clean.png" width="60px"> | $1 \times 4 \times 2$ | **8** (each) |
+| Mixed (\times2) | <img src="/images/angular-momentum/young_21_clean.png" width="60px"> | $1 \times 4 \times 2$ | **8** (each) |
 | Fully antisymmetric | <img src="/images/angular-momentum/young_3_col_clean.png" width="30px"> | $1 \times 1 \times 1$ | **1** |
 
 The two octets arise from different construction paths:
@@ -2385,8 +2385,8 @@ We add the boxes from $\bar{\mathbf{3}}$ (the "second factor") to $\mathbf{6}$ (
 **Adding the first box** (from $\bar{\mathbf{3}}$):
 
 Can be placed in two positions:
-- Position A: extend the row → diagram (3) — gives $\mathbf{10}$
-- Position B: start a new row → diagram (2,1) — gives $\mathbf{8}$
+- Position A: extend the row -> diagram (3) - gives $\mathbf{10}$
+- Position B: start a new row -> diagram (2,1) - gives $\mathbf{8}$
 
 **Adding the second box** (must maintain antisymmetry of the column):
 
@@ -2433,7 +2433,7 @@ The remaining $\mathbf{3}$ comes from the path where the first box creates (2,1)
 
 **Why Young Diagrams Are Useful:**
 
-Young diagrams provide an immediate visual handle on symmetry properties, making it possible to identify allowed representations without lengthy algebraic manipulations. They do not determine which particles exist, but rather which symmetry patterns are allowed—the group SU(3) fixes the structure, and Young diagrams offer the most transparent way to read it.
+Young diagrams provide an immediate visual handle on symmetry properties, making it possible to identify allowed representations without lengthy algebraic manipulations. They do not determine which particles exist, but rather which symmetry patterns are allowed-the group SU(3) fixes the structure, and Young diagrams offer the most transparent way to read it.
 
 ### 7.6 Scattering Amplitudes and Isospin: Reaction Channels
 
@@ -2469,7 +2469,7 @@ Physical particle states (like $\pi^+ p$, $\pi^- p$, etc.) are direct products o
 2. **Applying** the transition operator $T$ (which is diagonal in the isospin basis due to conservation)
 3. **Projecting** onto the final product state $|cd\rangle = |c\rangle \otimes |d\rangle$
 
-Mathematically, since $[T, I_3] = 0$, the operator $T$ is block-diagonal in the $I_3$ basis—it only connects states with the **same** $I_3$ value. For a given initial state with fixed $I_3^{(i)}$ (determined by the specific particle combination), the intermediate states must all have this same $I_3^{(i)}$.
+Mathematically, since $[T, I_3] = 0$, the operator $T$ is block-diagonal in the $I_3$ basis-it only connects states with the **same** $I_3$ value. For a given initial state with fixed $I_3^{(i)}$ (determined by the specific particle combination), the intermediate states must all have this same $I_3^{(i)}$.
 
 Within this fixed-$I_3$ subspace, the states $|I, I_3^{(i)}\rangle$ (for all allowed $I$ values) form a complete basis. The scattering amplitude is:
 
@@ -2544,7 +2544,7 @@ $$= \frac{\sqrt{2}}{3}(A_{3/2} - A_{1/2})$$
 
 **Cross Sections and the $\Delta(1232)$ Resonance:**
 
-The cross section for a specific reaction is proportional to $|\mathcal{M}|^2$. At the $\Delta(1232)$ resonance, multiple final states are accessible from a given initial state—for example, $\pi^- p$ can scatter elastically or undergo charge exchange to $\pi^0 n$.
+The cross section for a specific reaction is proportional to $|\mathcal{M}|^2$. At the $\Delta(1232)$ resonance, multiple final states are accessible from a given initial state-for example, $\pi^- p$ can scatter elastically or undergo charge exchange to $\pi^0 n$.
 
 **The $\Delta(1232)$ Resonance:**
 
@@ -2559,7 +2559,7 @@ $$|A_{3/2}| \gg |A_{1/2}| \quad \text{at } E \approx 1232 \text{ MeV}$$
 This gives the prediction:
 $$\frac{\sigma(\pi^+ + p \to \pi^+ + p)}{\sigma(\pi^- + p \to \pi^- + p)} = \frac{|A_{3/2}|^2}{|\frac{1}{3}A_{3/2} + \frac{2}{3}A_{1/2}|^2} \approx \frac{|A_{3/2}|^2}{\frac{1}{9}|A_{3/2}|^2} = 9$$
 
-Wait—let's be more careful. The total $\pi^- p$ cross section includes both elastic and charge exchange:
+Wait-let's be more careful. The total $\pi^- p$ cross section includes both elastic and charge exchange:
 $$\sigma_{\text{tot}}(\pi^- p) = \sigma(\pi^- p \to \pi^- p) + \sigma(\pi^- p \to \pi^0 n)$$
 
 With $A_{1/2} \approx 0$:
@@ -2591,5 +2591,5 @@ For $\pi^- p$ scattering at the $\Delta$ resonance, the final state can be eithe
 - Relative rate: $\frac{2}{9}|A_{3/2}|^2$  
 - Probability: $\mathbf{\frac{2}{3}}$
 
-The charge exchange reaction is **twice as probable** as elastic scattering—a counterintuitive result from isospin interference. Combined with the cross-section ratio of 3, these predictions were confirmed experimentally in the 1950s, providing strong evidence for SU(2) isospin symmetry.
+The charge exchange reaction is **twice as probable** as elastic scattering-a counterintuitive result from isospin interference. Combined with the cross-section ratio of 3, these predictions were confirmed experimentally in the 1950s, providing strong evidence for SU(2) isospin symmetry.
 
