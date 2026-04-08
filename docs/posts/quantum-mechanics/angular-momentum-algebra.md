@@ -1567,7 +1567,15 @@ LS coupling works when electrons "feel" each other's spatial distribution more s
    - High $L$ ($L = l_1 + l_2$): Both electrons orbit in the same direction
    - Low $L$ ($L = |l_1 - l_2|$): Electrons orbit in opposite directions
    
-   When electrons orbit in the same direction (high $L$), they tend to stay on the same side of the nucleus relative to each other, but because they are moving together, they actually have a larger effective separation in the rotating frame. More importantly, the **correlation** in the spatial wavefunction creates regions where the electrons avoid each other.
+   When electrons orbit in the same direction (high $L$), consider what happens in a **co-rotating frame** (a coordinate system that rotates along with the electrons):
+   
+   **Semiclassical picture:**
+   - In the lab frame: Both electrons circle the nucleus in the same direction, maintaining roughly opposite positions (like two horses on a carousel, 180° apart)
+   - In the co-rotating frame: The electrons appear nearly stationary, staying on opposite sides of the nucleus
+   
+   **Key consequence:** This configuration maximizes the **average separation** between electrons. The electrons are "locked" in a configuration where they naturally avoid each other—when one is at position $\mathbf{r}$, the other tends to be at $-\mathbf{r}$ (antipodal).
+   
+   Mathematically, the spatial wavefunction for high-$L$ states has **nodes** in the relative coordinate $\mathbf{r}_1 - \mathbf{r}_2$, meaning $\Psi(\mathbf{r}_1, \mathbf{r}_2) \approx 0$ when electrons are close together. This "correlation hole" reduces the Coulomb repulsion energy.
    
    Mathematically, the electrostatic repulsion matrix element depends on the spatial overlap. States with higher $L$ have spatial wavefunctions with more nodes in the relative coordinate, reducing the average repulsion.
 
