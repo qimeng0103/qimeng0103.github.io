@@ -2250,7 +2250,7 @@ The SU(3) algebra has structure constants $f_{abc}$ that determine how generator
 1. If $\vec{\alpha}$ and $\vec{\beta}$ are roots, then $\vec{\alpha} + \vec{\beta}$ must also be a root (or zero)
 2. The angles between roots are quantized to specific values by the algebra
 
-In 2D weight space, the only configuration that satisfies these constraints with all angles compatible is 6 roots at 60° intervals (forming a hexagon). Fewer roots can't span 2D space; more roots create angle conflicts with the structure constants.
+In 2D weight space, the only configuration that satisfies these constraints with all angles compatible is 6 roots at 60° intervals (forming a hexagon).
 
 **Building the Fundamental $\mathbf{3}$**
 
