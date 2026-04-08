@@ -1569,7 +1569,20 @@ The constraint is: **orbital × spin must be overall antisymmetric**.
 
 #### Young Diagrams: Visualizing Permutation Symmetry
 
-Young diagrams provide a graphical way to classify permutation symmetry types. For three electrons ($S_3$), there are three possible symmetry types:
+Young diagrams provide a graphical way to classify permutation symmetry types. A Young diagram consists of left-justified rows of boxes, where row lengths are non-increasing from top to bottom.
+
+**Rules for constructing Young diagrams:**
+- Each box represents one particle (electron)
+- Rows represent symmetrization (symmetric under exchange within a row)
+- Columns represent antisymmetrization (antisymmetric under exchange within a column)
+- Row lengths must not increase from top to bottom: $\lambda_1 \geq \lambda_2 \geq \lambda_3 \geq ...$
+
+For three electrons ($S_3$), the possible partitions of 3 are:
+- $3 = 3$ (one row)
+- $3 = 2 + 1$ (hook shape)
+- $3 = 1 + 1 + 1$ (one column)
+
+This gives three symmetry types:
 
 | Symmetry Type | Young Diagram | Dimension | Physics |
 |:---:|:---:|:---:|:---|
@@ -1577,7 +1590,23 @@ Young diagrams provide a graphical way to classify permutation symmetry types. F
 | Mixed symmetry | <img src="/images/angular-momentum/young_21_clean.png" width="40px"> | 2 | Two electrons symmetrized, third treated differently |
 | Fully antisymmetric | <img src="/images/angular-momentum/young_3_col_clean.png" width="20px"> | 1 | Swapping any two electrons changes sign |
 
-**Key insight**: The diagram shape determines the symmetry type; the dimension formula tells us how many independent states have that symmetry.
+**Hook Length Formula: Calculating Dimensions**
+
+The dimension of a Young diagram (number of independent basis states with that symmetry) is given by:
+$$d = \frac{n!}{\prod_{\text{all boxes}} h_i}$$
+
+where $n$ is the number of boxes (particles), and $h_i$ is the **hook length** of box $i$ — the number of boxes to the right in the same row, plus boxes below in the same column, plus 1 (the box itself).
+
+**Example: Hook lengths for three-electron diagrams**
+
+For the hook shape [2,1]:
+- Box (1,1): hook = 1 (right) + 1 (below) + 1 = **3**
+- Box (1,2): hook = 0 (right) + 0 (below) + 1 = **1**
+- Box (2,1): hook = 0 (right) + 0 (below) + 1 = **1**
+
+$$d = \frac{3!}{3 \times 1 \times 1} = \frac{6}{3} = 2$$
+
+This confirms the mixed symmetry has dimension 2.
 
 #### Young Tableaux: Enumerating Basis States
 
