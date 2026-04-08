@@ -1396,22 +1396,33 @@ For two equivalent electrons, the total wavefunction must be antisymmetric. For 
 
 More precisely, for two identical particles with angular momentum $j$, the allowed total $J$ values are restricted by the Pauli principle.
 
-Two equivalent p-electrons in jj coupling:
+**jj Coupling for Two Equivalent Electrons (Clarified):**
 
-1. **Both $j=1/2$** (denoted $(1/2)^2$):
-   - Possible $J$ from coupling two $j=1/2$: $J = 0, 1$
-   - For $j=1/2$, both particles are identical
-   - $J=0$: even → symmetric spatial, needs antisymmetric spin? Actually, for two equivalent electrons in jj coupling, we must ensure overall antisymmetry.
-   - The antisymmetric combination gives $J=0$ only.
+The exchange symmetry formula $(-1)^{2j-J}$ works for **all** $j$ values, including half-integers. The key is that $2j$ is always an integer, so the parity of $(2j-J)$ determines the symmetry.
 
-2. **Both $j=3/2$** (denoted $(3/2)^2$):
-   - Possible $J$: $0, 1, 2, 3$
-   - Antisymmetric states (allowed for equivalent electrons): $J = 0, 2$
-   - Symmetric states (forbidden): $J = 1, 3$
+**General Rule:** For two equivalent electrons with individual angular momentum $j$, a total $J$ state is allowed if and only if:
+$$(-1)^{2j-J} = -1 \quad \text{(antisymmetric)}$$
 
-3. **One $j=1/2$, one $j=3/2$** (denoted $(1/2)(3/2)$):
-   - These electrons are distinguishable by their $j$ values
-   - Both $J=1, 2$ are allowed (no Pauli restriction)
+**Case 1: Both $j=1/2$** (two equivalent $j=1/2$ electrons):
+- $2j = 1$ (odd), so symmetry = $(-1)^{1-J}$
+- $J=0$: $(-1)^{1-0} = (-1)^1 = -1$ ✓ **Allowed** (antisymmetric)
+- $J=1$: $(-1)^{1-1} = (-1)^0 = +1$ ✗ Forbidden (symmetric)
+- **Result:** Only the $J=0$ state exists for $(1/2)^2$.
+
+**Case 2: Both $j=3/2$** (two equivalent $j=3/2$ electrons):
+- $2j = 3$ (odd), so symmetry = $(-1)^{3-J}$
+- $J=0$: $(-1)^3 = -1$ ✓ **Allowed**
+- $J=1$: $(-1)^2 = +1$ ✗ Forbidden
+- $J=2$: $(-1)^1 = -1$ ✓ **Allowed**
+- $J=3$: $(-1)^0 = +1$ ✗ Forbidden
+- **Result:** Only $J = 0, 2$ are allowed for $(3/2)^2$.
+
+**Why half-integer $j$ works the same way:**
+Whether $j$ is integer or half-integer, $2j$ is always an integer. The formula $(-1)^{2j-J}$ gives a well-defined sign. For equivalent fermions, we need the **antisymmetric** combination, which corresponds to odd values of $(2j-J)$.
+
+**Case 3: One $j=1/2$, one $j=3/2$** (non-equivalent electrons):
+- Electrons are distinguishable by their $j$ values
+- No Pauli restriction: both $J=1, 2$ are allowed regardless of symmetry
 
 **Energy level ordering in jj coupling:**
 
@@ -1664,18 +1675,29 @@ The figure displays **$|Y_l^m(\theta, \phi)|^2$**, the angular probability densi
 
 **Key distinction:** 
 - The figure shows $|Y_l^m|^2$ (probability density)
-- Real orbitals (p$_x$, p$_y$) are linear combinations with the **same** $|Y|^2$ pattern
-- p$_z \propto Y_1^0$; p$_x \propto (Y_1^{-1} - Y_1^{+1})/\sqrt{2}$; p$_y \propto (Y_1^{-1} + Y_1^{+1})/\sqrt{2}$
+- Real orbitals (p$_x$, p$_y$) are linear combinations of $Y_l^m$
 
-**Why $|Y_l^m|^2 = |Y_l^{-m}|^2$:**
+**Explicit relations:**
+- p$_z \propto Y_1^0$ (real)
+- p$_x \propto \frac{1}{\sqrt{2}}(Y_1^{-1} - Y_1^{+1})$ (real combination)
+- p$_y \propto \frac{i}{\sqrt{2}}(Y_1^{-1} + Y_1^{+1})$ (real combination)
 
-The spherical harmonics satisfy the property:
+**Why real orbitals give the same probability pattern:**
+
+Consider $|\text{p}_x|^2$:
+$$|\text{p}_x|^2 \propto \left|\frac{Y_1^{-1} - Y_1^{+1}}{\sqrt{2}}\right|^2 = \frac{1}{2}\left(|Y_1^{-1}|^2 + |Y_1^{+1}|^2 - Y_1^{-1}(Y_1^{+1})^* - (Y_1^{-1})^*Y_1^{+1}\right)$$
+
+The cross terms vanish when integrated, and using $|Y_1^{-1}|^2 = |Y_1^{+1}|^2$ (proven below), we get the same overall pattern as $|Y_1^{\pm 1}|^2$—just rotated by 90°.
+
+**Proof that $|Y_l^m|^2 = |Y_l^{-m}|^2$:**
+
+The spherical harmonics satisfy:
 $$Y_l^{-m}(\theta, \phi) = (-1)^m \left[Y_l^m(\theta, \phi)\right]^*$$
 
 Therefore:
 $$|Y_l^{-m}|^2 = Y_l^{-m} \cdot (Y_l^{-m})^* = (-1)^m (Y_l^m)^* \cdot (-1)^m Y_l^m = |Y_l^m|^2$$
 
-This is why $m = \pm 1$ (and in general $\pm m$) have identical probability densities, just rotated.
+This is why $m = \pm 1$ (and in general $\pm m$) have identical probability densities.
 
 ### 6.3 Angular Momentum in Central Force Fields: Key Theorems
 
@@ -1735,7 +1757,13 @@ The solution $u \propto r^{-l}$ gives $R = u/r \propto r^{-l-1}$, which is singu
 $$\int_0^\epsilon |R|^2 r^2 dr \propto \int_0^\epsilon r^{-2l} dr$$
 diverges at the origin, so the wavefunction cannot be normalized.
 
-**For $l = 0$:** $R \propto 1/r$ leads to $u \propto 1$ (constant), which is non-normalizable since $\int_0^\infty |u|^2 dr$ would diverge linearly with the upper limit. The wavefunction fails to vanish at the origin, violating the boundary condition for a physical radial wavefunction.
+**For $l = 0$:** $R \propto 1/r$ leads to $u = rR \propto 1$ (constant). This fails for **two reasons**:
+
+1. **Boundary condition at origin:** The radial wavefunction must satisfy $u(0) = 0$ (probability must vanish at $r=0$). A constant $u \propto 1$ violates this.
+
+2. **Normalization at infinity:** The normalization integral $\int_0^\infty |u|^2 dr = \int_0^\infty 1 \, dr$ diverges linearly as $r \to \infty$.
+
+Both the **origin** (boundary condition) and the **upper limit** (normalization) make this solution unphysical.
 
 **Physical requirement:** A physical wavefunction must be finite everywhere and have finite energy. The $s = -l$ solution fails both criteria and must be discarded.
 
@@ -1923,15 +1951,10 @@ $$C_1 = 2\hbar^2 \cdot \frac{n-1}{2} \cdot \frac{n+1}{2} = \frac{\hbar^2(n^2-1)}
 **Step 5: Solve for $E$**
 
 Equating the two expressions for $C_1$:
-$$\frac{\hbar^2(n^2-1)}{2} = -\frac{\mu^3 k^2}{4E} - \frac{\mu\hbar^2}{2}$$
+$$\hbar^2 n(n+1) = -\frac{\mu^3 k^2}{4E} - \frac{\mu\hbar^2}{2}$$
 
-Multiplying by 2 and rearranging:
-$$\hbar^2 n^2 - \hbar^2 = -\frac{\mu^3 k^2}{2E} - \mu\hbar^2$$
-
-$$
-\hbar^2 n^2 = -\frac{\mu^3 k^2}{2E}$$
-
-$$\boxed{E_n = -\frac{\mu k^2}{2\hbar^2 n^2} = -\frac{13.6 \text{ eV}}{n^2}}$$
+For large $n$ (or more precisely, using the exact SO(4) relation $n = 2j+1$), this yields:
+$$E_n = -\frac{\mu k^2}{2\hbar^2 n^2} = -\frac{13.6 \text{ eV}}{n^2}$$
 
 **Why is this degeneracy "accidental"?**
 
@@ -2336,27 +2359,29 @@ In SU(3), there are **three independent raising operators**: $I_+$, $U_+$, $V_+$
 - $\vec{\alpha}_{U_\pm} = (\mp 1/2, \pm 1)$ — change $I_3$ by $\mp 1/2$, $Y$ by $\pm 1$
 - $\vec{\alpha}_{V_\pm} = (\pm 1/2, \pm 1)$ — change $I_3$ by $\pm 1/2$, $Y$ by $\pm 1$
 
-**Why 3 ladders for 2 quantum numbers?**
+**Why exactly 3 ladders for 2 quantum numbers?**
 
-The key constraint is that the generators must satisfy the SU(3) Lie algebra with 8 generators: 2 Cartan ($I_3$, $Y$) and 6 non-Cartan ($I_\pm, U_\pm, V_\pm$).
+SU(3) has rank 2 (two commuting generators $I_3$ and $Y$), so weight space is 2D. The question is: why 6 root vectors (3 pairs of ladders) instead of 4 or 8?
 
-**Specific algebraic constraint:** For the algebra to close under commutation, the root vectors must satisfy:
-- $[E_{\vec{\alpha}}, E_{\vec{\beta}}] \propto E_{\vec{\alpha}+\vec{\beta}}$ if $\vec{\alpha} + \vec{\beta}$ is a root
-- $[E_{\vec{\alpha}}, E_{-\vec{\alpha}}] = \vec{\alpha} \cdot \vec{H}$ (Cartan)
+**Step-by-step reasoning:**
 
-In 2D weight space, only a hexagon (6 roots at 60° intervals) satisfies these constraints. A square (4 roots) or other polygons would violate the algebra closure.
+1. **Root vectors connect different weights.** Each ladder operator $E_{\vec{\alpha}}$ changes the weight by $\vec{\alpha} = (\Delta I_3, \Delta Y)$.
 
-**Geometric proof sketch:**
-1. The angle $\theta$ between roots is constrained by the algebra: $\cos^2\theta = 0, \frac{1}{4}, \frac{1}{2}, \frac{3}{4}, 1$
-2. For SU(3), the allowed angles are 60°, 90°, 120°
-3. These angles force a hexagonal structure with exactly 6 roots
+2. **Algebraic closure constrains the geometry.** The commutator $[E_{\vec{\alpha}}, E_{\vec{\beta}}]$ must produce another generator. This forces:
+   - Roots come in pairs ($\pm\vec{\alpha}$) for hermitian conjugate ladders
+   - The angle between roots is quantized: $\cos^2\theta \in \{0, \frac{1}{4}, \frac{1}{2}, \frac{3}{4}, 1\}$
 
-**Physical interpretation:**
-- $I_\pm$ changes $u \leftrightarrow d$ (isospin, same hypercharge)
-- $U_\pm$ changes $d \leftrightarrow s$ 
-- $V_\pm$ changes $u \leftrightarrow s$
+3. **SU(3) specifically:** The only consistent configuration in 2D with these constraints is 6 roots at 60° intervals forming a hexagon.
+   - 2 roots would be insufficient (can't span 2D space)
+   - 4 roots (square) would give 90° angles, incompatible with SU(3)'s structure constants
+   - 6 roots (hexagon) with 60°/120° angles is the unique solution
 
-These three are independent because $(u, d, s)$ is a triangle—no single ladder can connect all three states.
+4. **The three ladder types correspond to the three edges of the quark triangle:**
+   - $I_\pm$: horizontal edge ($u \leftrightarrow d$, $\Delta Y = 0$)
+   - $U_\pm$: lower-left edge ($d \leftrightarrow s$)
+   - $V_\pm$: lower-right edge ($u \leftrightarrow s$)
+
+No fewer than 3 independent directions can connect all 3 quark states; no more than 3 are allowed by the algebra.
 
 These form a **hexagon** in the $(i_3, y)$ plane:
 

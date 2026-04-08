@@ -25,7 +25,11 @@
 
 - [x] 第八次修改 - 图像和表格修复
 - [x] 构建检查 - 通过
-- [ ] 推送部署
+- [x] 推送部署 - 完成
+
+- [x] 第九次修改 - 详细解释和修正
+- [x] 构建检查 - 通过
+- [x] 推送部署 - 完成
 
 - [ ] Young Tableaux图像修复（等待用户提供程序或具体需求）
 
@@ -39,36 +43,43 @@
 
 ## 📝 会话记录
 
-### 2026-04-08 - 第八次修改（图像和表格修复）
+### 2026-04-08 - 第九次修改（详细解释和修正）
 
 **用户反馈的问题及修复：**
 
-1. **SU(3) root diagram图像角标显示** 
-   - 修复$I_-$和$V_-$标签，使用正确格式`$I_-$`而不是原始字符串
+1. **jj coupling - 半整数j情况** (Line 1399)
+   - 明确解释公式$(-1)^{2j-J}$适用于所有j，包括半整数
+   - 给出具体计算：对于$j=1/2$，$2j=1$（奇数），所以对称性由$(1-J)$的奇偶性决定
+   - 列出所有情况的详细表格（$j=1/2$和$j=3/2$的允许/禁止J值）
+   - 解释为什么半整数j的工作方式与整数相同
 
-2. **Adjoint octet构建过程** (Line 2382)
-   - 添加完整的构建说明：6个顶点态来自$u\bar{d}, u\bar{s}, d\bar{u}, d\bar{s}, s\bar{u}, s\bar{s}$
-   - 明确写出2个中心态的具体波函数：$\Sigma^0 = (u\bar{u} - d\bar{d})/\sqrt{2}$, $\Lambda = (u\bar{u} + d\bar{d} - 2s\bar{s})/\sqrt{6}$
-   - 解释isospin triplet vs singlet的区别
+2. **SU(3) root diagram图像角标** 
+   - 重新生成图像确保$I_-$和$V_-$角标正确显示
 
-3. **Pseudo-real解释** (Line 2432)
-   - 详细解释pseudo-real的含义：表示与其复共轭等价但非酉变换
-   - 给出SU(2)的具体证明：$U^* = \epsilon U \epsilon^{-1}$
-   - 说明$\epsilon \psi^*$变换为$\mathbf{2}$而非$\bar{\mathbf{2}}$
-   - 解释SU(3)为何不是pseudo-real
+3. **Radial equation边界条件** (Line 1749)
+   - 明确说明$l=0$问题有两个方面：
+     - **原点**：违反边界条件$u(0)=0$
+     - **无穷远**：归一化积分发散
 
-4. **Young Tableaux表格修复** (Line 2416)
-   - 修复$\bar{\mathbf{3}}$行缺少Dim列的问题
-   - 使用LaTeX array生成正确的Young diagram图形
-   - 添加covariant vs contravariant标注
+4. **SO(4)推导Step 5** (Line 1934)
+   - 修正等式推导，简化展示过程
+   - 给出最终正确的能量公式
 
-5. **Tensor Product图像** 
-   - 新建`generate_young_su3.py`生成清晰的Young diagram
-   - 生成$\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$和$\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$图像
-   - 生成所有SU(3)表示汇总图
-   - 替换Mechanical Tensor Product部分的LaTeX array为图像
+5. **Spherical harmonics概率密度** (Line 1676)
+   - 添加实轨道与复球谐函数概率密度的关系说明
+   - 证明$|p_x|^2$与$|Y_1^{\pm 1}|^2$的关系
+   - 明确说明交叉项在积分时消失
+
+6. **"Why 3 ladders"解释** (Line 2362)
+   - 添加更清晰的逐步推理：
+     - 根向量连接不同权重
+     - 代数闭合约束几何
+     - SU(3)的具体约束条件
+     - 为什么2个不够，4个不行，只有6个（六边形）满足
 
 ---
+
+### 2026-04-08 - 第八次修改（图像和表格修复）
 
 ### 2026-04-08 - 第七次修改（细节修复）
 
