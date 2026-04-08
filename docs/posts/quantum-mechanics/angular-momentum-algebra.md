@@ -1672,21 +1672,21 @@ Each $L$ value appears with specific permutation symmetry:
 
 For three equivalent p-electrons, total microstates = $C(6,3) = 20$.
 
-The **total wavefunction must be antisymmetric**: $\Psi_{\text{spin}} \times \Psi_{\text{orbital}} = $ antisymmetric.
+The **total wavefunction must be antisymmetric**: $\Psi_{\text{spin}} \times \Psi_{\text{orbital}} = \text{antisymmetric}$.
 
 Allowed combinations:
 
 | Spin | Orbital | Result | Term |
 |:---:|:---:|:---:|:---:|
-| Symmetric (S=3/2) | Antisymmetric (L=0) | ✓ | **$^4S$** |
-| Mixed (S=1/2) | Mixed (L=2) | ✓ | **$^2D$ (×2)** |
-| Mixed (S=1/2) | Mixed (L=1) | ✓ | **$^2P$ (×2)** |
+| Symmetric ($S=3/2$) | Antisymmetric ($L=0$) | ✓ | **$^4S$** |
+| Mixed ($S=1/2$) | Mixed ($L=2$) | ✓ | **$^2D$ (×2)** |
+| Mixed ($S=1/2$) | Mixed ($L=1$) | ✓ | **$^2P$ (×2)** |
 
 **Why "×2" for $^2D$ and $^2P$?**
 
 The hook-shaped Young diagram has **dimension 2**, meaning there are 2 independent wavefunctions with mixed symmetry. When both spin and orbital are mixed, we get 2 distinct antisymmetric combinations for each $L$:
-- **Two** different $^2D$ wavefunctions (same $L=2$, same $S=1/2$, different internal symmetry)
-- **Two** different $^2P$ wavefunctions (same $L=1$, same $S=1/2$, different internal symmetry)
+- **Two** different $^2D$ wavefunctions (same $L=2$, same $S=1/2$, different internal symmetry quantum numbers)
+- **Two** different $^2P$ wavefunctions (same $L=1$, same $S=1/2$, different internal symmetry quantum numbers)
 
 **State counting (the crucial part):**
 
