@@ -2245,21 +2245,34 @@ Symmetry principles powerfully constrain scattering processes. When a system pos
 
 **The Basic Idea:**
 
-Consider scattering in the isospin basis. The total isospin $I$ is conserved (assuming exact SU(2) isospin symmetry). For a given process with definite total isospin $I$, the scattering amplitude is:
-$$\langle I, I_3; \text{final} | T | I, I_3; \text{initial} \rangle = A_I$$
+In strong interactions, both the total isospin $I$ and its third component $I_3$ are conserved (assuming exact SU(2) isospin symmetry). This means:
+- If the initial and final states have different $I$ or different $I_3$, the matrix element vanishes
+- If they have the same $I$ and $I_3$, the scattering amplitude depends only on $I$ (not on $I_3$):
 
-Here $T$ is the transition operator, and $A_I$ depends only on the total isospin $I$ (not on $I_3$ or the specific particle combination).
+$$\langle I', I_3' | T | I, I_3 \rangle = \delta_{II'} \delta_{I_3 I_3'} \, A_I$$
+
+Here $T$ is the transition operator, $\delta$ ensures conservation laws, and $A_I$ is the reduced amplitude that depends only on the total isospin $I$.
 
 **From Isospin Basis to Physical States:**
 
-Physical states (like $\pi^+ p$, $\pi^- p$, etc.) are superpositions of isospin eigenstates. The amplitude for a specific reaction is obtained by projecting onto the isospin basis:
+Physical particle states (like $\pi^+ p$, $\pi^- p$, etc.) are direct products of single-particle states $|a\rangle \otimes |b\rangle$, which are superpositions of total isospin eigenstates. The scattering amplitude is computed by:
 
-$$\mathcal{M}(a + b \to c + d) = \sum_{I} \langle cd | I \rangle \langle I | ab \rangle A_I$$
+1. **Decomposing** the initial product state $|ab\rangle = |a\rangle \otimes |b\rangle$ into total isospin eigenstates $|I, I_3\rangle$
+2. **Applying** the transition operator $T$ (which is diagonal in the isospin basis due to conservation)
+3. **Projecting** onto the final product state $|cd\rangle = |c\rangle \otimes |d\rangle$
+
+Mathematically:
+$$\mathcal{M}(a + b \to c + d) = \sum_{I, I_3} \underbrace{\langle cd | I, I_3 \rangle}_{\text{final projection}} \underbrace{\langle I, I_3 | T | I, I_3 \rangle}_{= A_I} \underbrace{\langle I, I_3 | ab \rangle}_{\text{initial decomposition}}$$
+
+Because $T$ is diagonal in isospin (conservation), the double sum collapses to a single sum over $I$ (with $I_3$ determined by the initial state's $I_3$ value):
+
+$$\mathcal{M}(a + b \to c + d) = \sum_{I} \langle cd | I \rangle \, A_I \, \langle I | ab \rangle$$
 
 where:
-- $\langle I | ab \rangle$ = CG coefficient to decompose initial state into isospin $I$
-- $\langle cd | I \rangle$ = CG coefficient to project final state from isospin $I$
-- $A_I$ = scattering amplitude in pure isospin channel $I$
+- $|ab\rangle = |a\rangle \otimes |b\rangle$ is the tensor product of initial single-particle states
+- $\langle I, I_3 | ab \rangle$ = CG coefficient to decompose the initial product state into total isospin $I$
+- $\langle cd | I, I_3 \rangle$ = CG coefficient to project the final product state from total isospin $I$
+- $A_I$ = reduced scattering amplitude in pure isospin channel $I$
 
 **Example: Pion-Nucleon Scattering**
 
@@ -2282,16 +2295,32 @@ $$| \pi^0 n \rangle = \sqrt{\frac{2}{3}} | I = 3/2, I_3 = -1/2 \rangle + \sqrt{\
 
 **Calculating Scattering Amplitudes:**
 
-Using $\mathcal{M}_{fi} = \langle f | T | i \rangle$ and the orthogonality of isospin states:
+We use $\mathcal{M}_{fi} = \langle f | T | i \rangle$ with $|i\rangle = |ab\rangle$ and $|f\rangle = |cd\rangle$. Inserting the isospin decomposition:
+
+$$\mathcal{M}(a + b \to c + d) = \sum_{I} \langle cd | I, I_3 \rangle \langle I, I_3 | ab \rangle A_I$$
 
 **1. Elastic scattering $\pi^+ + p \to \pi^+ + p$:**
-$$\mathcal{M}(\pi^+ p \to \pi^+ p) = \langle I=3/2 | T | I=3/2 \rangle = A_{3/2}$$
+
+The initial state $|\pi^+ p\rangle$ is a pure $I=3/2$ state with $I_3 = +3/2$:
+$$\mathcal{M}(\pi^+ p \to \pi^+ p) = \underbrace{\langle \pi^+ p | I=3/2, I_3=3/2 \rangle}_{=1} \underbrace{\langle I=3/2, I_3=3/2 | \pi^+ p \rangle}_{=1} A_{3/2} = A_{3/2}$$
 
 **2. Elastic scattering $\pi^- + p \to \pi^- + p$:**
-$$\mathcal{M}(\pi^- p \to \pi^- p) = \left(\sqrt{\frac{1}{3}}\right)^2 A_{3/2} + \left(-\sqrt{\frac{2}{3}}\right)^2 A_{1/2} = \frac{1}{3}A_{3/2} + \frac{2}{3}A_{1/2}$$
+
+The initial state $|\pi^- p\rangle$ and final state $|\pi^- p\rangle$ both have $I_3 = -1/2$ and decompose as:
+$$|\pi^- p\rangle = \sqrt{\frac{1}{3}} |I=3/2\rangle - \sqrt{\frac{2}{3}} |I=1/2\rangle$$
+
+Therefore:
+$$\mathcal{M}(\pi^- p \to \pi^- p) = \left(\sqrt{\frac{1}{3}}\right) \cdot A_{3/2} \cdot \left(\sqrt{\frac{1}{3}}\right) + \left(-\sqrt{\frac{2}{3}}\right) \cdot A_{1/2} \cdot \left(-\sqrt{\frac{2}{3}}\right)$$
+$$= \frac{1}{3}A_{3/2} + \frac{2}{3}A_{1/2}$$
 
 **3. Charge exchange $\pi^- + p \to \pi^0 + n$:**
-$$\mathcal{M}(\pi^- p \to \pi^0 n) = \sqrt{\frac{1}{3}} \cdot \sqrt{\frac{2}{3}} A_{3/2} + \left(-\sqrt{\frac{2}{3}}\right) \cdot \sqrt{\frac{1}{3}} A_{1/2} = \frac{\sqrt{2}}{3}(A_{3/2} - A_{1/2})$$
+
+The initial state is $|\pi^- p\rangle$ with the same decomposition as above. The final state $|\pi^0 n\rangle$ also has $I_3 = -1/2$:
+$$|\pi^0 n\rangle = \sqrt{\frac{2}{3}} |I=3/2\rangle + \sqrt{\frac{1}{3}} |I=1/2\rangle$$
+
+Therefore:
+$$\mathcal{M}(\pi^- p \to \pi^0 n) = \left(\sqrt{\frac{2}{3}}\right) \cdot A_{3/2} \cdot \left(\sqrt{\frac{1}{3}}\right) + \left(\sqrt{\frac{1}{3}}\right) \cdot A_{1/2} \cdot \left(-\sqrt{\frac{2}{3}}\right)$$
+$$= \frac{\sqrt{2}}{3}(A_{3/2} - A_{1/2})$$
 
 **Cross Sections and the $\Delta(1232)$ Resonance:**
 
