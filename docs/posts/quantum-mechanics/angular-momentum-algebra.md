@@ -1589,13 +1589,13 @@ While Young diagrams show symmetry types, **Young tableaux** enumerate the actua
 
 **Symmetric (triplet, $S=1$):**
 - Young Diagram: <img src="/images/angular-momentum/young_2_row_clean.png" width="50px" style="vertical-align:middle;"> 
-- Young Tableau: <img src="/images/angular-momentum/tableau_2_symmetric.png" width="140px" style="vertical-align:middle;">
+- Young Tableau: <img src="/images/angular-momentum/tableau_2_symmetric.png" width="180px" style="vertical-align:middle;">
 - Spin states: $|\uparrow\uparrow\rangle$, $\frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle+|\downarrow\uparrow\rangle)$, $|\downarrow\downarrow\rangle$
 - $M_S = +1, 0, -1$
 
 **Antisymmetric (singlet, $S=0$):**
 - Young Diagram: <img src="/images/angular-momentum/young_2_col_clean.png" width="30px" style="vertical-align:middle;">
-- Young Tableau: <img src="/images/angular-momentum/tableau_2_antisymmetric.png" width="80px" style="vertical-align:middle;">
+- Young Tableau: <img src="/images/angular-momentum/tableau_2_antisymmetric.png" width="110px" style="vertical-align:middle;">
 - Spin state: $\frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle-|\downarrow\uparrow\rangle)$
 - $M_S = 0$
 
@@ -1608,8 +1608,8 @@ The **standard Young tableau** conditions ensure we count each state exactly onc
 The hook shape <img src="/images/angular-momentum/young_21_clean.png" width="35px" style="vertical-align:middle;"> has two standard tableaux, giving two distinct doublet states:
 
 **Two standard tableaux for hook shape:**
-- Tableau 1: <img src="/images/angular-momentum/tableau_3_hook_1.png" width="130px" style="vertical-align:middle;"> (state $\chi_1$)
-- Tableau 2: <img src="/images/angular-momentum/tableau_3_hook_2.png" width="130px" style="vertical-align:middle;"> (state $\chi_2$)
+- Tableau 1: <img src="/images/angular-momentum/tableau_3_hook_1.png" width="160px" style="vertical-align:middle;"> (state $\chi_1$)
+- Tableau 2: <img src="/images/angular-momentum/tableau_3_hook_2.png" width="160px" style="vertical-align:middle;"> (state $\chi_2$)
 
 These correspond to the two distinct $^2D$ (and $^2P$) terms in the nitrogen atom spectrum.
 
