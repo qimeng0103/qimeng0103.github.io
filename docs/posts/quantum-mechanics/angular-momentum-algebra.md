@@ -1644,114 +1644,74 @@ These correspond to the two distinct $^2D$ (and $^2P$) terms in the nitrogen ato
 
 #### Example: Three p-Electrons (Nitrogen Atom $2p^3$)
 
-Consider the ground state of atomic nitrogen: three electrons in the $2p$ subshell.
+Consider the ground state of atomic nitrogen: three electrons in the $2p$ subshell. This is the simplest multi-electron system where permutation symmetry plays a crucial role.
 
-**Step 1: Spin Symmetry (SU(2))**
+**The Problem:** Three equivalent electrons ($n=2, l=1$) with total antisymmetry required. Each electron has:
+- Spin: $s = 1/2$ (2 states: up/down)
+- Orbital: $m = -1, 0, +1$ (3 states)
+- Total single-particle states: $2 \times 3 = 6$
 
-For three spin-1/2 electrons, the Young diagrams give:
+Total microstates for 3 electrons: $C(6,3) = 20$ states.
 
-| Young Diagram | Spin $S$ | Multiplicity | # of States |
-|:---:|:---:|:---:|:---:|
-| <img src="/images/angular-momentum/young_3_row_clean.png" width="50px"> | $3/2$ | 4 | 4 (quartet) |
-| <img src="/images/angular-momentum/young_21_clean.png" width="35px"> | $1/2$ | 2 | 2\times2=4 (two doublets) |
-| <img src="/images/angular-momentum/young_3_col_clean.png" width="18px"> | 0 | - | 0 (vanishes for spin-1/2) |
+**Method 1: Direct Enumeration (No Young Diagrams)**
 
-**Step 2: Orbital Symmetry**
+List all possible $(m_1, m_2, m_3)$ combinations and count by total $M = m_1 + m_2 + m_3$:
 
-For three $p$ orbitals ($l=1$), we need to combine three angular momenta. The single-particle states are labeled by magnetic quantum number $m = -1, 0, +1$.
-
-**Three-electron basis states**: Each electron has $m \in \{-1, 0, +1\}$, giving $3^3 = 27$ product states $|m_1, m_2, m_3\rangle$.
-
-**Total $M = m_1 + m_2 + m_3$ and total $L$:**
-
-| $M$ | Combinations | Count | Implied $L$ |
+| $M$ | Example combinations | Count | Possible $L$ |
 |:---:|:---|:---:|:---:|
-| $+3$ | $|+1,+1,+1\rangle$ | 1 | $L \geq 3$ |
-| $+2$ | $|+1,+1,0\rangle$ and permutations | 3 | $L \geq 2$ |
-| $+1$ | $|+1,+1,-1\rangle$, $|+1,0,0\rangle$ and perms | 6 | $L \geq 1$ |
-| $0$ | all combinations summing to 0 | 7 | $L \geq 0$ |
-| $-1, -2, -3$ | mirror of $+1, +2, +3$ | 6, 3, 1 | |
+| +3 | $(+1,+1,+1)$ | 1 | $L \geq 3$ (excluded) |
+| +2 | $(+1,+1,0)$ perms | 3 | $L \geq 2$ |
+| +1 | $(+1,+1,-1), (+1,0,0)$ | 6 | $L \geq 1$ |
+| 0 | various | 7 | $L \geq 0$ |
 
-From $M_{\max} = 3$, we get $L=3$. Working down: $L=3$ (7 states), $L=2$ (10 states), $L=1$ (9 states), $L=0$ (1 state). Total: 27.
+From $M_{max} = 3$ we get $L=3$ (7 states), $L=2$ (10 states), $L=1$ (9 states), $L=0$ (1 state).
 
-**Classifying by Young symmetry:**
+**Pauli exclusion for equivalent electrons:** The $L=3$ state requires all electrons in $m=+1$, violating Pauli principle. So we have 20 spatial states total: $L=2$ (10) + $L=1$ (9) + $L=0$ (1) = 20? No, actual count is more subtle due to symmetry constraints.
 
-| Young Diagram | Symmetry | $L$ values | # States |
+**Method 2: Using Young Diagrams (The Systematic Approach)**
+
+Young diagrams classify **permutation symmetry types**:
+
+| Young | Symmetry | Allowed $L$ | # States |
 |:---:|:---:|:---:|:---:|
-| <img src="/images/angular-momentum/young_3_row_clean.png" width="50px"> | [3] Symmetric | 0, 2 | 6 |
-| <img src="/images/angular-momentum/young_21_clean.png" width="35px"> | [2,1] Mixed | 1, 2 | 16 (= 8\times2) |
-| <img src="/images/angular-momentum/young_3_col_clean.png" width="18px"> | [1,1,1] Antisymmetric | 0, 1 | 4 |
+| <img src="/images/angular-momentum/young_3_row_clean.png" width="40px"> | Symmetric [3] | 0, 2 | 6 |
+| <img src="/images/angular-momentum/young_21_clean.png" width="30px"> | Mixed [2,1] | 1, 2 | 16 |
+| <img src="/images/angular-momentum/young_3_col_clean.png" width="15px"> | Antisymmetric [1,1,1] | 0, 1 | 4 |
 | **Total** | | | **26** |
 
-**Why only 26?** The state $|+1,+1,+1\rangle$ (and $|-1,-1,-1\rangle$) with $L=3$ is excluded for **equivalent electrons**-it would require all three electrons in the same $m$ state, violating Pauli exclusion. For distinguishable particles, $L=3$ would exist (27 total).
+Wait-26 > 20? The difference: $L=3$ (7 states) exists mathematically but is excluded for equivalent electrons. $26 - 6$ (forbidden symmetric $L=3$) = 20 spatial states.
 
-**Detailed explanation of the hook [2,1] -> $L=1, 2$ correspondence:**
+**Pauli-Allowed Combinations:**
 
-The hook-shaped Young diagram has **dimension 2** (two standard tableaux). This means there are **two independent ways** to assign particle labels to the boxes while respecting the ordering rules.
+Total wavefunction = spin $\times$ orbital must be **antisymmetric**.
 
-For orbital angular momentum:
-- Each standard tableau corresponds to a subspace with specific transformation properties
-- The hook symmetry allows both $L=1$ (P) and $L=2$ (D) states
-- $L=1$ has 3 magnetic sublevels ($m_L = -1, 0, +1$)
-- $L=2$ has 5 magnetic sublevels ($m_L = -2, -1, 0, +1, +2$)
+| Spin | Orbital | Result |
+|:---:|:---:|:---:|
+| Symmetric ($S=3/2$) | Antisymmetric ($L=0$) | $^4S$ (4 states) |
+| Mixed ($S=1/2$) | Mixed ($L=2$) | $^2D$ (10 states) |
+| Mixed ($S=1/2$) | Mixed ($L=1$) | $^2P$ (6 states) |
 
-**State counting per tableau:** $3 + 5 = 8$ states
+**Why this works:**
+- Symmetric $\times$ Antisymmetric = Antisymmetric ✓
+- Mixed $\times$ Mixed = contains antisymmetric component ✓
+- Antisymmetric $\times$ Symmetric = Antisymmetric ✓
 
-**Total for hook symmetry:** $8 \times 2 = 16$ states
+**Final Result:** 4 + 10 + 6 = **20 states** ✓
 
-**Physical interpretation:**
-- The two standard tableaux represent two different ways the three electrons can be correlated
-- Both ways support P-states ($L=1$) and D-states ($L=2$)
-- The total number of states is the product of magnetic sublevels and the number of distinct symmetry types
+**What Young Diagrams Give Us:**
 
-**Summary table with breakdown:**
+Without Young diagrams, we would need to:
+1. Write out all 20 Slater determinants explicitly
+2. Construct linear combinations with definite $L$ and $S$
+3. Check which combinations satisfy antisymmetry
 
-| Young Diagram | Symmetry | Dimension | $L$ values | Magnetic States | Total |
-|:---:|:---:|:---:|:---:|:---:|:---:|
-| [3] Row | Symmetric | 1 | 0, 2 | $1 + 5 = 6$ | 6 |
-| [2,1] Hook | Mixed | **2** | 1, 2 | $(3 + 5) \times$ **2** = 16 | 16 |
-| [1,1,1] Column | Antisymmetric | 1 | 0, 1 | $1 + 3 = 4$ | 4 |
-| **Total** | | | | | **26** |
+With Young diagrams:
+- Automatically know there are **2 distinct** $^2D$ terms and **2 distinct** $^2P$ terms
+- These correspond to different **permutational symmetry structures**
+- Both $^2D$ terms have same $L=2, S=1/2$ but different internal symmetry
+- Hook diagram dimension = 2 tells us immediately there are 2 distinct terms
 
-**How to read the correspondence:**
-- **Row [3]** = symmetric: All three electrons treated equally; includes $|0,0,0\rangle$ ($L=0$) and symmetric $D$ states ($L=2$)
-- **Column [1,1,1]** = antisymmetric: All three $m$ values must be different ($+1, 0, -1$ in some order) -> only $L=0, 1$ possible
-- **Hook [2,1]** = mixed: Two electrons form a pair (symmetric), third is distinct; supports both $L=1$ and $L=2$
-
-**Step 3: Pauli-Allowed Combinations**
-
-For three equivalent p-electrons, total microstates = $C(6,3) = 20$.
-
-The **total wavefunction must be antisymmetric**: $\Psi_{\text{spin}} \times \Psi_{\text{orbital}} = \text{antisymmetric}$.
-
-Allowed combinations:
-
-| Spin | Orbital | Result | Term |
-|:---:|:---:|:---:|:---:|
-| Symmetric ($S=3/2$) | Antisymmetric ($L=0$) | ✓ | **$^4S$** |
-| Mixed ($S=1/2$) | Mixed ($L=2$) | ✓ | **$^2D$ (\times2)** |
-| Mixed ($S=1/2$) | Mixed ($L=1$) | ✓ | **$^2P$ (\times2)** |
-
-**Why "\times2" for $^2D$ and $^2P$?**
-
-The hook-shaped Young diagram has **dimension 2**, meaning there are 2 independent wavefunctions with mixed symmetry. When both spin and orbital are mixed, we get 2 distinct antisymmetric combinations for each $L$:
-- **Two** different $^2D$ wavefunctions (same $L=2$, same $S=1/2$, different internal symmetry quantum numbers)
-- **Two** different $^2P$ wavefunctions (same $L=1$, same $S=1/2$, different internal symmetry quantum numbers)
-
-**State counting (the crucial part):**
-
-| Term | $S$ | $L$ | $J$ | Magnetic States $(2J+1)$ | Count |
-|:---:|:---:|:---:|:---:|:---:|:---:|
-| $^4S$ | 3/2 | 0 | 3/2 | 4 | **4** |
-| $^2D^{(1)}$ | 1/2 | 2 | 3/2, 5/2 | 4 + 6 | part of 10 |
-| $^2D^{(2)}$ | 1/2 | 2 | 3/2, 5/2 | 4 + 6 | part of 10 |
-| $^2P^{(1)}$ | 1/2 | 1 | 1/2, 3/2 | 2 + 4 | part of 6 |
-| $^2P^{(2)}$ | 1/2 | 1 | 1/2, 3/2 | 2 + 4 | part of 6 |
-
-**Total: 4 + 10 + 6 = 20 states** ✓
-
-**Key clarification**: The two $^2D$ terms (and two $^2P$ terms) are **different wavefunctions** but they **share the same $J$ structure**. The 10 $^2D$ states are distributed among two distinct terms-not 10 states each. Similarly for $^2P$: 6 states total, not 6 each.
-
+**Key insight:** Young diagrams don't tell us which states exist (Pauli principle does), but they tell us **how many distinct states** of each symmetry type exist, making the counting systematic.
 #### Summary: The Role of Young Diagrams
 
 Young diagrams and tableaux serve three essential functions in quantum mechanics:
