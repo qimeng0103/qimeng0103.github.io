@@ -2311,13 +2311,6 @@ The remaining orthogonal combination (orthogonal to both singlet and $\Sigma^0$)
 $$\Lambda = \frac{1}{\sqrt{6}}(u\bar{u} + d\bar{d} - 2s\bar{s})$$
 This is symmetric under $u \leftrightarrow d$ and has no isospin ($I=0$).
 
-**Why two states at the origin?**
-The three diagonal combinations $u\bar{u}, d\bar{d}, s\bar{s}$ form a 3D space. We decompose this into:
-- 1 singlet (trace) — scalar, invariant
-- 2 octet states with different isospin — $\Sigma^0$ ($I=1$) and $\Lambda$ ($I=0$)
-
-Total: $9 = 8 + 1$ states, forming the octet + singlet decomposition of $\mathbf{3} \otimes \bar{\mathbf{3}}$.
-
 **Young Tableaux and Permutation Symmetry**
 
 Young tableaux encode how tensor indices transform under permutation:
