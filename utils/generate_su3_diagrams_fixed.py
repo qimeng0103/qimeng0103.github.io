@@ -181,14 +181,14 @@ def draw_root_diagram():
     
     # Root vectors - normalized for nice visualization
     scale = 1.2
-    roots = {
-        r'$I_+$': (scale, 0),
-        r'$I_-$': (-scale, 0),
-        r'$V_+$': (scale/2, scale*sqrt3/2),
-        r'$V_-$': (-scale/2, -scale*sqrt3/2),
-        r'$U_+$': (-scale/2, scale*sqrt3/2),
-        r'$U_-$': (scale/2, -scale*sqrt3/2),
-    }
+    roots = [
+        ('I+', (scale, 0)),
+        ('I-', (-scale, 0)),
+        ('V+', (scale/2, scale*sqrt3/2)),
+        ('V-', (-scale/2, -scale*sqrt3/2)),
+        ('U+', (-scale/2, scale*sqrt3/2)),
+        ('U-', (scale/2, -scale*sqrt3/2)),
+    ]
     
     # Draw hexagon outline
     hex_r = scale * 1.3
@@ -198,13 +198,15 @@ def draw_root_diagram():
     ax.plot(hex_x, hex_y, 'k-', linewidth=1.5, alpha=0.4)
     
     # Draw root vectors as arrows from origin
-    for label, (x, y) in roots.items():
+    for label, (x, y) in roots:
         color = 'darkblue' if '+' in label else 'darkred'
         ax.annotate('', xy=(x*1.1, y*1.1), xytext=(0, 0),
                    arrowprops=dict(arrowstyle='->', color=color, lw=2.5))
         
         offset_factor = 1.4
-        ax.text(x*offset_factor, y*offset_factor, label, 
+        # Format label with subscript
+        formatted_label = f'${label[0]}_{label[1]}$'
+        ax.text(x*offset_factor, y*offset_factor, formatted_label, 
                fontsize=13, ha='center', va='center',
                color=color, fontweight='bold',
                bbox=dict(boxstyle='round,pad=0.2', facecolor='white', 
