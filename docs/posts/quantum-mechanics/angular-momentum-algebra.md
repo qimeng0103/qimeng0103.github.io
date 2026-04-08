@@ -2183,15 +2183,50 @@ $$\boxed{\phantom{x}}\boxed{\phantom{x}}\boxed{\phantom{x}} \rightarrow \mathbf{
 - Box 3: $(3+2-0)/1 = 5$
 - Dimension: $1 \times 2 \times 5 = 10$ (decuplet)
 
-*Mixed symmetry (hook shape):*
-$$\begin{array}{|c|c|}\hline \phantom{x} & \phantom{x} \\ \hline \phantom{x} \\ \cline{1-1}\end{array} \rightarrow \mathbf{8}$$
+*Mixed symmetry (hook shape, partition {2,1}):*
 
-This appears twice in the decomposition (dimension 8 each).
+There are **two distinct hook diagrams**, each giving dimension 8:
 
-*Fully antisymmetric (three in column):*
-$$\begin{array}{|c|}\hline \phantom{x} \\ \hline \phantom{x} \\ \hline \phantom{x} \\ \hline\end{array} \rightarrow \mathbf{1}$$
+**Diagram 2a:** (first two boxes symmetric, third antisymmetric with first)
+```
+┌───┬───┐
+│ A │ B │
+├───┼───┘
+│ C │
+└───┘
+```
 
-Dimension: 1 (singlet)
+- Box A: $r=0, c=0$, 1 box right, 1 below → $h=1+1+1=3$ → factor = $(3+0-0)/3 = 1$
+- Box B: $r=0, c=1$, 0 right, 0 below → $h=0+0+1=1$ → factor = $(3+1-0)/1 = 4$
+- Box C: $r=1, c=0$, 0 right, 0 below → $h=0+0+1=1$ → factor = $(3+0-1)/1 = 2$
+- **Dimension: $1 \times 4 \times 2 = 8$**
+
+**Diagram 2b:** (alternative labeling of the same shape)
+
+Actually, the two octets come from two different ways of building the hook—starting from different intermediate states in the tensor product construction. Both have the same shape {2,1} but correspond to different "heritages" in the iteration:
+
+1. **First octet**: Built by adding the third box to the symmetric $\mathbf{6}$ (two boxes in a row), placing the third box below the first
+2. **Second octet**: Built by adding the third box to the antisymmetric $\bar{\mathbf{3}}$ (two boxes in a column), placing the third box to the right of the top box
+
+Both constructions yield the same final diagram shape but represent different combinations in the full tensor product space, hence two distinct $\mathbf{8}$ representations.
+
+*Fully antisymmetric (three in column, partition {1,1,1}):*
+```
+┌───┐
+│ A │
+├───┤
+│ B │
+├───┤
+│ C │
+└───┘
+```
+
+- Box A: $r=0, c=0$, 0 right, 2 below → $h=0+2+1=3$ → factor = $(3+0-0)/3 = 1$
+- Box B: $r=1, c=0$, 0 right, 1 below → $h=0+1+1=2$ → factor = $(3+0-1)/2 = 1$
+- Box C: $r=2, c=0$, 0 right, 0 below → $h=0+0+1=1$ → factor = $(3+0-2)/1 = 1$
+- **Dimension: $1 \times 1 \times 1 = 1$ (singlet)**
+
+The single antisymmetric state is: $(ud)s + (ds)u + (su)d - (du)s - (sd)u - (us)d$, where $(ud)$ denotes the antisymmetric pair $ud - du$.
 
 Result: $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$
 
