@@ -1658,34 +1658,37 @@ For three spin-1/2 electrons, the Young diagrams give:
 
 **Step 2: Orbital Symmetry**
 
-For three $p$ orbitals ($l=1$), we combine three angular momenta: $1 \otimes 1 \otimes 1$.
+For three $p$ orbitals ($l=1$), we need to combine three angular momenta. The single-particle states are labeled by magnetic quantum number $m = -1, 0, +1$.
 
-**How do we get $L$ values from Young diagrams?**
+**Three-electron basis states**: Each electron has $m \in \{-1, 0, +1\}$, giving $3^3 = 27$ product states $|m_1, m_2, m_3\rangle$.
 
-First, the tensor product decomposition (without considering symmetry):
-- Two $l=1$: $1 \otimes 1 = 0 \oplus 1 \oplus 2$ (S, P, D)
-- Add third $l=1$: $(0 \oplus 1 \oplus 2) \otimes 1 = 1 \oplus (0 \oplus 1 \oplus 2) \oplus (1 \oplus 2 \oplus 3)$
-- Collecting: $L=0$ (1 state), $L=1$ (9 states), $L=2$ (10 states), $L=3$ (7 states)
-- Total: $1 + 9 + 10 + 7 = 27 = 3^3$ spatial states
+**Total $M = m_1 + m_2 + m_3$ and total $L$:**
 
-Now we classify these 27 states by their **permutation symmetry** under electron exchange:
+| $M$ | $|m_1, m_2, m_3\rangle$ combinations | Count | Implied $L$ |
+|:---:|:---|:---:|:---:|
+| $+3$ | $|+1,+1,+1\rangle$ | 1 | $L \geq 3$ |
+| $+2$ | $|+1,+1,0\rangle$ and permutations | 3 | $L \geq 2$ |
+| $+1$ | $|+1,+1,-1\rangle$, $|+1,0,0\rangle$ and perms | 6 | $L \geq 1$ |
+| $0$ | all combinations summing to 0 | 7 | $L \geq 0$ |
+| $-1, -2, -3$ | mirror of $+1, +2, +3$ | 6, 3, 1 | |
 
-| Young Diagram | Symmetry | $L$ values | States | Explanation |
-|:---:|:---:|:---:|:---:|:---|
-| <img src="/images/angular-momentum/young_3_row_clean.png" width="50px"> | Symmetric [3] | $L=0, 2$ | $1+5=6$ | $m_1=m_2=m_3$ (all same) or symmetric combinations |
-| <img src="/images/angular-momentum/young_21_clean.png" width="35px"> | Mixed [2,1] | $L=1, 2$ | $3+5=8$ per tableau | Two electrons correlated, third different |
-| <img src="/images/angular-momentum/young_3_col_clean.png" width="18px"> | Antisymmetric [1,1,1] | $L=0, 1$ | $1+3=4$ | All $m$ values different, fully antisymmetric |
+From $M_{\max} = 3$, we get $L=3$. Working down: $L=3$ (7 states), $L=2$ (10 states), $L=1$ (9 states), $L=0$ (1 state). Total: 27.
 
-**Why these specific $L$ values?** 
+**Classifying by Young symmetry:**
 
-The $L$ value indicates how the three orbital angular momenta add vectorially. The Young symmetry constrains which $m$ combinations are allowed:
-- **Symmetric [3]**: Requires $m_1, m_2, m_3$ to be symmetric, giving $L=0$ ($|000\rangle$ type) and $L=2$ (symmetric $D$ states). $L=3$ would need $m=+1,+1,+1$, but this violates Pauli principle for equivalent electrons.
-- **Antisymmetric [1,1,1]**: All three $m$ values must be different ($+1, 0, -1$ permutations), giving $L=0$ and $L=1$ only.
-- **Mixed [2,1]**: Intermediate case, giving $L=1$ and $L=2$.
+| Young Diagram | Symmetry | $L$ values | # States |
+|:---:|:---:|:---:|:---:|
+| <img src="/images/angular-momentum/young_3_row_clean.png" width="50px"> | [3] Symmetric | 0, 2 | 6 |
+| <img src="/images/angular-momentum/young_21_clean.png" width="35px"> | [2,1] Mixed | 1, 2 | 16 (= 8×2) |
+| <img src="/images/angular-momentum/young_3_col_clean.png" width="18px"> | [1,1,1] Antisymmetric | 0, 1 | 4 |
+| **Total** | | | **26** |
 
-**Check**: $6 + 16 + 4 = 26$? Actually $6 + (8 \times 2) + 4 = 26$. Wait—for the mixed case, dimension is 2, so total is $6 + 16 + 4 = 26$. But we calculated 27 states total. The discrepancy is because $L=3$ (7 states) appears in the symmetric sector but is excluded for equivalent electrons due to Pauli principle constraints on the spatial part alone.
+**Why only 26?** The state $|+1,+1,+1\rangle$ (and $|-1,-1,-1\rangle$) with $L=3$ is excluded for **equivalent electrons**—it would require all three electrons in the same $m$ state, violating Pauli exclusion. For distinguishable particles, $L=3$ would exist (27 total).
 
-For **equivalent electrons** (same $n, l$), the allowed spatial states are further restricted, giving the distribution above.
+**How to read the correspondence:**
+- **Row [3]** = symmetric: Includes states like $|0,0,0\rangle$ ($L=0$) and symmetric $D$ states ($L=2$)
+- **Column [1,1,1]** = antisymmetric: All $m$ values different, like $|+1,0,-1\rangle$ and permutations → $L=0, 1$
+- **Hook [2,1]** = mixed: Intermediate symmetry → $L=1, 2$
 
 **Step 3: Pauli-Allowed Combinations**
 
