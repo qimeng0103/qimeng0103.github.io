@@ -1585,15 +1585,6 @@ LS coupling works when electrons "feel" each other's spatial distribution more s
    
    *Physical origin*: This comes from the sign of the spin-orbit coupling constant. For less than half-filled, spin-orbit coupling is "normal" ($\zeta > 0$), favoring $J = |L-S|$. For more than half-filled, the effective $\zeta < 0$ (hole picture), favoring $J = L+S$.
 
-**Example Applications:**
-
-| Atom | Config | Ground Term | Ground Level | Reason |
-|:----:|:------:|:-----------:|:------------:|:------|
-| C | $2p^2$ | $^3P$ | $^3P_0$ | < half, min J |
-| N | $2p^3$ | $^4S$ | $^4S_{3/2}$ | Only one J |
-| O | $2p^4$ | $^3P$ | $^3P_2$ | > half, max J |
-| Fe | $3d^6$ | $^5D$ | $^5D_4$ | > half, max J |
-
 ---
 
 ## Part VI: Spherical Harmonics and Central Potentials
