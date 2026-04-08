@@ -12,9 +12,9 @@ import os
 OUTPUT_DIR = "../docs/images/angular-momentum"
 os.makedirs(OUTPUT_DIR, exist_ok=True)
 
-BOX_SIZE = 1.0
-LINE_WIDTH = 2.5
-FONT_SIZE = 20
+BOX_SIZE = 1.2
+LINE_WIDTH = 3.0
+FONT_SIZE = 28
 
 def draw_box_with_number(ax, x, y, number=None):
     """Draw a single box with optional number"""
@@ -57,7 +57,7 @@ def draw_tableau(shape, numbers, filename, title=None):
     plt.tight_layout(pad=0.1)
     
     filepath = os.path.join(OUTPUT_DIR, filename)
-    plt.savefig(filepath, dpi=150, bbox_inches='tight', facecolor='white')
+    plt.savefig(filepath, dpi=200, bbox_inches='tight', facecolor='white')
     print(f"Saved: {filepath}")
     plt.close()
 

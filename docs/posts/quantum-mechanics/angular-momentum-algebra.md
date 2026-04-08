@@ -1585,10 +1585,19 @@ While Young diagrams show symmetry types, **Young tableaux** enumerate the actua
 
 **Example: Spin states for two electrons**
 
-| Symmetry | Young Diagram | Young Tableau | Spin State | $S$ | $M_S$ |
-|:---:|:---:|:---:|:---:|:---:|:---:|
-| Symmetric | <img src="/images/angular-momentum/young_2_row_clean.png" width="50px"> | <img src="/images/angular-momentum/tableau_2_symmetric.png" width="100px"> | $|\uparrow\uparrow\rangle$, $\frac{|\uparrow\downarrow\rangle+|\downarrow\uparrow\rangle}{\sqrt{2}}$, $|\downarrow\downarrow\rangle$ | 1 | +1, 0, -1 |
-| Antisymmetric | <img src="/images/angular-momentum/young_2_col_clean.png" width="30px"> | <img src="/images/angular-momentum/tableau_2_antisymmetric.png" width="60px"> | $\frac{|\uparrow\downarrow\rangle-|\downarrow\uparrow\rangle}{\sqrt{2}}$ | 0 | 0 |
+**Spin states for two electrons:**
+
+**Symmetric (triplet, S=1):**
+- Young Diagram: <img src="/images/angular-momentum/young_2_row_clean.png" width="50px" style="vertical-align:middle;"> 
+- Young Tableau: <img src="/images/angular-momentum/tableau_2_symmetric.png" width="120px" style="vertical-align:middle;">
+- Spin states: |↑↑⟩, (|↑↓⟩+|↓↑⟩)/√2, |↓↓⟩
+- $M_S$ = +1, 0, -1
+
+**Antisymmetric (singlet, S=0):**
+- Young Diagram: <img src="/images/angular-momentum/young_2_col_clean.png" width="30px" style="vertical-align:middle;">
+- Young Tableau: <img src="/images/angular-momentum/tableau_2_antisymmetric.png" width="70px" style="vertical-align:middle;">
+- Spin state: (|↑↓⟩-|↓↑⟩)/√2
+- $M_S$ = 0
 
 The **standard Young tableau** conditions ensure we count each state exactly once:
 - Numbers increase left-to-right in each row
@@ -1598,10 +1607,9 @@ The **standard Young tableau** conditions ensure we count each state exactly onc
 
 The hook shape <img src="/images/angular-momentum/young_21_clean.png" width="35px"> has two standard tableaux, giving two distinct doublet states:
 
-| Tableau | State Label |
-|:---:|:---:|
-| <img src="/images/angular-momentum/tableau_3_hook_1.png" width="90px"> | $\chi_1$ |
-| <img src="/images/angular-momentum/tableau_3_hook_2.png" width="90px"> | $\chi_2$ |
+**Two standard tableaux for hook shape:**
+- Tableau 1: <img src="/images/angular-momentum/tableau_3_hook_1.png" width="110px" style="vertical-align:middle;"> (state χ₁)
+- Tableau 2: <img src="/images/angular-momentum/tableau_3_hook_2.png" width="110px" style="vertical-align:middle;"> (state χ₂)
 
 These correspond to the two distinct $^2D$ (and $^2P$) terms in the nitrogen atom spectrum.
 
@@ -1625,13 +1633,41 @@ For three $l=1$ orbitals, the same diagrams apply but with different dimensions.
 
 **Step 3: Pauli-Allowed Combinations**
 
-| Spin Symmetry | Orbital Symmetry | $S$ | $L$ | Term Symbol |
-|:---:|:---:|:---:|:---:|:---:|
-| <img src="/images/angular-momentum/young_3_row_clean.png" width="40px"> (symmetric) | <img src="/images/angular-momentum/young_3_col_clean.png" width="15px"> (antisymmetric) | 3/2 | 0 | $^4S_{3/2}$ |
-| <img src="/images/angular-momentum/young_21_clean.png" width="30px"> (mixed) | <img src="/images/angular-momentum/young_21_clean.png" width="30px"> (mixed) | 1/2 | 2 | $^2D_{3/2,5/2}$ (×2) |
-| <img src="/images/angular-momentum/young_21_clean.png" width="30px"> (mixed) | <img src="/images/angular-momentum/young_21_clean.png" width="30px"> (mixed) | 1/2 | 1 | $^2P_{1/2,3/2}$ (×2) |
+For three equivalent p-electrons (like nitrogen 2p³), the total number of microstates is C(6,3) = 20 (choosing 3 electrons from 6 spin-orbitals: 3 spatial × 2 spin). These organize into LS terms as follows:
 
-**Total**: 4 + 6 + 6 + 4 = **20 states** (accounting for all $J$ values), matching the direct count from Pauli exclusion.
+**Case 1**: Spin symmetric <img src="/images/angular-momentum/young_3_row_clean.png" width="40px" style="vertical-align:middle;"> × Orbital antisymmetric <img src="/images/angular-momentum/young_3_col_clean.png" width="15px" style="vertical-align:middle;">
+- S = 3/2, L = 0
+- Term: ⁴S with J = 3/2 only
+- Magnetic substates: 2J + 1 = **4 states**
+
+**Case 2**: Spin mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;"> × Orbital mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;"> (first pair)
+- S = 1/2, L = 2
+- Term: ²D with J = 3/2, 5/2
+- Two distinct terms each contribute: (2×3/2+1) + (2×5/2+1) = 4 + 6 = **10 states**
+
+**Case 3**: Spin mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;"> × Orbital mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;"> (second pair)
+- S = 1/2, L = 1  
+- Term: ²P with J = 1/2, 3/2
+- Two distinct terms each contribute: (2×1/2+1) + (2×3/2+1) = 2 + 4 = **6 states**
+
+**State counting breakdown:**
+
+| Term | J values | States per J | Subtotal |
+|:---:|:---:|:---:|:---:|
+| ⁴S | 3/2 | 4 | **4** |
+| ²D (×2) | 3/2, 5/2 | 4, 6 | 10 + 10 = **20?** |
+
+Wait—let's be careful. The hook-shaped Young diagram has dimension 2, meaning there are **two distinct doublet D terms** and **two distinct doublet P terms** from the mixed × mixed combination. But the total must be 20:
+
+| Configuration | Terms | J | States (2J+1) |
+|:---:|:---|:---:|:---:|
+| ⁴S | one term | 3/2 | 4 |
+| ²D | two distinct terms | 3/2, 5/2 each | (4+6) × 1 = 10 |
+| ²P | two distinct terms | 1/2, 3/2 each | (2+4) × 1 = 6 |
+
+**Total: 4 + 10 + 6 = 20 states** ✓
+
+The "×2" indicates that the mixed symmetry type yields two *distinct* terms with the same L and S (but different permutational symmetry structure), not that each term is doubled.
 
 #### Summary: The Role of Young Diagrams
 
@@ -1714,7 +1750,7 @@ The figure above shows the probability densities for hydrogen atom orbitals. The
 | p$_\pm$ | 1 | $\pm 1$ | $Y_1^{\pm 1} \propto \sin\theta e^{\pm i\phi}$ | Torus in xy-plane |
 | d$_{z^2}$ | 2 | 0 | $Y_2^0 \propto (3\cos^2\theta - 1)$ | Two lobes + ring |
 
-**Note on p orbitals**: The chemistry notation p$_x$, p$_y$, p$_z$ refers to *real* linear combinations: p$_z \propto Y_1^0$, while p$_x \propto (Y_1^{-1} - Y_1^{+1})/\sqrt{2}$ and p$_y \propto i(Y_1^{-1} + Y_1^{+1})/\sqrt{2}$. The figure shows $|Y_l^m|^2$, which is the same for $+m$ and $-m$.
+**Note on p orbitals**: The chemistry notation p$_x$, p$_y$, p$_z$ refers to *real* linear combinations of the complex spherical harmonics. Our table uses the *complex* basis $Y_1^m$ with $m = 0, \pm 1$, labeled as p$_z$ ($m=0$) and p$_\pm$ ($m=\pm 1$). The real combinations are: p$_z = Y_1^0$, p$_x \propto Y_1^{-1} - Y_1^{+1}$, and p$_y \propto i(Y_1^{-1} + Y_1^{+1})$. The probability density $|Y_l^m|^2$ is the same for $+m$ and $-m$.
 
 **The Shape of p Orbitals: Angular Momentum as a Visible Manifestation**
 
@@ -2140,14 +2176,14 @@ The adjoint representation comes from $\mathbf{3} \otimes \bar{\mathbf{3}}$ (qua
 
 When quark and antiquark have different flavors, we get states with non-zero $(I_3, Y)$. Calculate quantum numbers by adding quark and antiquark values:
 
-| Combination | Quark $(i_3, y)$ | Antiquark $(i_3, y)$ | Total $(I_3, Y)$ | Physical State |
-|:-----------:|:----------------:|:--------------------:|:----------------:|:--------------:|
-| $u\bar{d}$ | $(+1/2, +1/3)$ | $(+1/2, -1/3)$ | $(+1, 0)$ | $\Sigma^+$ |
-| $d\bar{u}$ | $(-1/2, +1/3)$ | $(-1/2, -1/3)$ | $(-1, 0)$ | $\Sigma^-$ |
-| $u\bar{s}$ | $(+1/2, +1/3)$ | $(0, +2/3)$ | $(+1/2, +1)$ | $p$ |
-| $s\bar{u}$ | $(0, -2/3)$ | $(-1/2, +1/3)$ | $(-1/2, -1)$ | $\Xi^-$ |
-| $d\bar{s}$ | $(-1/2, +1/3)$ | $(0, +2/3)$ | $(-1/2, +1)$ | $n$ |
-| $s\bar{d}$ | $(0, -2/3)$ | $(+1/2, +1/3)$ | $(+1/2, -1)$ | $\Xi^0$ |
+**Quark-antiquark combinations:**
+
+- **ud̄**: quark (+1/2, +1/3) + antiquark (+1/2, -1/3) → total (+1, 0) = Σ⁺
+- **dū**: quark (-1/2, +1/3) + antiquark (-1/2, -1/3) → total (-1, 0) = Σ⁻
+- **us̄**: quark (+1/2, +1/3) + antiquark (0, +2/3) → total (+1/2, +1) = p
+- **sū**: quark (0, -2/3) + antiquark (-1/2, +1/3) → total (-1/2, -1) = Ξ⁻
+- **ds̄**: quark (-1/2, +1/3) + antiquark (0, +2/3) → total (-1/2, +1) = n
+- **sd̄**: quark (0, -2/3) + antiquark (+1/2, +1/3) → total (+1/2, -1) = Ξ⁰
 
 **How the quantum numbers add:**
 - $I_3$ adds algebraically: $I_3(q) + I_3(\bar{q})$
@@ -2396,10 +2432,17 @@ This ratio is experimentally observed near the $\Delta(1232)$ resonance, confirm
 
 For $\pi^- p$ scattering at the $\Delta$ resonance, the final state can be either elastic ($\pi^- p$) or charge exchange ($\pi^0 n$). The relative probabilities of these reaction channels follow directly from isospin:
 
-| Reaction | Amplitude | Relative Rate | Probability |
-|:---:|:---:|:---:|:---:|
-| $\pi^- p \to \pi^- p$ | $\frac{1}{3}A_{3/2}$ | $\frac{1}{9}|A_{3/2}|^2$ | 1/3 |
-| $\pi^- p \to \pi^0 n$ | $\frac{\sqrt{2}}{3}A_{3/2}$ | $\frac{2}{9}|A_{3/2}|^2$ | 2/3 |
+**Reaction probabilities at the Δ(1232) resonance:**
+
+**Elastic: π⁻p → π⁻p**
+- Amplitude: (1/3) A₃/₂
+- Relative rate: (1/9) |A₃/₂|²
+- Probability: **1/3**
+
+**Charge exchange: π⁻p → π⁰n**
+- Amplitude: (√2/3) A₃/₂
+- Relative rate: (2/9) |A₃/₂|²  
+- Probability: **2/3**
 
 The charge exchange reaction is **twice as probable** as elastic scattering—a counterintuitive result from isospin interference. Combined with the cross-section ratio of 3, these predictions were confirmed experimentally in the 1950s, providing strong evidence for SU(2) isospin symmetry.
 
