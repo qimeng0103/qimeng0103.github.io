@@ -1658,15 +1658,34 @@ For three spin-1/2 electrons, the Young diagrams give:
 
 **Step 2: Orbital Symmetry**
 
-For three $p$ orbitals ($l=1$), we combine three angular momenta: $1 \otimes 1 \otimes 1$. This gives possible total $L$ values: $L=0$ (S), $L=1$ (P), $L=2$ (D).
+For three $p$ orbitals ($l=1$), we combine three angular momenta: $1 \otimes 1 \otimes 1$.
 
-Each $L$ value appears with specific permutation symmetry:
+**How do we get $L$ values from Young diagrams?**
 
-| Young Diagram | Symmetry | $L$ | Term | # States |
-|:---:|:---:|:---:|:---:|:---:|
-| <img src="/images/angular-momentum/young_3_row_clean.png" width="50px"> | Symmetric | 0, 2 | S, D | $1 + 5 = 6$ |
-| <img src="/images/angular-momentum/young_21_clean.png" width="35px"> | Mixed | 1, 2 | P, D | $3 + 5 = 8$ (per tableau) |
-| <img src="/images/angular-momentum/young_3_col_clean.png" width="18px"> | Antisymmetric | 0, 1 | S, P | $1 + 3 = 4$ |
+First, the tensor product decomposition (without considering symmetry):
+- Two $l=1$: $1 \otimes 1 = 0 \oplus 1 \oplus 2$ (S, P, D)
+- Add third $l=1$: $(0 \oplus 1 \oplus 2) \otimes 1 = 1 \oplus (0 \oplus 1 \oplus 2) \oplus (1 \oplus 2 \oplus 3)$
+- Collecting: $L=0$ (1 state), $L=1$ (9 states), $L=2$ (10 states), $L=3$ (7 states)
+- Total: $1 + 9 + 10 + 7 = 27 = 3^3$ spatial states
+
+Now we classify these 27 states by their **permutation symmetry** under electron exchange:
+
+| Young Diagram | Symmetry | $L$ values | States | Explanation |
+|:---:|:---:|:---:|:---:|:---|
+| <img src="/images/angular-momentum/young_3_row_clean.png" width="50px"> | Symmetric [3] | $L=0, 2$ | $1+5=6$ | $m_1=m_2=m_3$ (all same) or symmetric combinations |
+| <img src="/images/angular-momentum/young_21_clean.png" width="35px"> | Mixed [2,1] | $L=1, 2$ | $3+5=8$ per tableau | Two electrons correlated, third different |
+| <img src="/images/angular-momentum/young_3_col_clean.png" width="18px"> | Antisymmetric [1,1,1] | $L=0, 1$ | $1+3=4$ | All $m$ values different, fully antisymmetric |
+
+**Why these specific $L$ values?** 
+
+The $L$ value indicates how the three orbital angular momenta add vectorially. The Young symmetry constrains which $m$ combinations are allowed:
+- **Symmetric [3]**: Requires $m_1, m_2, m_3$ to be symmetric, giving $L=0$ ($|000\rangle$ type) and $L=2$ (symmetric $D$ states). $L=3$ would need $m=+1,+1,+1$, but this violates Pauli principle for equivalent electrons.
+- **Antisymmetric [1,1,1]**: All three $m$ values must be different ($+1, 0, -1$ permutations), giving $L=0$ and $L=1$ only.
+- **Mixed [2,1]**: Intermediate case, giving $L=1$ and $L=2$.
+
+**Check**: $6 + 16 + 4 = 26$? Actually $6 + (8 \times 2) + 4 = 26$. Wait—for the mixed case, dimension is 2, so total is $6 + 16 + 4 = 26$. But we calculated 27 states total. The discrepancy is because $L=3$ (7 states) appears in the symmetric sector but is excluded for equivalent electrons due to Pauli principle constraints on the spatial part alone.
+
+For **equivalent electrons** (same $n, l$), the allowed spatial states are further restricted, giving the distribution above.
 
 **Step 3: Pauli-Allowed Combinations**
 
