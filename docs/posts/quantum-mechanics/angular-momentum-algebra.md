@@ -1664,7 +1664,7 @@ For three $p$ orbitals ($l=1$), we need to combine three angular momenta. The si
 
 **Total $M = m_1 + m_2 + m_3$ and total $L$:**
 
-| $M$ | $|m_1, m_2, m_3\rangle$ combinations | Count | Implied $L$ |
+| $M$ | Combinations | Count | Implied $L$ |
 |:---:|:---|:---:|:---:|
 | $+3$ | $|+1,+1,+1\rangle$ | 1 | $L \geq 3$ |
 | $+2$ | $|+1,+1,0\rangle$ and permutations | 3 | $L \geq 2$ |
