@@ -1658,80 +1658,49 @@ For three spin-1/2 electrons, the Young diagrams give:
 
 **Step 2: Orbital Symmetry**
 
-For three $l=1$ orbitals, we first decompose the tensor product to find possible $L$ values:
+For three $p$ orbitals ($l=1$), we combine three angular momenta: $1 \otimes 1 \otimes 1$. This gives possible total $L$ values: $L=0$ (S), $L=1$ (P), $L=2$ (D).
 
-$$\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{1} \oplus \mathbf{3} \oplus \mathbf{3} \oplus \mathbf{7} \oplus \mathbf{5} \oplus \mathbf{5}'$$
+Each $L$ value appears with specific permutation symmetry:
 
-In terms of $L$ ($L=0,1,2$ for $l=1$):
-- $L=0$ (S): appears in symmetric (1) and antisymmetric (1) — total 2
-- $L=1$ (P): appears in antisymmetric (1) and mixed (2) — total 3  
-- $L=2$ (D): appears in symmetric (1) and mixed (2) — total 3
-
-Organized by Young symmetry:
-
-| Young Diagram | Symmetry | $L$ values | Degeneracy |
-|:---:|:---:|:---:|:---:|
-| <img src="/images/angular-momentum/young_3_row_clean.png" width="50px"> | Symmetric | $L=0, 2$ (S, D) | $1 + 5 = 6$ |
-| <img src="/images/angular-momentum/young_21_clean.png" width="35px"> | Mixed | $L=1, 2$ (P, D) | $(3 + 5) \times 2 = 16$ |
-| <img src="/images/angular-momentum/young_3_col_clean.png" width="18px"> | Antisymmetric | $L=0, 1$ (S, P) | $1 + 3 = 4$ |
-
-**Check**: $6 + 16 + 4 = 26$ spatial states. Combined with 8 spin states, naive product gives $26 \times 8 = 208$ — far more than 20. The Pauli principle restricts to antisymmetric combinations only.
+| Young Diagram | Symmetry | $L$ | Term | # States |
+|:---:|:---:|:---:|:---:|:---:|
+| <img src="/images/angular-momentum/young_3_row_clean.png" width="50px"> | Symmetric | 0, 2 | S, D | $1 + 5 = 6$ |
+| <img src="/images/angular-momentum/young_21_clean.png" width="35px"> | Mixed | 1, 2 | P, D | $3 + 5 = 8$ (per tableau) |
+| <img src="/images/angular-momentum/young_3_col_clean.png" width="18px"> | Antisymmetric | 0, 1 | S, P | $1 + 3 = 4$ |
 
 **Step 3: Pauli-Allowed Combinations**
 
-For fermions, the **total wavefunction must be totally antisymmetric** under particle exchange:
-$$\Psi_{\text{total}} = \Psi_{\text{spin}} \times \Psi_{\text{orbital}} \times \Psi_{\text{other}} = \text{antisymmetric}$$
+For three equivalent p-electrons, total microstates = $C(6,3) = 20$.
 
-For three equivalent p-electrons (nitrogen $2p^3$), total microstates = $C(6,3) = 20$. The allowed combinations follow the rule:
+The **total wavefunction must be antisymmetric**: $\Psi_{\text{spin}} \times \Psi_{\text{orbital}} = $ antisymmetric.
 
-| Spin Symmetry | Orbital Symmetry | Allowed? | Reason |
-|:---:|:---:|:---:|:---|
-| Symmetric (row) | Antisymmetric (column) | ✓ | S × A = A |
-| Mixed (hook) | Mixed (hook) | ✓ | M × M = A + S + M, contains A |
-| Antisymmetric (column) | Symmetric (row) | ✓ | A × S = A |
+Allowed combinations:
 
-This gives three physical cases:
+| Spin | Orbital | Result | Term |
+|:---:|:---:|:---:|:---:|
+| Symmetric (S=3/2) | Antisymmetric (L=0) | ✓ | **$^4S$** |
+| Mixed (S=1/2) | Mixed (L=2) | ✓ | **$^2D$ (×2)** |
+| Mixed (S=1/2) | Mixed (L=1) | ✓ | **$^2P$ (×2)** |
 
-**Case 1**: Spin symmetric <img src="/images/angular-momentum/young_3_row_clean.png" width="40px" style="vertical-align:middle;"> × Orbital antisymmetric <img src="/images/angular-momentum/young_3_col_clean.png" width="15px" style="vertical-align:middle;">
-- $S = 3/2$, $L = 0$ (from antisymmetric orbital)
-- Term: $^4S_{3/2}$
-- States: $2J + 1 = 4$
+**Why "×2" for $^2D$ and $^2P$?**
 
-**Case 2 (D states): Mixed × Mixed**
+The hook-shaped Young diagram has **dimension 2**, meaning there are 2 independent wavefunctions with mixed symmetry. When both spin and orbital are mixed, we get 2 distinct antisymmetric combinations for each $L$:
+- **Two** different $^2D$ wavefunctions (same $L=2$, same $S=1/2$, different internal symmetry)
+- **Two** different $^2P$ wavefunctions (same $L=1$, same $S=1/2$, different internal symmetry)
 
-Spin mixed (dim 2) × Orbital mixed (dim 2 for D, with $L=2$) = 4 combinations.
+**State counting (the crucial part):**
 
-Decomposition: $\mathbf{M} \times \mathbf{M} = \mathbf{A} + \mathbf{S} + \mathbf{M}_1 + \mathbf{M}_2$
+| Term | $S$ | $L$ | $J$ | Magnetic States $(2J+1)$ | Count |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| $^4S$ | 3/2 | 0 | 3/2 | 4 | **4** |
+| $^2D^{(1)}$ | 1/2 | 2 | 3/2, 5/2 | 4 + 6 | part of 10 |
+| $^2D^{(2)}$ | 1/2 | 2 | 3/2, 5/2 | 4 + 6 | part of 10 |
+| $^2P^{(1)}$ | 1/2 | 1 | 1/2, 3/2 | 2 + 4 | part of 6 |
+| $^2P^{(2)}$ | 1/2 | 1 | 1/2, 3/2 | 2 + 4 | part of 6 |
 
-The **antisymmetric part** gives **2 distinct antisymmetric wavefunctions**:
-- Both have $S=1/2$, $L=2$ ($^2D$)
-- Both have $J = 3/2, 5/2$
-- Each is a **complete, independent quantum state**
+**Total: 4 + 10 + 6 = 20 states** ✓
 
-**The critical insight**: There are 2 distinct $^2D$ terms **in total**, not 2 sets of 10 states each.
-
-The counting works as follows:
-- Spatial mixed-$L=2$ states: 5 magnetic sublevels × 2 symmetry types = 10 states
-- Spin mixed states: 2 magnetic sublevels × 2 symmetry types = 4 states
-- Antisymmetric combinations: Only 2 specific linear combinations survive
-
-These 2 combinations **are** the 2 distinct $^2D$ terms. Together they occupy:
-- $J=3/2$: 4 magnetic sublevels (shared between the 2 terms)
-- $J=5/2$: 6 magnetic sublevels (shared between the 2 terms)
-- **Total: 10 states for both $^2D$ terms combined**
-
-**Case 3 (P states): Mixed × Mixed**
-- 2 distinct $^2P$ terms ($S=1/2$, $L=1$)
-- Together: $J=1/2$ (2 states) + $J=3/2$ (4 states) = **6 states total**
-
-**State counting summary:**
-
-| Term | # of distinct terms | $J$ values | States per term | Total |
-|:---:|:---:|:---:|:---:|:---:|
-| $^4S$ | 1 | $3/2$ | 4 | 4 |
-| $^2D$ | 2 | $3/2, 5/2$ | $4 + 6 = 10$ | 10 |
-| $^2P$ | 2 | $1/2, 3/2$ | $2 + 4 = 6$ | 6 |
-| **Total** | | | | **20** |
+**Key clarification**: The two $^2D$ terms (and two $^2P$ terms) are **different wavefunctions** but they **share the same $J$ structure**. The 10 $^2D$ states are distributed among two distinct terms—not 10 states each. Similarly for $^2P$: 6 states total, not 6 each.
 
 #### Summary: The Role of Young Diagrams
 
