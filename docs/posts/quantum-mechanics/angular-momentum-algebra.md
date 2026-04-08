@@ -1685,10 +1685,38 @@ From $M_{\max} = 3$, we get $L=3$. Working down: $L=3$ (7 states), $L=2$ (10 sta
 
 **Why only 26?** The state $|+1,+1,+1\rangle$ (and $|-1,-1,-1\rangle$) with $L=3$ is excluded for **equivalent electrons**—it would require all three electrons in the same $m$ state, violating Pauli exclusion. For distinguishable particles, $L=3$ would exist (27 total).
 
+**Detailed explanation of the hook [2,1] → $L=1, 2$ correspondence:**
+
+The hook-shaped Young diagram has **dimension 2** (two standard tableaux). This means there are **two independent ways** to assign particle labels to the boxes while respecting the ordering rules.
+
+For orbital angular momentum:
+- Each standard tableau corresponds to a subspace with specific transformation properties
+- The hook symmetry allows both $L=1$ (P) and $L=2$ (D) states
+- $L=1$ has 3 magnetic sublevels ($m_L = -1, 0, +1$)
+- $L=2$ has 5 magnetic sublevels ($m_L = -2, -1, 0, +1, +2$)
+
+**State counting per tableau:** $3 + 5 = 8$ states
+
+**Total for hook symmetry:** $8 \times 2 = 16$ states
+
+**Physical interpretation:**
+- The two standard tableaux represent two different ways the three electrons can be correlated
+- Both ways support P-states ($L=1$) and D-states ($L=2$)
+- The total number of states is the product of magnetic sublevels and the number of distinct symmetry types
+
+**Summary table with breakdown:**
+
+| Young Diagram | Symmetry | Dimension | $L$ values | Magnetic States | Total |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| [3] Row | Symmetric | 1 | 0, 2 | $1 + 5 = 6$ | 6 |
+| [2,1] Hook | Mixed | **2** | 1, 2 | $(3 + 5) \times$ **2** = 16 | 16 |
+| [1,1,1] Column | Antisymmetric | 1 | 0, 1 | $1 + 3 = 4$ | 4 |
+| **Total** | | | | | **26** |
+
 **How to read the correspondence:**
-- **Row [3]** = symmetric: Includes states like $|0,0,0\rangle$ ($L=0$) and symmetric $D$ states ($L=2$)
-- **Column [1,1,1]** = antisymmetric: All $m$ values different, like $|+1,0,-1\rangle$ and permutations → $L=0, 1$
-- **Hook [2,1]** = mixed: Intermediate symmetry → $L=1, 2$
+- **Row [3]** = symmetric: All three electrons treated equally; includes $|0,0,0\rangle$ ($L=0$) and symmetric $D$ states ($L=2$)
+- **Column [1,1,1]** = antisymmetric: All three $m$ values must be different ($+1, 0, -1$ in some order) → only $L=0, 1$ possible
+- **Hook [2,1]** = mixed: Two electrons form a pair (symmetric), third is distinct; supports both $L=1$ and $L=2$
 
 **Step 3: Pauli-Allowed Combinations**
 
