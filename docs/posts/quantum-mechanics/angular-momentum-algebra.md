@@ -1587,8 +1587,8 @@ While Young diagrams show symmetry types, **Young tableaux** enumerate the actua
 
 | Symmetry | Young Diagram | Young Tableau | Spin State | $S$ | $M_S$ |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| Symmetric | <img src="/images/angular-momentum/young_2_row_clean.png" width="40px"> | <img src="/images/angular-momentum/tableau_2_symmetric.png" width="60px"> | $\uparrow\uparrow$, $\frac{\uparrow\downarrow+\downarrow\uparrow}{\sqrt{2}}$, $\downarrow\downarrow$ | 1 | +1, 0, -1 |
-| Antisymmetric | <img src="/images/angular-momentum/young_2_col_clean.png" width="20px"> | <img src="/images/angular-momentum/tableau_2_antisymmetric.png" width="35px"> | $\frac{\uparrow\downarrow-\downarrow\uparrow}{\sqrt{2}}$ | 0 | 0 |
+| Symmetric | <img src="/images/angular-momentum/young_2_row_clean.png" width="50px"> | <img src="/images/angular-momentum/tableau_2_symmetric.png" width="100px"> | $|\uparrow\uparrow\rangle$, $\frac{|\uparrow\downarrow\rangle+|\downarrow\uparrow\rangle}{\sqrt{2}}$, $|\downarrow\downarrow\rangle$ | 1 | +1, 0, -1 |
+| Antisymmetric | <img src="/images/angular-momentum/young_2_col_clean.png" width="30px"> | <img src="/images/angular-momentum/tableau_2_antisymmetric.png" width="60px"> | $\frac{|\uparrow\downarrow\rangle-|\downarrow\uparrow\rangle}{\sqrt{2}}$ | 0 | 0 |
 
 The **standard Young tableau** conditions ensure we count each state exactly once:
 - Numbers increase left-to-right in each row
@@ -1600,8 +1600,8 @@ The hook shape <img src="/images/angular-momentum/young_21_clean.png" width="35p
 
 | Tableau | State Label |
 |:---:|:---:|
-| <img src="/images/angular-momentum/tableau_3_hook_1.png" width="55px"> | $\chi_1$ |
-| <img src="/images/angular-momentum/tableau_3_hook_2.png" width="55px"> | $\chi_2$ |
+| <img src="/images/angular-momentum/tableau_3_hook_1.png" width="90px"> | $\chi_1$ |
+| <img src="/images/angular-momentum/tableau_3_hook_2.png" width="90px"> | $\chi_2$ |
 
 These correspond to the two distinct $^2D$ (and $^2P$) terms in the nitrogen atom spectrum.
 
@@ -1643,11 +1643,7 @@ Young diagrams and tableaux serve three essential functions in quantum mechanics
 | **Count states** | Dimension formula + standard tableaux count basis states | Hook shape gives 2 mixed-symmetry doublets |
 | **Enforce constraints** | Total wavefunction must be appropriately symmetric/antisymmetric | Spin (sym) × orbital (antisym) = antisymmetric total for fermions |
 
-**Key distinction**: Young diagrams classify *permutation symmetry types* (which are determined by the tensor product structure of SU(N)), while weight diagrams classify *representations within a given symmetry type*. For multi-particle systems, we need both:
-- Weight diagrams tell us the quantum numbers $(I_3, Y)$ or $(L, L_z)$
-- Young diagrams tell us how states transform under particle exchange
-
-The power of this approach is that symmetry constraints are **kinematic**—they depend only on the group structure, not on the detailed Hamiltonian. Whether calculating atomic energy levels or hadron masses, the allowed symmetry patterns are fixed by group theory alone.
+**Key distinction**: Young diagrams classify *permutation symmetry types* (determined by tensor product structure), while weight diagrams classify *representations* (quantum numbers like $I_3$ or $L_z$). For multi-particle systems, we need both. The power of this approach is that symmetry constraints are **kinematic**—they depend only on group structure, not on detailed dynamics.
 ---
 
 ## Part VI: Spherical Harmonics and Central Potentials
@@ -1706,6 +1702,19 @@ where $P_l^m$ are the associated Legendre polynomials.
 <img src="/images/angular-momentum/spherical_harmonics_overview.png" width="700px" alt="Spherical harmonics probability density">
 
 *Angular probability density $|Y_l^m|^2$ for $l=0,1,2$ states (x-z plane cross-section).*
+
+**Orbital Names and Spherical Harmonics**
+
+The figure above shows the probability densities for hydrogen atom orbitals. The correspondence between orbital names (from chemistry) and spherical harmonics is:
+
+| Orbital | $l$ | $m$ | Spherical Harmonic | Shape |
+|:---:|:---:|:---:|:---:|:---|
+| s | 0 | 0 | $Y_0^0$ | Spherical |
+| p$_z$ | 1 | 0 | $Y_1^0 \propto \cos\theta$ | Dumbbell along z |
+| p$_\pm$ | 1 | $\pm 1$ | $Y_1^{\pm 1} \propto \sin\theta e^{\pm i\phi}$ | Torus in xy-plane |
+| d$_{z^2}$ | 2 | 0 | $Y_2^0 \propto (3\cos^2\theta - 1)$ | Two lobes + ring |
+
+**Note on p orbitals**: The chemistry notation p$_x$, p$_y$, p$_z$ refers to *real* linear combinations: p$_z \propto Y_1^0$, while p$_x \propto (Y_1^{-1} - Y_1^{+1})/\sqrt{2}$ and p$_y \propto i(Y_1^{-1} + Y_1^{+1})/\sqrt{2}$. The figure shows $|Y_l^m|^2$, which is the same for $+m$ and $-m$.
 
 **The Shape of p Orbitals: Angular Momentum as a Visible Manifestation**
 
