@@ -2018,112 +2018,64 @@ If $\theta_1 \neq \theta_2$ (mod $4\pi$), then $D(U_1) \neq D(U_2)$ as $2 \times
 
 **2. Projective Representation**
 
-In quantum mechanics, states are rays: $|\psi\rangle$ and $e^{i\phi}|\psi\rangle$ represent the same physical state. A **projective representation** satisfies:
+In quantum mechanics, states are **rays** in Hilbert space: $|\psi\rangle$ and $e^{i\phi}|\psi\rangle$ represent the **same physical state**. This means the quantum operators need only satisfy the group multiplication law **up to a phase**.
+
+**Definition:** A **projective representation** satisfies:
 $$D(g_1)D(g_2) = e^{i\omega(g_1,g_2)} D(g_1g_2)$$
 
-The product is only required up to a phase factor.
+where $\omega(g_1, g_2)$ is a phase factor that may depend on the group elements (called a **2-cocycle**).
 
-**Example:** Half-integer spin representations of SO(3) are projective. For spin-1/2:
-- SO(3) rotation $R_z(2\pi) = I$ (identity)
-- But the quantum operator is $D^{(1/2)}(R_z(2\pi)) = -I$
+**Key difference from true representation:**
+- True representation: $D(g_1)D(g_2) = D(g_1g_2)$ exactly
+- Projective representation: $D(g_1)D(g_2) = e^{i\omega}D(g_1g_2)$ — same physical state
 
-So $D(I) = I$ but $D(R_z(2\pi)) = -I$, even though $R_z(2\pi) = I$ in SO(3). This is NOT a true representation of SO(3), but it IS a projective representation because $-I$ differs from $I$ only by a phase ($-1 = e^{i\pi}$).
+**Nontrivial example:** Consider three rotations about the z-axis with angles $\theta_1$, $\theta_2$, $\theta_3$ such that $\theta_1 + \theta_2 + \theta_3 = 2\pi$ but individually nonzero.
+
+For spin-1/2:
+- $D^{(1/2)}(R_z(\theta)) = e^{-i\theta\sigma_z/2}$
+- $D(R_z(\theta_1))D(R_z(\theta_2))D(R_z(\theta_3)) = e^{-i(\theta_1+\theta_2+\theta_3)\sigma_z/2} = e^{-i\pi\sigma_z} = -I$
+
+But each pair multiplies with a phase. For example, if $\theta_1 = \theta_2 = \theta_3 = 2\pi/3$:
+$$D(\theta_1)D(\theta_2) = e^{-i2\pi/3 \cdot \sigma_z} = e^{i\pi/3} D(\theta_1 + \theta_2)$$
+
+The accumulated phase factors create a nontrivial cocycle $\omega(g_1, g_2, g_3)$.
+
+**The SO(3) Spin-1/2 Example:**
+- SO(3) rotation $R_z(2\pi) = I$ (identity element)
+- Quantum operator: $D^{(1/2)}(R_z(2\pi)) = e^{-i\pi\sigma_z} = -I$
+
+So $D(I) = I$ but $D(R_z(2\pi)) = -I$, even though $R_z(2\pi) = I$ in SO(3). This is NOT a true representation, but it IS a projective representation because $-I = e^{i\pi}I$ differs only by a phase.
 
 **3. Fundamental Representation**
 
-The **fundamental representation** is the defining representation of the group—the smallest one used to define the group itself.
+The **fundamental representation** is the defining representation of the group—the matrix representation used to define the group itself.
 
-**Example 1 (SU(2)):** SU(2) is defined as $2 \times 2$ unitary matrices with $\det = 1$. The fundamental representation is these matrices acting on $\mathbb{C}^2$ (2-component spinors):
-$$\psi = \begin{pmatrix} \psi_1 \\ \psi_2 \end{pmatrix} \xrightarrow{U} U\psi$$
+**SU(2):** Defined as $2 \times 2$ unitary matrices with $\det = 1$, acting on $\mathbb{C}^2$ (spinors).
 
-**Example 2 (SU(3)):** SU(3) is defined as $3 \times 3$ unitary matrices with $\det = 1$. The fundamental representation acts on $\mathbb{C}^3$ (quark triplet: up, down, strange).
+**SU(3):** Defined as $3 \times 3$ unitary matrices with $\det = 1$, acting on $\mathbb{C}^3$ (quark triplet).
 
 **4. Adjoint Representation**
 
-The **adjoint representation** is a representation where the group acts on its own Lie algebra (the space of generators).
-
-**Understanding the Adjoint Representation:**
-
-A Lie group $G$ has generators $\{T_a\}$ forming a vector space $\mathfrak{g}$ (the Lie algebra). For SU(2), the generators are $\{J_x, J_y, J_z\}$—a 3D vector space.
-
-A group element $g \in G$ acts on a generator $T \in \mathfrak{g}$ by conjugation:
+The **adjoint representation** is where the group acts on its own Lie algebra (generator space) via **similarity transformation**:
 $$T \xrightarrow{g} g T g^{-1}$$
 
-This defines the adjoint representation: $D_{\text{adj}}(g) T = g T g^{-1}$
+For SU(2), this is the spin-1 (vector) representation. For SU(3), the adjoint is 8-dimensional (gluons).
 
-**Why it is a representation:** Check that $D(g_1g_2) = D(g_1)D(g_2)$:
-$$D_{\text{adj}}(g_1g_2)T = (g_1g_2)T(g_1g_2)^{-1} = g_1(g_2 T g_2^{-1})g_1^{-1} = D_{\text{adj}}(g_1)[D_{\text{adj}}(g_2)T]$$
-
-**Example (SU(2)):** The adjoint representation has dimension 3 (equal to the number of generators $J_x, J_y, J_z$). For a rotation $R_z(\theta)$ about the $z$-axis:
-$$J_x \to \cos\theta \, J_x + \sin\theta \, J_y$$
-$$J_y \to -\sin\theta \, J_x + \cos\theta \, J_y$$
-$$J_z \to J_z$$
-
-In matrix form (basis $\{J_x, J_y, J_z\}$):
-$$D_{\text{adj}}(R_z(\theta)) = \begin{pmatrix} \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1 \end{pmatrix}$$
-
-This is just the standard $3 \times 3$ rotation matrix! For SU(2), the adjoint representation is the spin-1 (vector) representation.
-
-**Summary of Dimensions:**
-- SU(2): Fundamental = 2D (spin-1/2), Adjoint = 3D (spin-1)
-- SU(3): Fundamental = 3D (quark), Adjoint = 8D (gluon)
+**Why similarity transformation?** The Lie algebra transforms under the group by conjugation, preserving the commutation relations.
 
 ---
 
-**Properties of Representations**
+**Characters and Orthogonality**
 
-**Character**
+The **character** of a representation is the trace: $\chi_j(g) = \text{Tr}[D^{(j)}(g)]$. Characters depend only on the **conjugacy class** (e.g., rotation angle $\theta$, not axis).
 
-The **character** of a representation is the trace:
-$$\chi_j(g) = \text{Tr}[D^{(j)}(g)]$$
+**Example:** For spin-$j$ rotation by angle $\theta$:
+$$\chi_j(\theta) = \sum_{m=-j}^{j} e^{-im\theta} = \frac{\sin((j+1/2)\theta)}{\sin(\theta/2)}$$
 
-Characters are powerful because they depend only on the **conjugacy class** of $g$ (elements related by $g' = hgh^{-1}$ have the same character). For rotations, this means $\chi_j$ depends only on the rotation angle $\theta$, not the axis.
-
-**Example (Spin-1/2):**
-For rotation by angle $\theta$ about any axis:
-$$D^{(1/2)}(\theta) = \begin{pmatrix} e^{-i\theta/2} & 0 \\ 0 & e^{i\theta/2} \end{pmatrix}$$
-$$\chi_{1/2}(\theta) = e^{-i\theta/2} + e^{i\theta/2} = 2\cos(\theta/2)$$
-
-**Orthogonality Relation and Haar Measure**
-
-Characters of different irreducible representations are orthogonal:
+**Orthogonality:** Characters of different irreps are orthogonal under group integration:
 $$\int_G dg \, \chi_j^*(g)\chi_{j'}(g) = \delta_{jj'}$$
 
-**Why the Haar measure?**
-
-The **Haar measure** $dg$ is the unique measure on the group that is invariant under group multiplication:
-$$\int_G f(g)dg = \int_G f(hg)dg = \int_G f(gh)dg$$
-
-For SO(3), the Haar measure is:
-$$dg = \frac{1}{2}\sin^2\frac{\theta}{2} \frac{d\theta}{2\pi} \frac{d\Omega}{4\pi}$$
-
-where $d\Omega$ is the solid angle for the rotation axis. The $\sin^2(\theta/2)$ factor accounts for the Jacobian when parameterizing rotations.
-
-**Example: Decomposing Tensor Products**
-
-To find how many times $D^{(j)}$ appears in $D^{(j_1)} \otimes D^{(j_2)}$:
-$$n_j = \int_0^{2\pi} \frac{d\theta}{\pi} \sin^2\frac{\theta}{2} \, \chi_{j_1}(\theta)\chi_{j_2}(\theta)\chi_j^*(\theta)$$
-
-For $j_1 = j_2 = 1/2$:
-- $\chi_{1/2}(\theta) = 2\cos(\theta/2)$
-- $\chi_0(\theta) = 1$ (singlet)
-- $\chi_1(\theta) = 1 + 2\cos\theta$ (triplet)
-
-Checking $n_0$ (singlet):
-$$n_0 \propto \int \sin^2\frac{\theta}{2} \cdot 4\cos^2\frac{\theta}{2} \cdot 1 \, d\theta$$
-$$= \int_0^{2\pi} \sin^2\theta \, d\theta = \pi$$
-
-Checking $n_1$ (triplet):
-$$n_1 \propto \int \sin^2\frac{\theta}{2} \cdot 4\cos^2\frac{\theta}{2} \cdot (1 + 2\cos\theta) \, d\theta$$
-Using $\sin^2(\theta/2)\cos^2(\theta/2) = \frac{1}{4}\sin^2\theta$:
-$$= \int_0^{2\pi} \sin^2\theta (1 + 2\cos\theta) d\theta = \pi$$
-
-So $n_0 = n_1 = 1$, confirming $\frac{1}{2} \otimes \frac{1}{2} = 0 \oplus 1$.
-
-**Summary:**
-- **Irreducible representation** = fundamental classification label ($j$)
-- **Multiplet** = set of states within one representation (degenerate under symmetry)
-- **Tensor product decomposition** = finding which $j$ values appear when systems combine
+**Application:** Decompose $\frac{1}{2} \otimes \frac{1}{2}$ by checking orthogonality with $\chi_0 = 1$ and $\chi_1 = 1 + 2\cos\theta$ — confirms $= 0 \oplus 1$.
 
 ### 7.2 Lie Algebras: Why the Identity?
 
@@ -2153,227 +2105,130 @@ $$R_z(\theta) = e^{-i\theta J_z/\hbar}$$
 
 The commutation relations $[J_i, J_j] = i\hbar\varepsilon_{ijk}J_k$ reflect the geometric structure of rotations: performing two rotations in different order differs by a third rotation.
 
-### 7.3 SU(2) vs. SO(3): Double Cover and Projective Representations
+### 7.3 SU(2) vs. SO(3): Double Cover
 
-**Same Algebra, Different Groups**
+**Same Algebra, Different Topology**
 
-SU(2) and SO(3) have **identical Lie algebras** but different global topology:
+SU(2) and SO(3) have identical Lie algebras but different global topology:
 
 | Property | SO(3) | SU(2) |
 |----------|-------|-------|
-| Group elements | 3×3 real orthogonal matrices | 2×2 complex unitary matrices with $\det = 1$ |
-| Topology | 3D ball with antipodal surface points identified | 3-sphere $S^3$ (no identifications) |
-| Fundamental group | $\pi_1 = \mathbb{Z}_2$ (has non-contractible loops) | $\pi_1 = \{e\}$ (simply connected) |
+| Elements | 3×3 orthogonal matrices | 2×2 unitary, $\det = 1$ |
+| Topology | 3D ball (antipodal ID) | 3-sphere $S^3$ |
+| Loops | Non-contractible loops exist | Simply connected |
 | Periodicity | $R(2\pi) = I$ | $U(2\pi) = -I$, $U(4\pi) = I$ |
 
-**Topology Explained:**
+**Fundamental Group (Brief Intro):**
 
-- **SO(3):** Can be visualized as a ball of radius $\pi$. A rotation by angle $\theta$ about axis $\mathbf{n}$ is point $\theta\mathbf{n}$. Opposite points on the surface ($\pi\mathbf{n}$ and $-\pi\mathbf{n}$) represent the same rotation—this is **antipodal identification**.
+The **fundamental group** $\pi_1$ classifies "loops" in the group manifold:
+- **SO(3):** $\pi_1 = \mathbb{Z}_2$ — there are two classes of loops: contractible and non-contractible. A $2\pi$ rotation is a non-contractible loop (you can't shrink it to a point without cutting).
+- **SU(2):** $\pi_1 = \{e\}$ — all loops are contractible. SU(2) is **simply connected**.
 
-- **SU(2):** Is a 3-sphere. Each point corresponds to a unique matrix $U = a_0 I + i\mathbf{a} \cdot \boldsymbol{\sigma}$ with $a_0^2 + |\mathbf{a}|^2 = 1$. No identifications needed.
-
-**The Double Cover:**
+**The Double Cover Map:**
 
 $$
 \text{SU(2)}/\mathbb{Z}_2 \cong \text{SO(3)}
 $$
 
-The map: For $U = e^{-i\theta \mathbf{n}\cdot\boldsymbol{\sigma}/2} \in$ SU(2), the corresponding SO(3) element rotates by angle $\theta$ about axis $\mathbf{n}$. Both $U$ and $-U$ map to the same SO(3) rotation.
+**Angle correspondence:** For SU(2) element $U = e^{-i\theta \mathbf{n}\cdot\boldsymbol{\sigma}/2}$:
+- The **same** angle $\theta$ appears in the SO(3) rotation matrix
+- But SU(2) has periodicity $4\pi$ while SO(3) has $2\pi$
+- Both $U(\theta)$ and $U(\theta + 2\pi) = -U(\theta)$ map to the **same** SO(3) rotation
 
-**Example:** For rotation about $z$-axis:
-- SU(2): $U(\theta) = \begin{pmatrix} e^{-i\theta/2} & 0 \\ 0 & e^{i\theta/2} \end{pmatrix}$
-- SO(3): $R_z(\theta) = \begin{pmatrix} \cos\theta & -\sin\theta & 0 \\ \sin\theta & \cos\theta & 0 \\ 0 & 0 & 1 \end{pmatrix}$
+**Why this matters:**
+- Integer spin ($j$): $D^{(j)}(-U) = D^{(j)}(U)$ → true SO(3) representation
+- Half-integer spin ($j$): $D^{(j)}(-U) = -D^{(j)}(U)$ → projective representation only
 
-Note: $U(2\pi) = -I$ but $R_z(2\pi) = I$.
+**SO(4) and SU(2) × SU(2):**
 
-**Projective Representations:**
-
-In quantum mechanics, $|\psi\rangle$ and $e^{i\phi}|\psi\rangle$ represent the same physical state. A **projective representation** satisfies:
-$$D(g_1)D(g_2) = e^{i\omega(g_1,g_2)} D(g_1 g_2)$$
-
-where $\omega(g_1, g_2)$ is a phase factor (cocycle).
-
-**Key Result:**
-- **Integer $j$:** $U(2\pi) = +I$ — this is a true representation of SO(3)
-- **Half-integer $j$:** $U(2\pi) = -I$ — this is only a projective representation of SO(3)
-
-For half-integer spin, a $2\pi$ rotation produces a phase factor $-1$. Since $|\psi\rangle$ and $-|\psi\rangle$ are the same quantum state, this is acceptable for SO(3).
-
-**Lifting Representations:**
-
-Every representation of SO(3) "lifts" to SU(2): given $D_{\text{SO(3)}}$, we can construct $D_{\text{SU(2)}}(U) = D_{\text{SO(3)}}(R)$ where $R$ is the rotation corresponding to $U$.
-
-Conversely, a representation of SU(2) descends to SO(3) **only if** $D(-U) = D(U)$. This holds for integer $j$ but fails for half-integer $j$ (where $D(-U) = -D(U)$).
-
-**Why SU(2) is fundamental:**
-- SU(2) is simply connected—no "holes" in its topology
-- Every representation of SO(3) comes from a representation of SU(2)
-- But SU(2) has additional representations (half-integer $j$) with no SO(3) counterpart
-- These "extra" representations describe fermions (electrons, quarks, etc.)
-
-**SO(4) and SU(2) × SU(2): The Hydrogen Connection**
-
-The SO(4) symmetry of hydrogen (section 7.4) is deeply connected to SU(2). The six generators of SO(4) can be organized into two sets of three:
+The SO(4) algebra decomposes as:
 $$\mathbf{M} = \frac{1}{2}(\mathbf{L} + \mathbf{K}), \quad \mathbf{N} = \frac{1}{2}(\mathbf{L} - \mathbf{K})$$
 
-These satisfy:
-$$[M_i, M_j] = i\hbar \varepsilon_{ijk} M_k, \quad [N_i, N_j] = i\hbar \varepsilon_{ijk} N_k, \quad [M_i, N_j] = 0$$
+giving $[M_i, N_j] = 0$. Therefore:
+$$\text{SO(4)} \cong \text{SU(2)} \times \text{SU(2)}/\mathbb{Z}_2$$
 
-This is the algebra of **SU(2) × SU(2)**—two independent SU(2) algebras that commute. Therefore:
-$$\text{SO(4)} \cong \text{SU(2)} \times \text{SU(2)}$$
+(The $\mathbb{Z}_2$ quotient because $(U, V) \sim (-U, -V)$ gives the same SO(4) element.)
 
-**Physical Significance:**
-- Each SU(2) factor contributes a quantum number ($m$ and $n$ in the text)
-- For hydrogen, the constraint $\mathbf{L} \cdot \mathbf{K} = 0$ forces $m = n$
-- The principal quantum number is $n = 2m + 1$ (in the text's convention)
-- This explains why the hydrogen spectrum depends only on $n$: both SU(2) factors contribute equally.
-
-### 7.4 SU(3) Flavor vs. SU(3) Color: Two Different Symmetries
+### 7.4 SU(3) Flavor vs. SU(3) Color
 
 **Global vs. Local (Gauge) Symmetry**
 
 | Property | Flavor SU(3) | Color SU(3) |
 |----------|-------------|-------------|
-| Type | **Global** symmetry | **Local** gauge symmetry |
-| Transformation | Same at all spacetime points | Different at each point: $U(x)$ |
-| Connection | No gauge field | Requires gluon field $A_\mu^a(x)$ |
-| Approximate? | Yes (broken by quark mass differences) | Exact |
-| Physical role | Classifies hadrons | Generates strong interaction |
+| Type | **Global** | **Local (Gauge)** |
+| Transformation | Same everywhere | $U(x)$ varies with position |
+| Connection | None | Gluon field $A_\mu^a(x)$ |
+| Approximate? | Yes (broken by quark masses) | Exact |
+| Role | Classifies hadrons | Generates strong force |
 
-**Local Symmetry (Gauge Principle):** For a symmetry to hold independently at every spacetime point, a compensating field (the gauge field) must exist. For SU(3) color, this field is the **gluon**, and the symmetry requires quarks interact via gluon exchange.
+**Why "Connection" matters:**
 
-**The Color Singlet Rule**
+In differential geometry, a **connection** (gauge field) tells you how to compare vectors at different points. For a local symmetry that varies from point to point, you need a connection to maintain covariance under transformations. This connection IS the gauge field (gluon).
 
-All observable hadrons must be **color singlets** (invariant under SU(3) color transformations). This explains:
+**Why local symmetry generates interactions:**
 
-1. **Mesons:** Quark + antiquark
-   $$\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$$
-   The singlet $\mathbf{1}$ is the physical meson.
+To make a derivative $\partial_\mu$ covariant under local transformations, you must replace it with a **covariant derivative**:
+$$D_\mu = \partial_\mu + igA_\mu$$
 
-2. **Baryons:** Three quarks
-   $$\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$$
-   The singlet $\mathbf{1}$ is the physical baryon.
+The kinetic term $|D_\mu\psi|^2$ then contains interaction terms like $g\bar{\psi}A_\mu\psi$, meaning the gauge field $A_\mu$ (gluon) necessarily interacts with matter (quarks).
 
-**Why the color singlet?** Only color-singlet states have finite energy. Color-charged states (octet, decuplet, etc.) have infinite energy due to confinement—they cannot exist as isolated particles.
+**Color Singlet Rule:**
 
-**The Baryon Color Wavefunction:**
+Only **color singlets** (states invariant under SU(3) color) have finite energy. **Color-charged states** (octet $\mathbf{8}$, decuplet $\mathbf{10}$, etc.) are confined—they have infinite energy and cannot exist as isolated particles.
 
-For three quarks with colors $c_1, c_2, c_3 \in \{r, g, b\}$:
+**Quark color charges:**
+- Quarks are in fundamental $\mathbf{3}$: they carry color charge (r, g, or b)
+- Gluons are in adjoint $\mathbf{8}$: they also carry color charge
+- Singlets (mesons, baryons) are color-neutral: no net color charge
 
-$$|\text{color singlet}\rangle = \frac{1}{\sqrt{6}} \varepsilon_{c_1 c_2 c_3} |c_1 c_2 c_3\rangle$$
+**Mesons:** $\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$ — singlet $\mathbf{1}$ is physical
 
-Explicitly:
-$$= \frac{1}{\sqrt{6}}(|rgb\rangle - |rbg\rangle + |gbr\rangle - |grb\rangle + |brg\rangle - |bgr\rangle)$$
-
-This is the **Levi-Civita symbol** $\varepsilon_{c_1 c_2 c_3}$, which is totally antisymmetric. When you apply any SU(3) color transformation, the state remains unchanged (singlet property).
+**Baryons:** $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$ — singlet $\mathbf{1}$ is physical
 
 ### 7.5 SU(3): Weight Diagrams and Young Tableaux
 
-**Purpose: Why SU(3) is More Complex than SU(2)**
+**SU(3) Rank and Cartan Generators**
 
-SU(2) has rank 1 (one Cartan generator $J_z$), so representations are labeled by a single quantum number $j$, and states within a representation by $m$. The tensor product decomposition for SU(2) is simple: $j_1 \otimes j_2 = |j_1-j_2| \oplus \cdots \oplus (j_1+j_2)$.
+**Rank = 2:** SU(3) has two commuting generators (Cartan subalgebra), usually chosen as:
+- $I_3$ (isospin projection)  
+- $Y$ (hypercharge)
 
-SU(3) has rank 2 (two Cartan generators). This means:
-1. Representations need **two** labels $(p,q)$ to specify them
-2. States within a representation need **two** quantum numbers $(i_3, y)$ to label them
-3. The tensor product decomposition is more complex—we need systematic methods
+This is why we need **two** quantum numbers $(i_3, y)$ to label states. (SU(2) has rank 1, needing only one quantum number $m$.)
 
-**Two Tools for SU(3): Weight Diagrams and Young Tableaux**
+**Weight Space:** States are points in the 2D $(i_3, y)$ plane.
 
-| Tool | What It Shows | Best For |
-|:----:|:-------------:|:--------:|
-| **Weight diagrams** | States as points in $(i_3, y)$ space | Visualizing representations, understanding particle multiplets |
-| **Young tableaux** | Symmetry patterns of tensor indices | Computing tensor products systematically |
+**Root Vectors and the Root Diagram**
 
-**The SU(3) Weight Space**
+**Roots** are the "difference vectors" between weights. They correspond to **ladder operators** that move between states:
+- $I_\pm$: Change $i_3$ by $\pm 1$, $y$ unchanged (horizontal moves)
+- $U_\pm$, $V_\pm$: Change both $i_3$ and $y$ (diagonal moves)
 
-SU(3) has rank 2, so weights are 2D vectors $(i_3, y)$ where:
-- $i_3$ = isospin projection (horizontal axis)
-- $y$ = hypercharge (vertical axis)
-
-**The Root Diagram (Adjoint Representation)**
-
-The 6 roots form a hexagon in weight space. Each root corresponds to a raising/lowering operator:
+The 6 roots form a **hexagon** in weight space—this is the **root diagram**.
 
 <img src="/images/angular-momentum/su3_root_diagram.png" width="500px" alt="SU(3) Root Diagram">
 
-*The SU(3) root diagram. The six outer points are the root vectors ($I_\pm, U_\pm, V_\pm$) corresponding to ladder operators. The origin contains the two Cartan generators $(I_3, Y)$.*
+*The SU(3) root diagram: 6 root vectors (ladder operators) form a hexagon. The origin contains the two Cartan generators $(I_3, Y)$.*
 
-**The Fundamental Representation $\mathbf{3}$ (Quarks):**
+**Key Representations:**
 
-<img src="/images/angular-momentum/su3_fundamental_triplet.png" width="450px" alt="SU(3) Quark Triplet">
+- **Fundamental $\mathbf{3}$:** Triangle $(u, d, s)$ quarks
+- **Octet $\mathbf{8}$:** Hexagon (pions, kaons, nucleons)
+- **Decuplet $\mathbf{10}$:** Triangle ($\Delta$, $\Sigma^*$, $\Xi^*$, $\Omega^-$)
 
-*The quark triplet in weight space. The $u$ and $d$ quarks form an isospin doublet, while $s$ is an isosinglet with different hypercharge.*
+**Young Tableaux:**
 
-**The Octet $\mathbf{8}$ (Baryons):**
+Boxes encode **permutation symmetry** of tensor indices:
+- Row = symmetric
+- Column = antisymmetric
+- Max 3 boxes per column for SU(3)
 
-<img src="/images/angular-momentum/su3_octet_baryons.png" width="550px" alt="SU(3) Baryon Octet">
+| Dim | Label | Young | Symmetry |
+|:---:|:-----:|:-----:|:--------:|
+| 1 | $\mathbf{1}$ | [empty] | Trivial |
+| 3 | $\mathbf{3}$ | □ | Single index |
+| 8 | $\mathbf{8}$ | □□/□ | Mixed (2,1) |
+| 10 | $\mathbf{10}$ | □□□ | Fully symmetric |
 
-*The baryon octet forms a hexagon in weight space. Note that the center contains two states ($\Sigma^0$ and $\Lambda$) at the same position—this is a 2D representation of an 8D space.*
-
-**The Decuplet $\mathbf{10}$ (Spin-$\frac{3}{2}$ Baryons)**
-
-The symmetric combination of three quarks forms the decuplet:
-
-<img src="/images/angular-momentum/su3_decuplet_baryons.png" width="600px" alt="SU(3) Baryon Decuplet">
-
-*The baryon decuplet forms a triangular pattern. The $\Delta$ resonances form a quartet, $\Sigma^*$ a triplet, $\Xi^*$ a doublet, and $\Omega^-$ is a singlet. All states are symmetric in flavor and spin ($S=3/2$).*
-
-| Level | Baryons | Isospin | Quark Content |
-|:-----:|:-------:|:-------:|:-------------:|
-| $Y=1$ | $\Delta^{++}, \Delta^{+}, \Delta^{0}, \Delta^{-}$ | $I=\frac{3}{2}$ | $uuu, uud, udd, ddd$ |
-| $Y=0$ | $\Sigma^{*+}, \Sigma^{*0}, \Sigma^{*-}$ | $I=1$ | $uus, uds, dds$ |
-| $Y=-1$ | $\Xi^{*0}, \Xi^{*-}$ | $I=\frac{1}{2}$ | $uss, dss$ |
-| $Y=-2$ | $\Omega^{-}$ | $I=0$ | $sss$ |
-
-The $\Omega^-$ was predicted by SU(3) flavor symmetry before its experimental discovery in 1964.
-
----
-
-**Young Tableaux: Symmetry and Tensor Products**
-
-While weight diagrams visualize representations, **Young tableaux** provide a systematic way to compute tensor products. They encode the symmetry pattern of tensor indices.
-
-**Basic Rules:**
-- Each box represents a tensor index
-- A row of $n$ boxes = totally symmetric combination
-- A column of $n$ boxes = totally antisymmetric combination
-- For SU($N$), columns can have at most $N$ boxes
-
-**SU(3) Representations:**
-
-| Dim | Label | Young Tableau | Symmetry |
-|:---:|:-----:|:-------------:|:--------:|
-| 1 | $\mathbf{1}$ | <img src="/images/angular-momentum/young_1_pure.png" width="20px" style="vertical-align:middle"> | Trivial |
-| 3 | $\mathbf{3}$ | <img src="/images/angular-momentum/young_3_pure.png" width="20px" style="vertical-align:middle"> | Single box |
-| $\bar{3}$ | $\bar{\mathbf{3}}$ | <img src="/images/angular-momentum/young_3bar_pure.png" width="20px" style="vertical-align:middle"> | 2-box column |
-| 6 | $\mathbf{6}$ | <img src="/images/angular-momentum/young_6_pure.png" width="40px" style="vertical-align:middle"> | Symmetric |
-| 8 | $\mathbf{8}$ | <img src="/images/angular-momentum/young_8_pure.png" width="40px" style="vertical-align:middle"> | Mixed (2,1) |
-| 10 | $\mathbf{10}$ | <img src="/images/angular-momentum/young_10_pure.png" width="60px" style="vertical-align:middle"> | 3-box symmetric |
-
-**Computing $\mathbf{3} \otimes \mathbf{3}$:**
-
-Start with <img src="/images/angular-momentum/young_3_pure.png" width="18px" style="vertical-align:middle"> and add a second box:
-
-| Position | Result | Representation |
-|:--------:|:------:|:--------------:|
-| Right | <img src="/images/angular-momentum/young_6_pure.png" width="35px" style="vertical-align:middle"> | $\mathbf{6}$ (symmetric) |
-| Below | <img src="/images/angular-momentum/young_3bar_pure.png" width="18px" style="vertical-align:middle"> | $\bar{\mathbf{3}}$ (antisymmetric) |
-
-$$\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$$
-
-**Physical Applications:**
-
-**Mesons** ($\mathbf{3} \otimes \bar{\mathbf{3}}$):
-$$\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$$
-The octet contains pions ($\pi^\pm, \pi^0$), kaons ($K^\pm, K^0, \bar{K}^0$), and eta ($\eta$). The singlet is $\eta'$.
-
-**Baryons** ($\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3}$):
-$$\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$$
-
-For three identical fermions with antisymmetric color:
-- **Decuplet** ($\mathbf{10}$): Symmetric flavor $\times$ symmetric spin
-- **Octet** ($\mathbf{8}$): Mixed flavor $\times$ mixed spin
-- **Singlet** ($\mathbf{1}$): Antisymmetric flavor (forbidden for 3 identical quarks)
-
-**Key Insight:** Young tableaux encode permutation symmetry. For physical hadrons (color singlets), flavor $\times$ spin must be symmetric for baryons.
+**Tensor Products:**
+- Mesons: $\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$
+- Baryons: $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$
