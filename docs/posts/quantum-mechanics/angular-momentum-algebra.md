@@ -2243,100 +2243,110 @@ SU(3) has 8 generators. The maximal set of commuting generators (Cartan subalgeb
 
 **Roots: The 6 Ladder Operators**
 
-Unlike SU(2) which has just one raising operator $J_+$, SU(3) has three independent raising operators ($I_+, U_+, V_+$) plus their lowering partners, giving 6 root vectors in the 2D weight space:
-- $I_\pm$: change $(i_3, y)$ by $(\pm 1, 0)$ — horizontal in weight space
-- $U_\pm$: change $(i_3, y)$ by $(\mp 1/2, \pm 1)$ — diagonal
-- $V_\pm$: change $(i_3, y)$ by $(\pm 1/2, \pm 1)$ — diagonal
+SU(3) has 6 ladder operators ($I_\pm, U_\pm, V_\pm$) that change the weight $(i_3, y)$:
+- $I_\pm$: changes $(i_3, y)$ by $(\pm 1, 0)$
+- $U_\pm$: changes $(i_3, y)$ by $(\mp 1/2, \pm 1)$  
+- $V_\pm$: changes $(i_3, y)$ by $(\pm 1/2, \pm 1)$
 
-**Why exactly 6 roots?** The algebra must close under commutation. In 2D weight space, only a hexagon configuration (60° angles) satisfies all algebraic constraints. A square (4 roots, 90°) or other polygons violate the structure constants of SU(3).
+**Why exactly 6 roots?**
 
-**Building Representations**
+The SU(3) algebra has structure constants $f_{abc}$ that determine how generators commute. For the algebra to close under commutation:
 
-Start from a **highest weight state** (annihilated by all raising operators). Apply lowering operators to generate all states.
+1. If $\vec{\alpha}$ and $\vec{\beta}$ are roots, then $\vec{\alpha} + \vec{\beta}$ must also be a root (or zero)
+2. The angles between roots are quantized to specific values by the algebra
 
-**Fundamental $\mathbf{3}$ (quark triplet):**
+In 2D weight space, the only configuration that satisfies these constraints with all angles compatible is 6 roots at 60° intervals (forming a hexagon). Fewer roots can't span 2D space; more roots create angle conflicts with the structure constants.
 
-The highest weight state is $u$ with $(i_3, y) = (1/2, 1/3)$. Applying lowering operators:
-- $I_-$ takes $u \to d$ at $(-1/2, 1/3)$
-- $V_-$ takes $u \to s$ at $(0, -2/3)$
+**Building the Fundamental $\mathbf{3}$**
 
-The three states $(u, d, s)$ form a triangle in weight space.
+Start from the highest weight state $u$ with $(i_3, y) = (1/2, 1/3)$:
+- Apply $I_-$: $u \to d$ at $(-1/2, 1/3)$
+- Apply $V_-$: $u \to s$ at $(0, -2/3)$
 
-**Adjoint $\mathbf{8}$: Systematic Construction**
+The three states $(u, d, s)$ form the quark triplet.
 
-The adjoint representation is built from $\mathbf{3} \otimes \bar{\mathbf{3}}$ (quark-antiquark pairs). Here's the systematic method:
+**Building the Adjoint $\mathbf{8}$ from Scratch**
 
-**Step 1: Build the 6 off-diagonal states**
+The adjoint representation comes from $\mathbf{3} \otimes \bar{\mathbf{3}}$ (quark-antiquark). With 3 quark flavors and 3 antiquark flavors, we have $3 \times 3 = 9$ combinations. Here's how they organize into the octet + singlet:
 
-These come from quark-antiquark combinations where the flavors differ:
-- $u\bar{d}$ at $(+1, 0)$ — becomes $\Sigma^+$
-- $d\bar{u}$ at $(-1, 0)$ — becomes $\Sigma^-$
-- $u\bar{s}$ at $(+1/2, 1)$ — becomes $p$
-- $s\bar{u}$ at $(-1/2, -1)$ — becomes $\Xi^-$
-- $d\bar{s}$ at $(-1/2, 1)$ — becomes $n$
-- $s\bar{d}$ at $(+1/2, -1)$ — becomes $\Xi^0$
+**Step 1: The 6 off-diagonal combinations**
 
-These are the 6 states at the vertices of the weight diagram hexagon.
+When quark and antiquark have different flavors, we get states with non-zero $(I_3, Y)$. Calculate quantum numbers by adding quark and antiquark values:
 
-**Step 2: Build the 2 neutral states at the origin**
+| Combination | Quark $(i_3, y)$ | Antiquark $(i_3, y)$ | Total $(I_3, Y)$ | Physical State |
+|:-----------:|:----------------:|:--------------------:|:----------------:|:--------------:|
+| $u\bar{d}$ | $(+1/2, +1/3)$ | $(+1/2, -1/3)$ | $(+1, 0)$ | $\Sigma^+$ |
+| $d\bar{u}$ | $(-1/2, +1/3)$ | $(-1/2, -1/3)$ | $(-1, 0)$ | $\Sigma^-$ |
+| $u\bar{s}$ | $(+1/2, +1/3)$ | $(0, +2/3)$ | $(+1/2, +1)$ | $p$ |
+| $s\bar{u}$ | $(0, -2/3)$ | $(-1/2, +1/3)$ | $(-1/2, -1)$ | $\Xi^-$ |
+| $d\bar{s}$ | $(-1/2, +1/3)$ | $(0, +2/3)$ | $(-1/2, +1)$ | $n$ |
+| $s\bar{d}$ | $(0, -2/3)$ | $(+1/2, +1/3)$ | $(+1/2, -1)$ | $\Xi^0$ |
 
-For states with $I_3 = Y = 0$, we have three combinations: $u\bar{u}, d\bar{d}, s\bar{s}$. The physical states are specific orthogonal combinations:
+**How the quantum numbers add:**
+- $I_3$ adds algebraically: $I_3(q) + I_3(\bar{q})$
+- $Y$ adds algebraically: $Y(q) + Y(\bar{q})$ (note: antiquark has opposite hypercharge)
 
-- **$\Sigma^0$** = $(u\bar{u} - d\bar{d})/\sqrt{2}$ — part of isospin triplet $(\Sigma^+, \Sigma^0, \Sigma^-)$
-- **$\Lambda$** = $(u\bar{u} + d\bar{d} - 2s\bar{s})/\sqrt{6}$ — isospin singlet
+These 6 states sit at the vertices of the weight diagram hexagon.
 
-The two states differ in isospin: $\Sigma^0$ has $I=1$, while $\Lambda$ has $I=0$.
+**Step 2: The 3 diagonal combinations (where quark = antiquark flavor)**
 
-**Why two states at the center?** Because there are two orthogonal ways to combine $u\bar{u}, d\bar{d}, s\bar{s}$ with the right quantum numbers. The isospin triplet combination (antisymmetric under $u \leftrightarrow d$) and the isospin singlet combination (symmetric under $u \leftrightarrow d$ but orthogonal to the trace).
+For $u\bar{u}, d\bar{d}, s\bar{s}$, both $I_3 = 0$ and $Y = 0$. But we can't use these raw combinations because:
+
+1. The trace $u\bar{u} + d\bar{d} + s\bar{s}$ is invariant under SU(3) — this is the singlet $\mathbf{1}$
+2. The remaining 2 orthogonal combinations form part of the octet
+
+**Constructing the physical states:**
+
+First, isolate the singlet (normalize to 1):
+$$\text{Singlet} = \frac{1}{\sqrt{3}}(u\bar{u} + d\bar{d} + s\bar{s})$$
+
+This is the $\mathbf{1}$ representation. It transforms as a scalar (no indices).
+
+Now construct octet states from the remaining 2 degrees of freedom. We need states that:
+- Are orthogonal to the singlet
+- Have definite isospin properties
+
+**$\Sigma^0$ (isospin triplet, $I=1$):**
+The isospin triplet $(\Sigma^+, \Sigma^0, \Sigma^-)$ needs $\Sigma^0$ as the $I_3 = 0$ member. Since $\Sigma^+ \sim u\bar{d}$ and $\Sigma^- \sim d\bar{u}$, the $I_3 = 0$ combination must be:
+$$\Sigma^0 = \frac{1}{\sqrt{2}}(u\bar{u} - d\bar{d})$$
+This is antisymmetric under $u \leftrightarrow d$, matching the isospin-1 property.
+
+**$\Lambda$ (isospin singlet, $I=0$):**
+The remaining orthogonal combination (orthogonal to both singlet and $\Sigma^0$) is:
+$$\Lambda = \frac{1}{\sqrt{6}}(u\bar{u} + d\bar{d} - 2s\bar{s})$$
+This is symmetric under $u \leftrightarrow d$ and has no isospin ($I=0$).
+
+**Why two states at the origin?**
+The three diagonal combinations $u\bar{u}, d\bar{d}, s\bar{s}$ form a 3D space. We decompose this into:
+- 1 singlet (trace) — scalar, invariant
+- 2 octet states with different isospin — $\Sigma^0$ ($I=1$) and $\Lambda$ ($I=0$)
+
+Total: $9 = 8 + 1$ states, forming the octet + singlet decomposition of $\mathbf{3} \otimes \bar{\mathbf{3}}$.
 
 **Young Tableaux and Permutation Symmetry**
 
-Young tableaux provide a mechanical way to decompose tensor products based on **permutation symmetry**.
-
-**Why permutation matters for SU(3):**
-
-When we combine multiple quarks ($\mathbf{3} \otimes \mathbf{3} \otimes ...$), the resulting states must be classified by how they transform under exchange of identical quarks. This is permutation symmetry.
-
-SU(3) representations are characterized by their symmetry properties:
-- **Symmetric indices** = boxes in a row
-- **Antisymmetric indices** = boxes in a column
+Young tableaux encode how tensor indices transform under permutation:
 
 **The Rules:**
+1. Each box = one tensor index ($i = 1, 2, 3$ for SU(3))
+2. Row of $n$ boxes = symmetric in those $n$ indices
+3. Column of $n$ boxes = antisymmetric in those $n$ indices
+4. Max column height = 3 (antisymmetrizing 4 indices gives zero)
 
-1. **Each box = one tensor index** (one quark flavor index $i = 1,2,3$)
+**Key decompositions:**
 
-2. **Row of $n$ boxes** = totally symmetric in those $n$ indices
-   - Example: Two boxes side-by-side = symmetric combination of two $\mathbf{3}$'s = $\mathbf{6}$
+$\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$:
+- Symmetric: $(q_i q_j + q_j q_i)/\sqrt{2}$ — dimension 6
+- Antisymmetric: $(q_i q_j - q_j q_i)/\sqrt{2} \sim \epsilon_{ijk}\bar{q}^k$ — dimension 3
 
-3. **Column of $n$ boxes** = totally antisymmetric in those $n$ indices
-   - Example: Two stacked boxes = antisymmetric combination = $\bar{\mathbf{3}}$
+$\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$:
+- Traceless mixed tensor $q_i\bar{q}^j - \frac{1}{3}\delta_i^j q_k\bar{q}^k$ — dimension 8 (octet)
+- Trace $q_i\bar{q}^i$ — dimension 1 (singlet)
 
-4. **Maximum column height = 3** for SU(3) (antisymmetrizing 4 indices gives zero in 3D space)
+**Physical Applications:**
+- Mesons = $\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$
+- Baryons = $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3}} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$
 
-**Why $\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$:**
-
-Two quark indices $q_i q_j$ can be combined as:
-- **Symmetric**: $(q_i q_j + q_j q_i)/\sqrt{2}$ — this is the $\mathbf{6}$ (dimension 6)
-- **Antisymmetric**: $(q_i q_j - q_j q_i)/\sqrt{2}$ — this transforms as $\bar{\mathbf{3}}$ (dimension 3)
-
-The antisymmetric combination is equivalent to a single contravariant index because $\epsilon^{ijk}q_j q_k$ transforms like $\bar{q}^i$.
-
-**Why $\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$:**
-
-A quark $q_i$ and antiquark $\bar{q}^j$ can be combined as:
-- **Traceless mixed tensor**: $q_i \bar{q}^j - \frac{1}{3}\delta_i^j q_k \bar{q}^k$ — this is the $\mathbf{8}$ (octet, dimension 8)
-- **Trace/singlet**: $q_i \bar{q}^i$ (sum over $i$) — this is the $\mathbf{1}$ (singlet, dimension 1)
-
-The octet has "mixed symmetry" — symmetric in some sense but with the trace removed.
-
-**Covariant vs. Contravariant:**
-
-- $\mathbf{3}$ = covariant index $q_i$ (single box)
-- $\bar{\mathbf{3}}$ = contravariant index $\bar{q}^i$ (column of two boxes)
-
-SU(3) is **not pseudo-real** (unlike SU(2)), meaning $\mathbf{3}$ and $\bar{\mathbf{3}}$ are distinct representations. No SU(3) transformation can convert quarks to antiquarks — they have opposite quantum numbers (charges, baryon number, etc.).
-
-**Tensor Product Summary:**
 - $\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$ (symmetric + antisymmetric)
 - $\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$ (octet + singlet)
 - $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$ (3-quark states)
