@@ -1587,17 +1587,17 @@ While Young diagrams show symmetry types, **Young tableaux** enumerate the actua
 
 **Spin states for two electrons:**
 
-**Symmetric (triplet, S=1):**
+**Symmetric (triplet, $S=1$):**
 - Young Diagram: <img src="/images/angular-momentum/young_2_row_clean.png" width="50px" style="vertical-align:middle;"> 
-- Young Tableau: <img src="/images/angular-momentum/tableau_2_symmetric.png" width="120px" style="vertical-align:middle;">
-- Spin states: |↑↑⟩, (|↑↓⟩+|↓↑⟩)/√2, |↓↓⟩
-- $M_S$ = +1, 0, -1
+- Young Tableau: <img src="/images/angular-momentum/tableau_2_symmetric.png" width="140px" style="vertical-align:middle;">
+- Spin states: $|\uparrow\uparrow\rangle$, $\frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle+|\downarrow\uparrow\rangle)$, $|\downarrow\downarrow\rangle$
+- $M_S = +1, 0, -1$
 
-**Antisymmetric (singlet, S=0):**
+**Antisymmetric (singlet, $S=0$):**
 - Young Diagram: <img src="/images/angular-momentum/young_2_col_clean.png" width="30px" style="vertical-align:middle;">
-- Young Tableau: <img src="/images/angular-momentum/tableau_2_antisymmetric.png" width="70px" style="vertical-align:middle;">
-- Spin state: (|↑↓⟩-|↓↑⟩)/√2
-- $M_S$ = 0
+- Young Tableau: <img src="/images/angular-momentum/tableau_2_antisymmetric.png" width="80px" style="vertical-align:middle;">
+- Spin state: $\frac{1}{\sqrt{2}}(|\uparrow\downarrow\rangle-|\downarrow\uparrow\rangle)$
+- $M_S = 0$
 
 The **standard Young tableau** conditions ensure we count each state exactly once:
 - Numbers increase left-to-right in each row
@@ -1605,11 +1605,11 @@ The **standard Young tableau** conditions ensure we count each state exactly onc
 
 **Example: Three electrons with mixed symmetry**
 
-The hook shape <img src="/images/angular-momentum/young_21_clean.png" width="35px"> has two standard tableaux, giving two distinct doublet states:
+The hook shape <img src="/images/angular-momentum/young_21_clean.png" width="35px" style="vertical-align:middle;"> has two standard tableaux, giving two distinct doublet states:
 
 **Two standard tableaux for hook shape:**
-- Tableau 1: <img src="/images/angular-momentum/tableau_3_hook_1.png" width="110px" style="vertical-align:middle;"> (state χ₁)
-- Tableau 2: <img src="/images/angular-momentum/tableau_3_hook_2.png" width="110px" style="vertical-align:middle;"> (state χ₂)
+- Tableau 1: <img src="/images/angular-momentum/tableau_3_hook_1.png" width="130px" style="vertical-align:middle;"> (state $\chi_1$)
+- Tableau 2: <img src="/images/angular-momentum/tableau_3_hook_2.png" width="130px" style="vertical-align:middle;"> (state $\chi_2$)
 
 These correspond to the two distinct $^2D$ (and $^2P$) terms in the nitrogen atom spectrum.
 
@@ -1633,41 +1633,28 @@ For three $l=1$ orbitals, the same diagrams apply but with different dimensions.
 
 **Step 3: Pauli-Allowed Combinations**
 
-For three equivalent p-electrons (like nitrogen 2p³), the total number of microstates is C(6,3) = 20 (choosing 3 electrons from 6 spin-orbitals: 3 spatial × 2 spin). These organize into LS terms as follows:
+For three equivalent p-electrons (like nitrogen $2p^3$), the total number of microstates is $C(6,3) = 20$ (choosing 3 electrons from 6 spin-orbitals: 3 spatial × 2 spin). These organize into LS terms as follows:
 
 **Case 1**: Spin symmetric <img src="/images/angular-momentum/young_3_row_clean.png" width="40px" style="vertical-align:middle;"> × Orbital antisymmetric <img src="/images/angular-momentum/young_3_col_clean.png" width="15px" style="vertical-align:middle;">
-- S = 3/2, L = 0
-- Term: ⁴S with J = 3/2 only
-- Magnetic substates: 2J + 1 = **4 states**
+- $S = 3/2$, $L = 0$
+- Term: $^4S$ with $J = 3/2$ only
+- Magnetic substates: $2J + 1 = 4$ states
 
 **Case 2**: Spin mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;"> × Orbital mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;"> (first pair)
-- S = 1/2, L = 2
-- Term: ²D with J = 3/2, 5/2
-- Two distinct terms each contribute: (2×3/2+1) + (2×5/2+1) = 4 + 6 = **10 states**
+- $S = 1/2$, $L = 2$
+- Two distinct $^2D$ terms, each with $J = 3/2, 5/2$
+- States: $2 \times (4 + 6) = 20$? No—each distinct term contributes once
 
-**Case 3**: Spin mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;"> × Orbital mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;"> (second pair)
-- S = 1/2, L = 1  
-- Term: ²P with J = 1/2, 3/2
-- Two distinct terms each contribute: (2×1/2+1) + (2×3/2+1) = 2 + 4 = **6 states**
+Correct counting: The hook diagram (dimension 2) means there are **2 distinct doublet D terms** and **2 distinct doublet P terms**. But each term's $J$ structure is normal:
 
-**State counting breakdown:**
+| Configuration | # of distinct terms | $J$ values | States per term | Total states |
+|:---:|:---:|:---:|:---:|:---:|
+| $^4S$ | 1 | $3/2$ | 4 | **4** |
+| $^2D$ | 2 | $3/2$, $5/2$ | $4 + 6 = 10$ | **10** |
+| $^2P$ | 2 | $1/2$, $3/2$ | $2 + 4 = 6$ | **6** |
+| **Total** | | | | **20** |
 
-| Term | J values | States per J | Subtotal |
-|:---:|:---:|:---:|:---:|
-| ⁴S | 3/2 | 4 | **4** |
-| ²D (×2) | 3/2, 5/2 | 4, 6 | 10 + 10 = **20?** |
-
-Wait—let's be careful. The hook-shaped Young diagram has dimension 2, meaning there are **two distinct doublet D terms** and **two distinct doublet P terms** from the mixed × mixed combination. But the total must be 20:
-
-| Configuration | Terms | J | States (2J+1) |
-|:---:|:---|:---:|:---:|
-| ⁴S | one term | 3/2 | 4 |
-| ²D | two distinct terms | 3/2, 5/2 each | (4+6) × 1 = 10 |
-| ²P | two distinct terms | 1/2, 3/2 each | (2+4) × 1 = 6 |
-
-**Total: 4 + 10 + 6 = 20 states** ✓
-
-The "×2" indicates that the mixed symmetry type yields two *distinct* terms with the same L and S (but different permutational symmetry structure), not that each term is doubled.
+Each row is a distinct quantum state (different permutational symmetry). The two $^2D$ terms are physically different states, each contributing $(2J_1+1) + (2J_2+1) = 10$ magnetic substates between them.
 
 #### Summary: The Role of Young Diagrams
 
@@ -1680,6 +1667,7 @@ Young diagrams and tableaux serve three essential functions in quantum mechanics
 | **Enforce constraints** | Total wavefunction must be appropriately symmetric/antisymmetric | Spin (sym) × orbital (antisym) = antisymmetric total for fermions |
 
 **Key distinction**: Young diagrams classify *permutation symmetry types* (determined by tensor product structure), while weight diagrams classify *representations* (quantum numbers like $I_3$ or $L_z$). For multi-particle systems, we need both. The power of this approach is that symmetry constraints are **kinematic**—they depend only on group structure, not on detailed dynamics.
+
 ---
 
 ## Part VI: Spherical Harmonics and Central Potentials
@@ -2432,17 +2420,17 @@ This ratio is experimentally observed near the $\Delta(1232)$ resonance, confirm
 
 For $\pi^- p$ scattering at the $\Delta$ resonance, the final state can be either elastic ($\pi^- p$) or charge exchange ($\pi^0 n$). The relative probabilities of these reaction channels follow directly from isospin:
 
-**Reaction probabilities at the Δ(1232) resonance:**
+**Reaction probabilities at the $\Delta(1232)$ resonance:**
 
-**Elastic: π⁻p → π⁻p**
-- Amplitude: (1/3) A₃/₂
-- Relative rate: (1/9) |A₃/₂|²
-- Probability: **1/3**
+**Elastic: $\pi^- p \to \pi^- p$**
+- Amplitude: $\frac{1}{3}A_{3/2}$
+- Relative rate: $\frac{1}{9}|A_{3/2}|^2$
+- Probability: $\mathbf{\frac{1}{3}}$
 
-**Charge exchange: π⁻p → π⁰n**
-- Amplitude: (√2/3) A₃/₂
-- Relative rate: (2/9) |A₃/₂|²  
-- Probability: **2/3**
+**Charge exchange: $\pi^- p \to \pi^0 n$**
+- Amplitude: $\frac{\sqrt{2}}{3}A_{3/2}$
+- Relative rate: $\frac{2}{9}|A_{3/2}|^2$  
+- Probability: $\mathbf{\frac{2}{3}}$
 
 The charge exchange reaction is **twice as probable** as elastic scattering—a counterintuitive result from isospin interference. Combined with the cross-section ratio of 3, these predictions were confirmed experimentally in the 1950s, providing strong evidence for SU(2) isospin symmetry.
 
