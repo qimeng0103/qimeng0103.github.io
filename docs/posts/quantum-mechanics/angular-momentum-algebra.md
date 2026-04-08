@@ -2257,16 +2257,3 @@ $$\frac{\sigma(\pi^+ + p)}{\sigma(\pi^- + p)} \approx 3$$
 
 This ratio is experimentally observed, confirming the isospin structure.
 
-**Connection to SU(3):**
-
-When extending from SU(2) isospin to SU(3) flavor, similar relations connect different hadronic reaction channels. The scattering amplitudes for processes like $K^- + p \to \Lambda + \pi^0$, $K^- + p \to \Sigma^0 + \pi^0$, etc., are related by SU(3) Clebsch-Gordan coefficients. This allows predictions of cross-section ratios without detailed dynamical calculations.
-
-**Young Diagrams in Scattering:**
-
-Young diagrams provide a visual way to track permutation symmetry in scattering processes. For multi-particle states:
-- The initial state symmetry (represented by a Young diagram) must match the final state symmetry for scattering to occur
-- Permutation symmetry constrains which partial waves contribute
-- For identical particles, the overall wavefunction symmetry (spatial × spin × isospin) determines allowed reactions
-
-This symmetry-based approach, pioneered by Wigner and extended by many others, allows powerful predictions about scattering processes without solving the full dynamical equations.
-
