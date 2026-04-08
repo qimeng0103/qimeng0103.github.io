@@ -2124,7 +2124,7 @@ Young diagrams provide a graphical device to represent SU(3) representations and
 
 A Young diagram consists of boxes arranged in left-aligned rows, with row lengths that do not increase from top to bottom. For SU(3) flavor symmetry (up, down, strange quarks):
 
-- **Single box** $\boxed{\phantom{x}}$ represents the fundamental $\mathbf{3} = \{u, d, s\}$
+- **Single box** <img src="/images/angular-momentum/young_single.png" width="80px" style="display:inline; vertical-align:middle;"> represents the fundamental $\mathbf{3} = \{u, d, s\}$
 - **Row of boxes** indicates symmetrization of indices
 - **Column of boxes** indicates antisymmetrization of indices
 - **Maximum 3 rows** in SU(3): complete antisymmetrization of 4 indices vanishes identically
@@ -2152,37 +2152,49 @@ where:
 Add a second box to the first in all admissible ways:
 
 *Configuration A: Two boxes in a row (symmetric)*
-$$\boxed{\phantom{x}}\boxed{\phantom{x}} \rightarrow \mathbf{6}$$
+
+<img src="/images/angular-momentum/young_two_row.png" width="150px">
+
+$$\rightarrow \mathbf{6}$$
 
 - Box 1: $r=0, c=0, h=2$ → factor = $(3+0-0)/2 = 3/2$
 - Box 2: $r=0, c=1, h=1$ → factor = $(3+1-0)/1 = 4$
-- Dimension: $\frac{3}{2} \times 4 = 6$
+- **Dimension: $\frac{3}{2} \times 4 = 6$**
 
 The six symmetric states: $uu, dd, ss, (ud+du), (us+su), (ds+sd)$
 
 *Configuration B: Two boxes in a column (antisymmetric)*
 
-$$\begin{array}{|c|} \hline A \\ \hline B \\ \hline \end{array} \rightarrow \bar{\mathbf{3}}$$
+<img src="/images/angular-momentum/young_two_col.png" width="80px">
+
+$$\rightarrow \bar{\mathbf{3}}$$
 
 - Box 1: $r=0, c=0, h=2$ → factor = $3/2$
 - Box 2: $r=1, c=0, h=1$ → factor = $(3+0-1)/1 = 2$
-- Dimension: $\frac{3}{2} \times 2 = 3$
+- **Dimension: $\frac{3}{2} \times 2 = 3$**
 
 The three antisymmetric states: $(ud-du), (us-su), (ds-sd) \sim \bar{u}, \bar{d}, \bar{s}$
 
-Result: $\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$
+<img src="/images/angular-momentum/young_3x3_result.png" width="400px">
+
+*Tensor product decomposition: two quarks combine into symmetric sextet and antisymmetric anti-triplet*
+
+**Result:** $\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$
 
 **Example 2: Three Quarks $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3}$ (Baryons)**
 
 Starting from $\mathbf{3} \otimes \mathbf{3}$ results, add a third box:
 
 *Fully symmetric (three in a row):*
-$$\boxed{\phantom{x}}\boxed{\phantom{x}}\boxed{\phantom{x}} \rightarrow \mathbf{10}$$
+
+<img src="/images/angular-momentum/young_three_row.png" width="200px">
+
+$$\rightarrow \mathbf{10}$$
 
 - Box 1: $(3+0-0)/3 = 1$
 - Box 2: $(3+1-0)/2 = 2$  
 - Box 3: $(3+2-0)/1 = 5$
-- Dimension: $1 \times 2 \times 5 = 10$ (decuplet)
+- **Dimension: $1 \times 2 \times 5 = 10$ (decuplet)**
 
 *Mixed symmetry (hook shape, partition {2,1}):*
 
@@ -2190,7 +2202,7 @@ There are **two distinct hook diagrams**, each giving dimension 8:
 
 **Diagram 2a:** (hook shape, partition {2,1})
 
-$$\begin{array}{|c|c|} \hline A & B \\ \hline C \\ \cline{1-1} \end{array}$$
+<img src="/images/angular-momentum/young_hook.png" width="150px">
 
 - Box A: $r=0, c=0$, 1 box right, 1 below → $h=1+1+1=3$ → factor = $(3+0-0)/3 = 1$
 - Box B: $r=0, c=1$, 0 right, 0 below → $h=0+0+1=1$ → factor = $(3+1-0)/1 = 4$
@@ -2208,7 +2220,7 @@ Both constructions yield the same final diagram shape but represent different co
 
 *Fully antisymmetric (three in column, partition {1,1,1}):*
 
-$$\begin{array}{|c|} \hline A \\ \hline B \\ \hline C \\ \hline \end{array}$$
+<img src="/images/angular-momentum/young_three_col.png" width="100px">
 
 - Box A: $r=0, c=0$, 0 right, 2 below → $h=0+2+1=3$ → factor = $(3+0-0)/3 = 1$
 - Box B: $r=1, c=0$, 0 right, 1 below → $h=0+1+1=2$ → factor = $(3+0-1)/2 = 1$
@@ -2217,7 +2229,11 @@ $$\begin{array}{|c|} \hline A \\ \hline B \\ \hline C \\ \hline \end{array}$$
 
 The single antisymmetric state is: $(ud)s + (ds)u + (su)d - (du)s - (sd)u - (us)d$, where $(ud)$ denotes the antisymmetric pair $ud - du$.
 
-Result: $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$
+<img src="/images/angular-momentum/young_baryon_decomposition.png" width="600px">
+
+*Complete decomposition of three quarks into baryon multiplets*
+
+**Result:** $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$
 
 **Why Young Diagrams Are Useful:**
 
