@@ -2386,17 +2386,15 @@ $$
 $$
 
 Labeling the boxes:
-```
-A B C
-D
-```
 
-| Box | $(r,c)$ | Right | Below | Hook $h$ | Factor $\frac{N+c-r}{h}$ |
+<img src="/images/angular-momentum/young_31_labeled.png" width="200px">
+
+| Box | Position $(r,c)$ | Right | Below | Hook $h$ | Factor $\frac{N+c-r}{h}$ |
 |:---:|:---:|:---:|:---:|:---:|:---:|
-| A | (0,0) | 2 | 1 | 4 | $\frac{3+0-0}{4} = \frac{3}{4}$ |
-| B | (0,1) | 1 | 0 | 2 | $\frac{3+1-0}{2} = 2$ |
-| C | (0,2) | 0 | 0 | 1 | $\frac{3+2-0}{1} = 5$ |
-| D | (1,0) | 0 | 0 | 1 | $\frac{3+0-1}{1} = 2$ |
+| A | (0,0) | 2 | 1 | 4 | $\frac{3}{4}$ |
+| B | (0,1) | 1 | 0 | 2 | $2$ |
+| C | (0,2) | 0 | 0 | 1 | $5$ |
+| D | (1,0) | 0 | 0 | 1 | $2$ |
 
 $$
 \dim(\mathbf{15}) = \frac{3}{4} \times 2 \times 5 \times 2 = 15
