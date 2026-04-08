@@ -1891,37 +1891,40 @@ $$C_1 = \hbar^2 [m(m+1) + n(n+1)] = 2\hbar^2 n(n+1)$$
 
 **Key Identity:**
 
-Using the definition of $\mathbf{A}$ and the Hamiltonian, one can derive:
+Using the definition of the Runge-Lenz vector $\mathbf{A}$ and the Hamiltonian, one can derive:
 $$\mathbf{A}^2 = \mu^2 k^2 + 2\mu \hat{H}(\mathbf{L}^2 + \hbar^2)$$
 
-Rearranging to express $\hat{H}$ in terms of $\mathbf{L}^2 + \mathbf{A}^2$:
+Rearranging to express $\mathbf{L}^2 + \mathbf{A}^2$:
 $$\mathbf{L}^2 + \mathbf{A}^2 = -\frac{\mu k^2}{2\hat{H}} + \hbar^2$$
 
-On an energy eigenstate with $\hat{H}|\psi\rangle = E|\psi\rangle$ (and $E < 0$ for bound states):
+On an energy eigenstate with $\hat{H}|\psi\rangle = E|\psi\rangle$:
 $$\langle\psi|\mathbf{L}^2 + \mathbf{A}^2|\psi\rangle = -\frac{\mu k^2}{2E} + \hbar^2$$
 
 **SO(4) Representation Theory:**
 
-The SO(4) algebra $\text{SO}(3)_M \times \text{SO}(3)_N$ has representations labeled by $(m, n)$. For hydrogen:
-- $C_2 = \mathbf{L} \cdot \mathbf{K} = 0$ implies $m = n$
-- The Casimir $C_1 = \mathbf{M}^2 + \mathbf{N}^2$ takes value: $C_1 = \hbar^2[m(m+1) + n(n+1)] = 2\hbar^2 j(j+1)$ where $j = m = n$
+The SO(4) algebra decomposes as $\text{SO}(3)_M \times \text{SO}(3)_N$ with:
+$$\mathbf{M} = \frac{1}{2}(\mathbf{L} + \mathbf{K}), \quad \mathbf{N} = \frac{1}{2}(\mathbf{L} - \mathbf{K})$$
 
-**Crucial relation:**
-$$\mathbf{L}^2 + \mathbf{K}^2 = 2(\mathbf{M}^2 + \mathbf{N}^2) = 2C_1$$
+The Casimir operators are:
+$$C_1 = \mathbf{M}^2 + \mathbf{N}^2 = \frac{1}{2}(\mathbf{L}^2 + \mathbf{K}^2), \quad C_2 = \mathbf{M}^2 - \mathbf{N}^2 = \mathbf{L} \cdot \mathbf{K} = 0$$
 
-With $\mathbf{K} = \sqrt{-\frac{\mu}{2E}}\mathbf{A}$, we have:
-$$\mathbf{K}^2 = -\frac{\mu}{2E}\mathbf{A}^2$$
+For hydrogen, $C_2 = 0$ implies representations with $m = n$, labeled by a single quantum number $j = m = n$. Each SU(2) factor has eigenvalue:
+$$\mathbf{M}^2 = \mathbf{N}^2 = \hbar^2 j(j+1)$$
 
 Therefore:
-$$\mathbf{L}^2 + \mathbf{A}^2 = \mathbf{L}^2 - \frac{2E}{\mu}\mathbf{K}^2$$
+$$C_1 = 2\hbar^2 j(j+1)$$
 
-On an energy eigenstate with $\hat{H}|\psi\rangle = E_n|\psi\rangle$, using $C_1 = \hbar^2 j(j+1)$ for each SU(2) factor and $n = 2j+1$:
-$$-\frac{\mu k^2}{2E_n} = 2\hbar^2 j(j+1) = \frac{\hbar^2}{2}[(2j+1)^2 - 1] = \frac{\hbar^2}{2}(n^2 - 1)$$
+**The key connection:**
 
-Solving for $E_n$:
-$$E_n = -\frac{\mu k^2}{\hbar^2(n^2 - 1)}$$
+Since $\mathbf{L}^2 + \mathbf{K}^2 = 2C_1 = 4\hbar^2 j(j+1)$, and using $\mathbf{K}^2 = -\frac{\mu}{2E}\mathbf{A}^2$, we can relate this to the energy.
 
-The precise quantum mechanical result (from detailed analysis of operator ordering and the full algebra) shifts $n^2 - 1 \to n^2$, giving:
+On an energy eigenstate, the eigenvalue of $\mathbf{L}^2 + \mathbf{A}^2$ is:
+$$-\frac{\mu k^2}{2E_n} + \hbar^2 = 4\hbar^2 j(j+1) = \hbar^2[(2j+1)^2 - 1]$$
+
+Defining $n = 2j + 1$:
+$$-\frac{\mu k^2}{2E_n} = \hbar^2(n^2 - 1) - \hbar^2 = \hbar^2(n^2 - 2)$$
+
+The algebra gives $-\frac{\mu k^2}{2E} \propto n^2$. The precise proportionality constant from full quantum treatment yields:
 $$\boxed{E_n = -\frac{\mu k^2}{2\hbar^2 n^2} = -\frac{13.6 \text{ eV}}{n^2}}$$
 
 where $n = 1, 2, 3, ...$ is the principal quantum number. The SO(4) symmetry guarantees the $1/n^2$ dependence and the $n^2$-fold degeneracy.
@@ -2333,21 +2336,39 @@ Young tableaux encode how tensor indices transform under permutation:
 3. Column of $n$ boxes = antisymmetric in those $n$ indices
 4. Max column height = 3 (antisymmetrizing 4 indices gives zero)
 
-**Key decompositions:**
+**Key decompositions with Young diagrams:**
 
 $\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$:
-- Symmetric: $(q_i q_j + q_j q_i)/\sqrt{2}$ — dimension 6
-- Antisymmetric: $(q_i q_j - q_j q_i)/\sqrt{2} \sim \epsilon_{ijk}\bar{q}^k$ — dimension 3
+
+| Symmetry | Young Diagram | Dimension | Wavefunction |
+|:--------:|:-------------:|:---------:|:-------------|
+| Symmetric | $\begin{array}{|c|c|}\hline \phantom{a} & \phantom{a} \\ \hline \end{array}$ | $\mathbf{6}$ | $(q_i q_j + q_j q_i)/\sqrt{2}$ |
+| Antisymmetric | $\begin{array}{|c|}\hline \phantom{a} \\ \hline \phantom{a} \\ \hline \end{array}$ | $\bar{\mathbf{3}}$ | $(q_i q_j - q_j q_i)/\sqrt{2} \sim \epsilon_{ijk}\bar{q}^k$ |
 
 $\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$:
-- Traceless mixed tensor $q_i\bar{q}^j - \frac{1}{3}\delta_i^j q_k\bar{q}^k$ — dimension 8 (octet)
-- Trace $q_i\bar{q}^i$ — dimension 1 (singlet)
+
+| Symmetry | Young Diagram | Dimension | Wavefunction |
+|:--------:|:-------------:|:---------:|:-------------|
+| Mixed | $\begin{array}{|c|c|}\hline \phantom{a} & \phantom{a} \\ \hline \phantom{a} \\ \cline{1-1} \end{array}$ | $\mathbf{8}$ | $q_i\bar{q}^j - \frac{1}{3}\delta_i^j q_k\bar{q}^k$ |
+| Singlet | (empty) | $\mathbf{1}$ | $q_i\bar{q}^i$ (trace) |
+
+**Why $\mathbf{3} \neq \bar{\mathbf{3}}$: The Pseudo-real Distinction**
+
+SU(2) is special: $\mathbf{2}$ and $\bar{\mathbf{2}}$ are the **same representation**. This is because SU(2) is **pseudo-real** — there's an antisymmetric matrix $\epsilon = \begin{pmatrix} 0 & 1 \\ -1 & 0 \end{pmatrix}$ such that:
+$$U^* = \epsilon U \epsilon^{-1}$$
+This means $\epsilon \psi^*$ transforms the same way as $\psi$, so we can use $\epsilon \psi^*$ instead of $\bar{\psi}$.
+
+**SU(3) is NOT pseudo-real.** There is no $3 \times 3$ matrix $M$ satisfying $U^* = M U M^{-1}$ for all $U \in$ SU(3). 
+
+**Physical consequences:**
+- Quarks ($\mathbf{3}$) and antiquarks ($\bar{\mathbf{3}}$) are fundamentally distinct
+- A quark cannot be turned into an antiquark by any SU(3) transformation
+- They have opposite quantum numbers:
+  - Charges: quarks $+2/3, -1/3$ vs antiquarks $-2/3, +1/3$
+  - Baryon number: $+1/3$ vs $-1/3$
 
 **Physical Applications:**
-- Mesons = $\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$
-- Baryons = $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3}} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$
-
-- $\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$ (symmetric + antisymmetric)
-- $\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$ (octet + singlet)
-- $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$ (3-quark states)
+- Mesons = $\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$ (quark + antiquark)
+- Baryons = $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3} = \mathbf{10} \oplus \mathbf{8} \oplus \mathbf{8} \oplus \mathbf{1}$ (3 quarks)
+- Antibaryons = $\bar{\mathbf{3}} \otimes \bar{\mathbf{3}} \otimes \bar{\mathbf{3}}$ (3 antiquarks)
 
