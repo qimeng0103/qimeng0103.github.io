@@ -1640,21 +1640,24 @@ For three equivalent p-electrons (like nitrogen $2p^3$), the total number of mic
 - Term: $^4S$ with $J = 3/2$ only
 - Magnetic substates: $2J + 1 = 4$ states
 
-**Case 2**: Spin mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;"> × Orbital mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;"> (first pair)
+**Case 2**: Spin mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;"> × Orbital mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;">
 - $S = 1/2$, $L = 2$
-- Two distinct $^2D$ terms, each with $J = 3/2, 5/2$
-- States: $2 \times (4 + 6) = 20$? No—each distinct term contributes once
+- The hook diagram has dimension 2, giving **2 distinct $^2D$ terms**
+- Each $^2D$ term has $J = 3/2$ and $J = 5/2$, contributing $4 + 6 = 10$ states total
 
-Correct counting: The hook diagram (dimension 2) means there are **2 distinct doublet D terms** and **2 distinct doublet P terms**. But each term's $J$ structure is normal:
+**Case 3**: Spin mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;"> × Orbital mixed <img src="/images/angular-momentum/young_21_clean.png" width="30px" style="vertical-align:middle;">
+- $S = 1/2$, $L = 1$
+- Similarly, **2 distinct $^2P$ terms**
+- Each with $J = 1/2$ and $J = 3/2$, contributing $2 + 4 = 6$ states total
 
-| Configuration | # of distinct terms | $J$ values | States per term | Total states |
+**State counting summary:**
+
+| Term | # of distinct terms | $J$ values | States per term | Total |
 |:---:|:---:|:---:|:---:|:---:|
-| $^4S$ | 1 | $3/2$ | 4 | **4** |
-| $^2D$ | 2 | $3/2$, $5/2$ | $4 + 6 = 10$ | **10** |
-| $^2P$ | 2 | $1/2$, $3/2$ | $2 + 4 = 6$ | **6** |
+| $^4S$ | 1 | $3/2$ | 4 | 4 |
+| $^2D$ | 2 | $3/2, 5/2$ | $4 + 6 = 10$ | 10 |
+| $^2P$ | 2 | $1/2, 3/2$ | $2 + 4 = 6$ | 6 |
 | **Total** | | | | **20** |
-
-Each row is a distinct quantum state (different permutational symmetry). The two $^2D$ terms are physically different states, each contributing $(2J_1+1) + (2J_2+1) = 10$ magnetic substates between them.
 
 #### Summary: The Role of Young Diagrams
 
