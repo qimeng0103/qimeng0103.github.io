@@ -1585,14 +1585,25 @@ While Young diagrams show symmetry types, **Young tableaux** enumerate the actua
 
 **Example: Spin states for two electrons**
 
-For two electrons, the spin states transform under $S_2$:
+| Symmetry | Young Diagram | Young Tableau | Spin State | $S$ | $M_S$ |
+|:---:|:---:|:---:|:---:|:---:|:---:|
+| Symmetric | <img src="/images/angular-momentum/young_2_row_clean.png" width="40px"> | <img src="/images/angular-momentum/tableau_2_symmetric.png" width="40px"> | $\uparrow\uparrow$, $\frac{\uparrow\downarrow+\downarrow\uparrow}{\sqrt{2}}$, $\downarrow\downarrow$ | 1 | +1, 0, -1 |
+| Antisymmetric | <img src="/images/angular-momentum/young_2_col_clean.png" width="20px"> | <img src="/images/angular-momentum/tableau_2_antisymmetric.png" width="20px"> | $\frac{\uparrow\downarrow-\downarrow\uparrow}{\sqrt{2}}$ | 0 | 0 |
 
-| Young Diagram | Young Tableaux | Spin State | $S$ | $M_S$ |
-|:---:|:---:|:---:|:---:|:---:|
-| <img src="/images/angular-momentum/young_2_row_clean.png" width="40px"> | $\boxed{1}\boxed{2}$ | $\uparrow\uparrow$ or $\frac{1}{\sqrt{2}}(\uparrow\downarrow + \downarrow\uparrow)$ or $\downarrow\downarrow$ | 1 | +1, 0, -1 |
-| <img src="/images/angular-momentum/young_2_col_clean.png" width="20px"> | $\begin{array}{|c|}\hline 1 \\ \hline 2 \\ \hline\end{array}$ | $\frac{1}{\sqrt{2}}(\uparrow\downarrow - \downarrow\uparrow)$ | 0 | 0 |
+The **standard Young tableau** conditions ensure we count each state exactly once:
+- Numbers increase left-to-right in each row
+- Numbers increase top-to-bottom in each column
 
-The standard tableau conditions (numbers increase left-to-right in rows, top-to-bottom in columns) ensure we count each state exactly once.
+**Example: Three electrons with mixed symmetry**
+
+The hook shape <img src="/images/angular-momentum/young_21_clean.png" width="35px"> has two standard tableaux, giving two distinct doublet states:
+
+| Tableau | State Label |
+|:---:|:---:|
+| <img src="/images/angular-momentum/tableau_3_hook_1.png" width="35px"> | $\chi_1$ |
+| <img src="/images/angular-momentum/tableau_3_hook_2.png" width="35px"> | $\chi_2$ |
+
+These correspond to the two distinct $^2D$ (and $^2P$) terms in the nitrogen atom spectrum.
 
 #### Example: Three p-Electrons (Nitrogen Atom $2p^3$)
 
@@ -1622,13 +1633,21 @@ For three $l=1$ orbitals, the same diagrams apply but with different dimensions.
 
 **Total**: 4 + 6 + 6 + 4 = **20 states** (accounting for all $J$ values), matching the direct count from Pauli exclusion.
 
-#### Summary: What Young Diagrams Do
+#### Summary: The Role of Young Diagrams
 
-1. **Classify symmetry types**: Row = symmetric, column = antisymmetric
-2. **Count states**: Dimension formula gives the number of basis states for each symmetry
-3. **Enforce Pauli principle**: Spin × orbital must be overall antisymmetric
+Young diagrams and tableaux serve three essential functions in quantum mechanics:
 
-Young diagrams do not determine *which* particles exist, but rather tell us *which combinations are allowed* by symmetry. The actual dynamics (energies, transition rates) require solving the Schrödinger equation, but the symmetry patterns are fixed by group theory alone.
+| Function | How It Works | Example |
+|:---:|:---|:---|
+| **Classify symmetry** | Row = symmetric, column = antisymmetric | Three boxes in a row = totally symmetric spin quartet |
+| **Count states** | Dimension formula + standard tableaux count basis states | Hook shape gives 2 mixed-symmetry doublets |
+| **Enforce constraints** | Total wavefunction must be appropriately symmetric/antisymmetric | Spin (sym) × orbital (antisym) = antisymmetric total for fermions |
+
+**Key distinction**: Young diagrams classify *permutation symmetry types* (which are determined by the tensor product structure of SU(N)), while weight diagrams classify *representations within a given symmetry type*. For multi-particle systems, we need both:
+- Weight diagrams tell us the quantum numbers $(I_3, Y)$ or $(L, L_z)$
+- Young diagrams tell us how states transform under particle exchange
+
+The power of this approach is that symmetry constraints are **kinematic**—they depend only on the group structure, not on the detailed Hamiltonian. Whether calculating atomic energy levels or hadron masses, the allowed symmetry patterns are fixed by group theory alone.
 ---
 
 ## Part VI: Spherical Harmonics and Central Potentials
@@ -2024,18 +2043,19 @@ $$\text{SO(4)} \cong (\text{SU(2)} \times \text{SU(2)})/\mathbb{Z}_2$$
 
 **Connection to the Hydrogen Atom:**
 
-As shown in Chapter 30 of *Non-relativistic Quantum Theory* by Lam (2009), the hydrogen atom has a hidden SO(4) symmetry from conservation of both $\mathbf{L}$ and the Runge-Lenz vector $\mathbf{M}$. The rescaled vector $\mathbf{M}' = \sqrt{-m/2E}\, \mathbf{M}$ (valid for bound states with $E < 0$) has the same dimensions as $\mathbf{L}$.
+The hydrogen atom has a hidden SO(4) symmetry from conservation of both angular momentum $\mathbf{L}$ and the Runge-Lenz vector $\mathbf{M}$. For bound states ($E < 0$), the rescaled vector:
+$$\mathbf{M}' = \sqrt{-\frac{m}{2E}}\, \mathbf{M}$$
+has dimensions of angular momentum and satisfies the same commutation relations as $\mathbf{L}$.
 
-The Casimir operators are:
-$$C_+ = \mathbf{L}^+ \cdot \mathbf{L}^+, \quad C_- = \mathbf{L}^- \cdot \mathbf{L}^-$$
+The SO(4) algebra decomposes into two SU(2) algebras generated by $\mathbf{L}^\pm = \frac{1}{2}(\mathbf{L} \pm \mathbf{M}')$, with Casimir operators $C_\pm = \mathbf{L}^\pm \cdot \mathbf{L}^\pm$. Their eigenvalues are $l_\pm(l_\pm + 1)\hbar^2$ where $l_+ = l_- = 0, \frac{1}{2}, 1, ...$ for physical states.
 
-With eigenvalues $l_+(l_+ + 1)\hbar^2$ and $l_-(l_- + 1)\hbar^2$. For SO(4) representations, $l_+ = l_- = 0, \frac{1}{2}, 1, ...$, giving the principal quantum number:
+The principal quantum number is:
 $$n = 2l_+ + 1 = 1, 2, 3, ...$$
 
-The energy levels depend only on $n$:
+and the energy depends only on $n$:
 $$E_n = -\frac{m e^4}{2\hbar^2 n^2} = -\frac{13.6 \text{ eV}}{n^2}$$
 
-and the degeneracy is $n^2$ (from $(2l_+ + 1)(2l_- + 1) = n^2$), matching the known hydrogen spectrum.
+The degeneracy is $n^2$ (from $(2l_+ + 1)(2l_- + 1) = n^2$), explaining the "accidental" degeneracy of hydrogen energy levels.
 
 ### 7.4 SU(3) Flavor vs. SU(3) Color
 
@@ -2211,7 +2231,13 @@ Antisymmetric states: $(ud-du), (us-su), (ds-sd) \sim \bar{u}, \bar{d}, \bar{s}$
 | Mixed (×2) | <img src="/images/angular-momentum/young_21_clean.png" width="60px"> | $1 \times 4 \times 2$ | **8** (each) |
 | Fully antisymmetric | <img src="/images/angular-momentum/young_3_col_clean.png" width="30px"> | $1 \times 1 \times 1$ | **1** |
 
-The two octets arise from different construction paths (adding the third box to $\mathbf{6}$ vs. $\bar{\mathbf{3}}$), giving distinct representations with the same hook shape.
+The two octets arise from different construction paths:
+
+**Path 1 (Mixed symmetry from $\mathbf{6}$):** Start with the symmetric sextet $\mathbf{6}$ (two boxes in a row), then add the third box below the first box. This gives a hook shape where the first two indices are symmetric.
+
+**Path 2 (Mixed symmetry from $\bar{\mathbf{3}}$):** Start with the antisymmetric anti-triplet $\bar{\mathbf{3}}$ (two boxes in a column), then add the third box to the right of the top box. This gives a hook shape where the first two indices are antisymmetric.
+
+Both paths yield the same final Young diagram shape <img src="/images/angular-momentum/young_21_clean.png" width="40px">, but they correspond to different subspaces in the full tensor product space $\mathbf{3} \otimes \mathbf{3} \otimes \mathbf{3}$. The dimension formula confirms there are two distinct octets.
 
 **Why Young Diagrams Are Useful:**
 
@@ -2251,18 +2277,19 @@ Physical particle states (like $\pi^+ p$, $\pi^- p$, etc.) are direct products o
 2. **Applying** the transition operator $T$ (which is diagonal in the isospin basis due to conservation)
 3. **Projecting** onto the final product state $|cd\rangle = |c\rangle \otimes |d\rangle$
 
-Mathematically, inserting two complete sets of isospin states:
-$$\mathcal{M}(a + b \to c + d) = \sum_{I, I_3} \sum_{I', I_3'} \underbrace{\langle cd | I', I_3' \rangle}_{\text{final projection}} \underbrace{\langle I', I_3' | T | I, I_3 \rangle}_{= \delta_{II'}\delta_{I_3 I_3'} A_I} \underbrace{\langle I, I_3 | ab \rangle}_{\text{initial decomposition}}$$
+Mathematically, since $[T, I_3] = 0$, the operator $T$ is block-diagonal in the $I_3$ basis—it only connects states with the **same** $I_3$ value. For a given initial state with fixed $I_3^{(i)}$ (determined by the specific particle combination), the intermediate states must all have this same $I_3^{(i)}$.
 
-The delta functions from isospin conservation collapse the sums:
-- $\delta_{II'}$ forces $I = I'$ (total isospin conserved)
-- $\delta_{I_3 I_3'}$ forces $I_3 = I_3'$ (third component conserved)
+Within this fixed-$I_3$ subspace, the states $|I, I_3^{(i)}\rangle$ (for all allowed $I$ values) form a complete basis. The scattering amplitude is:
 
-Therefore, only states with the **same** $I$ and $I_3$ contribute. Since $I_3$ is fixed by the initial state (e.g., $\pi^- p$ has $I_3 = -1/2$), and the final state must have the **same** $I_3$ to have non-zero amplitude, the sum over $I_3$ collapses to a single value. We are left with:
+$$\mathcal{M}(a + b \to c + d) = \sum_{I} \langle cd | I, I_3^{(i)} \rangle \, \langle I, I_3^{(i)} | T | I, I_3^{(i)} \rangle \, \langle I, I_3^{(i)} | ab \rangle = \sum_{I} \langle cd | I, I_3^{(i)} \rangle \, A_I \, \langle I, I_3^{(i)} | ab \rangle$$
 
-$$\mathcal{M}(a + b \to c + d) = \sum_{I} \langle cd | I, I_3^{(i)} \rangle \, A_I \, \langle I, I_3^{(i)} | ab \rangle$$
+The sum is only over $I$ (total isospin), not $I_3$, because:
+1. $I_3$ is fixed by the initial state composition (e.g., $\pi^- p$ has $I_3 = -1 + 1/2 = -1/2$)
+2. The final state must have the **same** $I_3$ for non-zero overlap
 
-where $I_3^{(i)}$ is the fixed $I_3$ value of the initial state. For example, all processes starting from $\pi^- p$ have $I_3^{(i)} = -1/2$, while those starting from $\pi^+ p$ have $I_3^{(i)} = +3/2$.
+For example:
+- $\pi^+ p$ has $I_3^{(i)} = +1 + 1/2 = +3/2$, only $I = 3/2$ contributes
+- $\pi^- p$ has $I_3^{(i)} = -1 + 1/2 = -1/2$, both $I = 3/2$ and $I = 1/2$ contribute
 
 where:
 - $|ab\rangle = |a\rangle \otimes |b\rangle$ is the tensor product of initial single-particle states
