@@ -2330,19 +2330,17 @@ Young tableaux encode how tensor indices transform under permutation:
 
 **Key decompositions with Young diagrams:**
 
-$\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$:
+<img src="/images/angular-momentum/young_3x3_product.png" width="700px" alt="3x3 Tensor Product">
 
-| Symmetry | Young Diagram | Dimension | Wavefunction |
-|:--------:|:-------------:|:---------:|:-------------|
-| Symmetric | $\begin{array}{|c|c|}\hline \phantom{a} & \phantom{a} \\ \hline \end{array}$ | $\mathbf{6}$ | $(q_i q_j + q_j q_i)/\sqrt{2}$ |
-| Antisymmetric | $\begin{array}{|c|}\hline \phantom{a} \\ \hline \phantom{a} \\ \hline \end{array}$ | $\bar{\mathbf{3}}$ | $(q_i q_j - q_j q_i)/\sqrt{2} \sim \epsilon_{ijk}\bar{q}^k$ |
+**$\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$:**
+- Symmetric (row): $(q_i q_j + q_j q_i)/\sqrt{2}$ — dimension 6
+- Antisymmetric (stacked): $(q_i q_j - q_j q_i)/\sqrt{2} \sim \epsilon_{ijk}\bar{q}^k$ — dimension 3
 
-$\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$:
+<img src="/images/angular-momentum/young_3x3bar_product.png" width="700px" alt="3x3bar Tensor Product">
 
-| Symmetry | Young Diagram | Dimension | Wavefunction |
-|:--------:|:-------------:|:---------:|:-------------|
-| Mixed | $\begin{array}{|c|c|}\hline \phantom{a} & \phantom{a} \\ \hline \phantom{a} \\ \cline{1-1} \end{array}$ | $\mathbf{8}$ | $q_i\bar{q}^j - \frac{1}{3}\delta_i^j q_k\bar{q}^k$ |
-| Singlet | (empty) | $\mathbf{1}$ | $q_i\bar{q}^i$ (trace) |
+**$\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}}$:**
+- Mixed symmetry (hook): $q_i\bar{q}^j - \frac{1}{3}\delta_i^j q_k\bar{q}^k$ — dimension 8 (octet)
+- Singlet (empty): $q_i\bar{q}^i$ (trace) — dimension 1
 
 **Why $\mathbf{3} \neq \bar{\mathbf{3}}$: The Pseudo-real Distinction**
 
