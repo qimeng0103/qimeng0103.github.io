@@ -1553,62 +1553,82 @@ LS coupling works when electrons "feel" each other's spatial distribution more s
 
 ### 5.7 Permutation Symmetry and Young Diagrams in Atomic Spectroscopy
 
-**Atomic spectroscopy** provides a concrete application of permutation symmetry and Young diagrams. The notation used throughout this chapter ($^{2S+1}L_J$ terms, singlet/triplet states) originates from the interplay between electron spin and orbital symmetries.
+**Atomic spectroscopy** provides a concrete application of permutation symmetry. The notation used throughout this chapter ($^{2S+1}L_J$ terms, singlet/triplet states) originates from the interplay between electron spin and orbital symmetries under particle exchange.
 
-#### Young Diagram vs. Young Tableau
+#### Why Permutation Symmetry Matters
 
-Before proceeding, a clarification of terminology:
+Electrons are identical fermions. For a system of $n$ electrons, the total wavefunction must be **antisymmetric** under exchange of any two electrons:
 
-- **Young Diagram (Young图)**: An array of boxes representing the partition of an integer. Only the shape matters—no numbers inside. For example, three boxes in a row represents total symmetry, while three boxes in a column represents total antisymmetry.
+$$\Psi(1, 2, ..., i, ..., j, ..., n) = -\Psi(1, 2, ..., j, ..., i, ..., n)$$
 
-- **Young Tableau (Young表)**: A Young diagram with the numbers $1, 2, ..., n$ inserted into the boxes, each used exactly once. A **standard Young tableau** has numbers increasing left-to-right in rows and top-to-bottom in columns.
+The total wavefunction is a product of spatial, spin, and other parts. For the $2p^3$ configuration (three equivalent electrons), we need to combine:
+- **Orbital part**: Three $l=1$ states with permutation symmetry
+- **Spin part**: Three $s=1/2$ states with permutation symmetry
 
-The diagram tells us the *symmetry type*; the tableau helps enumerate *basis states*.
+The constraint is: **orbital × spin must be overall antisymmetric**.
+
+#### Young Diagrams: Visualizing Permutation Symmetry
+
+Young diagrams provide a graphical way to classify permutation symmetry types. For three electrons ($S_3$), there are three possible symmetry types:
+
+| Symmetry Type | Young Diagram | Dimension | Physics |
+|:---:|:---:|:---:|:---|
+| Fully symmetric | <img src="/images/angular-momentum/young_3_row_clean.png" width="60px"> | 1 | All three electrons treated identically |
+| Mixed symmetry | <img src="/images/angular-momentum/young_21_clean.png" width="40px"> | 2 | Two electrons symmetrized, third treated differently |
+| Fully antisymmetric | <img src="/images/angular-momentum/young_3_col_clean.png" width="20px"> | 1 | Swapping any two electrons changes sign |
+
+**Key insight**: The diagram shape determines the symmetry type; the dimension formula tells us how many independent states have that symmetry.
+
+#### Young Tableaux: Enumerating Basis States
+
+While Young diagrams show symmetry types, **Young tableaux** enumerate the actual basis states by filling the boxes with numbers $1, 2, ..., n$ (representing electron labels).
+
+**Example: Spin states for two electrons**
+
+For two electrons, the spin states transform under $S_2$:
+
+| Young Diagram | Young Tableaux | Spin State | $S$ | $M_S$ |
+|:---:|:---:|:---:|:---:|:---:|
+| <img src="/images/angular-momentum/young_2_row_clean.png" width="40px"> | $\boxed{1}\boxed{2}$ | $\uparrow\uparrow$ or $\frac{1}{\sqrt{2}}(\uparrow\downarrow + \downarrow\uparrow)$ or $\downarrow\downarrow$ | 1 | +1, 0, -1 |
+| <img src="/images/angular-momentum/young_2_col_clean.png" width="20px"> | $\begin{array}{|c|}\hline 1 \\ \hline 2 \\ \hline\end{array}$ | $\frac{1}{\sqrt{2}}(\uparrow\downarrow - \downarrow\uparrow)$ | 0 | 0 |
+
+The standard tableau conditions (numbers increase left-to-right in rows, top-to-bottom in columns) ensure we count each state exactly once.
 
 #### Example: Three p-Electrons (Nitrogen Atom $2p^3$)
 
-Consider the ground state configuration of atomic nitrogen: three electrons in the $2p$ subshell. This is a staple example in atomic spectroscopy.
+Consider the ground state of atomic nitrogen: three electrons in the $2p$ subshell.
 
-**The Setup:**
-- Each electron has orbital angular momentum $l=1$ and spin $s=1/2$
-- Total Hilbert space dimension: $6^3 = 216$ (without Pauli exclusion)
-- With Pauli exclusion: only 20 valid states
+**Step 1: Spin Symmetry (SU(2))**
 
-**Permutation Symmetry Constraints:**
+For three spin-1/2 electrons, the Young diagrams give:
 
-The total wavefunction must be **antisymmetric** under electron exchange. This requires:
-- Symmetric orbital × Antisymmetric spin, OR
-- Antisymmetric orbital × Symmetric spin
+| Young Diagram | Spin $S$ | Multiplicity | # of States |
+|:---:|:---:|:---:|:---:|
+| <img src="/images/angular-momentum/young_3_row_clean.png" width="50px"> | $3/2$ | 4 | 4 (quartet) |
+| <img src="/images/angular-momentum/young_21_clean.png" width="35px"> | $1/2$ | 2 | 2×2=4 (two doublets) |
+| <img src="/images/angular-momentum/young_3_col_clean.png" width="18px"> | 0 | — | 0 (vanishes for spin-1/2) |
 
-**Young Diagrams for $S_3$ (three electrons):**
+**Step 2: Orbital Symmetry**
 
-| Spin Symmetry | Young Diagram | Spin $S$ | Dimension |
-|:-------------:|:-------------:|:--------:|:---------:|
-| Fully symmetric | [3] (three boxes in a row) | $3/2$ | 4 |
-| Mixed symmetry | [2,1] (hook shape) | $1/2$ | 2 (two copies) |
-| Fully antisymmetric | [1,1,1] (three boxes in column) | $0$ | 0 (vanishes for spin-1/2) |
+For three $l=1$ orbitals, the same diagrams apply but with different dimensions. The decomposition of three $p$-orbitals gives $L = 0, 1, 2$ (S, P, D terms) with appropriate symmetries.
 
-**Orbital-Spin Association:**
+**Step 3: Pauli-Allowed Combinations**
 
-| Spin State | Orbital State | Allowed $L$ | Spectroscopic Terms |
-|:----------:|:-------------:|:-----------:|:-------------------:|
-| $S=3/2$ (symmetric) | $L=0$ (antisymmetric) | $J=3/2$ | $^4S_{3/2}$ |
-| $S=1/2$ (mixed) | $L=1,2$ (mixed) | $J=1/2, 3/2, 5/2$ | $^2P_{1/2,3/2}$, $^2D_{3/2,5/2}$ |
+| Spin Symmetry | Orbital Symmetry | $S$ | $L$ | Term Symbol |
+|:---:|:---:|:---:|:---:|:---:|
+| <img src="/images/angular-momentum/young_3_row_clean.png" width="40px"> (symmetric) | <img src="/images/angular-momentum/young_3_col_clean.png" width="15px"> (antisymmetric) | 3/2 | 0 | $^4S_{3/2}$ |
+| <img src="/images/angular-momentum/young_21_clean.png" width="30px"> (mixed) | <img src="/images/angular-momentum/young_21_clean.png" width="30px"> (mixed) | 1/2 | 2 | $^2D_{3/2,5/2}$ (×2) |
+| <img src="/images/angular-momentum/young_21_clean.png" width="30px"> (mixed) | <img src="/images/angular-momentum/young_21_clean.png" width="30px"> (mixed) | 1/2 | 1 | $^2P_{1/2,3/2}$ (×2) |
 
-**The Complete Set of 20 States:**
+**Total**: 4 + 6 + 6 + 4 = **20 states** (accounting for all $J$ values), matching the direct count from Pauli exclusion.
 
-$$^4S_{3/2}, \quad ^2D_{5/2}, \quad ^2D_{3/2}, \quad ^2P_{3/2}, \quad ^2P_{1/2}$$
+#### Summary: What Young Diagrams Do
 
-**Physical Interpretation:**
+1. **Classify symmetry types**: Row = symmetric, column = antisymmetric
+2. **Count states**: Dimension formula gives the number of basis states for each symmetry
+3. **Enforce Pauli principle**: Spin × orbital must be overall antisymmetric
 
-The quartet term $^4S$ (spin $S=3/2$, all spins parallel) requires a completely antisymmetric orbital wavefunction—meaning all three electrons avoid each other in space. This is achieved when the total orbital angular momentum vanishes ($L=0$), creating a spherically symmetric but internally correlated distribution.
-
-The doublet terms ($^2D$, $^2P$) have mixed symmetry in both spin and orbital spaces. The two distinct $^2D$ (and $^2P$) terms arise from the two equivalent representations of the mixed symmetry type [2,1].
-
-**Why 20 States?**
-
-Without the Pauli exclusion principle, we'd have $6^3 = 216$ possible states (6 spin-orbitals for each of 3 electrons). The antisymmetry requirement restricts us to placing at most 2 electrons per orbital (one spin-up, one spin-down). Counting ways to place 3 arrows (↑ or ↓) in 3 boxes (the $m_l = -1, 0, +1$ orbitals) with at most 2 per box gives exactly 20 configurations—matching our group theory result.
-
+Young diagrams do not determine *which* particles exist, but rather tell us *which combinations are allowed* by symmetry. The actual dynamics (energies, transition rates) require solving the Schrödinger equation, but the symmetry patterns are fixed by group theory alone.
 ---
 
 ## Part VI: Spherical Harmonics and Central Potentials
@@ -1988,22 +2008,34 @@ The corresponding SO(3) rotation $R(\theta, \mathbf{n})$ rotates by angle $\thet
 
 **SO(4) and SU(2) × SU(2):**
 
-The SO(4) algebra decomposes as:
-$$\mathbf{M} = \frac{1}{2}(\mathbf{L} + \mathbf{K}), \quad \mathbf{N} = \frac{1}{2}(\mathbf{L} - \mathbf{K})$$
+The SO(4) algebra can be decomposed into two commuting SU(2) algebras. Define:
+$$\mathbf{L}^+ = \frac{1}{2}(\mathbf{L} + \mathbf{M}'), \quad \mathbf{L}^- = \frac{1}{2}(\mathbf{L} - \mathbf{M}')$$
 
-giving $[M_i, N_j] = 0$. This suggests:
-$$\text{SO(4)} \cong \text{SU(2)}_M \times \text{SU(2)}_N$$
+where $\mathbf{L}$ is angular momentum and $\mathbf{M}'$ is a rescaled Runge-Lenz vector (with dimensions of angular momentum). These satisfy:
+$$[L_i^+, L_j^+] = i\hbar \epsilon_{ijk} L_k^+, \quad [L_i^-, L_j^-] = i\hbar \epsilon_{ijk} L_k^-, \quad [L_i^+, L_j^-] = 0$$
 
-But with a subtlety: if $(U_M, U_N)$ generates an SO(4) element, then $(-U_M, -U_N)$ generates the **same** SO(4) element (both signs flip together). This identification is written as:
+This gives the isomorphism:
+$$\text{SO(4)} \cong \text{SU(2)}_+ \times \text{SU(2)}_-$$
+
+But with a subtlety: if $(U_+, U_-)$ generates an SO(4) element, then $(-U_+, -U_-)$ generates the **same** SO(4) element (both signs flip together). This is written as:
 $$\text{SO(4)} \cong (\text{SU(2)} \times \text{SU(2)})/\mathbb{Z}_2$$
 
-**What does $/\mathbb{Z}_2$ mean?** It means we identify $(U, V) \sim (-U, -V)$—the two pairs differing by overall sign represent the same group element.
+**What does $/\mathbb{Z}_2$ mean?** We identify $(U, V) \sim (-U, -V)$—pairs differing by overall sign represent the same group element.
 
 **Connection to the Hydrogen Atom:**
 
-The SO(4) symmetry of the hydrogen atom (described in Section 6.2) arises from the conservation of both angular momentum $\mathbf{L}$ and the Runge-Lenz vector $\mathbf{M}$. As shown in Chapter 30 of *Non-relativistic Quantum Theory* by Lam (2009), the algebra can be decomposed using:
-$$\mathbf{L}^+ = \frac{1}{2}(\mathbf{L} + \mathbf{M}'), \quad \mathbf{L}^- = \frac{1}{2}(\mathbf{L} - \mathbf{M}')$$
-where $\mathbf{M}' = \sqrt{-m/2E}\, \mathbf{M}$ is a rescaled Runge-Lenz vector with dimensions of angular momentum. These generate two commuting SU(2) algebras with Casimir operators $C = \mathbf{L}^+ \cdot \mathbf{L}^+ + \mathbf{L}^- \cdot \mathbf{L}^-$, yielding eigenvalues $2l_+(l_+ + 1) = 2l_-(l_- + 1)$. This gives the principal quantum number $n = 2l_+ + 1$ and explains the $n^2$-fold degeneracy of hydrogen energy levels.
+As shown in Chapter 30 of *Non-relativistic Quantum Theory* by Lam (2009), the hydrogen atom has a hidden SO(4) symmetry from conservation of both $\mathbf{L}$ and the Runge-Lenz vector $\mathbf{M}$. The rescaled vector $\mathbf{M}' = \sqrt{-m/2E}\, \mathbf{M}$ (valid for bound states with $E < 0$) has the same dimensions as $\mathbf{L}$.
+
+The Casimir operators are:
+$$C_+ = \mathbf{L}^+ \cdot \mathbf{L}^+, \quad C_- = \mathbf{L}^- \cdot \mathbf{L}^-$$
+
+With eigenvalues $l_+(l_+ + 1)\hbar^2$ and $l_-(l_- + 1)\hbar^2$. For SO(4) representations, $l_+ = l_- = 0, \frac{1}{2}, 1, ...$, giving the principal quantum number:
+$$n = 2l_+ + 1 = 1, 2, 3, ...$$
+
+The energy levels depend only on $n$:
+$$E_n = -\frac{m e^4}{2\hbar^2 n^2} = -\frac{13.6 \text{ eV}}{n^2}$$
+
+and the degeneracy is $n^2$ (from $(2l_+ + 1)(2l_- + 1) = n^2$), matching the known hydrogen spectrum.
 
 ### 7.4 SU(3) Flavor vs. SU(3) Color
 
@@ -2261,7 +2293,12 @@ $$| \pi^0 n \rangle = \sqrt{\frac{2}{3}} | I = 3/2, I_3 = -1/2 \rangle + \sqrt{\
 
 We use $\mathcal{M}_{fi} = \langle f | T | i \rangle$ with $|i\rangle = |ab\rangle$ and $|f\rangle = |cd\rangle$. Inserting the isospin decomposition:
 
-$$\mathcal{M}(a + b \to c + d) = \sum_{I} \langle cd | I, I_3 \rangle \langle I, I_3 | ab \rangle A_I$$
+$$\mathcal{M}(a + b \to c + d) = \sum_{I} \langle cd | I, I_3^{(i)} \rangle \, A_I \, \langle I, I_3^{(i)} | ab \rangle$$
+
+Here $I_3^{(i)}$ is the fixed $I_3$ value of the initial state (determined by the specific particle combination). The final state must have the same $I_3^{(f)} = I_3^{(i)}$ due to conservation; otherwise the amplitude vanishes. For example:
+- $\pi^+ p$ has $I_3^{(i)} = +1 + 1/2 = +3/2$
+- $\pi^- p$ has $I_3^{(i)} = -1 + 1/2 = -1/2$
+- $\pi^0 n$ has $I_3 = 0 + (-1/2) = -1/2$
 
 **1. Elastic scattering $\pi^+ + p \to \pi^+ + p$:**
 
