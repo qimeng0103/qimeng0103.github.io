@@ -7,8 +7,9 @@
 ## 📊 当前活跃任务
 
 ### 高优先级
-- [x] 修改角动量博客文章 - 全部完成
-- [x] 提交并推送到 GitHub - 完成
+- [x] 第四次修改群论部分 - 针对用户具体问题
+- [x] 构建检查 - 通过
+- [ ] 推送部署
 
 ### 中优先级  
 - [ ] 
@@ -20,17 +21,63 @@
 
 ## 📝 会话记录
 
-### 2026-04-08 - 群论部分提交推送
+### 2026-04-08 - 第四次修改（用户问题专项）
 
-**推送结果：** ✅ 成功
+**用户困惑的5个具体问题及解决方案：**
 
-**提交哈希：** `2946f52`
+1. **SU(3)为何有6个root vectors（vs SU(2)的2个）**
+   - 添加解释：SU(3)有3个独立升降算符($I_\pm, U_\pm, V_\pm$) vs SU(2)只有1个($J_\pm$)
+   - 给出显式$(\Delta i_3, \Delta y)$值
+   - 生成root diagram图像(hexagon)
 
-**修改统计：** 29 files changed, 172 insertions(+), 349 deletions(-)
+2. **Weight diagrams**
+   - 生成fundamental triplet图($\mathbf{3}$: triangle)
+   - 生成adjoint octet图($\mathbf{8}$: hexagon with doubly-occupied center)
+   - 标注$(i_3, y)$量子数
 
-**GitHub Actions：** 自动部署中
+3. **Young tableaux mechanics**
+   - 解释$\bar{\mathbf{3}} \neq \mathbf{3}$的原因：covariant vs contravariant indices
+   - 说明$\bar{\mathbf{3}}$构造：$\epsilon^{ijk}q_j q_k$（antisymmetric pair）
+   - 给出$\mathbf{3} \otimes \mathbf{3}$的机械计算步骤
 
-**网站地址：** https://qimeng0103.github.io/posts/quantum-mechanics/angular-momentum-algebra.html
+4. **SO(3) topology - antipodal identification**
+   - 详细解释"antipodal identification": $\pi\mathbf{n} \sim -\pi\mathbf{n}$
+   - 解释non-contractible loop为何不能shrink（jump跨越identified boundary）
+   - 对比SU(2)的$S^3$（no identification, simply connected）
+
+5. **Representation types (integer vs half-integer)**
+   - 强调$D^{(j)}(-U) = (-1)^{2j} D^{(j)}(U)$决定true vs projective
+   - 添加对比表格：integer spin → true rep, half-integer → projective rep
+   - 明确$2\pi$ rotation对两者不同效果
+
+**生成的图像：**
+- `su3_root_diagram.png` - 6 root vectors forming hexagon
+- `su3_fundamental_triplet.png` - quark triplet $\mathbf{3}$
+- `su3_octet_baryons.png` - baryon octet $\mathbf{8}$
+
+---
+
+### 2026-04-08 - 第三次修改完成
+
+**修改内容：**
+
+1. **7.1 Projective Representation**: 强调SO(3)群中$R_z(2\pi)=I$但量子算符$D=-I$的区别
+2. **7.1 Characters**: 添加详细推导和显式计算例子
+3. **7.3 Fundamental Group**: 改进解释（3D ball vs 3-sphere可视化）
+4. **7.3 Double Cover**: 明确角度对应关系，解释$\mathbb{Z}_2$ quotient
+5. **7.5 SU(3)**: 
+   - 解释rank 2来源
+   - 添加root vector显式计算
+   - 解释weight构建
+   - 说明Young tableaux的便利之处
+6. **5.2-5.6**: 
+   - 简化闭壳层解释
+   - 简化multiplicity讨论
+   - 删除runner比喻
+   - 删除Ce例子
+   - 强调不同shell电子的可区分性
+
+**提交**: `fab47c8`
 
 ---
 
@@ -38,7 +85,7 @@
 
 | 文章 | 分类 | 状态 | 进度 | 备注 |
 |------|------|------|------|------|
-| angular-momentum-algebra.md | quantum-mechanics | 🟢 已完成 | 已部署 | GitHub Actions自动部署 |
+| angular-momentum-algebra.md | quantum-mechanics | 🟢 已完成 | 已部署 | 全部修改完成 |
 
 ---
 

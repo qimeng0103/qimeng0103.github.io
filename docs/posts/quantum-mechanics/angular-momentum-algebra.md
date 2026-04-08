@@ -2028,15 +2028,45 @@ So:
 - $D(I) = I$ (identity maps to identity)
 - $D(R_z(2\pi)) = -I$ (but $R_z(2\pi) = I$ in SO(3)!)
 
-**Key point:** The rotation group itself is SO(3), where $R_z(2\pi) = I$. But when we try to represent SO(3) on spin-1/2 states, we find $D(R_z(2\pi)) = -I \neq D(I)$. This violates the definition of a true representation ($D(g_1g_2) = D(g_1)D(g_2)$ exactly).
+**The Critical Distinction: Group Element vs. Quantum Operator**
 
-**This is a projective representation** because:
-$$D(R_z(2\pi)) = -I = e^{i\pi} \cdot I = e^{i\pi} D(I)$$
+Here's where the confusion often arises:
+- In SO(3) group: $R_z(2\pi) = I$ (identity rotation)
+- In quantum mechanics (spin-1/2): $D(R_z(2\pi)) = -I$
 
-The phase factor $\omega = \pi$ appears. In a projective representation:
+**But wait:** How can the same group element map to two different operators?
+
+**The resolution:** Spin-1/2 is a **representation of SU(2)**, not SO(3). SU(2) elements $U$ and $-U$ are distinct, but they both map to the same SO(3) rotation $R$. When we try to "descend" the SU(2) representation to SO(3), we encounter:
+
+$$D^{(1/2)}(U) = e^{-i\theta \mathbf{n}\cdot\boldsymbol{\sigma}/2}$$
+
+For rotation by $2\pi$:
+- In SU(2): $U(2\pi) = -I$ (distinct from $U(0) = I$)
+- In SO(3): $R(2\pi) = R(0) = I$
+
+The map SU(2) $\to$ SO(3) is 2-to-1. The SU(2) element $-I$ maps to the same SO(3) element as $I$.
+
+**Why this is a projective representation:**
+
+When we assign $D(R_z(\theta)) = D^{(1/2)}(U(\theta))$ for $\theta \in [0, 2\pi)$, we get:
+$$D(R_z(2\pi)) = -I \neq I = D(R_z(0)) = D(I)$$
+
+This violates the definition of a true representation because $D(I) \neq I$ (in the sense that $D$ of the identity element of SO(3) is not the identity matrix). Instead:
+$$D(R_z(2\pi)) = e^{i\pi} D(I) = -D(I)$$
+
+In a projective representation:
 $$D(g_1)D(g_2) = e^{i\omega(g_1,g_2)} D(g_1g_2)$$
 
-**Physical interpretation:** In quantum mechanics, $|\psi\rangle$ and $-\psi\rangle$ represent the same physical state (they give the same probabilities $|\langle\phi|\psi\rangle|^2$). A $2\pi$ rotation produces a "$-1$ phase," which is unobservable. Thus spin-1/2 forms a **projective representation** of SO(3), not a true representation.
+**Physical interpretation:** In quantum mechanics, $|\psi\rangle$ and $e^{i\phi}|\psi\rangle$ represent the same physical state (they give the same probabilities $|\langle\phi|\psi\rangle|^2$). A $2\pi$ rotation produces a "$-1$ phase," which is unobservable. Thus spin-1/2 forms a **projective representation** of SO(3). 
+
+**Summary table:**
+
+| Property | Integer spin ($j = 0, 1, 2, ...$) | Half-integer spin ($j = 1/2, 3/2, ...$) |
+|:---------|:---------------------------------|:---------------------------------------|
+| $D(-U)$ | $= D(U)$ | $= -D(U)$ |
+| SO(3) rep | **True representation** | **Projective representation** |
+| $D(R_z(2\pi))$ | $+I$ | $-I$ |
+| Physical effect | No sign change | Sign change (unobservable) |
 
 **3. Fundamental Representation**
 
@@ -2139,11 +2169,24 @@ SU(2) and SO(3) have identical Lie algebras but different global topology:
 The **fundamental group** $\pi_1$ classifies "loops" (closed paths) in the group manifold:
 
 **SO(3):** $\pi_1 = \mathbb{Z}_2$ (two elements)
-- Visualize SO(3) as a solid ball of radius $\pi$: a rotation by angle $\theta$ about axis $\mathbf{n}$ is the point $\theta\mathbf{n}$
-- Antipodal points on the surface are identified: $\pi\mathbf{n} \sim -\pi\mathbf{n}$ (same rotation)
-- **Contractible loop:** A loop that can be shrunk to a point
-- **Non-contractible loop:** A path from center to surface point $\pi\mathbf{n}$, "jumps" to $-\pi\mathbf{n}$ (identified), then returns to center. This cannot be shrunk!
-- The $2\pi$ rotation is a non-contractible loop
+
+Visualize SO(3) as a solid ball of radius $\pi$:
+- A rotation by angle $\theta$ about axis $\mathbf{n}$ is represented by point $\theta\mathbf{n}$ in the ball
+- **Antipodal identification:** Points on the surface satisfy $\pi\mathbf{n} \sim -\pi\mathbf{n}$ because rotation by $\pi$ about $\mathbf{n}$ equals rotation by $\pi$ about $-\mathbf{n}$
+
+**Why the $2\pi$ rotation cannot be shrunk:**
+
+A $2\pi$ rotation about the z-axis corresponds to a path from the center to point $(0, 0, \pi)$ on the surface. At the surface, this point is **identified** with $(0, 0, -\pi)$. The path then "jumps" to $(0, 0, -\pi)$ and returns to the center.
+
+This creates a loop that goes from center $\to$ north pole $\to$ (jump to south pole) $\to$ center. You cannot continuously shrink this loop to a point because:
+1. The endpoints of the "jump" are identified (the same point in SO(3))
+2. But in the ball visualization, they are opposite points
+3. Any attempt to shrink the loop would require breaking the identification
+
+**SU(2):** $\pi_1 = \{e\}$ (only identity)
+- SU(2) is a 3-sphere $S^3$: $U = a_0 I + i\mathbf{a}\cdot\boldsymbol{\sigma}$ with $a_0^2 + |\mathbf{a}|^2 = 1$
+- **No identifications**—all points are distinct
+- Every loop can be shrunk to a point (simply connected)
 
 **SU(2):** $\pi_1 = \{e\}$ (only identity)
 - SU(2) is a 3-sphere $S^3$: $U = a_0 I + i\mathbf{a}\cdot\boldsymbol{\sigma}$ with $a_0^2 + |\mathbf{a}|^2 = 1$
@@ -2170,9 +2213,23 @@ The corresponding SO(3) rotation $R(\theta, \mathbf{n})$ rotates by angle $\thet
 3. SO(3): $R(\theta + 2\pi, \mathbf{n}) = R(\theta, \mathbf{n})$ (period $2\pi$)
 4. **Two-to-one:** Both $U(\theta, \mathbf{n})$ and $U(\theta + 2\pi, \mathbf{n}) = -U(\theta, \mathbf{n})$ map to the same $R(\theta, \mathbf{n})$
 
-**Representation types:**
-- Integer spin ($j$): $D^{(j)}(-U) = D^{(j)}(U)$ → true SO(3) representation
-- Half-integer spin ($j$): $D^{(j)}(-U) = -D^{(j)}(U)$ → projective representation only
+**Why the sign matters for representations:**
+
+When we try to "descend" a SU(2) representation to SO(3), we need $D(U) = D(-U)$ because both $U$ and $-U$ represent the same SO(3) element.
+
+**Case 1: Integer spin ($j = 0, 1, 2, ...$)**
+$$D^{(j)}(-U) = (-1)^{2j} D^{(j)}(U) = (+1) D^{(j)}(U) = D^{(j)}(U)$$
+Since $2j$ is even, the sign is $+1$. Therefore $D^{(j)}(U) = D^{(j)}(-U)$, and this gives a **true representation** of SO(3).
+
+Example: For $j=1$ (vector representation), a $2\pi$ rotation gives $D(R_z(2\pi)) = +I$.
+
+**Case 2: Half-integer spin ($j = 1/2, 3/2, ...$)**
+$$D^{(j)}(-U) = (-1)^{2j} D^{(j)}(U) = (-1) D^{(j)}(U) = -D^{(j)}(U)$$
+Since $2j$ is odd, we get a minus sign. Therefore $D^{(j)}(U) \neq D^{(j)}(-U)$. This cannot be a true representation of SO(3).
+
+Example: For $j=1/2$ (spinor), $D(R_z(2\pi)) = -I \neq I = D(I)$, even though $R_z(2\pi) = I$ in SO(3).
+
+**Conclusion:** Half-integer spin representations are **projective representations** of SO(3)—they represent SO(3) elements only up to a phase factor.
 
 **SO(4) and SU(2) × SU(2):**
 
@@ -2239,20 +2296,40 @@ The **rank** of a Lie group is the dimension of its **Cartan subalgebra** (the m
 In a representation, each state $|\psi\rangle$ has a **weight** $(i_3, y)$ defined by:
 $$I_3 |\psi\rangle = i_3 |\psi\rangle, \quad Y |\psi\rangle = y |\psi\rangle$$
 
-**Root vectors** are the "step vectors" that take you from one weight to another via ladder operators. For SU(3), the 6 root vectors are:
-- $\vec{\alpha}_I = (\pm 1, 0)$ — $I_\pm$ operators
-- $\vec{\alpha}_U = (\pm 1/2, \pm 1)$ — $U_\pm$ operators  
-- $\vec{\alpha}_V = (\mp 1/2, \pm 1)$ — $V_\pm$ operators
+**Why SU(3) has 6 root vectors (vs. 2 for SU(2)):**
 
-These form a hexagon in the $(i_3, y)$ plane—the **root diagram**.
+In SU(2), there's only one raising operator $J_+$ and one lowering operator $J_-$, giving 2 roots $(\pm 1)$ in 1D weight space.
+
+In SU(3), there are **three independent raising operators**: $I_+$, $U_+$, $V_+$ (and their lowering partners), giving 6 roots in 2D weight space:
+- $\vec{\alpha}_{I_\pm} = (\pm 1, 0)$ — change $I_3$ by $\pm 1$
+- $\vec{\alpha}_{U_\pm} = (\mp 1/2, \pm 1)$ — change both quantum numbers
+- $\vec{\alpha}_{V_\pm} = (\pm 1/2, \pm 1)$ — change both quantum numbers
+
+These form a **hexagon** in the $(i_3, y)$ plane:
+
+<img src="/images/angular-momentum/su3_root_diagram.png" width="500px" alt="SU(3) Root Diagram">
+
+*The SU(3) root diagram: 6 root vectors (ladder operators) form a hexagon in the $(I_3, Y)$ plane.*
 
 **Building Representations:**
 
 Start from a **highest weight state** (annihilated by all raising operators). Apply lowering operators to generate all states.
 
-- **Fundamental $\mathbf{3}$:** Highest weight $(1/2, 1/3)$ for $u$ quark. Apply $I_-$ to get $d$ at $(-1/2, 1/3)$. Apply $V_-$ to get $s$ at $(0, -2/3)$. Forms a triangle.
+**Fundamental $\mathbf{3}$ (quark triplet):**
 
-- **Adjoint $\mathbf{8}$:** Contains the 6 roots plus 2 Cartan generators at origin. Forms a hexagon.
+<img src="/images/angular-momentum/su3_fundamental_triplet.png" width="400px" alt="SU(3) Quark Triplet">
+
+- Highest weight: $u$ quark at $(1/2, 1/3)$
+- Apply $I_-$: get $d$ quark at $(-1/2, 1/3)$
+- Apply $V_-$: get $s$ quark at $(0, -2/3)$
+
+**Adjoint $\mathbf{8}$:**
+
+<img src="/images/angular-momentum/su3_octet_baryons.png" width="500px" alt="SU(3) Baryon Octet">
+
+- Contains the 6 roots (at the hexagon vertices) 
+- Plus 2 states at the origin ($\Sigma^0$ and $\Lambda$ with different wavefunction symmetry)
+- The octet forms a hexagon with a doubly-occupied center
 
 **Young Tableaux: Systematic Tensor Products**
 
@@ -2274,15 +2351,41 @@ Young tableaux encode **permutation symmetry** of tensor indices and provide a m
 | 8 | $\mathbf{8}$ | 2 boxes + 1 box below | Mixed symmetry |
 | 10 | $\mathbf{10}$ | 3 boxes in row | Fully symmetric |
 
-**Why Young tableaux are useful:** They convert the abstract problem of decomposing tensor products into a visual, mechanical procedure of adding boxes according to simple rules.
+**Why $\bar{\mathbf{3}} \neq \mathbf{3}$ (Mathematical Reason):**
 
-**Example: $\mathbf{3} \otimes \mathbf{3}$ using Young tableaux**
+The fundamental $\mathbf{3}$ and anti-fundamental $\bar{\mathbf{3}}$ are **not equivalent representations** in SU(3). Here's why:
 
-Add a box to the fundamental tableau in all allowed positions:
-- Add to the right: two boxes in a row = $\mathbf{6}$ (symmetric)
-- Add below: two stacked boxes = $\bar{\mathbf{3}}$ (antisymmetric)
+**Index notation:**
+- $\mathbf{3}$: covariant index $q_i$ transforms as $q_i \rightarrow U_i{}^j q_j$
+- $\bar{\mathbf{3}}$: contravariant index $\bar{q}^i$ transforms as $\bar{q}^i \rightarrow (U^*)^i{}_j \bar{q}^j$
 
-Result: $\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$
+For SU(2), $\mathbf{2}$ and $\bar{\mathbf{2}}$ *are* equivalent because $U^* = \epsilon U \epsilon^{-1}$ (pseudo-real). But SU(3) is not pseudo-real.
+
+**Explicit construction of $\bar{\mathbf{3}}$:**
+The anti-fundamental $\bar{\mathbf{3}}$ can be constructed from two fundamental $\mathbf{3}$'s using the antisymmetric tensor:
+$$\bar{q}^i = \epsilon^{ijk} q_j q_k$$
+
+This is why the Young diagram for $\bar{\mathbf{3}}$ has **two stacked boxes**—it's the antisymmetric combination of two $\mathbf{3}$ indices.
+
+**Physical reason:**
+- $\mathbf{3}$: quarks ($u, d, s$) with charges $+2/3, -1/3, -1/3$
+- $\bar{\mathbf{3}}$: antiquarks ($\bar{u}, \bar{d}, \bar{s}$) with opposite charges $-2/3, +1/3, +1/3$
+
+No SU(3) transformation can turn a quark into an antiquark—they have opposite quantum numbers!
+
+**Mechanical Tensor Product: $\mathbf{3} \otimes \mathbf{3}$**
+
+**Step 1:** Start with the first box (fundamental): $\square$
+
+**Step 2:** Add the second box in all allowed positions:
+- To the right: $\square\square$ = symmetric = $\mathbf{6}$
+- Below: $\begin{array}{c}\square\\\square\end{array}$ = antisymmetric = $\bar{\mathbf{3}}$
+
+**Step 3:** Verify dimensions:
+$$3 \times 3 = 6 + 3 \quad \checkmark$$
+
+**Result:**
+$$\mathbf{3} \otimes \mathbf{3} = \mathbf{6} \oplus \bar{\mathbf{3}}$$
 
 **Physical applications:**
 - Mesons: $\mathbf{3} \otimes \bar{\mathbf{3}} = \mathbf{8} \oplus \mathbf{1}$
