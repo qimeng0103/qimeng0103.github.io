@@ -3,3 +3,7 @@ node_modules
 .vitepress/dist
 .DS_Store
 *.log
+
+# Paper Library PDFs
+paper-library/pdfs/*.pdf
+*.pdf
