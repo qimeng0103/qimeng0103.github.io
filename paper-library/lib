@@ -217,7 +217,7 @@ def add_paper_to_daily(post_path: Path, paper_info: Dict, pdf_name: str, keyword
 
 **Authors**: {paper_info.get('authors', 'N/A')}  
 **arXiv**: [{paper_info.get('arxiv_id', 'N/A')}]({paper_info.get('url', '#')})  
-**Domain**: {keywords}  
+**Key words**: {keywords}  
 **Year**: {paper_info.get('year', datetime.now().year)}
 
 ---
