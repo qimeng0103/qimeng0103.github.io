@@ -1,0 +1,386 @@
+#!/usr/bin/env python3
+"""
+Paper Library - Daily Collection Mode
+======================================
+Today's papers go into ONE blog post until manually closed
+
+Usage:
+    ./lib add <file.pdf>          # Add to today's collection
+    ./lib add <arxiv-id>          # Add arXiv to today's collection
+    ./lib close                   # Close today's collection, start new issue tomorrow
+    ./lib list                    # List all daily collections
+"""
+
+import os
+import sys
+import re
+import shutil
+import json
+import urllib.request
+import subprocess
+from datetime import datetime
+from pathlib import Path
+from typing import List, Dict, Tuple
+
+LIB_DIR = Path(__file__).parent
+PAPERS_INBOX = LIB_DIR / "papers"
+PDF_ARCHIVE = LIB_DIR / "pdfs"
+BLOG_DIR = Path(__file__).parent.parent / "docs" / "posts" / "paper-notes"
+BIB_FILE = LIB_DIR / "references.bib"
+INDEX_FILE = LIB_DIR / "index.json"
+ISSUE_TRACKER = LIB_DIR / ".current_issue"  # Track current issue number
+
+# English domains
+DOMAINS = {
+    "topology": ["topological", "chern", "berry phase", "weyl", "majorana", "edge state", "surface state", "z2 invariant"],
+    "superconductivity": ["superconductivity", "bcs", "pairing", "cooper pair", "josephson", "gap"],
+    "quantum-info": ["quantum computing", "qubit", "quantum information", "entanglement"],
+    "many-body": ["many-body", "strongly correlated", "hubbard", "mott", "luttinger liquid"],
+    "qft-cmt": ["quantum field theory", "path integral", "green function", "renormalization"],
+    "transport": ["quantum transport", "conductance", "scattering", "ballistic"],
+    "magnetism": ["magnetism", "ferromagnetic", "antiferromagnetic", "spin"],
+    "cold-atom": ["cold atom", "bose-einstein", "bec", "ultracold", "optical lattice"],
+    "graphene-2d": ["graphene", "2d material", "van der waals"],
+    "numerics": ["dmrg", "tensor network", "monte carlo", "dmft"],
+    "cft-holography": ["conformal field theory", "ads/cft", "holography"],
+}
+
+def get_current_issue() -> int:
+    """Get current issue number"""
+    if ISSUE_TRACKER.exists():
+        return int(ISSUE_TRACKER.read_text().strip())
+    return 1
+
+def classify(title: str) -> str:
+    """Classify into domain"""
+    text = title.lower()
+    for domain, keywords in DOMAINS.items():
+        if any(kw in text for kw in keywords):
+            return domain
+    return "general"
+
+def fetch_arxiv(arxiv_id: str) -> Dict:
+    """Fetch arXiv metadata"""
+    try:
+        url = f"https://export.arxiv.org/api/query?id_list={arxiv_id}"
+        with urllib.request.urlopen(url, timeout=15) as r:
+            data = r.read().decode()
+        
+        import xml.etree.ElementTree as ET
+        root = ET.fromstring(data)
+        ns = {'atom': 'http://www.w3.org/2005/Atom'}
+        entry = root.find('atom:entry', ns)
+        
+        if entry is None:
+            return {}
+        
+        title = entry.find('atom:title', ns)
+        summary = entry.find('atom:summary', ns)
+        authors = entry.findall('atom:author', ns)
+        author_names = [a.find('atom:name', ns).text for a in authors if a.find('atom:name', ns) is not None]
+        
+        return {
+            'title': title.text.strip().replace('\n', ' ') if title and title.text else arxiv_id,
+            'abstract': summary.text.strip() if summary and summary.text else "",
+            'authors': ', '.join(author_names[:3]),
+            'arxiv_id': arxiv_id,
+            'url': f"https://arxiv.org/abs/{arxiv_id}"
+        }
+    except:
+        return {'title': arxiv_id, 'authors': '', 'abstract': '', 'arxiv_id': arxiv_id, 'url': f"https://arxiv.org/abs/{arxiv_id}"}
+
+def download_arxiv_pdf(arxiv_id: str, dest: Path) -> bool:
+    """Download PDF from arXiv"""
+    try:
+        urllib.request.urlretrieve(f"https://arxiv.org/pdf/{arxiv_id}.pdf", dest)
+        return True
+    except:
+        return False
+
+def clean_filename(text: str) -> str:
+    text = text.lower()
+    text = re.sub(r'[^\w\s-]', '', text)
+    text = re.sub(r'[-\s]+', '-', text)
+    return text[:50].strip('-')
+
+def get_or_create_daily_post() -> Path:
+    """Get today's blog post path (create if not exists)"""
+    date_str = datetime.now().strftime('%Y-%m-%d')
+    issue = get_current_issue()
+    
+    # Format: YYYY-MM-DD-issue-N.md
+    filename = f"{date_str}-issue-{issue}.md"
+    filepath = BLOG_DIR / filename
+    
+    if not filepath.exists():
+        # Create new daily collection post
+        content = f"""---
+title: "Daily Papers - {date_str} (Issue #{issue})"
+date: {date_str}
+tags: ["daily-papers", "paper-notes"]
+---
+
+# Daily Papers - {date_str} (Issue #{issue})
+
+> Today's paper collection. Add papers throughout the day. Close this issue when full.
+
+---
+
+## Paper #1
+
+(To be filled)
+
+---
+
+*Issue status: 🟢 Open (accepting more papers)*
+"""
+        filepath.write_text(content, encoding='utf-8')
+        print(f"  Created new issue: {filename}")
+    
+    return filepath
+
+def parse_existing_papers(content: str) -> int:
+    """Count existing papers in the daily post"""
+    return content.count("## Paper #")
+
+def add_paper_to_daily(post_path: Path, paper_info: Dict, pdf_name: str, domain: str):
+    """Add a new paper to today's daily post"""
+    content = post_path.read_text(encoding='utf-8')
+    
+    # Count existing papers
+    paper_num = parse_existing_papers(content) + 1
+    
+    # Remove the status line temporarily
+    content = re.sub(r'\*Issue status:.*\*', '', content).rstrip()
+    
+    # New paper entry
+    paper_entry = f"""
+## Paper #{paper_num}: {paper_info.get('title', 'Untitled')}
+
+**Domain**: `{domain}`  
+**Authors**: {paper_info.get('authors', 'N/A')}  
+**Link**: [{paper_info.get('arxiv_id', 'PDF')}]({paper_info.get('url', f'./pdfs/{pdf_name}')})
+
+**Why collected**: 
+(Fill in: What makes this paper noteworthy?)
+
+**One-line summary**: 
+(Fill in: Core contribution in one sentence)
+
+**Aesthetic tags**: [ ] elegant-proof [ ] clear-physical-picture [ ] deep-insight [ ] writing-masterpiece
+
+---
+"""
+    
+    # Add paper entry before the final separator
+    content = content.rstrip() + paper_entry
+    content += f"\n*Issue status: 🟢 Open (accepting more papers)*\n"
+    
+    post_path.write_text(content, encoding='utf-8')
+    return paper_num
+
+def update_bibtex(paper_info: Dict, domain: str):
+    """Append to BibTeX"""
+    arxiv_id = paper_info.get('arxiv_id', '')
+    cite_key = f"arxiv_{arxiv_id.replace('.', '_')}" if arxiv_id else clean_filename(paper_info.get('title', 'unknown'))[:20]
+    
+    bib = f"""@article{{{cite_key},
+    title = {{{paper_info.get('title', '')}}},
+    author = {{{paper_info.get('authors', '')}}},
+    year = {{{datetime.now().year}}},
+    url = {{{paper_info.get('url', '')}}},
+    eprint = {{{arxiv_id}}},
+    annotation = {{{domain}}}
+}}
+"""
+    
+    with open(BIB_FILE, 'a', encoding='utf-8') as f:
+        if BIB_FILE.stat().st_size == 0:
+            f.write("% Paper Library - BibTeX References\n\n")
+        f.write(bib)
+
+def process_file(file_path: Path) -> bool:
+    """Process a single file"""
+    print(f"\n📄 Processing: {file_path.name}")
+    
+    info = {'title': '', 'authors': '', 'arxiv_id': '', 'url': '', 'abstract': ''}
+    pdf_name = ''
+    
+    # Case 1: arXiv txt file
+    if file_path.suffix == '.txt':
+        content = file_path.read_text().strip()
+        match = re.search(r'(?:arXiv:)?(\d+\.\d+)', content, re.IGNORECASE)
+        if match:
+            arxiv_id = match.group(1)
+            print(f"  Found arXiv:{arxiv_id}")
+            info = fetch_arxiv(arxiv_id)
+            
+            PDF_ARCHIVE.mkdir(parents=True, exist_ok=True)
+            pdf_name = f"{datetime.now().strftime('%Y-%m-%d')}-{clean_filename(info['title']) or arxiv_id}.pdf"
+            pdf_path = PDF_ARCHIVE / pdf_name
+            
+            if download_arxiv_pdf(arxiv_id, pdf_path):
+                print(f"  Downloaded: {pdf_name}")
+            else:
+                print(f"  ⚠️ Failed to download PDF")
+    
+    # Case 2: PDF file
+    elif file_path.suffix == '.pdf':
+        info['title'] = file_path.stem.replace('_', ' ').replace('-', ' ')
+        
+        # Try to find arXiv ID in PDF
+        try:
+            result = subprocess.run(
+                ["pdftotext", "-f", "1", "-l", "2", str(file_path), "-"],
+                capture_output=True, text=True, timeout=10
+            )
+            if result.returncode == 0:
+                match = re.search(r'arXiv:(\d+\.\d+)', result.stdout)
+                if match:
+                    info['arxiv_id'] = match.group(1)
+                    arxiv_info = fetch_arxiv(info['arxiv_id'])
+                    info.update(arxiv_info)
+        except:
+            pass
+        
+        PDF_ARCHIVE.mkdir(parents=True, exist_ok=True)
+        pdf_name = f"{datetime.now().strftime('%Y-%m-%d')}-{clean_filename(info['title'])}.pdf"
+        pdf_path = PDF_ARCHIVE / pdf_name
+        shutil.copy2(file_path, pdf_path)
+        print(f"  Archived: {pdf_name}")
+    
+    else:
+        print(f"  ⚠️ Unsupported file type")
+        return False
+    
+    # Classify
+    domain = classify(info.get('title', ''))
+    print(f"  Domain: [{domain}]")
+    
+    # Get or create daily post
+    BLOG_DIR.mkdir(parents=True, exist_ok=True)
+    daily_post = get_or_create_daily_post()
+    
+    # Add paper to daily post
+    paper_num = add_paper_to_daily(daily_post, info, pdf_name, domain)
+    print(f"  Added as Paper #{paper_num} in {daily_post.name}")
+    
+    # Update BibTeX
+    update_bibtex(info, domain)
+    
+    # Delete original
+    file_path.unlink()
+    print(f"  Deleted original: {file_path.name}")
+    
+    return True
+
+def cmd_add(args):
+    """Add file(s) to today's collection"""
+    import glob
+    
+    files = []
+    for pattern in args.files:
+        if '*' in pattern:
+            files.extend(glob.glob(pattern))
+        else:
+            files.append(pattern)
+    
+    files = [Path(f) for f in files if Path(f).exists()]
+    
+    if not files:
+        print("❌ No files found")
+        return
+    
+    print(f"📂 Processing {len(files)} file(s)\n")
+    
+    for f in files:
+        process_file(f)
+    
+    print(f"\n✅ Added to today's collection")
+    print(f"   View: {get_or_create_daily_post()}")
+
+def cmd_arxiv(args):
+    """Add arXiv ID directly"""
+    arxiv_id = args.id
+    if not arxiv_id:
+        print("Usage: ./lib arxiv <id>")
+        return
+    
+    # Create temp file
+    PAPERS_INBOX.mkdir(exist_ok=True)
+    temp_file = PAPERS_INBOX / f"arxiv_{datetime.now().strftime('%H%M%S')}.txt"
+    temp_file.write_text(arxiv_id)
+    
+    process_file(temp_file)
+    print(f"\n✅ Added arXiv:{arxiv_id}")
+
+def cmd_close(args):
+    """Close today's issue, start new one tomorrow"""
+    current = get_current_issue()
+    new_issue = current + 1
+    ISSUE_TRACKER.write_text(str(new_issue))
+    
+    # Mark today's post as closed
+    daily_post = get_or_create_daily_post()
+    content = daily_post.read_text(encoding='utf-8')
+    content = content.replace("🟢 Open (accepting more papers)", "🔴 Closed (issue complete)")
+    daily_post.write_text(content, encoding='utf-8')
+    
+    print(f"✅ Closed Issue #{current}")
+    print(f"🆕 Next addition will create Issue #{new_issue}")
+
+def cmd_status(args):
+    """Show today's collection status"""
+    daily_post = get_or_create_daily_post()
+    content = daily_post.read_text(encoding='utf-8')
+    
+    paper_count = parse_existing_papers(content)
+    issue = get_current_issue()
+    
+    print(f"\n📊 Daily Collection Status")
+    print(f"   Issue: #{issue}")
+    print(f"   File: {daily_post.name}")
+    print(f"   Papers: {paper_count}")
+    print(f"   Status: {'🟢 Open' if '🟢 Open' in content else '🔴 Closed'}")
+
+def main():
+    import argparse
+    
+    parser = argparse.ArgumentParser(description="Paper Library - Daily Collection")
+    subparsers = parser.add_subparsers(dest='command')
+    
+    # Add files
+    add_parser = subparsers.add_parser('add', help='Add files to today\'s collection')
+    add_parser.add_argument('files', nargs='+', help='PDF or txt files')
+    
+    # Add arXiv
+    arxiv_parser = subparsers.add_parser('arxiv', help='Add arXiv ID')
+    arxiv_parser.add_argument('id', help='arXiv ID')
+    
+    # Close issue
+    subparsers.add_parser('close', help='Close today\'s issue')
+    
+    # Status
+    subparsers.add_parser('status', help='Show collection status')
+    
+    args = parser.parse_args()
+    
+    commands = {
+        'add': cmd_add,
+        'arxiv': cmd_arxiv,
+        'close': cmd_close,
+        'status': cmd_status,
+    }
+    
+    if args.command in commands:
+        commands[args.command](args)
+    else:
+        parser.print_help()
+        print("\n💡 Quick start:")
+        print("  ./lib add papers/*.pdf    # Add PDFs")
+        print("  ./lib arxiv 2404.12345    # Add arXiv")
+        print("  ./lib status              # Check today's collection")
+        print("  ./lib close               # Close when full")
+
+if __name__ == '__main__':
+    main()

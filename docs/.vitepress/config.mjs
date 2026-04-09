@@ -48,6 +48,7 @@ export default defineConfig({
     nav: [
       { text: 'Home', link: '/' },
       { text: 'Articles', link: '/posts/' },
+      { text: 'Daily Papers', link: '/posts/paper-notes/' },
       { text: 'About', link: '/about' },
     ],
     
@@ -75,6 +76,13 @@ export default defineConfig({
                 { text: 'Metal Electron Theory: Fermi Statistics and Transport', link: '/posts/condensed-matter/metal-electron-theory-fermi-statistics-transport' },
                 { text: 'Semiconductor Electron Theory: Band Structure to p-n Junctions', link: '/posts/condensed-matter/semiconductor-electron-theory' },
                 { text: 'Spontaneous Symmetry Breaking and Functional Calculus', link: '/posts/condensed-matter/spontaneous-symmetry-breaking' }
+              ]
+            },
+            {
+              text: 'Daily Papers',
+              link: '/posts/paper-notes/',
+              items: [
+                { text: 'Issue #1 - 2026-04-09', link: '/posts/paper-notes/2026-04-09-issue-1' }
               ]
             }
           ]
