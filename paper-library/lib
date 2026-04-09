@@ -211,7 +211,7 @@ def add_paper_to_daily(post_path: Path, paper_info: Dict, pdf_name: str, keyword
     # Remove the status line temporarily
     content = re.sub(r'\*Issue status:.*\*', '', content).rstrip()
     
-    # New paper entry (simplified format without PDF download link)
+    # New paper entry with detailed structure
     paper_entry = f"""
 ## Paper #{paper_num}: {paper_info.get('title', 'Untitled')}
 
@@ -220,13 +220,31 @@ def add_paper_to_daily(post_path: Path, paper_info: Dict, pdf_name: str, keyword
 **Key words**: {keywords}  
 **Year**: {paper_info.get('year', datetime.now().year)}
 
----
+### Summary
 
-**Summary**: 
-(To be filled: core concepts, innovations, methods)
+(To be filled: 1-2 sentences on core contribution)
 
-**Why collected**: 
-(What makes this paper noteworthy?)
+### Core Concepts
+
+- **Concept 1**: (Brief explanation)
+- **Concept 2**: (Brief explanation)
+
+### Key Innovations
+
+1. **Innovation 1**: (Description)
+2. **Innovation 2**: (Description)
+
+### Technical Approach
+
+- (Method 1)
+- (Method 2)
+
+### Reading Notes
+
+(To be filled after careful reading)
+
+- [ ] (Key point to understand)
+- [ ] (Key point to understand)
 
 ---
 """
