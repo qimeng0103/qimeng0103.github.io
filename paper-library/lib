@@ -216,7 +216,10 @@ def process_file(file_path: Path) -> bool:
             info = fetch_arxiv(arxiv_id)
             
             PDF_ARCHIVE.mkdir(parents=True, exist_ok=True)
-            pdf_name = f"{datetime.now().strftime('%Y-%m-%d')}-{clean_filename(info['title']) or arxiv_id}.pdf"
+            # Naming: YYYY-arXiv-XXXX.XXXXX-Author.pdf
+            year = info.get('year', datetime.now().year)
+            author_short = info.get('authors', '').split(',')[0].split()[-1] if info.get('authors') else 'Unknown'
+            pdf_name = f"{year}-arXiv-{arxiv_id}-{author_short}.pdf"
             pdf_path = PDF_ARCHIVE / pdf_name
             
             if download_arxiv_pdf(arxiv_id, pdf_path):
@@ -244,7 +247,13 @@ def process_file(file_path: Path) -> bool:
             pass
         
         PDF_ARCHIVE.mkdir(parents=True, exist_ok=True)
-        pdf_name = f"{datetime.now().strftime('%Y-%m-%d')}-{clean_filename(info['title'])}.pdf"
+        # Naming: YYYY-arXiv-XXXX.XXXXX-Author.pdf or YYYY-Title.pdf
+        year = info.get('year', datetime.now().year)
+        if info.get('arxiv_id'):
+            author_short = info.get('authors', '').split(',')[0].split()[-1] if info.get('authors') else 'Unknown'
+            pdf_name = f"{year}-arXiv-{info['arxiv_id']}-{author_short}.pdf"
+        else:
+            pdf_name = f"{year}-{clean_filename(info['title'])[:40]}.pdf"
         pdf_path = PDF_ARCHIVE / pdf_name
         shutil.copy2(file_path, pdf_path)
         print(f"  Archived: {pdf_name}")
