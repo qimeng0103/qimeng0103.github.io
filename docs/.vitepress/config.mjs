@@ -82,7 +82,8 @@ export default defineConfig({
               text: 'Daily Papers',
               link: '/posts/paper-notes/',
               items: [
-                { text: 'Issue #1 - 2026-04-09', link: '/posts/paper-notes/2026-04-09-issue-1' }
+                { text: 'Issue #1 - 2026-04-10 (Open)', link: '/posts/paper-notes/2026-04-10-issue-1' },
+                { text: 'Issue #1 - 2026-04-09 (Closed)', link: '/posts/paper-notes/2026-04-09-issue-1' }
               ]
             }
           ]
