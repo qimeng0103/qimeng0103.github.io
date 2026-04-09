@@ -51,13 +51,71 @@ def get_current_issue() -> int:
         return int(ISSUE_TRACKER.read_text().strip())
     return 1
 
-def classify(title: str) -> str:
-    """Classify into domain"""
+def extract_keywords(title: str) -> str:
+    """Extract relevant keywords from paper title for Domain field"""
     text = title.lower()
-    for domain, keywords in DOMAINS.items():
-        if any(kw in text for kw in keywords):
-            return domain
-    return "general"
+    keywords = []
+    
+    # Core concepts mapping (paper-specific, not generic categories)
+    concept_map = {
+        "josephson": "josephson-junction",
+        "majorana": "majorana-fermions",
+        "superconductor": "superconductivity",
+        "superconducting": "superconductivity",
+        "quantum spin hall": "quantum-spin-hall-insulator",
+        "topological insulator": "topological-insulator",
+        "proximity": "proximity-effect",
+        "fractional": "fractional-statistics",
+        "anyon": "anyons",
+        "chern": "chern-insulator",
+        "weyl": "weyl-semimetal",
+        "dirac": "dirac-cone",
+        "graphene": "graphene",
+        "landau": "landau-level",
+        "quantum hall": "quantum-hall-effect",
+        " berry": "berry-phase",
+        "chiral": "chiral-edge",
+        "helical": "helical-edge",
+        "bogoliubov": "bogoliubov-quasiparticle",
+        "andreev": "andreev-reflection",
+        "green function": "green-function",
+        "path integral": "path-integral",
+        "renormalization": "renormalization-group",
+        "tensor network": "tensor-network",
+        "dmrg": "dmrg",
+        "monte carlo": "monte-carlo",
+        "dmft": "dmft",
+        "hubbard": "hubbard-model",
+        "kondo": "kondo-effect",
+        "spin liquid": "quantum-spin-liquid",
+        "frustrated": "frustrated-magnet",
+        "entanglement": "quantum-entanglement",
+        "entanglement entropy": "entanglement-entropy",
+        "holography": "holographic-duality",
+        "ads/cft": "ads-cft",
+        "conformal": "conformal-field-theory",
+        "cold atom": "cold-atom",
+        "optical lattice": "optical-lattice",
+        "bose-einstein": "bose-einstein-condensate",
+    }
+    
+    # Extract matching keywords
+    for concept, keyword in concept_map.items():
+        if concept in text and keyword not in keywords:
+            keywords.append(keyword)
+    
+    # If no specific keywords found, fall back to general domain
+    if not keywords:
+        for domain, domain_keywords in DOMAINS.items():
+            if any(kw in text for kw in domain_keywords):
+                keywords.append(domain)
+                break
+    
+    # If still empty, use general
+    if not keywords:
+        keywords = ["general"]
+    
+    return ", ".join(keywords)
 
 def fetch_arxiv(arxiv_id: str) -> Dict:
     """Fetch arXiv metadata"""
@@ -143,7 +201,7 @@ def parse_existing_papers(content: str) -> int:
     """Count existing papers in the daily post"""
     return content.count("## Paper #")
 
-def add_paper_to_daily(post_path: Path, paper_info: Dict, pdf_name: str, domain: str):
+def add_paper_to_daily(post_path: Path, paper_info: Dict, pdf_name: str, keywords: str):
     """Add a new paper to today's daily post"""
     content = post_path.read_text(encoding='utf-8')
     
@@ -153,21 +211,22 @@ def add_paper_to_daily(post_path: Path, paper_info: Dict, pdf_name: str, domain:
     # Remove the status line temporarily
     content = re.sub(r'\*Issue status:.*\*', '', content).rstrip()
     
-    # New paper entry
+    # New paper entry (simplified format without PDF download link)
     paper_entry = f"""
 ## Paper #{paper_num}: {paper_info.get('title', 'Untitled')}
 
-**Domain**: `{domain}`  
 **Authors**: {paper_info.get('authors', 'N/A')}  
-**Link**: [{paper_info.get('arxiv_id', 'PDF')}]({paper_info.get('url', f'./pdfs/{pdf_name}')})
+**arXiv**: [{paper_info.get('arxiv_id', 'N/A')}]({paper_info.get('url', '#')})  
+**Domain**: {keywords}  
+**Year**: {paper_info.get('year', datetime.now().year)}
+
+---
+
+**Summary**: 
+(To be filled: core concepts, innovations, methods)
 
 **Why collected**: 
-(Fill in: What makes this paper noteworthy?)
-
-**One-line summary**: 
-(Fill in: Core contribution in one sentence)
-
-**Aesthetic tags**: [ ] elegant-proof [ ] clear-physical-picture [ ] deep-insight [ ] writing-masterpiece
+(What makes this paper noteworthy?)
 
 ---
 """
@@ -262,20 +321,20 @@ def process_file(file_path: Path) -> bool:
         print(f"  ⚠️ Unsupported file type")
         return False
     
-    # Classify
-    domain = classify(info.get('title', ''))
-    print(f"  Domain: [{domain}]")
+    # Extract keywords from title
+    keywords = extract_keywords(info.get('title', ''))
+    print(f"  Keywords: {keywords}")
     
     # Get or create daily post
     BLOG_DIR.mkdir(parents=True, exist_ok=True)
     daily_post = get_or_create_daily_post()
     
     # Add paper to daily post
-    paper_num = add_paper_to_daily(daily_post, info, pdf_name, domain)
+    paper_num = add_paper_to_daily(daily_post, info, pdf_name, keywords)
     print(f"  Added as Paper #{paper_num} in {daily_post.name}")
     
     # Update BibTeX
-    update_bibtex(info, domain)
+    update_bibtex(info, keywords)
     
     # Delete original
     file_path.unlink()
