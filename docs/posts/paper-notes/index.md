@@ -7,7 +7,7 @@
 ## Current Issue
 
 - **Issue #1** - [2026-04-10](./2026-04-10-issue-1.md) 🟢 Open
-  - Paper #1: Helical parafermionic hinge modes (Girdhar et al. 2026)
+  - Paper #1: $\mathbb{Z}_{2q}$ parafermionic hinge states (Girdhar et al. 2026)
 
 ---
 
