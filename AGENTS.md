@@ -289,20 +289,35 @@ rm -rf /tmp/pdf_scan
 **Year**: [年份]
 
 ### Summary
-[2-3句话概括核心贡献]
+[2-3句话概括核心贡献。数学符号用LaTeX，如$\pi$-energy, $Z_2$]
 
 ### Core Concepts
-- **[概念]**: [详细解释]
+- **[概念]**: [详细解释，数学符号用$...$]
+- **[概念2]**: [如$(d-2)$维，$\pi$模式等]
 
 ### Key Innovations
-1. **[创新]**: [详细描述]
+1. **[创新]**: [描述，如实现$>50$个Floquet周期]
+2. **[创新2]**: [描述，如测量$\langle\Gamma(t)\rangle$]
 
 ### Technical Approach
-- [方法细节]
+- [方法细节，数学表达式用LaTeX]
+- [如:$H=\hbar\omega_i n_i+\hbar J_{ij}(a_i^\dagger a_j+h.c.)$]
+
+### Main Results
+- [结果1，数值数据如$N_0=3.51$]
+- [结果2，如能谱在$-\pi$到$\pi$范围]
 
 ### Reading Notes
 - [ ] [待深入理解的问题]
 ```
+
+**⚠️ 数学符号强制规范：**
+- 所有数学符号必须用 LaTeX `$...$` 格式
+- 希腊字母：`\pi`, `\alpha`, `\beta`, `\Gamma` 等
+- 上下标：`^` 和 `_`，如 `$Z_0$`, `$U^n$`
+- 特殊函数：`$\operatorname{tr}(U^n)$`, `$\langle\Gamma\rangle$`
+- 乘号：`$6 \times 6$` 用 `\times`
+- 不等式：`$>50$` 用 `$` 包裹
 
 **⚠️ 禁止在博客中添加 PDF 文件链接 - 只提供 DOI/arXiv 外部链接**
 
