@@ -161,6 +161,31 @@ def clean_filename(text: str) -> str:
     text = re.sub(r'[-\s]+', '-', text)
     return text[:50].strip('-')
 
+def extract_first_author(pdf_text: str) -> str:
+    """Extract first author name from PDF text
+    
+    Handles formats like:
+    - 'Haoran Qian1,2,3†, Ming Gong1,2,3†,'
+    - 'John Smith, Jane Doe,'
+    """
+    lines = pdf_text.split('\n')
+    
+    for line in lines:
+        line = line.strip()
+        # Strict pattern: First Last[markers], (optional Middle) Second Last[markers],
+        # Must have at least two names separated by comma
+        # Example: "Haoran Qian1,2,3†, Ming Gong1,2,3†," 
+        # NOT matching: "Extreme Optics, Shanxi University" (University is not a person name)
+        match = re.match(r'^([A-Z][a-z]+\s+[A-Z][a-zA-Z]+)[0-9,\s\*†‡]*,\s*([A-Z][a-z]+\s+)?[A-Z][a-zA-Z]+[0-9,\s\*†‡]*,\s*([A-Z][a-z]+\s+)?[A-Z][a-zA-Z]+[0-9,\s\*†‡]*,', line)
+        if match:
+            full_name = match.group(1).strip()
+            parts = full_name.split()
+            if len(parts) >= 2:
+                return parts[-1]  # Return last name
+            return full_name
+    
+    return "Unknown"
+
 def get_or_create_daily_post() -> Path:
     """Get today's blog post path (create if not exists)"""
     date_str = datetime.now().strftime('%Y-%m-%d')
@@ -307,15 +332,17 @@ def process_file(file_path: Path) -> bool:
     # Case 2: PDF file
     elif file_path.suffix == '.pdf':
         info['title'] = file_path.stem.replace('_', ' ').replace('-', ' ')
+        pdf_text = ""
         
-        # Try to find arXiv ID in PDF
+        # Try to extract text and find arXiv ID
         try:
             result = subprocess.run(
                 ["pdftotext", "-f", "1", "-l", "2", str(file_path), "-"],
                 capture_output=True, text=True, timeout=10
             )
             if result.returncode == 0:
-                match = re.search(r'arXiv:(\d+\.\d+)', result.stdout)
+                pdf_text = result.stdout
+                match = re.search(r'arXiv:(\d+\.\d+)', pdf_text)
                 if match:
                     info['arxiv_id'] = match.group(1)
                     arxiv_info = fetch_arxiv(info['arxiv_id'])
@@ -324,13 +351,24 @@ def process_file(file_path: Path) -> bool:
             pass
         
         PDF_ARCHIVE.mkdir(parents=True, exist_ok=True)
-        # Naming: YYYY-arXiv-XXXX.XXXXX-Author.pdf or YYYY-Title.pdf
+        
+        # Extract first author from PDF if not already available
+        if not info.get('authors') and pdf_text:
+            first_author = extract_first_author(pdf_text)
+            info['authors'] = first_author
+        
+        # Naming format: YYYY-FirstAuthor-ShortTitle.pdf
         year = info.get('year', datetime.now().year)
+        author_short = info.get('authors', '').split(',')[0].split()[-1] if info.get('authors') else 'Unknown'
+        
         if info.get('arxiv_id'):
-            author_short = info.get('authors', '').split(',')[0].split()[-1] if info.get('authors') else 'Unknown'
+            # For arXiv papers: YYYY-arXiv-XXXX.XXXXX-Author.pdf
             pdf_name = f"{year}-arXiv-{info['arxiv_id']}-{author_short}.pdf"
         else:
-            pdf_name = f"{year}-{clean_filename(info['title'])[:40]}.pdf"
+            # For non-arXiv papers: YYYY-Author-ShortTitle.pdf
+            short_title = clean_filename(info['title'])[:30]
+            pdf_name = f"{year}-{author_short}-{short_title}.pdf"
+        
         pdf_path = PDF_ARCHIVE / pdf_name
         shutil.copy2(file_path, pdf_path)
         print(f"  Archived: {pdf_name}")
