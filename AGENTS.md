@@ -232,6 +232,7 @@ Article content in English, supporting LaTeX math:
 - [ ] 文章包含日期、标签、分类元信息
 - [ ] **主页 Recent Articles 已更新**
 - [ ] **文章列表页 `docs/posts/index.md` 已更新（⚠️ 必须在对应分类下添加新文章链接）**
+- [ ] **⚠️ Daily Papers 主页 `docs/posts/paper-notes/index.md` 已更新** — 添加新 issue 或更新当前 issue 的论文列表
 - [ ] 侧边栏配置已更新（如需要）
 - [ ] Git 提交并推送到 main 分支
 
