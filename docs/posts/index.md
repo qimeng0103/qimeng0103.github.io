@@ -144,6 +144,33 @@
 </div>
 
 <div class="category-section">
+  <h2>Paper Notes</h2>
+  <ul class="article-list">
+    <li class="article-item">
+      <span class="article-date">2026-04-10</span>
+      <div>
+        <div class="article-title"><a href="./paper-notes/2026-04-10-issue-2">Daily Papers - 2026-04-10 (Issue #2)</a></div>
+        <div class="article-desc">Resource-efficient emulation of Majorana braiding on superconducting trijunctions; anomalous periodicity and parafermion hybridization in superconducting qubits</div>
+      </div>
+    </li>
+    <li class="article-item">
+      <span class="article-date">2026-04-10</span>
+      <div>
+        <div class="article-title"><a href="./paper-notes/2026-04-10-issue-1">Daily Papers - 2026-04-10 (Issue #1)</a></div>
+        <div class="article-desc">Daily paper collection covering topological superconductivity and quantum simulation</div>
+      </div>
+    </li>
+    <li class="article-item">
+      <span class="article-date">2026-04-09</span>
+      <div>
+        <div class="article-title"><a href="./paper-notes/2026-04-09-issue-1">Daily Papers - 2026-04-09 (Issue #1)</a></div>
+        <div class="article-desc">Initial daily paper collection with 6 papers on topological superconductivity and Majorana physics</div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="category-section">
   <h2>Condensed Matter Notes</h2>
   <ul class="article-list">
     <li class="article-item">
