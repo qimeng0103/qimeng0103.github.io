@@ -220,7 +220,7 @@ hero:
     <div class="article-date">2026-04-10</div>
     <div class="article-info">
       <h3><a href="/posts/paper-notes/2026-04-10-issue-2">Daily Papers - Majorana Braiding & Parafermion Physics</a></h3>
-      <p>Resource-efficient quantum emulation of Majorana braiding; parafermion hybridization in fluxonium; current-phase signatures in FQH-SC Josephson junctions</p>
+      <p>Resource-efficient quantum emulation of Majorana braiding; parafermion hybridization in fluxonium; current-phase signatures in FQH-SC Josephson junctions; quantum metric control of MZMs in Lieb-Kitaev model</p>
     </div>
   </div>
   

@@ -150,7 +150,7 @@
       <span class="article-date">2026-04-10</span>
       <div>
         <div class="article-title"><a href="./paper-notes/2026-04-10-issue-2">Daily Papers - 2026-04-10 (Issue #2)</a></div>
-        <div class="article-desc">Majorana braiding emulation; parafermion hybridization in fluxonium; current-phase signatures of parafermions in FQH-SC Josephson junctions</div>
+        <div class="article-desc">Majorana braiding emulation; parafermion hybridization in fluxonium; current-phase signatures of parafermions in FQH-SC Josephson junctions; quantum metric control of MZMs in Lieb-Kitaev model</div>
       </div>
     </li>
     <li class="article-item">

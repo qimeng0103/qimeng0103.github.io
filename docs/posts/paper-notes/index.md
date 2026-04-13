@@ -10,6 +10,7 @@
   - Paper #1: Resource-Efficient Emulation of Majorana Zero Mode Braiding (Singh et al. 2026)
   - Paper #2: Anomalous Periodicity and Parafermion Hybridization in Superconducting Qubits (Calzona et al. 2022)
   - Paper #3: Signatures of Parafermion Zero Modes in FQH-SC Heterostructures (Cao et al. 2023)
+  - Paper #4: Majorana Zero Modes in the Lieb-Kitaev Model with Tunable Quantum Metric (Guo et al. 2024)
 
 ---
 
@@ -25,7 +26,7 @@
 ---
 
 *Total: 5 papers in 3 issues*  
-*Last updated: 2026-04-12*
+*Last updated: 2026-04-14*
 
 ## About Daily Papers
 
