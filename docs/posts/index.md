@@ -174,6 +174,13 @@
   <h2>Condensed Matter Notes</h2>
   <ul class="article-list">
     <li class="article-item">
+      <span class="article-date">2026-04-14</span>
+      <div>
+        <div class="article-title"><a href="./condensed-matter/lieb-lattice-majorana-josephson-junctions">Majorana Zero Modes in Planar Josephson Junctions: From Lieb Lattice to Short-Junction Limit</a></div>
+        <div class="article-desc">Lieb lattice flat bands, staggered magnetism, quantum spin Hall edge states, and Majorana condition in the short-junction limit</div>
+      </div>
+    </li>
+    <li class="article-item">
       <span class="article-date">2026-04-04</span>
       <div>
         <div class="article-title"><a href="./condensed-matter/crystal-structures-bravais-lattices">Crystal Structures: From Bravais Lattices to Reciprocal Space</a></div>

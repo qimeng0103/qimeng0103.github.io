@@ -35,6 +35,14 @@
 - [x] 构建检查 - 通过
 - [x] 推送部署 - 完成
 
+- [ ] 新博文 - Lieb晶格/交错磁/QSH/Planar Josephson junctions中的Majorana探索
+  - [x] 建立代码探索文件夹 `content/lieb-majorana-junction/`
+  - [x] 创建博文初稿 `docs/posts/condensed-matter/lieb-lattice-majorana-josephson-junctions.md`
+  - [x] 更新主页、文章列表页、侧边栏配置
+  - [x] 补充详细理论推导（短结极限Majorana条件）
+  - [x] 添加数值验证和图像
+  - [x] 构建检查与部署
+
 ### 中优先级  
 - [ ] 
 

@@ -209,6 +209,14 @@ hero:
   <h2>Recent Articles</h2>
   
   <div class="article-entry">
+    <div class="article-date">2026-04-14</div>
+    <div class="article-info">
+      <h3><a href="/posts/condensed-matter/lieb-lattice-majorana-josephson-junctions">Majorana Zero Modes in Planar Josephson Junctions</a></h3>
+      <p>Lieb lattice flat bands, staggered magnetism, quantum spin Hall edge states, and Majorana condition in the short-junction limit</p>
+    </div>
+  </div>
+  
+  <div class="article-entry">
     <div class="article-date">2026-04-10</div>
     <div class="article-info">
       <h3><a href="/posts/paper-notes/2026-04-10-issue-2">Daily Papers - Majorana Braiding & Parafermion Physics</a></h3>
