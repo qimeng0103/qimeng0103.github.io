@@ -116,13 +116,12 @@ S^\dagger(r) X S(r) = e^{-r} X, \qquad S^\dagger(r) P S(r) = e^{r} P
 \begin{insightbox}[举一反三与物理直觉]
 \textbf{物理直觉——相空间``揉面团''：}
 
-把真空态想象成相空间的一个圆。$a^2 - (a^\dagger)^2$ 这种二次项算符不做旋转，而是做挤压。因为算符里 $a^2$ 对应粒子对的湮灭/产生，这打破了相位随机性，必然导致某一方向的不确定度塌缩。
+把真空态在相空间中想象成一个圆（相干态的准概率分布）。压缩算符 $S(\xi)$ 所生成的变换是一种保辛结构（保面积）的仿射变换：它将圆挤压成椭圆，但满足最小不确定关系 $\Delta X \Delta P = \hbar/2$。当 $\xi = r$ 为实数时，椭圆的长轴和短轴恰好与 $X$ 轴、$P$ 轴对齐，$X$ 方向被压缩 $e^{-r}$ 而 $P$ 方向被拉伸 $e^{r}$。其来源是哈密顿量中的二次项 $a^2 - (a^\dagger)^2$ 打破了谐振子基态的旋转对称性，导致粒子对的产生与湮灭关联，从而在一个方向上实现了不确定度的塌缩。
 
 \textbf{拓展延伸：}
 \begin{itemize}
-    \item \textbf{复数参数} $\xi = r e^{i\theta}$：标度变换的方向不再是坐标轴 $X, P$，而是相空间中旋转了 $\theta/2$ 角度的某个倾斜轴
-    \item \textbf{BdG 变换联系}：玻色子配对哈密顿量 $H = \omega a^\dagger a + \frac{\Delta}{2}(a^2 + (a^\dagger)^2)$ 的对角化，本质上就是这个压缩变换的玻色子版本
-    \item \textbf{Kwant 数值验证}：在 Kwant 中定义含有 $a^\dagger a^\dagger$ 项的系统，观察到的准粒子波函数分布在实空间的宽度会随配对强度增加而指数缩放（\en{scaling}）
+    \item \textbf{复数参数} $\xi = r e^{i\theta}$：此时 $S^\dagger(\xi) a S(\xi) = a \cosh r - a^\dagger e^{i\theta} \sinh r$。定义旋转后的坐标轴 $X_{\theta/2} = X \cos(\theta/2) + P \sin(\theta/2)$ 和 $P_{\theta/2} = -X \sin(\theta/2) + P \cos(\theta/2)$，则有 $S^\dagger(\xi) X_{\theta/2} S(\xi) = e^{-r} X_{\theta/2}$，$S^\dagger(\xi) P_{\theta/2} S(\xi) = e^{r} P_{\theta/2}$。标度变换的方向不再是坐标轴 $X, P$，而是相空间中旋转了 $\theta/2$ 角度的倾斜轴。
+    \item \textbf{BdG 变换联系}：玻色子配对哈密顿量 $H = \omega a^\dagger a + \frac{\Delta}{2}(a^2 + (a^\dagger)^2)$ 的对角化，本质上就是这个压缩变换的玻色子版本。其关键区别在于：为了保持玻色对易关系 $[b, b^\dagger] = 1$，变换系数必须满足 $u^2 - v^2 = 1$，因此用双曲函数 $(\cosh r, \sinh r)$ 参数化；而费米子 BdG 变换为了保持反对易关系 $\{c, c^\dagger\} = 1$，系数满足 $u^2 + v^2 = 1$，因此用三角函数 $(\cos\theta, \sin\theta)$ 参数化。
 \end{itemize}
 \end{insightbox}
 
@@ -152,7 +151,7 @@ S^\dagger(r) X S(r) = e^{-r} X, \qquad S^\dagger(r) P S(r) = e^{r} P
 \textbf{层级} & \textbf{识别标签} \\
 \hline
 一级（领域） & 量子力学，谐振子代数 \\
-二级（方法） & 算符酉变换 / 指数映射求导法 \\
+二级（方法） & 算符酉变换、指数映射求导法 \\
 三级（关键词） & squeezing operator, $S^\dagger a S$, Bogoliubov transformation \\
 \hline
 \end{tabular}
@@ -235,12 +234,16 @@ H = \omega a^\dagger a + \frac{\Delta}{2}\left( a^2 + (a^\dagger)^2 \right)
 \[
 S^\dagger(r) H S(r) = E b^\dagger b + \text{const}, \qquad E = \sqrt{\omega^2 - \Delta^2}
 \]
-这与费米子版本的 BdG 变换（如超导 BCS 理论中的粒子-空穴变换 $c_k = u_k \gamma_k + v_k \gamma_{-k}^\dagger$）\key{在数学结构上完全平行}：两者都是通过线性混合产生/湮灭算符来消除哈密顿量中的非对角配对项。区别在于：玻色子用双曲函数（$\cosh r, \sinh r$），而费米子用三角函数（$\cos\theta, \sin\theta$），且满足 $u_k^2 + v_k^2 = 1$（对应费米子的粒子数守恒约束）。
+这与费米子版本的 BdG 变换（如超导 BCS 理论中的粒子-空穴变换 $c_k = u_k \gamma_k + v_k \gamma_{-k}^\dagger$）\key{在数学结构上完全平行}：两者都是通过线性混合产生/湮灭算符来消除哈密顿量中的非对角配对项。关键区别在于变换系数的约束来源不同：
+\begin{itemize}
+    \item \textbf{玻色子}：为了保持对易关系 $[b, b^\dagger] = 1$，由 $b = u a + v a^\dagger$ 可得 $u^2 - v^2 = 1$，因此用双曲函数 $(\cosh r, \sinh r)$ 参数化；
+    \item \textbf{费米子}：为了保持反对易关系 $\{c, c^\dagger\} = 1$，由 $c = u \gamma + v \gamma^\dagger$ 可得 $u^2 + v^2 = 1$，因此用三角函数 $(\cos\theta, \sin\theta)$ 参数化。
+\end{itemize}
 
 \subsection{拓展延伸}
 
 \begin{itemize}
-    \item \textbf{复数参数} $\xi = r e^{i\theta}$：标度变换的方向不再是坐标轴 $X, P$，而是相空间中旋转了 $\theta/2$ 角度的某个倾斜轴。此时 $S^\dagger(\xi) X S(\xi)$ 和 $S^\dagger(\xi) P S(\xi)$ 将是 $X$ 与 $P$ 的线性组合。
+    \item \textbf{复数参数} $\xi = r e^{i\theta}$：此时 $S^\dagger(\xi) a S(\xi) = a \cosh r - a^\dagger e^{i\theta} \sinh r$。定义旋转后的坐标算符 $X_{\theta/2} = X \cos(\theta/2) + P \sin(\theta/2)$ 和 $P_{\theta/2} = -X \sin(\theta/2) + P \cos(\theta/2)$，则标度变换沿倾斜轴进行：$S^\dagger(\xi) X_{\theta/2} S(\xi) = e^{-r} X_{\theta/2}$，$S^\dagger(\xi) P_{\theta/2} S(\xi) = e^{r} P_{\theta/2}$。此时 $S^\dagger(\xi) X S(\xi)$ 和 $S^\dagger(\xi) P S(\xi)$ 一般不再是单独的 $X$ 或 $P$，而是两者的线性组合。
 \end{itemize}
 
 \end{document}
