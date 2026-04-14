@@ -214,17 +214,17 @@ My research focuses on theoretical and computational condensed matter physics, w
 
 **USTC PhD Physics Exam Prep** — Personal study notes for University of Science and Technology of China (USTC) Physics Ph.D. entrance examination.
 
-📄 [Download PDF](/exam-prep/ustc-phd-prep.pdf) *(Last updated: 2026-04-02)* <!-- Updated: 2026-04-02 -->
+📄 [Download PDF](/exam-prep/ustc-phd-prep.pdf) *(Last updated: 2026-04-14)* <!-- Updated: 2026-04-14 -->
 
 **Contents:**
 - Core physical models with quick recognition guides
 - **Zeng Jinyan QM Chapter 3:** Bound state existence conditions (1D symmetric/semi-infinite wells, δ-potential, 3D spherical well)
 - **Zeng Jinyan QM Chapter 4:** Resonance states & quasi-bound states (Breit-Wigner formula, barrier transmission, decaying states)
-- **Zeng Jinyan QM Chapter 5:** Scattering theory (double-barrier resonance, partial wave analysis, scattering length, Levinson's theorem)
+- **Zeng Jinyan QM Chapter 5:** Scattering theory (double-barrier resonance, partial wave analysis, scattering length, Levinson's theorem, effective range expansion)
 - Stationary perturbation theory (non-degenerate & degenerate)
 - Problem-solving techniques and decision trees
-- Secondary conclusions and quick-reference formulas
-- Detailed derivations in appendix
+- Secondary conclusions and quick-reference formulas (QM, stat mech, solid state, scattering, Green's functions)
+- Detailed derivations in appendix (perturbation theory, Stark effect)
 - Error & mental block library
 
 **Format:** Chinese main text with English terminology notes, Beamer-style colored boxes for high-density review
