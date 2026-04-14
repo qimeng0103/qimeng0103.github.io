@@ -211,6 +211,14 @@ hero:
   <div class="article-entry">
     <div class="article-date">2026-04-14</div>
     <div class="article-info">
+      <h3><a href="/posts/paper-notes/2026-04-14-issue-1">Daily Papers - MZM Statistics in Disordered Antidot Vortices</a></h3>
+      <p>Random matrix theory prediction of IPR ratio 4/3 distinguishing Majorana zero modes from CdGM states in STM experiments</p>
+    </div>
+  </div>
+  
+  <div class="article-entry">
+    <div class="article-date">2026-04-14</div>
+    <div class="article-info">
       <h3><a href="/posts/condensed-matter/lieb-lattice-majorana-josephson-junctions">Majorana Zero Modes in Planar Josephson Junctions</a></h3>
       <p>Lieb lattice flat bands, staggered magnetism, quantum spin Hall edge states, and Majorana condition in the short-junction limit</p>
     </div>

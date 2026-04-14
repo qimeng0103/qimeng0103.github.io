@@ -147,6 +147,13 @@
   <h2>Paper Notes</h2>
   <ul class="article-list">
     <li class="article-item">
+      <span class="article-date">2026-04-14</span>
+      <div>
+        <div class="article-title"><a href="./paper-notes/2026-04-14-issue-1">Daily Papers - 2026-04-14 (Issue #1)</a></div>
+        <div class="article-desc">RMT statistical signatures distinguishing MZMs from CdGM states in disordered antidot vortices via STM</div>
+      </div>
+    </li>
+    <li class="article-item">
       <span class="article-date">2026-04-10</span>
       <div>
         <div class="article-title"><a href="./paper-notes/2026-04-10-issue-2">Daily Papers - 2026-04-10 (Issue #2)</a></div>
