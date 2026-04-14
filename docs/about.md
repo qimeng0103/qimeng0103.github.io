@@ -220,6 +220,32 @@ My research focuses on theoretical and computational condensed matter physics, w
 
 **Format:** Chinese main text with English terminology notes, Beamer-style colored boxes for high-density review
 
+### Problem-Accumulation Methodology
+
+These notes follow a deliberate **“core + supplement” two-page spread** designed for rapid review and exam-room recall:
+
+- **Core page (dual-column, high-density)** — Each problem is distilled into a single-page battlefield map using color-coded boxes:
+  - `modelbox` — the problem statement and physical model
+  - `tipbox` — key observations or shortcuts before diving into algebra
+  - `derivationbox` — the critical step-by-step derivation, stripped of routine algebra
+  - `formulabox` — the final closed-form result, boxed for instant lookup
+  - `errorbox` — common mistakes, attention-allocation traps, and “why I failed this the first time”
+  - `insightbox` — physical intuition, connections to other models (e.g. path integrals, WKB, BdG)
+  - `thinkbox` — a reusable template / checklist for recognizing the same archetype in a new exam problem
+
+- **Supplement page (single-column)** — When a topic needs more room, the next page relaxes into single-column prose for:
+  - complete derivations that would clutter the core page
+  - unit-conversion and natural-unit vs. non-natural-unit formulas
+  - advanced connections (e.g. bosonic squeezing vs. fermionic Bogoliubov constraints)
+  - complex-parameter extensions and symmetry rotations
+
+**Exam philosophy embedded in the notes:**
+- *“Abandon derivation, embrace verification.”* — If the problem statement gives an ansatz, act as a quality inspector: differentiate, commute, and match coefficients rather than inventing the solution from scratch.
+- *Operator shuttles and coefficient alignment* — mastery of $e^{i\beta P} X e^{-i\beta P} = X + \beta\hbar$-type identities is the single highest-leverage skill for timed quantum-mechanics exams.
+- *Reflection tags* — every section begins with a “reflex arc” tag (e.g. 绘景变换 / 算符演化 / 线性势) so that during rapid review I can flip to the right template in under five seconds.
+
+This format treats the PDF as a **personal Anki deck rendered in LaTeX**: maximum information density, minimum passive reading.
+
 ## Contact
 
 - **Email:** [mengq8@mail2.sysu.edu.cn](mailto:mengq8@mail2.sysu.edu.cn)
