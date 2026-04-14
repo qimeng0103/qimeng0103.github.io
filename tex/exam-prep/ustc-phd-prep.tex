@@ -19,7 +19,7 @@
 \vspace{8pt}
 
 % ============================================
-% 量子力学：压缩算符与标度变换
+% 核心页：压缩算符与标度变换
 % ============================================
 \section{量子力学：压缩算符与标度变换}
 
@@ -35,25 +35,25 @@ S(\xi) = \exp\left\{ \frac{1}{2}\left( \xi^* a^2 - \xi (a^\dagger)^2 \right) \ri
 
 \begin{tipbox}[考点快速分析]
 \begin{itemize}
-    \item \textbf{核心算符代数}：考察对指数算符酉变换 $e^{-G} A e^{G}$ 的处理能力
-    \item \textbf{相空间压缩}（\en{squeezing}）：理解非经典态在坐标/动量表象下的几何形变
-    \item \textbf{Bogoliubov 变换}：凝聚态中处理配对（如 BCS 超导、激子凝聚）的最简单模型
+    \item \textbf{算符代数}：指数算符酉变换 $e^{-G} A e^{G}$ 的微分方程处理
+    \item \textbf{压缩态}：相空间中的几何形变（一个方向压缩、另一个方向膨胀）
+    \item \textbf{Bogoliubov 变换}：玻色子配对哈密顿量的对角化基础
 \end{itemize}
 \end{tipbox}
 
 \begin{derivationbox}[标准解题过程]
 \textbf{Step 1: 算符关系构建}
 
-取自然单位 $\hbar = m = \omega = 1$：
+在自然单位 $\hbar = m = \omega = 1$ 下：
 \[
 X = \frac{1}{\sqrt{2}}(a + a^\dagger), \quad P = \frac{-i}{\sqrt{2}}(a - a^\dagger)
 \]
 
 \textbf{Step 2: 转化为微分方程}
 
-令 $a(r) = S^\dagger(r) a S(r)$。利用
+令 $a(r) = S^\dagger(r) a S(r)$。由于 $S(r) = e^{rG}$ 且 $G = \frac{1}{2}(a^2 - (a^\dagger)^2)$，有
 \[
-\frac{da(r)}{dr} = \left[ a(r), \frac{\partial G}{\partial r} \right], \quad G = \frac{1}{2}\left( a^2 - (a^\dagger)^2 \right)
+\frac{da(r)}{dr} = [a(r), G]
 \]
 计算对易子：
 \[
@@ -80,15 +80,13 @@ a^\dagger(r) = a^\dagger \cosh r - a \sinh r
 对于 $X$：
 \begin{align*}
 S^\dagger X S &= \frac{1}{\sqrt{2}}(a(r) + a^\dagger(r)) \\
-&= \frac{1}{\sqrt{2}}(a + a^\dagger)(\cosh r - \sinh r) \\
-&= \mathbf{e^{-r} X}
+&= \frac{1}{\sqrt{2}}(a + a^\dagger)(\cosh r - \sinh r) = e^{-r} X
 \end{align*}
 
 对于 $P$：
 \begin{align*}
 S^\dagger P S &= \frac{-i}{\sqrt{2}}(a(r) - a^\dagger(r)) \\
-&= \frac{-i}{\sqrt{2}}(a - a^\dagger)(\cosh r + \sinh r) \\
-&= \mathbf{e^{r} P}
+&= \frac{-i}{\sqrt{2}}(a - a^\dagger)(\cosh r + \sinh r) = e^{r} P
 \end{align*}
 \end{derivationbox}
 
@@ -123,7 +121,7 @@ S^\dagger(r) X S(r) = e^{-r} X, \qquad S^\dagger(r) P S(r) = e^{r} P
 \textbf{拓展延伸：}
 \begin{itemize}
     \item \textbf{复数参数} $\xi = r e^{i\theta}$：标度变换的方向不再是坐标轴 $X, P$，而是相空间中旋转了 $\theta/2$ 角度的某个倾斜轴
-    \item \textbf{BdG 变换联系}：$H = \Delta c^\dagger c^\dagger + \text{h.c.}$ 这种超导配对项的对角化，本质上就是这个压缩变换的费米子版本
+    \item \textbf{BdG 变换联系}：玻色子配对哈密顿量 $H = \omega a^\dagger a + \frac{\Delta}{2}(a^2 + (a^\dagger)^2)$ 的对角化，本质上就是这个压缩变换的玻色子版本
     \item \textbf{Kwant 数值验证}：在 Kwant 中定义含有 $a^\dagger a^\dagger$ 项的系统，观察到的准粒子波函数分布在实空间的宽度会随配对强度增加而指数缩放（\en{scaling}）
 \end{itemize}
 \end{insightbox}
@@ -140,10 +138,110 @@ S^\dagger(r) X S(r) = e^{-r} X, \qquad S^\dagger(r) P S(r) = e^{r} P
 
 \end{multicols}
 
-\vfill
+% ============================================
+% 补充说明页
+% ============================================
+\newpage
+\section{补充说明：压缩算符问题的完整细节}
+
+\subsection{题型反射弧标签}
+
 \begin{center}
-\textcolor{gray}{\rule{0.5\linewidth}{0.4pt}}\\[4pt]
-\textcolor{gray}{\small 祝考试顺利！Good luck with the exam!}
+\begin{tabular}{|c|l|}
+\hline
+\textbf{层级} & \textbf{识别标签} \\
+\hline
+一级（领域） & 量子力学 $>$ 谐振子代数 \\
+二级（方法） & 算符酉变换 / 指数映射求导法 \\
+三级（关键词） & squeezing operator, $S^\dagger a S$, Bogoliubov transformation \\
+\hline
+\end{tabular}
 \end{center}
+
+\examnote{看到 $S^\dagger(r) a S(r)$ 或 $e^{-G} A e^G$，立即启动``参数求导 $+$ 微分方程''套路，不要硬算 BCH。}
+
+\subsection{自然单位与非自然单位的对照}
+
+在谐振子问题中，严格的关系式为（\en{不取自然单位}）：
+\[
+a = \sqrt{\frac{m\omega}{2\hbar}} \left( X + \frac{i}{m\omega} P \right), \qquad
+a^\dagger = \sqrt{\frac{m\omega}{2\hbar}} \left( X - \frac{i}{m\omega} P \right)
+\]
+反解得：
+\[
+X = \sqrt{\frac{\hbar}{2m\omega}} (a + a^\dagger), \qquad
+P = i\sqrt{\frac{\hbar m\omega}{2}} (a^\dagger - a)
+\]
+当且仅当取自然单位 $\hbar = m = \omega = 1$ 时，才简化为 $X = (a + a^\dagger)/\sqrt{2}$，$P = -i(a - a^\dagger)/\sqrt{2}$。在考试中如果未声明自然单位，\key{必须保留 $\sqrt{\hbar/(2m\omega)}$ 等因子}，最终标度系数不变（仍为 $e^{\pm r}$），因为系数在标度变换中会被约去。
+
+\subsection{微分方程的来源与推导}
+
+设 $S(r) = e^{rG}$，其中 $G = \frac{1}{2}(a^2 - (a^\dagger)^2)$。定义海森堡型演化算符 $a(r) \equiv S^\dagger(r) a S(r) = e^{-rG} a e^{rG}$。对参数 $r$ 求导：
+\begin{align*}
+\frac{da(r)}{dr} &= \frac{d}{dr}\left( e^{-rG} a e^{rG} \right) \\
+&= (-G) e^{-rG} a e^{rG} + e^{-rG} a e^{rG} G \\
+&= e^{-rG} a e^{rG} G - G e^{-rG} a e^{rG} \\
+&= [a(r), G]
+\end{align*}
+这正是 Heisenberg 方程的类比。\key{关键技巧}：$G$ 不显含 $r$（除前面的系数 $r$ 外），因此可以直接把 $r$ 当作``时间''来求导。
+
+\subsection{微分方程的详细解法}
+
+由对易关系 $[a, a^\dagger] = 1$ 得：
+\[
+[a, G] = \frac{1}{2}\left[ a, a^2 - (a^\dagger)^2 \right] = -a^\dagger, \qquad
+[a^\dagger, G] = -a
+\]
+于是耦合方程组为：
+\[
+\frac{da(r)}{dr} = -a^\dagger(r), \qquad \frac{da^\dagger(r)}{dr} = -a(r)
+\]
+对第一式再求导一次：
+\[
+\frac{d^2 a(r)}{dr^2} = -\frac{da^\dagger(r)}{dr} = a(r)
+\]
+即 $d^2 a/dr^2 - a = 0$。特征方程 $\lambda^2 - 1 = 0$，通解为 $a(r) = A \cosh r + B \sinh r$。由初始条件：
+\begin{itemize}
+    \item $r = 0$ 时 $a(0) = a$，故 $A = a$
+    \item $r = 0$ 时 $\displaystyle \left.\frac{da}{dr}\right|_{r=0} = -a^\dagger(0) = -a^\dagger$，故 $B = -a^\dagger$
+\end{itemize}
+因此：
+\[
+a(r) = a \cosh r - a^\dagger \sinh r, \qquad a^\dagger(r) = a^\dagger \cosh r - a \sinh r
+\]
+
+\subsection{考察的完整知识点}
+
+\begin{enumerate}
+    \item \textbf{升降算符与坐标动量的关系}：$a, a^\dagger$ 与 $X, P$ 的线性映射（含非自然单位形式）
+    \item \textbf{基本对易关系}：$[a, a^\dagger] = 1$，$[a, a] = [a^\dagger, a^\dagger] = 0$
+    \item \textbf{高阶对易子}：$[a, (a^\dagger)^2] = 2a^\dagger$，$[a^2, a^\dagger] = 2a$
+    \item \textbf{指数算符的求导公式}：$\displaystyle \frac{d}{dr} e^{-rG} A e^{rG} = [e^{-rG} A e^{rG}, G]$
+    \item \textbf{双曲函数恒等式}：$\cosh r - \sinh r = e^{-r}$，$\cosh r + \sinh r = e^{r}$
+    \item \textbf{物理图像}：不确定度在 $X$ 方向被压缩 $e^{-r}$ 倍，在 $P$ 方向被膨胀 $e^{r}$ 倍，满足 $\Delta X \Delta P = \hbar/2$（最小不确定态）
+\end{enumerate}
+
+\subsection{BdG 变换与压缩变换的数学联系}
+
+考虑玻色子配对哈密顿量：
+\[
+H = \omega a^\dagger a + \frac{\Delta}{2}\left( a^2 + (a^\dagger)^2 \right)
+\]
+这正是\en{压缩态}的生成哈密顿量。为了对角化 $H$，引入幺正变换 $S(r) = \exp\left\{ \frac{r}{2}(a^2 - (a^\dagger)^2) \right\}$，参数 $r$ 满足：
+\[
+\tanh(2r) = \frac{\Delta}{\omega}
+\]
+经过变换后，$b \equiv S^\dagger(r) a S(r) = a \cosh r - a^\dagger \sinh r$，哈密顿量对角化为：
+\[
+S^\dagger(r) H S(r) = E b^\dagger b + \text{const}, \qquad E = \sqrt{\omega^2 - \Delta^2}
+\]
+这与费米子版本的 BdG 变换（如超导 BCS 理论中的粒子-空穴变换 $c_k = u_k \gamma_k + v_k \gamma_{-k}^\dagger$）\key{在数学结构上完全平行}：两者都是通过线性混合产生/湮灭算符来消除哈密顿量中的非对角配对项。区别在于：玻色子用双曲函数（$\cosh r, \sinh r$），而费米子用三角函数（$\cos\theta, \sin\theta$），且满足 $u_k^2 + v_k^2 = 1$（对应费米子的粒子数守恒约束）。
+
+\subsection{拓展延伸}
+
+\begin{itemize}
+    \item \textbf{复数参数} $\xi = r e^{i\theta}$：标度变换的方向不再是坐标轴 $X, P$，而是相空间中旋转了 $\theta/2$ 角度的某个倾斜轴。此时 $S^\dagger(\xi) X S(\xi)$ 和 $S^\dagger(\xi) P S(\xi)$ 将是 $X$ 与 $P$ 的线性组合。
+    \item \textbf{Kwant 数值验证}：在 Kwant 中构造一个含有 $a^\dagger a^\dagger$ 配对项的有效模型，通过调节配对强度 $\Delta$，可以观察到局域准粒子波函数在实空间的展宽随 $r \sim \text{arctanh}(\Delta/\omega)$ 指数缩放（$\sigma \sim e^{\pm r}$）。这为压缩变换提供了直观的数值图像。
+\end{itemize}
 
 \end{document}
