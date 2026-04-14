@@ -18,10 +18,127 @@
 \textcolor{ustcblue}{\rule{\linewidth}{2pt}}
 \vspace{8pt}
 
-\begin{center}
-\Large
-本资料正在整理中，核心内容将逐步补充。
-\end{center}
+% ============================================
+% 量子力学：压缩算符与标度变换
+% ============================================
+\section{量子力学：压缩算符与标度变换}
+
+\begin{multicols}{2}
+
+\begin{modelbox}[题目：压缩算符的标度变换]
+定义压缩算符（\en{squeezing operator}）：
+\[
+S(\xi) = \exp\left\{ \frac{1}{2}\left( \xi^* a^2 - \xi (a^\dagger)^2 \right) \right\}
+\]
+其中 $a$ 和 $a^\dagger$ 是谐振子的升降算符。若取 $\xi = r$ 为实数，证明 $S(r)$ 为标度变换，即证明 $S^\dagger(r) X S(r)$ 正比于 $X$，$S^\dagger(r) P S(r)$ 正比于 $P$；证明两者的比例系数互为倒数，并求出具体的比例系数。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{核心算符代数}：考察对指数算符酉变换 $e^{-G} A e^{G}$ 的处理能力
+    \item \textbf{相空间压缩}（\en{squeezing}）：理解非经典态在坐标/动量表象下的几何形变
+    \item \textbf{Bogoliubov 变换}：凝聚态中处理配对（如 BCS 超导、激子凝聚）的最简单模型
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 算符关系构建}
+
+取自然单位 $\hbar = m = \omega = 1$：
+\[
+X = \frac{1}{\sqrt{2}}(a + a^\dagger), \quad P = \frac{-i}{\sqrt{2}}(a - a^\dagger)
+\]
+
+\textbf{Step 2: 转化为微分方程}
+
+令 $a(r) = S^\dagger(r) a S(r)$。利用
+\[
+\frac{da(r)}{dr} = \left[ a(r), \frac{\partial G}{\partial r} \right], \quad G = \frac{1}{2}\left( a^2 - (a^\dagger)^2 \right)
+\]
+计算对易子：
+\[
+[a, G] = \frac{1}{2}\left[ a, a^2 - (a^\dagger)^2 \right] = -a^\dagger
+\]
+建立耦合方程组：
+\[
+\begin{cases}
+\displaystyle \frac{da(r)}{dr} = -a^\dagger(r) \\[6pt]
+\displaystyle \frac{da^\dagger(r)}{dr} = -a(r)
+\end{cases}
+\]
+
+\textbf{Step 3: 求解并代入}
+
+双曲函数解（初始条件 $a(0)=a$）：
+\[
+a(r) = a\cosh r - a^\dagger \sinh r
+\]
+\[
+a^\dagger(r) = a^\dagger \cosh r - a \sinh r
+\]
+
+对于 $X$：
+\begin{align*}
+S^\dagger X S &= \frac{1}{\sqrt{2}}(a(r) + a^\dagger(r)) \\
+&= \frac{1}{\sqrt{2}}(a + a^\dagger)(\cosh r - \sinh r) \\
+&= \mathbf{e^{-r} X}
+\end{align*}
+
+对于 $P$：
+\begin{align*}
+S^\dagger P S &= \frac{-i}{\sqrt{2}}(a(r) - a^\dagger(r)) \\
+&= \frac{-i}{\sqrt{2}}(a - a^\dagger)(\cosh r + \sinh r) \\
+&= \mathbf{e^{r} P}
+\end{align*}
+\end{derivationbox}
+
+\begin{formulabox}[核心结论]
+\[
+S^\dagger(r) X S(r) = e^{-r} X, \qquad S^\dagger(r) P S(r) = e^{r} P
+\]
+比例系数 $e^{-r}$ 与 $e^{r}$ 互为倒数，乘积为 $1$。
+\end{formulabox}
+
+\begin{errorbox}[colback=white]{思路短路原因与解决策略}
+\textbf{短路原因：}
+\begin{itemize}
+    \item \textbf{公式焦虑}：试图直接展开 $e^A B e^{-A}$ 的无限级数（BCH 公式），导致中间项计算极其混乱
+    \item \textbf{系数混淆}：在 $X \sim a+a^\dagger$ 中纠结具体的 $1/\sqrt{2}$ 或 $i$ 的正负号
+    \item \textbf{静态思维}：将 $r$ 看作死板的参数，而非动态演化的``时间''
+\end{itemize}
+
+\textbf{解决策略：}
+\begin{itemize}
+    \item \textbf{微分化思维}：看到 $e^{r(\dots)}$ 作用于算符，第一反应永远是求导建方程。这比硬算对易子快且准
+    \item \textbf{线性保持原则}：记住压缩变换是线性的，$X$ 变换后一定还是 $X$ 的线性组合
+    \item \textbf{结果逆推}：既然是``压缩''，必然一个方向缩 $e^{-r}$，另一个扩 $e^{r}$
+\end{itemize}
+\end{errorbox}
+
+\begin{insightbox}[举一反三与物理直觉]
+\textbf{物理直觉——相空间``揉面团''：}
+
+把真空态想象成相空间的一个圆。$a^2 - (a^\dagger)^2$ 这种二次项算符不做旋转，而是做挤压。因为算符里 $a^2$ 对应粒子对的湮灭/产生，这打破了相位随机性，必然导致某一方向的不确定度塌缩。
+
+\textbf{拓展延伸：}
+\begin{itemize}
+    \item \textbf{复数参数} $\xi = r e^{i\theta}$：标度变换的方向不再是坐标轴 $X, P$，而是相空间中旋转了 $\theta/2$ 角度的某个倾斜轴
+    \item \textbf{BdG 变换联系}：$H = \Delta c^\dagger c^\dagger + \text{h.c.}$ 这种超导配对项的对角化，本质上就是这个压缩变换的费米子版本
+    \item \textbf{Kwant 数值验证}：在 Kwant 中定义含有 $a^\dagger a^\dagger$ 项的系统，观察到的准粒子波函数分布在实空间的宽度会随配对强度增加而指数缩放（\en{scaling}）
+\end{itemize}
+\end{insightbox}
+
+\begin{thinkbox}[解题思路模板（算符酉变换）]
+\begin{enumerate}
+    \item \textbf{识别生成元}：写出 $G$ 并确认参数对应的动力学``时间''
+    \item \textbf{建立微分方程}：$\displaystyle \frac{dA(\lambda)}{d\lambda} = [A(\lambda), G]$
+    \item \textbf{利用线性性}：猜测解的形式（通常为双曲/三角函数线性组合）
+    \item \textbf{回代验证}：将解代回原始算符定义，检查系数与对易关系
+    \item \textbf{极限检查}：$\lambda \to 0$ 时是否恢复恒等变换？
+\end{enumerate}
+\end{thinkbox}
+
+\end{multicols}
 
 \vfill
 \begin{center}
