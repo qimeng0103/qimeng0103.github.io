@@ -216,16 +216,7 @@ My research focuses on theoretical and computational condensed matter physics, w
 
 📄 [Download PDF](/exam-prep/ustc-phd-prep.pdf) *(Last updated: 2026-04-14)* <!-- Updated: 2026-04-14 -->
 
-**Contents:**
-- Core physical models with quick recognition guides
-- **Zeng Jinyan QM Chapter 3:** Bound state existence conditions (1D symmetric/semi-infinite wells, δ-potential, 3D spherical well)
-- **Zeng Jinyan QM Chapter 4:** Resonance states & quasi-bound states (Breit-Wigner formula, barrier transmission, decaying states)
-- **Zeng Jinyan QM Chapter 5:** Scattering theory (double-barrier resonance, partial wave analysis, scattering length, Levinson's theorem, effective range expansion)
-- Stationary perturbation theory (non-degenerate & degenerate)
-- Problem-solving techniques and decision trees
-- Secondary conclusions and quick-reference formulas (QM, stat mech, solid state, scattering, Green's functions)
-- Detailed derivations in appendix (perturbation theory, Stark effect)
-- Error & mental block library
+*Content under construction. The notes will cover core models, quantum mechanics, scattering theory, perturbation theory, and quick-reference formulas for high-density review.*
 
 **Format:** Chinese main text with English terminology notes, Beamer-style colored boxes for high-density review
 
