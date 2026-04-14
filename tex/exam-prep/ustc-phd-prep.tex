@@ -265,4 +265,293 @@ S^\dagger(r) H S(r) = E b^\dagger b + \text{const}, \qquad E = \sqrt{\omega^2 - 
     \item \textbf{复数参数} $\xi = r e^{i\theta}$：此时 $S^\dagger(\xi) a S(\xi) = a \cosh r - a^\dagger e^{i\theta} \sinh r$。定义旋转后的坐标算符 $X_{\theta/2} = X \cos(\theta/2) + P \sin(\theta/2)$ 和 $P_{\theta/2} = -X \sin(\theta/2) + P \cos(\theta/2)$，则标度变换沿倾斜轴进行：$S^\dagger(\xi) X_{\theta/2} S(\xi) = e^{-r} X_{\theta/2}$，$S^\dagger(\xi) P_{\theta/2} S(\xi) = e^{r} P_{\theta/2}$。此时 $S^\dagger(\xi) X S(\xi)$ 和 $S^\dagger(\xi) P S(\xi)$ 一般不再是单独的 $X$ 或 $P$，而是两者的线性组合。
 \end{itemize}
 
+% ============================================
+% 核心页：线性势场与相互作用绘景
+% ============================================
+\newpage
+\section{量子力学：线性势场与相互作用绘景}
+
+\begin{multicols}{2}
+
+\begin{modelbox}[题目：线性势中的粒子演化]
+考虑在线性势中的粒子，哈密顿量为：
+\[
+H = \frac{P^2}{2m} - \gamma X \quad (\gamma \in \mathbb{R})
+\]
+写出相互作用绘景下态矢量 $|\tilde{\psi}(t)\rangle$ 和演化算符 $\tilde{U}(t)$ 的微分方程。证明该模型存在如下形式的解，并确定相因子 $\alpha(t)$：
+\[
+\tilde{U}(t) = \exp\left( -\frac{i\alpha(t)}{\hbar} \right) \exp\left( \frac{i\gamma P t^2}{2m\hbar} \right) \exp\left( \frac{i\gamma X t}{\hbar} \right)
+\]
+最后给出薛定谔绘景中的时间演化算符 $U(t)$。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{绘景拆分}：$H_0 = \frac{P^2}{2m}$（自由项），$V = -\gamma X$（作用项）
+    \item \textbf{相互作用势的演化}：$V_I(t) = -\gamma (X + \frac{P}{m}t)$
+    \item \textbf{对易子闭合性}：$[X, P] = i\hbar$ 为常数，保证了算符拆解的严格有限性
+    \item \textbf{考场策略}：题目已给出解的形式，优先使用\key{代入验证法}而非从头推导
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 相互作用绘景的建立}
+
+取 $H_0 = \frac{P^2}{2m}$，则相互作用绘景态矢量定义为：
+\[
+|\tilde{\psi}(t)\rangle = e^{iH_0 t/\hbar} |\psi(t)\rangle
+\]
+其满足的运动方程为：
+\[
+i\hbar \frac{d}{dt}|\tilde{\psi}(t)\rangle = V_I(t) |\tilde{\psi}(t)\rangle, \quad V_I(t) = e^{iH_0 t/\hbar} V e^{-iH_0 t/\hbar}
+\]
+演化算符 $\tilde{U}(t)$ 满足：
+\[
+i\hbar \frac{d\tilde{U}}{dt} = V_I(t) \tilde{U}(t), \quad \tilde{U}(0) = I
+\]
+
+\textbf{Step 2: 计算 $V_I(t)$}
+
+利用海森堡演化求导公式：
+\[
+\frac{d}{dt}\left( e^{iH_0 t/\hbar} X e^{-iH_0 t/\hbar} \right) = \frac{i}{\hbar} e^{iH_0 t/\hbar} [H_0, X] e^{-iH_0 t/\hbar} = \frac{P}{m}
+\]
+因此：
+\[
+e^{iH_0 t/\hbar} X e^{-iH_0 t/\hbar} = X + \frac{P}{m}t
+\]
+得到相互作用势：
+\[
+V_I(t) = -\gamma \left( X + \frac{P}{m}t \right)
+\]
+
+\textbf{Step 3: 代入验证并确定 $\alpha(t)$}
+
+设 $\tilde{U} = e^{-i\alpha/\hbar} e^{i\beta P} e^{i\eta X}$，其中 $\beta = \frac{\gamma t^2}{2m\hbar}$，$\eta = \frac{\gamma t}{\hbar}$。
+
+计算左式 $i\hbar \frac{d\tilde{U}}{dt}$ 的三项贡献：
+\begin{enumerate}[nosep]
+    \item 相位项：$\dot{\alpha} \tilde{U}$
+    \item $P$ 指数项：$-\hbar\dot{\beta} P \tilde{U} = -\frac{\gamma t}{m} P \tilde{U}$
+    \item $X$ 指数项：利用 $e^{i\beta P} X e^{-i\beta P} = X + \beta\hbar = X + \frac{\gamma t^2}{2m}$，得 $-\hbar\dot{\eta}(X + \frac{\gamma t^2}{2m})\tilde{U} = -\gamma(X + \frac{\gamma t^2}{2m})\tilde{U}$
+\end{enumerate}
+
+合并得：
+\[
+i\hbar \frac{d\tilde{U}}{dt} = \left[ \dot{\alpha} - \frac{\gamma t}{m}P - \gamma X - \frac{\gamma^2 t^2}{2m} \right] \tilde{U}
+\]
+
+令其等于 $V_I(t)\tilde{U} = (-\gamma X - \frac{\gamma t}{m}P)\tilde{U}$，对比常数项：
+\[
+\dot{\alpha} = \frac{\gamma^2 t^2}{2m} \quad \Rightarrow \quad \alpha(t) = \frac{\gamma^2 t^3}{6m}
+\]
+（取积分常数 $\alpha(0) = 0$）
+
+\textbf{Step 4: 薛定谔绘景的 $U(t)$}
+
+由 $U(t) = e^{-iH_0 t/\hbar} \tilde{U}(t)$ 得：
+\[
+\begin{aligned}
+U(t) &= \exp\left( -\frac{iP^2 t}{2m\hbar} \right) \exp\left( -\frac{i\gamma^2 t^3}{6m\hbar} \right) \\
+&\quad \times \exp\left( \frac{i\gamma P t^2}{2m\hbar} \right) \exp\left( \frac{i\gamma X t}{\hbar} \right)
+\end{aligned}
+\]
+\end{derivationbox}
+
+\begin{formulabox}[核心结论]
+\[
+\alpha(t) = \frac{\gamma^2 t^3}{6m}
+\]
+\[
+V_I(t) = -\gamma \left( X + \frac{P}{m}t \right)
+\]
+\[
+\begin{aligned}
+U(t) &= e^{-iH_0 t/\hbar} \exp\left( -\frac{i\gamma^2 t^3}{6m\hbar} \right) \\
+&\quad \times \exp\left( \frac{i\gamma P t^2}{2m\hbar} \right) \exp\left( \frac{i\gamma X t}{\hbar} \right)
+\end{aligned}
+\]
+\end{formulabox}
+
+\begin{errorbox}[colback=white]{思路短路与注意力分配策略}
+\textbf{短路点：}纠结于解的形式如何``天降''，试图从零推导三个指数的乘积结构。
+
+\textbf{策略：}\key{放弃推导，拥抱验证。}在考场上，如果题目给出了具体的解的形式，你的任务不是去``发明''它，而是作为一名质检员，通过求导把未知参数确定下来。
+
+\textbf{注意力分配：}
+\begin{itemize}[nosep]
+    \item $0\sim20\%$：写出 $V_I(t) = -\gamma(X + \frac{P}{m}t)$
+    \item $20\sim80\%$：进行算符穿梭（$e^{i\beta P} X e^{-i\beta P} = X + \beta\hbar$）和系数对齐
+    \item $80\sim100\%$：检查 $\alpha(t)$ 的系数。$t^2$ 的积分必须出 $\frac{1}{3}$，再与前面的 $\frac{1}{2}$ 配合，最终得到 $\frac{1}{6}$
+\end{itemize}
+\end{errorbox}
+
+\begin{insightbox}[举一反三与物理直觉]
+\textbf{物理直觉——自由落体的相因子：}
+
+线性势（重力场/匀强电场）中，粒子的量子相位随时间以 $t^3$ 增长。这与经典力学中的作用量 $S = \int L dt$ 直接对应。对于经典轨迹 $x(t) = x_0 + v_0 t + \frac{\gamma t^2}{2m}$，拉格朗日量 $L = \frac{1}{2}m\dot{x}^2 + \gamma x$ 的积分恰好产生 $t^3$ 项。在原子干涉仪（\en{atom interferometry}）中，这一相位是测量重力加速度 $g$ 的核心物理量。
+
+\textbf{拓展延伸：}
+
+\textit{(1) 路径积分视角}：线性势的传播子是可以精确计算的（涉及 Airy 函数），其相位中 $t^3$ 项对应于经典作用量。这是费曼路径积分中最简单的可解析模型之一。
+
+\textit{(2) 定态图像}：含时演化算符的傅里叶变换与定态薛定谔方程的 Airy 函数解（$\text{Ai}(z)$）直接相关。能量本征态在动量空间是平面波，在坐标空间是被线性势``弯曲''的 Airy 函数。
+
+\textit{(3) 与 WKB 的联系}：线性势的 WKB 近似精确给出 Airy 函数的渐近形式，其转折点附近的相位累积由 $t^3$ 型项主导。
+\end{insightbox}
+
+\begin{thinkbox}[解题思路模板（绘景变换与算符演化）]
+\begin{enumerate}
+    \item \textbf{拆分哈密顿量}：明确 $H_0$ 和 $V$，写出相互作用绘景定义
+    \item \textbf{计算 $V_I(t)$}：利用 $\frac{d}{dt}(e^{iH_0 t/\hbar} O e^{-iH_0 t/\hbar}) = \frac{i}{\hbar}e^{iH_0 t/\hbar}[H_0, O]e^{-iH_0 t/\hbar}$
+    \item \textbf{识别题型}：若题目给出 $\tilde{U}$ 的显式形式，立即启动代入验证
+    \item \textbf{算符平移}：熟练使用 $e^{i\beta P} X e^{-i\beta P} = X + \beta\hbar$
+    \item \textbf{系数对齐}：分别对比 $X$ 项、$P$ 项和常数（c 数）项
+\end{enumerate}
+\end{thinkbox}
+
+\end{multicols}
+
+% ============================================
+% 补充说明页：线性势场
+% ============================================
+\newpage
+\section{补充说明：线性势场与相互作用绘景的完整细节}
+
+\subsection{题型反射弧标签}
+
+\begin{center}
+\begin{tabular}{|c|l|}
+\hline
+\textbf{层级} & \textbf{识别标签} \\
+\hline
+一级（领域） & 量子力学，相互作用绘景 \\
+二级（方法） & 绘景变换，算符演化，BCH 公式 \\
+三级（关键词） & interaction picture, linear potential, Magnus expansion \\
+\hline
+\end{tabular}
+\end{center}
+
+\examnote{看到 $H = H_0 + V$ 并要求相互作用绘景，立即写出 $|\tilde{\psi}\rangle = e^{iH_0 t/\hbar}|\psi\rangle$ 和 $i\hbar \dot{\tilde{U}} = V_I \tilde{U}$。}
+
+\subsection{$V_I(t)$ 的详细推导}
+
+$H_0 = \frac{P^2}{2m}$，$V = -\gamma X$。我们需要计算：
+\[
+V_I(t) = e^{iH_0 t/\hbar} (-\gamma X) e^{-iH_0 t/\hbar} = -\gamma X_I(t)
+\]
+其中 $X_I(t)$ 是 $X$ 在相互作用绘景中的演化。对参数 $t$ 求导：
+\[
+\frac{dX_I}{dt} = \frac{i}{\hbar} e^{iH_0 t/\hbar} [H_0, X] e^{-iH_0 t/\hbar}
+\]
+计算对易子：
+\[
+[H_0, X] = \frac{1}{2m}[P^2, X] = \frac{1}{2m}(P[P, X] + [P, X]P) = \frac{1}{2m}(-2i\hbar P) = -\frac{i\hbar P}{m}
+\]
+代入得：
+\[
+\frac{dX_I}{dt} = \frac{i}{\hbar} \left( -\frac{i\hbar P}{m} \right) = \frac{P}{m}
+\]
+注意 $P$ 与 $H_0$ 对易，因此 $P$ 在相互作用绘景中不变。积分并利用初始条件 $X_I(0) = X$：
+\[
+X_I(t) = X + \frac{P}{m}t
+\]
+因此：
+\[
+V_I(t) = -\gamma \left( X + \frac{P}{m}t \right)
+\]
+
+\subsection{验证法的完整步骤（考场推荐）}
+
+设 $\tilde{U} = e^{-i\alpha/\hbar} e^{i\beta P} e^{i\eta X}$，其中：
+\[
+\beta(t) = \frac{\gamma t^2}{2m\hbar}, \quad \eta(t) = \frac{\gamma t}{\hbar}
+\]
+
+\textbf{第一步：分别求导}
+\begin{align*}
+\frac{d\tilde{U}}{dt} &= \left( -\frac{i\dot{\alpha}}{\hbar} \right) \tilde{U} + e^{-i\alpha/\hbar} \left( i\dot{\beta} P e^{i\beta P} \right) e^{i\eta X} + e^{-i\alpha/\hbar} e^{i\beta P} \left( i\dot{\eta} X e^{i\eta X} \right) \\
+&= \left( -\frac{i\dot{\alpha}}{\hbar} \right) \tilde{U} + i\dot{\beta} P \tilde{U} + i\dot{\eta} \underbrace{e^{i\beta P} X e^{-i\beta P}}_{= X + \beta\hbar} \tilde{U}
+\end{align*}
+
+\textbf{第二步：乘以 $i\hbar$ 并整理}
+\begin{align*}
+i\hbar \frac{d\tilde{U}}{dt} &= \dot{\alpha} \tilde{U} - \hbar\dot{\beta} P \tilde{U} - \hbar\dot{\eta}(X + \beta\hbar) \tilde{U} \\
+&= \left[ \dot{\alpha} - \frac{\gamma t}{m} P - \gamma X - \frac{\gamma^2 t^2}{2m} \right] \tilde{U}
+\end{align*}
+（其中 $\dot{\beta} = \frac{\gamma t}{m\hbar}$，$\dot{\eta} = \frac{\gamma}{\hbar}$，$\beta\hbar = \frac{\gamma t^2}{2m}$）
+
+\textbf{第三步：与 $V_I \tilde{U}$ 对比}
+\[
+V_I \tilde{U} = \left( -\gamma X - \frac{\gamma t}{m} P \right) \tilde{U}
+\]
+$X$ 项和 $P$ 项自动匹配。常数项要求：
+\[
+\dot{\alpha} - \frac{\gamma^2 t^2}{2m} = 0 \quad \Rightarrow \quad \dot{\alpha} = \frac{\gamma^2 t^2}{2m}
+\]
+积分得：
+\[
+\alpha(t) = \int_0^t \frac{\gamma^2 t'^2}{2m} dt' = \frac{\gamma^2 t^3}{6m}
+\]
+
+\subsection{Magnus 展开与 BCH 路径（物理本质）}
+
+当 $[V_I(t_1), V_I(t_2)]$ 为 c 数时，Magnus 展开在二阶截断是精确的：
+\[
+\tilde{U}(t) = \exp\left( \frac{1}{i\hbar} \int_0^t V_I(t') dt' + \frac{1}{2(i\hbar)^2} \int_0^t dt_1 \int_0^{t_1} dt_2 \, [V_I(t_1), V_I(t_2)] \right)
+\]
+
+计算对易子：
+\[
+[V_I(t_1), V_I(t_2)] = \frac{i\hbar\gamma^2}{m}(t_2 - t_1)
+\]
+
+第一项（一阶 Magnus）：
+\[
+\frac{1}{i\hbar} \int_0^t \left( -\gamma X - \frac{\gamma t'}{m} P \right) dt' = \frac{i\gamma X t}{\hbar} + \frac{i\gamma P t^2}{2m\hbar}
+\]
+
+第二项（二阶 Magnus）：
+\[
+\frac{1}{2(i\hbar)^2} \int_0^t dt_1 \int_0^{t_1} dt_2 \, \frac{i\hbar\gamma^2}{m}(t_2 - t_1) = \frac{\gamma^2 t^3}{12m\hbar}
+\]
+
+合并后指数部分为：
+\[
+\frac{i\gamma P t^2}{2m\hbar} + \frac{i\gamma X t}{\hbar} + \frac{\gamma^2 t^3}{12m\hbar}
+\]
+
+利用 BCH 公式 $e^{A+B} = e^A e^B e^{-\frac{1}{2}[A,B]}$（$[A,B]$ 为 c 数），令 $A = \frac{i\gamma P t^2}{2m\hbar}$，$B = \frac{i\gamma X t}{\hbar}$，得 $[A,B] = \frac{i\gamma^2 t^3}{2m\hbar}$。整理后即得到题目给出的三指数形式，其中：
+\[
+\alpha(t) = \frac{\gamma^2 t^3}{6m}
+\]
+
+\subsection{考察的完整知识点}
+
+\begin{enumerate}
+    \item \textbf{三种绘景}：薛定谔绘景、海森堡绘景、相互作用绘景的定义与转换关系
+    \item \textbf{相互作用绘景的运动方程}：$i\hbar \frac{d}{dt}|\tilde{\psi}\rangle = V_I(t)|\tilde{\psi}\rangle$
+    \item \textbf{算符的海森堡演化}：$O_I(t) = e^{iH_0 t/\hbar} O e^{-iH_0 t/\hbar}$ 及其微分方程
+    \item \textbf{基本对易子}：$[P^2, X] = -2i\hbar P$，$[X, P] = i\hbar$
+    \item \textbf{算符平移公式}：$e^{i\beta P} X e^{-i\beta P} = X + \beta\hbar$
+    \item \textbf{Magnus 展开与 BCH 公式}：当对易子为 c 数时的精确处理
+    \item \textbf{物理图像}：$t^3$ 相位对应经典作用量和原子干涉仪中的重力测量
+\end{enumerate}
+
+\subsection{物理直觉：与经典作用量的联系}
+
+经典拉格朗日量 $L = \frac{1}{2}m\dot{x}^2 + \gamma x$。对于初条件 $x(0) = x_0$，$\dot{x}(0) = v_0$ 的轨迹 $x(t) = x_0 + v_0 t + \frac{\gamma t^2}{2m}$，作用量为：
+\[
+S = \int_0^t L dt' = \frac{1}{2}mv_0^2 t + \gamma x_0 t + \frac{\gamma v_0 t^2}{2m} + \frac{\gamma^2 t^3}{6m}
+\]
+量子演化算符中的 $e^{-i\gamma^2 t^3/(6m\hbar)}$ 正是对应于经典作用量中与初始条件无关的 $t^3$ 项。这揭示了量子相位与经典轨迹之间的深刻联系。
+
+\subsection{拓展延伸}
+
+\begin{itemize}
+    \item \textbf{定态解与 Airy 函数}：$H\psi = E\psi$ 即 $(-\frac{\hbar^2}{2m}\frac{d^2}{dx^2} - \gamma x)\psi = E\psi$，作变量替换 $z = -(\frac{2m\gamma}{\hbar^2})^{1/3}(x + \frac{E}{\gamma})$ 后化为 Airy 方程 $\frac{d^2\psi}{dz^2} = z \psi$，解为 $\psi(x) \propto \text{Ai}(z)$
+    \item \textbf{传播子}：费曼路径积分下线性势的传播子可以解析求出，是研究量子-经典对应的重要范例
+    \item \textbf{实验联系}：原子干涉仪利用自由落体原子的 $t^3$ 相位差测量局部重力加速度 $g$，精度可达 $10^{-9} g$ 量级
+\end{itemize}
+
 \end{document}
