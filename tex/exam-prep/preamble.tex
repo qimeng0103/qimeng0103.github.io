@@ -6,11 +6,13 @@
 \documentclass[10pt,a4paper]{article}
 
 % ---------- 基础包 ----------
-\usepackage[margin=1.2cm, top=1cm, bottom=1cm]{geometry}
+\usepackage[margin=1.2cm, top=1.5cm, bottom=1cm]{geometry}
 \usepackage{ctex}  % 中文支持
 \usepackage{multicol}  % 双栏/三栏
 \usepackage{enumitem}  % 列表控制
 \usepackage{hyperref}  % 超链接
+\usepackage{bookmark}  % 优化 PDF 书签，避免多次编译
+\usepackage{tocloft}   % 美化目录格式
 
 % ---------- 数学包 ----------
 \usepackage{amsmath,amssymb,amsthm}
@@ -64,7 +66,7 @@
     enhanced,
     colback=lightblue,
     colframe=ustcblue,
-    fonttitle=\bfseries\sffamily\small,
+    fonttitle=\bfseries\small,
     title=#1,
     boxrule=1pt,
     arc=3pt,
@@ -78,7 +80,7 @@
     enhanced,
     colback=lightred,
     colframe=alertred,
-    fonttitle=\bfseries\sffamily\small,
+    fonttitle=\bfseries\small,
     title=#1,
     boxrule=1pt,
     arc=3pt,
@@ -92,7 +94,7 @@
     enhanced,
     colback=lightgreen,
     colframe=successgreen,
-    fonttitle=\bfseries\sffamily\small,
+    fonttitle=\bfseries\small,
     title=#1,
     boxrule=1pt,
     arc=3pt,
@@ -106,7 +108,7 @@
     enhanced,
     colback=lightorange,
     colframe=warnorange,
-    fonttitle=\bfseries\sffamily\small,
+    fonttitle=\bfseries\small,
     title=#1,
     boxrule=1pt,
     arc=3pt,
@@ -120,7 +122,7 @@
     enhanced,
     colback=lightpurple,
     colframe=royalpurple,
-    fonttitle=\bfseries\sffamily\small,
+    fonttitle=\bfseries\small,
     title=#1,
     boxrule=1pt,
     arc=3pt,
@@ -134,7 +136,7 @@
     enhanced,
     colback=lightyellow,
     colframe=warnorange!80!black,
-    fonttitle=\bfseries\sffamily\small,
+    fonttitle=\bfseries\small,
     title=#1,
     boxrule=1pt,
     arc=3pt,
@@ -147,7 +149,7 @@
     enhanced,
     colback=gray!10,
     colframe=gray!70!black,
-    fonttitle=\bfseries\sffamily\small,
+    fonttitle=\bfseries\small,
     title=#1,
     boxrule=0.8pt,
     arc=2pt,
@@ -162,7 +164,7 @@
     enhanced,
     colback=lighterror,
     colframe=errorred,
-    fonttitle=\bfseries\sffamily\small,
+    fonttitle=\bfseries\small,
     title={\textcolor{white}{#2}},
     attach boxed title to top left={yshift=-2mm,xshift=5mm},
     boxed title style={colback=errorred,arc=2pt,boxrule=0pt},
@@ -181,7 +183,7 @@
     enhanced,
     colback=lightteal,
     colframe=tealcolor,
-    fonttitle=\bfseries\sffamily\small,
+    fonttitle=\bfseries\small,
     title=#1,
     boxrule=1pt,
     arc=3pt,
@@ -228,6 +230,13 @@
 % ============================================
 \usepackage{titlesec}
 
+% ---------- Part 样式（专题分隔页）----------
+\titleformat{\part}
+    {\normalfont\Huge\bfseries\color{ustcblue}\sffamily}
+    {专题 \thepart：}{0.3em}{}
+    [\vspace{-0.3em}\textcolor{ustcblue}{\rule{\linewidth}{2pt}}]
+\titlespacing*{\part}{0pt}{24pt}{12pt}
+
 \titleformat{\section}
     {\Large\bfseries\sffamily\color{ustcblue}}
     {\thesection}{0.5em}{}
@@ -245,6 +254,19 @@
 \titlespacing*{\subsection}{0pt}{8pt}{4pt}
 \titlespacing*{\subsubsection}{0pt}{6pt}{3pt}
 
+% ---------- 目录格式设置 ----------
+\setcounter{tocdepth}{1}  % 目录只显示到 section 级别
+
+\renewcommand{\cftpartfont}{\bfseries\color{ustcblue}\sffamily}
+\renewcommand{\cftpartleader}{\cftdotfill{\cftdotsep}}
+\renewcommand{\cftsecfont}{\small}
+\renewcommand{\cftsecpagefont}{\small}
+\setlength{\cftbeforepartskip}{10pt}
+\setlength{\cftbeforesecskip}{4pt}
+\setlength{\cftpartnumwidth}{2.5em}
+\setlength{\cftsecindent}{2.5em}
+\setlength{\cftsecnumwidth}{2em}
+
 % ============================================
 % 页眉设置（可选）
 % ============================================
@@ -252,6 +274,6 @@
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small\textcolor{gray}{USTC PhD Exam Prep}}
-\fancyhead[R]{\small\textcolor{gray}{\leftmark}}
+\fancyhead[R]{\small\textcolor{gray}{\nouppercase{\leftmark}}}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\headrule}{\hbox to\headwidth{\color{gray}\leaders\hrule height \headrulewidth\hfill}}
