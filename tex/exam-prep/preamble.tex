@@ -6,8 +6,9 @@
 \documentclass[10pt,a4paper]{article}
 
 % ---------- 基础包 ----------
-\usepackage[margin=1.2cm, top=1.5cm, bottom=1cm]{geometry}
-\usepackage{ctex}  % 中文支持
+\usepackage[margin=1.2cm, top=1.5cm, bottom=1cm, headheight=20pt]{geometry}
+\usepackage{fancyhdr}  % 必须在 ctex 之前加载，否则页码会被覆盖
+\usepackage[heading=true]{ctex}  % 中文支持
 \usepackage{multicol}  % 双栏/三栏
 \usepackage{enumitem}  % 列表控制
 \usepackage{hyperref}  % 超链接
@@ -29,10 +30,10 @@
 \usetikzlibrary{shapes,arrows,positioning,calc}
 
 % ---------- 页面设置 ----------
-\pagestyle{empty}  % 无页眉页脚，最大化空间
+% \pagestyle{empty}  % 禁用：现在使用 fancyhdr 显示页眉页脚
 \setlength{\parindent}{0pt}  % 无缩进
 \setlength{\parskip}{2pt}    % 紧凑段落
-\setlength{\headheight}{20pt}  % 修复 fancyhdr 警告
+% headheight 已在 geometry 选项中设置
 
 % ---------- 双栏设置 ----------
 \setlength{\columnseprule}{0.4pt}  % 栏间分隔线
@@ -271,10 +272,11 @@
 % ============================================
 % 页眉设置（可选）
 % ============================================
-\usepackage{fancyhdr}
 \pagestyle{fancy}
 \fancyhf{}
 \fancyhead[L]{\small\textcolor{gray}{USTC PhD Exam Prep}}
 \fancyhead[R]{\small\textcolor{gray}{\nouppercase{\leftmark}}}
+\fancyfoot[C]{\small\textcolor{gray}{\thepage}}
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\headrule}{\hbox to\headwidth{\color{gray}\leaders\hrule height \headrulewidth\hfill}}
+\AtBeginDocument{\pagestyle{fancy}}

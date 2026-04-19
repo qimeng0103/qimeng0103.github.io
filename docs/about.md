@@ -214,11 +214,17 @@ My research focuses on theoretical and computational condensed matter physics, w
 
 **USTC PhD Physics Exam Prep** — Personal study notes for University of Science and Technology of China (USTC) Physics Ph.D. entrance examination.
 
-📄 [Download PDF](/exam-prep/ustc-phd-prep.pdf) *(Last updated: 2026-04-14)* <!-- Updated: 2026-04-14 -->
+📄 [Download PDF](/exam-prep/ustc-phd-prep.pdf) *(Last updated: 2026-04-15)* <!-- Updated: 2026-04-15 -->
 
 *Content under construction. The notes will cover core models, quantum mechanics, scattering theory, perturbation theory, and quick-reference formulas for high-density review.*
 
 **Format:** Chinese main text with English terminology notes, Beamer-style colored boxes for high-density review
+
+### Current Contents
+
+- **Squeezing Operator and Scale Transformation** — Operator algebra, Bogoliubov transformation, BdG connection
+- **Linear Potential and Interaction Picture** — Operator evolution, verification strategy, Magnus expansion, Airy function connection
+- **2D Harmonic Oscillator Coupling & Degenerate Perturbation Theory** — Mode diagonalization, degenerate subspace matrix construction, beam-splitter / double-well analogy
 
 ### Problem-Accumulation Methodology
 

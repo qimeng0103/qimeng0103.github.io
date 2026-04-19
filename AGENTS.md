@@ -59,12 +59,23 @@ my-blog/
 4. **`tex/exam-prep/ustc-phd-prep.tex`** - 备考 PDF（如相关内容适合放入）
    - 将 Blog 文章的核心结论提取到 PDF 对应章节
    - 在 Appendix 添加详细推导（如需要）
-   - **⚠️ 编译 PDF 并更新网页链接：**
+   - **⚠️ 编译 PDF 并同步到所有副本位置：**
      ```bash
      cd tex/exam-prep
-     xelatex ustc-phd-prep.tex              # 编译生成 PDF
-     cp ustc-phd-prep.pdf ../../docs/public/exam-prep/  # 复制到网站目录
+     xelatex -interaction=nonstopmode -output-directory=../../docs/public/exam-prep ustc-phd-prep.tex
+     xelatex -interaction=nonstopmode -output-directory=../../docs/public/exam-prep ustc-phd-prep.tex
      ```
+   - **⚠️ 必须同步所有 PDF 副本（重要教训）：**
+     编译完成后，项目内可能存在多份同名 PDF 副本。必须用 `find` 定位并全部更新，防止打开旧版本：
+     ```bash
+     find /home/mengq8/my-blog -name "ustc-phd-prep.pdf" -type f
+     # 然后手动 cp 最新 PDF 到所有发现的目录
+     ```
+     常见副本位置包括但不限于：
+     - `docs/public/exam-prep/ustc-phd-prep.pdf`（主发布目录）
+     - `tex/exam-prep/ustc-phd-prep.pdf`（编译输出目录）
+     - `docs/.vitepress/dist/exam-prep/ustc-phd-prep.pdf`（构建产物目录）
+     - `node_modules/.cache/gh-pages/.../exam-prep/ustc-phd-prep.pdf`（gh-pages 缓存）
    - **更新 about.md：**
      - 修改 `Last updated: YYYY-MM-DD` 为当前日期
      - **检查并更新内容介绍**（如新增章节，需要在 Contents 列表中添加）
