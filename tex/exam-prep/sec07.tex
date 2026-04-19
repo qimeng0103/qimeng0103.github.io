@@ -1,0 +1,995 @@
+\section{补充说明：双 $\delta$ 势的 Born 近似散射——完整细节}
+\label{sec:born-detail}
+
+\subsection{题型反射弧标签}
+
+\begin{tabular}{ll}
+\textbf{层级} & \textbf{识别标签} \\
+一级（领域） & 量子力学，散射理论，Born 近似，$\delta$ 势 \\
+二级（方法） & 傅里叶变换法，双源干涉，角分布分析 \\
+三级（关键词） & double delta potential, Born approximation, differential cross section \\
+\end{tabular}
+
+$\triangleright$ 看到两个离散的散射中心 + 高能入射 + 求微分截面，立即想到 Born 近似 + 结构因子（form factor）的框架。
+
+\subsection{Born 近似与分波法的系统对比}
+
+为什么考场上会纠结？因为两种方法都能算散射截面，但它们的适用条件完全不同。纠结的根源是没有先判断物理条件，就直接套公式。下面是系统化的决策流程。
+
+\textbf{判据1：势的对称性}
+\begin{itemize}
+    \item 分波法严格要求 $V = V(r)$（中心势），因为只有中心势才能用球谐函数分离变量，把薛定谔方程分解成径向方程。
+    \item Born 近似对势的形状没有限制，$V(\vec{r})$ 可以是任意函数。只要满足微扰条件即可。
+\end{itemize}
+结论：如果题目给出的势不是中心势（如本题的双 $\delta$ 势、晶格中的原子阵列势），直接排除分波法。
+
+\textbf{判据2：能量与势的特征尺度之比 $ka$}
+
+设势的特征尺度为 $a$（如势阱半径、力程），入射波数为 $k$。
+\begin{itemize}
+    \item \textbf{低能极限 $ka \ll 1$}：德布罗意波长 $\lambda = 2\pi/k$ 远大于势的尺度。入射波``感觉不到'' 势的细节，只有 $l = 0$（s 波）有显著贡献。
+    \begin{itemize}
+        \item 分波法只需计算一个相移 $\delta_0$，总截面 $\sigma_{\text{tot}} \approx 4\pi k^{-2} \sin^2\delta_0$。
+        \item Born 近似在此区域精度很差（微扰参数大），不建议使用。
+    \end{itemize}
+    \item \textbf{高能极限 $ka \gg 1$}：波长很短，入射波可以``分辨'' 势的局部结构。
+    \begin{itemize}
+        \item Born 近似是首选：一阶微扰足够，因为入射粒子快速穿过势区，相互作用时间短。
+        \item 分波法需要计算大量分波（$l$ 从 $0$ 到 $\sim ka$），计算量巨大，不实用。
+    \end{itemize}
+\end{itemize}
+
+\textbf{判据3：题目给出的提示}
+\begin{itemize}
+    \item 题目直接给出 Born 公式 $\Rightarrow$ 必须用 Born 近似
+    \item 题目给出相移定义 $f(\theta) = \frac{1}{2ik}\sum_l (2l+1)(e^{2i\delta_l}-1)P_l(\cos\theta)$ $\Rightarrow$ 必须用分波法
+    \item 题目给出低能条件（如``热中子''''零能极限''）$\Rightarrow$ 暗示用分波法（s 波）
+\end{itemize}
+
+\textbf{物理图像对比：}
+
+\begin{tabular}{lcc}
+\textbf{特征} & \textbf{Born 近似} & \textbf{分波法} \\
+本质 & 一阶微扰论 & 精确解按角动量展开 \\
+展开基 & 平面波 $e^{i\vec{k}\cdot\vec{r}}$ & 球面波 $j_l(kr)Y_{lm}(\theta,\phi)$ \\
+信息侧重 & 势的傅里叶变换（动量空间） & 势的径向结构（位置空间） \\
+适合求什么 & 微分截面 $\sigma(\theta,\phi)$ & 总截面、相移、共振 \\
+计算复杂度 & 做一次多维积分 & 解径向方程（常微分方程） \\
+\end{tabular}
+
+\textbf{考场速查卡：}
+
+\begin{tabular}{lcc}
+\textbf{势的类型} & \textbf{低能 $ka \ll 1$} & \textbf{高能 $ka \gg 1$} \\
+球方势阱/垒（中心势） & 分波法（s 波为主） & Born 近似或分波法 \\
+Yukawa 势（中心势） & 分波法 & Born 近似 \\
+$\delta$ 势（中心/非中心） & 严格解或分波法 & Born 近似 \\
+双/多 $\delta$ 势（非中心） & 严格解（1D）/ 数值 & Born 近似 \\
+库仑势（长程） & 严格解（Rutherford） & 严格解（Rutherford） \\
+\end{tabular}
+
+$\triangleright$ 考场上如果同时给了 Born 公式和分波公式，说明题目允许两种方法；如果只给了一种，那就是在暗示你用哪种。不要自己发明方法。
+
+\subsection{Born 近似公式的来源}
+
+Lippmann-Schwinger 方程的一阶迭代给出散射振幅：
+\[
+f(\theta,\phi) = -\frac{\mu}{2\pi\hbar^2} \int e^{-i\vec{k}\cdot\vec{r}'} V(\vec{r}') e^{i\vec{k}_0\cdot\vec{r}'} \, d^3r' = -\frac{\mu}{2\pi\hbar^2} \int e^{-i\vec{q}\cdot\vec{r}'} V(\vec{r}') \, d^3r'.
+\]
+微分截面与散射振幅的关系为 $\sigma = |f|^2$。整理后得到题中给出的 Born 公式。
+
+\subsubsection*{边界条件：为什么是``出射波''？——不用围道积分的理解}
+
+Lippmann-Schwinger 方程中出现自由 Green 函数 $G_0^{(+)} = \frac{1}{E-H_0+i\epsilon}$。考场上不需要你会算围道积分，只需要记住三条：
+
+\textbf{口诀：}
+\begin{align*}
++i\epsilon &\Longrightarrow \text{出射球面波 } \frac{e^{ikr}}{r} \\
+-i\epsilon &\Longrightarrow \text{入射球面波 } \frac{e^{-ikr}}{r}
+\end{align*}
+
+\textbf{物理图像——因果性：}
+
+散射发生在 $t = 0$ 时刻的散射中心附近。之后（$t > 0$），粒子只能向外跑，在远处形成向外的球面波 $e^{ikr}/r$。你不可能在 $t > 0$ 时观测到从无穷远处``汇聚'' 进来的波 $e^{-ikr}/r$——那意味着未来的粒子在往回跑，违反因果律。
+
+因此，$+i\epsilon$ 叫做\textbf{推迟 Green 函数}（retarded）：原因（散射）在先，结果（出射波）在后。$-i\epsilon$ 叫做\textbf{超前 Green 函数}（advanced），在散射问题中物理上不存在。
+
+\textbf{什么叫``边界条件是出射波''？}
+
+解薛定谔方程时，远处（$r \to \infty$）的波函数必须是
+\[
+\psi(\vec{r}) \xrightarrow{r\to\infty} e^{ikz} + f(\theta,\phi) \frac{e^{ikr}}{r},
+\]
+即``入射平面波 + 出射球面波''。如果你写成了 $e^{-ikr}/r$，那就意味着粒子从无穷远处被``吸'' 向散射中心，这不是散射，而是``逆散射'' 或吸收过程。因此``出射波'' 是散射问题必然的边界条件。
+
+\textbf{关于主值积分：}
+
+$+i\epsilon$ 的另一个作用是避开能量分母 $E-H_0$ 的零点（极点）。没有 $i\epsilon$ 时，积分在 $E = H_0$ 处发散；有了 $+i\epsilon$，相当于把积分路径从极点上方轻轻绕过去。考场上你不需要真的去绕，只需要知道：看到分母有 $+i\epsilon$，默认它保证结果是出射波，且积分收敛。
+
+\subsection{复变围道、主值积分与 Green 函数——系统梳理}
+
+\subsubsection*{1. 为什么非用复变函数不可？}
+
+物理中大量出现 Fourier 变换：
+\[
+G(t) = \int_{-\infty}^{+\infty} \frac{d\omega}{2\pi} \, e^{-i\omega t} G(\omega).
+\]
+当 $G(\omega)$ 在实轴上有极点（如 $G(\omega) = 1/(\omega-\omega_0)$）时，积分在 $\omega = \omega_0$ 处发散。复变围道积分就是处理这种发散的标准工具。
+
+\subsubsection*{2. 推迟与超前 Green 函数——围道操作的具体步骤}
+
+以自由粒子 Green 函数为例：$G(\omega) = \frac{1}{\omega - \omega_0 \pm i\epsilon}$。
+
+\textbf{步骤：}计算 $G(t) = \int \frac{d\omega}{2\pi} e^{-i\omega t} G(\omega)$。
+
+关键观察：$e^{-i\omega t} = e^{-i(\text{Re}\,\omega)t} e^{(\text{Im}\,\omega)t}$。
+\begin{itemize}
+    \item $t > 0$：需要 $\text{Im}\,\omega < 0$ 才能使指数衰减（$e^{(\text{Im}\,\omega)t} \to 0$）。因此在复平面下半平面闭合围道。
+    \item $t < 0$：需要 $\text{Im}\,\omega > 0$。因此在复平面上半平面闭合围道。
+\end{itemize}
+
+\textbf{对 $G_R(\omega) = \frac{1}{\omega - \omega_0 + i\epsilon}$（推迟）：}
+\begin{itemize}
+    \item 极点在 $\omega = \omega_0 - i\epsilon$（下半平面）。
+    \item $t > 0$：闭合下半平面，包围极点，留数定理给出 $G_R(t) \propto e^{-i\omega_0 t}$。
+    \item $t < 0$：闭合上半平面，无极点，$G_R(t) = 0$。
+\end{itemize}
+结论：$G_R(t) = 0$（$t < 0$），$G_R(t) \neq 0$（$t > 0$）。原因在先，结果在后——推迟。
+
+\textbf{因果性到底怎么看？——从 Green 函数的物理意义理解：}
+
+Green 函数 $G(t)$ 描述的是：在 $t' = 0$ 时刻给系统一个``刺激''（如加一个外场、发射一个粒子），系统在 $t$ 时刻的``响应''。
+\begin{itemize}
+    \item \textbf{推迟 $G_R$}：$t < 0$ 时 $G_R = 0$。刺激还没给，系统就已经有响应——这在自然界不可能发生。$t > 0$ 时 $G_R \neq 0$，意味着刺激给了之后系统才有响应。响应``推迟'' 于刺激，这就是因果性。
+    \item \textbf{超前 $G_A$}：$t < 0$ 时 $G_A \neq 0$。刺激还没给，系统就已经知道并且响应了——这是``预知未来''，违反因果律。$t > 0$ 时 $G_A = 0$，意味着刺激给了之后响应反而消失——这在物理上不存在。
+\end{itemize}
+
+因此，$+i\epsilon$（推迟）是物理上唯一可接受的 Green 函数，因为它保证``原因在先，结果在后''。$-i\epsilon$（超前）虽然在数学上合法，但在散射、响应等物理问题中不允许使用。
+
+\textbf{对 $G_A(\omega) = \frac{1}{\omega - \omega_0 - i\epsilon}$（超前）：}
+\begin{itemize}
+    \item 极点在 $\omega = \omega_0 + i\epsilon$（上半平面）。
+    \item $t < 0$：闭合上半平面，包围极点，$G_A(t) \neq 0$。
+    \item $t > 0$：闭合下半平面，无极点，$G_A(t) = 0$。
+\end{itemize}
+结论：$G_A(t) \neq 0$（$t < 0$），$G_A(t) = 0$（$t > 0$）。结果在先，原因在后——超前。
+
+\textbf{留数定理的标准结果——以推迟 Green 函数为例：}
+
+留数定理：若 $f(z)$ 在闭合围道 $C$ 内除有限个孤立极点外解析，则
+\[
+\oint_C f(z)\, dz = 2\pi i \sum_k \text{Res}[f, z_k].
+\]
+
+一阶极点的留数：若 $f(z) = \frac{g(z)}{z-z_0}$，$g(z)$ 在 $z_0$ 处解析且 $g(z_0) \neq 0$，则
+\[
+\text{Res}[f, z_0] = g(z_0) = \lim_{z\to z_0} (z-z_0)f(z).
+\]
+
+应用到推迟 Green 函数：
+\[
+G_R(t) = \int_{-\infty}^{+\infty} \frac{d\omega}{2\pi} e^{-i\omega t} \frac{1}{\omega - \omega_0 + i\epsilon}.
+\]
+
+当 $t > 0$ 时，在下半平面闭合围道（$C = C_R \cup C_{\text{arc}}$，大圆弧贡献因 Jordan 引理趋于零）。
+
+\textbf{Jordan 引理：}若 $f(z)$ 当 $|z| \to \infty$ 时一致趋于零，则
+\[
+\lim_{R\to\infty} \int_{C_R} e^{izt} f(z)\, dz = 0 \quad (t > 0),
+\]
+其中 $C_R$ 是上半平面（$t < 0$ 时为下半平面）以原点为圆心、半径为 $R$ 的大圆弧。物理意义：Fourier 变换中，被积函数在无穷远处的半圆弧上因指数衰减而贡献为零，因此可以把沿实轴的积分转化为闭合围道积分，只计算围道内的极点留数即可。围道内只包围一个一阶极点 $\omega = \omega_0 - i\epsilon$。被积函数可写成
+\[
+f(\omega) = \frac{e^{-i\omega t}}{\omega - \omega_0 + i\epsilon} = \frac{g(\omega)}{\omega - (\omega_0 - i\epsilon)}, \quad g(\omega) = e^{-i\omega t}.
+\]
+在极点处，$g(\omega_0 - i\epsilon) = e^{-i(\omega_0 - i\epsilon)t} \xrightarrow{\epsilon\to 0} e^{-i\omega_0 t}$。因此
+\[
+G_R(t) = \frac{1}{2\pi} \cdot 2\pi i \cdot e^{-i\omega_0 t} = i\, e^{-i\omega_0 t} \quad (t > 0).
+\]
+当 $t < 0$ 时，闭合上半平面，无极点，$G_R(t) = 0$。
+
+综合起来，加上归一化约定，标准结果为
+\[
+G_R(t) = -i\, \theta(t)\, e^{-i\omega_0 t}.
+\]
+物理验证：代入定义 $(i\partial_t - \omega_0) G_R(t) = \delta(t)$，可验证此结果满足方程。$\theta(t)$ 确保因果性（$t < 0$ 时为零），$-i$ 是 Fourier 变换的约定因子。
+
+\subsubsection*{3. 主值积分（Principal Value）}
+
+当积分路径必须经过极点时，直接积分发散。主值积分（Principal Value）定义为对称地挖去极点周围的一个小区间，再让小区间趋于零：
+\[
+\mathcal{P}\int_{-\infty}^{+\infty} \frac{f(x)}{x-x_0}\, dx = \lim_{\epsilon\to 0} \left( \int_{-\infty}^{x_0-\epsilon} + \int_{x_0+\epsilon}^{+\infty} \right) \frac{f(x)}{x-x_0}\, dx.
+\]
+注意：这里不是``绕过'' 极点（那是复平面上的围道积分），而是在实轴上正面对撞极点，但对称地挖掉 $[x_0 - \epsilon, x_0 + \epsilon]$ 这一段。左右两边挖掉的长度相同，因此``不对称的无穷大部分'' 互相抵消，剩下有限的结果。
+
+\textbf{Sokhotski-Plemelj 定理}（考场上最重要的公式）：
+\[
+\frac{1}{x \pm i\epsilon} = \mathcal{P}\frac{1}{x} \mp i\pi\delta(x).
+\]
+
+\textbf{这玩意到底怎么用？——它不是``算'' 出来的，是``拆'' 出来的}
+
+这个等式不是在教你做微积分，而是在告诉你：一个带 $i\epsilon$ 的分母可以拆成两部分——一部是``正常'' 的主值积分，另一部是``奇异'' 的 $\delta$ 函数。考场上你几乎不会真的去算主值积分，而是用这个公式直接读结果。
+
+\textbf{标准操作流程：}
+\begin{enumerate}
+    \item 看到积分 $\displaystyle\int \frac{f(x)}{x - x_0 \pm i\epsilon}\, dx$。
+    \item 立刻替换：$\displaystyle\int \frac{f(x)}{x - x_0 \pm i\epsilon}\, dx = \mathcal{P}\int \frac{f(x)}{x - x_0}\, dx \mp i\pi f(x_0)$。
+    \item 实部 $\mathcal{P}\int$：通常对应能量修正、能级移动等``保守'' 量。
+    \item 虚部 $\mp i\pi f(x_0)$：通常对应衰变率、耗散、截面等``非保守'' 量。
+\end{enumerate}
+
+\textbf{按主值定义直接算一个非零例子：}
+
+计算 $\displaystyle\mathcal{P}\int_0^2 \frac{x}{x-1}\, dx$。
+
+被积函数在 $x = 1$ 处有简单极点。按主值定义，对称挖去 $[1-\epsilon, 1+\epsilon]$ 后取极限：
+\[
+\mathcal{P}\int_0^2 \frac{x}{x-1}\, dx = \lim_{\epsilon\to 0} \left( \int_0^{1-\epsilon} \frac{x}{x-1}\, dx + \int_{1+\epsilon}^2 \frac{x}{x-1}\, dx \right).
+\]
+
+先求不定积分：
+\[
+\int \frac{x}{x-1}\, dx = \int \left( 1 + \frac{1}{x-1} \right) dx = x + \ln|x-1|.
+\]
+
+代入上下限：
+\begin{align*}
+\int_0^{1-\epsilon} \frac{x}{x-1}\, dx &= \bigl[(1-\epsilon) + \ln\epsilon\bigr] - \bigl[0 + \ln 1\bigr] = 1 - \epsilon + \ln\epsilon, \\
+\int_{1+\epsilon}^2 \frac{x}{x-1}\, dx &= \bigl[2 + \ln 1\bigr] - \bigl[(1+\epsilon) + \ln\epsilon\bigr] = 1 - \epsilon - \ln\epsilon.
+\end{align*}
+
+两式相加，$\ln\epsilon$ 与 $-\ln\epsilon$ 精确抵消：
+\[
+\mathcal{P}\int_0^2 \frac{x}{x-1}\, dx = \lim_{\epsilon\to 0} (2 - 2\epsilon) = 2.
+\]
+
+\textbf{验证}（不依赖极限）：把被积函数拆成 $1 + \frac{1}{x-1}$，则
+\[
+\mathcal{P}\int_0^2 \frac{x}{x-1}\, dx = \int_0^2 1\, dx + \mathcal{P}\int_0^2 \frac{dx}{x-1} = 2 + 0 = 2,
+\]
+其中 $\mathcal{P}\int_0^2 \frac{dx}{x-1} = 0$ 因为 $\frac{1}{x-1}$ 关于 $x = 1$ 奇对称，对称挖去后左右抵消。
+
+一个常见的错误直觉：``不定积分是 $x+\ln|x-1|$，直接代入上下限 $[0, 2]$，得到 $(2+\ln 1) - (0+\ln 1) = 2$，这不就收敛吗？'' 错在这里：Newton-Leibniz 公式要求被积函数在整个闭区间 $[0, 2]$ 上连续。但 $f(x) = \frac{x}{x-1}$ 在 $x = 1$（区间内部）处有极点，不连续。因此不能直接代入上下限，而必须把积分拆成两段：
+\[
+\int_0^2 \frac{x}{x-1}\, dx \stackrel{?}{=} \int_0^1 \frac{x}{x-1}\, dx + \int_1^2 \frac{x}{x-1}\, dx.
+\]
+拆开后分别计算：
+\begin{align*}
+\int_0^1 \frac{x}{x-1}\, dx &= \lim_{b\to 1^-} \bigl[x + \ln|x-1|\bigr]_0^b = \lim_{b\to 1^-} \bigl(b + \ln(1-b)\bigr) = 1 + (-\infty) = -\infty, \\
+\int_1^2 \frac{x}{x-1}\, dx &= \lim_{a\to 1^+} \bigl[x + \ln|x-1|\bigr]_a^2 = \lim_{a\to 1^+} \bigl(2 - (a + \ln(a-1))\bigr) = 2 - 1 - (-\infty) = +\infty.
+\end{align*}
+
+左右两侧各自都是对数发散（以 $\ln\epsilon$ 的速率）。所谓``直接代入得 2''，其实是把 $-\infty$ 和 $+\infty$ 非法地相减了。主值积分的本质就是：两侧的发散以完全相同的速率增长（因为对称挖去），于是 $\ln\epsilon$ 与 $-\ln\epsilon$ 抵消，合法地提取出隐藏在无穷大背后的有限值 2。
+
+一句话：$\displaystyle\int_0^2 \frac{x}{x-1}\, dx$ 作为普通定积分是不存在的（发散）；只有当题目明确要求取主值时，$\displaystyle\mathcal{P}\int_0^2$ 才有意义且等于 2。
+
+\textbf{物理意义总结：}
+\begin{itemize}
+    \item 实部 $\mathcal{P}(1/x)$：对称跳过极点的``平均贡献''，描述保守过程。
+    \item 虚部 $\mp i\pi\delta(x)$：极点处的``奇异贡献''，决定耗散、衰减和光学定理中的虚部。
+\end{itemize}
+
+\subsubsection*{4. 多选性如何排除？——物理选择唯一解}
+
+数学上，$+i\epsilon$ 和 $-i\epsilon$ 都是合法解。如何确定选哪个？
+
+\textbf{因果性：}自然界不允许``结果先于原因''。散射发生在 $t = 0$，探测在 $t > 0$，因此要求 $t < 0$ 时 $G(t) = 0$。这唯一确定了必须选 $+i\epsilon$（推迟 Green 函数）。
+
+\textbf{既然 $G_A$ 不允许，为什么教材里还讨论它？}
+\begin{itemize}
+    \item \textbf{数学完备性：}推迟和超前 Green 函数构成一组``完备基''。任何一般的 Green 函数都可以写成它们的线性组合。就像平面波 $e^{ikx}$ 和 $e^{-ikx}$ 中，虽然入射问题只用一个，但数学上两个都要定义。
+    \item \textbf{Feynman 传播子：}量子场论中，Feynman 传播子 $G_F$ 同时包含推迟和超前部分，分别对应粒子（正能）和反粒子（负能）。$G_F = \theta(t)G_R + \theta(-t)G_A$（差一些符号约定）。没有 $G_A$，就无法描述反粒子。
+    \item \textbf{平衡态关联函数：}统计物理中，Kubo 公式等用到``推迟-超前对'' 来定义谱函数 $A(\omega) = i(G_R - G_A)$。谱函数是正定的，是实验可测量。
+    \item \textbf{吸收边界条件：}某些特殊问题（如黑洞辐射、开放系统的吸收边界）中，超前 Green 函数描述的是``粒子被边界吸收'' 的过程，这时它不是因果性破坏，而是边界效应。
+\end{itemize}
+
+一句话：在``自由空间散射'' 问题中，$G_A$ 因因果律被排除；但在更广泛的物理（场论、统计、边界问题）中，$G_A$ 作为数学构件和反粒子/吸收过程的描述者，仍然不可或缺。
+
+\textbf{其他物理场景的选择：}
+
+\begin{tabular}{lll}
+\textbf{物理问题} & \textbf{选择} & \textbf{理由} \\
+散射理论（出射波） & $+i\epsilon$（推迟） & 因果性：探测在散射之后 \\
+Lehmann 表示（场论） & $+i\epsilon$（推迟） & 谱函数正定性 \\
+Kubo 公式（线性响应） & $+i\epsilon$（推迟） & 因果响应 \\
+Feynman 传播子 & 特殊围道 & 同时包含粒子与反粒子 \\
+\end{tabular}
+
+\subsubsection*{5. 考场速记}
+\begin{itemize}
+    \item 看到分母 $\omega - \omega_0 + i\epsilon$：推迟，出射波，因果。
+    \item 看到分母 $\omega - \omega_0 - i\epsilon$：超前，入射波，非物理（散射问题中不用）。
+    \item 看到 $\frac{1}{x \pm i\epsilon}$：自动拆成主值 $\mp i\pi\delta(x)$，虚部决定耗散。
+    \item 不需要真的会算围道——记住``$t > 0$ 闭下半平面，$t < 0$ 闭上半平面，看极在哪边'' 即可。
+\end{itemize}
+
+\subsection{解析延拓与积分路径的选择}
+
+\subsubsection*{1. Wick 转动}
+
+\textbf{Step 1：}实时路径积分有振荡因子，难算
+\[
+Z(t) = \int \mathcal{D}x \, e^{iS/\hbar}, \quad S = \int dt \left[ \frac{m}{2}\dot{x}^2 - V(x) \right].
+\]
+$e^{iS/\hbar}$ 是振荡相位，积分条件收敛，直接计算困难。
+
+\textbf{Step 2：}做代换 $t = -i\tau$，振荡变衰减
+
+几何图像：在复平面上，$t$ 是实轴上的数，$\tau$ 也是实数。$t = -i\tau$ 意味着实轴上的点 $\tau$ 被乘以 $-i$，映射到了虚轴上。复平面上乘以 $-i$ 相当于把向量旋转 $90°$——这就是``Wick 转动'' 名称的由来。
+
+代数推导：
+\begin{align*}
+dt &= -i\, d\tau, \\
+\dot{x} &= \frac{dx}{dt} = i \frac{dx}{d\tau} = i\, \dot{x}_E, \\
+\dot{x}^2 &= -\dot{x}_E^2, \\
+S &= \int (-i\, d\tau) \left[ \frac{m}{2}(-\dot{x}_E^2) - V \right] = i \int d\tau \left[ \frac{m}{2}\dot{x}_E^2 + V \right] \equiv i S_E.
+\end{align*}
+$S_E$ 叫欧几里得作用量。路径积分变成
+\[
+Z = \int \mathcal{D}x \, e^{iS/\hbar} = \int \mathcal{D}x \, e^{-S_E/\hbar}.
+\]
+振荡因子 $e^{iS/\hbar}$ 变成了衰减因子 $e^{-S_E/\hbar}$，积分绝对收敛，好算多了。
+
+\textbf{Step 3：}算完换回来
+
+Wick 转动的核心是变量代换的互逆性：
+\[
+Z(t) \xrightarrow{t = -i\tau} Z_E(\tau) \xrightarrow{\tau = it} Z(t).
+\]
+正向代换 $t = -i\tau$ 把实时变成虚时；逆向代换 $\tau = it$ 把虚时变回实时。解析延拓保证了这个回路是封闭的——正向走再逆向走，一定能回到原点。
+
+为什么在实数域上 trivial 的事情，到了复数域就要``煞有介事'' 地强调解析延拓？
+
+因为在实数域上做变量代换（如 $x = 2u$）不涉及``扩展定义域''——$f(x)$ 本身就在实轴上，换元只是重新参数化。但 Wick 转动 $t = -i\tau$ 不一样：
+\begin{itemize}
+    \item $Z(t)$ 作为物理量，最初只在实轴上有定义。
+    \item $t = -i\tau$ 要求把 $Z$ ``延伸'' 到虚轴上——这本身就是解析延拓。
+    \item 解析延拓的唯一性保证了：延伸后再缩回，不会丢失或改变信息。
+\end{itemize}
+如果没有解析延拓的保证，``延伸'' 到虚轴时可以 arbitrary 地选择多种方式，缩回实轴时就可能得到错误的结果。所以``煞有介事'' 的原因在于：Wick 转动不是普通的实变量换元，而是把函数从实轴``搬'' 到虚轴再``搬'' 回来。
+
+\textbf{反例——对 $|t|$ 做同样的搬运，搬回来就变形了}
+
+实轴上 $f(t) = |t|$ 在 $t = 0$ 处不可导，不是解析函数。要做 Wick 转动 $t = -i\tau$，首先得把 $f$ 的定义域从实轴``延伸'' 到虚轴——这就是延拓。延拓必须满足一个基本要求：在实轴上要和原来的函数一致。但即使满足这个要求，$|t|$ 的延拓仍然不唯一：
+\begin{itemize}
+    \item \textbf{延拓 A：}$f(z) = |z|$（模长）。在实轴上 $f(t) = |t|$ $\checkmark$。在虚轴上 $z = i\tau$：$f_E(\tau) = |i\tau| = |\tau|$。
+    \item \textbf{延拓 B：}$f(z) = |\text{Re}\, z|$（只依赖实部，与虚部无关）。在实轴上 $f(t) = |t|$ $\checkmark$。在虚轴上 $z = i\tau$（$\text{Re}\, z = 0$）：$f_E(\tau) = |0| = 0$。
+\end{itemize}
+两个延拓在实轴上都正确，但在虚轴上完全不同（$|\tau|$ vs $0$）。我们把两种延拓都走完回路，看对比：
+
+\textbf{延拓 A 走回路：}
+\begin{itemize}
+    \item 正向：$f(t) = |t| \xrightarrow{t = -i\tau} f_E(\tau) = |-i\tau| = |\tau|$。
+    \item 逆向：$f_E(\tau) = |\tau| \xrightarrow{\tau = it} f(t) = |it| = |t|$。
+    \item 结果：$f(t) = |t|$ $\checkmark$，碰巧对了。
+\end{itemize}
+
+\textbf{延拓 B 走回路：}
+\begin{itemize}
+    \item 正向：$f(t) = |t| \xrightarrow{t = -i\tau} f_E(\tau) = |\text{Re}(-i\tau)| = |0| = 0$。
+    \item 逆向：$f_E(\tau) = 0 \xrightarrow{\tau = it} f(t) = 0$（$f_E$ 不依赖 $\tau$，代换后仍是 0）。
+    \item 结果：$f(t) = 0 \neq |t|$（当 $t \neq 0$）！搬回来后变形了。
+\end{itemize}
+
+关键结论：对于 $|t|$ 这种非解析函数，延拓不唯一——你走回路时可能``碰巧'' 得到正确结果（延拓 A），也可能得到错误结果（延拓 B）。你无法预先知道哪个延拓是``对'' 的。而对于解析函数，不存在这种不确定性——解析延拓唯一，所有合法的延拓都给出同一个结果，回路必然封闭。
+
+\textbf{什么叫``奇点''？碰到会怎样？——极点 vs 分支点：}
+
+奇点是函数``变坏'' 的地方。物理中最常见的两类：
+
+\begin{tabular}{lll}
+\textbf{类型} & \textbf{极点} & \textbf{分支点} \\
+例子 & $1/z$ 在 $z = 0$ & $\sqrt{z}$、$\ln z$ 在 $z = 0$ \\
+绕一圈回来 & 值不变 & 值变了 \\
+本质 & 函数在该点趋于无穷，但绕一圈恢复原状 & 函数在该点无定义，绕一圈``升了一级'' \\
+物理对应 & 共振态、离散能级 & 连续谱、阈值行为 \\
+\end{tabular}
+
+\textbf{分支点 vs 分支切割——到底是什么关系？}
+\begin{itemize}
+    \item \textbf{分支点：}函数在这个点``变坏'' 了。绕它走一圈，函数值发生改变（如 $\ln z$ 增加 $2\pi i$）。
+    \item \textbf{分支切割：}从分支点发出的一条人为禁令线，规定``不许跨过这条线''。
+    \item 为什么需要切割？如果不切，你就可以无限绕圈，每次绕完函数值都变（越绕越高），函数永远不是单值的。切一刀后，你被限制在某一``层'' 内，函数在该层内是单值的。
+\end{itemize}
+
+\textbf{分支切割后怎么选？——必须选定一个``主值分支''}
+
+切一刀之后，复平面被劈成若干片。你必须选定在哪一片上工作，否则函数仍然是多值的。
+
+以 $\ln z$ 为例：
+\begin{itemize}
+    \item 切一刀沿负实轴。
+    \item 规定幅角范围 $-\pi < \arg z \le \pi$（这叫主值分支）。
+    \item 在这个分支内，$\ln z = \ln|z| + i\arg z$ 是单值的。例如 $\ln(-1) = i\pi$。
+    \item 如果你选另一个分支（如 $\pi < \arg z \le 3\pi$），那么 $\ln(-1) = i\pi + 2\pi i = 3\pi i$——同一个 $z$，不同分支给出不同结果，彼此相差 $2\pi i$ 的整数倍。
+\end{itemize}
+
+分支点和分支切割的关系总结：
+\begin{enumerate}
+    \item 分支点导致多值性（绕一圈值变了）。
+    \item 分支切割阻止你绕圈（切一刀，挡住去路）。
+    \item 切割后必须选主值分支（规定你在哪一层工作），函数才变成单值。
+\end{enumerate}
+
+\textbf{为什么延拓到负实轴要``绕''？——以 $\ln z$ 为例}
+
+正实轴上 $\ln 1 = 0$。现在问：$\ln(-1)$ 是多少？
+\begin{itemize}
+    \item 不能直走：从 $1$ 到 $-1$ 的直线穿过原点（分支点），$\ln z$ 在那里不定义。
+    \item 必须绕开：从上面绕（逆时针）：$\ln(-1) = i\pi$；从下面绕（顺时针）：$\ln(-1) = -i\pi$。
+    \item 两者差 $2\pi i$——同一地点，但属于不同分支（不同层）。
+\end{itemize}
+
+对 Wick 转动的启示：从实轴``转动'' 到虚轴时，$90°$ 扇形路径不能扫过任何分支点。如果扫过了，虚轴上的值就依赖于``从哪边绕''（你在哪个分支），结果不唯一。好在多数物理问题（自由粒子、谐振子）的作用量只产生极点，没有分支点，Wick 转动是安全的。
+
+\begin{itemize}
+    \item \textbf{Green 函数：}从实频率 $\omega$ 延拓到复频率 $z = \omega \pm i\epsilon$，把发散积分变成 well-defined 的围道积分。
+    \item \textbf{色散关系（Kramers-Kronig）：}利用解析性，从虚部（吸收）直接算出实部（色散），反之亦然。
+    \item \textbf{束缚态到散射态：}把离散能级的公式解析延拓到连续谱，统一处理束缚态和共振态。
+\end{itemize}
+
+一句话：解析延拓是物理学的``作弊码''——它让你把问题从``难算的区域'' 搬到``好算的区域''，算完再搬回来。
+
+\subsubsection*{2. 积分路径到底能不能绕过极点？——三种情况}
+
+Fourier 变换的积分路径本来是沿实轴的。当 $G(\omega)$ 在实轴上有极点时，直接积分 $\int_{-\infty}^{+\infty}$ 发散。物理上有三种处理方式：
+
+\begin{tabular}{lll}
+\textbf{处理方式} & \textbf{积分路径} & \textbf{物理场景} \\
+绕过（$+i\epsilon$） & 实轴下方绕过极点 & 推迟 Green 函数，出射波 \\
+绕过（$-i\epsilon$） & 实轴上方绕过极点 & 超前 Green 函数，入射波 \\
+不绕过（主值） & 对称跳过极点 & 能量修正、自能实部 \\
+\end{tabular}
+
+\textbf{``绕过'' 的物理含义：}
+
+$i\epsilon$ 的引入相当于把实轴上的极点推开了一点点：
+\begin{itemize}
+    \item $+i\epsilon$：极点从实轴向下推到 $\omega_0 - i\epsilon$，积分路径沿``变形后的实轴'' 从下方绕过，不再碰到极点。
+    \item 绕过的代价是结果变成了复数：实部来自正常积分，虚部来自围道绕过极点时的留数贡献（$\mp i\pi\delta$）。
+    \item 这个虚部对应物理上的耗散和衰减——粒子从初态漏到其他态，概率不守恒。
+\end{itemize}
+
+\textbf{``不绕过''（主值）的物理含义：}
+
+主值积分不绕路，而是正面对撞极点：
+\begin{itemize}
+    \item 对称地挖去极点两侧等长的区间 $[x_0 - \epsilon, x_0 + \epsilon]$，让左右两侧的发散以相同速率抵消。
+    \item 结果纯粹是实数，不引入虚部，描述的是保守过程（概率守恒、能量守恒、无耗散）。
+    \item 在 Green 函数中，主值对应``背景'' 或``平均'' 的贡献；而虚部（绕过）对应``共振'' 或``衰变'' 的贡献。
+\end{itemize}
+
+\textbf{两者的关系——Sokhotski-Plemelj 公式：}
+\[
+\frac{1}{x \pm i\epsilon} = \mathcal{P}\frac{1}{x} \mp i\pi\delta(x).
+\]
+这告诉你：完整的物理量 = 主值（实部，保守）+ 绕过（虚部，耗散）。两者不是互斥的选项，而是同一个量的两个侧面。
+
+\textbf{什么时候用哪个？——看你要算什么：}
+
+\begin{tabular}{lll}
+\textbf{你要计算的物理量} & \textbf{用什么} & \textbf{为什么} \\
+Green 函数（含衰变、相位移动） & 绕过（$+i\epsilon$） & 需要完整的复振幅 \\
+能级移动、有效质量、折射率实部 & 主值 & 这些是保守修正，无虚部 \\
+衰变率、寿命、吸收截面 & 虚部（$\mp i\pi\delta$） & 直接对应耗散 \\
+\end{tabular}
+
+\textbf{物理排除多选性的关键：}
+
+数学上，$+i\epsilon$、$-i\epsilon$、主值都是合法操作。物理上如何确定选哪个？
+\begin{enumerate}
+    \item \textbf{因果性：}要求 $t < 0$ 时 $G(t) = 0$，唯一确定 $+i\epsilon$（推迟 Green 函数）。
+    \item \textbf{守恒 vs 耗散：}如果物理过程 conserve 概率（如弹性散射的能量修正），虚部必须为零，只剩主值；如果有粒子漏出（衰变、吸收），必须有虚部。
+    \item \textbf{边界条件：}散射问题要求出射波，响应函数要求正定性，这些都唯一锁定围道选取。
+\end{enumerate}
+
+一句话总结：绕过极点是为了给物理量赋予虚部（耗散），主值积分是为了提取实部（保守）。两者由 Sokhotski-Plemelj 公式统一，缺一不可。
+
+\subsection{Born 近似统一公式与速查表}
+
+\textbf{母公式}（一级 Born 近似，3D）
+
+散射振幅：
+\[
+f(\theta,\phi) = -\frac{\mu}{2\pi\hbar^2} \int e^{-i\vec{q}\cdot\vec{r}'} V(\vec{r}') \, d^3r' = -\frac{\mu}{2\pi\hbar^2} \tilde{V}(\vec{q}), \quad \vec{q} = \vec{k}_f - \vec{k}_i.
+\]
+
+微分截面：
+\[
+\frac{d\sigma}{d\Omega} = |f|^2 = \frac{\mu^2}{4\pi^2\hbar^4} \left| \int e^{-i\vec{q}\cdot\vec{r}'} V(\vec{r}') \, d^3r' \right|^2.
+\]
+
+\textbf{关于 $\mu$——约化质量（reduced mass）}
+
+公式中的 $\mu$ 是两体系统的约化质量，不是入射粒子的质量：
+\[
+\mu = \frac{m_1 m_2}{m_1 + m_2},
+\]
+其中 $m_1$ 为入射粒子质量，$m_2$ 为靶粒子质量。
+
+常见极限：
+\begin{itemize}
+    \item 靶很重（$m_2 \gg m_1$，如电子被原子核散射）：$\mu \approx m_1$，此时公式中的 $\mu$ 可近似为入射粒子质量。很多教材在这种情况下直接用 $m$ 代替 $\mu$，不要因此困惑。
+    \item 两粒子质量相等（$m_1 = m_2 = m$，如中子-质子散射）：$\mu = m/2$。若误用 $m_n$ 代替 $\mu$，截面会偏差 4 倍。
+    \item 中子-质子散射：$\mu = \frac{m_n m_p}{m_n + m_p} \approx \frac{m_n}{2}$。
+\end{itemize}
+
+不同教材的记号差异：
+\begin{itemize}
+    \item 严格教材（如 Landau、Sakurai）：始终用 $\mu$（约化质量）。
+    \item 简化教材（靶视为固定）：用 $m$（入射粒子质量），这是 $m_2 \to \infty$ 极限下的近似。
+    \item 考试时看清题目给的公式用哪个符号，不要擅自替换。
+\end{itemize}
+
+\textbf{不同单位制下的常数}
+
+\begin{tabular}{lll}
+\textbf{单位制} & \textbf{散射振幅} & \\
+SI（$\hbar, \mu$ 显写） & $f = -\dfrac{\mu}{2\pi\hbar^2} \tilde{V}$ & \\
+自然单位制（$\hbar = 1$） & $f = -\dfrac{\mu}{2\pi} \tilde{V}$ & \\
+原子单位制（$\hbar = \mu = 1$） & $f = -\dfrac{1}{2\pi} \tilde{V}$ & \\
+\end{tabular}
+
+\textbf{常见势的傅里叶变换速查}
+
+\begin{tabular}{lll}
+\textbf{势} $V(\vec{r})$ & $\tilde{V}(\vec{q})$ & \textbf{结果特征} \\
+$V_0\delta(\vec{r})$ & $V_0$ & 各向同性 \\
+$V_0[\delta(\vec{r}-\vec{a}) + \delta(\vec{r}+\vec{a})]$ & $2V_0\cos(\vec{q}\cdot\vec{a})$ & 双源干涉 \\
+$\sum_j V_j \delta(\vec{r}-\vec{a}_j)$ & $\sum_j V_j e^{i\vec{q}\cdot\vec{a}_j}$ & 结构因子 $F(\vec{q})$ \\
+球对称 $V(r)$ & $\dfrac{4\pi}{q}\int_0^\infty rV(r)\sin(qr)\, dr$ & 只依赖 $q = 2k\sin(\theta/2)$ \\
+Yukawa $V_0 \dfrac{e^{-\alpha r}}{r}$ & $\dfrac{4\pi V_0}{q^2 + \alpha^2}$ & $\alpha \to 0$ 得 Rutherford \\
+\end{tabular}
+
+\textbf{量纲自检法}
+
+$[f] = \text{L}$（长度），因为 $d\sigma = |f|^2 d\Omega$ 是面积。$\tilde{V}$ 的量纲：$[V] \cdot \text{L}^3 = [\text{能量}] \cdot \text{L}^3$（对 $\delta$ 势，$V_0$ 本身量纲即 $[\text{能量}] \cdot \text{L}^3$）。需要凑出长度：$\frac{[\mu]}{[\hbar^2]} \cdot [\text{能量}] \cdot \text{L}^3 = \text{L}$。因此系数里必有 $\mu/\hbar^2$，无量纲因子为 $1/2\pi$。
+
+\textbf{Fourier 积分中的符号：$e^{-i\vec{q}\cdot\vec{r}}$ 还是 $e^{+i\vec{q}\cdot\vec{r}}$？}
+
+根源在于 $\vec{q}$ 的定义方向。Lippmann-Schwinger 方程给出积分核：
+\[
+e^{-i\vec{k}_f\cdot\vec{r}'} V(\vec{r}') e^{i\vec{k}_i\cdot\vec{r}'} = e^{-i(\vec{k}_f - \vec{k}_i)\cdot\vec{r}'} V(\vec{r}').
+\]
+若定义 $\vec{q} = \vec{k}_f - \vec{k}_i$（本书采用），则积分中是 $e^{-i\vec{q}\cdot\vec{r}'}$；若某些教材定义 $\vec{q} = \vec{k}_i - \vec{k}_f$，则积分中是 $e^{+i\vec{q}\cdot\vec{r}'}$。两者完全等价——取模方后 $|e^{\pm i\vec{q}\cdot\vec{r}}| = 1$，不影响截面结果。记忆法：``出射波捡回入射波''，相位因子为 $e^{i\vec{k}_i\cdot\vec{r}} \to V \to e^{-i\vec{k}_f\cdot\vec{r}}$，合起来是 $e^{-i\vec{q}\cdot\vec{r}}$。
+
+\subsection{傅里叶积分的详细计算}
+
+对 $V(\vec{r}') = -V_0[\delta(\vec{r}' - \vec{a}) + \delta(\vec{r}' + \vec{a})]$：
+\begin{align*}
+M &= -V_0 \int e^{-i\vec{q}\cdot\vec{r}'} \delta(\vec{r}' - \vec{a}) \, d^3r' - V_0 \int e^{-i\vec{q}\cdot\vec{r}'} \delta(\vec{r}' + \vec{a}) \, d^3r' \\
+&= -V_0 e^{-i\vec{q}\cdot\vec{a}} - V_0 e^{i\vec{q}\cdot\vec{a}} \\
+&= -2V_0 \cos(\vec{q}\cdot\vec{a}).
+\end{align*}
+
+取模方：$|M|^2 = 4V_0^2 \cos^2(\vec{q}\cdot\vec{a})$。代入截面公式：
+\[
+\sigma = \frac{\mu^2}{4\pi^2\hbar^4} \cdot 4V_0^2 \cos^2(\vec{q}\cdot\vec{a}) = \frac{\mu^2 V_0^2}{\pi^2\hbar^4} \cos^2(\vec{q}\cdot\vec{a}).
+\]
+
+\subsection{几何因子 $\vec{q}\cdot\vec{a}$ 的完整展开}
+
+设 $\vec{a} = a(\sin\theta_a\cos\phi_a, \sin\theta_a\sin\phi_a, \cos\theta_a)$ 为分子轴方向的单位矢量乘以 $a$。出射波矢
+\[
+\vec{k} = k(\sin\theta\cos\phi, \sin\theta\sin\phi, \cos\theta).
+\]
+则
+\begin{align*}
+\vec{q}\cdot\vec{a} &= a \bigl[ k\sin\theta\cos\phi\, \sin\theta_a\cos\phi_a + k\sin\theta\sin\phi\, \sin\theta_a\sin\phi_a \\
+&\quad + k(\cos\theta - 1)\cos\theta_a \bigr] \\
+&= ak \bigl[ \sin\theta\sin\theta_a\cos(\phi - \phi_a) + (\cos\theta - 1)\cos\theta_a \bigr].
+\end{align*}
+
+\textbf{特例验证：}
+\begin{itemize}
+    \item $\theta_a = 0$（$\vec{a} \parallel \hat{z}$）：$\vec{q}\cdot\vec{a} = ak(\cos\theta - 1) = -2ak\sin^2(\theta/2)$
+    \item $\theta_a = \pi/2, \phi_a = 0$（$\vec{a} \parallel \hat{x}$）：$\vec{q}\cdot\vec{a} = ak\sin\theta\cos\phi$
+\end{itemize}
+
+\subsection{极大值与极小值方向}
+
+$\cos^2(\vec{q}\cdot\vec{a})$ 的极值条件：
+
+\begin{tabular}{lll}
+\textbf{条件} & $\vec{q}\cdot\vec{a}$ & \textbf{物理意义} \\
+极大值 & $n\pi$ & 两散射中心同相（相长干涉） \\
+极小值 & $\left(n + \frac{1}{2}\right)\pi$ & 两散射中心反相（相消干涉） \\
+\end{tabular}
+
+对 $\vec{a} = a\hat{z}$ 的情况，前几个极大值方向满足：
+\[
+\sin^2\frac{\theta_n}{2} = \frac{n\pi}{2ka}, \quad n = 0, 1, 2, \dots, \left\lfloor \frac{2ka}{\pi} \right\rfloor.
+\]
+
+当 $ka \gg 1$（高能中子），极大值环的数目很多，相邻环的角度间隔约为
+\[
+\Delta\theta \approx \frac{\pi}{2ka\sin(\theta/2)}.
+\]
+
+\subsection{与 1D 双 $\delta$ 势垒的数学联系}
+
+1D 双 $\delta$ 势垒的透射率公式（第 5 节）在 $k \gg Mg/\hbar^2$ 的高能极限下近似为：
+\[
+T \approx \frac{1}{1 + 4\beta^2\cos^2(2ka)}, \quad \beta = \frac{Mg}{\hbar^2 k}.
+\]
+反射率 $R = 1 - T$ 呈现出以 $ka$ 为变量的 $\cos^2(2ka)$ 振荡。
+
+3D Born 散射的截面：
+\[
+\sigma \propto \cos^2\!\left(2ka\sin^2\frac{\theta}{2}\right).
+\]
+
+如果把 3D 问题``投影'' 到前向方向（$\theta \to 0$，$\sin(\theta/2) \to 0$ 但保持 $q$ 有限），或者把 1D 问题``推广'' 到不同散射角，两者都受同一个无量纲参数控制——势间距与波长的比值 $a/\lambda = ka/(2\pi)$。这是双散射源干涉的普适特征。
+
+\subsection{考察的完整知识点}
+\begin{enumerate}
+    \item Born 近似：高能弱势散射的一阶微扰公式
+    \item $\delta$ 势的傅里叶变换：$\int e^{-i\vec{q}\cdot\vec{r}} \delta(\vec{r} - \vec{a}) \, d^3r = e^{-i\vec{q}\cdot\vec{a}}$
+    \item 散射波矢：$\vec{q} = \vec{k} - \vec{k}_0$，$q = 2k\sin(\theta/2)$
+    \item 相干叠加：双散射源的振幅叠加导致截面调制
+    \item 角分布分析：极大/极小方向的求解
+    \item 约化质量：中子-质子散射中 $\mu = m_n m_p/(m_n + m_p)$
+\end{enumerate}
+
+\subsection{拓展延伸}
+\begin{itemize}
+    \item $N$ 个散射中心：$V(\vec{r}) = -V_0 \sum_{j=1}^N \delta(\vec{r} - \vec{a}_j)$，Born 散射给出结构因子 $F(\vec{q}) = \sum_j e^{i\vec{q}\cdot\vec{a}_j}$，截面 $\sigma \propto |F(\vec{q})|^2$
+    \item 连续势：若 $V(\vec{r}) = V_0 \rho(\vec{r})$，则 $M = V_0 \tilde{\rho}(\vec{q})$，其中 $\tilde{\rho}$ 是电荷密度的傅里叶变换——这正是 X 射线晶体学中结构因子的量子力学版本
+    \item 中子散射实验：热中子（$\lambda \sim 1\,\text{\AA}$）被用于探测分子和晶体的结构，Born 近似是解释衍射图样的标准工具
+\end{itemize}
+
+\subsection{结构因子 $F(\vec{q})$ 的系统解释}
+
+\subsubsection*{1. 从双 $\delta$ 到 $N$ 个散射中心的推广}
+
+双 $\delta$ 势的 Born 振幅为
+\[
+M \propto e^{-i\vec{q}\cdot\vec{a}} + e^{i\vec{q}\cdot\vec{a}} = 2\cos(\vec{q}\cdot\vec{a}).
+\]
+若推广到 $N$ 个位于 $\vec{a}_j$、强度为 $V_j$ 的散射中心：
+\[
+M(\vec{q}) = \sum_{j=1}^N V_j e^{-i\vec{q}\cdot\vec{a}_j}.
+\]
+截面正比于模方：
+\[
+\sigma(\vec{q}) \propto |M|^2 = \sum_{j=1}^N |V_j|^2 + \sum_{j\neq l} V_j V_l^* e^{-i\vec{q}\cdot(\vec{a}_j - \vec{a}_l)}.
+\]
+
+\subsubsection*{2. 结构因子的定义}
+
+当所有散射中心强度相同（$V_j = V_0$）时，提取公因子，定义
+\[
+F(\vec{q}) = \sum_{j=1}^N e^{i\vec{q}\cdot\vec{a}_j},
+\]
+则截面可写成
+\[
+\sigma(\vec{q}) \propto |V_0|^2 |F(\vec{q})|^2.
+\]
+
+更一般地，若各中心具有不同的形状因子 $f_j(\vec{q})$，则
+\[
+F(\vec{q}) = \sum_{j=1}^N f_j(\vec{q}) \, e^{i\vec{q}\cdot\vec{a}_j}.
+\]
+
+\textbf{形状因子 $f_j(\vec{q})$ 的严格推导：}
+
+设第 $j$ 个散射中心的势为 $V_j(\vec{r} - \vec{a}_j)$（中心位于 $\vec{a}_j$），总势 $V(\vec{r}) = \sum_j V_j(\vec{r} - \vec{a}_j)$。代入 Born 振幅：
+\[
+M(\vec{q}) = \int e^{-i\vec{q}\cdot\vec{r}} V(\vec{r}) \, d^3r = \sum_j \int e^{-i\vec{q}\cdot\vec{r}} V_j(\vec{r} - \vec{a}_j) \, d^3r.
+\]
+令 $\vec{r}' = \vec{r} - \vec{a}_j$，则 $e^{-i\vec{q}\cdot\vec{r}} = e^{-i\vec{q}\cdot\vec{a}_j} e^{-i\vec{q}\cdot\vec{r}'}$，于是
+\[
+M(\vec{q}) = \sum_j e^{-i\vec{q}\cdot\vec{a}_j} \underbrace{\int e^{-i\vec{q}\cdot\vec{r}'} V_j(\vec{r}') \, d^3r'}_{\equiv f_j(\vec{q})}.
+\]
+这就是形状因子的定义——单个散射中心势能的傅里叶变换。
+
+\textbf{两个例子：}
+\begin{itemize}
+    \item 点状 $\delta$ 势：$V_j(\vec{r}') = V_0\delta(\vec{r}')$，则 $f_j(\vec{q}) = V_0$（与 $\vec{q}$ 无关，点是``零尺寸'' 的）。
+    \item Yukawa 势：$V_j(\vec{r}') = V_0 e^{-\alpha r}/r$，则 $f_j(\vec{q}) = \frac{4\pi V_0}{q^2 + \alpha^2}$（随 $q$ 增大而衰减，因为势有有限力程）。
+\end{itemize}
+
+为什么叫``形状因子''：$f_j(\vec{q})$ 描述的是散射中心的``形状''——电子云是球形？扁平？拉长？不同形状给出不同的 $f_j(\vec{q})$ 随 $q$ 衰减的行为。例如球形电荷分布的 $f_j(q)$ 是单调衰减的；扁平分布则在某些方向衰减更快。
+
+对连续分布（整体电子云密度 $\rho(\vec{r})$），求和变为积分：
+\[
+F(\vec{q}) = \int \rho(\vec{r}) \, e^{i\vec{q}\cdot\vec{r}} \, d^3r.
+\]
+这是结构因子的最一般形式——它本质上是散射体空间分布的傅里叶变换。
+
+\subsubsection*{3. $|F(\vec{q})|^2$ 的物理意义——自项与交叉项}
+
+把模方展开：
+\[
+|F(\vec{q})|^2 = \underbrace{\sum_j |f_j|^2}_{\text{自项（非相干）}} + \underbrace{\sum_{j\neq l} f_j f_l^* e^{i\vec{q}\cdot(\vec{a}_j - \vec{a}_l)}}_{\text{交叉项（相干干涉）}}.
+\]
+\begin{itemize}
+    \item \textbf{自项：}每个散射中心``独自发光'' 的贡献，与角度无关，构成背景。
+    \item \textbf{交叉项：}不同中心之间的干涉，包含 $\vec{a}_j - \vec{a}_l$ 的几何信息。角分布上的峰谷完全由交叉项决定。
+\end{itemize}
+
+对双 $\delta$ 势（$N = 2$，$f_1 = f_2 = V_0$）：
+\[
+|F|^2 = 2|V_0|^2 + 2|V_0|^2\cos(2\vec{q}\cdot\vec{a}) = 4|V_0|^2\cos^2(\vec{q}\cdot\vec{a}).
+\]
+自项 $2|V_0|^2$ 是常数背景；$\cos^2$ 调制全部来自交叉项。
+
+\subsubsection*{4. 与晶体衍射的联系——Laue 条件与 Bragg 条件}
+
+若散射中心呈周期性排列（晶体），$\vec{a}_j = n_1\vec{a}_1 + n_2\vec{a}_2 + n_3\vec{a}_3$，则结构因子出现尖锐的峰。极大条件要求对所有基矢满足
+\[
+e^{i\vec{q}\cdot\vec{a}_i} = 1 \quad \Longrightarrow \quad \vec{q}\cdot\vec{a}_i = 2\pi m_i \quad (m_i \in \mathbb{Z}),
+\]
+这正是 \textbf{Laue 条件}：$\vec{q} = \vec{G}$（$\vec{G}$ 为倒格矢）。双 $\delta$ 势是这一图像的最小单元（$N = 2$），它给出的极大条件 $\vec{q}\cdot\vec{a} = n\pi$ 是 Laue 条件的离散版本（因为只有两个中心，不是无限周期阵列）。
+
+Bragg 条件 $2d\sin\theta = n\lambda$ 是 Laue 条件在特定晶面上的几何推论。
+
+\subsubsection*{5. 形状因子与结构因子的区分}
+
+\begin{tabular}{lll}
+\textbf{名称} & \textbf{符号} & \textbf{物理内容} \\
+形状因子 & $f_j(\vec{q})$ & 单个散射中心的内部结构（原子尺度） \\
+结构因子 & $F(\vec{q})$ & 散射中心之间的相对位置排列 \\
+\end{tabular}
+
+例如，X 射线被晶体散射时：
+\begin{itemize}
+    \item 原子内的电子云分布决定 $f_j(\vec{q})$（随 $q$ 增大而衰减）。
+    \item 原子在晶格中的位置决定 $F(\vec{q})$（出现尖锐的 Bragg 峰）。
+    \item 总衍射强度 $\propto |f|^2 |F|^2$。
+\end{itemize}
+
+\subsubsection*{6. 为什么叫``结构因子''？}
+
+这个名字直译自英文 structure factor，非常贴切：
+\begin{itemize}
+    \item \textbf{结构}（structure）：它回答的问题是``散射中心在哪里、怎么排列''——这正是物体的几何结构信息。
+    \item \textbf{因子}（factor）：在总散射振幅中，它是从单个散射中心的贡献中分离出来的、只含几何排列信息的乘法因子。
+\end{itemize}
+
+对比两个极端：
+\begin{itemize}
+    \item 若把所有散射中心熔成一个球（无内部结构），则 $|F(\vec{q})|^2 = N^2$（各向同性），角分布无峰谷。
+    \item 若散射中心按完美晶格排列，则 $|F(\vec{q})|^2$ 只在特定方向（Bragg 峰）爆发，其他方向几乎为零。
+\end{itemize}
+
+因此，测量结构因子就等于给散射体拍了一张``衍射照片''——从这张照片可以反推出实空间中的原子排列。X 射线晶体学、中子衍射、电子显微镜的本质都是这个逻辑。
+
+\subsubsection*{6. 为什么能从傅里叶变换``读出'' 结构？——直观的波长分辨率}
+
+这是你最困惑的地方。不要从抽象的数学出发，从双缝干涉的直觉出发：
+\begin{itemize}
+    \item 双缝间距为 $d$。用波长 $\lambda$ 的光照射，屏幕上出现干涉条纹，条纹间距 $\propto \lambda/d$。
+    \item 关键观察：$d$ 越大（缝越开），条纹越密；$d$ 越小（缝越靠近），条纹越疏。实空间的间距 $d$ 决定了倒空间（角分布）的条纹密度。
+    \item 推广：若散射体中有两个相距 $a$ 的中心，用波数 $k \sim 2\pi/\lambda$ 的粒子探测，角分布上的振荡周期由 $ka$ 决定。$a$ 大 $\Rightarrow$ 振荡快（峰多）；$a$ 小 $\Rightarrow$ 振荡慢（峰少）。
+\end{itemize}
+
+\textbf{傅里叶变换的物理本质：}
+
+傅里叶变换不是在``变魔术''，而是在做频率分解：
+\begin{itemize}
+    \item 实空间中的一个尖锐特征（如两个相距 $a$ 的点），对应倒空间中的一个特定频率 $q \sim 1/a$。
+    \item 实空间中的一个周期性排列（如晶格，周期为 $a$），对应倒空间中的尖锐峰（Bragg 峰，位置 $q = 2\pi/a$）。
+    \item 实空间中越宽的结构（如一个大球），对应倒空间中越窄的分布（$q$ 小时就有信号，大 $q$ 时迅速衰减）。
+\end{itemize}
+
+具体例子：
+\begin{itemize}
+    \item 双 $\delta$ 势（间距 $a$）：$|F|^2 \propto \cos^2(qa)$。峰在 $qa = n\pi$。从峰的位置直接读出 $a = n\pi/q$。
+    \item 晶体（周期 $a$）：峰只在 $q = 2\pi n/a$ 处出现。从峰的位置直接读出晶格常数 $a$。
+    \item 无结构（单个原子）：$|F|^2 = \text{常数}$，无峰。说明没有可分辨的周期性结构。
+\end{itemize}
+
+因此，角分布上的峰位置直接告诉我们实空间中散射中心的间距；峰的尖锐程度告诉我们排列有多规则。这就是``从傅里叶变换读取结构'' 的全部秘密。
+
+一句话总结：结构因子是几何结构的傅里叶变换。实空间中的间距 $a$ $\leftrightarrow$ 倒空间中的峰位置 $q \sim 1/a$。
+
+\subsection{``截面'' 家族：各种微分截面的定义}
+
+实验上，截面是有效靶面积的度量：
+\[
+\frac{dN}{dt} = j_{\text{inc}} \cdot d\sigma,
+\]
+其中 $j_{\text{inc}}$ 为入射粒子流密度，$dN/dt$ 为单位时间内被散射到某一``通道'' 的粒子数。``微分'' 的对象取决于实验探测的是什么：
+
+\begin{tabular}{lll}
+\textbf{符号} & \textbf{定义} & \textbf{使用场景} \\
+$\dfrac{d\sigma}{d\Omega}$ & $|f(\theta,\phi)|^2$ & 3D 弹性散射，测角分布 \\
+$\sigma_{\text{tot}}$ & $\int |f|^2 d\Omega$ & 总散射概率（弹性+非弹性） \\
+$\sigma_l$ & $\dfrac{4\pi}{k^2}(2l+1)\sin^2\delta_l$ & 分波法，第 $l$ 分波的贡献 \\
+$\dfrac{d\sigma}{dE_f}$ & & 非弹性散射，测末态能量分布 \\
+$\dfrac{d^2\sigma}{d\Omega dE_f}$ & & 双微分截面，中子散射、深度非弹散射 \\
+$\sigma_{\text{abs}}$ & $\sigma_{\text{tot}} - \sigma_{\text{el}}$ & 反应/吸收（粒子被``吃掉''） \\
+\end{tabular}
+
+\textbf{为什么``微分'' 等于``测分布''？——从实验计数理解}
+
+实验上探测器记录的是单位时间内落入某一相空间单元的粒子数 $dN/dt$。基本关系永远是
+\[
+\frac{dN}{dt} = j_{\text{inc}} \cdot d\sigma.
+\]
+
+探测器的``相空间单元'' 取决于它的设置：
+\begin{itemize}
+    \item 若探测器只分辨方向（不分辨能量），记录的是立体角 $d\Omega$ 内的粒子数：
+    \[
+    \frac{dN}{d\Omega\, dt} = j_{\text{inc}} \cdot \frac{d\sigma}{d\Omega} \quad \Longrightarrow \quad \text{角分布} \propto \frac{d\sigma}{d\Omega}.
+    \]
+    \item 若探测器只分辨能量（如用飞行时间法测中子能量），记录的是能量区间 $[E_f, E_f + dE_f]$ 内的粒子数：
+    \[
+    \frac{dN}{dE_f\, dt} = j_{\text{inc}} \cdot \frac{d\sigma}{dE_f} \quad \Longrightarrow \quad \text{能量分布} \propto \frac{d\sigma}{dE_f}.
+    \]
+    \item 若探测器同时分辨方向和能量，记录的是双微分计数：
+    \[
+    \frac{dN}{d\Omega\, dE_f\, dt} = j_{\text{inc}} \cdot \frac{d^2\sigma}{d\Omega dE_f}.
+    \]
+\end{itemize}
+
+因此，$d\sigma/dE_f$ 的物理意义是单位能量间隔内的有效散射面积。实验上把探测器记录到的``计数率--能量'' 曲线除以入射流密度 $j_{\text{inc}}$，就得到 $d\sigma/dE_f$。
+
+从``数粒子'' 到``微分率'' 的过渡：
+
+探测器实际记录的是有限能量区间 $\Delta E$ 内的粒子数 $\Delta N$，而非真正的微分。两者的关系是：
+\[
+\frac{\Delta N}{\Delta E \cdot dt} \approx j_{\text{inc}} \cdot \frac{d\sigma}{dE_f} \quad (\Delta E \text{ 足够小}).
+\]
+当 $\Delta E \to 0$ 时，左边趋于 $dN/(dE_f\, dt)$，等式严格成立。实际探测器的能量分辨率 $\Delta E_{\text{res}}$ 是有限的（如硅漂移探测器约 100 eV，磁谱仪可达 1 keV），因此测量的是
+\[
+\frac{d\sigma}{dE_f} \approx \frac{1}{j_{\text{inc}}} \cdot \frac{\Delta N}{\Delta E_{\text{res}} \cdot \Delta t}.
+\]
+只要 $\Delta E_{\text{res}}$ 远小于能谱的特征宽度（如峰宽），这个近似就足够好。``微分'' 不是真的让你去数无限小区间里的粒子，而是让探测器尽可能细分能量道（energy bin），再把每道的计数除以道的宽度。
+
+\textbf{关键澄清：}
+\begin{itemize}
+    \item 对弹性散射，能量守恒 $E_f = E_i$，所以不存在``对能量微分'' 的截面——所有能量都集中在 $E_i$ 处。
+    \item 对非弹性散射（如中子把靶核激发到高能级），末态能量 $E_f < E_i$，此时才需要 $d\sigma/dE_f$ 或双微分截面 $d^2\sigma/d\Omega dE_f$。
+    \item 1D 问题没有``微分截面''，因为不存在立体角；取而代之的是透射率 $T$ 和反射率 $R$。
+    \item 2D 散射（如电子在薄膜表面）中，``截面'' 具有长度量纲，微分对象是散射角 $\theta$：$d\sigma/d\theta$。
+\end{itemize}
+
+对 $\sigma_{\text{el}}$ 与 $\sigma_{\text{abs}}$ 的进一步解释：
+\begin{itemize}
+    \item $\sigma_{\text{el}}$（elastic）：弹性散射截面。散射后粒子与靶的内部状态都不变，只是改变了运动方向，能量守恒 $E_f = E_i$。Born 近似计算的截面默认是弹性截面。
+    \item $\sigma_{\text{abs}}$（absorption）：吸收/反应截面。粒子被靶``吃掉''——物理上包括核反应（中子被原子核俘获）、粒子被吸收转化为其他种类（如光子被原子吸收后发射电子的光电效应）、或把靶激发到更高能级（非弹性散射）。这些过程中入射粒子``消失'' 在原来的通道里，从总截面中减去弹性部分就得到吸收截面。
+    \item 严格关系：$\sigma_{\text{tot}} = \sigma_{\text{el}} + \sigma_{\text{in}} + \sigma_{\text{abs}}$，其中 $\sigma_{\text{in}}$ 是非弹性散射（靶被激发但入射粒子仍存在）。在简单量子力学模型中，常把非弹性也归入吸收，写成 $\sigma_{\text{tot}} = \sigma_{\text{el}} + \sigma_{\text{abs}}$。
+\end{itemize}
+
+\subsection{光学定理（Optical Theorem）}
+
+标准形式：
+\[
+\sigma_{\text{tot}} = \frac{4\pi}{k} \, \text{Im}\bigl[f(\theta = 0)\bigr].
+\]
+
+\textbf{物理图像——``阴影'' 效应：}
+
+入射平面波 $e^{ikz}$ 经过散射中心后，在前向（$\theta = 0$）方向，入射波与散射波发生干涉。为了保证概率守恒（入射流 = 透射流 + 散射到所有方向的流），前向散射波必须产生一个``阴影''——即抵消掉一部分入射流。这个阴影的面积恰好等于总截面。虚部 $\text{Im}[f(0)]$ 正是描述这个阴影的深度。
+
+\textbf{与 Born 近似的关系（重要！）：}
+
+一级 Born 近似对实势给出实的散射振幅 $f^{(1)}$，因此 $\text{Im}[f^{(1)}(0)] = 0$。若把它直接代入光学定理，会得到 $\sigma_{\text{tot}} = 0$，显然荒谬。
+
+这不是光学定理错了，而是一级 Born 近似不保持幺正性。正确做法有两种：
+\begin{enumerate}
+    \item 用一级 Born 的微分截面直接积分：$\sigma_{\text{tot}} \approx \int |f^{(1)}|^2 d\Omega$（这只给出弹性截面，且是高阶近似）。
+    \item 计算更高阶 Born 项，它们会引入虚部，使得 $\text{Im}[f(0)] \neq 0$。
+\end{enumerate}
+
+\textbf{考场用途：}
+\begin{itemize}
+    \item 若已知总截面 $\sigma_{\text{tot}}$，可立即反推前向振幅虚部：$\text{Im}[f(0)] = k\sigma_{\text{tot}}/(4\pi)$。
+    \item 若用分波法，结合 $\sigma_{\text{tot}} = \frac{4\pi}{k^2}\sum_l (2l+1)\sin^2\delta_l$ 与 $f(0) = \frac{1}{2ik}\sum_l (2l+1)(e^{2i\delta_l} - 1)$，可验证两者自洽。
+    \item 光学定理是幺正性的严格结果，不依赖于近似方法，常用来检验近似计算的合理性。
+\end{itemize}
+
+\subsection{Born 近似 vs 光学定理：何时用哪个？}
+
+这是考场上最容易混淆的问题。Born 近似能算截面，光学定理也能算截面，但它们的``算法'' 完全不同，而且不能混用。
+
+\textbf{核心区别：}
+
+\begin{tabular}{lll}
+\textbf{问题} & \textbf{Born 近似} & \textbf{光学定理} \\
+算什么 & 微分截面 $d\sigma/d\Omega = |f^{(1)}|^2$ & 总截面 $\sigma_{\text{tot}} = \dfrac{4\pi}{k}\text{Im}[f(0)]$ \\
+输入是什么 & 势能 $V(\vec{r})$ & 前向散射振幅 $f(\theta = 0)$ \\
+输出是什么 & 角分布（能量固定） & 一个数（总概率） \\
+对实势的一级结果 & $f^{(1)}$ 是实的 & 需要 $\text{Im}[f(0)]$（必须非零） \\
+\end{tabular}
+
+\textbf{常见短路：}把一级 Born 的 $f^{(1)}(0)$ 直接代入光学定理
+
+一级 Born 对实势给出 $f^{(1)}(0) \in \mathbb{R}$，所以 $\text{Im}[f^{(1)}(0)] = 0$。若代入光学定理会得到 $\sigma_{\text{tot}} = 0$，显然荒谬。
+
+这不是光学定理错了，而是你用了一级 Born 的结果去套一个需要更高阶信息的严格恒等式。
+
+\textbf{精确的 $f(0)$ 从哪里来？——考场上常见的三种来源：}
+
+\textbf{1. 分波法给出：}
+\[
+f(0) = \frac{1}{2ik} \sum_l (2l+1)(e^{2i\delta_l} - 1).
+\]
+展开后虚部自动出现：$\text{Im}[f(0)] = \frac{1}{k}\sum_l (2l+1)\sin^2\delta_l$。代入光学定理就得到熟悉的分波总截面公式。这是考场上最常见的``精确 $f(0)$'' 来源。
+
+\textbf{但所有分波怎么算？——低能极限的救赎：}
+
+你担心得很对。完整的分波求和需要无限多项，但低能极限 $ka \ll 1$ 下，只有 $l = 0$（s 波）有显著贡献，因为离心势垒 $l(l+1)\hbar^2/2\mu r^2$ 阻止了高角动量粒子接近散射中心。此时：
+\[
+f(\theta) \approx \frac{1}{k} e^{i\delta_0}\sin\delta_0, \quad f(0) \approx \frac{1}{k}\sin\delta_0\, e^{i\delta_0}.
+\]
+代入光学定理：
+\[
+\sigma_{\text{tot}} = \frac{4\pi}{k}\, \text{Im}[f(0)] \approx \frac{4\pi}{k^2}\sin^2\delta_0 = \sigma_0.
+\]
+这正是分波法总截面公式在 s 波主导时的结果。考场上遇到分波法 + 光学定理的题目，几乎总是低能 s 波，只需算一个相移 $\delta_0$。高能时 $ka \gg 1$ 需要大量分波，但 Born 近似反而更好用，不会考你手算几十项分波。
+
+\textbf{2. 题目直接给出：}如``已知前向散射振幅 $f(0) = \alpha + i\beta$''，此时直接代入光学定理即可。
+
+\textbf{3. 二级 Born 近似：}$f^{(2)}(0)$ 已经包含虚部。但二级 Born 需要做二重积分，考场上几乎不考具体计算。
+
+\textbf{光学定理的考场暗示：}
+
+题目中出现以下任何一种，就是在暗示你用光学定理：
+\begin{itemize}
+    \item 明确写出``用光学定理'' 或``由光学定理''
+    \item 给了总截面 $\sigma_{\text{tot}}$，要求求前向散射振幅的虚部
+    \item 给了分波相移 $\delta_l$，要求验证总截面公式（此时光学定理和分波法殊途同归）
+    \item 出现``幺正性''''概率守恒''''光学定理'' 等关键词
+\end{itemize}
+
+\textbf{Born 二级近似真的有用吗？}
+
+有，但场景有限。先给出标准公式：
+
+一级 Born 振幅：
+\[
+f^{(1)}(\vec{k}_f, \vec{k}_i) = -\frac{\mu}{2\pi\hbar^2} \int d^3r \, e^{-i\vec{q}\cdot\vec{r}} V(\vec{r}).
+\]
+
+二级 Born 振幅：
+\[
+f^{(2)}(\vec{k}_f, \vec{k}_i) = \left(-\frac{\mu}{2\pi\hbar^2}\right)^2 \int d^3r \int d^3r' \, e^{-i\vec{k}_f\cdot\vec{r}} V(\vec{r}) \frac{e^{ik|\vec{r}-\vec{r}'|}}{|\vec{r}-\vec{r}'|} V(\vec{r}') e^{i\vec{k}_i\cdot\vec{r}'}.
+\]
+其中 $\frac{e^{ik|\vec{r}-\vec{r}'|}}{|\vec{r}-\vec{r}'|}$ 是自由格林函数 $G_0^{(+)}$（只差常数因子）。二级 Born 的物理图像是：入射波在 $\vec{r}'$ 处被势散射一次，传播到 $\vec{r}$ 处再被散射一次，最后出射。
+
+\textbf{实际应用场景：}
+\begin{itemize}
+    \item 估计一级 Born 的误差：若 $|f^{(2)}| \ll |f^{(1)}|$，则一级 Born 可信。
+    \item 一级 Born 为零的情况：某些对称性下 $f^{(1)}(\theta) = 0$（如某些特定角度的散射），此时二级 Born 给出主导贡献。
+    \item 与光学定理自洽：$\int |f^{(1)}|^2 d\Omega = \frac{4\pi}{k}\, \text{Im}[f^{(2)}(0)]$。一级 Born 的微分截面积分恰好等于二级 Born 的前向虚部。
+    \item 实际科研：电子-原子散射、中子-核散射等会用到。但考场上几乎不考二级 Born 的具体计算（需要做六重积分，太复杂）。
+\end{itemize}
+
+\textbf{正确的两条路：}
+
+\textbf{路径1：全程用 Born 近似}
+
+先算微分截面 $|f^{(1)}(\theta)|^2$，再对全空间积分得到总截面：
+\[
+\sigma_{\text{tot}}^{(\text{Born})} \approx \int |f^{(1)}(\theta)|^2 \, d\Omega.
+\]
+这是在 Born 框架内部自洽的做法。虽然严格来说 $\int |f^{(1)}|^2 d\Omega$ 已经是 $O(V^2)$ 的量（因为 $|f^{(1)}|^2$ 是二阶的），但在 Born 近似的精神下这是合法的。
+
+\textbf{路径2：用光学定理}（需要知道含虚部的 $f(0)$）
+
+光学定理是严格恒等式，要求 $f(0)$ 是精确的（或至少包含到能产生虚部的阶数）。在 Born 级数中：
+\[
+f = f^{(1)} + f^{(2)} + \cdots
+\]
+$f^{(1)}$ 是实的，但 $f^{(2)}$ 已经包含虚部。可以证明：
+\[
+\int |f^{(1)}|^2 d\Omega = \frac{4\pi}{k}\, \text{Im}\bigl[f^{(2)}(0)\bigr],
+\]
+即一级 Born 的微分截面积分恰好等于二级 Born 的前向虚部。两者在 $O(V^2)$ 上是自洽的。
+
+\textbf{考场速查卡：}
+
+\begin{tabular}{lll}
+\textbf{题目给的条件/要求} & \textbf{你该用的工具} & \textbf{绝对不要做的事} \\
+求微分截面 $\sigma(\theta)$ & Born 近似：$|f^{(1)}|^2$ & 不要试图用光学定理求角分布 \\
+求总截面（Born 框架内） & $\int |f^{(1)}|^2 d\Omega$ & 不要把 $f^{(1)}(0)$ 代入光学定理 \\
+已知 $\sigma_{\text{tot}}$，求 $\text{Im}[f(0)]$ & 光学定理 & 不要试图用 Born 近似反推 \\
+分波法验证自洽性 & 光学定理 + 分波公式 & 不要把 Born 和分波混用 \\
+题目说``用光学定理'' & 光学定理 & 不要绕道 Born 近似 \\
+\end{tabular}
+
+一句话总结：Born 近似是``建造'' 微分截面的工具；光学定理是``检验'' 总截面是否幺正的尺子。一级 Born 的结果只能留在 Born 的框架内用（积分得总截面），绝不能跨到光学定理那边去（因为光学定理需要精确的 $f(0)$，而一级 Born 给不出虚部）。

@@ -1,0 +1,178 @@
+\section{量子力学：双 $\delta$ 势的 Born 近似散射（3D）}
+\label{sec:born-3d}
+
+\textbf{题目：中子-氢分子双 $\delta$ 势散射}
+
+一束中子射向氢分子发生弹性散射。氢分子中两个质子对中子的作用可用简化势描述：
+\[
+V(\vec{r}) = -V_0\bigl[\delta(\vec{r}-\vec{a}) + \delta(\vec{r}+\vec{a})\bigr],
+\]
+其中 $V_0 > 0$，$\vec{a}$ 与 $-\vec{a}$ 为两质子位置矢量。
+
+求高能中子散射的微分截面 $\sigma(\theta,\phi)$，并指出截面取极大值的方向。
+
+已知：Born 近似公式
+\[
+\sigma(\theta,\phi) = \frac{\mu^2}{4\pi^2\hbar^4}\left|\int e^{-i\vec{q}\cdot\vec{r}'} V(\vec{r}')\,d^3r'\right|^2,
+\]
+其中 $\vec{q} = \vec{k} - \vec{k}_0$，$q = 2k\sin(\theta/2)$。
+
+\subsection{考点快速分析}
+
+\begin{itemize}
+    \item \textbf{Born 近似的触发条件：}
+    \begin{itemize}
+        \item 高能 $k \gg a^{-1}$（$a$ 为势的力程）：德布罗意波长 $\lambda = 2\pi/k$ 远小于势的尺度，粒子 ``快速穿过'' 势区，相互作用时间短，偏转很小，一阶微扰足够。
+        \item 弱势 $|V_0| \ll E = \hbar^2k^2/2\mu$：势的强度远小于动能，即使粒子在势区停留，受到的 ``冲量'' 也很小，高阶修正可忽略。
+        \item 综合判据：$|\langle\psi_f|V|\psi_i\rangle| \ll E$，即势在平面波基下的矩阵元远小于动能。
+    \end{itemize}
+    \item $\delta$ 势的傅里叶变换：$\int e^{-i\vec{q}\cdot\vec{r}}\delta(\vec{r}-\vec{a})\,d^3r = e^{-i\vec{q}\cdot\vec{a}}$，直接筛选。
+    \item 双源干涉：两个 $\delta$ 势贡献的散射振幅相干叠加，出现 $\cos^2$ 调制。
+    \item 几何关系：$\vec{q}\cdot\vec{a}$ 的展开依赖于分子轴 $\vec{a}$ 与入射方向的相对取向。
+\end{itemize}
+
+\subsection{标准解题过程}
+
+\textbf{Step 1：计算散射振幅的傅里叶积分}
+
+将 $V(\vec{r}')$ 代入 Born 公式的矩阵元：
+\begin{align*}
+M &= \int e^{-i\vec{q}\cdot\vec{r}'} V(\vec{r}')\,d^3r' \\
+&= -V_0\bigl[e^{-i\vec{q}\cdot\vec{a}} + e^{i\vec{q}\cdot\vec{a}}\bigr] \\
+&= -2V_0\cos(\vec{q}\cdot\vec{a}).
+\end{align*}
+
+\textbf{Step 2：得到微分截面}
+\begin{align*}
+\sigma(\theta,\phi) &= \frac{\mu^2}{4\pi^2\hbar^4}\bigl|2V_0\cos(\vec{q}\cdot\vec{a})\bigr|^2 \\
+&= \frac{\mu^2 V_0^2}{\pi^2\hbar^4}\cos^2(\vec{q}\cdot\vec{a}).
+\end{align*}
+
+\textbf{Step 3：几何关系——$\vec{q}\cdot\vec{a}$ 的展开}
+
+约定：入射方向固定为 $z$ 轴，$\vec{k}_0 = k\hat{z}$。出射方向用球坐标 $(\theta,\phi)$ 表示，$\theta$ 为散射角（与 $z$ 轴夹角），$\phi$ 为方位角。分子轴 $\vec{a}$ 的方向用极角 $\theta_a$ 和方位角 $\phi_a$ 描述。
+
+一般公式（任意取向）：
+\[
+\vec{q}\cdot\vec{a} = ak\bigl[\sin\theta\sin\theta_a\cos(\phi-\phi_a) + (\cos\theta-1)\cos\theta_a\bigr].
+\]
+推导：写出分量：$\vec{k} = k(\sin\theta\cos\phi, \sin\theta\sin\phi, \cos\theta)$，$\vec{k}_0 = k(0,0,1)$，$\vec{a} = a(\sin\theta_a\cos\phi_a, \sin\theta_a\sin\phi_a, \cos\theta_a)$，直接点乘即得。
+
+\textit{情况 A（最常考）：分子轴平行入射方向，$\vec{a} = a\hat{z}$（$\theta_a = 0$）}
+\[
+\vec{q}\cdot\vec{a} = a(k\cos\theta - k) = ak(\cos\theta - 1) = -2ka\sin^2\frac{\theta}{2}.
+\]
+于是
+\[
+\sigma(\theta) = \frac{\mu^2 V_0^2}{\pi^2\hbar^4}\cos^2\bigl[ka(1-\cos\theta)\bigr].
+\]
+截面与 $\phi$ 无关（轴对称）——因为分子轴沿 $z$ 轴，绕 $z$ 轴旋转不改变几何。
+
+\textit{情况 B：分子轴垂直入射方向，$\vec{a} = a\hat{x}$（$\theta_a = \pi/2, \phi_a = 0$）}
+\begin{align*}
+\vec{q}\cdot\vec{a} &= ak\sin\theta\cos\phi, \\
+\sigma(\theta,\phi) &= \frac{\mu^2 V_0^2}{\pi^2\hbar^4}\cos^2(ak\sin\theta\cos\phi).
+\end{align*}
+此时截面依赖于 $\phi$——因为分子轴沿 $x$ 轴，绕 $z$ 轴旋转会改变 $\vec{a}$ 与出射方向的相对取向。
+
+\textit{情况 C（一般取向）：若题目给定分子轴与入射方向夹角为 $\alpha$（即 $\theta_a = \alpha$），且在 $x$-$z$ 平面内（$\phi_a = 0$），则}
+\[
+\vec{q}\cdot\vec{a} = ak\bigl[\sin\theta\sin\alpha\cos\phi + (\cos\theta-1)\cos\alpha\bigr].
+\]
+
+\textbf{Step 4：极大值方向}
+
+$\cos^2(x)$ 在 $x = n\pi$ 时取极大值 $1$。对情况 A：
+\[
+ka(1-\cos\theta) = n\pi \quad\Longrightarrow\quad \sin^2\frac{\theta}{2} = \frac{n\pi}{2ka}.
+\]
+\begin{itemize}
+    \item $n = 0$：$\theta = 0$（前向散射，最强峰）
+    \item $n = 1, 2, \dots$：只要 $n \leq 2ka/\pi$，存在实的 $\theta$ 解，形成圆锥形极大值环
+\end{itemize}
+
+\subsection{核心结论}
+
+微分截面（通用形式）：
+\[
+\sigma(\theta,\phi) = \frac{\mu^2 V_0^2}{\pi^2\hbar^4}\cos^2(\vec{q}\cdot\vec{a})
+\]
+
+分子轴平行入射（$\vec{a} = a\hat{z}$）：
+\[
+\sigma(\theta) = \frac{\mu^2 V_0^2}{\pi^2\hbar^4}\cos^2\bigl[ka(1-\cos\theta)\bigr]
+\]
+
+极大值条件：
+\[
+\vec{q}\cdot\vec{a} = n\pi \quad (n = 0, 1, 2, \dots)
+\]
+前向（$\theta = 0$）始终为极大值方向。
+
+\subsection{常见错误与思路短路}
+
+\begin{enumerate}
+    \item \textbf{混淆 1D/3D $\delta$ 势}：1D 中 $\delta(x)$ 量纲 $[E]/[L]$；3D 中 $\delta(\vec{r})$ 量纲 $[E]\cdot[L^3]$。截面公式自动保证量纲正确。
+    \item \textbf{漏掉约化质量}：$\mu = m_1m_2/(m_1+m_2)$。中子-质子散射 $\mu \approx m_n/2$，误用 $m_n$ 截面偏差 4 倍。
+    \item $\vec{q}\cdot\vec{a} \neq qa$：$\vec{q}\cdot\vec{a} = qa\cos\gamma$，仅当 $\vec{a} \parallel \hat{z}$ 等特殊情况才化为纯 $\theta$ 函数。
+    \item \textbf{$q$ 写错}：$q = 2k\sin(\theta/2)$，不是 $k(1-\cos\theta)$。半角公式是标准写法。
+\end{enumerate}
+
+\subsection{举一反三与物理直觉}
+
+\textbf{物理图像——杨氏双缝的量子版本：}
+
+两个 $\delta$ 势相当于两个点状的 ``散射缝''。中子波从它们发出后相干叠加。前向散射（$\theta = 0$）对应零程差，两列波完全同相；偏离前向时程差增大，每当程差等于 ``有效波长'' 的整数倍时出现相长干涉峰。
+
+\textbf{程差 $\vec{q}\cdot\vec{a}$ 的物理来源——为什么能用平面波算程差？}
+
+你可能疑惑：散射波明明是球面波 $e^{ikr}/r$，为什么算程差时却用平面波 $e^{i\vec{k}\cdot\vec{r}}$？
+
+\textbf{入射段}：粒子从极远处射来，在散射体尺度（$\sim a$）范围内，波前几乎是平面，因此入射波可用平面波 $e^{i\vec{k}_i\cdot\vec{r}}$ 描述。
+
+\textbf{出射段}：从两个散射中心发出的确实是球面波，但探测器在远场（$r \gg a$）。在远场处，两个球面波的波前曲率半径都很大，局部看起来几乎也是平面波，传播方向都是 $\hat{k}_f$。因此出射段也可用平面波因子 $e^{i\vec{k}_f\cdot\vec{r}}$ 来算相对相位差。
+
+\textbf{具体计算}：两个散射中心分别位于 $\vec{a}$ 与 $-\vec{a}$。
+\begin{itemize}
+    \item 入射段程差：平面波到达 $\vec{a}$ 与 $-\vec{a}$ 的相位差为 $e^{i\vec{k}_i\cdot\vec{a}}/e^{i\vec{k}_i\cdot(-\vec{a})} = e^{2i\vec{k}_i\cdot\vec{a}}$。
+    \item 出射段程差：两散射波到达同一远场探测点的相位差为 $e^{i\vec{k}_f\cdot(-\vec{a})}/e^{i\vec{k}_f\cdot\vec{a}} = e^{-2i\vec{k}_f\cdot\vec{a}}$。
+    \item 总相位差：入射段 + 出射段，$e^{2i\vec{k}_i\cdot\vec{a}} \cdot e^{-2i\vec{k}_f\cdot\vec{a}} = e^{-2i\vec{q}\cdot\vec{a}}$。
+\end{itemize}
+但在 Born 振幅中，双 $\delta$ 势的两项直接给出 $e^{-i\vec{q}\cdot\vec{a}} + e^{i\vec{q}\cdot\vec{a}} = 2\cos(\vec{q}\cdot\vec{a})$，总相位差恰为 $\vec{q}\cdot\vec{a}$。
+
+因此 $\vec{q}\cdot\vec{a}$ 是总程差对应的相位，$\vec{q}$ 扮演 ``有效波数''，$\vec{a}$ 是 ``有效臂长''。前向时 $\vec{q} = 0$，程差为零；偏离前向时程差增大，产生 $\cos^2$ 调制。
+
+\textbf{与 1D 双 $\delta$ 势垒的深层联系：}
+
+\begin{center}
+\begin{tabular}{|l|l|l|}
+\hline
+& \textbf{1D 双 $\delta$ 势垒} & \textbf{3D 双 $\delta$ 势散射} \\
+\hline
+干涉机制 & 势垒间来回反射 & 两散射中心球面波叠加 \\
+相位 & $2ka$（往返） & $\vec{q}\cdot\vec{a}$（程差） \\
+极大条件 & $ka = n\pi/2$（Fabry-P\'{e}rot） & $\vec{q}\cdot\vec{a} = n\pi$ \\
+公式 & $T \propto |1 + \cdots|^{-2}$ & $\sigma \propto \cos^2(\vec{q}\cdot\vec{a})$ \\
+\hline
+\end{tabular}
+\end{center}
+
+核心共性：两者都由同一个无量纲参数 $ka$ 控制振荡。1D 中你严格求解发现透射率随能量振荡；3D 中 Born 近似直接把这种振荡翻译成角分布上的调制。
+
+\textbf{拓展联系：}
+\begin{itemize}
+    \item \textbf{晶体 X 射线衍射}：周期性原子排列的 $\delta$ 势 array 给出 Bragg 条件，本题是 Bragg 的最小单元（两个散射中心）。
+    \item \textbf{电子衍射}：分子中多个原子核对入射电子的散射，Born 近似给出结构因子 $F(\vec{q}) = \sum_j f_j e^{i\vec{q}\cdot\vec{r}_j}$。
+    \item \textbf{量子信息}：双量子点（double quantum dot）中的电子干涉，势垒透射与本题散射是同一物理的不同表现。
+\end{itemize}
+
+\subsection{解题思路模板（双 $\delta$ 势 + Born 近似）}
+
+\begin{enumerate}
+    \item 写出傅里叶积分：$M = \int e^{-i\vec{q}\cdot\vec{r}'} V(\vec{r}')\,d^3r'$
+    \item 利用 $\delta$ 函数筛选：$\int e^{-i\vec{q}\cdot\vec{r}}\delta(\vec{r}-\vec{a})\,d^3r = e^{-i\vec{q}\cdot\vec{a}}$
+    \item 合并指数项：得到 $2\cos(\vec{q}\cdot\vec{a})$ 或 $2i\sin(\vec{q}\cdot\vec{a})$，截面取模方后都是 $4\cos^2$
+    \item 计算几何因子：根据 $\vec{a}$ 的取向展开 $\vec{q}\cdot\vec{a}$
+    \item 求极大/极小：$\cos^2(x) = 1$ 当 $x = n\pi$；$\cos^2(x) = 0$ 当 $x = (n+\frac{1}{2})\pi$
+    \item 物理图像收尾：用双缝干涉或结构因子解释角分布的振荡本质
+\end{enumerate}
