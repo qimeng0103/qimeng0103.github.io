@@ -1,0 +1,260 @@
+\newpage
+
+\section{量子力学：Hellmann--Feynman 定理——从参数求导到期望值}
+\label{sec:hellmann-feynman}
+
+\begin{modelbox}[HF 定理：一句话版]
+若 $H(\lambda)$ 是含参哈密顿量，$|n(\lambda)\rangle$ 与 $E_n(\lambda)$ 为其归一化本征态与本征值，则
+\[
+\boxed{\frac{\partial E_n}{\partial \lambda} = \left\langle n\left|\frac{\partial H}{\partial \lambda}\right|n\right\rangle}
+\]
+\textbf{核心逻辑}：能量对参数的敏感度 = 哈密顿量对该参数的敏感度在态上的平均值。
+\end{modelbox}
+
+\subsection{题型反射弧标签}
+
+\begin{tipbox}[看到什么→启动什么]
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|c|l|}
+\hline
+\textbf{一级（关键词）} & \textbf{二级（方法）} & \textbf{三级（操作）} \\
+\hline
+求 $\langle r^k \rangle$、$\langle p^2 \rangle$ & HF 定理 & 把耦合常数/尺度当参数 $\lambda$ \\
+\hline
+维里定理 & 尺度变换 + HF & $\lambda$ 缩放 $x \to \lambda x$ \\
+\hline
+"势能是幂次 $V \propto r^s$" & 维里定理 & $\langle T \rangle = \frac{s}{2}\langle V \rangle$ \\
+\hline
+氢原子期望值 & HF 或 Kramers 关系 & 把 $e^2$、$l$、$m$ 当参数 \\
+\hline
+\end{tabular}
+\end{center}
+\end{tipbox}
+
+\subsection{HF 定理的完整证明}
+
+\begin{derivationbox}[三步证明（考场可复述版）]
+\textbf{Step 1：写出本征方程}
+\[
+H(\lambda)|n(\lambda)\rangle = E_n(\lambda)|n(\lambda)\rangle.
+\]
+
+\textbf{Step 2：对 $\lambda$ 求导}
+对两边关于 $\lambda$ 求偏导：
+\[
+\frac{\partial H}{\partial \lambda}|n\rangle + H\frac{\partial |n\rangle}{\partial \lambda}
+=
+\frac{\partial E_n}{\partial \lambda}|n\rangle + E_n\frac{\partial |n\rangle}{\partial \lambda}.
+\]
+
+\textbf{Step 3：左乘 $\langle n|$ 并利用厄米性}
+\[
+\langle n|\frac{\partial H}{\partial \lambda}|n\rangle + \underbrace{\langle n|H}_{=E_n\langle n|}\frac{\partial |n\rangle}{\partial \lambda}
+=
+\frac{\partial E_n}{\partial \lambda}\underbrace{\langle n|n\rangle}_{=1} + E_n\langle n|\frac{\partial |n\rangle}{\partial \lambda}.
+\]
+两边消去 $E_n\langle n|\partial_\lambda n\rangle$，即得 HF 定理。
+
+\begin{warnbox}[归一化条件的关键作用]
+证明中用了 $\langle n|n\rangle = 1$，因此
+\[
+\frac{\partial}{\partial\lambda}\langle n|n\rangle = 0
+\quad\Rightarrow\quad
+\langle\partial_\lambda n|n\rangle + \langle n|\partial_\lambda n\rangle = 0.
+\]
+这是交叉项消失的\textbf{唯一原因}。若态未归一化，HF 定理不成立。
+\end{warnbox}
+\end{derivationbox}
+
+\subsection{用 HF 定理证明维里定理}
+
+\begin{derivationbox}[尺度变换法（考场最常用）]
+\textbf{Step 1：构造缩放变换}
+
+令 $x \to \lambda x$，则 $p = -i\hbar\frac{d}{dx} \to \lambda^{-1}p$（因为 $\frac{d}{d(\lambda x)} = \lambda^{-1}\frac{d}{dx}$）。
+
+动能与势能变为：
+\[
+T = \frac{p^2}{2m} \to \lambda^{-2}T, \qquad V(x) \to V(\lambda x).
+\]
+
+因此含参哈密顿量：
+\[
+H(\lambda) = \lambda^{-2}T + V(\lambda x).
+\]
+
+\textbf{Step 2：对 $\lambda$ 求导}
+\[
+\frac{\partial H}{\partial \lambda} = -2\lambda^{-3}T + x\frac{\partial V}{\partial x}\bigg|_{\lambda x}.
+\]
+（第二项来自链式法则：$\frac{d}{d\lambda}V(\lambda x) = xV'(\lambda x)$。）
+
+\textbf{Step 3：在 $\lambda=1$ 处应用 HF 定理}
+
+束缚态能量对尺度变换不变：$\frac{dE}{d\lambda}\big|_{\lambda=1} = 0$（因为 $\lambda=1$ 是物理点，任意缩放不改变真实能量）。
+
+于是：
+\[
+0 = \left\langle -2T + x\frac{\partial V}{\partial x} \right\rangle
+\quad\Rightarrow\quad
+\boxed{2\langle T\rangle = \left\langle x\frac{\partial V}{\partial x}\right\rangle}.
+\]
+
+即
+\[
+\left\langle \frac{p^2}{2m}\right\rangle = \frac{1}{2}\left\langle x\frac{\partial V}{\partial x}\right\rangle.
+\]
+\end{derivationbox}
+
+\begin{insightbox}[维里定理的物理图像]
+\begin{itemize}[nosep]
+\item 对幂次势 $V \propto x^s$：$x\frac{\partial V}{\partial x} = sV$，因此 $\langle T\rangle = \frac{s}{2}\langle V\rangle$。
+\item 谐振子 $s=2$：$\langle T\rangle = \langle V\rangle = E/2$。
+\item 库仑势 $s=-1$：$\langle T\rangle = -\frac{1}{2}\langle V\rangle = -E$（因为 $E = \langle T\rangle + \langle V\rangle = -\langle T\rangle$）。
+\item 这正是经典力学中"位力定理"（virial theorem）的量子版本。
+\end{itemize}
+\end{insightbox}
+
+\subsection{谐振子：动能期望值的秒杀}
+
+\begin{formulabox}[谐振子 $\langle p^2/2m\rangle$]
+势能 $V = \frac{1}{2}m\omega^2 x^2$，幂次 $s=2$。
+
+维里定理给出：
+\[
+\langle T\rangle = \langle V\rangle.
+\]
+
+总能量 $E_n = \hbar\omega(n+\frac{1}{2})$，因此
+\[
+\boxed{\left\langle \frac{p^2}{2m}\right\rangle = \frac{\hbar\omega}{2}\left(n+\frac{1}{2}\right) = \frac{E_n}{2}}.
+\]
+\textbf{考场口诀}：谐振子动能 = 势能 = 能量一半。
+\end{formulabox}
+
+\subsection{氢原子期望值的 HF 套路}
+
+\begin{formulabox}[氢原子 Hamilton 量]
+\[
+H = -\frac{\hbar^2}{2m}\frac{d^2}{dr^2} + \frac{\hbar^2 l(l+1)}{2mr^2} - \frac{e^2}{4\pi\varepsilon_0 r},
+\qquad
+E_n = -\frac{me^4}{32\pi^2\varepsilon_0^2\hbar^2 n^2} = -\frac{e^2}{8\pi\varepsilon_0 a_0 n^2}.
+\]
+\end{formulabox}
+
+\subsubsection{求 $\langle 1/r\rangle$——把 $e^2$ 当参数}
+
+\begin{derivationbox}[HF 一步出结果]
+将 $e^2$ 视为参数 $\lambda$：
+\[
+H = \cdots - \frac{\lambda}{4\pi\varepsilon_0 r}, \qquad E_n = -\frac{m\lambda^2}{32\pi^2\varepsilon_0^2\hbar^2 n^2}.
+\]
+
+HF 定理：
+\[
+\frac{\partial E_n}{\partial \lambda} = \left\langle -\frac{1}{4\pi\varepsilon_0 r}\right\rangle.
+\]
+
+计算左边：
+\[
+\frac{\partial E_n}{\partial \lambda} = -\frac{m\lambda}{16\pi^2\varepsilon_0^2\hbar^2 n^2} = -\frac{\lambda}{4\pi\varepsilon_0} \cdot \frac{m}{4\pi\varepsilon_0\hbar^2 n^2} = -\frac{\lambda}{4\pi\varepsilon_0} \cdot \frac{1}{a_0 n^2}.
+\]
+
+因此：
+\[
+\boxed{\left\langle \frac{1}{r}\right\rangle_{nl} = \frac{1}{a_0 n^2}}.
+\]
+\end{derivationbox}
+
+\subsubsection{求 $\langle 1/r^2\rangle$——把离心势系数当参数}
+
+\begin{derivationbox}[正确的参数选取]
+\textbf{错误做法}：直接把 $l$ 当参数说 "$dE/dl=0$"——$E_n$ 对 $n$ 简并，但对 $l$ 并不独立为零。
+
+\textbf{正确做法}：引入显式参数 $\lambda$ 到离心势项：
+\[
+H(\lambda) = T + \lambda\frac{\hbar^2 l(l+1)}{2mr^2} + V(r).
+\]
+
+HF 定理：
+\[
+\frac{\partial E_n}{\partial \lambda} = \left\langle \frac{\hbar^2 l(l+1)}{2mr^2}\right\rangle.
+\]
+
+但 $E_n$ 与 $\lambda$ 的关系需要通过 $n = n_r + l + 1$ 的隐式依赖来求。更直接的方法是使用\textbf{Kramers--Pasternack 关系}（或直接用 HF 对 $l$ 求导结合 $n$ 固定）。
+
+标准结果：
+\[
+\boxed{\left\langle \frac{1}{r^2}\right\rangle_{nl} = \frac{1}{n^3 a_0^2\left(l+\frac{1}{2}\right)}}.
+\]
+\end{derivationbox}
+
+\begin{warnbox}[考场最大陷阱：$\langle 1/r^2\rangle \neq 0$]
+很多人看到"$E_n$ 与 $l$ 简并"就以为 $dE/dl=0$，从而得出 $\langle 1/r^2\rangle = 0$ 的荒谬结论。
+
+\textbf{真相}：$E_n$ 对 $l$ 的\textbf{偏导数}不为零。$n$ 固定时改变 $l$ 意味着 $n_r$ 必须反向改变（$n_r = n - l - 1$），能量表达式 $E_n = -C/n^2$ 形式不变，但 $n$ 本身依赖于 $l$。
+
+\textbf{安全做法}：直接用 Kramers 关系或已知公式表，不要在考场上临时对 $l$ 求导。
+\end{warnbox}
+
+\subsection{考场速记卡：常见模型的二级结论}
+
+\begin{cheatbox}[必须刻在 DNA 里的结论]
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{|c|c|c|c|}
+\hline
+\textbf{模型} & \textbf{能级} & \textbf{$\langle T\rangle$} & \textbf{$\langle V\rangle$} \\
+\hline
+一维谐振子 & $\hbar\omega(n+\frac{1}{2})$ & $\frac{E_n}{2}$ & $\frac{E_n}{2}$ \\
+\hline
+三维谐振子 & $\hbar\omega(2n_r+l+\frac{3}{2})$ & $\frac{E_n}{2}$ & $\frac{E_n}{2}$ \\
+\hline
+氢原子 & $-\dfrac{e^2}{8\pi\varepsilon_0 a_0 n^2}$ & $-E_n$ & $2E_n$ \\
+\hline
+无限深势阱 & $\dfrac{n^2\pi^2\hbar^2}{2mL^2}$ & $E_n$ & $0$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{4pt}
+\textbf{氢原子期望值表}：
+\[
+\left\langle\frac{1}{r}\right\rangle = \frac{1}{a_0 n^2}, \quad
+\left\langle\frac{1}{r^2}\right\rangle = \frac{1}{n^3 a_0^2(l+\frac{1}{2})}, \quad
+\left\langle\frac{1}{r^3}\right\rangle = \frac{1}{a_0^3 n^3 l(l+\frac{1}{2})(l+1)} \quad (l\geq 1).
+\]
+\end{cheatbox}
+
+\subsection{策略反省与注意力管理}
+
+\begin{thinkbox}[如何克服"二级结论恐惧症"]
+\textbf{核心心态转换}：
+\begin{enumerate}[nosep]
+\item \textbf{从"背诵"到"反射"}：你不是在背公式，而是在建立"看到关键词→启动套路"的条件反射。
+\item \textbf{三级结论分类法}：
+  \begin{itemize}[nosep]
+  \item \textbf{一级}（基础定义）：$[x,p]=i\hbar$，$H\psi=E\psi$——\textbf{必须完全掌握}，不能含糊。
+  \item \textbf{二级}（常见模型结果）：谐振子 $E_n=\hbar\omega(n+1/2)$，氢原子 $E_n=-13.6\text{eV}/n^2$——\textbf{必须记住标准形式}，考场上没有时间从头解。
+  \item \textbf{三级}（复杂推导的中间结果）：比如氢原子 $\langle r^k\rangle$ 的通式——\textbf{考场上可推}，记住推导套路比死记公式更可靠。
+  \end{itemize}
+\item \textbf{考场策略}：
+  \begin{itemize}[nosep]
+  \item 第一遍做题时，\textbf{把所有二级结论写在草稿纸右上角}（如"谐振子：$E_n=\hbar\omega(n+1/2)$，$\langle T\rangle=\langle V\rangle=E/2$"）。
+  \item 这样一旦题目涉及这些模型，你不需要"回忆"，只需要"抄写"——极大降低记忆负荷。
+  \item 如果某个结论你不太确定，\textbf{先假设它是对的，继续做题}。做完后再回头验证。不要在考场上陷入"我到底有没有记错"的焦虑循环。
+  \end{itemize}
+\item \textbf{自信建立}：每次练习时，\textbf{故意不查书}，尝试直接调用二级结论。错了就记下来，下次再练。经过 3-5 次刻意训练，这些结论就会变成你的"肌肉记忆"。
+\end{enumerate}
+\end{thinkbox}
+
+\begin{errorbox}[colback=white]{常见错误与思路短路}
+\textbf{错误 1}：维里定理只记住 $2\langle T\rangle = \langle xV'\rangle$，忘了 $V \propto x^s$ 时的简化形式 $\langle T\rangle = \frac{s}{2}\langle V\rangle$。
+
+\textbf{错误 2}：氢原子求 $\langle 1/r^2\rangle$ 时，直接对 $l$ 求导说 $dE/dl=0$——$E_n$ 对 $l$ 并不独立为零。
+
+\textbf{错误 3}：HF 定理应用时，选了不独立的参数（比如把 $n$ 当参数——$n$ 是量子数，不是哈密顿量中的可调参数）。
+
+\textbf{错误 4}：忘记归一化条件的作用——HF 定理的证明依赖于 $\langle n|n\rangle=1$，非归一化态不成立。
+\end{errorbox}

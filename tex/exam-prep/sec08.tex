@@ -3,8 +3,7 @@
 \section{量子力学：低能中子--中子散射与自旋依赖势}
 \label{sec:nn-scattering}
 
-\textbf{考场速查卡：}
-
+\begin{cheatbox}[考场速查卡]
 \begin{tabular}{lll}
 \textbf{题目给的条件/要求} & \textbf{你该用的工具} & \textbf{绝对不要做的事} \\
 求微分截面 $\sigma(\theta)$ & Born 近似：$|f^{(1)}|^2$ & 不要试图用光学定理求角分布 \\
@@ -15,9 +14,9 @@
 \end{tabular}
 
 一句话总结：Born 近似是``建造'' 微分截面的工具；光学定理是``检验'' 总截面是否幺正的尺子。一级 Born 的结果只能留在 Born 的框架内用（积分得总截面），绝不能跨到光学定理那边去（因为光学定理需要精确的 $f(0)$，而一级 Born 给不出虚部）。
+\end{cheatbox}
 
-\begin{derivationbox}[低能非极化中子--中子散射]
-
+\begin{modelbox}[低能非极化中子--中子散射]
 两个中子发生低能散射（$E \to 0$），相互作用势为
 \[
 V(r) = \begin{cases}
@@ -26,8 +25,9 @@ V_0 \, \vec{\sigma}_1 \cdot \vec{\sigma}_2, & r < a \\[4pt]
 \end{cases}
 \]
 其中 $\vec{\sigma}_1, \vec{\sigma}_2$ 为两中子的泡利矩阵，$V_0$ 为常数。入射中子与靶中子均为非极化。求散射总截面 $\sigma_t$。
+\end{modelbox}
 
-\textbf{考点快速分析}
+\begin{tipbox}[考点快速分析]
 \begin{itemize}
     \item 自旋耦合：$\vec{\sigma}_1 \cdot \vec{\sigma}_2$ 的本征值由总自旋 $S$ 决定
     \item 全同费米子统计：总波函数反对称；s 波空间对称 $\Rightarrow$ 自旋单态
@@ -35,10 +35,9 @@ V_0 \, \vec{\sigma}_1 \cdot \vec{\sigma}_2, & r < a \\[4pt]
     \item 非极化平均：单态概率 $1/4$，三重态概率 $3/4$
     \item 全同粒子对称化：$f(\theta) \to f(\theta) \pm f(\pi - \theta)$
 \end{itemize}
-\end{derivationbox}
+\end{tipbox}
 
 \begin{derivationbox}[自旋耦合、统计与有效势]
-
 总自旋 $\vec{S} = \vec{S}_1 + \vec{S}_2 = \frac{\hbar}{2}(\vec{\sigma}_1 + \vec{\sigma}_2)$。由
 \[
 \vec{S}^2 = \vec{S}_1^2 + \vec{S}_2^2 + 2\vec{S}_1 \cdot \vec{S}_2 = \frac{3}{4}\hbar^2 + \frac{3}{4}\hbar^2 + 2\vec{S}_1 \cdot \vec{S}_2 = \frac{3}{2}\hbar^2 + 2\vec{S}_1 \cdot \vec{S}_2,
@@ -64,9 +63,9 @@ V_0 \, \vec{\sigma}_1 \cdot \vec{\sigma}_2, & r < a \\[4pt]
     \item \textbf{单态}（$s = 0$）：$V_S(r) = -3V_0 \, \Theta(a - r)$，等效为吸引方势阱（设 $V_0 > 0$）
     \item \textbf{三重态}（$s = 1$）：$V_T(r) = +V_0 \, \Theta(a - r)$，等效为排斥方势垒
 \end{itemize}
+\end{derivationbox}
 
-\subsubsection*{为什么要转入质心系？——两体问题分解}
-
+\begin{derivationbox}[为什么要转入质心系？——两体问题分解]
 实验室系中写出的两体薛定谔方程：
 \[
 \left[ -\frac{\hbar^2}{2m}\nabla_1^2 - \frac{\hbar^2}{2m}\nabla_2^2 + V(|\vec{r}_1 - \vec{r}_2|) \right] \Psi(\vec{r}_1, \vec{r}_2) = E_{\text{tot}} \Psi(\vec{r}_1, \vec{r}_2).
@@ -143,9 +142,9 @@ M = 2m \text{（总质量）}, \qquad \mu = \frac{m_1 m_2}{m_1 + m_2} = \frac{m}
 \]
 
 实验室系里``谁入射谁静止'' 的区分在质心系中完全消失。
+\end{derivationbox}
 
-\subsubsection*{为什么说这是全同粒子散射？——实验语言 vs 物理现实}
-
+\begin{insightbox}[为什么说这是全同粒子散射？——实验语言 vs 物理现实]
 题目中``入射中子'' 与``靶中子'' 的说法只是实验语言的方便描述：初始时刻一束中子飞向一个静止的中子靶。但物理上：
 \begin{enumerate}
     \item 两者都是中子：质量、电荷（零）、自旋完全相同，没有任何内禀标签可以区分它们。
@@ -154,14 +153,13 @@ M = 2m \text{（总质量）}, \qquad \mu = \frac{m_1 m_2}{m_1 + m_2} = \frac{m}
 \end{enumerate}
 
 一句话：``入射'' 和``靶'' 只描述 $t \to -\infty$ 时的初始制备；一旦散射发生，两个中子就是全同的、不可区分的费米子，总波函数必须反对称。
+\end{insightbox}
 
 \subsubsection*{为什么三重态在 $E \to 0$ 被压制？}
 
 全同费米子要求总波函数反对称。s 波（$l = 0$）空间波函数对称，只能配反对称的自旋单态。三重态要求空间反对称，最低允许的分波是 $l = 1$（p 波）。p 波在原点有离心势垒 $l(l+1)\hbar^2/2\mu r^2$，相移 $\delta_1 \sim k^3$（当 $k \to 0$），截面被 $k^4$ 压制。因此在 $E \to 0$ 极限下，只有单态的 s 波有贡献。
-\end{derivationbox}
 
-\begin{insightbox}[为什么这道题必须用分波法？]
-
+\begin{derivationbox}[为什么这道题必须用分波法？]
 \subsubsection*{分波法的``触发条件''——与 Born 近似的对比}
 
 这道题有两个特征，直接决定了分波法是唯一自然的选择：
@@ -171,7 +169,9 @@ M = 2m \text{（总质量）}, \qquad \mu = \frac{m_1 m_2}{m_1 + m_2} = \frac{m}
 \end{itemize}
 
 考场识别标签：看到``$E \to 0$'' + ``球对称势'' + ``求总截面''，反射弧应该是：分波法 $\to$ 只算 $l = 0$ $\to$ 求相移 $\delta_0$ $\to$ 总截面 $4\pi\sin^2\delta_0/k^2$。
+\end{derivationbox}
 
+\begin{derivationbox}[离心势垒与低能压制]
 \subsubsection*{离心势垒与低能压制——$\delta_l \sim k^{2l+1}$ 从哪来？}
 
 对第 $l$ 分波，径向方程为
@@ -207,10 +207,9 @@ u_l(r) \sim r^{l+1} \quad \Longrightarrow \quad R_l(r) = \frac{u_l}{r} \sim r^l.
 对 $l = 0$：$\sigma_0 \sim k^0 = \text{常数}$；对 $l = 1$：$\sigma_1 \sim k^4$；对 $l = 2$：$\sigma_2 \sim k^8$。
 
 结论：低能时 s 波（$l = 0$）截面趋于常数，所有 $l \ge 1$ 的分波被 $k^{4l}$ 强烈压制。三重态因统计要求必须取 $l \ge 1$，其最低分波 $l = 1$ 的截面 $\sim k^4 \to 0$，故在 $E \to 0$ 极限下无贡献。
-\end{insightbox}
+\end{derivationbox}
 
 \begin{derivationbox}[s 波分波法与相移]
-
 \subsubsection*{径向方程从哪来？——逐步推导}
 
 在质心系中，相对运动满足定态薛定谔方程（设势只依赖于 $r = |\vec{r}_1 - \vec{r}_2|$）：
@@ -248,9 +247,9 @@ u_l(r) \sim r^{l+1} \quad \Longrightarrow \quad R_l(r) = \frac{u_l}{r} \sim r^l.
 \frac{d^2 u}{dr^2} + \frac{2\mu}{\hbar^2}\bigl(E - V(r)\bigr) u = 0.
 \]
 这正是题目中的两个区间的方程来源。$r < a$ 时 $V = -3V_0$，$r > a$ 时 $V = 0$。
+\end{derivationbox}
 
-\subsubsection*{球 Bessel 恐惧消除器}
-
+\begin{tipbox}[球 Bessel 恐惧消除器]
 你担心分波法要背球 Bessel 函数 $j_l(x), n_l(x)$？对于 $l = 0$ 的 s 波，完全不需要：
 \[
 j_0(x) = \frac{\sin x}{x}, \qquad n_0(x) = -\frac{\cos x}{x}.
@@ -260,7 +259,9 @@ j_0(x) = \frac{\sin x}{x}, \qquad n_0(x) = -\frac{\cos x}{x}.
 什么时候真需要球 Bessel？只有当题目要求你算 $l \ge 1$（p 波、d 波等）的相移，或者势的形式复杂（如 $V(r) \propto r^{-1}$ 库仑势要用合流超几何函数）。
 
 考场策略：低能球方势阱散射，只考 $l = 0$。把 $u(r) = rR(r)$ 的方程记住，不用碰任何特殊函数。
+\end{tipbox}
 
+\begin{derivationbox}[s 波分波法求解]
 在质心系中，约化质量 $\mu = m_n/2$。对单态通道，令 $\psi(r) = u(r)/r$，径向方程：
 \[
 \begin{cases}
@@ -286,9 +287,9 @@ A\alpha\cos(\alpha a) &= Bk\cos(ka + \delta_0).
 \[
 \tan(ka + \delta_0) = \frac{k}{\alpha}\tan(\alpha a) \quad \Longrightarrow \quad \delta_0 = \arctan\!\left[ \frac{k}{\alpha}\tan(\alpha a) \right] - ka.
 \]
+\end{derivationbox}
 
-\subsubsection*{相移的 $n\pi$ 不确定性与物理唯一性}
-
+\begin{derivationbox}[相移的 $n\pi$ 不确定性与物理唯一性]
 从 $\tan(ka + \delta_0) = C$ 只能确定 $ka + \delta_0$ 模 $\pi$，因此形式上 $\delta_0$ 可以加减任意 $n\pi$。但这完全不构成物理上的不唯一，原因有三：
 \begin{enumerate}
     \item \textbf{可观测量不变：}散射振幅 $f(\theta) = \frac{1}{k}e^{i\delta_0}\sin\delta_0$ 在 $\delta_0 \to \delta_0 + n\pi$ 下，$e^{i(\delta_0+n\pi)}\sin(\delta_0 + n\pi) = (-1)^n e^{i\delta_0} \cdot (-1)^n \sin\delta_0 = e^{i\delta_0}\sin\delta_0$，严格不变。截面 $\sigma \propto |f|^2$ 更不变。
@@ -312,7 +313,6 @@ $e^{ix} = C$ & $e^{i(x+2\pi)} = e^{ix}$ & $2\pi$ \\
 \end{derivationbox}
 
 \begin{derivationbox}[低能极限 $E \to 0$]
-
 当 $E \to 0$ 时，$k \to 0$，$\alpha \to \alpha_0 \equiv \sqrt{6\mu V_0/\hbar^2}$。对 $\delta_0$ 做泰勒展开：
 \[
 \delta_0 \approx k\, \frac{\tan(\alpha_0 a)}{\alpha_0} - ka = ka \left[ \frac{\tan(\alpha_0 a)}{\alpha_0 a} - 1 \right].
@@ -323,9 +323,9 @@ $e^{ix} = C$ & $e^{i(x+2\pi)} = e^{ix}$ & $2\pi$ \\
 a_s \equiv -\lim_{k\to 0} \frac{\delta_0}{k} = a \left[ 1 - \frac{\tan(\alpha_0 a)}{\alpha_0 a} \right],
 \]
 则 $\delta_0 \approx -k a_s$。
+\end{derivationbox}
 
-\subsubsection*{散射长度的物理含义——为什么 Born 近似里没有它？}
-
+\begin{insightbox}[散射长度的物理含义——为什么 Born 近似里没有它？]
 物理图像：在极低能量下，入射粒子的德布罗意波长 $\lambda = 2\pi/k \to \infty$，远大于势的作用范围 $a$。粒子``感受'' 不到势的内部细节，只被一个等效的硬球边界散射。散射长度 $a_s$ 就是这个等效硬球的半径。
 
 \textbf{为什么 Born 近似没有它？}
@@ -340,10 +340,9 @@ a_s \equiv -\lim_{k\to 0} \frac{\delta_0}{k} = a \left[ 1 - \frac{\tan(\alpha_0 
 \sigma_0 = 4\pi|f|^2 \xrightarrow{k\to 0} 4\pi a_s^2.
 \]
 这被称为有效范围理论（Effective Range Theory）的零阶结果。在冷原子物理中，散射长度是调控原子间相互作用的核心参数（Feshbach 共振就是通过磁场调节 $a_s$ 从 $-\infty$ 到 $+\infty$）。
-\end{derivationbox}
+\end{insightbox}
 
 \begin{derivationbox}[对称化、非极化平均与总截面]
-
 \subsubsection*{极化、非极化与部分极化——考场不害怕指南}
 
 在涉及自旋的散射问题中，``极化'' 状态决定你对初态自旋做什么样的平均。核心只有三种情况：
@@ -412,4 +411,3 @@ $|{\downarrow\uparrow}\rangle$ & $\frac{1}{\sqrt{2}}(|1, 0\rangle - |0, 0\rangle
 $|{\downarrow\downarrow}\rangle$ & $|1, -1\rangle$ & $s = 1$（三重态） & $1/4$ \\
 \end{tabular}
 \end{derivationbox}
-

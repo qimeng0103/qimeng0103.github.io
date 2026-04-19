@@ -18,7 +18,7 @@ x H_n(\xi) = \frac{1}{\sqrt{\alpha}} \left[ \sqrt{\frac{n}{2}} H_{n-1}(\xi) + \s
 \]
 \end{modelbox}
 
-\begin{tipbox}[考点快速分析]
+\subsection{考点快速分析}
 
 \begin{tipbox}[考点快速分析]
 \begin{itemize}
@@ -28,9 +28,8 @@ x H_n(\xi) = \frac{1}{\sqrt{\alpha}} \left[ \sqrt{\frac{n}{2}} H_{n-1}(\xi) + \s
 \item Poisson 分布：$P_n = \dfrac{e^{-\bar{n}} \bar{n}^n}{n!}$，平均量子数 $\bar{n} = \lambda^2/(2m\omega\hbar)$
 \end{itemize}
 \end{tipbox}
-\end{tipbox}
 
-\begin{derivationbox}[$\delta$ 脉冲的时间演化算符]
+\subsection{$\delta$ 脉冲的时间演化算符}
 
 \begin{derivationbox}[$\delta$ 脉冲的时间演化算符]
 对 $H'(t) = \lambda x\, \delta(t)$，薛定谔方程在 $t=0$ 处积分：
@@ -47,9 +46,8 @@ U = \exp\!\left( -\frac{i\lambda}{\hbar} x \right).
 \]
 \textbf{关键：}$\delta(t)$ 脉冲下算符是精确指数，不是微扰级数。这是与常微扰、简谐微扰的本质区别。
 \end{derivationbox}
-\end{derivationbox}
 
-\begin{derivationbox}[位移算符与相干态]
+\subsection{位移算符与相干态}
 
 \begin{derivationbox}[位移算符与相干态]
 用升降算符表示位置：
@@ -80,9 +78,8 @@ e^{\alpha a^\dagger - \alpha^* a} = e^{-|\alpha|^2/2} \, e^{\alpha a^\dagger} e^
 |\alpha\rangle = e^{-|\alpha|^2/2} e^{\alpha a^\dagger} |0\rangle = e^{-|\alpha|^2/2} \sum_{n=0}^\infty \frac{\alpha^n}{\sqrt{n!}} |n\rangle.
 \]
 \end{derivationbox}
-\end{derivationbox}
 
-\begin{derivationbox}[跃迁概率——Poisson 分布]
+\subsection{跃迁概率——Poisson 分布}
 
 \begin{formulabox}[跃迁概率——Poisson 分布]
 由相干态的 Fock 展开：
@@ -129,9 +126,8 @@ U = e^{\beta^2/2} \, e^{\beta a^\dagger} e^{-\beta a}.
 \]
 作用在 $|0\rangle$ 上：$U|0\rangle = e^{\beta^2/2} e^{\beta a^\dagger} |0\rangle$。由于 $\beta$ 是纯虚数，$\beta^2 = -|\beta|^2$，所以 $e^{\beta^2/2} = e^{-|\beta|^2/2}$，与相干态结果一致。
 \end{derivationbox}
-\end{derivationbox}
 
-\begin{cheatbox}[考场速记卡：三种脉冲形式的对比]
+\subsection{考场速记卡：三种脉冲形式的对比}
 
 \begin{cheatbox}[考场速记卡：三种脉冲形式的对比]
 \begin{center}
@@ -148,5 +144,3 @@ $V\,\delta(t)$（瞬时脉冲） & 精确指数 $e^{-iV/\hbar}$ & 相干态/Pois
 
 \textbf{关键区分：}只有 $\delta(t)$ 能让 $U$ 写成闭式指数，因为积分 $\int \delta(t)\,dt$ 是有限的；其他形式都需要微扰展开。
 \end{cheatbox}
-\end{cheatbox}
-
