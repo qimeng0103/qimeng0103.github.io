@@ -167,35 +167,102 @@ HF 定理：
 \]
 \end{derivationbox}
 
-\subsubsection{求 $\langle 1/r^2\rangle$——把离心势系数当参数}
+\subsubsection{求 $\langle 1/r^2\rangle$——把角动量量子数 $l$ 当参数（严格版）}
 
-\begin{derivationbox}[正确的参数选取]
-\textbf{错误做法}：直接把 $l$ 当参数说 "$dE/dl=0$"——$E_n$ 对 $n$ 简并，但对 $l$ 并不独立为零。
+\begin{derivationbox}[HF 定理对 $l$ 求导（固定 $n_r$）]
+\textbf{Step 1：明确参数与约束}
 
-\textbf{正确做法}：引入显式参数 $\lambda$ 到离心势项：
+氢原子主量子数 $n = n_r + l + 1$。当我们把 $l$ 当作连续参数求导时，\textbf{必须固定径向量子数 $n_r$}（因为 $n_r$ 是径向波函数的节点数，与角动量独立）。
+
+因此：
 \[
-H(\lambda) = T + \lambda\frac{\hbar^2 l(l+1)}{2mr^2} + V(r).
+\frac{\partial n}{\partial l}\bigg|_{n_r} = 1.
 \]
 
-HF 定理：
+\textbf{Step 2：计算 $\partial E/\partial l$}
+
+氢原子能级 $E_n = -\dfrac{C}{n^2}$，其中 $C = \dfrac{me^4}{32\pi^2\varepsilon_0^2\hbar^2} = \dfrac{\hbar^2}{2ma_0^2}$。
+
+对 $l$ 求导（固定 $n_r$）：
 \[
-\frac{\partial E_n}{\partial \lambda} = \left\langle \frac{\hbar^2 l(l+1)}{2mr^2}\right\rangle.
+\frac{\partial E_n}{\partial l}
+= \frac{dE_n}{dn}\cdot\frac{\partial n}{\partial l}
+= \frac{2C}{n^3}\cdot 1
+= \frac{2C}{n^3}
+= -\frac{2E_n}{n}.
 \]
 
-但 $E_n$ 与 $\lambda$ 的关系需要通过 $n = n_r + l + 1$ 的隐式依赖来求。更直接的方法是使用\textbf{Kramers--Pasternack 关系}（或直接用 HF 对 $l$ 求导结合 $n$ 固定）。
+\textbf{关键}：$\partial E/\partial l \neq 0$。虽然 $E_n$ 对 $n$ 简并（即相同 $n$、不同 $l$ 的能量相同），但这不意味着 $E$ 对 $l$ 的导数为零——因为 $n$ 本身依赖于 $l$。
 
-标准结果：
+\textbf{Step 3：应用 HF 定理}
+
+哈密顿量对 $l$ 的偏导：
 \[
-\boxed{\left\langle \frac{1}{r^2}\right\rangle_{nl} = \frac{1}{n^3 a_0^2\left(l+\frac{1}{2}\right)}}.
+\frac{\partial H}{\partial l}
+= \frac{\partial}{\partial l}\left[\frac{\hbar^2 l(l+1)}{2mr^2}\right]
+= \frac{\hbar^2(2l+1)}{2mr^2}.
+\]
+
+HF 定理给出：
+\[
+\frac{\partial E_n}{\partial l}
+= \left\langle\frac{\partial H}{\partial l}\right\rangle
+= \frac{\hbar^2(2l+1)}{2m}\left\langle\frac{1}{r^2}\right\rangle.
+\]
+
+\textbf{Step 4：联立求解}
+
+将 Step 2 与 Step 3 联立：
+\[
+\frac{\hbar^2(2l+1)}{2m}\left\langle\frac{1}{r^2}\right\rangle
+= \frac{2C}{n^3}
+= \frac{2}{n^3}\cdot\frac{\hbar^2}{2ma_0^2}.
+\]
+
+两边消去 $\hbar^2/(2m)$：
+\[
+(2l+1)\left\langle\frac{1}{r^2}\right\rangle
+= \frac{2}{n^3 a_0^2}.
+\]
+
+因此：
+\[
+\boxed{\left\langle \frac{1}{r^2}\right\rangle_{nl}
+= \frac{2}{(2l+1)n^3 a_0^2}
+= \frac{1}{n^3 a_0^2\left(l+\frac{1}{2}\right)}}.
 \]
 \end{derivationbox}
+
+\begin{formulabox}[氢原子期望值完整表]
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{期望值} & \textbf{结果} & \textbf{推导方法} \\
+\hline
+$\langle 1/r\rangle$ & $\dfrac{1}{n^2 a_0}$ & HF：把 $e^2$ 当参数 \\
+\hline
+$\langle 1/r^2\rangle$ & $\dfrac{1}{n^3 a_0^2(l+\frac{1}{2})}$ & HF：对 $l$ 求导（固定 $n_r$） \\
+\hline
+$\langle 1/r^3\rangle$ & $\dfrac{1}{a_0^3 n^3 l(l+\frac{1}{2})(l+1)}$ & Kramers 关系（$l\geq 1$） \\
+\hline
+$\langle r\rangle$ & $\dfrac{a_0}{2}[3n^2-l(l+1)]$ & Kramers 关系 \\
+\hline
+$\langle r^2\rangle$ & $\dfrac{a_0^2 n^2}{2}[5n^2+1-3l(l+1)]$ & Kramers 关系 \\
+\hline
+\end{tabular}
+\end{center}
+\end{formulabox}
 
 \begin{warnbox}[考场最大陷阱：$\langle 1/r^2\rangle \neq 0$]
 很多人看到"$E_n$ 与 $l$ 简并"就以为 $dE/dl=0$，从而得出 $\langle 1/r^2\rangle = 0$ 的荒谬结论。
 
-\textbf{真相}：$E_n$ 对 $l$ 的\textbf{偏导数}不为零。$n$ 固定时改变 $l$ 意味着 $n_r$ 必须反向改变（$n_r = n - l - 1$），能量表达式 $E_n = -C/n^2$ 形式不变，但 $n$ 本身依赖于 $l$。
+\textbf{错误根源}：把"$E$ 不依赖于 $l$"理解成了"$\partial E/\partial l = 0$"。实际上，$E_n = -C/n^2$ 中的 $n$ 本身依赖于 $l$（$n = n_r + l + 1$），所以
+\[
+\frac{\partial E}{\partial l} = \frac{dE}{dn}\cdot\frac{\partial n}{\partial l} = \frac{2C}{n^3} \neq 0.
+\]
 
-\textbf{安全做法}：直接用 Kramers 关系或已知公式表，不要在考场上临时对 $l$ 求导。
+\textbf{考场策略}：如果记不住完整推导，\textbf{直接背公式} $\langle 1/r^2\rangle = 1/[n^3 a_0^2(l+1/2)]$，然后用量纲检验（$[1/r^2] = 1/L^2$，右边量纲 $1/a_0^2$，正确）。
 \end{warnbox}
 
 \subsection{考场速记卡：常见模型的二级结论}
