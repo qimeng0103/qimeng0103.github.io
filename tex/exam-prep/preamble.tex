@@ -6,7 +6,7 @@
 \documentclass[10pt,a4paper]{article}
 
 % ---------- 基础包 ----------
-\usepackage[margin=1.2cm, top=1.5cm, bottom=1.5cm, headheight=20pt]{geometry}
+\usepackage[margin=1.2cm, top=1.8cm, bottom=1.5cm, headheight=20pt]{geometry}
 \usepackage{fancyhdr}  % 必须在 ctex 之前加载，否则页码会被覆盖
 \usepackage[heading=true]{ctex}  % 中文支持
 \usepackage{multicol}  % 双栏/三栏
@@ -280,3 +280,6 @@
 \renewcommand{\headrulewidth}{0.4pt}
 \renewcommand{\headrule}{\hbox to\headwidth{\color{gray}\leaders\hrule height \headrulewidth\hfill}}
 \AtBeginDocument{\pagestyle{fancy}}
+
+% 修复 titlesec 覆盖 sectionmark 导致 \leftmark 为空的问题
+\renewcommand{\sectionmark}[1]{\markboth{\thesection\ #1}{}}
