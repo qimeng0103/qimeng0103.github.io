@@ -1,0 +1,179 @@
+% ============================================================
+% Section 32: 单量子比特的迹距离与Bloch球
+% ============================================================
+\section{量子信息：单量子比特的迹距离——Bloch 球上的几何距离}
+
+\begin{modelbox}{题目}
+在 $\mathbb{C}^2$（单量子比特）空间中，两个量子态的密度矩阵分别为 $\rho$ 和 $\rho'$。
+
+\textbf{(1)} 用 Bloch 矢量表示，证明迹距离
+\[
+  D(\rho,\rho') = \frac12\operatorname{Tr}|\rho-\rho'|
+\]
+满足 $D(\rho,\rho') = \frac12|\bm r - \bm r'|$，其中 $\bm r, \bm r' \in \mathbb{R}^3$ 为 Bloch 矢量。
+
+\textbf{(2)} 给出用密度矩阵元表示的等价形式，并说明取值范围和物理意义。
+\end{modelbox}
+
+\vspace{0.3em}
+\begin{insightbox}{结论预告}
+迹距离在 Bloch 球上恰好等于欧氏距离的一半：$D = \frac12|\bm r - \bm r'|$。最大值 $D=1$ 对应正交纯态（对径点），最小值 $D=0$ 对应同一态。
+\end{insightbox}
+
+
+\subsection{迹距离的定义}
+
+\begin{modelbox}{迹距离 (Trace Distance)}
+\[
+  D(\rho,\rho') \equiv \frac12\operatorname{Tr}|\rho-\rho'|,
+  \quad |A| \equiv \sqrt{A^\dagger A}.
+\]
+由于 $\rho-\rho'$ 厄米，可对角化。设其特征值为 $\lambda_i$，则 $|\rho-\rho'|$ 的特征值为 $|\lambda_i|$，于是：
+\[
+  D(\rho,\rho') = \frac12\sum_i |\lambda_i|.
+\]
+\end{modelbox}
+
+
+\subsection{Bloch 表示}
+
+\subsubsection{单量子比特密度矩阵}
+
+\begin{tipbox}{Bloch 球参数化}
+任意 $2\times 2$ 密度矩阵可写成：
+\[
+  \rho = \frac12(I + \bm r\cdot\bm\sigma), \qquad
+  \rho' = \frac12(I + \bm r'\cdot\bm\sigma),
+\]
+其中 $\bm r, \bm r' \in \mathbb{R}^3$，$|\bm r| \le 1$，$|\bm r'| \le 1$（等号对应纯态），$\bm\sigma=(\sigma_x,\sigma_y,\sigma_z)$ 为 Pauli 矩阵。
+\end{tipbox}
+
+\subsubsection{计算 $\rho-\rho'$}
+
+\begin{align*}
+  \rho - \rho' &= \frac12(\bm r - \bm r')\cdot\bm\sigma
+  \equiv \frac12 \Delta\bm r \cdot\bm\sigma.
+\end{align*}
+
+\subsubsection{$\Delta\bm r\cdot\bm\sigma$ 的特征值}
+
+\begin{derivationbox}{Pauli 矩阵的关键性质}
+对任意 $\bm v\in\mathbb{R}^3$，矩阵 $\bm v\cdot\bm\sigma = v_x\sigma_x + v_y\sigma_y + v_z\sigma\sigma_z$ 满足：
+\[
+  (\bm v\cdot\bm\sigma)^2 = |\bm v|^2 I.
+\]
+这是因为 $\sigma_i\sigma_j = \delta_{ij}I + i\varepsilon_{ijk}\sigma_k$，且交叉项在平方时抵消。
+
+因此 $(\bm v\cdot\bm\sigma)^2 = |\bm v|^2 I$，其特征值必为 $\pm|\bm v|$（各一个，因为迹为零）。
+\end{derivationbox}
+
+应用到 $\bm v = \frac12\Delta\bm r$：
+\[
+  \rho-\rho' = \frac12\Delta\bm r\cdot\bm\sigma
+  \quad\Longrightarrow\quad
+  \text{特征值为 } \pm\frac12|\Delta\bm r|.
+\]
+
+\subsubsection{求 $|\rho-\rho'|$ 的迹}
+
+$|\rho-\rho'|$ 的特征值是 $|{+\frac12|\Delta\bm r|}| = |{-\frac12|\Delta\bm r|}| = \frac12|\Delta\bm r|$（各一个），所以：
+\[
+  \operatorname{Tr}|\rho-\rho'| = \frac12|\Delta\bm r| + \frac12|\Delta\bm r| = |\Delta\bm r|.
+\]
+
+\begin{formulabox}{Bloch 球上的迹距离}
+\[
+  \boxed{D(\rho,\rho') = \frac12|\bm r - \bm r'|}
+\]
+\end{formulabox}
+
+
+\subsection{矩阵元表示}
+
+\subsubsection{Bloch 分量与矩阵元的对应}
+
+设 $\rho = \begin{pmatrix}\rho_{11} & \rho_{12} \\ \rho_{21} & \rho_{22}\end{pmatrix}$，则：
+\[
+  x = 2\operatorname{Re}\rho_{12}, \quad
+  y = 2\operatorname{Im}\rho_{12}, \quad
+  z = \rho_{11} - \rho_{22}.
+\]
+（由 $\rho = \frac12\begin{pmatrix}1+z & x-iy \\ x+iy & 1-z\end{pmatrix}$ 对比得到。）
+
+\subsubsection{用矩阵元表示迹距离}
+
+\begin{align*}
+  |\bm r - \bm r'|^2
+  &= (x-x')^2 + (y-y')^2 + (z-z')^2 \\
+  &= 4|\rho_{12}-\rho'_{12}|^2 + (\rho_{11}-\rho_{22}-\rho'_{11}+\rho'_{22})^2.
+\end{align*}
+
+因此：
+\begin{formulabox}{矩阵元形式}
+\[
+  \boxed{D(\rho,\rho') = \sqrt{|\rho_{12}-\rho'_{12}|^2 + \frac14(\rho_{11}-\rho_{22}-\rho'_{11}+\rho'_{22})^2}}
+\]
+\end{formulabox}
+
+
+\subsection{物理意义与取值范围}
+
+\subsubsection{几何解释}
+
+\begin{insightbox}{Bloch 球上的几何图像}
+\begin{itemize}[nosep]
+  \item $D=0$：$\bm r = \bm r'$，两态完全相同
+  \item $0<D<1$：两态部分可区分， Bloch 球上距离越远离区分度越高
+  \item $D=1$：$\bm r = -\bm r'$ 且 $|\bm r|=|\bm r'|=1$，即\textbf{正交纯态}（Bloch 球对径点），如 $|0\rangle$ 与 $|1\rangle$
+\end{itemize}
+\end{insightbox}
+
+\subsubsection{最优测量区分概率}
+
+\begin{insightbox}{迹距离的操作意义}
+单次测量下成功区分 $\rho$ 和 $\rho'$ 的最大概率为：
+\[
+  \boxed{P_{\text{success}}^{\max} = \frac12\bigl(1 + D(\rho,\rho')\bigr)}
+\]
+\begin{itemize}[nosep]
+  \item $D=0$：$P_{\max}=1/2$（随机猜测，无法区分）
+  \item $D=1$：$P_{\max}=1$（完美区分）
+\end{itemize}
+迹距离因此是量子态``可区分性''的度量，在量子密码、量子信道容量等领域有核心应用。
+\end{insightbox}
+
+\subsubsection{与保真度的关系}
+
+\begin{tipbox}{迹距离 vs 保真度}
+对单量子比特，保真度 $F(\rho,\rho')$ 与迹距离满足 Fuchs--van de Graaf 不等式：
+\[
+  1 - \sqrt{F} \le D \le \sqrt{1 - F}.
+\]
+在纯态情况下等号成立：$D = \sqrt{1-F}$。对单量子比特纯态 $|\psi\rangle,|\phi\rangle$，$F=|\langle\psi|\phi\rangle|^2=\cos^2(\theta/2)$（$\theta$ 为 Bloch 矢量夹角），则 $D=\sin(\theta/2)=\frac12|\bm r-\bm r'|$，一致。
+\end{tipbox}
+
+
+\subsection{常见错误与考场策略}
+
+\begin{errorbox}{易错点}
+\begin{enumerate}
+  \item \textbf{绝对值算符 vs 普通绝对值}：$|A|=\sqrt{A^\dagger A}$ 是对 $A$ 取模（谱分解后特征值取绝对值），不是逐元素的绝对值。对厄米矩阵 $H=U\Lambda U^\dagger$，$|H|=U|\Lambda|U^\dagger$。
+  \item \textbf{特征值符号}：$\rho-\rho'$ 的特征值是 $\pm\frac12|\Delta\bm r|$（一正一负），但 $|\rho-\rho'|$ 的特征值都是 $\frac12|\Delta\bm r|$（两个正）。迹距离计算的是后者。
+  \item \textbf{纯态条件}：$D=1$ 要求两态为正交\textbf{纯态}。若只是任意两个态，最大值仍为 1，但仅当它们为正交纯态时达到。
+  \item \textbf{量纲混淆}：Bloch 矢量 $|\bm r|\le 1$ 无量纲，迹距离 $0\le D\le 1$ 也无量纲。
+\end{enumerate}
+\end{errorbox}
+
+\begin{cheatbox}{单量子比特迹距离：速查卡}
+\textbf{Bloch 表示}：$D = \frac12|\bm r - \bm r'|$
+
+\textbf{矩阵元表示}：
+\[
+  D = \sqrt{|\Delta\rho_{12}|^2 + \frac14(\Delta\rho_{11}-\Delta\rho_{22})^2}
+\]
+\textbf{最优区分概率}：$P_{\max} = \frac12(1+D)$
+
+\textbf{Pauli 关键恒等式}：$(\bm v\cdot\bm\sigma)^2 = |\bm v|^2 I$
+
+\textbf{特征值速记}：$\bm v\cdot\bm\sigma$ 的特征值永远是 $\pm|\bm v|$（迹为零，行列式为 $-|v|^2$）
+\end{cheatbox}

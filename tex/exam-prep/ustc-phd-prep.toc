@@ -234,3 +234,18 @@
 \contentsline {subsubsection}{\numberline {31.3.1}DK 分布 vs 标准概率}{167}{subsubsection.31.3.1}%
 \contentsline {subsubsection}{\numberline {31.3.2}与 Wigner 函数的联系}{167}{subsubsection.31.3.2}%
 \contentsline {subsection}{\numberline {31.4}常见错误与考场策略}{167}{subsection.31.4}%
+\contentsline {section}{\numberline {32}量子信息：单量子比特的迹距离——Bloch 球上的几何距离}{168}{section.32}%
+\contentsline {subsection}{\numberline {32.1}迹距离的定义}{168}{subsection.32.1}%
+\contentsline {subsection}{\numberline {32.2}Bloch 表示}{168}{subsection.32.2}%
+\contentsline {subsubsection}{\numberline {32.2.1}单量子比特密度矩阵}{168}{subsubsection.32.2.1}%
+\contentsline {subsubsection}{\numberline {32.2.2}计算 $\rho -\rho '$}{168}{subsubsection.32.2.2}%
+\contentsline {subsubsection}{\numberline {32.2.3}$\Delta \bm {r}\cdot \bm {\sigma }$ 的特征值}{168}{subsubsection.32.2.3}%
+\contentsline {subsubsection}{\numberline {32.2.4}求 $|\rho -\rho '|$ 的迹}{168}{subsubsection.32.2.4}%
+\contentsline {subsection}{\numberline {32.3}矩阵元表示}{169}{subsection.32.3}%
+\contentsline {subsubsection}{\numberline {32.3.1}Bloch 分量与矩阵元的对应}{169}{subsubsection.32.3.1}%
+\contentsline {subsubsection}{\numberline {32.3.2}用矩阵元表示迹距离}{169}{subsubsection.32.3.2}%
+\contentsline {subsection}{\numberline {32.4}物理意义与取值范围}{169}{subsection.32.4}%
+\contentsline {subsubsection}{\numberline {32.4.1}几何解释}{169}{subsubsection.32.4.1}%
+\contentsline {subsubsection}{\numberline {32.4.2}最优测量区分概率}{169}{subsubsection.32.4.2}%
+\contentsline {subsubsection}{\numberline {32.4.3}与保真度的关系}{169}{subsubsection.32.4.3}%
+\contentsline {subsection}{\numberline {32.5}常见错误与考场策略}{170}{subsection.32.5}%
