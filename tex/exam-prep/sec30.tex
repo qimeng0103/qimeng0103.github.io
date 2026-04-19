@@ -1,0 +1,284 @@
+% ============================================================
+% Section 30: 电子在匀强磁场中的运动与反常磁矩
+% ============================================================
+\section{量子力学：匀强磁场中的电子与反常磁矩——$g-2$ 实验的理论基础}
+
+\begin{modelbox}{题目}
+电子（质量 $M$，电荷 $q<0$）在沿 $z$ 轴的匀强磁场 $\bm B=B\hat{\bm z}$ 中运动。取对称规范 $\bm A=\frac12\bm B\times\bm R$。
+
+哈密顿量：
+\[
+  H = \frac{M}{2}\bm V^2 - \bm\mu\cdot\bm B,
+  \quad \bm V = \frac{\bm P-q\bm A}{M},
+  \quad \bm\mu = \gamma\bm S,
+  \quad \gamma = (1+a)\frac{q}{M}.
+\]
+回旋频率 $\omega = qB/M$（$q<0$，故 $\omega<0$）。
+
+\textbf{(1)} 验证对易关系：
+\[
+  [V_x,H]=i\hbar\omega V_y,\quad [V_y,H]=-i\hbar\omega V_x,\quad [V_z,H]=0.
+\]
+\textbf{(2)} 定义
+\[
+  C_1=\langle S_zV_z\rangle,\quad
+  C_2=\langle S_xV_x+S_yV_y\rangle,\quad
+  C_3=\langle S_xV_y-S_yV_x\rangle,
+\]
+求它们的时间演化方程。
+\textbf{(3)} 求 $\langle\bm S\cdot\bm V\rangle_t$ 并讨论 $a=0$ 与 $a\neq 0$ 的物理区别。
+\end{modelbox}
+
+\vspace{0.3em}
+\begin{insightbox}{结论预告}
+$\bm S\cdot\bm V$ 以频率 $\Omega=\sqrt{\omega_S^2-\omega^2}=|\omega|\sqrt{a^2+2a}$ 振荡。$a=0$（无反常磁矩）时不振荡；$a\neq 0$ 时的振荡正是 \textbf{$g-2$ 实验}测量电子反常磁矩的理论基础。
+\end{insightbox}
+
+
+\subsection{验证对易关系}
+
+\subsubsection{速度分量的对易子}
+
+\begin{derivationbox}{$[V_x, V_y]$ 的计算}
+展开定义 $V_i=(P_i-qA_i)/M$：
+\[
+  [V_x,V_y] = \frac{1}{M^2}\bigl([P_x,P_y]-q[P_x,A_y]-q[A_x,P_y]+q^2[A_x,A_y]\bigr).
+\]
+其中 $[P_x,P_y]=[A_x,A_y]=0$。利用 $[P_i,f(\bm R)]=-i\hbar\,\partial_i f$：
+\begin{align*}
+  [P_x,A_y] &= -i\hbar\,\frac{\partial A_y}{\partial x},
+  &[A_x,P_y] &= i\hbar\,\frac{\partial A_x}{\partial y}.
+\end{align*}
+
+对称规范下 $\bm A=\frac12(-By, Bx, 0)$，即 $A_x=-\frac12By$，$A_y=\frac12Bx$：
+\[
+  \frac{\partial A_y}{\partial x}=\frac{B}{2},\qquad
+  \frac{\partial A_x}{\partial y}=-\frac{B}{2}.
+\]
+
+代入：
+\begin{align*}
+  [V_x,V_y]
+  &= \frac{1}{M^2}\Bigl(-q\bigl(-i\hbar\tfrac{B}{2}\bigr)-q\bigl(i\hbar(-\tfrac{B}{2})\bigr)\Bigr) \\
+  &= \frac{i\hbar qB}{M^2} = \frac{i\hbar\omega}{M}.
+\end{align*}
+\end{derivationbox}
+
+同理，$[V_y,V_z]=[V_z,V_x]=0$（因为 $A_z=0$ 且 $A_x,A_y$ 与 $z$ 无关）。
+
+\begin{formulabox}{速度对易关系}
+\[
+  \boxed{[V_x,V_y]=\frac{i\hbar\omega}{M}}, \qquad [V_y,V_z]=[V_z,V_x]=0.
+\]
+这与 $[X,P]=i\hbar$ 的``量子化''结构类似，但量纲不同（速度$	o$速度）。
+\end{formulabox}
+
+\subsubsection{$[V_i, H]$ 的推导}
+
+将哈密顿量写成
+\[
+  H = \frac{M}{2}(V_x^2+V_y^2+V_z^2) - \gamma B S_z.
+\]
+
+由于空间自由度与自旋自由度独立，$[V_i, S_z]=0$。因此：
+\[
+  [V_x, H] = \frac{M}{2}[V_x, V_x^2+V_y^2+V_z^2] = \frac{M}{2}[V_x, V_y^2].
+\]
+
+利用 $[A,B^2]=[A,B]B+B[A,B]$ 和 $[V_x,V_y]=i\hbar\omega/M$（c 数）：
+\begin{align*}
+  [V_x, V_y^2]
+  &= [V_x,V_y]V_y + V_y[V_x,V_y]
+   = \frac{i\hbar\omega}{M}V_y + V_y\frac{i\hbar\omega}{M}
+   = \frac{2i\hbar\omega}{M}V_y.
+\end{align*}
+
+所以：
+\[
+  [V_x, H] = \frac{M}{2}\cdot\frac{2i\hbar\omega}{M}V_y = i\hbar\omega V_y.
+\]
+
+同理：
+\begin{align*}
+  [V_y, H] &= \frac{M}{2}[V_y, V_x^2]
+           = \frac{M}{2}\bigl([V_y,V_x]V_x+V_x[V_y,V_x]\bigr) \\
+           &= \frac{M}{2}\Bigl(-\frac{i\hbar\omega}{M}V_x-V_x\frac{i\hbar\omega}{M}\Bigr)
+           = -i\hbar\omega V_x.
+\end{align*}
+
+而 $[V_z,H]=0$（因为 $[V_z,V_x]=[V_z,V_y]=0$）。
+
+\begin{formulabox}{速度与哈密顿量的对易关系}
+\[
+  \boxed{[V_x,H]=i\hbar\omega V_y},\quad
+  \boxed{[V_y,H]=-i\hbar\omega V_x},\quad
+  \boxed{[V_z,H]=0}.
+\]
+\end{formulabox}
+
+
+\subsection{期望值的时间演化方程}
+
+\subsubsection{自旋的海森堡方程}
+
+自旋部分 $H_S=-\gamma B S_z$，利用 $[S_i,S_j]=i\hbar\varepsilon_{ijk}S_k$：
+\begin{align*}
+  \dot S_x &= \frac{i}{\hbar}[H,S_x] = \frac{i}{\hbar}(-\gamma B)[S_z,S_x] = -\gamma B S_y, \\
+  \dot S_y &= \frac{i}{\hbar}[H,S_y] = \frac{i}{\hbar}(-\gamma B)[S_z,S_y] = \gamma B S_x, \\
+  \dot S_z &= 0.
+\end{align*}
+
+定义自旋进动频率 $\omega_S\equiv\gamma B=(1+a)\omega$：
+\begin{formulabox}{自旋进动}
+\[
+  \boxed{\dot S_x=-\omega_S S_y,\quad \dot S_y=\omega_S S_x,\quad \dot S_z=0}.
+\]
+\end{formulabox}
+
+\subsubsection{速度的海森堡方程}
+
+由 (1) 的结果：
+\[
+  \dot V_x = \frac{i}{\hbar}[H,V_x] = \omega V_y,\quad
+  \dot V_y = -\omega V_x,\quad
+  \dot V_z = 0.
+\]
+
+\begin{formulabox}{速度演化}
+\[
+  \boxed{\dot V_x=\omega V_y,\quad \dot V_y=-\omega V_x,\quad \dot V_z=0}.
+\]
+\end{formulabox}
+
+\subsubsection{$C_1, C_2, C_3$ 的耦合方程}
+
+\textbf{$C_1=\langle S_zV_z\rangle$}：
+\[
+  \dot C_1 = \langle\dot S_z V_z + S_z\dot V_z\rangle = 0
+  \quad\Longrightarrow\quad \boxed{C_1(t)=C_1(0)}.
+\]
+
+\textbf{$C_2=\langle S_xV_x+S_yV_y\rangle$}：
+\begin{align*}
+  \dot C_2
+  &= \langle\dot S_xV_x+S_x\dot V_x+\dot S_yV_y+S_y\dot V_y\rangle \\
+  &= \langle(-\omega_S S_y)V_x+S_x(\omega V_y)+(\omega_S S_x)V_y+S_y(-\omega V_x)\rangle \\
+  &= (\omega_S-\omega)\langle S_xV_y-S_yV_x\rangle
+   = (\omega_S-\omega)C_3.
+\end{align*}
+
+\textbf{$C_3=\langle S_xV_y-S_yV_x\rangle$}：
+\begin{align*}
+  \dot C_3
+  &= \langle\dot S_xV_y+S_x\dot V_y-\dot S_yV_x-S_y\dot V_x\rangle \\
+  &= \langle(-\omega_S S_y)V_y+S_x(-\omega V_x)-(\omega_S S_x)V_x-S_y(\omega V_y)\rangle \\
+  &= -(\omega_S+\omega)\langle S_xV_x+S_yV_y\rangle
+   = -(\omega_S+\omega)C_2.
+\end{align*}
+
+\begin{formulabox}{耦合方程组}
+\[
+  \boxed{\dot C_1=0},\qquad
+  \boxed{\dot C_2=(\omega_S-\omega)C_3},\qquad
+  \boxed{\dot C_3=-(\omega_S+\omega)C_2}.
+\]
+\end{formulabox}
+
+\begin{thinkbox}{方程组的结构}
+$C_1$ 是守恒量（$S_z$ 和 $V_z$ 各自独立守恒）。$C_2$ 和 $C_3$ 构成二维耦合系统，类似于谐振子方程。关键参数是
+\[
+  \omega_S-\omega = a\omega,\qquad \omega_S+\omega = (2+a)\omega,
+\]
+两者之差正比于反常磁矩 $a$。
+\end{thinkbox}
+
+
+\subsection{$\langle\bm S\cdot\bm V\rangle$ 的时间演化}
+
+\subsubsection{解耦与振荡频率}
+
+由 $\dot C_2=(\omega_S-\omega)C_3$ 和 $\dot C_3=-(\omega_S+\omega)C_2$，对 $C_2$ 再求导：
+\[
+  \ddot C_2 = (\omega_S-\omega)\dot C_3 = -(\omega_S-\omega)(\omega_S+\omega)C_2
+  = -(\omega_S^2-\omega^2)C_2.
+\]
+
+定义振荡频率：
+\[
+  \Omega^2 \equiv \omega_S^2-\omega^2 = ((1+a)^2-1)\omega^2 = (a^2+2a)\omega^2.
+\]
+
+对电子 $a\approx 0.00116>0$，故 $\Omega=|\omega|\sqrt{a^2+2a}$ 为实数。
+
+\begin{formulabox}{$\bm S\cdot\bm V$ 的振荡解}
+\[
+  C_2(t) = C_2(0)\cos\Omega t + \frac{\omega_S-\omega}{\Omega}C_3(0)\sin\Omega t.
+\]
+因此：
+\[
+  \boxed{\langle\bm S\cdot\bm V\rangle_t = C_1(0) + C_2(0)\cos\Omega t + \frac{a\omega}{\Omega}C_3(0)\sin\Omega t}.
+\]
+其中 $\Omega=|\omega|\sqrt{a^2+2a}\approx|\omega|\sqrt{2a}$（当 $a\ll 1$）。
+\end{formulabox}
+
+\subsubsection{物理讨论}
+
+\begin{insightbox}{$a=0$ vs $a\neq 0$}
+\textbf{正常电子} ($a=0$，即 $g=2$)：
+\begin{itemize}[nosep]
+  \item $\omega_S=\omega$，自旋与轨道以\textbf{相同频率}进动
+  \item $\Omega=0$，$\langle\bm S\cdot\bm V\rangle$ 为\textbf{常数}
+  \item 自旋与速度矢量的相对取向保持不变
+\end{itemize}
+
+\textbf{反常磁矩} ($a\neq 0$，即 $g\neq 2$)：
+\begin{itemize}[nosep]
+  \item $\omega_S=(1+a)\omega\neq\omega$，自旋进动比轨道运动\textbf{更快}（对电子 $q<0$，$\omega<0$，但 $|\omega_S|=(1+a)|\omega|>|\omega|$）
+  \item $\Omega\neq 0$，$\langle\bm S\cdot\bm V\rangle$ 以频率 $\Omega$ \textbf{振荡}
+  \item 当 $a\ll 1$，$\Omega\approx|\omega|\sqrt{2a}$
+\end{itemize}
+\end{insightbox}
+
+\subsubsection{与 $g-2$ 实验的联系}
+
+\begin{insightbox}{$g-2$ 实验的理论基础}
+电子的 $g$ 因子定义为 $\bm\mu = g\frac{q}{2M}\bm S$。Dirac 理论预言 $g=2$（即 $a=0$）。QED 修正给出
+\[
+  a_e = \frac{g-2}{2} = \frac{\alpha}{2\pi} + O(\alpha^2) \approx 0.00116.
+\]
+在匀强磁场中，$\langle\bm S\cdot\bm V\rangle$ 的振荡频率
+\[
+  \Omega = |\omega|\sqrt{a^2+2a} \approx |\omega|\sqrt{2a}
+\]
+直接依赖于 $a$。通过精确测量这一振荡频率，实验可反推出 $a$ 的值，从而检验 QED 的高阶修正。
+
+\textbf{历史意义}：1950--60 年代的 $g-2$ 实验（如 Columbia 大学的 Crandall 等）首次以高精度测量了电子的 $a_e$，证实了 Schwinger 的 $\alpha/2\pi$ 修正，是量子电动力学最伟大的实验验证之一。现代实验（如 FNAL 的 Muon $g-2$）将精度提高到 $10^{-10}$ 量级，成为探测新物理的重要窗口。
+\end{insightbox}
+
+
+\subsection{常见错误与考场策略}
+
+\begin{errorbox}{易错点}
+\begin{enumerate}
+  \item \textbf{$\omega$ 的符号}：$q<0$ 导致 $\omega=qB/M<0$。在计算 $[V_y,H]$ 时，$[V_y,V_x]=-i\hbar\omega/M$ 中的负号必须与 $\omega<0$ 配合才能得到正确的 $-i\hbar\omega V_x$。
+  \item \textbf{$\omega_S$ 与 $\omega$ 的区分}：$\omega_S=(1+a)\omega$ 是自旋进动频率，$\omega$ 是轨道回旋频率。两者不同是反常磁矩的核心。
+  \item \textbf{$[V_x,V_y]$ 的量纲}：结果是 $i\hbar\omega/M$（量纲：速度$^2$/作用量），不是 $i\hbar$。不要与 $[X,P]=i\hbar$ 混淆。
+  \item \textbf{对称规范的选择}：$\bm A=\frac12\bm B\times\bm R$ 给出 $A_x=-By/2$，$A_y=Bx/2$。若误用 Landau 规范 $\bm A=(-By,0,0)$，对易关系结果相同（规范不变），但中间计算不同。
+\end{enumerate}
+\end{errorbox}
+
+\begin{cheatbox}{匀强磁场电子运动：速查卡}
+\textbf{速度对易子}：$[V_x,V_y]=i\hbar\omega/M$，$[V_z,V_i]=0$
+
+\textbf{回旋频率}：$\omega=qB/M$（$q<0$ 则 $\omega<0$）
+
+\textbf{自旋进动频率}：$\omega_S=\gamma B=(1+a)\omega$
+
+\textbf{海森堡方程}：
+\[
+  \dot{\bm S}=\bm\omega_S\times\bm S,\quad \dot V_x=\omega V_y,\quad \dot V_y=-\omega V_x
+\]
+\textbf{振荡频率}：$\Omega=\sqrt{\omega_S^2-\omega^2}=|\omega|\sqrt{a^2+2a}\approx|\omega|\sqrt{2a}$
+
+\textbf{$a=0$ 时}：$\Omega=0$，$\langle\bm S\cdot\bm V\rangle$ 守恒
+\end{cheatbox}
