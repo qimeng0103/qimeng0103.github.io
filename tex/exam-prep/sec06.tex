@@ -3,6 +3,7 @@
 \section{量子力学：双 $\delta$ 势的 Born 近似散射（3D）}
 \label{sec:born-3d}
 
+\begin{modelbox}[中子-氢分子双 $\delta$ 势散射]
 \textbf{题目：中子-氢分子双 $\delta$ 势散射}
 
 一束中子射向氢分子发生弹性散射。氢分子中两个质子对中子的作用可用简化势描述：
@@ -18,9 +19,11 @@ V(\vec{r}) = -V_0\bigl[\delta(\vec{r}-\vec{a}) + \delta(\vec{r}+\vec{a})\bigr],
 \sigma(\theta,\phi) = \frac{\mu^2}{4\pi^2\hbar^4}\left|\int e^{-i\vec{q}\cdot\vec{r}'} V(\vec{r}')\,d^3r'\right|^2,
 \]
 其中 $\vec{q} = \vec{k} - \vec{k}_0$，$q = 2k\sin(\theta/2)$。
+\end{modelbox}
 
 \subsection{考点快速分析}
 
+\begin{tipbox}[考点快速分析]
 \begin{itemize}
     \item \textbf{Born 近似的触发条件：}
     \begin{itemize}
@@ -32,9 +35,11 @@ V(\vec{r}) = -V_0\bigl[\delta(\vec{r}-\vec{a}) + \delta(\vec{r}+\vec{a})\bigr],
     \item 双源干涉：两个 $\delta$ 势贡献的散射振幅相干叠加，出现 $\cos^2$ 调制。
     \item 几何关系：$\vec{q}\cdot\vec{a}$ 的展开依赖于分子轴 $\vec{a}$ 与入射方向的相对取向。
 \end{itemize}
+\end{tipbox}
 
 \subsection{标准解题过程}
 
+\begin{derivationbox}[标准解题过程]
 \textbf{Step 1：计算散射振幅的傅里叶积分}
 
 将 $V(\vec{r}')$ 代入 Born 公式的矩阵元：
@@ -92,9 +97,11 @@ ka(1-\cos\theta) = n\pi \quad\Longrightarrow\quad \sin^2\frac{\theta}{2} = \frac
     \item $n = 0$：$\theta = 0$（前向散射，最强峰）
     \item $n = 1, 2, \dots$：只要 $n \leq 2ka/\pi$，存在实的 $\theta$ 解，形成圆锥形极大值环
 \end{itemize}
+\end{derivationbox}
 
 \subsection{核心结论}
 
+\begin{formulabox}[核心结论]
 微分截面（通用形式）：
 \[
 \sigma(\theta,\phi) = \frac{\mu^2 V_0^2}{\pi^2\hbar^4}\cos^2(\vec{q}\cdot\vec{a})
@@ -110,18 +117,22 @@ ka(1-\cos\theta) = n\pi \quad\Longrightarrow\quad \sin^2\frac{\theta}{2} = \frac
 \vec{q}\cdot\vec{a} = n\pi \quad (n = 0, 1, 2, \dots)
 \]
 前向（$\theta = 0$）始终为极大值方向。
+\end{formulabox}
 
 \subsection{常见错误与思路短路}
 
+\begin{errorbox}[colback=white]{常见错误与思路短路}
 \begin{enumerate}
     \item \textbf{混淆 1D/3D $\delta$ 势}：1D 中 $\delta(x)$ 量纲 $[E]/[L]$；3D 中 $\delta(\vec{r})$ 量纲 $[E]\cdot[L^3]$。截面公式自动保证量纲正确。
     \item \textbf{漏掉约化质量}：$\mu = m_1m_2/(m_1+m_2)$。中子-质子散射 $\mu \approx m_n/2$，误用 $m_n$ 截面偏差 4 倍。
     \item $\vec{q}\cdot\vec{a} \neq qa$：$\vec{q}\cdot\vec{a} = qa\cos\gamma$，仅当 $\vec{a} \parallel \hat{z}$ 等特殊情况才化为纯 $\theta$ 函数。
     \item \textbf{$q$ 写错}：$q = 2k\sin(\theta/2)$，不是 $k(1-\cos\theta)$。半角公式是标准写法。
 \end{enumerate}
+\end{errorbox}
 
 \subsection{举一反三与物理直觉}
 
+\begin{insightbox}[举一反三与物理直觉]
 \textbf{物理图像——杨氏双缝的量子版本：}
 
 两个 $\delta$ 势相当于两个点状的 ``散射缝''。中子波从它们发出后相干叠加。前向散射（$\theta = 0$）对应零程差，两列波完全同相；偏离前向时程差增大，每当程差等于 ``有效波长'' 的整数倍时出现相长干涉峰。
@@ -167,9 +178,11 @@ ka(1-\cos\theta) = n\pi \quad\Longrightarrow\quad \sin^2\frac{\theta}{2} = \frac
     \item \textbf{电子衍射}：分子中多个原子核对入射电子的散射，Born 近似给出结构因子 $F(\vec{q}) = \sum_j f_j e^{i\vec{q}\cdot\vec{r}_j}$。
     \item \textbf{量子信息}：双量子点（double quantum dot）中的电子干涉，势垒透射与本题散射是同一物理的不同表现。
 \end{itemize}
+\end{insightbox}
 
 \subsection{解题思路模板（双 $\delta$ 势 + Born 近似）}
 
+\begin{thinkbox}[解题思路模板（双 $\delta$ 势 + Born 近似）]
 \begin{enumerate}
     \item 写出傅里叶积分：$M = \int e^{-i\vec{q}\cdot\vec{r}'} V(\vec{r}')\,d^3r'$
     \item 利用 $\delta$ 函数筛选：$\int e^{-i\vec{q}\cdot\vec{r}}\delta(\vec{r}-\vec{a})\,d^3r = e^{-i\vec{q}\cdot\vec{a}}$
@@ -178,3 +191,4 @@ ka(1-\cos\theta) = n\pi \quad\Longrightarrow\quad \sin^2\frac{\theta}{2} = \frac
     \item 求极大/极小：$\cos^2(x) = 1$ 当 $x = n\pi$；$\cos^2(x) = 0$ 当 $x = (n+\frac{1}{2})\pi$
     \item 物理图像收尾：用双缝干涉或结构因子解释角分布的振荡本质
 \end{enumerate}
+\end{thinkbox}

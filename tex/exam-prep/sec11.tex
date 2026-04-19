@@ -5,6 +5,7 @@
 
 \subsection{第二激发态 $|m|=2$ 的二级修正}
 
+\begin{derivationbox}[第二激发态 $|m|=2$ 的二级修正]
 对 $|2\rangle$，非零矩阵元连接到 $|1\rangle$ 和 $|3\rangle$：
 \[
 E_2^{(2)} = \frac{|\langle 1|H'|2\rangle|^2}{E_2^{(0)} - E_1^{(0)}} + \frac{|\langle 3|H'|2\rangle|^2}{E_2^{(0)} - E_3^{(0)}}.
@@ -25,14 +26,17 @@ E_2^{(2)} = \frac{(erE/2)^2}{\frac{4\hbar^2}{2mr^2} - \frac{\hbar^2}{2mr^2}} + \
 \hline
 \end{tabular}
 \end{center}
+\end{derivationbox}
 
 \subsection{基态的二级修正（补充）}
 
+\begin{derivationbox}[基态的二级修正（补充）]
 虽然题目只要求激发态，但基态 ($m=0$) 的修正也很有教学意义。$|0\rangle$ 只与 $|\pm 1\rangle$ 耦合：
 \[
 E_0^{(2)} = \frac{|\langle 1|H'|0\rangle|^2}{E_0^{(0)} - E_1^{(0)}} + \frac{|\langle -1|H'|0\rangle|^2}{E_0^{(0)} - E_{-1}^{(0)}} = 2 \times \frac{(erE/2)^2}{0 - \dfrac{\hbar^2}{2mr^2}} = -\frac{mr^4 e^2 E^2}{\hbar^2}.
 \]
 负号符合物理直觉：感生电偶极矩与外电场反向，能量降低。
+\end{derivationbox}
 
 \subsection{为什么需要含时微扰？}
 
@@ -40,6 +44,7 @@ E_0^{(2)} = \frac{|\langle 1|H'|0\rangle|^2}{E_0^{(0)} - E_1^{(0)}} + \frac{|\la
 
 \subsection{核心公式速查卡}
 
+\begin{cheatbox}[核心公式速查卡]
 一级近似跃迁概率幅：
 \[
 a_{fi}(t) = \frac{1}{i\hbar} \int_0^t \langle f|H'(t')|i\rangle e^{i\omega_{fi}t'} \, dt'
@@ -47,9 +52,11 @@ a_{fi}(t) = \frac{1}{i\hbar} \int_0^t \langle f|H'(t')|i\rangle e^{i\omega_{fi}t
 其中 $\omega_{fi} = (E_f - E_i)/\hbar$。
 
 跃迁概率：$P_{i\to f}(t) = |a_{fi}(t)|^2$。
+\end{cheatbox}
 
 \subsection{相互作用绘景与基本方程}
 
+\begin{derivationbox}[相互作用绘景与基本方程]
 薛定谔绘景中 $H = H_0 + H'(t)$。引入相互作用绘景：
 \[
 |\psi_I(t)\rangle = e^{iH_0 t/\hbar} |\psi_S(t)\rangle, \quad H'_I(t) = e^{iH_0 t/\hbar} H'(t) e^{-iH_0 t/\hbar}.
@@ -66,9 +73,11 @@ i\hbar \frac{d}{dt}|\psi_I(t)\rangle = H'_I(t) |\psi_I(t)\rangle.
 \[
 c_f^{(1)}(t) = \frac{1}{i\hbar} \int_0^t \langle f|H'(t')|i\rangle e^{i\omega_{fi}t'} \, dt'.
 \]
+\end{derivationbox}
 
 \subsection{四种典型时间依赖形式}
 
+\begin{derivationbox}[四种典型时间依赖形式]
 \subsubsection{常微扰：$H'(t) = V\,\Theta(t)$}
 
 \[
@@ -120,9 +129,11 @@ P_{i\to f} = \frac{|\langle f|V|i\rangle|^2}{\hbar^2} \cdot \frac{T^2}{1 + \omeg
 c_f^{(1)}(t) = \frac{\langle f|V|i\rangle}{i\hbar} \int_{-\epsilon}^{+\epsilon} \delta(t') e^{i\omega_{fi}t'} dt' = \frac{\langle f|V|i\rangle}{i\hbar}.
 \]
 概率 $P = |\langle f|V|i\rangle|^2/\hbar^2$，与时间无关。物理上对应一个瞬时踢（kick），系统状态被投影到新基上。
+\end{derivationbox}
 
 \subsection{电偶极跃迁选择定则}
 
+\begin{derivationbox}[电偶极跃迁选择定则]
 光场与原子的相互作用在电偶极近似下：$H' = -\vec{d}\cdot\vec{E}$，其中 $\vec{d} = -e\vec{r}$ 是电偶极矩算符。
 
 \subsubsection{选择定则的代数来源}
@@ -148,3 +159,4 @@ $z = r\cos\theta \propto rY_{10}(\theta,\phi)$。矩阵元：
 \item 三角关系 $|l-1| \leq l' \leq l+1$，即 $l' = l \pm 1$（因为 $Y_{10}$ 的角量子数为 1）
 \end{enumerate}
 对 $x,y$ 方向，$x \pm iy \propto Y_{1,\pm 1}$，给出 $\Delta m = \pm 1$。
+\end{derivationbox}

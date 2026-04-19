@@ -3,14 +3,17 @@
 \section{量子力学：平面转子在电场中的简并微扰论}
 \label{sec:planar-rotator}
 
+\begin{modelbox}[平面转子在匀强电场中的微扰修正]
 \textbf{题目：平面转子在匀强电场中的微扰修正}
 
 质量为 $m$、带电量为 $-e$ 的粒子被限制在 $X$-$Y$ 平面内，绕原点做半径为 $r$ 的圆周运动。求该粒子做圆周运动的能量本征值和本征函数。
 
 若在平面内沿 $-x$ 方向施加匀强电场 $\vec{\mathscr{E}} = -\mathscr{E}\,\vec{e}_x$（$\mathscr{E}>0$），运用微扰理论，求第一激发态与第二激发态能量的二级近似。
+\end{modelbox}
 
 \subsection{考点快速分析}
 
+\begin{tipbox}[考点快速分析]
 \begin{itemize}
     \item \textbf{角动量代数}：$\hat{L}_z = -i\hbar\frac{\partial}{\partial\phi}$，周期性边界条件 $\psi(\phi+2\pi)=\psi(\phi)$
     \item \textbf{简并结构}：基态 $m=0$ 非简并；激发态 $|m|\geq 1$ 二重简并（$m$ 与 $-m$ 能量相同）
@@ -18,9 +21,11 @@
     \item \textbf{简并微扰的陷阱}：简并子空间内矩阵元全为零，一级修正消失
     \item \textbf{非简并公式的合法性}：$H'$ 不耦合简并子空间内的态，可直接套用二级微扰公式
 \end{itemize}
+\end{tipbox}
 
 \subsection{未微扰系统的本征值与本征函数}
 
+\begin{derivationbox}[未微扰系统的本征值与本征函数]
 转动惯量 $I = mr^2$，哈密顿量为
 \[
 \hat{H}_0 = \frac{\hat{L}_z^2}{2I} = -\frac{\hbar^2}{2mr^2}\frac{\partial^2}{\partial\phi^2}.
@@ -38,9 +43,11 @@
     \item $m=0$（基态）：$E_0^{(0)}=0$，\textbf{非简并}
     \item $|m|\geq 1$（激发态）：$E_m^{(0)} = E_{-m}^{(0)}$，\textbf{二重简并}
 \end{itemize}
+\end{derivationbox}
 
 \subsection{微扰项的矩阵元与选择定则}
 
+\begin{derivationbox}[微扰项的矩阵元与选择定则]
 电场沿 $-x$ 方向，微扰势能：
 \[
 H' = -q\vec{\mathscr{E}}\cdot\vec{r} = (-e)(-\mathscr{E})(r\cos\phi) = er\mathscr{E}\cos\phi.
@@ -61,11 +68,13 @@ H' = -q\vec{\mathscr{E}}\cdot\vec{r} = (-e)(-\mathscr{E})(r\cos\phi) = er\mathsc
 \langle m|H'|-m\rangle = \frac{er\mathscr{E}}{2}(\delta_{m,-m+1} + \delta_{m,-m-1}) = 0
 \]
 因为 $2m = 1$ 或 $2m = -1$ 对整数 $m$ 均不成立。所以\textbf{简并子空间内的微扰矩阵元全为零}。
+\end{derivationbox}
 
 \subsection{定态微扰理论：二阶修正——确定公式与记忆锚点}
 
 本题的难点不在于代数运算，而在于\textbf{二级修正的公式本身}。考场高压下极易记混分母顺序、漏掉模方、或混淆简并/非简并的适用条件。下面给出最常用、最确定的公式，并标注每一个系数的来源。
 
+\begin{formulabox}[非简并微扰：二阶能量修正]
 \textbf{非简并微扰：二阶能量修正（最核心公式）}
 
 设 $H = H_0 + H'$，$H_0|n^{(0)}\rangle = E_n^{(0)}|n^{(0)}\rangle$，且能级 $E_n^{(0)}$ \textbf{非简并}。则能量本征值到二级近似为
@@ -85,7 +94,9 @@ E_n^{(1)} &= \langle n^{(0)}|H'|n^{(0)}\rangle, \\
     \item 求和跑遍\textbf{除 $n$ 以外的所有中间态}（包括简并子空间外的态，以及简并子空间内与 $n$ 不同的态）；
     \item 没有额外的 $1/2$、$\pm i$ 等系数，公式\textbf{exactly 如上}。
 \end{itemize}
+\end{formulabox}
 
+\begin{thinkbox}[分母顺序记忆锚]
 \textbf{分母顺序是第一大杀手——三种锚定方法}
 
 \textbf{核心问题}：容易把分母记成 $E_m^{(0)} - E_n^{(0)}$（中间态减待求态）。下面给出三种互不依赖的记忆锚，任选其一即可：
@@ -107,7 +118,9 @@ E_n^{(2)} = \langle n|H'|n^{(1)}\rangle.
 \textbf{锚定法 3：分母 = ``初态能量 $-$ 虚中间态能量''}
 
 把二级修正想象成 ``从 $n$ 出发，虚跃迁到 $m$，再返回 $n$''。分母反映的是\textbf{虚中间态与初态的能量失配}。初态是 $n$，所以 $E_n^{(0)}$ 必须在前面。
+\end{thinkbox}
 
+\begin{derivationbox}[二级微扰的骨架推导]
 \textbf{公式从哪里来？——二级微扰的骨架推导（考场可省略）}
 
 将 $|n\rangle = |n^{(0)}\rangle + |n^{(1)}\rangle + \cdots$ 和 $E_n = E_n^{(0)} + E_n^{(1)} + E_n^{(2)} + \cdots$ 代入定态方程 $(H_0+H')|n\rangle = E_n|n\rangle$，按 $(H')$ 的幂次收集：
@@ -121,7 +134,9 @@ E_n^{(2)} = \langle n|H'|n^{(1)}\rangle.
 E_n^{(2)} = \langle n^{(0)}|H'|n^{(1)}\rangle - E_n^{(1)}\langle n^{(0)}|n^{(1)}\rangle.
 \]
 一级修正的波函数为 $|n^{(1)}\rangle = \sum_{m\neq n} \frac{\langle m|H'|n\rangle}{E_n^{(0)}-E_m^{(0)}}|m^{(0)}\rangle$，且通常取 $\langle n^{(0)}|n^{(1)}\rangle = 0$（相位约定）。代入即得上述 $E_n^{(2)}$ 公式。
+\end{derivationbox}
 
+\begin{insightbox}[简并微扰中何时能直接套用非简并二级公式]
 \textbf{简并微扰中何时能直接套用非简并二级公式？}
 
 对简并子空间 $\mathcal{D}_n = \{|n,\alpha\rangle\}_{\alpha=1}^{g_n}$（$g_n$ 重简并），先求一级微扰矩阵
@@ -134,7 +149,9 @@ W_{\alpha\beta} = \langle n,\alpha|H'|n,\beta\rangle.
     \item 二级修正\textbf{可直接使用非简并公式}，只需将求和中的 ``$m\neq n$'' 理解为 ``$m$ 跑遍\textbf{所有}不在 $|n\rangle$ 上的态''（包括简并子空间内的伴生态和子空间外的所有态）。
 \end{enumerate}
 \textbf{物理原因}：二级修正的本质是 ``$n$ 先通过 $H'$ 跳到某个中间态 $m$，再从 $m$ 跳回 $n$''。只要中间过程不依赖于简并子空间内部如何选取基矢，结果就与基的选取无关，非简并公式自然成立。
+\end{insightbox}
 
+\begin{derivationbox}[波函数的二阶修正]
 \textbf{波函数的二阶修正（完整版，考场视要求选用）}
 
 若题目要求波函数也修正到二级，公式为
@@ -146,7 +163,9 @@ W_{\alpha\beta} = \langle n,\alpha|H'|n,\beta\rangle.
 \Biggr].
 \]
 在 $\langle n^{(0)}|n^{(2)}\rangle=0$ 的相位约定下可化简为常见教材形式。\textbf{对能量计算而言，只需记住 $E_n^{(2)}$ 的公式即可}；波函数二级修正只在计算跃迁矩阵元或\textit{expectation values}时才需要。
+\end{derivationbox}
 
+\begin{cheatbox}[考场速记：二阶微扰的「三字诀」]
 \textbf{考场速记：二阶微扰的「三字诀」}
 \begin{enumerate}
     \item \textbf{``方''}——分子必须是 $|H'_{mn}|^2$（模方，恒正）；
@@ -158,9 +177,11 @@ W_{\alpha\beta} = \langle n,\alpha|H'|n,\beta\rangle.
 E_n^{(2)} = \sum_{m\neq n}\frac{|\langle m|H'|n\rangle|^2}{E_n^{(0)}-E_m^{(0)}}
 \]
 作为「护身符」，后续所有数值代入都围绕它展开，可大幅降低记忆失误。
+\end{cheatbox}
 
 \subsection{简并微扰的处理}
 
+\begin{derivationbox}[简并微扰的处理]
 对 $|m|\geq 1$ 的简并子空间，微扰矩阵为
 \[
 W = \begin{pmatrix}
@@ -177,9 +198,11 @@ W = \begin{pmatrix}
     E_m^{(2)} = \sum_{k\neq m}\frac{|\langle k|H'|m\rangle|^2}{E_m^{(0)} - E_k^{(0)}}.
     \]
 \end{enumerate}
+\end{derivationbox}
 
 \subsection{第一激发态 $|m|=1$ 的二级修正}
 
+\begin{derivationbox}[第一激发态 $|m|=1$ 的二级修正]
 对 $|1\rangle$，非零矩阵元连接到 $|0\rangle$ 和 $|2\rangle$：
 \[
 E_1^{(2)} = \frac{|\langle 0|H'|1\rangle|^2}{E_1^{(0)}-E_0^{(0)}} + \frac{|\langle 2|H'|1\rangle|^2}{E_1^{(0)}-E_2^{(0)}}.
@@ -192,9 +215,11 @@ E_1^{(2)} &= \frac{(er\mathscr{E}/2)^2}{\frac{\hbar^2}{2mr^2}-0} + \frac{(er\mat
 \end{align*}
 
 由对称性，$|-1\rangle$ 给出完全相同的二级修正。
+\end{derivationbox}
 
 \subsection{第二激发态 $|m|=2$ 的二级修正}
 
+\begin{derivationbox}[第二激发态 $|m|=2$ 的二级修正]
 对 $|2\rangle$，非零矩阵元连接到 $|1\rangle$ 和 $|3\rangle$：
 \[
 E_2^{(2)} = \frac{|\langle 1|H'|2\rangle|^2}{E_2^{(0)}-E_1^{(0)}} + \frac{|\langle 3|H'|2\rangle|^2}{E_2^{(0)}-E_3^{(0)}}.
@@ -220,9 +245,11 @@ E_2^{(2)} &= \frac{(er\mathscr{E}/2)^2}{\frac{4\hbar^2}{2mr^2}-\frac{\hbar^2}{2m
 \hline
 \end{tabular}
 \end{center}
+\end{derivationbox}
 
 \subsection{基态的二级修正（补充）}
 
+\begin{derivationbox}[基态的二级修正]
 虽然题目只要求激发态，但基态 ($m=0$) 的修正也很有教学意义。$|0\rangle$ 只与 $|{\pm}1\rangle$ 耦合：
 \[
 E_0^{(2)} = \frac{|\langle 1|H'|0\rangle|^2}{E_0^{(0)}-E_1^{(0)}} + \frac{|\langle -1|H'|0\rangle|^2}{E_0^{(0)}-E_{-1}^{(0)}}
@@ -230,3 +257,4 @@ E_0^{(2)} = \frac{|\langle 1|H'|0\rangle|^2}{E_0^{(0)}-E_1^{(0)}} + \frac{|\lang
 = -\frac{mr^4e^2\mathscr{E}^2}{\hbar^2}.
 \]
 负号符合物理直觉：感生电偶极矩与外电场反向，能量降低。
+\end{derivationbox}

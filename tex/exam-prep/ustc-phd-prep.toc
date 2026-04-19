@@ -29,40 +29,18 @@
 \contentsline {subsection}{\numberline {6.2}标准解题过程}{26}{subsection.6.2}%
 \contentsline {subsection}{\numberline {6.3}核心结论}{27}{subsection.6.3}%
 \contentsline {subsection}{\numberline {6.4}常见错误与思路短路}{27}{subsection.6.4}%
-\contentsline {subsection}{\numberline {6.5}举一反三与物理直觉}{27}{subsection.6.5}%
+\contentsline {subsection}{\numberline {6.5}举一反三与物理直觉}{28}{subsection.6.5}%
 \contentsline {subsection}{\numberline {6.6}解题思路模板（双 $\delta $ 势 + Born 近似）}{28}{subsection.6.6}%
 \contentsline {section}{\numberline {7}补充说明：双 $\delta $ 势的 Born 近似散射——完整细节}{29}{section.7}%
-\contentsline {subsection}{\numberline {7.1}题型反射弧标签}{29}{subsection.7.1}%
-\contentsline {subsection}{\numberline {7.2}Born 近似与分波法的系统对比}{29}{subsection.7.2}%
-\contentsline {subsection}{\numberline {7.3}Born 近似公式的来源}{30}{subsection.7.3}%
-\contentsline {subsection}{\numberline {7.4}复变围道、主值积分与 Green 函数——系统梳理}{30}{subsection.7.4}%
-\contentsline {subsection}{\numberline {7.5}解析延拓与积分路径的选择}{33}{subsection.7.5}%
-\contentsline {subsection}{\numberline {7.6}Born 近似统一公式与速查表}{36}{subsection.7.6}%
-\contentsline {subsection}{\numberline {7.7}傅里叶积分的详细计算}{37}{subsection.7.7}%
-\contentsline {subsection}{\numberline {7.8}几何因子 $\vec {q}\cdot \vec {a}$ 的完整展开}{37}{subsection.7.8}%
-\contentsline {subsection}{\numberline {7.9}极大值与极小值方向}{38}{subsection.7.9}%
-\contentsline {subsection}{\numberline {7.10}与 1D 双 $\delta $ 势垒的数学联系}{38}{subsection.7.10}%
-\contentsline {subsection}{\numberline {7.11}考察的完整知识点}{38}{subsection.7.11}%
-\contentsline {subsection}{\numberline {7.12}拓展延伸}{38}{subsection.7.12}%
-\contentsline {subsection}{\numberline {7.13}结构因子 $F(\vec {q})$ 的系统解释}{38}{subsection.7.13}%
-\contentsline {subsection}{\numberline {7.14}``截面'' 家族：各种微分截面的定义}{41}{subsection.7.14}%
-\contentsline {subsection}{\numberline {7.15}光学定理（Optical Theorem）}{42}{subsection.7.15}%
-\contentsline {subsection}{\numberline {7.16}Born 近似 vs 光学定理：何时用哪个？}{42}{subsection.7.16}%
-\contentsline {section}{\numberline {8}量子力学：低能中子--中子散射与自旋依赖势}{45}{section.8}%
-\contentsline {subsection}{\numberline {8.1}低能非极化中子--中子散射}{45}{subsection.8.1}%
-\contentsline {subsection}{\numberline {8.2}自旋耦合、统计与有效势}{45}{subsection.8.2}%
-\contentsline {subsection}{\numberline {8.3}为什么这道题必须用分波法？}{47}{subsection.8.3}%
-\contentsline {subsection}{\numberline {8.4}s 波分波法与相移}{48}{subsection.8.4}%
-\contentsline {subsection}{\numberline {8.5}低能极限 $E \to 0$}{49}{subsection.8.5}%
-\contentsline {subsection}{\numberline {8.6}对称化、非极化平均与总截面}{50}{subsection.8.6}%
-\contentsline {section}{\numberline {9}量子力学：平面转子在电场中的简并微扰论}{51}{section.9}%
-\contentsline {subsection}{\numberline {9.1}考点快速分析}{51}{subsection.9.1}%
-\contentsline {subsection}{\numberline {9.2}未微扰系统的本征值与本征函数}{51}{subsection.9.2}%
-\contentsline {subsection}{\numberline {9.3}微扰项的矩阵元与选择定则}{51}{subsection.9.3}%
-\contentsline {subsection}{\numberline {9.4}定态微扰理论：二阶修正——确定公式与记忆锚点}{52}{subsection.9.4}%
+\contentsline {section}{\numberline {8}量子力学：低能中子--中子散射与自旋依赖势}{44}{section.8}%
+\contentsline {section}{\numberline {9}量子力学：平面转子在电场中的简并微扰论}{50}{section.9}%
+\contentsline {subsection}{\numberline {9.1}考点快速分析}{50}{subsection.9.1}%
+\contentsline {subsection}{\numberline {9.2}未微扰系统的本征值与本征函数}{50}{subsection.9.2}%
+\contentsline {subsection}{\numberline {9.3}微扰项的矩阵元与选择定则}{50}{subsection.9.3}%
+\contentsline {subsection}{\numberline {9.4}定态微扰理论：二阶修正——确定公式与记忆锚点}{51}{subsection.9.4}%
 \contentsline {subsection}{\numberline {9.5}简并微扰的处理}{53}{subsection.9.5}%
 \contentsline {subsection}{\numberline {9.6}第一激发态 $|m|=1$ 的二级修正}{53}{subsection.9.6}%
-\contentsline {subsection}{\numberline {9.7}第二激发态 $|m|=2$ 的二级修正}{54}{subsection.9.7}%
+\contentsline {subsection}{\numberline {9.7}第二激发态 $|m|=2$ 的二级修正}{53}{subsection.9.7}%
 \contentsline {subsection}{\numberline {9.8}基态的二级修正（补充）}{54}{subsection.9.8}%
 \contentsline {section}{\numberline {10}含时微扰理论：系统复习与公式手册}{55}{section.10}%
 \contentsline {subsection}{\numberline {10.1}第二激发态 $|m|=2$ 的二级修正}{55}{subsection.10.1}%
@@ -71,128 +49,116 @@
 \contentsline {subsection}{\numberline {10.4}核心公式速查卡}{55}{subsection.10.4}%
 \contentsline {subsection}{\numberline {10.5}相互作用绘景与基本方程}{55}{subsection.10.5}%
 \contentsline {subsection}{\numberline {10.6}四种典型时间依赖形式}{56}{subsection.10.6}%
-\contentsline {subsubsection}{\numberline {10.6.1}常微扰：$H'(t) = V\,\Theta (t)$}{56}{subsubsection.10.6.1}%
-\contentsline {subsubsection}{\numberline {10.6.2}简谐微扰：$H'(t) = V\cos (\omega t)\,\Theta (t)$}{56}{subsubsection.10.6.2}%
-\contentsline {subsubsection}{\numberline {10.6.3}指数开关：$H'(t) = V e^{-t/T}\,\Theta (t)$}{56}{subsubsection.10.6.3}%
-\contentsline {subsubsection}{\numberline {10.6.4}$\delta $-脉冲：$H'(t) = V\,\delta (t)$}{56}{subsubsection.10.6.4}%
-\contentsline {subsection}{\numberline {10.7}电偶极跃迁选择定则}{56}{subsection.10.7}%
-\contentsline {subsubsection}{\numberline {10.7.1}选择定则的代数来源}{56}{subsubsection.10.7.1}%
-\contentsline {subsubsection}{\numberline {10.7.2}选择定则的积分证明（以 $z$ 方向为例）}{57}{subsubsection.10.7.2}%
-\contentsline {section}{\numberline {11}量子力学：氢原子在脉冲电场中的电偶极跃迁}{58}{section.11}%
-\contentsline {subsection}{\numberline {11.1}考点快速分析}{58}{subsection.11.1}%
-\contentsline {subsection}{\numberline {11.2}选择定则分析——第 (2) 问}{58}{subsection.11.2}%
-\contentsline {subsection}{\numberline {11.3}跃迁到 $\psi _{210}$ 的概率计算——第 (1) 问}{58}{subsection.11.3}%
-\contentsline {subsection}{\numberline {11.4}径向积分的详细计算}{59}{subsection.11.4}%
-\contentsline {subsection}{\numberline {11.5}结果的物理极限}{59}{subsection.11.5}%
-\contentsline {section}{\numberline {12}量子力学：二能级系统的 Rabi 振荡——精确解与微扰论的对比}{60}{section.12}%
-\contentsline {subsection}{\numberline {12.1}考点快速分析}{60}{subsection.12.1}%
-\contentsline {subsection}{\numberline {12.2}精确解——Rabi 公式}{60}{subsection.12.2}%
-\contentsline {subsubsection}{\numberline {12.2.1}Rabi 公式的物理图像}{60}{subsubsection.12.2.1}%
-\contentsline {subsection}{\numberline {12.3}一阶含时微扰理论}{60}{subsection.12.3}%
-\contentsline {subsection}{\numberline {12.4}精确解 vs 微扰解——逐项比较}{61}{subsection.12.4}%
-\contentsline {subsection}{\numberline {12.5}适用条件的严格推导}{61}{subsection.12.5}%
-\contentsline {subsection}{\numberline {12.6}考场速判：什么时候用精确解，什么时候用微扰？}{61}{subsection.12.6}%
-\contentsline {section}{\numberline {13}量子力学：一维谐振子在 $\delta $ 脉冲下的跃迁——相干态与 Poisson 分布}{62}{section.13}%
-\contentsline {subsection}{\numberline {13.1}考点快速分析}{62}{subsection.13.1}%
-\contentsline {subsection}{\numberline {13.2}$\delta $ 脉冲的时间演化算符}{62}{subsection.13.2}%
-\contentsline {subsection}{\numberline {13.3}位移算符与相干态}{62}{subsection.13.3}%
-\contentsline {subsubsection}{\numberline {13.3.1}位移算符的 BCH 处理}{62}{subsubsection.13.3.1}%
-\contentsline {subsection}{\numberline {13.4}跃迁概率——Poisson 分布}{63}{subsection.13.4}%
-\contentsline {subsubsection}{\numberline {13.4.1}为什么出现 Poisson 分布？}{63}{subsubsection.13.4.1}%
-\contentsline {subsubsection}{\numberline {13.4.2}用递推关系直接验证（不用相干态语言）}{63}{subsubsection.13.4.2}%
-\contentsline {subsection}{\numberline {13.5}考场速记卡：三种脉冲形式的对比}{63}{subsection.13.5}%
-\contentsline {section}{\numberline {14}量子力学：氢原子在磁场中的精确演化与角动量耦合}{64}{section.14}%
-\contentsline {subsection}{\numberline {14.1}读题破译：C.S.C.O. 在暗示什么？}{64}{subsection.14.1}%
-\contentsline {subsection}{\numberline {14.2}为什么长得"怪"？——单位制与氢原子恐惧}{66}{subsection.14.2}%
-\contentsline {subsection}{\numberline {14.3}不可微扰不等于不可解：精确演化的核心逻辑}{66}{subsection.14.3}%
-\contentsline {subsection}{\numberline {14.4}C-G 系数的双向使用与考场速求}{67}{subsection.14.4}%
-\contentsline {subsection}{\numberline {14.5}标准计算流程}{69}{subsection.14.5}%
-\contentsline {subsubsection}{\numberline {14.5.1}第一步：时间演化算符作用}{69}{subsubsection.14.5.1}%
-\contentsline {subsubsection}{\numberline {14.5.2}第二步：投影回目标态}{69}{subsubsection.14.5.2}%
-\contentsline {subsection}{\numberline {14.6}策略反省与注意力管理}{69}{subsection.14.6}%
-\contentsline {part}{第三部分\hspace {1em}微扰论与对角化方法}{70}{part.3}%
-\contentsline {section}{\numberline {15}量子力学：二维谐振子耦合与简并微扰论}{71}{section.15}%
-\contentsline {section}{\numberline {16}【补】二维谐振子}{73}{section.16}%
-\contentsline {subsection}{\numberline {16.1}题型反射弧标签}{73}{subsection.16.1}%
-\contentsline {subsection}{\numberline {16.2}b1, b2 对易关系的详细验证}{73}{subsection.16.2}%
-\contentsline {subsection}{\numberline {16.3}哈密顿量的严格对角化推导}{73}{subsection.16.3}%
-\contentsline {subsection}{\numberline {16.4}简并微扰矩阵的详细构建}{73}{subsection.16.4}%
-\contentsline {subsection}{\numberline {16.5}为什么必须先求本征值，再求本征向量？——机械求解流程}{74}{subsection.16.5}%
-\contentsline {subsection}{\numberline {16.6}行列式展开怎么最快？}{76}{subsection.16.6}%
-\contentsline {subsection}{\numberline {16.7}怎么一眼看出自由变量？}{77}{subsection.16.7}%
-\contentsline {subsection}{\numberline {16.8}微扰矩阵的特征值与特征向量（与 b 表象的对应）}{81}{subsection.16.8}%
-\contentsline {subsection}{\numberline {16.9}严格解与微扰论的对应关系}{81}{subsection.16.9}%
-\contentsline {subsection}{\numberline {16.10}考察的完整知识点}{81}{subsection.16.10}%
-\contentsline {subsection}{\numberline {16.11}拓展延伸}{81}{subsection.16.11}%
-\contentsline {part}{第四部分\hspace {1em}对称性与离散变换}{82}{part.4}%
-\contentsline {section}{\numberline {17}量子力学：时间反演算符与自旋相位关系}{83}{section.17}%
-\contentsline {subsection}{\numberline {17.1}题目复刻}{83}{subsection.17.1}%
-\contentsline {subsection}{\numberline {17.2}题型分类与核心考点}{83}{subsection.17.2}%
-\contentsline {subsection}{\numberline {17.3}标准解题套路}{83}{subsection.17.3}%
-\contentsline {subsubsection}{\numberline {17.3.1}检验 alpha+ = alpha- = 0 为什么不符合物理}{83}{subsubsection.17.3.1}%
-\contentsline {subsubsection}{\numberline {17.3.2}第二步：严格确定相位关系}{83}{subsubsection.17.3.2}%
-\contentsline {subsection}{\numberline {17.4}深度追问与易错点澄清}{84}{subsection.17.4}%
-\contentsline {subsection}{\numberline {17.5}策略反省与注意力管理}{86}{subsection.17.5}%
-\contentsline {section}{\numberline {18}量子力学：磁场中的赝动量与磁平移对称性}{87}{section.18}%
-\contentsline {subsection}{\numberline {18.1}题目复刻}{87}{subsection.18.1}%
-\contentsline {subsection}{\numberline {18.2}题型分类与核心考点}{87}{subsection.18.2}%
-\contentsline {subsection}{\numberline {18.3}标准解题套路}{87}{subsection.18.3}%
-\contentsline {subsubsection}{\numberline {18.3.1}第一步：化简 $\bm {K}$ 并求对易关系}{87}{subsubsection.18.3.1}%
-\contentsline {subsubsection}{\numberline {18.3.2}第二步：BCH 公式的对齐技巧}{88}{subsubsection.18.3.2}%
-\contentsline {subsubsection}{\numberline {18.3.3}第三步：利用考场补充条件 $q < 0$ 对齐系数}{88}{subsubsection.18.3.3}%
-\contentsline {subsection}{\numberline {18.4}深度追问与易错点澄清}{88}{subsection.18.4}%
-\contentsline {subsection}{\numberline {18.5}策略反省与注意力管理}{89}{subsection.18.5}%
-\contentsline {section}{\numberline {19}量子力学：自旋三角环与海森堡交换相互作用}{90}{section.19}%
-\contentsline {subsection}{\numberline {19.1}题型分类与核心考点}{90}{subsection.19.1}%
-\contentsline {subsection}{\numberline {19.2}标准解题套路}{90}{subsection.19.2}%
-\contentsline {subsubsection}{\numberline {19.2.1}第一步：对易子分析}{90}{subsubsection.19.2.1}%
-\contentsline {subsubsection}{\numberline {19.2.2}第二步：构造总自旋并转换哈密顿量}{92}{subsubsection.19.2.2}%
-\contentsline {subsubsection}{\numberline {19.2.3}第三步：角动量耦合与简并度分析}{92}{subsubsection.19.2.3}%
-\contentsline {subsubsection}{\numberline {19.2.4}第四步：判定基态}{95}{subsubsection.19.2.4}%
-\contentsline {subsection}{\numberline {19.3}深度追问与易错点澄清}{95}{subsection.19.3}%
-\contentsline {subsection}{\numberline {19.4}策略反省与注意力管理}{96}{subsection.19.4}%
-\contentsline {section}{\numberline {20}量子力学：全同费米子、自旋耦合与类氢束缚态}{97}{section.20}%
-\contentsline {subsection}{\numberline {20.1}题目复刻}{97}{subsection.20.1}%
-\contentsline {subsection}{\numberline {20.2}题型分类与核心考点}{97}{subsection.20.2}%
-\contentsline {subsection}{\numberline {20.3}标准解题套路}{97}{subsection.20.3}%
-\contentsline {subsubsection}{\numberline {20.3.1}第一步：质心系分解与相对坐标}{97}{subsubsection.20.3.1}%
-\contentsline {subsubsection}{\numberline {20.3.2}第二步：自旋耦合决定吸引还是排斥}{98}{subsubsection.20.3.2}%
-\contentsline {subsubsection}{\numberline {20.3.3}第三步：全同费米子统计对空间波函数的限制}{98}{subsubsection.20.3.3}%
-\contentsline {subsubsection}{\numberline {20.3.4}第四步：类氢原子能级映射}{99}{subsubsection.20.3.4}%
-\contentsline {subsubsection}{\numberline {20.3.5}第五步：简并度的机械计算}{99}{subsubsection.20.3.5}%
-\contentsline {subsection}{\numberline {20.4}深度追问与易错点澄清}{99}{subsection.20.4}%
-\contentsline {subsection}{\numberline {20.5}策略反省与注意力管理}{103}{subsection.20.5}%
-\contentsline {section}{\numberline {21}量子力学：开放量子系统的纯辐射与纯退相干}{104}{section.21}%
-\contentsline {subsection}{\numberline {21.1}Lindblad 主方程的最小入门}{104}{subsection.21.1}%
-\contentsline {subsection}{\numberline {21.2}补充：从量子主方程到经典 Bloch 方程}{108}{subsection.21.2}%
-\contentsline {section}{\numberline {22}量子光学与开放量子系统：从 Rabi 模型到 Lindblad 主方程}{110}{section.22}%
-\contentsline {subsection}{\numberline {22.1}量子 Rabi 模型与 Jaynes--Cummings 模型}{110}{subsection.22.1}%
-\contentsline {subsection}{\numberline {22.2}二能级系统的热库驱动（有限温度）}{113}{subsection.22.2}%
-\contentsline {subsection}{\numberline {22.3}衰减谐振子模型}{113}{subsection.22.3}%
-\contentsline {subsection}{\numberline {22.4}共振驱动下的 Optical Bloch Equations}{114}{subsection.22.4}%
-\contentsline {subsection}{\numberline {22.5}超强耦合量子 Rabi 模型}{114}{subsection.22.5}%
-\contentsline {subsection}{\numberline {22.6}Dissipator 的显式矩阵元计算技巧}{115}{subsection.22.6}%
-\contentsline {subsection}{\numberline {22.7}量子 Zeno 效应}{116}{subsection.22.7}%
-\contentsline {part}{第五部分\hspace {1em}固体理论}{120}{part.5}%
-\contentsline {section}{\numberline {23}固体理论：玻尔兹曼方程与弛豫时间近似——从分布函数到电导}{121}{section.23}%
-\contentsline {subsection}{\numberline {23.1}玻尔兹曼方程是什么？——从零开始的输运理论}{121}{subsection.23.1}%
-\contentsline {subsection}{\numberline {23.2}弛豫时间近似}{121}{subsection.23.2}%
-\contentsline {subsection}{\numberline {23.3}稳态方程与微扰展开}{122}{subsection.23.3}%
-\contentsline {subsection}{\numberline {23.4}一级近似解与$\bm {k}$空间平移}{122}{subsection.23.4}%
-\contentsline {section}{\numberline {24}固体理论：约瑟夫森结与超导量子比特}{123}{section.24}%
-\contentsline {subsection}{\numberline {24.1}题型分类与核心考点}{123}{subsection.24.1}%
-\contentsline {subsection}{\numberline {24.2}第 (1) 问：LC 电路的谐振子化}{123}{subsection.24.2}%
-\contentsline {subsection}{\numberline {24.3}从 LC 谐振子到约瑟夫森结：两问之间的联系}{124}{subsection.24.3}%
-\contentsline {subsection}{\numberline {24.4}第 (2) 问：电荷量子比特的矩阵表示}{125}{subsection.24.4}%
-\contentsline {subsubsection}{\numberline {24.4.1}矩阵形式}{125}{subsubsection.24.4.1}%
-\contentsline {subsubsection}{\numberline {24.4.2}泡利矩阵展开}{125}{subsubsection.24.4.2}%
-\contentsline {subsubsection}{\numberline {24.4.3}在 $n_g = 1/2$ 处的简并微扰论}{125}{subsubsection.24.4.3}%
-\contentsline {subsubsection}{\numberline {24.4.4}$n_g = 1/2 + \delta $ 附近的避免交叉（Avoided Crossing）}{126}{subsubsection.24.4.4}%
-\contentsline {subsection}{\numberline {24.5}Transmon 量子比特的物理图像}{127}{subsection.24.5}%
-\contentsline {subsubsection}{\numberline {24.5.1}从电荷比特到 Transmon：参数比例的反转}{127}{subsubsection.24.5.1}%
-\contentsline {subsubsection}{\numberline {24.5.2}深势阱中的近似分析——一个奇妙的表象变换}{127}{subsubsection.24.5.2}%
-\contentsline {subsubsection}{\numberline {24.5.3}一阶微扰论求非谐性能级}{128}{subsubsection.24.5.3}%
-\contentsline {subsection}{\numberline {24.6}考场总结：两种超导比特的对比}{129}{subsection.24.6}%
-\contentsline {subsection}{\numberline {24.7}策略反省与注意力管理}{129}{subsection.24.7}%
-\contentsline {section}{\numberline {25}固体理论：约瑟夫森结在磁场中的衍射效应}{130}{section.25}%
-\contentsline {subsection}{\numberline {25.1}DC-SQUID 的理论分析与双缝干涉类比}{140}{subsection.25.1}%
+\contentsline {subsubsection}{\numberline {10.6.1}常微扰：$H'(t) = V\,\Theta (t)$}{57}{subsubsection.10.6.1}%
+\contentsline {subsubsection}{\numberline {10.6.2}简谐微扰：$H'(t) = V\cos (\omega t)\,\Theta (t)$}{57}{subsubsection.10.6.2}%
+\contentsline {subsubsection}{\numberline {10.6.3}指数开关：$H'(t) = V e^{-t/T}\,\Theta (t)$}{57}{subsubsection.10.6.3}%
+\contentsline {subsubsection}{\numberline {10.6.4}$\delta $-脉冲：$H'(t) = V\,\delta (t)$}{57}{subsubsection.10.6.4}%
+\contentsline {subsection}{\numberline {10.7}电偶极跃迁选择定则}{57}{subsection.10.7}%
+\contentsline {subsubsection}{\numberline {10.7.1}选择定则的代数来源}{57}{subsubsection.10.7.1}%
+\contentsline {subsubsection}{\numberline {10.7.2}选择定则的积分证明（以 $z$ 方向为例）}{58}{subsubsection.10.7.2}%
+\contentsline {section}{\numberline {11}量子力学：氢原子在脉冲电场中的电偶极跃迁}{59}{section.11}%
+\contentsline {subsection}{\numberline {11.1}考点快速分析}{59}{subsection.11.1}%
+\contentsline {subsection}{\numberline {11.2}选择定则分析——第 (2) 问}{59}{subsection.11.2}%
+\contentsline {subsection}{\numberline {11.3}跃迁到 $\psi _{210}$ 的概率计算——第 (1) 问}{59}{subsection.11.3}%
+\contentsline {subsection}{\numberline {11.4}径向积分的详细计算}{60}{subsection.11.4}%
+\contentsline {subsection}{\numberline {11.5}结果的物理极限}{60}{subsection.11.5}%
+\contentsline {section}{\numberline {12}量子力学：二能级系统的 Rabi 振荡——精确解与微扰论的对比}{61}{section.12}%
+\contentsline {section}{\numberline {13}量子力学：一维谐振子在 $\delta $ 脉冲下的跃迁——相干态与 Poisson 分布}{63}{section.13}%
+\contentsline {subsubsection}{\numberline {13.0.1}位移算符的 BCH 处理}{64}{subsubsection.13.0.1}%
+\contentsline {subsubsection}{\numberline {13.0.2}为什么出现 Poisson 分布？}{64}{subsubsection.13.0.2}%
+\contentsline {subsubsection}{\numberline {13.0.3}用递推关系直接验证（不用相干态语言）}{65}{subsubsection.13.0.3}%
+\contentsline {section}{\numberline {14}量子力学：氢原子在磁场中的精确演化与角动量耦合}{66}{section.14}%
+\contentsline {subsection}{\numberline {14.1}读题破译：C.S.C.O. 在暗示什么？}{66}{subsection.14.1}%
+\contentsline {subsection}{\numberline {14.2}为什么长得"怪"？——单位制与氢原子恐惧}{68}{subsection.14.2}%
+\contentsline {subsection}{\numberline {14.3}不可微扰不等于不可解：精确演化的核心逻辑}{68}{subsection.14.3}%
+\contentsline {subsection}{\numberline {14.4}C-G 系数的双向使用与考场速求}{69}{subsection.14.4}%
+\contentsline {subsection}{\numberline {14.5}标准计算流程}{71}{subsection.14.5}%
+\contentsline {subsubsection}{\numberline {14.5.1}第一步：时间演化算符作用}{71}{subsubsection.14.5.1}%
+\contentsline {subsubsection}{\numberline {14.5.2}第二步：投影回目标态}{71}{subsubsection.14.5.2}%
+\contentsline {subsection}{\numberline {14.6}策略反省与注意力管理}{71}{subsection.14.6}%
+\contentsline {part}{第三部分\hspace {1em}微扰论与对角化方法}{72}{part.3}%
+\contentsline {section}{\numberline {15}量子力学：二维谐振子耦合与简并微扰论}{73}{section.15}%
+\contentsline {section}{\numberline {16}【补】二维谐振子}{75}{section.16}%
+\contentsline {subsection}{\numberline {16.1}题型反射弧标签}{75}{subsection.16.1}%
+\contentsline {subsection}{\numberline {16.2}b1, b2 对易关系的详细验证}{75}{subsection.16.2}%
+\contentsline {subsection}{\numberline {16.3}哈密顿量的严格对角化推导}{75}{subsection.16.3}%
+\contentsline {subsection}{\numberline {16.4}简并微扰矩阵的详细构建}{75}{subsection.16.4}%
+\contentsline {subsection}{\numberline {16.5}为什么必须先求本征值，再求本征向量？——机械求解流程}{76}{subsection.16.5}%
+\contentsline {subsection}{\numberline {16.6}行列式展开怎么最快？}{78}{subsection.16.6}%
+\contentsline {subsection}{\numberline {16.7}怎么一眼看出自由变量？}{79}{subsection.16.7}%
+\contentsline {subsection}{\numberline {16.8}微扰矩阵的特征值与特征向量（与 b 表象的对应）}{83}{subsection.16.8}%
+\contentsline {subsection}{\numberline {16.9}严格解与微扰论的对应关系}{83}{subsection.16.9}%
+\contentsline {subsection}{\numberline {16.10}考察的完整知识点}{83}{subsection.16.10}%
+\contentsline {subsection}{\numberline {16.11}拓展延伸}{83}{subsection.16.11}%
+\contentsline {part}{第四部分\hspace {1em}对称性与离散变换}{84}{part.4}%
+\contentsline {section}{\numberline {17}量子力学：时间反演算符与自旋相位关系}{85}{section.17}%
+\contentsline {subsection}{\numberline {17.1}题目复刻}{85}{subsection.17.1}%
+\contentsline {subsection}{\numberline {17.2}题型分类与核心考点}{85}{subsection.17.2}%
+\contentsline {subsection}{\numberline {17.3}标准解题套路}{85}{subsection.17.3}%
+\contentsline {subsubsection}{\numberline {17.3.1}检验 alpha+ = alpha- = 0 为什么不符合物理}{85}{subsubsection.17.3.1}%
+\contentsline {subsubsection}{\numberline {17.3.2}第二步：严格确定相位关系}{85}{subsubsection.17.3.2}%
+\contentsline {subsection}{\numberline {17.4}深度追问与易错点澄清}{86}{subsection.17.4}%
+\contentsline {subsection}{\numberline {17.5}策略反省与注意力管理}{88}{subsection.17.5}%
+\contentsline {section}{\numberline {18}量子力学：磁场中的赝动量与磁平移对称性}{89}{section.18}%
+\contentsline {subsection}{\numberline {18.1}题目复刻}{89}{subsection.18.1}%
+\contentsline {subsection}{\numberline {18.2}题型分类与核心考点}{89}{subsection.18.2}%
+\contentsline {subsection}{\numberline {18.3}标准解题套路}{89}{subsection.18.3}%
+\contentsline {subsubsection}{\numberline {18.3.1}第一步：化简 $\bm {K}$ 并求对易关系}{89}{subsubsection.18.3.1}%
+\contentsline {subsubsection}{\numberline {18.3.2}第二步：BCH 公式的对齐技巧}{90}{subsubsection.18.3.2}%
+\contentsline {subsubsection}{\numberline {18.3.3}第三步：利用考场补充条件 $q < 0$ 对齐系数}{90}{subsubsection.18.3.3}%
+\contentsline {subsection}{\numberline {18.4}深度追问与易错点澄清}{90}{subsection.18.4}%
+\contentsline {subsection}{\numberline {18.5}策略反省与注意力管理}{91}{subsection.18.5}%
+\contentsline {section}{\numberline {19}量子力学：自旋三角环与海森堡交换相互作用}{92}{section.19}%
+\contentsline {subsection}{\numberline {19.1}题型分类与核心考点}{92}{subsection.19.1}%
+\contentsline {subsection}{\numberline {19.2}标准解题套路}{92}{subsection.19.2}%
+\contentsline {subsubsection}{\numberline {19.2.1}第一步：对易子分析}{92}{subsubsection.19.2.1}%
+\contentsline {subsubsection}{\numberline {19.2.2}第二步：构造总自旋并转换哈密顿量}{94}{subsubsection.19.2.2}%
+\contentsline {subsubsection}{\numberline {19.2.3}第三步：角动量耦合与简并度分析}{94}{subsubsection.19.2.3}%
+\contentsline {subsubsection}{\numberline {19.2.4}第四步：判定基态}{97}{subsubsection.19.2.4}%
+\contentsline {subsection}{\numberline {19.3}深度追问与易错点澄清}{97}{subsection.19.3}%
+\contentsline {subsection}{\numberline {19.4}策略反省与注意力管理}{98}{subsection.19.4}%
+\contentsline {section}{\numberline {20}量子力学：全同费米子、自旋耦合与类氢束缚态}{99}{section.20}%
+\contentsline {subsection}{\numberline {20.1}题目复刻}{99}{subsection.20.1}%
+\contentsline {subsection}{\numberline {20.2}题型分类与核心考点}{99}{subsection.20.2}%
+\contentsline {subsection}{\numberline {20.3}标准解题套路}{99}{subsection.20.3}%
+\contentsline {subsubsection}{\numberline {20.3.1}第一步：质心系分解与相对坐标}{99}{subsubsection.20.3.1}%
+\contentsline {subsubsection}{\numberline {20.3.2}第二步：自旋耦合决定吸引还是排斥}{100}{subsubsection.20.3.2}%
+\contentsline {subsubsection}{\numberline {20.3.3}第三步：全同费米子统计对空间波函数的限制}{100}{subsubsection.20.3.3}%
+\contentsline {subsubsection}{\numberline {20.3.4}第四步：类氢原子能级映射}{101}{subsubsection.20.3.4}%
+\contentsline {subsubsection}{\numberline {20.3.5}第五步：简并度的机械计算}{101}{subsubsection.20.3.5}%
+\contentsline {subsection}{\numberline {20.4}深度追问与易错点澄清}{101}{subsection.20.4}%
+\contentsline {subsection}{\numberline {20.5}策略反省与注意力管理}{105}{subsection.20.5}%
+\contentsline {section}{\numberline {21}量子力学：开放量子系统的纯辐射与纯退相干}{106}{section.21}%
+\contentsline {subsection}{\numberline {21.1}Lindblad 主方程的最小入门}{106}{subsection.21.1}%
+\contentsline {subsection}{\numberline {21.2}补充：从量子主方程到经典 Bloch 方程}{110}{subsection.21.2}%
+\contentsline {section}{\numberline {22}量子光学与开放量子系统：从 Rabi 模型到 Lindblad 主方程}{112}{section.22}%
+\contentsline {subsection}{\numberline {22.1}量子 Rabi 模型与 Jaynes--Cummings 模型}{112}{subsection.22.1}%
+\contentsline {subsection}{\numberline {22.2}二能级系统的热库驱动（有限温度）}{115}{subsection.22.2}%
+\contentsline {subsection}{\numberline {22.3}衰减谐振子模型}{115}{subsection.22.3}%
+\contentsline {subsection}{\numberline {22.4}共振驱动下的 Optical Bloch Equations}{116}{subsection.22.4}%
+\contentsline {subsection}{\numberline {22.5}超强耦合量子 Rabi 模型}{116}{subsection.22.5}%
+\contentsline {subsection}{\numberline {22.6}Dissipator 的显式矩阵元计算技巧}{117}{subsection.22.6}%
+\contentsline {subsection}{\numberline {22.7}量子 Zeno 效应}{118}{subsection.22.7}%
+\contentsline {part}{第五部分\hspace {1em}固体理论}{122}{part.5}%
+\contentsline {section}{\numberline {23}固体理论：玻尔兹曼方程与弛豫时间近似——从分布函数到电导}{123}{section.23}%
+\contentsline {subsection}{\numberline {23.1}玻尔兹曼方程是什么？——从零开始的输运理论}{123}{subsection.23.1}%
+\contentsline {subsection}{\numberline {23.2}弛豫时间近似}{123}{subsection.23.2}%
+\contentsline {subsection}{\numberline {23.3}稳态方程与微扰展开}{124}{subsection.23.3}%
+\contentsline {subsection}{\numberline {23.4}一级近似解与$\bm {k}$空间平移}{124}{subsection.23.4}%
+\contentsline {section}{\numberline {24}固体理论：约瑟夫森结与超导量子比特}{126}{section.24}%
+\contentsline {subsection}{\numberline {24.1}题型分类与核心考点}{126}{subsection.24.1}%
+\contentsline {subsection}{\numberline {24.2}第 (1) 问：LC 电路的谐振子化}{126}{subsection.24.2}%
+\contentsline {subsection}{\numberline {24.3}从 LC 谐振子到约瑟夫森结：两问之间的联系}{127}{subsection.24.3}%
+\contentsline {subsection}{\numberline {24.4}第 (2) 问：电荷量子比特的矩阵表示}{128}{subsection.24.4}%
+\contentsline {subsubsection}{\numberline {24.4.1}矩阵形式}{128}{subsubsection.24.4.1}%
+\contentsline {subsubsection}{\numberline {24.4.2}泡利矩阵展开}{128}{subsubsection.24.4.2}%
+\contentsline {subsubsection}{\numberline {24.4.3}在 $n_g = 1/2$ 处的简并微扰论}{128}{subsubsection.24.4.3}%
+\contentsline {subsubsection}{\numberline {24.4.4}$n_g = 1/2 + \delta $ 附近的避免交叉（Avoided Crossing）}{129}{subsubsection.24.4.4}%
+\contentsline {subsection}{\numberline {24.5}Transmon 量子比特的物理图像}{130}{subsection.24.5}%
+\contentsline {subsubsection}{\numberline {24.5.1}从电荷比特到 Transmon：参数比例的反转}{130}{subsubsection.24.5.1}%
+\contentsline {subsubsection}{\numberline {24.5.2}深势阱中的近似分析——一个奇妙的表象变换}{130}{subsubsection.24.5.2}%
+\contentsline {subsubsection}{\numberline {24.5.3}一阶微扰论求非谐性能级}{131}{subsubsection.24.5.3}%
+\contentsline {subsection}{\numberline {24.6}考场总结：两种超导比特的对比}{132}{subsection.24.6}%
+\contentsline {subsection}{\numberline {24.7}策略反省与注意力管理}{132}{subsection.24.7}%
+\contentsline {section}{\numberline {25}固体理论：约瑟夫森结在磁场中的衍射效应}{133}{section.25}%
+\contentsline {subsection}{\numberline {25.1}DC-SQUID 的理论分析与双缝干涉类比}{143}{subsection.25.1}%

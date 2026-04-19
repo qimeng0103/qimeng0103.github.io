@@ -16,7 +16,7 @@
 
 一句话总结：Born 近似是``建造'' 微分截面的工具；光学定理是``检验'' 总截面是否幺正的尺子。一级 Born 的结果只能留在 Born 的框架内用（积分得总截面），绝不能跨到光学定理那边去（因为光学定理需要精确的 $f(0)$，而一级 Born 给不出虚部）。
 
-\subsection{低能非极化中子--中子散射}
+\begin{derivationbox}[低能非极化中子--中子散射]
 
 两个中子发生低能散射（$E \to 0$），相互作用势为
 \[
@@ -35,8 +35,9 @@ V_0 \, \vec{\sigma}_1 \cdot \vec{\sigma}_2, & r < a \\[4pt]
     \item 非极化平均：单态概率 $1/4$，三重态概率 $3/4$
     \item 全同粒子对称化：$f(\theta) \to f(\theta) \pm f(\pi - \theta)$
 \end{itemize}
+\end{derivationbox}
 
-\subsection{自旋耦合、统计与有效势}
+\begin{derivationbox}[自旋耦合、统计与有效势]
 
 总自旋 $\vec{S} = \vec{S}_1 + \vec{S}_2 = \frac{\hbar}{2}(\vec{\sigma}_1 + \vec{\sigma}_2)$。由
 \[
@@ -157,8 +158,9 @@ M = 2m \text{（总质量）}, \qquad \mu = \frac{m_1 m_2}{m_1 + m_2} = \frac{m}
 \subsubsection*{为什么三重态在 $E \to 0$ 被压制？}
 
 全同费米子要求总波函数反对称。s 波（$l = 0$）空间波函数对称，只能配反对称的自旋单态。三重态要求空间反对称，最低允许的分波是 $l = 1$（p 波）。p 波在原点有离心势垒 $l(l+1)\hbar^2/2\mu r^2$，相移 $\delta_1 \sim k^3$（当 $k \to 0$），截面被 $k^4$ 压制。因此在 $E \to 0$ 极限下，只有单态的 s 波有贡献。
+\end{derivationbox}
 
-\subsection{为什么这道题必须用分波法？}
+\begin{insightbox}[为什么这道题必须用分波法？]
 
 \subsubsection*{分波法的``触发条件''——与 Born 近似的对比}
 
@@ -205,8 +207,9 @@ u_l(r) \sim r^{l+1} \quad \Longrightarrow \quad R_l(r) = \frac{u_l}{r} \sim r^l.
 对 $l = 0$：$\sigma_0 \sim k^0 = \text{常数}$；对 $l = 1$：$\sigma_1 \sim k^4$；对 $l = 2$：$\sigma_2 \sim k^8$。
 
 结论：低能时 s 波（$l = 0$）截面趋于常数，所有 $l \ge 1$ 的分波被 $k^{4l}$ 强烈压制。三重态因统计要求必须取 $l \ge 1$，其最低分波 $l = 1$ 的截面 $\sim k^4 \to 0$，故在 $E \to 0$ 极限下无贡献。
+\end{insightbox}
 
-\subsection{s 波分波法与相移}
+\begin{derivationbox}[s 波分波法与相移]
 
 \subsubsection*{径向方程从哪来？——逐步推导}
 
@@ -306,8 +309,9 @@ $e^{ix} = C$ & $e^{i(x+2\pi)} = e^{ix}$ & $2\pi$ \\
 考场实操：匹配条件得到的是 $\tan(ka + \delta_0) = \text{某数}$，所以 $ka + \delta_0$ 只能确定到模 $\pi$。但解 $\delta_0$ 时你写 $\arctan$ 就够了，因为物理结果只依赖于 $\sin^2\delta_0$。
 
 一句话：$\delta_0$ 的 $n\pi$ 不确定性跟方位角 $\phi$ 的 $2\pi$ 周期性一样——坐标可以有歧义，但物理结果唯一。
+\end{derivationbox}
 
-\subsection{低能极限 $E \to 0$}
+\begin{derivationbox}[低能极限 $E \to 0$]
 
 当 $E \to 0$ 时，$k \to 0$，$\alpha \to \alpha_0 \equiv \sqrt{6\mu V_0/\hbar^2}$。对 $\delta_0$ 做泰勒展开：
 \[
@@ -336,8 +340,9 @@ a_s \equiv -\lim_{k\to 0} \frac{\delta_0}{k} = a \left[ 1 - \frac{\tan(\alpha_0 
 \sigma_0 = 4\pi|f|^2 \xrightarrow{k\to 0} 4\pi a_s^2.
 \]
 这被称为有效范围理论（Effective Range Theory）的零阶结果。在冷原子物理中，散射长度是调控原子间相互作用的核心参数（Feshbach 共振就是通过磁场调节 $a_s$ 从 $-\infty$ 到 $+\infty$）。
+\end{derivationbox}
 
-\subsection{对称化、非极化平均与总截面}
+\begin{derivationbox}[对称化、非极化平均与总截面]
 
 \subsubsection*{极化、非极化与部分极化——考场不害怕指南}
 
@@ -406,3 +411,5 @@ $|{\uparrow\downarrow}\rangle$ & $\frac{1}{\sqrt{2}}(|1, 0\rangle + |0, 0\rangle
 $|{\downarrow\uparrow}\rangle$ & $\frac{1}{\sqrt{2}}(|1, 0\rangle - |0, 0\rangle)$ & 混合 & $1/4$ \\
 $|{\downarrow\downarrow}\rangle$ & $|1, -1\rangle$ & $s = 1$（三重态） & $1/4$ \\
 \end{tabular}
+\end{derivationbox}
+

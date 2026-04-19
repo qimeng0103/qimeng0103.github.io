@@ -3,6 +3,7 @@
 \section{量子力学：氢原子在脉冲电场中的电偶极跃迁}
 \label{sec:hydrogen-pulse}
 
+\begin{modelbox}[氢原子在脉冲电场中的电偶极跃迁]
 基态氢原子在指数衰减电场中的跃迁。
 
 基态氢原子处于弱电场中，微扰哈密顿量为
@@ -23,18 +24,22 @@
 \item[C.] $\psi_{21,-1}$
 \item[D.] $\psi_{210}$
 \end{itemize}
+\end{modelbox}
 
 \subsection{考点快速分析}
 
+\begin{tipbox}[考点快速分析]
 \begin{itemize}
 \item 含时微扰一级公式：$a_{fi}(t) = \dfrac{1}{i\hbar} \int_0^t \langle f|H'(t')|i\rangle e^{i\omega_{fi}t'} dt'$
 \item 指数时间积分：$\int_0^\infty e^{-t/T} e^{i\omega t} dt = \dfrac{1}{1/T - i\omega} = \dfrac{T}{1 - i\omega T}$
 \item 选择定则：$\Delta l = \pm 1$，$\Delta m = 0$ ($z$ 方向电场)
 \item 角向积分：$Y_{00}$、$Y_{10}$、$\cos\theta \propto Y_{10}$ 的耦合
 \end{itemize}
+\end{tipbox}
 
 \subsection{选择定则分析——第 (2) 问}
 
+\begin{derivationbox}[选择定则分析]
 微扰算符 $H' \propto z = r\cos\theta$ 是电偶极算符。在球谐函数表象中：
 \begin{itemize}
 \item $\cos\theta \propto Y_{10}$，角量子数为 1，磁量子数为 0
@@ -46,9 +51,11 @@
 \item $\Delta m = 0$：因为 $z$ 方向微扰不依赖于 $\phi$（即 $L_z$ 守恒）。选项 B ($\psi_{211}$，$m=1$) 和 C ($\psi_{21,-1}$，$m=-1$) 不满足，概率为零。
 \end{enumerate}
 因此只有 D ($\psi_{210}$，$l=1, m=0$) 是允许跃迁的通道。答案为 ABC。
+\end{derivationbox}
 
 \subsection{跃迁到 $\psi_{210}$ 的概率计算——第 (1) 问}
 
+\begin{derivationbox}[跃迁概率计算]
 \textbf{Step 1：矩阵元} $z_{21,10} = \langle 210|z|100\rangle$
 
 波函数：
@@ -84,9 +91,11 @@ P = |a_{fi}|^2 = \frac{\lambda^2 |z_{21,10}|^2}{\hbar^2} \cdot \frac{T^2}{1 + \o
 \[
 P = 2^5 \left(\frac{2}{3}\right)^{10} \frac{\lambda^2 a^2}{\hbar^2} \cdot \frac{T^2}{1 + \omega_{21}^2 T^2}.
 \]
+\end{derivationbox}
 
 \subsection{径向积分的详细计算}
 
+\begin{derivationbox}[径向积分的详细计算]
 标准氢原子径向函数：
 \[
 R_{10}(r) = \frac{2}{a^{3/2}} e^{-r/a}, \qquad R_{21}(r) = \frac{1}{2\sqrt{6}\,a^{3/2}} \frac{r}{a} e^{-r/2a}.
@@ -102,10 +111,13 @@ R_{10}(r) = \frac{2}{a^{3/2}} e^{-r/a}, \qquad R_{21}(r) = \frac{1}{2\sqrt{6}\,a
 \int_0^\infty r^4 e^{-3r/2a} dr = \frac{24}{(3/2a)^5} = \frac{24 \cdot 32 a^5}{243} = \frac{768 a^5}{243} = \frac{256 a^5}{81}.
 \]
 因此径向积分为 $\dfrac{256a}{81\sqrt{6}}$。乘以角向因子 $1/\sqrt{3}$ 即得 $z_{21,10}$。
+\end{derivationbox}
 
 \subsection{结果的物理极限}
 
+\begin{insightbox}[结果的物理极限]
 \begin{itemize}
 \item $\omega_{21} T \ll 1$（慢开关，$T$ 很短）：$P \approx \dfrac{\lambda^2 |z_{21,10}|^2 T^2}{\hbar^2}$，跃迁概率与作用时间的平方成正比。
 \item $\omega_{21} T \gg 1$（快开关，$T$ 很长）：$P \approx \dfrac{\lambda^2 |z_{21,10}|^2}{\hbar^2 \omega_{21}^2}$，概率饱和，与 $T$ 无关。这是能量--时间不确定关系的表现：作用时间远大于内禀周期时，系统有时间调整，跃迁被抑制。
 \end{itemize}
+\end{insightbox}
