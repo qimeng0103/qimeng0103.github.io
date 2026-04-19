@@ -195,3 +195,17 @@
 \contentsline {subsubsection}{\numberline {28.3.1}物理意义}{156}{subsubsection.28.3.1}%
 \contentsline {subsubsection}{\numberline {28.3.2}常见错误}{156}{subsubsection.28.3.2}%
 \contentsline {subsubsection}{\numberline {28.3.3}考场速记}{156}{subsubsection.28.3.3}%
+\contentsline {section}{\numberline {29}量子力学：一维谐振子与位移算符——从对易关系到相干态}{157}{section.29}%
+\contentsline {subsection}{\numberline {29.1}对易关系 $[a, F(X)]$ 的证明}{157}{subsection.29.1}%
+\contentsline {subsubsection}{\numberline {29.1.1}基本对易子}{157}{subsubsection.29.1.1}%
+\contentsline {subsubsection}{\numberline {29.1.2}幂级数展开}{157}{subsubsection.29.1.2}%
+\contentsline {subsection}{\numberline {29.2}递推关系的推导}{158}{subsection.29.2}%
+\contentsline {subsection}{\numberline {29.3}计算具体矩阵元}{158}{subsection.29.3}%
+\contentsline {subsubsection}{\numberline {29.3.1}基态矩阵元 $\langle 0|e^{ikX}|0\rangle $}{158}{subsubsection.29.3.1}%
+\contentsline {subsection}{\numberline {29.4}$t=0$ 时的期望值}{158}{subsection.29.4}%
+\contentsline {subsubsection}{\numberline {29.4.1}归一化验证}{158}{subsubsection.29.4.1}%
+\contentsline {subsubsection}{\numberline {29.4.2}位置与动量期望值}{159}{subsubsection.29.4.2}%
+\contentsline {subsection}{\numberline {29.5}$t$ 时刻能量测量概率}{159}{subsection.29.5}%
+\contentsline {subsubsection}{\numberline {29.5.1}初始展开}{159}{subsubsection.29.5.1}%
+\contentsline {subsubsection}{\numberline {29.5.2}时间演化与概率}{159}{subsubsection.29.5.2}%
+\contentsline {subsection}{\numberline {29.6}常见错误与考场策略}{160}{subsection.29.6}%
