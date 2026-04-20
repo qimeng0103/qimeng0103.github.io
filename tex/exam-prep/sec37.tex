@@ -139,19 +139,40 @@
 
 若只取一阶近似 $\eta \approx p/(3K) = 1/36 \approx 2.78\%$，误差仅约 $0.04\%$。
 
-\begin{insightbox}{热力学偏导数的操作安全守则}
-体积弹性模量定义 $K = -V(\partial p/\partial V)_T$ 是\textbf{偏导数}，为什么能直接写成 $\dd p = -K\,\dd V/V$ 积分？关键在于\textbf{控制变量的识别}：
+\begin{insightbox}{热力学符号辨析：$\dd$、$\delta$、$\partial$ 与状态函数}
 
-在等温压缩过程中，系统的状态由 $(T,V)$ 描述，$p$ 只是 $V$ 的单值函数 $p = p(T,V)$（$T$ 固定）。因此沿等温线有
+热力学中符号混乱的根源是\textbf{两类物理量}的混淆：
+\begin{itemize}[nosep]
+  \item \textbf{状态函数}（如 $p,V,T,U$）：只与当前状态有关，与怎么到达无关；
+  \item \textbf{过程量}（如 $W,Q$）：与具体路径有关，不能只说初末态。
+\end{itemize}
+
+\textbf{符号规则}：
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c|l|l|}
+\hline
+\textbf{符号} & \textbf{含义} & \textbf{例子} \\
+\hline
+$\partial$ & 偏导数，固定其他变量 & $(\partial p/\partial V)_T$ 表示\"温度不变时压强随体积的变化率\" \\
+$\dd$ & 状态函数的无穷小变化（全微分） & $\dd U$ 是内能变化，$\oint\dd U = 0$ \\
+$\delta$ & 过程量的无穷小量（不是全微分） & $\delta W = p\,\dd V$（功与路径有关，$\oint\delta W \neq 0$） \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{具体到本题}：$K = -V(\partial p/\partial V)_T$ 中的偏导数，为什么能直接积分？
+
+因为 $p$ 是\textbf{状态函数}，在等温条件下 $p$ 只是 $V$ 的函数 $p = p(V)$（$T$ 固定）。此时偏导数退化为普通导数：
 \[
-  \dd p = \left(\frac{\partial p}{\partial V}\right)_T \dd V ,
+  \left(\frac{\partial p}{\partial V}\right)_T = \frac{\dd p}{\dd V} \quad (T\text{ 固定}) .
 \]
-这里的 $\dd V$ 不是任意变分，而是\textbf{沿等温路径的实际体积变化}。偏导数改写成微分的前提是：\textbf{你明确知道哪些变量被固定，哪些在变化}。
 
-\textbf{常见错误}：在多变量问题中（比如同时有 $p,V,T,S$），看到偏导就写成 $\dd x / \dd y$，结果忘了 $z$ 也在变。安全做法是：
-\begin{enumerate}[nosep]
-  \item 写出完整微分式 $\dd f = (\partial f/\partial x)_y \dd x + (\partial f/\partial y)_x \dd y$；
-  \item 代入约束条件（如 $\dd T = 0$ 或某过程方程）；
-  \item 消去被约束的变量后，再整理成单变量微分形式。
-\end{enumerate}
+于是 $\dd p = (\partial p/\partial V)_T\,\dd V = -K\,\dd V/V$，两边积分即可。
+
+\textbf{什么时候会出错}：如果题目说"绝热压缩"，那么 $p$ 同时依赖于 $V$ 和 $S$（或 $T$），$p = p(V,S)$。此时
+\[
+  \dd p = \left(\frac{\partial p}{\partial V}\right)_S\dd V + \left(\frac{\partial p}{\partial S}\right)_V\dd S ,
+\]
+若盲目只写 $\dd p = (\partial p/\partial V)_S\,\dd V$ 而忘了 $\dd S \neq 0$，就会漏项。\textbf{安全做法}：先写全微分，再代入约束条件消去被固定的变量。
 \end{insightbox}
