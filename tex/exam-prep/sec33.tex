@@ -34,6 +34,41 @@
 三维中你被\textbf{6个异号离子}近距离包围，吸引力更强；一维中只有\textbf{2个}。虽然远处的同号离子会排斥你，但它们距离更远（按 $r_0$ 的倍数），且被异号离子``挡在中间''，排斥效果被部分抵消。最近邻的数量优势是决定 $M$ 大小的核心因素。
 \end{insightbox}
 
+\subsection{固体物理题型反射弧——考场不慌指南}
+
+\begin{modelbox}{看到什么关键词$\to$启动什么公式}
+\begin{center}
+\renewcommand{\arraystretch}{1.6}
+\begin{tabular}{|p{4.2cm}|p{4.5cm}|p{5.5cm}|}
+\hline
+\textbf{题目关键词} & \textbf{题型判断} & \textbf{核心操作} \\
+\hline
+``相邻原子间相互作用势'' ``平衡距离'' ``晶格能'' & 晶体结合能（LJ/幂律势） & 一阶导$=0$求平衡，代入求能，二阶导乘键长得弹性模量 \\
+\hline
+``一维离子晶格'' ``马德隆常数'' ``库仑能'' & 马德隆常数 & 写交错级数$\sum (\pm 1)/n$，利用$\ln(1+x)$或$\ln 2$求和 \\
+\hline
+``一维单原子链'' ``声子'' ``色散关系'' & 晶格振动 & 简谐近似$+$牛顿方程$+$Bloch行波解$\to$求$\omega(q)$ \\
+\hline
+``玻尔兹曼方程'' ``弛豫时间'' ``电场中分布函数'' & 固体输运 & 稳态方程$+$按电场幂次展开$+$识别平移算符 \\
+\hline
+``约瑟夫森结'' ``SQUID'' ``磁通量子'' & 超导器件 & 约瑟夫森方程$I=I_c\sin\varphi$ $+$ 相位积累$+$磁通量子化 \\
+\hline
+``能带'' ``周期性势场'' ``Bloch波'' & 能带论 & 近自由电子$/$紧束缚模型，求色散$E(k)$，算有效质量 \\
+\hline
+\end{tabular}
+\end{center}
+\end{modelbox}
+
+\begin{tipbox}{固体物理的``三板斧''}
+无论遇到哪种题型，底层逻辑几乎都可以归为以下三步：
+\begin{enumerate}[nosep]
+  \item \textbf{写势能/哈密顿量}：明确相互作用形式（LJ、库仑、谐振子、紧束缚等）；
+  \item \textbf{求平衡/本征态}：导数为零、对角化、解运动方程；
+  \item \textbf{求响应/修正}：二阶导（弹性模量）、微扰（输运）、色散关系（声子/能带）。
+\end{enumerate}
+固体物理考题的吓人之处往往在于符号多、近似多，但核心结构高度重复。只要认准题型，套对应的三板斧，大部分分数都能拿下。
+\end{tipbox}
+
 \subsection{概念铺垫：什么是马德隆常数？}
 
 \begin{modelbox}{库仑相互作用能——两个点电荷的``共享能量''}
@@ -163,16 +198,45 @@
 
 维度越高，$M$ 越大。原因是三维中每个离子被更多异号离子包围，同号离子的排斥被更有效地屏蔽。
 
-\subsubsection{三维中的埃瓦尔德（Ewald）求和}
+\subsubsection{三维中的埃瓦尔德（Ewald）求和——为什么需要它？}
 
-三维离子晶体的马德隆常数不能直接通过 $\sum (\pm 1)/r$ 计算，因为：
+\begin{modelbox}{三维求和的困境}
+三维中直接计算 $\sum (\pm 1)/r$ 会遇到两个致命问题：
 \begin{enumerate}[nosep]
-  \item 级数条件收敛，求和顺序影响结果；
-  \item 球壳截断时，表面电荷引起的偶极矩不消失，导致结果依赖于截断半径。
+  \item \textbf{条件收敛}：级数的和依赖于求和顺序（按球壳、立方壳等不同截断方式给出不同结果）；
+  \item \textbf{表面效应}：球壳截断时，表面有净电荷（未完全配对），产生偶极矩，导致结果依赖于截断半径。
 \end{enumerate}
+一维链没有表面效应问题，因为``左右各一条路''，正负严格配对。
+\end{modelbox}
 
-埃瓦尔德求和把库仑势拆分为\textbf{实空间短程部分}和\textbf{倒空间长程部分}：
+\begin{insightbox}{Ewald 的核心思想：给每个离子穿一件``羽绒服''}
+想象每个点电荷不是无限尖锐的点，而是被一团``高斯分布''的蓬松电荷云包围（像羽绒服）。
+
+\textbf{拆分策略}：把 $1/r$ 拆成两部分
 \[
-  \frac{1}{r} = \frac{\text{erfc}(\eta r)}{r} + \frac{\text{erf}(\eta r)}{r},
+  \frac{1}{r} = \underbrace{\frac{\text{erfc}(\eta r)}{r}}_{\text{实空间：短程尖锐}} + \underbrace{\frac{\text{erf}(\eta r)}{r}}_{\text{倒空间：长程平滑}}.
 \]
-其中 $\eta$ 是可调参数。两项分别在实空间和倒空间快速收敛，从而加速计算。
+
+其中 $\text{erf}(x)$ 是误差函数（$\text{erf}(0)=0$, $\text{erf}(\infty)=1$），$\text{erfc}(x)=1-\text{erf}(x)$ 是互补误差函数。
+
+\textbf{第一项（实空间部分）}：$\text{erfc}(\eta r)/r$
+\begin{itemize}[nosep]
+  \item 当 $r$ 很小时，$\text{erfc}(\eta r)\approx 1$，这一项接近 $1/r$，还原了近距离的尖锐作用；
+  \item 当 $r$ 很大时，$\text{erfc}(\eta r)$ 按 $e^{-\eta^2 r^2}$ 指数衰减到 0，\textbf{非常快}；
+  \item 因此实空间中只需计算最近邻少数几个离子的贡献。
+\end{itemize}
+
+\textbf{第二项（倒空间部分）}：$\text{erf}(\eta r)/r$
+\begin{itemize}[nosep]
+  \item 在实空间中，这一项变化缓慢（长程），但做傅里叶变换（转到倒空间）后，只包含少量低波矢成分；
+  \item 在倒空间中，只需要取前几项倒格矢 $\mathbf{G}$ 就能精确描述；
+  \item 因此倒空间中也只需计算少数几项。
+\end{itemize}
+
+\textbf{可调参数 $\eta$ 的作用}：
+\begin{itemize}[nosep]
+  \item $\eta$ 大：高斯峰尖锐，实空间收敛极快，但倒空间收敛慢；
+  \item $\eta$ 小：高斯峰平坦，实空间收敛慢，但倒空间收敛快；
+  \item 最优策略：取适中的 $\eta$，使两部分计算量大致相等。
+\end{itemize}
+\end{insightbox}
