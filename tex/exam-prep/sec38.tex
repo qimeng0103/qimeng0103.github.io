@@ -1,0 +1,288 @@
+\section{Lennard-Jones 势与惰性气体晶体}
+
+\begin{tipbox}{关键词标签}
+Lennard-Jones 势、晶格求和、面心立方、体弹性模量、抗张强度。
+\end{tipbox}
+
+\subsection{题目}
+
+用 Lennard-Jones 势描述惰性气体分子晶体原子间相互作用势：
+\[
+  u(r) = 4\varepsilon\left[\left(\frac{\sigma}{r}\right)^{12} - \left(\frac{\sigma}{r}\right)^{6}\right] ,
+\]
+式中 $\varepsilon,\sigma$ 为 L-J 参数。分子晶体为面心立方结构，且\textbf{只计及次近邻（即第三近邻）}的相互作用。
+
+\begin{enumerate}[(1)]
+  \item 推导热平衡时惰性气体分子晶体总的相互作用势能表达式；
+  \item 已知惰性气体 Kr（氪）晶体具有面心立方结构，参数 $\varepsilon = 0.014\,\text{eV}$，$\sigma = 3.65\,\text{\AA}$，试求：
+  \begin{enumerate}[(a)]
+    \item $1\,\text{mol}$ Kr 分子晶体的结合能；
+    \item 晶体的晶格常数；
+    \item 晶体的体弹性模量；
+    \item 抗张强度。
+  \end{enumerate}
+\end{enumerate}
+
+
+\subsection{解答}
+
+\subsubsection{(1) 总相互作用势能表达式}
+
+设晶体由 $N$ 个原子组成，忽略表面效应。第 $i$ 个原子与所有其他原子 $j$ 的相互作用势能为
+\[
+  U_i = \sum_{j\neq i} u(r_{ij}) .
+\]
+
+晶体总势能为所有原子对的势能之和。由于每对原子被计算了两次，需除以 2：
+\[
+  U = \frac{1}{2}\sum_{i}\sum_{j\neq i} u(r_{ij}) = \frac{N}{2}\sum_{j\neq i} u(r_{ij}) .
+\tag{1}
+\]
+
+令最近邻距离为 $r$，其他原子到参考原子的距离可写成 $r_{ij} = \alpha_j r$，其中 $\alpha_j$ 为无量纲距离系数。代入 L-J 势：
+\[
+  U(r) = \frac{N}{2} \cdot 4\varepsilon\sum_{j}\left[\left(\frac{\sigma}{\alpha_j r}\right)^{12} - \left(\frac{\sigma}{\alpha_j r}\right)^{6}\right]
+       = 2N\varepsilon\left[A_{12}\left(\frac{\sigma}{r}\right)^{12} - A_{6}\left(\frac{\sigma}{r}\right)^{6}\right] ,
+\tag{2}
+\]
+其中\textbf{晶格求和常数}定义为
+\[
+  A_{12} = \sum_{j}\frac{1}{\alpha_j^{12}}, \qquad
+  A_{6}  = \sum_{j}\frac{1}{\alpha_j^{6}} .
+\tag{3}
+\]
+
+\textbf{FCC 结构的晶格求和}（计及次近邻即第三近邻）：
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c|c|c|c|c|}
+\hline
+\textbf{壳层} & \textbf{距离} & $\boldsymbol{\alpha_j}$ & \textbf{原子数} & \textbf{贡献} \\
+\hline
+最近邻   & $r$         & 1         & 12 & $12\times 1 = 12$ \\
+次近邻   & $\sqrt{2}\,r$ & $\sqrt{2}$ & 6  & $6\times(1/\sqrt{2})^6 = 6/8 = 0.750$ \\
+第三近邻 & $\sqrt{3}\,r$ & $\sqrt{3}$ & 24 & $24\times(1/\sqrt{3})^6 = 24/27 = 0.889$ \\
+\hline
+\multicolumn{4}{|r|}{\textbf{合计}} & $\bm{A_6 = 13.639}$ \\
+\hline
+\end{tabular}
+\end{center}
+
+类似地，
+\[
+  A_{12} = 12 + 6\times\left(\frac{1}{\sqrt{2}}\right)^{12} + 24\times\left(\frac{1}{\sqrt{3}}\right)^{12}
+         = 12 + \frac{6}{64} + \frac{24}{729}
+         = 12 + 0.0938 + 0.0329
+         = 12.127 .
+\]
+
+\textbf{平衡条件}：$\dd U/\dd r|_{r_0} = 0$。
+
+对 (2) 求导：
+\[
+  \frac{\dd U}{\dd r} = 2N\varepsilon\left[-\frac{12A_{12}\sigma^{12}}{r^{13}} + \frac{6A_6\sigma^6}{r^7}\right] = 0
+  \quad\Longrightarrow\quad
+  \frac{12A_{12}\sigma^{12}}{r_0^{13}} = \frac{6A_6\sigma^6}{r_0^7} .
+\]
+
+整理得
+\[
+  \left(\frac{\sigma}{r_0}\right)^6 = \frac{A_6}{2A_{12}}
+  \quad\Longrightarrow\quad
+  \boxed{r_0 = \left(\frac{2A_{12}}{A_6}\right)^{1/6}\sigma} .
+\tag{4}
+\]
+
+代入数值：
+\[
+  r_0 = \left(\frac{2\times 12.127}{13.639}\right)^{1/6}\sigma
+      = (1.778)^{1/6}\sigma
+      \approx 1.10\,\sigma .
+\]
+
+将 (4) 代回 (2) 求平衡总势能 $U_0$：
+\[
+  U_0 = 2N\varepsilon\left[A_{12}\cdot\frac{A_6^2}{4A_{12}^2} - A_6\cdot\frac{A_6}{2A_{12}}\right]
+      = 2N\varepsilon\left[\frac{A_6^2}{4A_{12}} - \frac{A_6^2}{2A_{12}}\right]
+      = -\frac{N\varepsilon A_6^2}{2A_{12}} .
+\]
+
+代入数值：
+\[
+  \boxed{U_0 = -7.67\,N\varepsilon} .
+\tag{5}
+\]
+
+\begin{insightbox}{L-J 势的物理图像}
+\begin{itemize}[nosep]
+  \item $(\sigma/r)^{12}$：\textbf{短程排斥}——电子云重叠的泡利排斥，随距离急剧衰减；
+  \item $(\sigma/r)^{6}$：\textbf{范德华吸引}——瞬时偶极矩相互作用，衰减较慢；
+  \item $\sigma$ 的物理意义：$u(r)=0$ 时的距离，即"硬球直径"；
+  \item $\varepsilon$ 的物理意义：势阱深度（结合能的量级）。
+\end{itemize}
+
+L-J 势是\textbf{两体势}，总势能就是所有原子对势能的叠加。这与离子晶体的 Madelung 求和类似，但 L-J 势衰减更快（$r^{-6}$ vs $r^{-1}$），因此只需计及少数近邻即可获得足够精度。
+\end{insightbox}
+
+
+\subsubsection{(2) Kr 晶体的具体计算}
+
+已知：$\varepsilon = 0.014\,\text{eV} = 0.014\times 1.602\times 10^{-19}\,\text{J}$，$\sigma = 3.65\times 10^{-10}\,\text{m}$。
+
+\vspace{0.5em}
+\textbf{(a) $1\,\text{mol}$ Kr 的结合能}
+
+$N = N_A = 6.022\times 10^{23}$，代入 (5)：
+\[
+  E_b = U_0 = -7.67\times 6.022\times 10^{23}\times 0.014
+       = -6.47\times 10^{22}\,\text{eV/mol} .
+\]
+
+每原子结合能：
+\[
+  \frac{U_0}{N_A} = -7.67\times 0.014 = -0.107\,\text{eV}
+  \quad (\text{实验值 } -0.11\,\text{eV}) .
+\]
+
+\textbf{(b) 晶格常数}
+
+由 (4)：$r_0 = 1.10\times 3.65 = 4.02\,\text{\AA}$。
+
+FCC 中最近邻距离与晶格常数的关系为 $r_0 = \dfrac{\sqrt{2}}{2}a = \dfrac{a}{\sqrt{2}}$，故
+\[
+  a = \sqrt{2}\,r_0 = 1.414\times 4.02 = \boxed{5.68\,\text{\AA}} .
+\]
+
+\textbf{(c) 体弹性模量 $K$}
+
+体弹性模量的定义为
+\[
+  K = V_0\left(\frac{\dd^2 U}{\dd V^2}\right)_{V_0}
+    = V_0\left(\frac{\dd r}{\dd V}\right)_{r_0}^{\!2}\left(\frac{\dd^2 U}{\dd r^2}\right)_{r_0} .
+\tag{6}
+\]
+
+FCC 晶体体积（$N$ 个原子，每晶胞 4 原子，$a = \sqrt{2}\,r$）：
+\[
+  V = \frac{N}{4}a^3 = \frac{N}{4}(\sqrt{2}\,r)^3 = \frac{\sqrt{2}}{2}\,Nr^3 .
+\]
+
+\[
+  \frac{\dd V}{\dd r} = \frac{3\sqrt{2}}{2}\,Nr^2
+  \quad\Longrightarrow\quad
+  \left(\frac{\dd r}{\dd V}\right)^2 = \frac{2}{9N^2r^4} .
+\]
+
+对 (2) 求二阶导：
+\[
+  \frac{\dd^2 U}{\dd r^2}
+  = \frac{2N\varepsilon}{r^2}\left[156A_{12}\left(\frac{\sigma}{r}\right)^{12} - 42A_6\left(\frac{\sigma}{r}\right)^{6}\right] .
+\]
+
+在 $r_0$ 处利用 $(\sigma/r_0)^6 = A_6/(2A_{12})$ 化简：
+\[
+  \left(\frac{\dd^2 U}{\dd r^2}\right)_{r_0}
+  = \frac{36N\varepsilon A_6^2}{A_{12}r_0^2} .
+\]
+
+将以上结果代入 (6)：
+\[
+  K = \frac{\sqrt{2}}{2}Nr_0^3 \cdot \frac{2}{9N^2r_0^4} \cdot \frac{36N\varepsilon A_6^2}{A_{12}r_0^2}
+    = 4\sqrt{2}\,\frac{\varepsilon A_6^2}{A_{12}r_0^3} .
+\]
+
+再利用 $r_0^3 = \sqrt{\dfrac{2A_{12}}{A_6}}\,\sigma^3$（由 (4) 两边立方），最终化简为
+\[
+  \boxed{K = \frac{4\varepsilon A_6^{5/2}}{A_{12}^{3/2}\sigma^3}} .
+\tag{7}
+\]
+
+\textbf{代入数值}：
+\[
+  \frac{A_6^{5/2}}{A_{12}^{3/2}}
+  = \frac{13.639^{2.5}}{12.127^{1.5}}
+  = \frac{687.0}{42.23}
+  \approx 16.27 ,
+\]
+
+\[
+  K = \frac{4\times 0.014\times 1.602\times 10^{-19}\times 16.27}{(3.65\times 10^{-10})^3}
+    = \frac{1.460\times 10^{-19}}{4.864\times 10^{-29}}
+    \approx \boxed{3.0\times 10^9\,\text{Pa} = 3.0\,\text{GPa}} .
+\]
+
+（实验值 $3.5\times 10^9\,\text{Pa}$，理论预测略低是因为只计及三近邻。）
+
+\textbf{(d) 抗张强度 $p_m$}
+
+抗张强度对应晶体所能承受的最大张应力，即 $p = -\dd U/\dd V$ 的极大值（负号表示张力）。令 $\dd p/\dd r = 0$ 求极值点 $r_m$，等价于在 L-J 势中找 $U(r)$ 曲线的拐点附近 $p$ 取最大处。
+
+经计算（或对 $y=(\sigma/r)^6$ 求 $p(y)$ 的极值），极值点满足
+\[
+  \left(\frac{\sigma}{r_m}\right)^6 = \frac{7A_6}{26A_{12}}
+  \quad\Longrightarrow\quad
+  r_m = \left(\frac{26A_{12}}{7A_6}\right)^{1/6}\sigma
+      \approx 1.22\,\sigma .
+\]
+
+将 $r_m$ 代入 $p = -\dd U/\dd V$ 并化简，得
+\[
+  p_m = -5.92\,\frac{\varepsilon}{\sigma^3} .
+\tag{8}
+\]
+
+代入数值：
+\[
+  p_m = -5.92\times\frac{0.014\times 1.602\times 10^{-19}}{(3.65\times 10^{-10})^3}
+      = -5.92\times\frac{2.243\times 10^{-21}}{4.864\times 10^{-29}}
+      \approx -2.73\times 10^8\,\text{Pa} .
+\]
+
+负号表示张力，故抗张强度的大小为
+\[
+  \boxed{|p_m| \approx 273\,\text{MPa}} .
+\]
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{物理量} & \textbf{计算值} & \textbf{实验值} \\
+\hline
+最近邻距离 $r_0$       & $4.02\,\text{\AA}$  & $3.98\,\text{\AA}$ \\
+每原子结合能          & $0.107\,\text{eV}$   & $0.11\,\text{eV}$ \\
+晶格常数 $a$          & $5.68\,\text{\AA}$  & --- \\
+体弹性模量 $K$         & $3.0\,\text{GPa}$    & $3.5\,\text{GPa}$ \\
+抗张强度 $|p_m|$       & $273\,\text{MPa}$   & --- \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{insightbox}{晶格求和常数 $A_6$、$A_{12}$ 的快捷计算}
+对于 FCC 结构，$A_6$ 和 $A_{12}$ 是\textbf{只与几何结构有关}的常数，与具体物质无关。考试中若要求"计及次近邻"，通常意味着：
+\begin{itemize}[nosep]
+  \item 最近邻（12 个，$\alpha=1$）必算；
+  \item 次近邻（6 个，$\alpha=\sqrt{2}$）必算；
+  \item 第三近邻（24 个，$\alpha=\sqrt{3}$）视题目要求而定。
+\end{itemize}
+
+记忆技巧：$A_6$ 收敛慢（$\alpha^{-6}$），需多算几层；$A_{12}$ 收敛快（$\alpha^{-12}$），三近邻后已可忽略。本题若只计最近邻，$A_6=12$，$A_{12}=12$，结果偏差约 $14\%$。
+\end{insightbox}
+
+\begin{insightbox}{体弹性模量公式的结构记忆}
+观察 (7) 式 $K = \dfrac{4\varepsilon A_6^{5/2}}{A_{12}^{3/2}\sigma^3}$ 的量纲：
+\[
+  [\varepsilon] = \text{J}, \quad [\sigma^3] = \text{m}^3
+  \quad\Longrightarrow\quad
+  \left[\frac{\varepsilon}{\sigma^3}\right] = \frac{\text{J}}{\text{m}^3} = \text{Pa} .
+\]
+量纲正确。$A_6^{5/2}/A_{12}^{3/2}$ 是纯几何因子，对于 FCC 约等于 16。
+
+\textbf{快速估算}：$K \sim 4\times 16 \times \varepsilon/\sigma^3 = 64\varepsilon/\sigma^3$。代入 Kr 数据：
+\[
+  K \sim 64\times\frac{2.24\times 10^{-21}}{4.86\times 10^{-29}}
+    \sim 3\times 10^9\,\text{Pa} .
+\]
+一步到位的数量级估算，适合选择题。
+\end{insightbox}
