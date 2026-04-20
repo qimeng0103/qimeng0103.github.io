@@ -24,6 +24,45 @@
 本题是典型的\textbf{宏观量 $\to$ 微观参量 $\to$ 结合能}三步反推：先用比重定平衡间距，再用弹性模量定 Born 指数，最后代入结合能公式。
 \end{insightbox}
 
+\begin{insightbox}{破题策略：如何看穿``看似无关的量''？}
+这是固体物理考试中最阴险的题型之一：给你一堆\textbf{宏观可测量}，让你求一个\textbf{微观能量}。它们之间的桥梁被刻意隐藏，需要你主动搭建。
+
+\textbf{第一步：给每个量贴标签——它到底是干什么的？}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{题目给出的量} & \textbf{它的真实身份} & \textbf{能帮你求什么} \\
+\hline
+比重 $D$（密度） & 单位体积的质量 & 晶胞体积 $\to$ 晶胞边长 $a$ $\to$ 离子间距 $r_0$ \\
+原子量 & 摩尔质量 & 晶胞质量（配合 $N_0$） \\
+马德隆常数 $M$ & 几何因子（已算好） & 总库仑能中的求和结果 \\
+弹性模量 $K$ & 能量对体积的二阶导 & 力常数 / 势阱曲率 $\to$ Born 指数 $n$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{第二步：建立条件反射}
+
+看到某些关键词，立刻启动对应的脑内程序：
+\begin{itemize}[nosep]
+  \item 看到``比重''或``密度'' $\Rightarrow$ 启动 \textbf{晶胞法}：画一个晶胞，数离子数，列方程 $D = m_{\text{cell}}/V_{\text{cell}}$，解出 $r_0$。
+  \item 看到``弹性模量'' $\Rightarrow$ 启动 \textbf{二阶导程序}：$K \propto U''(r_0)$，而 $U''$ 中包含未知参数 $n$，于是 $K$ 成了求 $n$ 的方程。
+  \item 看到``结合能'' $\Rightarrow$ 启动 \textbf{能量公式}：$U_0 \propto (1 - 1/n)/r_0$，此时 $r_0$ 和 $n$ 都已从前两步得到，直接代入。
+\end{itemize}
+
+\textbf{第三步：识破``数值烟雾弹''}
+
+题目煞有介事地给出多位有效数字（如 $M = 1.7476$），其实是在：
+\begin{itemize}[nosep]
+  \item \textbf{麻痹你}：让你觉得``数据这么全，肯定直接代入就行''，从而忽略搭建桥梁的思考；
+  \item \textbf{测试你}：看你是否清楚每个数该在\textbf{哪一步}、\textbf{哪个公式}中出现。$M$ 只在最后求结合能时出现，求 $r_0$ 和 $n$ 时完全用不到！
+\end{itemize}
+
+\textbf{核心心法}：不要急着代入数字。先写符号公式，看清楚谁是谁的函数，再决定用哪个已知量去解哪个未知数。
+\end{insightbox}
+
 \subsection{物理模型与结合能公式}
 
 由 $N$ 个离子对（共 $2N$ 个离子）组成的 NaCl 晶体，总相互作用势为
