@@ -155,8 +155,8 @@
 \textbf{符号} & \textbf{含义} & \textbf{例子} \\
 \hline
 $\partial$ & 偏导数，固定其他变量 & $(\partial p/\partial V)_T$ 表示\"温度不变时压强随体积的变化率\" \\
-$\dd$ & 状态函数的无穷小变化（全微分） & $\dd U$ 是内能变化，$\oint\dd U = 0$ \\
-$\delta$ & 过程量的无穷小量（不是全微分） & $\delta W = p\,\dd V$（功与路径有关，$\oint\delta W \neq 0$） \\
+$\mathrm{d}$ & 状态函数的无穷小变化（全微分） & $\mathrm{d}U$ 是内能变化，$\oint\mathrm{d}U = 0$ \\
+$\delta$ & 过程量的无穷小量（不是全微分） & $\delta W = p\,\mathrm{d}V$（功与路径有关，$\oint\delta W \neq 0$） \\
 \hline
 \end{tabular}
 \end{center}
@@ -168,7 +168,7 @@ $\delta$ & 过程量的无穷小量（不是全微分） & $\delta W = p\,\dd V$
   \left(\frac{\partial p}{\partial V}\right)_T = \frac{\dd p}{\dd V} \quad (T\text{ 固定}) .
 \]
 
-于是 $\dd p = (\partial p/\partial V)_T\,\dd V = -K\,\dd V/V$，两边积分即可。
+于是 $\mathrm{d}p = (\partial p/\partial V)_T\,\mathrm{d}V = -K\,\mathrm{d}V/V$，两边积分即可。
 
 \textbf{什么时候会出错}：如果题目说"绝热压缩"，那么 $p$ 同时依赖于 $V$ 和 $S$（或 $T$），$p = p(V,S)$。此时
 \[

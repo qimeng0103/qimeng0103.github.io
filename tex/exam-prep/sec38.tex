@@ -10,7 +10,7 @@ Lennard-Jones 势、晶格求和、面心立方、体弹性模量、抗张强度
 \[
   u(r) = 4\varepsilon\left[\left(\frac{\sigma}{r}\right)^{12} - \left(\frac{\sigma}{r}\right)^{6}\right] ,
 \]
-式中 $\varepsilon,\sigma$ 为 L-J 参数。分子晶体为面心立方结构，且\textbf{只计及次近邻（即第三近邻）}的相互作用。
+式中 $\varepsilon,\sigma$ 为 L-J 参数。分子晶体为面心立方结构，且\textbf{计及最近邻、次近邻与第三近邻}的相互作用。
 
 \begin{enumerate}[(1)]
   \item 推导热平衡时惰性气体分子晶体总的相互作用势能表达式；
@@ -22,6 +22,24 @@ Lennard-Jones 势、晶格求和、面心立方、体弹性模量、抗张强度
     \item 抗张强度。
   \end{enumerate}
 \end{enumerate}
+
+\begin{modelbox}{分子晶体 vs 离子晶体}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{特征} & \textbf{分子晶体（如 Kr）} & \textbf{离子晶体（如 NaCl）} \\
+\hline
+结合力来源 & 范德华力（瞬时偶极矩相互作用） & 库仑力（正负离子静电吸引） \\
+势函数形式 & $r^{-6}$ 吸引 + $r^{-12}$ 排斥 & $r^{-1}$ 吸引 + 指数/幂律排斥 \\
+相互作用范围 & 短程（几层近邻即可） & 长程（需 Madelung 求和） \\
+晶体结构 & 密堆结构（fcc、hcp） & 由离子半径比决定（NaCl、CsCl、ZnS） \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{本题为什么叫"分子晶体"}：惰性气体原子在孤立状态下没有永久偶极矩，但晶体中由于电子云涨落会产生\textbf{瞬时偶极矩}，这些瞬时偶极矩之间的相互作用就是范德华力（London 力）。这种力比离子键弱得多，所以惰性气体晶体的熔点和结合能都远低于离子晶体。
+\end{modelbox}
 
 
 \subsection{解答}
@@ -52,17 +70,19 @@ Lennard-Jones 势、晶格求和、面心立方、体弹性模量、抗张强度
 \tag{3}
 \]
 
-\textbf{FCC 结构的晶格求和}（计及次近邻即第三近邻）：
+\textbf{FCC 结构的晶格求和}（计及最近邻、次近邻与第三近邻）：
+
+FCC 中以一个原子为原点，其他原子按距离分层排列。各壳层的距离和原子数有固定规律（以最近邻距离 $r$ 为单位）：
 
 \begin{center}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabular}{|c|c|c|c|c|}
 \hline
-\textbf{壳层} & \textbf{距离} & $\boldsymbol{\alpha_j}$ & \textbf{原子数} & \textbf{贡献} \\
+\textbf{壳层} & \textbf{距离} & $\boldsymbol{\alpha_j}$ & \textbf{原子数} & \textbf{对 $A_6$ 贡献} \\
 \hline
-最近邻   & $r$         & 1         & 12 & $12\times 1 = 12$ \\
-次近邻   & $\sqrt{2}\,r$ & $\sqrt{2}$ & 6  & $6\times(1/\sqrt{2})^6 = 6/8 = 0.750$ \\
-第三近邻 & $\sqrt{3}\,r$ & $\sqrt{3}$ & 24 & $24\times(1/\sqrt{3})^6 = 24/27 = 0.889$ \\
+最近邻（第 1 壳层）   & $r$         & 1         & 12 & $12\times 1 = 12$ \\
+次近邻（第 2 壳层）   & $\sqrt{2}\,r$ & $\sqrt{2}$ & 6  & $6\times(1/\sqrt{2})^6 = 6/8 = 0.750$ \\
+第三近邻（第 3 壳层） & $\sqrt{3}\,r$ & $\sqrt{3}$ & 24 & $24\times(1/\sqrt{3})^6 = 24/27 = 0.889$ \\
 \hline
 \multicolumn{4}{|r|}{\textbf{合计}} & $\bm{A_6 = 13.639}$ \\
 \hline
@@ -77,11 +97,24 @@ Lennard-Jones 势、晶格求和、面心立方、体弹性模量、抗张强度
          = 12.127 .
 \]
 
-\textbf{平衡条件}：$\dd U/\dd r|_{r_0} = 0$。
+\begin{insightbox}{FCC 壳层原子数的规律——不用死记}
+FCC 中各壳层的距离服从规律：$r, \sqrt{2}\,r, \sqrt{3}\,r, 2r, \sqrt{5}\,r, \dots$
+
+\textbf{原子数的记忆技巧}：
+\begin{itemize}[nosep]
+  \item 第 1 壳层（最近邻）：12 个——fcc 的配位数，必须记住；
+  \item 第 2 壳层（次近邻）：6 个——恰好是简单立方的配位数（可理解为"对面原子"）；
+  \item 第 3 壳层：24 个——$= 12\times 2$，比最近邻多一倍。
+\end{itemize}
+
+\textbf{考场策略}：如果题目说"计及次近邻"，严格理解是算到第 2 壳层（$12+6=18$ 个原子）。但由于 L-J 势的 $r^{-6}$ 衰减不够快，实际计算中通常需要算到第 3 壳层才能和实验值吻合。考试中如果给了具体数值（如本题），按题目给的壳层算即可。
+\end{insightbox}
+
+\textbf{平衡条件}：在热平衡时，系统的总势能取极小值，即 $\mathrm{d}U/\mathrm{d}r|_{r_0} = 0$。
 
 对 (2) 求导：
 \[
-  \frac{\dd U}{\dd r} = 2N\varepsilon\left[-\frac{12A_{12}\sigma^{12}}{r^{13}} + \frac{6A_6\sigma^6}{r^7}\right] = 0
+  \frac{\mathrm{d}U}{\mathrm{d}r} = 2N\varepsilon\left[-\frac{12A_{12}\sigma^{12}}{r^{13}} + \frac{6A_6\sigma^6}{r^7}\right] = 0
   \quad\Longrightarrow\quad
   \frac{12A_{12}\sigma^{12}}{r_0^{13}} = \frac{6A_6\sigma^6}{r_0^7} .
 \]
@@ -116,13 +149,13 @@ Lennard-Jones 势、晶格求和、面心立方、体弹性模量、抗张强度
 
 \begin{insightbox}{L-J 势的物理图像}
 \begin{itemize}[nosep]
-  \item $(\sigma/r)^{12}$：\textbf{短程排斥}——电子云重叠的泡利排斥，随距离急剧衰减；
-  \item $(\sigma/r)^{6}$：\textbf{范德华吸引}——瞬时偶极矩相互作用，衰减较慢；
+  \item $(\sigma/r)^{12}$：\textbf{短程排斥}——两个原子靠得太近时，电子云重叠产生泡利排斥，随距离急剧衰减；
+  \item $(\sigma/r)^{6}$：\textbf{范德华吸引}——原子中的电子云不断涨落，产生\textbf{瞬时偶极矩}，相邻原子的瞬时偶极矩相互感应、相互吸引。这种力很弱，但普遍存在；
   \item $\sigma$ 的物理意义：$u(r)=0$ 时的距离，即"硬球直径"；
   \item $\varepsilon$ 的物理意义：势阱深度（结合能的量级）。
 \end{itemize}
 
-L-J 势是\textbf{两体势}，总势能就是所有原子对势能的叠加。这与离子晶体的 Madelung 求和类似，但 L-J 势衰减更快（$r^{-6}$ vs $r^{-1}$），因此只需计及少数近邻即可获得足够精度。
+\textbf{瞬时偶极矩是什么}：想象一个原子，电子云在某一瞬间偏向一侧，形成短暂的正负电荷分离（偶极矩）。这个瞬时偶极矩会感应邻近原子也产生瞬时偶极矩，两者同向排列时相互吸引。虽然每个瞬时偶极矩存在时间极短，但统计平均下来有净吸引作用，这就是 $r^{-6}$ 项的来源。
 \end{insightbox}
 
 
@@ -158,8 +191,8 @@ FCC 中最近邻距离与晶格常数的关系为 $r_0 = \dfrac{\sqrt{2}}{2}a = 
 
 体弹性模量的定义为
 \[
-  K = V_0\left(\frac{\dd^2 U}{\dd V^2}\right)_{V_0}
-    = V_0\left(\frac{\dd r}{\dd V}\right)_{r_0}^{\!2}\left(\frac{\dd^2 U}{\dd r^2}\right)_{r_0} .
+  K = V_0\left(\frac{\mathrm{d}^2 U}{\mathrm{d} V^2}\right)_{V_0}
+    = V_0\left(\frac{\mathrm{d}r}{\mathrm{d}V}\right)_{r_0}^{\!2}\left(\frac{\mathrm{d}^2 U}{\mathrm{d}r^2}\right)_{r_0} .
 \tag{6}
 \]
 
@@ -169,20 +202,20 @@ FCC 晶体体积（$N$ 个原子，每晶胞 4 原子，$a = \sqrt{2}\,r$）：
 \]
 
 \[
-  \frac{\dd V}{\dd r} = \frac{3\sqrt{2}}{2}\,Nr^2
+  \frac{\mathrm{d}V}{\mathrm{d}r} = \frac{3\sqrt{2}}{2}\,Nr^2
   \quad\Longrightarrow\quad
-  \left(\frac{\dd r}{\dd V}\right)^2 = \frac{2}{9N^2r^4} .
+  \left(\frac{\mathrm{d}r}{\mathrm{d}V}\right)^2 = \frac{2}{9N^2r^4} .
 \]
 
 对 (2) 求二阶导：
 \[
-  \frac{\dd^2 U}{\dd r^2}
+  \frac{\mathrm{d}^2 U}{\mathrm{d}r^2}
   = \frac{2N\varepsilon}{r^2}\left[156A_{12}\left(\frac{\sigma}{r}\right)^{12} - 42A_6\left(\frac{\sigma}{r}\right)^{6}\right] .
 \]
 
 在 $r_0$ 处利用 $(\sigma/r_0)^6 = A_6/(2A_{12})$ 化简：
 \[
-  \left(\frac{\dd^2 U}{\dd r^2}\right)_{r_0}
+  \left(\frac{\mathrm{d}^2 U}{\mathrm{d}r^2}\right)_{r_0}
   = \frac{36N\varepsilon A_6^2}{A_{12}r_0^2} .
 \]
 
@@ -216,9 +249,22 @@ FCC 晶体体积（$N$ 个原子，每晶胞 4 原子，$a = \sqrt{2}\,r$）：
 
 \textbf{(d) 抗张强度 $p_m$}
 
-抗张强度对应晶体所能承受的最大张应力，即 $p = -\dd U/\dd V$ 的极大值（负号表示张力）。令 $\dd p/\dd r = 0$ 求极值点 $r_m$，等价于在 L-J 势中找 $U(r)$ 曲线的拐点附近 $p$ 取最大处。
+\textbf{概念铺垫}：
+\begin{itemize}[nosep]
+  \item \textbf{应力} = 力/面积。压应力是"挤压"（正值），张应力是"拉伸"（负值，或说方向向外）；
+  \item \textbf{抗张强度} = 材料能承受的最大张应力。超过这个值，晶体就会断裂；
+  \item 在势能曲线中，$p = -\mathrm{d}U/\mathrm{d}V$。当 $r > r_0$ 时，$U$ 随 $r$ 增大而上升，$\mathrm{d}U/\mathrm{d}V > 0$，所以 $p < 0$（张应力）。
+\end{itemize}
 
-经计算（或对 $y=(\sigma/r)^6$ 求 $p(y)$ 的极值），极值点满足
+\textbf{求最大张应力的思路}：
+张应力 $p(r) = -\mathrm{d}U/\mathrm{d}V$ 是 $r$ 的函数。当 $r$ 从 $r_0$ 开始增大时：
+\begin{itemize}[nosep]
+  \item 刚开始 $p$ 的绝对值增大（拉力增大）；
+  \item 到达某一点 $r_m$ 后，$p$ 的绝对值开始减小（拉力减小）；
+  \item 这个转折点 $r_m$ 就是张应力最大的位置。
+\end{itemize}
+
+数学上，令 $\mathrm{d}p/\mathrm{d}r = 0$ 找极值。对于 L-J 势，这个极值点恰好对应 $U(r)$ 曲线的拐点（$\mathrm{d}^2U/\mathrm{d}r^2 = 0$）附近。经推导，极值点满足
 \[
   \left(\frac{\sigma}{r_m}\right)^6 = \frac{7A_6}{26A_{12}}
   \quad\Longrightarrow\quad
@@ -226,7 +272,7 @@ FCC 晶体体积（$N$ 个原子，每晶胞 4 原子，$a = \sqrt{2}\,r$）：
       \approx 1.22\,\sigma .
 \]
 
-将 $r_m$ 代入 $p = -\dd U/\dd V$ 并化简，得
+将 $r_m$ 代入 $p = -\mathrm{d}U/\mathrm{d}V$ 并化简，得
 \[
   p_m = -5.92\,\frac{\varepsilon}{\sigma^3} .
 \tag{8}
@@ -239,7 +285,7 @@ FCC 晶体体积（$N$ 个原子，每晶胞 4 原子，$a = \sqrt{2}\,r$）：
       \approx -2.73\times 10^8\,\text{Pa} .
 \]
 
-负号表示张力，故抗张强度的大小为
+负号表示张应力（拉力），故抗张强度的大小为
 \[
   \boxed{|p_m| \approx 273\,\text{MPa}} .
 \]
@@ -259,15 +305,15 @@ FCC 晶体体积（$N$ 个原子，每晶胞 4 原子，$a = \sqrt{2}\,r$）：
 \end{tabular}
 \end{center}
 
-\begin{insightbox}{晶格求和常数 $A_6$、$A_{12}$ 的快捷计算}
-对于 FCC 结构，$A_6$ 和 $A_{12}$ 是\textbf{只与几何结构有关}的常数，与具体物质无关。考试中若要求"计及次近邻"，通常意味着：
-\begin{itemize}[nosep]
-  \item 最近邻（12 个，$\alpha=1$）必算；
-  \item 次近邻（6 个，$\alpha=\sqrt{2}$）必算；
-  \item 第三近邻（24 个，$\alpha=\sqrt{3}$）视题目要求而定。
-\end{itemize}
+\begin{insightbox}{抗张强度的物理图像}
+想象拉伸一根弹簧：
+\begin{enumerate}[nosep]
+  \item 从平衡位置开始拉，拉力逐渐增大——对应 $r$ 从 $r_0$ 增大到 $r_m$；
+  \item 拉到 $r_m$ 时，拉力达到最大——这就是抗张强度；
+  \item 再往后拉，原子间作用力迅速衰减，弹簧"脱力"——晶体断裂。
+\end{enumerate}
 
-记忆技巧：$A_6$ 收敛慢（$\alpha^{-6}$），需多算几层；$A_{12}$ 收敛快（$\alpha^{-12}$），三近邻后已可忽略。本题若只计最近邻，$A_6=12$，$A_{12}=12$，结果偏差约 $14\%$。
+$|p_m| \ll K$（$273\,\text{MPa}$ vs $3.0\,\text{GPa}$，差约 10 倍），说明晶体能承受的压力远大于拉力。这是因为 L-J 势的排斥壁很陡（$r^{-12}$），而吸引尾很平缓（$r^{-6}$）。
 \end{insightbox}
 
 \begin{insightbox}{体弹性模量公式的结构记忆}
