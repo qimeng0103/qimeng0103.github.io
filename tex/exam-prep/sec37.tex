@@ -1,0 +1,163 @@
+\section{体积弹性模量的估算与应用}
+
+\begin{infobox}
+\textbf{考点}：体积弹性模量的定义、积分求解压强、小量近似。
+\end{infobox}
+
+\subsection{估计压缩到正常密度 $\alpha$ 倍所需的压强}
+
+\textbf{题目}：估计将一固体压缩到它的正常密度 $\alpha$ 倍时所需的压强。
+
+\textbf{分析}：本题是体积弹性模量 $K$ 的\textbf{定义式直接应用}，关键在于把微分定义改写为可积分的形式，并合理近似。
+
+\vspace{0.5em}
+\textbf{【解答】}
+
+体积弹性模量的定义为
+\[
+  K = -V\left(\frac{\partial p}{\partial V}\right)_T .
+\tag{1}
+\]
+
+在等温过程中把偏导改写为微分：
+\[
+  \dd p = -K\,\frac{\dd V}{V} .
+\tag{2}
+\]
+
+假设 $K$ 在压缩过程中近似为常数（小形变近似），两边积分：
+\[
+  \int_{p_0}^{p}\dd p = -K\int_{V_0}^{V}\frac{\dd V}{V}
+  \quad\Longrightarrow\quad
+  p - p_0 = -K\ln\frac{V}{V_0} .
+\tag{3}
+\]
+
+固体在自然平衡状态下仅受大气压作用，$p_0 \sim 10^5\,\text{Pa}$，而固体 $K \sim 10^{10}\,\text{Pa}$，故 $p_0 \ll K$ 可忽略，取 $p_0 \approx 0$：
+\[
+  p = -K\ln\frac{V}{V_0} .
+\tag{4}
+\]
+
+密度变为正常密度的 $\alpha$ 倍，即 $\rho = \alpha\rho_0$。质量不变时 $\rho \propto 1/V$，故
+\[
+  \frac{V}{V_0} = \frac{1}{\alpha} .
+\tag{5}
+\]
+
+代入 (4) 得
+\[
+  \boxed{p = K\ln\alpha} .
+\tag{6}
+\]
+
+\begin{insightbox}{数量级估算}
+典型离子晶体 $K \sim 10^{10}\,\text{Pa}$。若 $\alpha = 10$（压缩到 10 倍正常密度），则
+\[
+  p = 10^{10}\ln 10 \approx 2.3\times 10^{10}\,\text{Pa} \sim 10^5\,\text{atm} .
+\]
+这相当于地幔深度的压强，说明要把固体压缩一个数量级需要\textbf{天文数字的压强}。
+\end{insightbox}
+
+\begin{modelbox}{公式 (6) 的物理含义}
+压强与 $\ln\alpha$ 成正比，而不是与 $(\alpha-1)$ 成正比——这说明体积弹性模量的定义本身就包含了\textbf{对数响应}。如果误用胡克定律 $p = K(1-V/V_0) = K(1-1/\alpha)$，会在 $\alpha \gg 1$ 时严重低估所需压强。
+
+正确记忆：\textbf{$K$ 来自对数积分，结果自带 $\ln$}。
+\end{modelbox}
+
+
+\subsection{NaCl 在高压下离子间距的缩小百分比}
+
+\textbf{题目}：已知 NaCl 晶体的体弹性模量为 $K = 2.4\times 10^{10}\,\text{Pa}$，在 $2$ 万大气压的压力作用下，晶体中相邻两离子间的距离将缩小百分之几？（$1\,\text{atm} = 10^5\,\text{Pa}$）
+
+\textbf{分析}：上一题给出了 $p$ 与 $V$ 的关系，而离子晶体中 $V \propto r^3$（各向同性压缩），因此可以建立 $p$ 与 $r/r_0$ 的关系，再利用 $p \ll K$ 做泰勒展开。
+
+\vspace{0.5em}
+\textbf{【解答】}
+
+由上题结论 (4)：
+\[
+  p = -K\ln\frac{V}{V_0} .
+\tag{7}
+\]
+
+各向同性压缩时，晶胞体积与离子间距的立方成正比：
+\[
+  \frac{V}{V_0} = \left(\frac{r}{r_0}\right)^{\!3} .
+\tag{8}
+\]
+
+代入 (7)：
+\[
+  p = -K\ln\!\left(\frac{r}{r_0}\right)^{\!3}
+    = -3K\ln\frac{r}{r_0} .
+\tag{9}
+\]
+
+解出间距比：
+\[
+  \ln\frac{r}{r_0} = -\frac{p}{3K}
+  \quad\Longrightarrow\quad
+  \frac{r}{r_0} = \exp\!\left(-\frac{p}{3K}\right) .
+\tag{10}
+\]
+
+间距缩小的百分比为
+\[
+  \eta = \frac{r_0 - r}{r_0} = 1 - \frac{r}{r_0}
+       = 1 - \exp\!\left(-\frac{p}{3K}\right) .
+\tag{11}
+\]
+
+\textbf{代入数据}：
+\[
+  p = 2\times 10^4\,\text{atm}
+    = 2\times 10^4 \times 10^5\,\text{Pa}
+    = 2\times 10^9\,\text{Pa} .
+\]
+
+\[
+  \frac{p}{3K} = \frac{2\times 10^9}{3\times 2.4\times 10^{10}}
+               = \frac{2}{72}
+               = \frac{1}{36}
+               \approx 2.778\times 10^{-2} .
+\tag{12}
+\]
+
+由于 $p \ll 3K$，对指数做泰勒展开 $e^{-x} \approx 1 - x + x^2/2$（$x = 1/36 \ll 1$）：
+\[
+  \frac{r}{r_0} = e^{-1/36}
+               \approx 1 - \frac{1}{36} + \frac{1}{2\times 36^2}
+               = 1 - 0.02778 + 0.000386
+               \approx 0.9726 .
+\]
+
+因此
+\[
+  \boxed{\eta = 1 - 0.9726 \approx 2.74\%} .
+\]
+
+若只取一阶近似 $\eta \approx p/(3K) = 1/36 \approx 2.78\%$，误差仅约 $0.04\%$。
+
+\begin{insightbox}{解题策略：先写精确式，再判断近似}
+很多考生一上来就用小量近似 $\eta \approx p/(3K)$，虽然本题结果碰巧接近，但\textbf{严格的步骤}是：
+\begin{enumerate}[nosep]
+  \item 先推导出精确表达式 $\eta = 1 - e^{-p/(3K)}$；
+  \item 再代入数值判断 $p/(3K)$ 是否远小于 1；
+  \item 若是，再写泰勒展开取近似。
+\end{enumerate}
+这样即使 $p$ 很大（比如 $10^5\,\text{atm}$），也不会因为盲目近似而丢分。
+\end{insightbox}
+
+\begin{insightbox}{与 sec36（压缩系数）的联系}
+sec36 从微观势函数出发推导了
+\[
+  K = \frac{NMe^2}{18\pi\varepsilon_0 V_0}\!\left(\frac{1}{2\rho} - \frac{1}{r_0}\right) ,
+\]
+而本题直接从\textbf{宏观定义} $K = -V(\partial p/\partial V)_T$ 出发，用 $K$ 作为已知量估算压强和形变。两条路径的关系是：
+\begin{itemize}[nosep]
+  \item sec36：微观 $\to$ 宏观（从势函数推导弹性模量）；
+  \item sec37：宏观 $\to$ 应用（用弹性模量做压强/形变估算）。
+\end{itemize}
+考试时要根据题目给出的条件选择路径：\textbf{给势函数用微观，给 $K$ 用宏观}。
+\end{insightbox}

@@ -186,42 +186,42 @@
 \end{insightbox}
 
 \begin{insightbox}{进阶晶体结构手绘：密铺、Wigner-Seitz 原胞与错位双原子格子}
-\textbf{一、密铺（Close Packing）——分层错位法}
 
-密堆结构（fcc、hcp）的核心是\textbf{原子层的六方排列}。手绘时不要试图一次性画 3D，而是严格按层堆叠：
+\textbf{一、密铺（Close Packing）——俯视图分层法}
+
+密堆结构（fcc、hcp）的\textbf{核心是一张俯视图}，而不是 3D 小球堆叠。考场上画 3D 小球必糊，画 2D 分层俯视图最清晰：
 \begin{enumerate}[nosep]
-  \item \textbf{第一层（A 层）}：画一排紧密相切的圆，第二排嵌入第一排的凹陷处，形成六方蜂窝状。每 7 个原子画出 1 个中心原子 + 6 个近邻即可表达规律；
-  \item \textbf{第二层（B 层）}：原子中心正对 A 层的三原子凹陷处（即 A 层原子围成的正三角形中心上方）；
-  \item \textbf{第三层}：若回到 A 层原子上方 → \textbf{hcp}（ABAB\dots）；若错开到 C 层位置 → \textbf{fcc}（ABCABC\dots）。
+  \item \textbf{只画一层}（俯视图）：画 7 个紧密相切的圆呈六方蜂窝状——1 个中心 + 6 个近邻。这\textbf{一层图}就是密堆面的标准画法；
+  \item \textbf{用文字标注层序}：在图旁写 "A 层"，然后画一个稍小的同心圆（或不同线型）标 "B 层在凹陷处"，不需要真的画出第二层的小球；
+  \item \textbf{层序口诀}：ABAB\dots $\Rightarrow$ \textbf{hcp}（六角密堆）；ABCABC\dots $\Rightarrow$ \textbf{fcc}（立方面心）。fcc 的密堆面恰好是 \{111\} 面。
 \end{enumerate}
 
-记忆口诀：\textbf{"六方打底，凹陷堆高；ABAB 是六角，ABC 是立方面心"}。fcc 的密堆面恰好是 \{111\} 面，这也是fcc 晶体解理面的来源。
+\textbf{关键原则}：密铺题考的是\textbf{堆积方式的几何关系}（配位数 12、空隙类型），不是美术。一张清晰的单层俯视图 + 层序标注，比歪歪扭扭的 3D 球堆叠得分更高。
 
 \vspace{0.5em}
-\textbf{二、Wigner-Seitz 原胞——中垂面切割法}
+\textbf{二、Wigner-Seitz 原胞——2D 切片法}
 
-WS 原胞是\textbf{倒空间中第一布里渊区的实空间对应物}，手绘时遵循"连线 $\to$ 取中点 $\to$ 作垂面"三步：
+WS 原胞是\textbf{倒空间中第一布里渊区的实空间对应物}。考场上不要试图手绘 3D 切角多面体，而是掌握\textbf{2D 投影特征}和\textbf{拓扑信息}：
 \begin{enumerate}[nosep]
-  \item 标出中心格点和所有最近邻格点（sc 有 6 个，bcc 有 8 个，fcc 有 12 个）；
-  \item 用直线连接中心到每个最近邻，在所有连线的中点处作\textbf{垂直平分面}（2D 手绘时就是垂直平分线）；
-  \item 这些平面围成的最小凸多面体就是 WS 原胞。
+  \item \textbf{2D 截面法}：先画一个晶面（比如立方体的 $(001)$ 面），标出中心格点和面内最近邻。在 2D 中，WS 边界就是最近邻连线的\textbf{垂直平分线}，围成的多边形就是该截面上的 WS 截面；
+  \item \textbf{3D 原胞只记拓扑特征}：sc $\to$ 立方体（6 面），bcc $\to$ 截角八面体（14 面：6 个正方 + 8 个正六边），fcc $\to$ 菱形十二面体（12 个菱形面）。\textbf{记住面数和形状名称就够了}；
+  \item 若题目要求"画出 WS 原胞"，\textbf{画 2D 截面的垂直平分线围成的多边形}即可，标注"此为某晶面的 WS 截面"。
 \end{enumerate}
 
-三种布拉维格子的 WS 原胞形状：
+\textbf{手绘禁区}：不要画 bcc 的截角八面体 3D 透视图——8 个切角在透视下极易画成歪的。2D 截面 + 文字说明是更安全的策略。
+
 \begin{center}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabular}{|l|c|l|}
 \hline
-\textbf{格子} & \textbf{最近邻数} & \textbf{WS 原胞形状} \\
+\textbf{格子} & \textbf{最近邻数} & \textbf{WS 原胞拓扑} \\
 \hline
-简单立方 sc & 6 & 立方体（与原胞相同） \\
-体心立方 bcc & 8 & \textbf{截角八面体}（14 个面：6 个正方形 + 8 个正六边形） \\
-面心立方 fcc & 12 & \textbf{菱形十二面体}（12 个菱形面） \\
+sc & 6 & 立方体（6 个正方面） \\
+bcc & 8 & 截角八面体（14 面：6 正方 + 8 正六边） \\
+fcc & 12 & 菱形十二面体（12 个全等菱形面） \\
 \hline
 \end{tabular}
 \end{center}
-
-\textbf{手绘技巧}：画 bcc 的截角八面体时，先画一个正方体，再把 8 个角切掉（切面是正六边形的 8 个顶点方向）。fcc 的菱形十二面体可以想象成两个四角锥扣在八面体两端，但更简单的是直接记住它有 12 个全等的菱形面。
 
 \vspace{0.5em}
 \textbf{三、错位双原子格子——子晶格平移法}
@@ -235,9 +235,9 @@ NaCl、CsCl、ZnS（闪锌矿）都是\textbf{双原子复式格子}，可以看
 
 \textbf{手绘策略}：
 \begin{enumerate}[nosep]
-  \item 先画其中一套\textbf{完整的框架}（比如用圆圈表示 Cl$^-$ 的 fcc 格点）；
+  \item 先画其中一套\textbf{完整的 2D 框架}（比如用圆圈表示 Cl$^-$ 的 fcc 格点）；
   \item 在平移后的位置用\textbf{另一种符号}（叉或实心点）标记第二种原子；
-  \item 只画\textbf{一个晶胞}的范围，超出边界的原子用虚线或不画。
+  \item 只画\textbf{一个晶胞}的范围，超出边界的原子不画或画虚线。
 \end{enumerate}
 
 \textbf{关键认知}：双原子格子的"错位"不是混乱，而是\textbf{严格的平移对称操作}。只要记住"fcc + fcc 平移 $a/2$ = NaCl"、"sc + sc 平移体对角线一半 = CsCl"，就不用死记每个离子的坐标。
