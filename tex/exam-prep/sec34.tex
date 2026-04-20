@@ -1,0 +1,165 @@
+% ============================================================
+% Section 34: 一维离子链的库仑吸引+幂律排斥——平衡与压缩做功
+% ============================================================
+\section{固体理论：一维离子链的平衡与压缩——库仑吸引+短程排斥}
+\label{sec:ion-chain-compression}
+
+\begin{tipbox}{关键词标签}
+离子晶体 · 库仑势 · Born-Mayer排斥势 · 平衡间距 · 压缩做功 · 泰勒展开
+\end{tipbox}
+
+\begin{modelbox}
+考虑一条直线，其上载有电荷 $\pm q$ 交错排列的 $2N$ 个离子，最近邻之间的排斥势为 $A/R^n$，附加在通常的库仑势上。
+\begin{enumerate}[nosep]
+  \item 找出平衡间距 $R_0$ 并求平衡能 $U(R_0)$；
+  \item 使晶体压缩至 $R_0 \to R_0(1-\delta)$，计算晶体压缩一个单位长度所做的功，精确到 $\delta^2$。
+\end{enumerate}
+\end{modelbox}
+
+\vspace{0.3em}
+\begin{insightbox}{结论预告}
+\[
+  R_0 = \left(\frac{nA}{2q^2\ln 2}\right)^{\!\frac{1}{n-1}}, \qquad
+  U(R_0) = -\frac{2Nq^2\ln 2}{R_0}\left(1-\frac{1}{n}\right), \qquad
+  W = \frac{Nq^2(n-1)\ln 2}{R_0}\,\delta^2.
+\]
+本题是 sec33（马德隆常数）与 sec25（幂律势）的\textbf{综合应用}：库仑吸引提供长程结合，Born-Mayer 排斥提供短程支撑，两者竞争决定平衡位置。
+\end{insightbox}
+
+\subsection{概念铺垫：为什么需要排斥项？}
+
+\begin{modelbox}{Born-Mayer 排斥势的物理来源}
+如果只考虑库仑吸引，离子会无限靠近（$R\to 0$ 时 $U\to -\infty$），晶体将坍缩。实际上，当两个离子靠得足够近时：
+\begin{itemize}[nosep]
+  \item 电子云发生交叠；
+  \item Pauli 不相容原理要求电子进入更高能级；
+  \item 产生强烈的\textbf{短程排斥}，阻止离子进一步靠近。
+\end{itemize}
+这种排斥随距离衰减极快，通常用幂律 $A/R^n$ 或指数 $B\,e^{-R/\rho}$ 描述（$n\sim 9\!\sim\!12$）。
+\end{modelbox}
+
+\begin{insightbox}{势能曲线的``竞争图像''}
+\begin{itemize}[nosep]
+  \item \textbf{库仑吸引}（$\propto -1/R$）：随 $R$ 减小，能量越来越负，想把离子拉到一起；
+  \item \textbf{Pauli 排斥}（$\propto +1/R^n$）：随 $R$ 减小，能量急剧升高，想把离子推开；
+  \item \textbf{平衡点}：两者斜率抵消，$\dd U/\dd R = 0$。
+\end{itemize}
+这与原子间势能（如 LJ 势）的图像完全相同：吸引项决定``想靠近''，排斥项决定``不能靠太近''。
+\end{insightbox}
+
+\subsection{平衡间距 $R_0$ 与平衡能 $U(R_0)$}
+
+\subsubsection{总相互作用能}
+
+由 sec33 结论，一维交替链的马德隆常数 $M = 2\ln 2$。$N$ 对离子（共 $2N$ 个）的总势能为
+\[
+  U(R) = N\left(-\frac{Mq^2}{R} + \frac{A}{R^n}\right)
+       = N\left(-\frac{2q^2\ln 2}{R} + \frac{A}{R^n}\right). \tag{1}
+\]
+
+\begin{tipbox}{单位制说明}
+式 (1) 采用了将 $4\pi\varepsilon_0$ 吸收进电荷定义的简化单位制（或高斯单位制）。若恢复 SI 单位制，库仑项应写为 $-Mq^2/(4\pi\varepsilon_0 R)$。由于平衡条件只涉及两项的比值，$4\pi\varepsilon_0$ 在求解 $R_0$ 时会被消掉，不影响最终结果的形式。
+\end{tipbox}
+
+\subsubsection{平衡条件}
+
+令 $\dd U/\dd R = 0$：
+\[
+  \frac{\dd U}{\dd R} = N\left(\frac{2q^2\ln 2}{R^2} - \frac{nA}{R^{n+1}}\right) = 0.
+\]
+
+解得
+\[
+  \frac{2q^2\ln 2}{R_0^2} = \frac{nA}{R_0^{n+1}}
+  \quad\Longrightarrow\quad
+  \boxed{ R_0 = \left(\frac{nA}{2q^2\ln 2}\right)^{\!\frac{1}{n-1}} }. \tag{2}
+\]
+
+\subsubsection{平衡能}
+
+将 (2) 改写为 $A = \dfrac{2q^2\ln 2}{n}\,R_0^{n-1}$，代入 (1)：
+\begin{align*}
+  U(R_0) &= N\left(-\frac{2q^2\ln 2}{R_0} + \frac{2q^2\ln 2}{nR_0}\right) \\
+         &= -\frac{2Nq^2\ln 2}{R_0}\left(1 - \frac{1}{n}\right).
+\end{align*}
+
+故
+\[
+  \boxed{ U(R_0) = -\frac{2Nq^2\ln 2}{R_0}\cdot\frac{n-1}{n} }. \tag{3}
+\]
+
+\begin{tipbox}{极限检验}
+若排斥极弱（$n\to\infty$，相当于没有排斥），则 $U(R_0)\to -2Nq^2\ln 2/R_0$，回到纯库仑链的结合能。
+\end{tipbox}
+
+\subsection{压缩做功（精确到 $\delta^2$）}
+
+\subsubsection{做功的定义}
+
+外力将晶体从 $R_0$ 压缩至 $R = R_0(1-\delta)$，做功等于系统内能增量：
+\[
+  W = U(R) - U(R_0).
+\]
+
+\subsubsection{为什么只保留到 $\delta^2$？——平衡点展开的必然性}
+
+在平衡点 $R_0$ 附近做泰勒展开：
+\[
+  U(R) = U(R_0) + \underbrace{U'(R_0)}_{=0}(R-R_0) + \frac{1}{2}U''(R_0)(R-R_0)^2 + \cdots
+\]
+
+一阶项因平衡条件而\textbf{自动消失}！因此压缩做功的首项就是 $\delta^2$ 项，这与弹簧的弹性势能 $W=\frac{1}{2}k(\Delta x)^2$ 完全类似——在平衡位置附近，线性项为零，回复力从二次项开始。
+
+\subsubsection{具体计算}
+
+令 $R = R_0(1-\delta)$，将 (1) 中的 $A$ 用 (2) 消去：
+\[
+  U(R) = 2Nq^2\ln 2\left(\frac{R_0^{n-1}}{nR^n} - \frac{1}{R}\right)
+       = \frac{2Nq^2\ln 2}{R_0}\left[\frac{1}{n(1-\delta)^n} - \frac{1}{1-\delta}\right].
+\]
+
+对 $(1-\delta)^{-n}$ 和 $(1-\delta)^{-1}$ 做泰勒展开（保留到 $\delta^2$）：
+\begin{align*}
+  (1-\delta)^{-1} &\approx 1 + \delta + \delta^2, \\
+  (1-\delta)^{-n} &\approx 1 + n\delta + \frac{n(n+1)}{2}\delta^2.
+\end{align*}
+
+代入括号内：
+\begin{align*}
+  \frac{1}{n}(1+n\delta+\tfrac{n(n+1)}{2}\delta^2) - (1+\delta+\delta^2)
+  &= \left(\frac{1}{n}-1\right) + \underbrace{(\delta-\delta)}_{0} + \left(\frac{n+1}{2}-1\right)\delta^2 \\
+  &= \frac{1-n}{n} + \frac{n-1}{2}\delta^2.
+\end{align*}
+
+因此
+\[
+  U(R) = \frac{2Nq^2\ln 2}{R_0}\left(\frac{1-n}{n} + \frac{n-1}{2}\delta^2\right)
+       = U(R_0) + \frac{2Nq^2\ln 2}{R_0}\cdot\frac{n-1}{2}\,\delta^2.
+\]
+
+做功为
+\[
+  \boxed{ W = U(R) - U(R_0) = \frac{Nq^2(n-1)\ln 2}{R_0}\,\delta^2 }. \tag{4}
+\]
+
+\begin{tipbox}{物理意义}
+$W \propto \delta^2 > 0$：压缩晶体（$\delta>0$）需要外界做正功，系统内能增加。$W$ 与离子数 $N$ 成正比，与平衡间距 $R_0$ 成反比（$R_0$ 越小，结合越紧，越难压缩）。
+\end{tipbox}
+
+\subsection{与已知结果的联系}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{物理量} & \textbf{本题（一维离子链）} & \textbf{三维 NaCl（参考）} \\
+\hline
+吸引势 & $-Mq^2/R$（$M=2\ln 2$） & $-\alpha q^2/r$（$\alpha\approx 1.748$） \\
+排斥势 & $A/R^n$ & $B/r^n$（$n\sim 9$） \\
+平衡条件 & $Mq^2/R_0^2 = nA/R_0^{n+1}$ & 同上形式，$M\to\alpha$ \\
+压缩做功 & $\propto N\delta^2/R_0$ & $\propto N\delta^2/r_0$（形式相同） \\
+\hline
+\end{tabular}
+\end{center}
+
+一维和三维的数学结构完全相同，差异仅在于马德隆常数的数值和几何因子。
