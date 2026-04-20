@@ -5,7 +5,7 @@
 \label{sec:madelung-1d}
 
 \begin{tipbox}{关键词标签}
-马德隆常数 · 离子晶体 · 库仑相互作用能 · 交错级数 · Ewald求和
+马德隆常数 · 离子晶体 · 库仑相互作用能 · 交错级数
 \end{tipbox}
 
 \begin{modelbox}
@@ -158,8 +158,8 @@
 \textbf{维度} & \textbf{马德隆常数} & \textbf{级数衰减} \\
 \hline
 一维交替链 & $M = 2\ln 2 \approx 1.386$ & $1/n$（慢，但交错收敛） \\
-二维 NaCl 型 & $M \approx 1.615$ & $1/r$（更慢，需 Ewald 加速） \\
-三维 NaCl & $M \approx 1.748$ & $1/r$（直接求和发散，必须用 Ewald） \\
+二维 NaCl 型 & $M \approx 1.615$ & $1/r$（慢，高维直接求和条件更差） \\
+三维 NaCl & $M \approx 1.748$ & $1/r$（慢，直接求和条件更差） \\
 三维 CsCl & $M \approx 1.763$ & $1/r$（同上） \\
 \hline
 \end{tabular}

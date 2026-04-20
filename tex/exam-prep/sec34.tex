@@ -18,14 +18,27 @@
 
 \subsection{概念铺垫：为什么需要排斥项？}
 
-\begin{modelbox}{Born-Mayer 排斥势的物理来源}
+\begin{modelbox}{Born-Mayer 排斥势的物理来源与形式}
 如果只考虑库仑吸引，离子会无限靠近（$R\to 0$ 时 $U\to -\infty$），晶体将坍缩。实际上，当两个离子靠得足够近时：
 \begin{itemize}[nosep]
   \item 电子云发生交叠；
   \item Pauli 不相容原理要求电子进入更高能级；
   \item 产生强烈的\textbf{短程排斥}，阻止离子进一步靠近。
 \end{itemize}
-这种排斥随距离衰减极快，通常用幂律 $A/R^n$ 或指数 $B\,e^{-R/\rho}$ 描述（$n\sim 9\!\sim\!12$）。
+
+\textbf{Born-Mayer 势}（指数形式，更精确）：
+\[
+  \varphi_{\text{rep}}(R) = B\,e^{-R/\rho},
+\]
+其中 $B$ 是强度参数，$\rho$ 是作用范围（典型值 $\sim 0.3\,\text{\AA}$）。
+
+\textbf{Born-Land\'{e} 势}（幂律形式，计算更简便）：
+\[
+  \varphi_{\text{rep}}(R) = \frac{A}{R^n},
+\]
+其中 $n$ 是 Born 指数（$n \sim 9\sim 12$，对碱金属卤化物常用 $n=9$）。
+
+两种形式都刻画了\textbf{随距离指数/幂律急剧衰减}的短程排斥，但幂律形式在代数处理上更方便（求导后仍是幂函数），因此教材中常用 $A/R^n$。
 \end{modelbox}
 
 \begin{insightbox}{势能曲线的``竞争图像''}
@@ -56,6 +69,32 @@
   \item 一维链中 $2N$ 个离子有 $2N$ 个最近邻对，不重复计数后有效对数为 $N$，总排斥能就是 $N \cdot A/R^n$。
 \end{itemize}
 \end{modelbox}
+
+\begin{insightbox}{核心反差：``简单的反而复杂，复杂的反而简单''}
+这是固体物理中最反直觉也最深刻的概念之一：
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|c|c|c|}
+\hline
+\textbf{相互作用} & \textbf{公式复杂度} & \textbf{力程} & \textbf{实际计算难度} \\
+\hline
+库仑吸引 & $1/R$（极简单） & 长程 & \textbf{难}（无穷级数、马德隆常数） \\
+Pauli 排斥 & $A/R^n$（较复杂） & 短程 & \textbf{极易}（只算最近邻） \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{决定计算复杂度的不是公式的长相，而是力程。}库仑势 $1/R$ 看似简单，但它的尾巴拖得太长——第 100 个邻居还有 $1\%$ 的贡献，不能不考虑。排斥势 $A/R^{10}$ 虽然公式更繁琐，但它的尾巴在第二个邻居处就几乎消失，只需算一项。
+
+\textbf{物理图像}：想象你在一个拥挤的电梯里。
+\begin{itemize}[nosep]
+  \item \textbf{库仑力}像你的声音——传遍整个电梯，甚至走廊外的人都能听见，必须考虑所有人对你的听觉影响。
+  \item \textbf{排斥力}像你的身体接触——只碰得到紧挨着你的人，隔一个人的肩膀你都挨不着。
+\end{itemize}
+
+这就是\textbf{力程}（range of interaction）如何从根本上决定了理论处理的复杂度。在凝聚态物理中，短程相互作用总是比长程相互作用更容易处理——这一原则贯穿统计力学、场论和数值模拟。
+\end{insightbox}
 
 由 \ref{sec:madelung-1d} 结论，一维交替链的马德隆常数 $M = 2\ln 2$。$N$ 对离子（共 $2N$ 个）的总势能为
 \[
