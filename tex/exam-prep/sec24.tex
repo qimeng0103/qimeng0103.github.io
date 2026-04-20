@@ -314,13 +314,72 @@ $[\varphi_0] = \text{J}$，$[\sigma] = \text{m}$，故 $[K] = \text{J/m} = \text
 每个原子被两根弹簧（左右邻居）拉着振动。
 \end{insightbox}
 
-\paragraph{运动方程的建立}
+\paragraph{运动方程的建立——弹簧受力方向的符号判断}
 
-设第 $n$ 个原子偏离平衡位置的位移为 $u_n(t)$，其左右邻居分别位于 $n-1$ 和 $n+1$。左边弹簧的伸长量为 $u_n - u_{n-1}$，右边弹簧的伸长量为 $u_{n+1} - u_n$。根据牛顿第二定律：
+\begin{modelbox}{``不要背符号，画个图''——受力分析四步法}
+设第 $n$ 个原子向右偏离平衡位置 $u_n$（$u_n>0$ 表示向右）。分析它与左边邻居 $n-1$ 之间的弹簧：
+
+\textbf{Step 1：写伸长量}
+
+平衡时间距为 $\sigma$。变形后，$n-1$ 在位置 $\sigma(n-1)+u_{n-1}$，$n$ 在位置 $n\sigma+u_n$。弹簧实际长度为
 \[
-  m\ddot{u}_n = \beta(u_{n+1} - u_n) - \beta(u_n - u_{n-1})
+  L = (n\sigma+u_n) - [(n-1)\sigma+u_{n-1}] = \sigma + (u_n - u_{n-1}).
+\]
+因此\textbf{伸长量}（相对平衡长度的变化）为
+\[
+  \Delta L_{\text{左}} = L - \sigma = u_n - u_{n-1}.
+\]
+
+\textbf{Step 2：判断拉伸还是压缩}
+
+若 $u_n > u_{n-1}$（$n$ 比左边邻居更靠右），$\Delta L_{\text{左}} > 0$，弹簧被\textbf{拉长}。
+
+\textbf{Step 3：判断力方向}
+
+弹簧被拉长时，会对两端产生\textbf{向中间拉}的恢复力。
+\begin{itemize}[nosep]
+  \item 对第 $n$ 个原子（右端），恢复力向\textbf{左}（负方向），大小为 $\beta(u_n-u_{n-1})$。
+  \item 因此左边弹簧对 $n$ 的力 = $-\beta(u_n-u_{n-1}) = \beta(u_{n-1}-u_n)$。
+\end{itemize}
+
+\textbf{Step 4：写出通式}
+
+把 $u_n < u_{n-1}$ 的情形也代入验证：弹簧被压缩，对 $n$ 的力向右（正），公式 $-\beta(u_n-u_{n-1})$ 依然自动给出正确方向。因此
+\[
+  \boxed{ F_{n}^{\text{左}} = -\beta(u_n - u_{n-1}) = \beta(u_{n-1}-u_n) }.
+\]
+
+同理，右边弹簧对 $n$ 的力：
+\[
+  \boxed{ F_{n}^{\text{右}} = +\beta(u_{n+1} - u_n) }.
+\]
+
+\textbf{总合力}：
+\[
+  m\ddot{u}_n = F_n^{\text{右}} + F_n^{\text{左}}
+              = \beta(u_{n+1}-u_n) - \beta(u_n-u_{n-1})
               = \beta(u_{n+1} + u_{n-1} - 2u_n).
 \]
+\end{modelbox}
+
+\begin{tipbox}{两个必杀验证}
+\textbf{验证 1：刚体平移}
+
+若所有原子同步右移相同距离 $u_n = C$（常数），则
+\[
+  u_{n+1}-u_n = 0, \quad u_n-u_{n-1} = 0 \quad\Longrightarrow\quad m\ddot{u}_n = 0.
+\]
+没有相对位移，弹簧不受力，符合直觉。
+
+\textbf{验证 2：驻波边界（最大相对位移）}
+
+设 $n$ 为偶数，$u_n = +C$，$u_{n\pm 1} = -C$（相邻原子反向振动）。
+\begin{align*}
+  F_n^{\text{右}} &= \beta(-C - C) = -2\beta C \quad \text{（向左）}, \\
+  F_n^{\text{左}} &= -\beta(C - (-C)) = -2\beta C \quad \text{（向左）}.
+\end{align*}
+总力 $-4\beta C$，方向指向平衡位置——这正是布里渊区边界 $q=\pi/\sigma$ 的驻波图像。
+\end{tipbox}
 
 \paragraph{行波解（Bloch 定理）}
 
