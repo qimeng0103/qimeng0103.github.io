@@ -4,6 +4,10 @@
 \section{固体理论：一维离子晶格的马德隆常数}
 \label{sec:madelung-1d}
 
+\begin{tipbox}{关键词标签}
+马德隆常数 · 离子晶体 · 库仑相互作用能 · 交错级数 · Ewald求和
+\end{tipbox}
+
 \begin{modelbox}
 设一晶体由正负一价离子交错等距排列组成一维晶格。证明其马德隆（Madelung）常数为
 \[
@@ -33,41 +37,6 @@
 
 三维中你被\textbf{6个异号离子}近距离包围，吸引力更强；一维中只有\textbf{2个}。虽然远处的同号离子会排斥你，但它们距离更远（按 $r_0$ 的倍数），且被异号离子``挡在中间''，排斥效果被部分抵消。最近邻的数量优势是决定 $M$ 大小的核心因素。
 \end{insightbox}
-
-\subsection{固体物理题型反射弧——考场不慌指南}
-
-\begin{modelbox}{看到什么关键词$\to$启动什么公式}
-\begin{center}
-\renewcommand{\arraystretch}{1.6}
-\begin{tabular}{|p{4.2cm}|p{4.5cm}|p{5.5cm}|}
-\hline
-\textbf{题目关键词} & \textbf{题型判断} & \textbf{核心操作} \\
-\hline
-``相邻原子间相互作用势'' ``平衡距离'' ``晶格能'' & 晶体结合能（LJ/幂律势） & 一阶导$=0$求平衡，代入求能，二阶导乘键长得弹性模量 \\
-\hline
-``一维离子晶格'' ``马德隆常数'' ``库仑能'' & 马德隆常数 & 写交错级数$\sum (\pm 1)/n$，利用$\ln(1+x)$或$\ln 2$求和 \\
-\hline
-``一维单原子链'' ``声子'' ``色散关系'' & 晶格振动 & 简谐近似$+$牛顿方程$+$Bloch行波解$\to$求$\omega(q)$ \\
-\hline
-``玻尔兹曼方程'' ``弛豫时间'' ``电场中分布函数'' & 固体输运 & 稳态方程$+$按电场幂次展开$+$识别平移算符 \\
-\hline
-``约瑟夫森结'' ``SQUID'' ``磁通量子'' & 超导器件 & 约瑟夫森方程$I=I_c\sin\varphi$ $+$ 相位积累$+$磁通量子化 \\
-\hline
-``能带'' ``周期性势场'' ``Bloch波'' & 能带论 & 近自由电子$/$紧束缚模型，求色散$E(k)$，算有效质量 \\
-\hline
-\end{tabular}
-\end{center}
-\end{modelbox}
-
-\begin{tipbox}{固体物理的``三板斧''}
-无论遇到哪种题型，底层逻辑几乎都可以归为以下三步：
-\begin{enumerate}[nosep]
-  \item \textbf{写势能/哈密顿量}：明确相互作用形式（LJ、库仑、谐振子、紧束缚等）；
-  \item \textbf{求平衡/本征态}：导数为零、对角化、解运动方程；
-  \item \textbf{求响应/修正}：二阶导（弹性模量）、微扰（输运）、色散关系（声子/能带）。
-\end{enumerate}
-固体物理考题的吓人之处往往在于符号多、近似多，但核心结构高度重复。只要认准题型，套对应的三板斧，大部分分数都能拿下。
-\end{tipbox}
 
 \subsection{概念铺垫：什么是马德隆常数？}
 
@@ -233,10 +202,16 @@
   \item 因此倒空间中也只需计算少数几项。
 \end{itemize}
 
-\textbf{可调参数 $\eta$ 的作用}：
+\textbf{可调参数 $\eta$ 的作用——具体怎么取？}
+
 \begin{itemize}[nosep]
   \item $\eta$ 大：高斯峰尖锐，实空间收敛极快，但倒空间收敛慢；
   \item $\eta$ 小：高斯峰平坦，实空间收敛慢，但倒空间收敛快；
-  \item 最优策略：取适中的 $\eta$，使两部分计算量大致相等。
+  \item \textbf{最优策略}：取 $\eta \sim \sqrt{\pi}/r_0$ 附近（$r_0$ 为最近邻距离）。此时：
+    \begin{itemize}[nosep]
+      \item 实空间中只需计算距离小于 $3r_0$ 的离子（约 $30\sim50$ 个近邻），因为 $\text{erfc}(3)\approx 2\times 10^{-5}$，贡献已可忽略；
+      \item 倒空间中只需取 $|\mathbf{G}| < 4\sqrt{\pi}/r_0$ 的前几十个倒格矢，因为傅里叶权重按 $e^{-G^2/(4\eta^2)}$ 衰减。
+    \end{itemize}
+  \item 实际计算（如 VASP、Quantum ESPRESSO）中，$\eta$ 由程序自动优化，用户只需设定截断精度（如 $10^{-6}$）。
 \end{itemize}
 \end{insightbox}
