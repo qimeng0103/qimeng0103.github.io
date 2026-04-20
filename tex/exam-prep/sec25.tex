@@ -1,0 +1,254 @@
+% ============================================================
+% Section 25: 一般幂律势的晶体结合能与体积弹性模量
+% ============================================================
+\section{固体理论：一般幂律势的晶体结合能与体积弹性模量}
+\label{sec:power-law-potential}
+
+\begin{modelbox}
+设某一晶体中相邻原子间相互作用势能为
+\[
+  u(r) = -\frac{\alpha}{r^m} + \frac{\beta}{r^n} \qquad (n > m > 0).
+\]
+\begin{enumerate}[nosep]
+  \item 若只计及最近邻原子的相互作用势能，证明其体积弹性模量为
+    \[
+      K = \frac{|U_0|\, mn}{9V_0},
+    \]
+    其中 $U_0$ 为晶体在平衡时的总相互作用势能，$V_0$ 为平衡体积。
+  \item 设平衡时两原子间距 $r_0 = 3\,\text{\AA}$，每个原子的离解能为 $4\,\text{eV}$，$m=2$, $n=10$，计算 $\alpha$ 及 $\beta$ 值。
+\end{enumerate}
+\end{modelbox}
+
+\vspace{0.3em}
+\begin{insightbox}{结论预告}
+\[
+  K = \frac{|U_0|\, mn}{9V_0}, \qquad \alpha = 90\,\text{eV\cdot\AA}^2, \qquad \beta \approx 1.18\times 10^5\,\text{eV\cdot\AA}^{10}.
+\]
+本题的普适性极强：只要相互作用是幂律形式（吸引项 $-C/r^m$ + 排斥项 $+D/r^n$），体积模量与结合能的关系就被 $mn/9$ 这个纯数字锁定，与晶体结构细节无关。
+\end{insightbox}
+
+\subsection{概念铺垫：体积弹性模量的定义}
+
+\begin{modelbox}{体积模量 $K$ 的物理意义}
+\textbf{定义}（热力学与弹性力学）：
+\[
+  K \equiv -V\,\frac{\dd P}{\dd V} = V\,\frac{\dd^2 U}{\dd V^2}.
+\]
+\begin{itemize}[nosep]
+  \item $P = -\dd U/\dd V$ 是压强（单位面积上的力）。
+  \item $K$ 衡量材料抵抗\textbf{均匀压缩}的能力：$K$ 越大，越难被压扁（钻石的 $K$ 极大，橡胶的 $K$ 极小）。
+  \item 在平衡体积 $V_0$ 处，$\dd U/\dd V|_{V_0} = 0$，因此
+    \[
+      K = V_0 \left.\frac{\dd^2 U}{\dd V^2}\right|_{V_0}.
+    \]
+\end{itemize}
+\end{modelbox}
+
+\begin{insightbox}{为什么体积模量与晶体结构无关？}
+晶体体积 $V$ 与最近邻间距 $r$ 的关系为 $V = NAr^3$，其中 $A$ 是由晶体结构决定的几何常数：
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{结构} & \textbf{几何常数} $A$ & \textbf{每个原子体积} \\
+\hline
+简单立方（sc） & $1$ & $r^3$ \\
+面心立方（fcc） & $\frac{1}{\sqrt{2}}$ & $\frac{r^3}{\sqrt{2}}$ \\
+体心立方（bcc） & $\frac{4}{3\sqrt{3}}$ & $\frac{3\sqrt{3}}{4}r^3$ \\
+\hline
+\end{tabular}
+\end{center}
+
+在最终公式中，$A$ 会被消掉，因此体积模量与晶体结构的细节无关——这是幂律势的一个美妙性质。
+\end{insightbox}
+
+\subsection{体积弹性模量的证明}
+
+\subsubsection{总相互作用能与平衡条件}
+
+只计及最近邻相互作用，晶体中有 $N/2$ 对原子（$N$ 为原子总数），总势能为
+\[
+  U(r) = \frac{N}{2}\left(-\frac{\alpha}{r^m} + \frac{\beta}{r^n}\right). \tag{1}
+\]
+
+平衡条件 $\dd U/\dd r|_{r_0} = 0$：
+\[
+  \frac{N}{2}\left(\frac{m\alpha}{r_0^{m+1}} - \frac{n\beta}{r_0^{n+1}}\right) = 0
+  \quad\Longrightarrow\quad
+  \frac{m\alpha}{r_0^m} = \frac{n\beta}{r_0^n}. \tag{2}
+\]
+
+由此解出平衡间距：
+\[
+  r_0 = \left(\frac{n\beta}{m\alpha}\right)^{\!\frac{1}{n-m}}. \tag{3}
+\]
+
+将 (2) 代入 (1) 得平衡时的总势能：
+\begin{align*}
+  U_0 &= \frac{N}{2}\left(-\frac{\alpha}{r_0^m} + \frac{m}{n}\frac{\alpha}{r_0^m}\right)
+      = -\frac{N}{2}\frac{\alpha}{r_0^m}\left(1 - \frac{m}{n}\right) \\
+      &= -\frac{N\alpha}{2r_0^m}\cdot\frac{n-m}{n}. \tag{4}
+\end{align*}
+
+\begin{tipbox}{符号约定}
+$U_0 < 0$（结合能），因此 $|U_0| = -U_0$。式 (4) 给出
+\[
+  \frac{\alpha}{r_0^m} = \frac{2|U_0|}{N}\cdot\frac{n}{n-m}. \tag{4'}
+\]
+\end{tipbox}
+
+\subsubsection{从 $r$ 到 $V$ 的变量转换}
+
+晶体体积与原子间距的关系：
+\[
+  V = NAr^3 \quad\Longrightarrow\quad \frac{\dd V}{\dd r} = 3NAr^2,
+  \quad \frac{\dd r}{\dd V} = \frac{1}{3NAr^2}. \tag{5}
+\]
+
+由链式法则，注意在平衡点 $r_0$ 处一阶导 $\dd U/\dd r = 0$：
+\[
+  \frac{\dd^2 U}{\dd V^2}
+  = \frac{\dd}{\dd V}\!\left(\frac{\dd U}{\dd r}\frac{\dd r}{\dd V}\right)
+  = \frac{\dd^2 U}{\dd r^2}\left(\frac{\dd r}{\dd V}\right)^{\!2}
+    + \underbrace{\frac{\dd U}{\dd r}}_{=0}\frac{\dd^2 r}{\dd V^2}.
+\]
+
+因此
+\[
+  K = V_0\left.\frac{\dd^2 U}{\dd V^2}\right|_{V_0}
+    = V_0\left(\frac{1}{3NAr_0^2}\right)^{\!2}\left.\frac{\dd^2 U}{\dd r^2}\right|_{r_0}. \tag{6}
+\]
+
+\subsubsection{计算二阶导数}
+
+\[
+  \frac{\dd^2 U}{\dd r^2}
+  = \frac{N}{2}\left[-\frac{m(m+1)\alpha}{r^{m+2}} + \frac{n(n+1)\beta}{r^{n+2}}\right].
+\]
+
+在 $r_0$ 处利用 (2) 式替换 $\beta/r_0^n = m\alpha/(nr_0^m)$：
+\begin{align*}
+  \left.\frac{\dd^2 U}{\dd r^2}\right|_{r_0}
+  &= \frac{N\alpha}{2r_0^{m+2}}\left[-m(m+1) + n(n+1)\cdot\frac{m}{n}\right] \\
+  &= \frac{N\alpha}{2r_0^{m+2}}\left[-m(m+1) + m(n+1)\right] \\
+  &= \frac{N\alpha}{2r_0^{m+2}}\,m(n-m). \tag{7}
+\end{align*}
+
+\subsubsection{代入化简}
+
+将 (5) 和 (7) 代入 (6)：
+\begin{align*}
+  K &= (NAr_0^3)\cdot\frac{1}{9N^2A^2r_0^4}\cdot\frac{N\alpha\,m(n-m)}{2r_0^{m+2}} \\
+    &= \frac{m(n-m)}{18Ar_0^{m+3}}\cdot\alpha.
+\end{align*}
+
+利用 (4') 式 $\alpha/r_0^m = 2|U_0|n/[N(n-m)]$：
+\begin{align*}
+  K &= \frac{m(n-m)}{18Ar_0^3}\cdot\frac{2|U_0|}{N}\cdot\frac{n}{n-m} \\
+    &= \frac{2mn|U_0|}{18NAr_0^3}
+     = \frac{|U_0|\,mn}{9\underbrace{NAr_0^3}_{=V_0}}.
+\end{align*}
+
+故
+\[
+  \boxed{ K = \frac{|U_0|\,mn}{9V_0} }. \tag{证毕}
+\]
+
+\begin{tipbox}{考场速记}
+对幂律势 $-\alpha/r^m + \beta/r^n$，体积模量与结合能的关系被 $mn/9$ 锁定：
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c|c|c|l|}
+\hline
+\textbf{体系} & $m$ & $n$ & $\bm{K\cdot 9V_0/|U_0|}$ \\
+\hline
+离子晶体（NaCl） & 1 & 9 & 9 \\
+惰性气体（LJ） & 6 & 12 & 72 \\
+本题 & 2 & 10 & 20 \\
+\hline
+\end{tabular}
+\end{center}
+\end{tipbox}
+
+\subsection{参数 $\alpha$ 与 $\beta$ 的计算}
+
+已知：$r_0 = 3\,\text{\AA}$，每个原子的离解能 $|U_0|/N = 4\,\text{eV}$，$m=2$, $n=10$。
+
+\textbf{离解能}的物理意义：将晶体完全拆散成孤立原子所需的能量，即 $|u_0| = |U_0|/N$。
+
+\subsubsection{求 $\alpha$}
+
+由 (4) 式：
+\[
+  \frac{|U_0|}{N} = \frac{1}{2}\frac{\alpha}{r_0^m}\cdot\frac{n-m}{n}.
+\]
+
+代入数据：
+\[
+  4 = \frac{1}{2}\cdot\frac{\alpha}{3^2}\cdot\frac{10-2}{10}
+  = \frac{1}{2}\cdot\frac{\alpha}{9}\cdot\frac{8}{10}
+  = \frac{2\alpha}{45}.
+\]
+
+解得
+\[
+  \boxed{ \alpha = 90\,\text{eV\cdot\AA}^2 }.
+\]
+
+\subsubsection{求 $\beta$}
+
+由平衡条件 (3)：
+\[
+  r_0^{n-m} = \frac{n\beta}{m\alpha}
+  \quad\Longrightarrow\quad
+  \beta = \frac{m\alpha}{n}\,r_0^{n-m}.
+\]
+
+代入 $m=2$, $n=10$, $\alpha=90$, $r_0=3$：
+\[
+  \beta = \frac{2\times 90}{10}\times 3^{10-2}
+       = 18\times 3^8
+       = 18\times 6561
+       = 118098.
+\]
+
+故
+\[
+  \boxed{ \beta \approx 1.18\times 10^5\,\text{eV\cdot\AA}^{10} }.
+\]
+
+\begin{tipbox}{量纲检验}
+势函数 $u(r)$ 的量纲是能量。因此：
+\begin{itemize}[nosep]
+  \item $[\alpha/r^m] = \text{能量} \Rightarrow [\alpha] = \text{能量}\cdot\text{长度}^m$。
+  \item 本题 $m=2$：$[\alpha] = \text{eV\cdot\AA}^2$。正确。
+  \item 本题 $n=10$：$[\beta] = \text{eV\cdot\AA}^{10}$。正确。
+\end{itemize}
+\end{tipbox}
+
+\subsection{物理图像与拓展}
+
+\subsubsection{幂律势中 $m$ 与 $n$ 的物理来源}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|c|c|l|}
+\hline
+\textbf{相互作用类型} & $m$ & $n$ & \textbf{物理来源} \\
+\hline
+库仑（离子晶体） & 1 & 9 & 吸引：$\pm e^2/(4\pi\varepsilon_0 r)$；排斥：电子云交叠 \\
+范德华（惰性气体） & 6 & 12 & 吸引：诱导偶极 $-C_6/r^6$；排斥：Pauli 不相容 \\
+偶极-偶极 & 3 & $>3$ & Keesom 相互作用 \\
+\hline
+\end{tabular}
+\end{center}
+
+排斥项的幂次 $n$ 总是大于吸引项的幂次 $m$，这是因为排斥力（电子云交叠、Pauli 原理）是\textbf{短程}的，随距离下降更快。
+
+\subsubsection{体积模量的数量级}
+
+由 $K = |U_0|mn/(9V_0)$，结合能 $|U_0|/N \sim \text{eV/atom}$，原子体积 $V_0/N \sim \text{\AA}^3$，得
+\[
+  K \sim \frac{(\text{eV})(1)(10)}{9(\text{\AA}^3)} \sim 10\,\text{eV/\AA}^3 \sim 10^{11}\,\text{Pa} = 10^2\,\text{GPa}.
+\]
+这与典型固体的体积模量（金属 $10$–$100\,\text{GPa}$，钻石 $440\,\text{GPa}$）同一数量级。
