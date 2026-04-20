@@ -94,7 +94,28 @@
 
 \subsubsection{总相互作用能与平衡条件}
 
-只计及最近邻相互作用，晶体中有 $N/2$ 对原子（$N$ 为原子总数），总势能为
+\begin{modelbox}{$N/2$ 还是 $Nz/2$？——计数规则的澄清}
+在固体物理中，如果只计最近邻相互作用，总能量有两种等价写法，取决于你如何定义 $u(r)$：
+
+\textbf{写法 1（严格计数，每对原子）}
+
+$u(r)$ 是\textbf{一对}最近邻原子的相互作用能。每个原子有 $z$ 个最近邻，总键数（不重复计数）为 $Nz/2$：
+\[
+  U(r) = \frac{Nz}{2}\,u(r) = \frac{Nz}{2}\left(-\frac{\alpha}{r^m} + \frac{\beta}{r^n}\right).
+\]
+
+\textbf{写法 2（本题采用的约定）}
+
+把 $z$ 吸收进势能参数中，即令 $\tilde{\alpha} = z\alpha$, $\tilde{\beta} = z\beta$。此时等效的单键势已经隐含了配位数：
+\[
+  U(r) = \frac{N}{2}\left(-\frac{\tilde{\alpha}}{r^m} + \frac{\tilde{\beta}}{r^n}\right).
+\]
+本题以及多数教材在推导 $K = |U_0|mn/(9V_0)$ 时采用写法 2，因为最终结果与 $z$ 无关，这样公式更简洁。
+
+\textbf{关键原则}：$\alpha$ 和 $\beta$ 的数值\textbf{依赖于你采用的约定}。如果你用写法 1，算出的 $\alpha$ 会比写法 2 小 $z$ 倍。但物理结果（$K$, $r_0$）不变。
+\end{modelbox}
+
+只计及最近邻相互作用，总势能为
 \[
   U(r) = \frac{N}{2}\left(-\frac{\alpha}{r^m} + \frac{\beta}{r^n}\right). \tag{1}
 \]
