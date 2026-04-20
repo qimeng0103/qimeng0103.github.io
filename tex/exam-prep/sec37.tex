@@ -155,7 +155,7 @@
 \textbf{符号} & \textbf{含义} & \textbf{例子} \\
 \hline
 $\partial$ & 偏导数，固定其他变量 & $(\partial p/\partial V)_T$ 表示\"温度不变时压强随体积的变化率\" \\
-$\text{d}$ & 状态函数的无穷小变化（全微分） & $\mathrm{d}U$ 是内能变化，$\oint\mathrm{d}U = 0$ \\
+\multicolumn{1}{l|}{d} & 状态函数的无穷小变化（全微分） & $\mathrm{d}U$ 是内能变化，$\oint\mathrm{d}U = 0$ \\
 $\delta$ & 过程量的无穷小量（不是全微分） & $\delta W = p\,\mathrm{d}V$（功与路径有关，$\oint\delta W \neq 0$） \\
 \hline
 \end{tabular}
@@ -176,15 +176,34 @@ $\delta$ & 过程量的无穷小量（不是全微分） & $\delta W = p\,\mathr
 \]
 若盲目只写 $\mathrm{d}p = (\partial p/\partial V)_S\,\mathrm{d}V$ 而忘了 $\mathrm{d}S \neq 0$，就会漏项。\textbf{安全做法}：先写全微分，再代入约束条件消去被固定的变量。
 
-\textbf{更深层的难点——嵌套依赖与小量近似}：
+\textbf{更深层的难点——不知道有哪些依赖关系}：
 
-热力学中变量之间的依赖关系常常是\textbf{嵌套}的。例如统计物理中求熵随温度的变分：
+热力学中每个量该当作谁的函数，由\textbf{自然变量}决定：
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|c|c|c|}
+\hline
+\textbf{热力学势} & \textbf{自然变量} & \textbf{基本关系} \\
+\hline
+内能 $U$ & $S, V$ & $\mathrm{d}U = T\,\mathrm{d}S - p\,\mathrm{d}V$ \\
+焓 $H$ & $S, p$ & $\mathrm{d}H = T\,\mathrm{d}S + V\,\mathrm{d}p$ \\
+自由能 $F$ & $T, V$ & $\mathrm{d}F = -S\,\mathrm{d}T - p\,\mathrm{d}V$ \\
+吉布斯函数 $G$ & $T, p$ & $\mathrm{d}G = -S\,\mathrm{d}T + V\,\mathrm{d}p$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{规则}：看微分式右边的变量——那就是该热力学势的\textbf{独立变量}。例如 $U = U(S,V)$，不是 $U(T,V)$。如果题目要求 $(\partial U/\partial T)_V$，不能直接从 $\mathrm{d}U$ 读，而要用链式法则：
+\[
+  \left(\frac{\partial U}{\partial T}\right)_V = \left(\frac{\partial U}{\partial S}\right)_V\left(\frac{\partial S}{\partial T}\right)_V = T\left(\frac{\partial S}{\partial T}\right)_V .
+\]
+
+\textbf{嵌套依赖的处理}：统计物理中常遇到"固定化学势 $\mu$ 求变分，但 $\mu$ 本身又依赖于 $T$"。处理方法是：
 \begin{enumerate}[nosep]
-  \item 先写 $\delta S = (\partial S/\partial T)_\mu\,\delta T + (\partial S/\partial \mu)_T\,\delta \mu$；
-  \item 发现 $\mu$ 本身也是 $T$ 的函数，$\delta \mu = (\partial \mu/\partial T)\,\delta T$；
-  \item 代回得 $\delta S = [(\partial S/\partial T)_\mu + (\partial S/\partial \mu)_T (\partial \mu/\partial T)]\,\delta T$；
-  \item 若 $(\partial \mu/\partial T)$ 很小（某些情况下确实如此），可近似忽略第二项，退化为单变量导数。
+  \item 先按题目要求写出偏导数（固定 $\mu$）；
+  \item 如果发现 $\mu$ 实际上随 $T$ 变化，把 $\delta\mu = (\partial\mu/\partial T)\delta T$ 代入；
+  \item 最后判断 $(\partial\mu/\partial T)$ 是否足够小，决定能否忽略修正项。
 \end{enumerate}
 
-\textbf{关键认知}：嵌套依赖不要害怕，\textbf{一步一步代入}，最后判断哪些交叉项可以忽略。考试中常见的简化是"某量随某变量变化很小"，这是一种\textbf{受控近似}，不是随意丢项。
+\textbf{考场建议}：拿到热力学题，\textbf{先写出对应热力学势的全微分}，明确谁是独立变量，再决定求导路径。这是避免漏项的根本方法。
 \end{insightbox}
