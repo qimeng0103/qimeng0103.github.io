@@ -174,5 +174,17 @@ $\delta$ & 过程量的无穷小量（不是全微分） & $\delta W = p\,\mathr
 \[
   \dd p = \left(\frac{\partial p}{\partial V}\right)_S\dd V + \left(\frac{\partial p}{\partial S}\right)_V\dd S ,
 \]
-若盲目只写 $\dd p = (\partial p/\partial V)_S\,\dd V$ 而忘了 $\dd S \neq 0$，就会漏项。\textbf{安全做法}：先写全微分，再代入约束条件消去被固定的变量。
+若盲目只写 $\mathrm{d}p = (\partial p/\partial V)_S\,\mathrm{d}V$ 而忘了 $\mathrm{d}S \neq 0$，就会漏项。\textbf{安全做法}：先写全微分，再代入约束条件消去被固定的变量。
+
+\textbf{更深层的难点——嵌套依赖与小量近似}：
+
+热力学中变量之间的依赖关系常常是\textbf{嵌套}的。例如统计物理中求熵随温度的变分：
+\begin{enumerate}[nosep]
+  \item 先写 $\delta S = (\partial S/\partial T)_\mu\,\delta T + (\partial S/\partial \mu)_T\,\delta \mu$；
+  \item 发现 $\mu$ 本身也是 $T$ 的函数，$\delta \mu = (\partial \mu/\partial T)\,\delta T$；
+  \item 代回得 $\delta S = [(\partial S/\partial T)_\mu + (\partial S/\partial \mu)_T (\partial \mu/\partial T)]\,\delta T$；
+  \item 若 $(\partial \mu/\partial T)$ 很小（某些情况下确实如此），可近似忽略第二项，退化为单变量导数。
+\end{enumerate}
+
+\textbf{关键认知}：嵌套依赖不要害怕，\textbf{一步一步代入}，最后判断哪些交叉项可以忽略。考试中常见的简化是"某量随某变量变化很小"，这是一种\textbf{受控近似}，不是随意丢项。
 \end{insightbox}

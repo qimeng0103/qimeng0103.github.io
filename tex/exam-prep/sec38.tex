@@ -72,7 +72,14 @@ Lennard-Jones 势、晶格求和、面心立方、体弹性模量、抗张强度
 
 \textbf{FCC 结构的晶格求和}（计及最近邻、次近邻与第三近邻）：
 
-FCC 中以一个原子为原点，其他原子按距离分层排列。各壳层的距离和原子数有固定规律（以最近邻距离 $r$ 为单位）：
+FCC 中以一个原子为原点，其他原子按距离分层排列。图 \ref{fig:fcc-shells} 展示了前三层壳层的空间分布，各壳层的距离和原子数有固定规律（以最近邻距离 $r$ 为单位）：
+
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=\textwidth]{images/fcc_shells.png}
+  \caption{FCC 配位壳层示意图。\textbf{左图}：3D 视图，黑球为中心原子，红球为第 1 壳层（12 个，距离 $r$），蓝球为第 2 壳层（6 个，距离 $\sqrt{2}\,r$），绿球为第 3 壳层（24 个，距离 $\sqrt{3}\,r$）。\textbf{右图}：$xy$ 平面投影，紫色方框表示一个晶胞面（$a\times a$），虚线标注了各壳层到原点的距离。}
+  \label{fig:fcc-shells}
+\end{figure}
 
 \begin{center}
 \renewcommand{\arraystretch}{1.4}
@@ -249,11 +256,17 @@ FCC 晶体体积（$N$ 个原子，每晶胞 4 原子，$a = \sqrt{2}\,r$）：
 
 \textbf{(d) 抗张强度 $p_m$}
 
-\textbf{概念铺垫}：
+\textbf{概念铺垫——应力与压强的区别}：
 \begin{itemize}[nosep]
-  \item \textbf{应力} = 力/面积。压应力是"挤压"（正值），张应力是"拉伸"（负值，或说方向向外）；
-  \item \textbf{抗张强度} = 材料能承受的最大张应力。超过这个值，晶体就会断裂；
-  \item 在势能曲线中，$p = -\mathrm{d}U/\mathrm{d}V$。当 $r > r_0$ 时，$U$ 随 $r$ 增大而上升，$\mathrm{d}U/\mathrm{d}V > 0$，所以 $p < 0$（张应力）。
+  \item \textbf{压强} $p$：标量，描述各向同性的"挤压"（如流体静压力）。体积弹性模量中的 $p$ 就是压强，压缩时 $p>0$；
+  \item \textbf{应力}：张量，描述固体内部\textbf{单位面积上的内力}，有方向。可分为：
+  \begin{itemize}[nosep]
+    \item \textbf{压应力} = 垂直于表面向内的挤压（与压强类似）；
+    \item \textbf{张应力} = 垂直于表面向外的拉伸（方向与压应力相反）；
+    \item \textbf{切应力} = 平行于表面的剪切力。
+  \end{itemize}
+  \item \textbf{抗张强度} = 材料能承受的最大张应力。超过这个值，晶体断裂；
+  \item 在势能曲线中，$p = -\mathrm{d}U/\mathrm{d}V$。当 $r > r_0$ 时，原子被拉远，$U$ 上升，$\mathrm{d}U/\mathrm{d}V > 0$，所以 $p < 0$。这里的负号表示\textbf{张应力}（拉力）。
 \end{itemize}
 
 \textbf{求最大张应力的思路}：
