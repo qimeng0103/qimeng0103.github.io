@@ -16,14 +16,6 @@
 其中 $\lambda$, $\rho$ 为常数，$Z$ 为配位数。求晶体的压缩系数。
 \end{modelbox}
 
-\vspace{0.3em}
-\begin{insightbox}{结论预告}
-\[
-  \boxed{ B = \frac{1}{K} = \frac{18\pi\varepsilon_0 V_0}{Me^2}\left(\frac{1}{r_0} - \frac{1}{2\rho}\right)^{-1} }.
-\]
-本题是 \ref{sec:nacl-binding-energy} 的姊妹题：那边已知 $K$ 求 $n$，这边已知势函数形式求 $K$（进而求压缩系数 $B=1/K$）。核心技巧仍然是\textbf{平衡条件化简二阶导}。
-\end{insightbox}
-
 \subsection{压缩系数与弹性模量的关系}
 
 压缩系数 $B$ 定义为体积弹性模量 $K$ 的倒数：
@@ -47,19 +39,32 @@
 其中 $\alpha$ 为与晶体结构有关的几何因子。
 
 \begin{modelbox}{两种典型结构的几何因子}
-\textbf{NaCl 型结构}：
+
+\textbf{NaCl 型结构}（岩盐结构，配位数 $Z=6$）：
 \begin{itemize}[nosep]
   \item 晶胞边长 $a = 2r$；
   \item 一个晶胞含 $4$ 对离子（$8$ 个离子）；
   \item $V = \dfrac{N}{4}\cdot (2r)^3 = 2Nr^3$，即 $\bm{\alpha = 2}$。
 \end{itemize}
 
-\textbf{CsCl 型结构}：
+\vspace{0.5em}
+\textbf{CsCl 型结构}（配位数 $Z=8$）：
 \begin{itemize}[nosep]
-  \item 晶胞边长 $a = \dfrac{2}{\sqrt{3}}r$（体对角线 = $2r$）；
+  \item 简单立方晶胞，一种离子在 $8$ 个角上，另一种在体心；
+  \item 体对角线长度 = $2r$，故晶胞边长 $a = \dfrac{2r}{\sqrt{3}}$；
   \item 一个晶胞含 $1$ 对离子（$2$ 个离子）；
   \item $V = N\cdot\left(\dfrac{2r}{\sqrt{3}}\right)^3 = \dfrac{8\sqrt{3}}{9}Nr^3$，即 $\bm{\alpha = \dfrac{8\sqrt{3}}{9}}$。
 \end{itemize}
+
+\begin{insightbox}{CsCl 结构速记}
+想象一个简单立方体：$8$ 个角是同一种离子（比如 Cs$^+$），正中央（体心）是另一种离子（Cl$^-$）。最近邻就是角到体心，体对角线的一半 = $r$。
+
+与 NaCl 的关键区别：
+\begin{itemize}[nosep]
+  \item NaCl：两种离子各自形成 \textbf{fcc} 子晶格，配位数 $6$；
+  \item CsCl：两种离子各自形成 \textbf{简单立方} 子晶格，配位数 $8$。
+\end{itemize}
+\end{insightbox}
 \end{modelbox}
 
 平衡时体积为
@@ -86,10 +91,6 @@
 \[
   \boxed{ e^{-r_0/\rho} = \frac{Me^2\rho}{4\pi\varepsilon_0 Z\lambda r_0^2} }. \tag{*}
 \]
-
-\begin{tipbox}{符号检查}
-原题图片中此处有一处笔误，写成了 $Me\,e^2$。正确的应为 $Me^2$（马德隆常数 $M$ 乘以 $e^2$）。考场上若发现此类矛盾，应以物理自洽性为准。
-\end{tipbox}
 
 \subsubsection{求二阶导数}
 
@@ -119,36 +120,21 @@
       \left(\frac{1}{\rho} - \frac{2}{r_0}\right).
 \end{align*}
 
-提取因子 $2$：
+整理括号内的符号（注意稳定平衡要求 $K>0$，而 $\rho \ll r_0$，故 $\frac{1}{2\rho} > \frac{1}{r_0}$）：
 \[
-  \frac{1}{\rho} - \frac{2}{r_0} = 2\left(\frac{1}{2\rho} - \frac{1}{r_0}\right)
-  = -2\left(\frac{1}{r_0} - \frac{1}{2\rho}\right).
+  \frac{1}{\rho} - \frac{2}{r_0} = 2\left(\frac{1}{2\rho} - \frac{1}{r_0}\right).
 \]
 
 因此
 \[
   K = \frac{Me^2}{18\pi\varepsilon_0\alpha r_0^3}
-      \left(\frac{1}{2\rho} - \frac{1}{r_0}\right).
+      \left(\frac{1}{2\rho} - \frac{1}{r_0}\right) > 0.
 \]
-
-\begin{insightbox}{关于符号的物理检验}
-稳定平衡要求 $K > 0$。由于 $\rho \ll r_0$（排斥力程极短），有
-\[
-  \frac{1}{r_0} - \frac{1}{2\rho} < 0
-  \quad\Longrightarrow\quad
-  \frac{1}{2\rho} - \frac{1}{r_0} > 0.
-\]
-因此 $K$ 表达式中的括号内为正，$K > 0$，符合物理要求。
-
-\textbf{原题图片中的笔误}：最后一步写成了 $K = -\dfrac{Me^2}{18V_0\pi\varepsilon_0}\cdots$，多了负号。这是推导过程中的符号错误，应予以修正。弹性模量在稳定平衡下\textbf{必须为正}。
-\end{insightbox}
 
 利用 $V_0 = N\alpha r_0^3$，可把 $\alpha r_0^3$ 替换为 $V_0/N$：
 \[
   K = \frac{NMe^2}{18\pi\varepsilon_0 V_0}
-      \left(\frac{1}{2\rho} - \frac{1}{r_0}\right)
-    = \frac{NMe^2}{18\pi\varepsilon_0 V_0}
-      \cdot\frac{-1}{\left(\dfrac{1}{r_0} - \dfrac{1}{2\rho}\right)}.
+      \left(\frac{1}{2\rho} - \frac{1}{r_0}\right).
 \]
 
 取倒数得压缩系数：
@@ -158,15 +144,40 @@
            \left(\frac{1}{r_0} - \frac{1}{2\rho}\right)^{-1} }.
 \]
 
-\begin{insightbox}{与 \ref{sec:nacl-binding-energy} 的对比}
+\begin{insightbox}{考场手绘晶体结构的技巧}
+考场上不需要画完美的 3D 球体，\textbf{用符号代替颜色}即可：
+
+\textbf{NaCl 结构}（重点掌握）：
+\begin{enumerate}[nosep]
+  \item 先画一个立方体框架（只画可见的三条棱，其余省略）；
+  \item 角上画小圆圈 $\circ$（Na$^+$），面心画小圆圈 $\circ$（Na$^+$）；
+  \item 棱中点画叉 $\times$（Cl$^-$），体心画叉 $\times$（Cl$^-$）。
+\end{enumerate}
+
+\textbf{CsCl 结构}：
+\begin{enumerate}[nosep]
+  \item 画一个简单立方体；
+  \item 八个角画圆圈 $\circ$（Cs$^+$）；
+  \item 正中央画叉 $\times$（Cl$^-$）。
+\end{enumerate}
+
+\textbf{核心原则}：
+\begin{itemize}[nosep]
+  \item \textbf{不要画实心球}——会互相遮挡，看不出内部结构；
+  \item \textbf{用不同符号}（圈/叉/点）区分两种离子，比用颜色更可靠；
+  \item \textbf{先画框架，再填离子}——框架是参照系，没有框架离子就飘在空中。
+\end{itemize}
+\end{insightbox}
+
+\begin{insightbox}{与 NaCl 结合能题的对比}
 \begin{center}
 \renewcommand{\arraystretch}{1.5}
 \begin{tabular}{|l|c|c|}
 \hline
 \textbf{题目} & \textbf{已知} & \textbf{求} \\
 \hline
-sec35 (NaCl 结合能) & 比重 $D$、弹性模量 $K$ & 结合能 $U_0$ \\
-sec36 (压缩系数) & 势函数 $U(r)$ & 压缩系数 $B = 1/K$ \\
+NaCl 结合能 & 比重 $D$、弹性模量 $K$ & 结合能 $U_0$ \\
+压缩系数 & 势函数 $U(r)$ & 压缩系数 $B = 1/K$ \\
 \hline
 \end{tabular}
 \end{center}
@@ -178,5 +189,5 @@ sec36 (压缩系数) & 势函数 $U(r)$ & 压缩系数 $B = 1/K$ \\
   \item 最终都出现 $\left(\dfrac{1}{r_0} - \dfrac{1}{2\rho}\right)$ 形式的结构因子。
 \end{enumerate}
 
-区别仅在于 sec35 用\textbf{幂律排斥} $B/r^n$，sec36 用\textbf{指数排斥} $Z\lambda e^{-r/\rho}$。指数形式的化简更优雅——平衡条件直接给出 $e^{-r_0/\rho}$ 的显式表达式，避免了 sec35 中需要先求 $n$ 再代入的繁琐步骤。
+区别仅在于 NaCl 结合能题用\textbf{幂律排斥} $B/r^n$，本题用\textbf{指数排斥} $Z\lambda e^{-r/\rho}$。指数形式的化简更优雅——平衡条件直接给出 $e^{-r_0/\rho}$ 的显式表达式，避免了幂律形式需要先求 $n$ 再代入的繁琐步骤。
 \end{insightbox}
