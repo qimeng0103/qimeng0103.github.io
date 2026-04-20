@@ -1,0 +1,224 @@
+% ============================================================
+% Section 35: NaCl 晶体的比重、弹性模量与结合能
+% ============================================================
+\section{固体理论：NaCl 晶体——由宏观量求微观结合能}
+\label{sec:nacl-binding-energy}
+
+\begin{tipbox}{关键词标签}
+离子晶体 · NaCl 结构 · 比重 · 体积弹性模量 · 结合能 · Born 指数 · 面心立方
+\end{tipbox}
+
+\begin{modelbox}
+实验上测得 NaCl 晶体的比重为 $D = 2.16\,\mathrm{g/cm^3}$，弹性模量为 $K = 2.41\times 10^{10}\,\mathrm{N/m^2}$。试求其结合能。
+
+（已知 NaCl 晶体结构的马德隆常数 $M = 1.7476$，Na 和 Cl 原子量分别为 $23$ 和 $35.45$。）
+\end{modelbox}
+
+\vspace{0.3em}
+\begin{insightbox}{结论预告}
+\[
+  r_0 \approx 2.82\,\text{\AA}, \qquad n \approx 7.8, \qquad
+  U_{\text{mol}} \approx -7.51\times 10^{5}\,\mathrm{J/mol}
+  \;\bigl(\approx -179.3\,\mathrm{kcal/mol}\bigr).
+\]
+本题是典型的\textbf{宏观量 $\to$ 微观参量 $\to$ 结合能}三步反推：先用比重定平衡间距，再用弹性模量定 Born 指数，最后代入结合能公式。
+\end{insightbox}
+
+\subsection{物理模型与结合能公式}
+
+由 $N$ 个离子对（共 $2N$ 个离子）组成的 NaCl 晶体，总相互作用势为
+\[
+  U(r) = -\frac{N}{2}\left(\frac{Me^2}{4\pi\varepsilon_0 r} - \frac{B}{r^n}\right).
+\]
+
+\begin{insightbox}{系数 $N/2$ 的来源}
+$N$ 是离子对数。总势能若直接对 $2N$ 个离子求和，每对相互作用会被算两次，因此必须除以 $2$。最终写成 $N/2$ 乘以单对势能。
+\end{insightbox}
+
+\subsubsection{平衡条件}
+
+令 $\dd U/\dd r = 0$，得排斥参数与平衡间距的关系：
+\[
+  B = \frac{Me^2}{4\pi\varepsilon_0 n}\, r_0^{n-1}. \tag{1}
+\]
+
+\subsubsection{平衡时的晶体结合能}
+
+将 (1) 代回 $U(r)$，在 $r = r_0$ 处：
+\[
+  U_0 = -\frac{NMe^2}{8\pi\varepsilon_0 r_0}\left(1 - \frac{1}{n}\right). \tag{2}
+\]
+
+\textbf{核心任务}：从实验测得的宏观量（比重 $D$、弹性模量 $K$）反推出微观参量 $r_0$ 和 $n$。
+
+\subsection{由比重求平衡间距 $r_0$}
+
+NaCl 为面心立方（fcc）结构，晶胞边长 $a = 2r_0$。一个晶胞含 $4$ 个 NaCl 分子（$8$ 个离子）。
+
+\begin{modelbox}{晶胞质量与体积}
+\textbf{晶胞质量}：
+\[
+  m_{\text{cell}} = \frac{4\times(23 + 35.45)}{N_0}
+                 = \frac{233.8}{N_0}\;\mathrm{g},
+\]
+其中 $N_0 = 6.02\times 10^{23}\,\mathrm{mol^{-1}}$ 为阿伏伽德罗常数。
+
+\textbf{晶胞体积}：
+\[
+  V_{\text{cell}} = a^3 = (2r_0)^3 = 8r_0^3.
+\]
+\end{modelbox}
+
+晶体密度（比重）为
+\[
+  D = \frac{m_{\text{cell}}}{V_{\text{cell}}}
+    = \frac{233.8}{8N_0 r_0^3}
+    = \frac{29.225}{N_0 r_0^3}.
+\]
+
+解出 $r_0$：
+\[
+  r_0^3 = \frac{29.225}{N_0 D}
+        = \frac{29.225}{6.02\times 10^{23}\times 2.16}
+        \approx 2.247\times 10^{-23}\;\mathrm{cm^3}.
+\]
+
+\[
+  \boxed{ r_0 \approx 2.82\times 10^{-8}\,\mathrm{cm} = 2.82\,\text{\AA}
+          = 2.82\times 10^{-10}\,\mathrm{m} }.
+\]
+
+\begin{tipbox}{数值检验}
+实验测得 NaCl 的离子间距约为 $2.82\,\text{\AA}$，与我们的计算完全一致。这说明由比重反推 $r_0$ 的方法是可靠的。
+\end{tipbox}
+
+\subsection{由弹性模量求排斥指数 $n$}
+
+\subsubsection{体积弹性模量公式}
+
+体积弹性模量定义为
+\[
+  K = V_0\left(\frac{\dd^2 U}{\dd V^2}\right)_{V_0}
+    = V_0\left(\frac{\dd r}{\dd V}\right)^2_{r_0}
+      \left(\frac{\dd^2 U}{\dd r^2}\right)_{r_0}.
+\]
+
+\begin{modelbox}{从 $V(r)$ 到 $K$ 的链式法则}
+晶体体积与离子间距的关系（对 $N$ 对离子的晶体）：
+\[
+  V = N\beta r^3,
+\]
+其中 $\beta$ 是几何因子（对 NaCl 结构，$\beta = 1$ 在比例关系中不影响最终结果，因为求导后比例系数会消去）。
+
+一阶导数：
+\[
+  \frac{\dd V}{\dd r} = 3N\beta r^2
+  \quad\Longrightarrow\quad
+  \frac{\dd r}{\dd V} = \frac{1}{3N\beta r^2}.
+\]
+\end{modelbox}
+
+\subsubsection{二阶导数的计算}
+
+对 $U(r)$ 求二阶导数并利用平衡条件 $\dd U/\dd r|_{r_0}=0$ 化简：
+\[
+  \left(\frac{\dd^2 U}{\dd r^2}\right)_{r_0}
+  = \frac{NMe^2}{8\pi\varepsilon_0 r_0^3}(n-1).
+\]
+
+代入 $K$ 的表达式（取 $V_0 = Nr_0^3$，$\beta=1$）：
+\begin{align*}
+  K &= (Nr_0^3)\cdot\left(\frac{1}{3Nr_0^2}\right)^2
+      \cdot\frac{NMe^2}{8\pi\varepsilon_0 r_0^3}(n-1) \\
+    &= \frac{Me^2}{72\pi\varepsilon_0 r_0^4}(n-1).
+\end{align*}
+
+解出 $n$：
+\[
+  \boxed{ n = 1 + \frac{72\pi\varepsilon_0 r_0^4 K}{Me^2} }. \tag{3}
+\]
+
+\subsubsection{数值代入}
+
+取
+\begin{itemize}[nosep]
+  \item $\varepsilon_0 = 8.85\times 10^{-12}\,\mathrm{F/m}$，
+  \item $r_0 = 2.82\times 10^{-10}\,\mathrm{m}$，
+  \item $K = 2.41\times 10^{10}\,\mathrm{N/m^2}$，
+  \item $M = 1.7476$，
+  \item $e = 1.60\times 10^{-19}\,\mathrm{C}$，
+\end{itemize}
+
+\[
+  n = 1 + \frac{72\pi\times 8.85\times 10^{-12}\times (2.82\times 10^{-10})^4
+          \times 2.41\times 10^{10}}
+         {1.7476\times (1.60\times 10^{-19})^2}
+    \approx 1 + 6.8
+    = \boxed{7.8}.
+\]
+
+\begin{tipbox}{关于弹性模量数值的说明}
+原题图片中弹性模量写为 $2.41\times 10^{12}\,\mathrm{N/m^2}$，但这会导致 $n\sim 10^3$，明显不合理（Born 指数通常在 $7\sim 12$ 之间）。按物理合理性判断，应为 $2.41\times 10^{10}\,\mathrm{N/m^2}$ 的排版笔误。考场上遇到此类矛盾时，应优先相信物理规律而非照抄数字。
+\end{tipbox}
+
+\begin{insightbox}{Born 指数的物理意义}
+$n \approx 7.8$ 落在典型离子晶体的范围内（$n = 7\sim 12$）：
+\begin{itemize}[nosep]
+  \item $n$ 小 $\Rightarrow$ 排斥势``软''，晶体容易压缩（如含大半径离子的晶体）；
+  \item $n$ 大 $\Rightarrow$ 排斥势``硬''，晶体刚性强（如共价成分高的离子晶体）。
+\end{itemize}
+NaCl 的 $n$ 接近 $8$，说明它的离子性较强，电子云交叠不极端，属于典型的``软''离子晶体。
+\end{insightbox}
+
+\subsection{计算结合能}
+
+对 $1\,\mathrm{mol}$ NaCl 晶体，离子对数 $N = N_0$。代入 (2)：
+\[
+  U_{\text{mol}} = -\frac{N_0 Me^2}{4\pi\varepsilon_0 r_0}
+                  \left(1 - \frac{1}{n}\right).
+\]
+
+\begin{insightbox}{公式中 $1/2$ 因子的消去}
+注意式 (2) 中含有 $1/2$（来自 $N/2$ 对计数），但在 $1\,\mathrm{mol}$ 计算中，$N = N_0$ 是离子对数，因此公式直接写为 $N_0 Me^2/(4\pi\varepsilon_0 r_0)$，不再显含 $1/2$。
+\end{insightbox}
+
+代入数值：
+\begin{align*}
+  U_{\text{mol}}
+  &= -\frac{6.02\times 10^{23}\times 1.7476\times (1.60\times 10^{-19})^2}
+          {4\pi\times 8.85\times 10^{-12}\times 2.82\times 10^{-10}}
+    \times\left(1 - \frac{1}{7.8}\right) \\
+  &\approx \boxed{ -7.51\times 10^{5}\,\mathrm{J/mol} }
+   = \boxed{ -179.3\,\mathrm{kcal/mol} }.
+\end{align*}
+
+单个离子对的结合能：
+\[
+  E_b = \frac{U_{\text{mol}}}{N_0}
+      \approx -1.24\times 10^{-18}\,\mathrm{J},
+\]
+与实验值 $-1.27\times 10^{-18}\,\mathrm{J}$ 吻合良好。
+
+\subsection{答案汇总与数量级检验}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|c|l|}
+\hline
+\textbf{物理量} & \textbf{数值} & \textbf{检验标准} \\
+\hline
+平衡间距 $r_0$ & $2.82\,\text{\AA}$ & 与实验值 $2.82\,\text{\AA}$ 一致 \\
+Born 指数 $n$ & $7.8$ & 在 $7\sim 12$ 范围内，合理 \\
+摩尔结合能 $U_{\text{mol}}$ & $-179.3\,\mathrm{kcal/mol}$ & 实验值 $\approx -183\,\mathrm{kcal/mol}$，吻合 \\
+离子对结合能 $E_b$ & $-1.24\times 10^{-18}\,\mathrm{J}$ & 实验值 $-1.27\times 10^{-18}\,\mathrm{J}$，吻合 \\
+\hline
+\end{tabular}
+\end{center}
+
+\begin{insightbox}{本题的方法论价值}
+\begin{enumerate}[nosep]
+  \item \textbf{宏观量反推微观参量}：比重（密度）$\to$ $r_0$，弹性模量 $\to$ $n$。这是实验凝聚态物理的经典思路。
+  \item \textbf{数量级优先原则}：当题目给出的数值与物理常识矛盾（如 $10^{12}$ vs $10^{10}$）时，先用数量级判断合理性，再决定修正方向。
+  \item \textbf{Born-Land\'{e} 模型的完整闭环}：从库仑吸引 + 幂律排斥出发，通过平衡条件、弹性模量定义，最终回到可实验检验的结合能——整个离子晶体理论的最小完整模型。
+\end{enumerate}
+\end{insightbox}
