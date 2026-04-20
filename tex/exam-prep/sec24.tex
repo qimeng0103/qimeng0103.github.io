@@ -1,0 +1,174 @@
+% ============================================================
+% Section 24: 一维惰性气体链的 Lennard-Jones 势与线弹性模量
+% ============================================================
+\section{固体理论：一维惰性气体链——Lennard-Jones 势、晶格能与线弹性模量}
+\label{sec:lj-chain}
+
+\begin{modelbox}[一维 LJ 链的三连问]
+$N$ 个惰性气体原子组成线性布拉维固体链（一维单原子链），平均每两原子间相互作用势为
+\[
+  \varphi(x) = \varphi_0 \left[ \left(\frac{\sigma}{x}\right)^{12} - 2\left(\frac{\sigma}{x}\right)^{6} \right].
+\]
+试求：
+\begin{enumerate}[nosep]
+  \item 原子间的平均距离 $x_0$；
+  \item 每个原子的平均晶格能 $u_0$；
+  \item 线弹性模量 $K$。
+\end{enumerate}
+\end{modelbox}
+
+\vspace{0.3em}
+\begin{insightbox}{结论预告}
+\[
+  x_0 = \sigma, \qquad u_0 = -\varphi_0, \qquad K = \frac{72\varphi_0}{\sigma}.
+\]
+本题是典型的\textbf{求极小值 $\to$ 读函数值 $\to$ 求曲率}三步曲。势函数的参数化经过特殊设计（$-2$ 而非 $-1$），使得平衡位置恰好等于 $\sigma$，最小势能恰好等于 $-\varphi_0$。
+\end{insightbox}
+
+\subsection{关键观察：势函数的配方}
+
+令 $y = (\sigma/x)^6$，则
+\[
+  \varphi(x) = \varphi_0\,(y^2 - 2y) = \varphi_0\,[(y-1)^2 - 1].
+\]
+这是关于 $y$ 的抛物线，\textbf{极小值显然在 $y=1$ 处}。这种改写让求根变成口算，避免繁琐的幂次运算。
+
+\subsection{平衡距离 $x_0$}
+
+物理条件：平衡时原子所受合力为零，即势能取极小值
+\[
+  \left.\frac{d\varphi}{dx}\right|_{x_0} = 0.
+\]
+
+求导：
+\begin{align*}
+  \frac{d\varphi}{dx}
+  &= \varphi_0 \left[ -12\frac{\sigma^{12}}{x^{13}} + 12\frac{\sigma^6}{x^7} \right] \\
+  &= \frac{12\varphi_0}{x} \left[ \left(\frac{\sigma}{x}\right)^6 - \left(\frac{\sigma}{x}\right)^{12} \right].
+\end{align*}
+
+令其为零（$x\neq 0$），得
+\[
+  \left(\frac{\sigma}{x_0}\right)^6 = 1 \quad\Longrightarrow\quad \boxed{x_0 = \sigma}.
+\]
+
+验证极小：$\varphi''(\sigma) = 72\varphi_0/\sigma^2 > 0$（见下文），确为极小值。
+
+\begin{tipbox}{与标准 Lennard-Jones 势的区分}
+标准 LJ 势常写作
+\[
+  \varphi_{\text{LJ}}(r) = 4\varepsilon\left[\left(\frac{\sigma}{r}\right)^{12} - \left(\frac{\sigma}{r}\right)^6\right],
+\]
+其极小值在 $r_0 = 2^{1/6}\sigma$ 处，$\varphi_{\min} = -\varepsilon$。
+
+本题为 $-2(\sigma/x)^6$，相当于把吸引项加倍，使极小值恰好落在 $x_0 = \sigma$ 处。\textbf{考场上务必看清系数}，不要凭肌肉记忆写 $2^{1/6}\sigma$。
+\end{tipbox}
+
+\subsection{每个原子的平均晶格能 $u_0$}
+
+\begin{modelbox}[计数规则：一维链的键能分摊]
+\begin{itemize}[nosep]
+  \item 每个原子有 $\bm{z=2}$ 个最近邻（左、右各 1 个）；
+  \item 每对近邻相互作用被 \textbf{2 个原子共享}。
+\end{itemize}
+因此每个原子平均分摊到的键能为
+\[
+  u_0 = \frac{1}{2} \times z \times \varphi(x_0) = \frac{z}{2}\,\varphi(x_0).
+\]
+\end{modelbox}
+
+对一维单原子链，$z=2$，故 $u_0 = \varphi(x_0)$。代入 $x_0 = \sigma$：
+\[
+  \varphi(\sigma) = \varphi_0(1 - 2) = -\varphi_0 \quad\Longrightarrow\quad \boxed{u_0 = -\varphi_0}.
+\]
+
+\begin{tipbox}{常见错误}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{错误写法} & \textbf{错误原因} & \textbf{正确理解} \\
+\hline
+$u_0 = \frac{1}{2}\varphi(x_0)$ & 忘了乘最近邻数 $z=2$ & 每个原子有两个邻居 \\
+$u_0 = 2\varphi(x_0)$ & 忘了除以共享因子 2 & 每对键被两个原子分摊 \\
+\hline
+\end{tabular}
+\end{center}
+一维链恰好 $z/2 = 1$，结果上看就是 $\varphi(x_0)$ 本身，但这只是巧合。
+\end{tipbox}
+
+\subsection{线弹性模量 $K$}
+
+\subsubsection{定义推导}
+
+一维链的\textbf{线弹性模量}（单位应变所需的恢复力）定义为
+\[
+  K = x_0 \left.\frac{d^2\varphi}{dx^2}\right|_{x_0}.
+\]
+
+\textbf{这个公式怎么来的？} 设链发生均匀应变 $\varepsilon$，键长变为 $x = x_0(1+\varepsilon)$。总晶格能展开：
+\[
+  U \approx N\varphi(x_0) + N\cdot\frac{1}{2}\varphi''(x_0)\cdot(x_0\varepsilon)^2.
+\]
+单位长度弹性能：
+\[
+  \frac{U_{\text{弹}}}{L} = \frac{1}{2}\underbrace{[x_0\,\varphi''(x_0)]}_{K}\,\varepsilon^2.
+\]
+对比弹性力学 $u_{\text{弹}} = \frac{1}{2}K\varepsilon^2$，即得上式。
+
+\subsubsection{计算二阶导}
+
+\[
+  \frac{d^2\varphi}{dx^2} = \varphi_0 \left[ 156\frac{\sigma^{12}}{x^{14}} - 84\frac{\sigma^6}{x^8} \right].
+\]
+
+在 $x = \sigma$ 处：
+\[
+  \left.\frac{d^2\varphi}{dx^2}\right|_{\sigma}
+  = \frac{\varphi_0}{\sigma^2}(156 - 84)
+  = \frac{72\varphi_0}{\sigma^2}.
+\]
+
+于是
+\[
+  K = \sigma \cdot \frac{72\varphi_0}{\sigma^2} = \boxed{\frac{72\varphi_0}{\sigma}}.
+\]
+
+\begin{tipbox}{量纲检验}
+$[\varphi_0] = \text{J}$，$[\sigma] = \text{m}$，故 $[K] = \text{J/m} = \text{N}$（力）。
+
+恰为``力/应变''的量纲（应变无量纲）。正确。
+\end{tipbox}
+
+\subsection{物理图像与拓展}
+
+\subsubsection{与三维惰性气体晶体的对比}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{物理量} & \textbf{一维链（本题）} & \textbf{三维 fcc（参考）} \\
+\hline
+最近邻数 $z$ & 2 & 12 \\
+每个原子晶格能 & $u_0 = \varphi(x_0) = -\varphi_0$ & $u_0 = \frac{z}{2}\varphi(r_0) = -6\varphi_0$（同势） \\
+弹性模量 & $K = x_0\varphi''(x_0)$ & 体积模量 $B = \frac{r_0^2}{9V_0}\varphi''(r_0)$ \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsubsection{与晶格振动的联系}
+
+简谐近似下力常数 $\beta = \varphi''(x_0) = 72\varphi_0/\sigma^2$。一维单原子链的声子色散：
+\[
+  \omega(q) = 2\sqrt{\frac{\beta}{m}}\left|\sin\frac{q\sigma}{2}\right|
+            = 2\sqrt{\frac{72\varphi_0}{m\sigma^2}}\left|\sin\frac{q\sigma}{2}\right|.
+\]
+长波极限 $q\to 0$ 的声速 $c = \sigma\sqrt{\beta/m} = \sqrt{K/m}$。
+
+\subsubsection{Einstein 近似下的振动频率}
+
+若把每个原子看成在平衡位置附近独立振动，则角频率
+\[
+  \omega_E = \sqrt{\frac{\beta}{m}} = \sqrt{\frac{72\varphi_0}{m\sigma^2}}.
+\]
