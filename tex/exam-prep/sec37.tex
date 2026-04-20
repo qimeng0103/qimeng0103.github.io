@@ -1,8 +1,8 @@
 \section{体积弹性模量的估算与应用}
 
-\begin{infobox}
-\textbf{考点}：体积弹性模量的定义、积分求解压强、小量近似。
-\end{infobox}
+\begin{tipbox}{关键词标签}
+体积弹性模量、等温压缩、压强估算、小量近似。
+\end{tipbox}
 
 \subsection{估计压缩到正常密度 $\alpha$ 倍所需的压强}
 
@@ -139,25 +139,19 @@
 
 若只取一阶近似 $\eta \approx p/(3K) = 1/36 \approx 2.78\%$，误差仅约 $0.04\%$。
 
-\begin{insightbox}{解题策略：先写精确式，再判断近似}
-很多考生一上来就用小量近似 $\eta \approx p/(3K)$，虽然本题结果碰巧接近，但\textbf{严格的步骤}是：
-\begin{enumerate}[nosep]
-  \item 先推导出精确表达式 $\eta = 1 - e^{-p/(3K)}$；
-  \item 再代入数值判断 $p/(3K)$ 是否远小于 1；
-  \item 若是，再写泰勒展开取近似。
-\end{enumerate}
-这样即使 $p$ 很大（比如 $10^5\,\text{atm}$），也不会因为盲目近似而丢分。
-\end{insightbox}
+\begin{insightbox}{热力学偏导数的操作安全守则}
+体积弹性模量定义 $K = -V(\partial p/\partial V)_T$ 是\textbf{偏导数}，为什么能直接写成 $\dd p = -K\,\dd V/V$ 积分？关键在于\textbf{控制变量的识别}：
 
-\begin{insightbox}{与 sec36（压缩系数）的联系}
-sec36 从微观势函数出发推导了
+在等温压缩过程中，系统的状态由 $(T,V)$ 描述，$p$ 只是 $V$ 的单值函数 $p = p(T,V)$（$T$ 固定）。因此沿等温线有
 \[
-  K = \frac{NMe^2}{18\pi\varepsilon_0 V_0}\!\left(\frac{1}{2\rho} - \frac{1}{r_0}\right) ,
+  \dd p = \left(\frac{\partial p}{\partial V}\right)_T \dd V ,
 \]
-而本题直接从\textbf{宏观定义} $K = -V(\partial p/\partial V)_T$ 出发，用 $K$ 作为已知量估算压强和形变。两条路径的关系是：
-\begin{itemize}[nosep]
-  \item sec36：微观 $\to$ 宏观（从势函数推导弹性模量）；
-  \item sec37：宏观 $\to$ 应用（用弹性模量做压强/形变估算）。
-\end{itemize}
-考试时要根据题目给出的条件选择路径：\textbf{给势函数用微观，给 $K$ 用宏观}。
+这里的 $\dd V$ 不是任意变分，而是\textbf{沿等温路径的实际体积变化}。偏导数改写成微分的前提是：\textbf{你明确知道哪些变量被固定，哪些在变化}。
+
+\textbf{常见错误}：在多变量问题中（比如同时有 $p,V,T,S$），看到偏导就写成 $\dd x / \dd y$，结果忘了 $z$ 也在变。安全做法是：
+\begin{enumerate}[nosep]
+  \item 写出完整微分式 $\dd f = (\partial f/\partial x)_y \dd x + (\partial f/\partial y)_x \dd y$；
+  \item 代入约束条件（如 $\dd T = 0$ 或某过程方程）；
+  \item 消去被约束的变量后，再整理成单变量微分形式。
+\end{enumerate}
 \end{insightbox}
