@@ -185,31 +185,56 @@
 \end{itemize}
 \end{insightbox}
 
-\begin{insightbox}{元胞手绘——从"看不清"到"一眼认出"}
+\begin{insightbox}{元胞手绘——如何画出"一眼能数清"的晶胞}
 
-\textbf{核心痛点}：只画一个晶胞时，角上的原子只占 1/8、棱上的只占 1/4，看起来支离破碎，没有"包裹在内部"的整体感。
+\textbf{核心痛点}：单画一个晶胞，角上的原子只剩 1/8、棱上只剩 1/4，看起来像碎片，没有"被包裹"的确定性。
 
-\textbf{解决方法是 2$\times$2 框选法}：
-\begin{enumerate}[nosep]
-  \item \textbf{画格点阵列}：不要只画一个正方形/立方体，先画 $2\times 2$ 的四个正方形（2D）或 $2\times 2\times 2$ 的八个立方体（3D）；
-  \item \textbf{填完整原子}：所有原子都用完整符号（圈/叉）画出，\textbf{不要画"缺角"的原子}——角上的原子画完整圆圈，不要被边界切割；
-  \item \textbf{粗线框选一个晶胞}：用粗实线框出阵列中\textbf{任意一个}元胞的范围。这个框就是你的"答案区域"；
-  \item \textbf{在框内标注分摊}：框内每个原子旁边标权重（角上 $\times\frac{1}{8}$、棱上 $\times\frac{1}{4}$、面上 $\times\frac{1}{2}$、体内 $\times 1$）。框外的原子是\textbf{背景参照系}，不用标权重。
-\end{enumerate}
+\textbf{更深层的问题}：即使是 $2\times 2$ 阵列，框出的晶胞仍然在大阵列的表面上——\textbf{没有一个晶胞是真正被完全包围的}。用户说得对，$2\times 2$ 解决不了"内部感"。
 
-\textbf{为什么有效}：在 $2\times 2$ 阵列中，内部的原子被完整包围，边界上的原子虽然被框切到，但因为相邻晶胞的存在，你能直观地看到"这个原子被几个晶胞共享"。框出一个晶胞后，数框内的加权原子数就是答案。
+\vspace{0.5em}
+\textbf{2D 正确解法——3$\times$3 框中心}
 
-\textbf{具体操作示例——简单立方}：
+画 $3\times 3 = 9$ 个正方形拼成大正方形，\textbf{框出正中间那一个}：
 \begin{itemize}[nosep]
-  \item 画 $2\times 2\times 2 = 8$ 个立方体拼成一个大立方体；
-  \item 在每个格点画一个完整的小圆圈（8 个角 + 12 个棱中 + 6 个面心 + 1 个体心 = 27 个格点）；
-  \item 用粗线框出大立方体\textbf{左下角靠前}的那一个小立方体；
-  \item 框内有：8 个角（各 $\frac{1}{8}$）、12 条棱（各 $\frac{1}{4}$）、6 个面（各 $\frac{1}{2}$）、1 个体心（$\times 1$）；
-  \item 数：$8\times\frac{1}{8} + 12\times\frac{1}{4} + 6\times\frac{1}{2} + 1\times 1 = 1+3+3+1 = 8$ 个原子。
+  \item 中间晶胞的四条边都在阵列\textbf{内部}，每条边两侧都有相邻晶胞；
+  \item 四角的每个原子被 4 个晶胞共享，标注 $\times\frac{1}{4}$；
+  \item 四条边中点的原子各被 2 个晶胞共享，标注 $\times\frac{1}{2}$；
+  \item 若晶胞中心有原子，完全属于该晶胞，标注 $\times 1$。
 \end{itemize}
 
-\textbf{关键认知}：\textbf{画多了不是错，画少了看不清才是错}。考试阅卷老师看的是框内的分摊计算是否正确，不会因为你多画了背景而扣分。
+\textbf{示例——二维正方格子（含中心原子）}：
+\begin{itemize}[nosep]
+  \item 画 $3\times 3$ 阵列，框中心；
+  \item 中心晶胞含：4 个角（各 $\frac{1}{4}$）+ 4 条边中点（各 $\frac{1}{2}$）+ 1 个中心（$\times 1$）；
+  \item 数：$4\times\frac{1}{4} + 4\times\frac{1}{2} + 1 = 1 + 2 + 1 = \boxed{4}$ 个原子。
+\end{itemize}
+
+这就是 $2\times 2$ 做不到的——\textbf{中心晶胞确实被邻居从四面八方抱住}，一眼就能看出边界在哪里。
+
+\vspace{0.5em}
+\textbf{3D 解法——虚实结合法}
+
+$3\times 3\times 3 = 27$ 个立方体画起来太累，换一套策略：
+\begin{enumerate}[nosep]
+  \item \textbf{画一个目标晶胞}（实线框），把 8 个角、12 条棱中、6 个面心、1 个体心的原子全部用\textbf{完整符号}（圈/叉）画出；
+  \item \textbf{画虚线 ghost}：在晶胞外部，用\textbf{虚线框}画出相邻晶胞的轮廓（不需要画全，只画与目标晶胞接壤的那几个面即可）；
+  \item \textbf{角原子用虚线延伸}：8 个角上的原子旁边画短虚线，暗示"此原子延伸到相邻晶胞"；
+  \item \textbf{直接标注分摊}：每个原子旁边写权重，不要靠视觉猜。
+\end{enumerate}
+
+\textbf{示例——简单立方 3D}：
+\begin{itemize}[nosep]
+  \item 画一个立方体实线框；
+  \item 在 8 个角画完整圆圈，各标 $\times\frac{1}{8}$；
+  \item 在 12 条棱中点画完整符号，各标 $\times\frac{1}{4}$；
+  \item 在 6 个面心画完整符号，各标 $\times\frac{1}{2}$；
+  \item 在体心画完整符号，标 $\times 1$；
+  \item 数：$8\times\frac{1}{8} + 12\times\frac{1}{4} + 6\times\frac{1}{2} + 1 = 1+3+3+1 = \boxed{8}$。
+\end{itemize}
+
+\textbf{关键认知}：3D 中不要追求"画出一个完全被包围的晶胞"（那需要 $3\times 3\times 3$ 阵列，考场上不现实）。\textbf{退而求其次}：画一个晶胞 + 完整原子 + 虚线提示共享 + 直接标注权重。阅卷老师看的是权重计算是否正确，不是透视画得漂不漂亮。
 \end{insightbox}
+
 
 
 \begin{insightbox}{与 NaCl 结合能题的对比}
