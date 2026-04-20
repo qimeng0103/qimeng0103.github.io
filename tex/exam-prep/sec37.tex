@@ -139,7 +139,7 @@
 
 若只取一阶近似 $\eta \approx p/(3K) = 1/36 \approx 2.78\%$，误差仅约 $0.04\%$。
 
-\begin{insightbox}{热力学符号辨析：$\dd$、$\delta$、$\partial$ 与状态函数}
+\begin{insightbox}{热力学符号与变量依赖关系}
 
 热力学中符号混乱的根源是\textbf{两类物理量}的混淆：
 \begin{itemize}[nosep]
@@ -150,87 +150,101 @@
 \textbf{符号规则}：
 \begin{center}
 \renewcommand{\arraystretch}{1.4}
-\begin{tabular}{|c|l|l|}
+\begin{tabular}{|l|l|l|}
 \hline
 \textbf{符号} & \textbf{含义} & \textbf{例子} \\
 \hline
-$\partial$ & 偏导数，固定其他变量 & $(\partial p/\partial V)_T$ 表示\"温度不变时压强随体积的变化率\" \\
-\multicolumn{1}{l|}{d} & 状态函数的无穷小变化（全微分） & $\mathrm{d}U$ 是内能变化，$\oint\mathrm{d}U = 0$ \\
-$\delta$ & 过程量的无穷小量（不是全微分） & $\delta W = p\,\mathrm{d}V$（功与路径有关，$\oint\delta W \neq 0$） \\
+$\partial$（偏导） & 固定其他变量求导 & $(\partial p/\partial V)_T$ 表示"温度不变时压强随体积的变化率" \\
+\hline
+\mbox{\textup{d}}（全微分） & 状态函数的无穷小变化 & $\mathrm{d}U$ 是内能变化，$\oint\mathrm{d}U = 0$ \\
+\hline
+$\delta$（变分） & 过程量的无穷小量 & $\delta W = p\,\mathrm{d}V$（功与路径有关，$\oint\delta W \neq 0$） \\
 \hline
 \end{tabular}
 \end{center}
 
+\vspace{0.5em}
 \textbf{具体到本题}：$K = -V(\partial p/\partial V)_T$ 中的偏导数，为什么能直接积分？
 
 因为 $p$ 是\textbf{状态函数}，在等温条件下 $p$ 只是 $V$ 的函数 $p = p(V)$（$T$ 固定）。此时偏导数退化为普通导数：
 \[
-  \left(\frac{\partial p}{\partial V}\right)_T = \frac{\dd p}{\dd V} \quad (T\text{ 固定}) .
+  \left(\frac{\partial p}{\partial V}\right)_T = \frac{\mathrm{d}p}{\mathrm{d}V} \quad (T\text{ 固定}) .
 \]
 
 于是 $\mathrm{d}p = (\partial p/\partial V)_T\,\mathrm{d}V = -K\,\mathrm{d}V/V$，两边积分即可。
 
 \textbf{什么时候会出错}：如果题目说"绝热压缩"，那么 $p$ 同时依赖于 $V$ 和 $S$（或 $T$），$p = p(V,S)$。此时
 \[
-  \dd p = \left(\frac{\partial p}{\partial V}\right)_S\dd V + \left(\frac{\partial p}{\partial S}\right)_V\dd S ,
+  \mathrm{d}p = \left(\frac{\partial p}{\partial V}\right)_S\mathrm{d}V + \left(\frac{\partial p}{\partial S}\right)_V\mathrm{d}S ,
 \]
-若盲目只写 $\mathrm{d}p = (\partial p/\partial V)_S\,\mathrm{d}V$ 而忘了 $\mathrm{d}S \neq 0$，就会漏项。\textbf{安全做法}：先写全微分，再代入约束条件消去被固定的变量。
+若盲目只写 $\mathrm{d}p = (\partial p/\partial V)_S\,\mathrm{d}V$ 而忘了 $\mathrm{d}S \neq 0$，就会漏项。
 
-\textbf{更深层的难点——不知道有哪些依赖关系}：
+\vspace{0.5em}
+\textbf{热力学量为什么关注熵、热容、化学势}：
 
-热力学中每个量该当作谁的函数，由\textbf{自然变量}决定：
+\begin{itemize}[nosep]
+  \item \textbf{熵 $S$}：衡量系统\textbf{混乱程度}，也是热量传递的"方向标"——$\mathrm{d}Q_{\text{rev}} = T\,\mathrm{d}S$。绝热过程中 $S$ 不变，等温过程中 $S$ 随吸热而增加；
+  \item \textbf{热容 $C$}：衡量系统\textbf{储热能力}，即温度升高一度需要多少能量。$C_V$ 和 $C_p$ 的区别在于约束条件（定容 vs 定压）；
+  \item \textbf{化学势 $\mu$}：粒子进出的\textbf{"驱动力"}。平衡时各相的化学势相等（$\mu_1 = \mu_2$），就像热平衡时温度相等（$T_1 = T_2$）。$\mu$ 高的一侧粒子会向 $\mu$ 低的一侧流动。
+\end{itemize}
+
+\vspace{0.5em}
+\textbf{自然变量与依赖关系}：
+
+热力学中每个量该当作谁的函数，由\textbf{自然变量}决定。\textbf{关键原则}：同一个量在不同约束条件下有不同的自然变量。
+
 \begin{center}
 \renewcommand{\arraystretch}{1.4}
 \begin{tabular}{|c|c|c|}
 \hline
 \textbf{热力学势} & \textbf{自然变量} & \textbf{基本关系} \\
 \hline
-内能 $U$ & $S, V$ & $\mathrm{d}U = T\,\mathrm{d}S - p\,\mathrm{d}V$ \\
-焓 $H$ & $S, p$ & $\mathrm{d}H = T\,\mathrm{d}S + V\,\mathrm{d}p$ \\
-自由能 $F$ & $T, V$ & $\mathrm{d}F = -S\,\mathrm{d}T - p\,\mathrm{d}V$ \\
-吉布斯函数 $G$ & $T, p$ & $\mathrm{d}G = -S\,\mathrm{d}T + V\,\mathrm{d}p$ \\
+内能 $U$ & $S, V, N$ & $\mathrm{d}U = T\,\mathrm{d}S - p\,\mathrm{d}V + \mu\,\mathrm{d}N$ \\
+焓 $H$ & $S, p, N$ & $\mathrm{d}H = T\,\mathrm{d}S + V\,\mathrm{d}p + \mu\,\mathrm{d}N$ \\
+自由能 $F$ & $T, V, N$ & $\mathrm{d}F = -S\,\mathrm{d}T - p\,\mathrm{d}V + \mu\,\mathrm{d}N$ \\
+吉布斯函数 $G$ & $T, p, N$ & $\mathrm{d}G = -S\,\mathrm{d}T + V\,\mathrm{d}p + \mu\,\mathrm{d}N$ \\
+巨势 $\Omega$ & $T, V, \mu$ & $\mathrm{d}\Omega = -S\,\mathrm{d}T - p\,\mathrm{d}V - N\,\mathrm{d}\mu$ \\
 \hline
 \end{tabular}
 \end{center}
 
-\textbf{规则}：看微分式右边的变量——那就是该热力学势的\textbf{独立变量}。例如 $U = U(S,V)$，不是 $U(T,V)$。如果题目要求 $(\partial U/\partial T)_V$，不能直接从 $\mathrm{d}U$ 读，而要用链式法则：
+\textbf{规则}：看微分式右边的变量——那就是该热力学势的\textbf{独立变量}（自然变量）。
+
+\textbf{例子——熵 $S$ 到底依赖于谁}：
+\begin{itemize}[nosep]
+  \item 从 $U(S,V,N)$ 看：$S$ 是 $U$ 的\textbf{自变量}，$S = S(U,V,N)$；
+  \item 从 $F(T,V,N)$ 看：$S = -(\partial F/\partial T)_{V,N}$，所以 $S = S(T,V,N)$（封闭系统，固定 $N$）；
+  \item 从 $\Omega(T,V,\mu)$ 看：$S = -(\partial \Omega/\partial T)_{V,\mu}$，所以 $S = S(T,V,\mu)$（开放系统，固定 $\mu$）。
+\end{itemize}
+
+\textbf{关键认知}：$S = S(T,V,N)$ 和 $S = S(T,V,\mu)$ \textbf{并不矛盾}——它们描述的是\textbf{不同约束条件下}的同一个物理量。封闭系统中 $N$ 固定，开放系统中 $\mu$ 固定。就像力学中 $F = ma$ 和 $F = m\ddot{x}$ 并不矛盾，只是用了不同的变量描述同一规律。
+
+\vspace{0.5em}
+\textbf{化学势 $\mu$ 的多种定义}：
+
+化学势是粒子数 $N$ 的\textbf{共轭变量}，从不同热力学势出发有不同表达式：
 \[
-  \left(\frac{\partial U}{\partial T}\right)_V = \left(\frac{\partial U}{\partial S}\right)_V\left(\frac{\partial S}{\partial T}\right)_V = T\left(\frac{\partial S}{\partial T}\right)_V .
+  \mu = \left(\frac{\partial U}{\partial N}\right)_{S,V}
+    = \left(\frac{\partial F}{\partial N}\right)_{T,V}
+    = \left(\frac{\partial G}{\partial N}\right)_{T,p} .
 \]
 
-\textbf{嵌套依赖的处理}：统计物理中常遇到"固定化学势 $\mu$ 求变分，但 $\mu$ 本身又依赖于 $T$"。处理方法是：
-\begin{enumerate}[nosep]
-  \item 先按题目要求写出偏导数（固定 $\mu$）；
-  \item 如果发现 $\mu$ 实际上随 $T$ 变化，把 $\delta\mu = (\partial\mu/\partial T)\delta T$ 代入；
-  \item 最后判断 $(\partial\mu/\partial T)$ 是否足够小，决定能否忽略修正项。
-\end{enumerate}
+\textbf{为什么常用 $F$ 来定义}：因为在实际计算中，$F(T,V,N)$ 比 $U(S,V,N)$ 更方便——$T$ 和 $V$ 是实验上容易控制的变量，而 $S$ 不容易直接测量。所以化学势的\textbf{实用定义}通常是 $\mu = (\partial F/\partial N)_{T,V}$。
 
-\textbf{具体例子——熵、粒子数、化学势的依赖关系}：
-
-从巨势 $\Omega = U - TS - \mu N$（开放系统）出发，$\mathrm{d}\Omega = -S\,\mathrm{d}T - p\,\mathrm{d}V - N\,\mathrm{d}\mu$，所以 $\Omega = \Omega(T,V,\mu)$。由此可直接读出：
-\begin{center}
-\renewcommand{\arraystretch}{1.4}
-\begin{tabular}{|c|c|l|}
-\hline
-\textbf{量} & \textbf{偏导数定义} & \textbf{自然变量} \\
-\hline
-熵 $S$ & $S = -(\partial\Omega/\partial T)_{V,\mu}$ & $S = S(T,V,\mu)$ \\
-粒子数 $N$ & $N = -(\partial\Omega/\partial\mu)_{T,V}$ & $N = N(T,V,\mu)$ \\
-压强 $p$ & $p = -(\partial\Omega/\partial V)_{T,\mu}$ & $p = p(T,V,\mu)$ \\
-化学势 $\mu$ & $\mu = (\partial F/\partial N)_{T,V}$ & $\mu = \mu(T,V,N)$ \\
-\hline
-\end{tabular}
-\end{center}
-
+\vspace{0.5em}
 \textbf{热容是复合偏导吗}：
 \[
   C_V = \left(\frac{\partial U}{\partial T}\right)_V .
 \]
-但 $U$ 的自然变量是 $(S,V)$，不是 $(T,V)$。所以 $C_V$ 不能直接从 $\mathrm{d}U$ 读出，必须通过链式法则：
+但 $U$ 的自然变量是 $(S,V)$，不是 $(T,V)$。所以 $C_V$ \textbf{不能}直接从 $\mathrm{d}U$ 读出，必须通过链式法则：
 \[
-  C_V = \left(\frac{\partial U}{\partial S}\right)_V\left(\frac{\partial S}{\partial T}\right)_V = T\left(\frac{\partial S}{\partial T}\right)_V .
+  C_V = \left(\frac{\partial U}{\partial S}\right)_V\left(\frac{\partial S}{\partial T}\right)_V
+      = T\left(\frac{\partial S}{\partial T}\right)_V .
 \]
-同理 $C_p = T(\partial S/\partial T)_p$。\textbf{结论}：热容的定义确实涉及"跨热力学势的复合偏导"，需要先回到 $U$ 或 $H$ 的全微分，再用链式法则转换到 $(T,V)$ 或 $(T,p)$ 变量。
+同理 $C_p = T(\partial S/\partial T)_p$。
 
-\textbf{考场建议}：拿到热力学题，\textbf{先写出对应热力学势的全微分}，明确谁是独立变量，再决定求导路径。这是避免漏项的根本方法。
+\textbf{结论}：热容的定义确实涉及"跨热力学势的复合偏导"。考试中如果题目给出 $U(T,V)$ 的显式表达式，可以直接对 $T$ 求偏导；但如果只给了 $U(S,V)$ 的关系，就必须用链式法则转换。
+
+\vspace{0.5em}
+\textbf{考场建议}：拿到热力学题，\textbf{先写出对应热力学势的全微分}，明确谁是独立变量，再决定求导路径。如果需要求 $\partial U/\partial T$ 但 $U$ 的自然变量里没有 $T$，就用链式法则——这是避免漏项的根本方法。
 \end{insightbox}
