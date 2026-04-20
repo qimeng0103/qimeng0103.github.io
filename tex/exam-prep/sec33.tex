@@ -1,0 +1,149 @@
+% ============================================================
+% Section 33: 一维离子晶格的马德隆常数
+% ============================================================
+\section{固体理论：一维离子晶格的马德隆常数}
+\label{sec:madelung-1d}
+
+\begin{modelbox}
+设一晶体由正负一价离子交错等距排列组成一维晶格。证明其马德隆（Madelung）常数为
+\[
+  M = 2\ln 2.
+\]
+\end{modelbox}
+
+\vspace{0.3em}
+\begin{insightbox}{结论与数量级}
+\[
+  \boxed{M = 2\ln 2 \approx 1.386}.
+\]
+作为对比，三维 NaCl 结构的马德隆常数 $M_{\text{NaCl}} \approx 1.748$，CsCl 结构 $M_{\text{CsCl}} \approx 1.763$。一维链的 $M$ 更小，因为维度越低，同号离子的屏蔽效应越弱，异号离子的吸引优势不如三维明显。
+\end{insightbox}
+
+\subsection{概念铺垫：什么是马德隆常数？}
+
+\begin{modelbox}{马德隆常数的物理意义}
+离子晶体中，每个离子与所有其他离子都有库仑相互作用。总库仑能为
+\[
+  U = -\frac{N M e^2}{4\pi\varepsilon_0 r_0},
+\]
+其中 $r_0$ 是最近邻离子间距，$N$ 是离子总数。
+
+\textbf{马德隆常数} $M$ 是一个\textbf{纯数字}，刻画了晶格几何结构对库仑能的放大/缩小效应：
+\begin{itemize}[nosep]
+  \item $M$ 只与晶格结构有关，与离子电荷大小、间距无关；
+  \item $M > 0$ 表示总的库仑作用为吸引（异号离子占优）；
+  \item 对交替离子链，$M$ 是无穷交错级数的和。
+\end{itemize}
+\end{modelbox}
+
+\begin{insightbox}{为什么不直接求和？——长程灾难}
+库仑势 $1/r$ 是\textbf{长程}的，衰减极慢。在一维链中，第 $n$ 个邻居的贡献只按 $1/n$ 衰减。若所有离子都是同号，级数 $\sum 1/n$ 会发散；幸运的是，交替电荷使级数变成\textbf{交错级数}，正负抵消后收敛到有限值。
+\end{insightbox}
+
+\subsection{马德隆常数的推导}
+
+\subsubsection{选取参考离子并写级数}
+
+选取晶格中某一正离子为\textbf{参考离子}（位于原点），设最近邻间距为 $r_0$。第 $n$ 个离子位于 $nr_0$，电荷为 $(-1)^n e$（$n=1$ 为负离子，$n=2$ 为正离子，依此类推）。
+
+参考离子与右侧第 $n$ 个离子的库仑能为
+\[
+  u_n = \frac{e \cdot (-1)^n e}{4\pi\varepsilon_0 \cdot nr_0}
+      = \frac{(-1)^n e^2}{4\pi\varepsilon_0 nr_0}.
+\]
+
+右侧所有离子对参考离子的总能量：
+\[
+  u_{\text{右}} = \sum_{n=1}^{\infty} u_n
+               = \frac{e^2}{4\pi\varepsilon_0 r_0} \sum_{n=1}^{\infty} \frac{(-1)^n}{n}.
+\]
+
+由于晶格左右对称，左侧贡献完全相同：
+\[
+  u_{\text{左}} = u_{\text{右}}.
+\]
+
+因此，参考离子的总库仑相互作用能：
+\[
+  u_0 = u_{\text{左}} + u_{\text{右}}
+      = \frac{2e^2}{4\pi\varepsilon_0 r_0} \sum_{n=1}^{\infty} \frac{(-1)^n}{n}. \tag{1}
+\]
+
+\subsubsection{级数求和}
+
+利用自然对数的泰勒展开：
+\[
+  \ln(1+x) = x - \frac{x^2}{2} + \frac{x^3}{3} - \frac{x^4}{4} + \cdots
+            = \sum_{n=1}^{\infty} (-1)^{n-1} \frac{x^n}{n},
+  \quad (-1 < x \le 1).
+\]
+
+令 $x=1$（收敛域边界，交错级数收敛）：
+\[
+  \ln 2 = 1 - \frac{1}{2} + \frac{1}{3} - \frac{1}{4} + \cdots
+        = \sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n}.
+\]
+
+注意式 (1) 中级数的符号：
+\[
+  \sum_{n=1}^{\infty} \frac{(-1)^n}{n}
+  = -1 + \frac{1}{2} - \frac{1}{3} + \frac{1}{4} - \cdots
+  = -\sum_{n=1}^{\infty} \frac{(-1)^{n-1}}{n}
+  = -\ln 2.
+\]
+
+代入 (1)：
+\[
+  u_0 = \frac{2e^2}{4\pi\varepsilon_0 r_0} (-\ln 2)
+      = -\frac{(2\ln 2)\, e^2}{4\pi\varepsilon_0 r_0}. \tag{2}
+\]
+
+\subsubsection{提取马德隆常数}
+
+晶体中有 $N$ 个离子，总库仑能为
+\[
+  U = N u_0 = -\frac{N (2\ln 2)\, e^2}{4\pi\varepsilon_0 r_0}.
+\]
+
+对比标准形式 $U = -\dfrac{N M e^2}{4\pi\varepsilon_0 r_0}$，直接读出
+\[
+  \boxed{ M = 2\ln 2 }.
+\]
+
+\begin{tipbox}{符号约定的自洽性检验}
+式 (2) 中 $u_0 < 0$，表示库仑作用总体为吸引——这与离子晶体的物理图像一致（正负离子交替，异号占优）。若符号算反了，会得到 $M < 0$，意味着晶体因库仑排斥而解体，显然荒谬。
+\end{tipbox}
+
+\subsection{物理图像与拓展}
+
+\subsubsection{一维 vs 三维：维度对 $M$ 的影响}
+
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|l|c|l|}
+\hline
+\textbf{维度} & \textbf{马德隆常数} & \textbf{级数衰减} \\
+\hline
+一维交替链 & $M = 2\ln 2 \approx 1.386$ & $1/n$（慢，但交错收敛） \\
+二维 NaCl 型 & $M \approx 1.615$ & $1/r$（更慢，需 Ewald 加速） \\
+三维 NaCl & $M \approx 1.748$ & $1/r$（直接求和发散，必须用 Ewald） \\
+三维 CsCl & $M \approx 1.763$ & $1/r$（同上） \\
+\hline
+\end{tabular}
+\end{center}
+
+维度越高，$M$ 越大。原因是三维中每个离子被更多异号离子包围，同号离子的排斥被更有效地屏蔽。
+
+\subsubsection{三维中的埃瓦尔德（Ewald）求和}
+
+三维离子晶体的马德隆常数不能直接通过 $\sum (\pm 1)/r$ 计算，因为：
+\begin{enumerate}[nosep]
+  \item 级数条件收敛，求和顺序影响结果；
+  \item 球壳截断时，表面电荷引起的偶极矩不消失，导致结果依赖于截断半径。
+\end{enumerate}
+
+埃瓦尔德求和把库仑势拆分为\textbf{实空间短程部分}和\textbf{倒空间长程部分}：
+\[
+  \frac{1}{r} = \frac{\text{erfc}(\eta r)}{r} + \frac{\text{erf}(\eta r)}{r},
+\]
+其中 $\eta$ 是可调参数。两项分别在实空间和倒空间快速收敛，从而加速计算。
