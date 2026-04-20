@@ -100,7 +100,35 @@ $N$ 是离子对数（也是正离子数或负离子数）。
 
 \subsection{由比重求平衡间距 $r_0$}
 
-NaCl 为面心立方（fcc）结构，晶胞边长 $a = 2r_0$。一个晶胞含 $4$ 个 NaCl 分子（$8$ 个离子）。
+\begin{insightbox}{晶体结构到底在干什么？——从``重复单元''到``密度公式''}
+很多学习者在此处卡壳，不是因为数学难，而是因为\textbf{不知道晶体结构信息该在哪里代入}。
+
+\textbf{核心思想}：晶体像乐高积木一样，由无数个完全相同的\textbf{晶胞}重复堆叠而成。只要算出一个晶胞的质量和体积，密度就出来了。
+
+\textbf{NaCl 结构的三个关键事实}（必须记住）：
+\begin{enumerate}[nosep]
+  \item \textbf{结构名称}：面心立方（fcc），Na$^+$ 和 Cl$^-$ 各自形成 fcc 子晶格，沿体对角线错开半个晶胞边长。
+  \item \textbf{晶胞边长与离子间距的关系}：最近邻是一个角上的 Na$^+$ 和一个面心的 Cl$^-$，距离为 $a/2$。因此
+  \[
+    r_0 = \frac{a}{2} \quad\Longrightarrow\quad a = 2r_0.
+  \]
+  \item \textbf{一个晶胞里有多少离子？}——用``分摊法''数：
+  \begin{itemize}[nosep]
+    \item Na$^+$：8 个角 $\times\frac{1}{8}$ + 6 个面心 $\times\frac{1}{2}$ = $1 + 3 = 4$ 个；
+    \item Cl$^-$：12 个棱中点 $\times\frac{1}{4}$ + 1 个体心 $\times 1$ = $3 + 1 = 4$ 个；
+    \item 总共 $8$ 个离子 = $\bm{4}$ 个 NaCl 分子（即 $\bm{4}$ 对离子）。
+  \end{itemize}
+\end{enumerate}
+
+\textbf{从晶胞到密度}
+
+知道了一个晶胞含 $4$ 对离子，就可以列出：
+\[
+  D = \frac{\text{一个晶胞的质量}}{\text{一个晶胞的体积}}
+    = \frac{4\times(23+35.45)/N_0}{(2r_0)^3}.
+\]
+这就是晶体结构信息的全部用途——它告诉你``一个盒子里装了多少东西''。
+\end{insightbox}
 
 \begin{modelbox}{晶胞质量与体积}
 \textbf{晶胞质量}：
@@ -150,18 +178,35 @@ NaCl 为面心立方（fcc）结构，晶胞边长 $a = 2r_0$。一个晶胞含 
       \left(\frac{\dd^2 U}{\dd r^2}\right)_{r_0}.
 \]
 
-\begin{modelbox}{从 $V(r)$ 到 $K$ 的链式法则}
-晶体体积与离子间距的关系（对 $N$ 对离子的晶体）：
-\[
-  V = N\beta r^3,
-\]
-其中 $\beta$ 是几何因子。对 NaCl 结构，晶胞体积 $a^3 = 8r^3$ 内含 $4$ 对离子，故每对离子占 $2r^3$，即 $\beta = 2$。
+\begin{insightbox}{$V = N\beta r^3$ 是怎么来的？——从晶胞法到连续体积}
+在求弹性模量 $K = V_0 (\dd^2 U/\dd V^2)$ 时，我们需要把能量 $U(r)$（作为离子间距 $r$ 的函数）转换成体积 $V$ 的函数。关键问题是：\textbf{$N$ 对离子的晶体，总体积 $V$ 与 $r$ 是什么关系？}
 
-一阶导数：
+\textbf{不要背公式，从晶胞推}：
+\begin{enumerate}[nosep]
+  \item 一个晶胞体积 = $a^3 = (2r)^3 = 8r^3$；
+  \item 一个晶胞含 $4$ 对离子；
+  \item 因此每对离子``分摊''的体积 = $\dfrac{8r^3}{4} = 2r^3$。
+\end{enumerate}
+
+对于 $N$ 对离子的晶体，总体积就是
 \[
-  \frac{\dd V}{\dd r} = 3N\beta r^2
+  \boxed{ V = N\times 2r^3 = 2Nr^3 }.
+\]
+这就是 $V = N\beta r^3$ 中 $\beta = 2$ 的来源。
+
+\textbf{一维链的对比}（帮助记忆）：
+\begin{itemize}[nosep]
+  \item 一维链：$N$ 对离子排成一条线，每对占长度 $r$，总长度 $L = Nr$，即 $\beta_{\text{1D}} = 1$；
+  \item 三维 NaCl：$N$ 对离子堆成立方体，每对占体积 $2r^3$，总体积 $V = 2Nr^3$，即 $\beta_{\text{NaCl}} = 2$。
+\end{itemize}
+\end{insightbox}
+
+\begin{modelbox}{从 $V(r)$ 到 $K$ 的链式法则}
+由 $V = 2Nr^3$，求导得
+\[
+  \frac{\dd V}{\dd r} = 6Nr^2
   \quad\Longrightarrow\quad
-  \frac{\dd r}{\dd V} = \frac{1}{3N\beta r^2}.
+  \frac{\dd r}{\dd V} = \frac{1}{6Nr^2}.
 \]
 \end{modelbox}
 
@@ -203,10 +248,6 @@ NaCl 为面心立方（fcc）结构，晶胞边长 $a = 2r_0$。一个晶胞含 
     \approx 1 + 6.8
     = \boxed{7.8}.
 \]
-
-\begin{tipbox}{关于弹性模量数值的说明}
-原题图片中弹性模量写为 $2.41\times 10^{12}\,\mathrm{N/m^2}$，但这会导致 $n\sim 10^3$，明显不合理（Born 指数通常在 $7\sim 12$ 之间）。按物理合理性判断，应为 $2.41\times 10^{10}\,\mathrm{N/m^2}$ 的排版笔误。考场上遇到此类矛盾时，应优先相信物理规律而非照抄数字。
-\end{tipbox}
 
 \begin{insightbox}{Born 指数的物理意义}
 $n \approx 7.8$ 落在典型离子晶体的范围内（$n = 7\sim 12$）：
