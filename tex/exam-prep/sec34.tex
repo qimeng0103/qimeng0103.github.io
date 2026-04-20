@@ -107,6 +107,33 @@
   W = U(R) - U(R_0).
 \]
 
+\begin{insightbox}{热力学视角与力学视角的``翻译器''}
+\textbf{为什么功的定义要从外界来？}
+
+很多初学者在此处感到困惑：力学中我们更熟悉``系统对外做功''，为什么热力学里偏偏用``外界对系统做功''？
+
+\textbf{核心原因：}热力学是一套\textbf{能量会计规则}，创始人（卡诺、克劳修斯等）站在\textbf{系统}的角度记账——关心``系统收到了多少能量''。
+
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|l|l|}
+\hline
+\textbf{力学图像} & \textbf{热力学翻译} & \textbf{符号（标准约定）} \\
+\hline
+外力推原子靠近，克服排斥 & 外界对系统做功 & $W > 0$ \\
+弹簧（晶格）储存势能 & 系统内能增加 & $\Delta U > 0$ \\
+松手后原子弹开，对外推 & 系统对外做功 & $W < 0$（外界对系统做功为负） \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{记忆法：}把热力学第一定律写成``能量流入 = 能量增加''：
+\[
+  \Delta U = \text{流入的能量} - \text{流出的能量}.
+\]
+外界压缩晶体（外力推）$\Rightarrow$ 能量流入系统 $\Rightarrow$ $W>0$，$\Delta U>0$。这与捏弹簧的直觉完全一致，只是语言不同。
+\end{insightbox}
+
 \subsubsection{为什么只保留到 $\delta^2$？——平衡点展开的必然性}
 
 在平衡点 $R_0$ 附近做泰勒展开：
