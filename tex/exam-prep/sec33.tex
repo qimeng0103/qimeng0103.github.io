@@ -16,7 +16,22 @@
 \[
   \boxed{M = 2\ln 2 \approx 1.386}.
 \]
-作为对比，三维 NaCl 结构的马德隆常数 $M_{\text{NaCl}} \approx 1.748$，CsCl 结构 $M_{\text{CsCl}} \approx 1.763$。一维链的 $M$ 更小，因为维度越低，同号离子的屏蔽效应越弱，异号离子的吸引优势不如三维明显。
+作为对比，三维 NaCl 结构的马德隆常数 $M_{\text{NaCl}} \approx 1.748$。一维链的 $M$ 更小，根本原因是\textbf{一维中每个离子的最近邻异号离子太少}。
+
+\textbf{直观对比：}
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|c|c|}
+\hline
+\textbf{维度} & \textbf{最近邻异号离子数} & \textbf{马德隆常数} \\
+\hline
+一维链 & 2（左、右各1个） & $1.386$ \\
+三维 NaCl & 6（前、后、左、右、上、下） & $1.748$ \\
+\hline
+\end{tabular}
+\end{center}
+
+三维中你被\textbf{6个异号离子}近距离包围，吸引力更强；一维中只有\textbf{2个}。虽然远处的同号离子会排斥你，但它们距离更远（按 $r_0$ 的倍数），且被异号离子``挡在中间''，排斥效果被部分抵消。最近邻的数量优势是决定 $M$ 大小的核心因素。
 \end{insightbox}
 
 \subsection{概念铺垫：什么是马德隆常数？}
