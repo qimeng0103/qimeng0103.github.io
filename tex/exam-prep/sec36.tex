@@ -67,6 +67,13 @@
 \end{insightbox}
 \end{modelbox}
 
+\begin{figure}[htbp]
+  \centering
+  \includegraphics[width=0.78\textwidth]{images/cscl_unit_cell.png}
+  \caption{CsCl 晶胞的 3D 示意图。蓝色球为 Cs$^+$（位于立方体 8 个角上），绿色球为 Cl$^-$（位于体心）。红色实线为最近邻间距 $r_0 = \sqrt{3}\,a/2$（体对角线的一半），紫色线段标注晶胞边长 $a$。注意：角上的 Cs$^+$ 被 8 个相邻晶胞共享，每个只计 $1/8$，总计 $8 \times 1/8 = 1$ 个 Cs$^+$；体心 Cl$^-$ 完全属于该晶胞，计 1 个；故每个晶胞恰好含 1 对离子。}
+  \label{fig:cscl-unit-cell}
+\end{figure}
+
 平衡时体积为
 \[
   V_0 = N\alpha r_0^3. \tag{2}
@@ -176,6 +183,64 @@
   \item \textbf{先画框架，再填离子}——框架是参照系，没有框架离子就飘在空中；
   \item \textbf{2D 正视图足够应付大多数考题}——只有明确要求画 3D 时才画轴测图。
 \end{itemize}
+\end{insightbox}
+
+\begin{insightbox}{进阶晶体结构手绘：密铺、Wigner-Seitz 原胞与错位双原子格子}
+\textbf{一、密铺（Close Packing）——分层错位法}
+
+密堆结构（fcc、hcp）的核心是\textbf{原子层的六方排列}。手绘时不要试图一次性画 3D，而是严格按层堆叠：
+\begin{enumerate}[nosep]
+  \item \textbf{第一层（A 层）}：画一排紧密相切的圆，第二排嵌入第一排的凹陷处，形成六方蜂窝状。每 7 个原子画出 1 个中心原子 + 6 个近邻即可表达规律；
+  \item \textbf{第二层（B 层）}：原子中心正对 A 层的三原子凹陷处（即 A 层原子围成的正三角形中心上方）；
+  \item \textbf{第三层}：若回到 A 层原子上方 → \textbf{hcp}（ABAB\dots）；若错开到 C 层位置 → \textbf{fcc}（ABCABC\dots）。
+\end{enumerate}
+
+记忆口诀：\textbf{"六方打底，凹陷堆高；ABAB 是六角，ABC 是立方面心"}。fcc 的密堆面恰好是 \{111\} 面，这也是fcc 晶体解理面的来源。
+
+\vspace{0.5em}
+\textbf{二、Wigner-Seitz 原胞——中垂面切割法}
+
+WS 原胞是\textbf{倒空间中第一布里渊区的实空间对应物}，手绘时遵循"连线 $\to$ 取中点 $\to$ 作垂面"三步：
+\begin{enumerate}[nosep]
+  \item 标出中心格点和所有最近邻格点（sc 有 6 个，bcc 有 8 个，fcc 有 12 个）；
+  \item 用直线连接中心到每个最近邻，在所有连线的中点处作\textbf{垂直平分面}（2D 手绘时就是垂直平分线）；
+  \item 这些平面围成的最小凸多面体就是 WS 原胞。
+\end{enumerate}
+
+三种布拉维格子的 WS 原胞形状：
+\begin{center}
+\renewcommand{\arraystretch}{1.4}
+\begin{tabular}{|l|c|l|}
+\hline
+\textbf{格子} & \textbf{最近邻数} & \textbf{WS 原胞形状} \\
+\hline
+简单立方 sc & 6 & 立方体（与原胞相同） \\
+体心立方 bcc & 8 & \textbf{截角八面体}（14 个面：6 个正方形 + 8 个正六边形） \\
+面心立方 fcc & 12 & \textbf{菱形十二面体}（12 个菱形面） \\
+\hline
+\end{tabular}
+\end{center}
+
+\textbf{手绘技巧}：画 bcc 的截角八面体时，先画一个正方体，再把 8 个角切掉（切面是正六边形的 8 个顶点方向）。fcc 的菱形十二面体可以想象成两个四角锥扣在八面体两端，但更简单的是直接记住它有 12 个全等的菱形面。
+
+\vspace{0.5em}
+\textbf{三、错位双原子格子——子晶格平移法}
+
+NaCl、CsCl、ZnS（闪锌矿）都是\textbf{双原子复式格子}，可以看成两套\textbf{同型布拉维格子}沿某方向平移套构而成：
+\begin{itemize}[nosep]
+  \item \textbf{NaCl}：Cl$^-$ 形成 fcc，Na$^+$ 的 fcc 沿 $[100]$ 方向平移 $a/2$（即 Na$^+$ 位于 Cl$^-$ 的棱心和体心位置）；
+  \item \textbf{CsCl}：两套简单立方沿体对角线平移 $\sqrt{3}\,a/2$（即体心位置）；
+  \item \textbf{闪锌矿 ZnS}：与金刚石结构同型，两套 fcc 沿体对角线平移 $\sqrt{3}\,a/4$。
+\end{itemize}
+
+\textbf{手绘策略}：
+\begin{enumerate}[nosep]
+  \item 先画其中一套\textbf{完整的框架}（比如用圆圈表示 Cl$^-$ 的 fcc 格点）；
+  \item 在平移后的位置用\textbf{另一种符号}（叉或实心点）标记第二种原子；
+  \item 只画\textbf{一个晶胞}的范围，超出边界的原子用虚线或不画。
+\end{enumerate}
+
+\textbf{关键认知}：双原子格子的"错位"不是混乱，而是\textbf{严格的平移对称操作}。只要记住"fcc + fcc 平移 $a/2$ = NaCl"、"sc + sc 平移体对角线一半 = CsCl"，就不用死记每个离子的坐标。
 \end{insightbox}
 
 \begin{insightbox}{与 NaCl 结合能题的对比}
