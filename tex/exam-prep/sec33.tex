@@ -36,19 +36,33 @@
 
 \subsection{概念铺垫：什么是马德隆常数？}
 
-\begin{modelbox}{马德隆常数的物理意义}
-离子晶体中，每个离子与所有其他离子都有库仑相互作用。总库仑能为
+\begin{modelbox}{库仑相互作用能——两个点电荷的``共享能量''}
+两个点电荷 $q_1$, $q_2$ 相距 $r$，它们的库仑相互作用能为
+\[
+  u(r) = \frac{q_1 q_2}{4\pi\varepsilon_0 r}.
+\]
+\begin{itemize}[nosep]
+  \item \textbf{异号电荷}（$q_1 q_2 < 0$）：$u < 0$，能量为\textbf{负}，表示\textbf{吸引}——系统能量降低，更稳定；
+  \item \textbf{同号电荷}（$q_1 q_2 > 0$）：$u > 0$，能量为\textbf{正}，表示\textbf{排斥}——系统能量升高，不稳定。
+\end{itemize}
+在离子晶体中，每个离子同时与所有其他离子有库仑作用。\textbf{总库仑能}是所有不同离子对的 $u(r)$ 之和。
+\end{modelbox}
+
+\begin{modelbox}{计数方式：为什么总能量不是``人数$\times$个人能量''？}
+晶体中有 $N$ 对离子（$N$ 个正离子 + $N$ 个负离子，共 $2N$ 个）。选取一个正离子为参考，它与其他所有离子的相互作用能之和记为 $u_0$。
+
+\textbf{陷阱}：若直接把 $u_0$ 乘以总离子数 $2N$，得到 $(2N)u_0$——这\textbf{错了}，因为每对相互作用被算了\textbf{两次}（$i$ 算 $j$ 时一次，$j$ 算 $i$ 时一次）。
+
+\textbf{正确做法}：
+\[
+  U = \underbrace{\frac{1}{2}}_{\text{除重复}} \times \underbrace{(2N)}_{\text{总离子数}} \times u_0
+    = N u_0.
+\]
+因此标准形式写为
 \[
   U = -\frac{N M e^2}{4\pi\varepsilon_0 r_0},
 \]
-其中 $r_0$ 是最近邻离子间距，$N$ 是离子总数。
-
-\textbf{马德隆常数} $M$ 是一个\textbf{纯数字}，刻画了晶格几何结构对库仑能的放大/缩小效应：
-\begin{itemize}[nosep]
-  \item $M$ 只与晶格结构有关，与离子电荷大小、间距无关；
-  \item $M > 0$ 表示总的库仑作用为吸引（异号离子占优）；
-  \item 对交替离子链，$M$ 是无穷交错级数的和。
-\end{itemize}
+其中 $N$ 是\textbf{离子对数}（也是正离子数或负离子数），$M$ 是无量纲的马德隆常数。
 \end{modelbox}
 
 \begin{insightbox}{为什么不直接求和？——长程灾难}
@@ -115,12 +129,12 @@
 
 \subsubsection{提取马德隆常数}
 
-晶体中有 $N$ 个离子，总库仑能为
+晶体中有 $N$ 对离子（$2N$ 个离子）。总库仑能为
 \[
-  U = N u_0 = -\frac{N (2\ln 2)\, e^2}{4\pi\varepsilon_0 r_0}.
+  U = \underbrace{\frac{1}{2}(2N)}_{=N} u_0 = -\frac{N (2\ln 2)\, e^2}{4\pi\varepsilon_0 r_0}.
 \]
 
-对比标准形式 $U = -\dfrac{N M e^2}{4\pi\varepsilon_0 r_0}$，直接读出
+对比标准形式 $U = -\dfrac{N M e^2}{4\pi\varepsilon_0 r_0}$（$N$ 为离子对数），直接读出
 \[
   \boxed{ M = 2\ln 2 }.
 \]
