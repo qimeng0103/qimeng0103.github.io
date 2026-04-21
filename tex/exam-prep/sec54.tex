@@ -20,13 +20,36 @@
 \end{tipbox}
 
 \begin{derivationbox}[标准解题过程]
-\textbf{Step 0: 色散关系的近似处理}
+\textbf{Step 0: 色散关系的推导与近似}
 
-一维双原子链的色散关系由运动方程导出。设试探解为
+\textit{运动方程的建立}：一维双原子链中，相邻异种原子间用弹簧（力常数 $\beta$）连接。设第 $2n+1$ 个原子（质量 $m$）位移为 $x_{2n+1}$，第 $2n+2$ 个原子（质量 $M$）位移为 $x_{2n+2}$。每个原子只受左右两个近邻弹簧的作用：
+\begin{align}
+m\ddot{x}_{2n+1}&=\beta(x_{2n+2}-x_{2n+1})-\beta(x_{2n+1}-x_{2n})\nonumber\\
+&=\beta(x_{2n}+x_{2n+2}-2x_{2n+1}),\\
+M\ddot{x}_{2n+2}&=\beta(x_{2n+3}-x_{2n+2})-\beta(x_{2n+2}-x_{2n+1})\nonumber\\
+&=\beta(x_{2n+1}+x_{2n+3}-2x_{2n+2}).
+\end{align}
+
+\textit{试探解与久期方程}：设格波解
 \begin{equation}
-x_{2n+1}=Ae^{i[q(2n+1)a-\omega t]},\qquad x_{2n+2}=Be^{i[q(2n+2)a-\omega t]},
+x_{2n+1}=Ae^{i[q(2n+1)a-\omega t]},\qquad x_{2n+2}=Be^{i[q(2n+2)a-\omega t]}.
 \end{equation}
-代入运动方程后得到 $A,B$ 的齐次方程组，由系数行列式为零给出色散关系：
+
+代入运动方程，利用 $x_{2n}=Ae^{i[q\cdot2na-\omega t]}=Ae^{-iqa}e^{i[q(2n+1)a-\omega t]}$ 等关系，约去公共相位因子后得到关于 $A,B$ 的齐次方程组：
+\begin{align}
+(2\beta-m\omega^2)A-2\beta\cos(qa)\,B&=0,\\
+-2\beta\cos(qa)\,A+(2\beta-M\omega^2)B&=0.
+\end{align}
+
+有非零解的条件是系数行列式为零：
+\begin{equation}
+\begin{vmatrix}
+2\beta-m\omega^2 & -2\beta\cos(qa)\\
+-2\beta\cos(qa) & 2\beta-M\omega^2
+\end{vmatrix}=0.
+\end{equation}
+
+展开即得色散方程：
 \begin{equation}
 mM\omega^4-2\beta(m+M)\omega^2+4\beta^2\sin^2(qa)=0.
 \end{equation}
@@ -34,19 +57,32 @@ mM\omega^4-2\beta(m+M)\omega^2+4\beta^2\sin^2(qa)=0.
 解得两支格波：
 \begin{equation}
 \omega_{\pm}^2=\frac{\beta}{mM}\Bigl[(m+M)\pm\sqrt{(m+M)^2-4mM\sin^2(qa)}\Bigr].
+\label{eq:diatomic-dispersion}
 \end{equation}
 
-\textbf{光学支}（$\omega_+$）：在 $M\gg m$ 时，$m/M\ll1$，忽略 $q$ 依赖的高阶小量：
+\textit{光学支}（$\omega_+$，取 $+$ 号）：在 $M\gg m$ 时，$m/M\ll1$，对 \eqref{eq:diatomic-dispersion} 中根号内展开：
 \begin{equation}
-\omega_+^2\approx\frac{2\beta}{m}\Bigl(1+\frac{m}{M}\Bigr)\approx\frac{2\beta}{m}\equiv\omega_0^2.
+\sqrt{(m+M)^2-4mM\sin^2(qa)}=(m+M)\sqrt{1-\frac{4mM}{(m+M)^2}\sin^2(qa)}.
 \end{equation}
+
+当 $m/M\ll1$ 时，$4mM/(m+M)^2\approx4m/M\ll1$，根号 $\	o1$（与 $q$ 的依赖为 $O(m/M)$ 高阶小量），故
+\begin{equation}
+\omega_+^2\approx\frac{\beta}{mM}\Bigl[(m+M)+(m+M)\Bigr]=\frac{2\beta(m+M)}{mM}\approx\frac{2\beta}{m}\equiv\omega_0^2.
+\end{equation}
+
 光学支近似为与 $q$ 无关的常数，可用\textbf{爱因斯坦模型}处理。
 
-\textbf{声学支}（$\omega_-$）：在 $M\gg m$ 和长波极限下：
+\textit{声学支}（$\omega_-$，取 $-$ 号）：同样取 $M\gg m$，此时根号前为负号：
 \begin{equation}
-\omega_-^2\approx\frac{2\beta}{M}\sin^2(qa)\equiv\omega_0'^2\sin^2(qa),
-\qquad \omega_0'=\sqrt{\frac{2\beta}{M}}.
+\omega_-^2\approx\frac{\beta}{mM}\Bigl[(m+M)-(m+M)\bigl(1-\tfrac{2mM}{(m+M)^2}\sin^2(qa)\bigr)\Bigr]
+=\frac{2\beta}{m+M}\sin^2(qa)\approx\frac{2\beta}{M}\sin^2(qa).
 \end{equation}
+
+定义 $\omega_0'=\sqrt{2\beta/M}$，则
+\begin{equation}
+\omega_-=\omega_0'|\sin(qa)|.
+\end{equation}
+
 这正是轻原子 $m$ 静止、重原子 $M$ 构成的有效单原子链的色散关系。
 
 \textbf{Step 1: 光学支对热容量的贡献（爱因斯坦模型）}
@@ -67,17 +103,38 @@ C_V^+=\frac{\partial E_+}{\partial T}
 
 \textbf{Step 2: 声学支对热容量的贡献}
 
-\textit{模式密度}：声学支色散 $\omega=\omega_0'|\sin(qa)|$。一维波矢空间态密度为 $L/(2\pi)$，考虑 $\pm q$：
+\textit{模式密度}：声学支色散 $\omega=\omega_0'|\sin(qa)|$。
+
+一维链长 $L=N\cdot2a$（$N$ 个原胞，每胞长度 $2a$）。波矢 $q$ 在第一布里渊区内取值，间距 $\Delta q=2\pi/L$，故单位 $q$ 空间长度内的模式数为
+\begin{equation}
+\frac{1}{\Delta q}=\frac{L}{2\pi}=\frac{Na}{\pi}.
+\end{equation}
+
+考虑 $q$ 的正负两支（$+q$ 和 $-q$ 对应同一频率），频率区间 $d\omega$ 内的模式数为
 \begin{equation}
 D(\omega)\,d\omega=2\cdot\frac{L}{2\pi}\,dq=\frac{Na}{\pi}\,dq.
 \end{equation}
 
-由 $d\omega/dq=\omega_0'a|\cos(qa)|=a\sqrt{\omega_0'^2-\omega^2}$，得
+由色散关系求 $dq/d\omega$：
 \begin{equation}
-D(\omega)=\frac{2N}{\pi}\frac{1}{\sqrt{\omega_0'^2-\omega^2}},\qquad 0\le\omega\le\omega_0'.
+\omega=\omega_0'\sin(qa)\quad\Longrightarrow\quad
+\frac{d\omega}{dq}=\omega_0'a\cos(qa)=\omega_0'a\sqrt{1-\sin^2(qa)}=a\sqrt{\omega_0'^2-\omega^2}.
+\end{equation}
+
+因此
+\begin{equation}
+D(\omega)=\frac{Na}{\pi}\cdot\frac{1}{d\omega/dq}
+=\frac{Na}{\pi}\cdot\frac{1}{a\sqrt{\omega_0'^2-\omega^2}}
+=\frac{2N}{\pi}\frac{1}{\sqrt{\omega_0'^2-\omega^2}},\qquad 0\le\omega\le\omega_0'.
 \label{eq:1d-Domega}
 \end{equation}
-（验证：$\int_0^{\omega_0'}D(\omega)\,d\omega=N$，恰为 $N$ 个声学模。）
+
+\textit{验证}：总模式数应为 $N$（一维单原子链 $N$ 个原胞，$N$ 个声学模）：
+\begin{equation}
+\int_0^{\omega_0'}D(\omega)\,d\omega
+=\frac{2N}{\pi}\int_0^{\omega_0'}\frac{d\omega}{\sqrt{\omega_0'^2-\omega^2}}
+=\frac{2N}{\pi}\cdot\frac{\pi}{2}=N.\quad\checkmark
+\end{equation}
 
 \textit{热容量}：声学支总振动能
 \begin{equation}
