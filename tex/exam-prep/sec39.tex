@@ -37,11 +37,45 @@
 \[
 u_{2n} = A e^{i(qna-\omega t)}, \qquad u_{2n+1} = B e^{i[q(n+\frac12)a-\omega t]}.
 \]
-代入运动方程，整理得关于 $A,B$ 的齐次线性方程组。非零解条件要求系数行列式为零，得到色散关系：
+注意：$u_{2n\pm1}$ 中 $n$ 替换为 $n\pm\frac12$，因此
+\[
+u_{2n+1} = B e^{i[q(n+\frac12)a-\omega t]}, \quad u_{2n-1} = B e^{i[q(n-\frac12)a-\omega t]}, \quad u_{2n+2} = A e^{i[q(n+1)a-\omega t]}.
+\]
+代入运动方程，消去公共因子 $e^{i(qna-\omega t)}$：
+\begin{align}
+    -m\omega^2 A &= \beta_1\bigl(B e^{iqa/2} - A\bigr) + \beta_2\bigl(B e^{-iqa/2} - A\bigr), \\
+    -m\omega^2 B &= \beta_2\bigl(A e^{iqa/2} - B\bigr) + \beta_1\bigl(A e^{-iqa/2} - B\bigr).
+\end{align}
+整理为关于 $A,B$ 的齐次线性方程组：
 \begin{equation}
-\boxed{m\omega^2 = (\beta_1+\beta_2) \pm \sqrt{\beta_1^2+\beta_2^2+2\beta_1\beta_2\cos(qa)}}
+\begin{cases}
+\displaystyle \bigl(m\omega^2 - \beta_1 - \beta_2\bigr)A + \bigl(\beta_1 e^{iqa/2} + \beta_2 e^{-iqa/2}\bigr)B = 0, \\[8pt]
+\displaystyle \bigl(\beta_2 e^{iqa/2} + \beta_1 e^{-iqa/2}\bigr)A + \bigl(m\omega^2 - \beta_1 - \beta_2\bigr)B = 0.
+\end{cases}
+\label{eq:AB-system}
 \end{equation}
-或等价写成
+
+非零解要求系数行列式为零。令 $D = m\omega^2 - (\beta_1+\beta_2)$，并利用欧拉公式化简交叉项：
+\[
+\beta_1 e^{\pm iqa/2} + \beta_2 e^{\mp iqa/2} = (\beta_1+\beta_2)\cos\frac{qa}{2} \pm i(\beta_1-\beta_2)\sin\frac{qa}{2}.
+\]
+行列式为
+\[
+D^2 - \bigl[(\beta_1+\beta_2)^2\cos^2\frac{qa}{2} + (\beta_1-\beta_2)^2\sin^2\frac{qa}{2}\bigr] = 0.
+\]
+利用 $\cos^2x=1-\sin^2x$ 合并：
+\[
+D^2 = (\beta_1+\beta_2)^2 - 4\beta_1\beta_2\sin^2\frac{qa}{2}.
+\]
+于是得到色散关系
+\begin{equation}
+\boxed{m\omega^2 = (\beta_1+\beta_2) \pm \sqrt{(\beta_1+\beta_2)^2 - 4\beta_1\beta_2\sin^2\frac{qa}{2}}}
+\end{equation}
+或利用 $\cos(qa)=1-2\sin^2(qa/2)$ 写成等价形式
+\begin{equation}
+m\omega^2 = (\beta_1+\beta_2) \pm \sqrt{\beta_1^2+\beta_2^2+2\beta_1\beta_2\cos(qa)}.
+\end{equation}
+最终标准写法为
 \begin{equation}
 \omega_{\pm}^2(q) = \frac{1}{m}\Bigl[(\beta_1+\beta_2) \pm \sqrt{(\beta_1+\beta_2)^2 - 4\beta_1\beta_2\sin^2\frac{qa}{2}}\Bigr].
 \label{eq:diatomic-dispersion}
@@ -98,6 +132,28 @@ $q=\pm\pi/a$ & $\displaystyle\sqrt{\frac{2c}{m}}$ & $\displaystyle\sqrt{\frac{20
 \end{tabular}
 \end{center}
 \end{formulabox}
+
+\begin{warnbox}[布里渊区边界到底怎么定？——与力常数无关的几何问题]
+很多学生一看到``布里渊区边界''就慌，因为题目不直接给 $q$ 值。其实布里渊区完全由\textbf{晶格平移对称性}决定，与原子间具体相互作用（$\beta_1,\beta_2$ 是多少）毫无关系。
+
+\textbf{确定步骤（一维通用）：}
+\begin{enumerate}
+    \item \textbf{找晶格常数 $a$}：最小平移周期。本题中相邻原子间距都是 $a/2$，但力常数交错，平移 $a/2$ 后环境不同；平移 $a$ 后环境完全相同。因此晶格常数是 $\bm{a}$，不是 $a/2$。
+    \item \textbf{写倒格矢}：$G = \dfrac{2\pi}{a}$。
+    \item \textbf{定第一布里渊区}：满足 $|q|\le |G|/2$ 的区域，即
+    \[
+    \boxed{-\frac{\pi}{a} \le q \le \frac{\pi}{a}}.
+    \]
+    \item \textbf{边界}：$q = \pm \dfrac{\pi}{a}$。
+\end{enumerate}
+
+\textbf{关键澄清：}
+\begin{itemize}
+    \item 基元内部原子间距（本题 $a/2$）只决定\textbf{一个原胞内有几个原子}（从而决定有几条色散支），\textbf{绝不改变布里渊区大小}。
+    \item 若误把周期当作 $a/2$，会得到边界 $q=\pm 2\pi/a$，这会导致色散曲线在 $[-2\pi/a,2\pi/a]$ 内出现多余的折叠，与平移对称性矛盾。
+    \item 布里渊区边界处的物理特征是：格波波长 $\lambda = 2a$（$q=\pi/a$），满足布拉格条件 $a\sin\theta = \lambda/2$，此时发生 Bragg 反射，群速为零，对应能带/频带边。
+\end{itemize}
+\end{warnbox}
 
 \begin{insightbox}[色散关系的物理图像]
 \begin{itemize}
