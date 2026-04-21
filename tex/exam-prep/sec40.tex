@@ -11,10 +11,12 @@
 \vec R_{rs}^{(0)} = (ra,\, sa), \qquad r,s = 1,2,\dots,N.
 \]
 瞬时位置为 $\vec R_{rs} = (ra+x_{rs},\, sa+y_{rs})$。在简谐近似下，考虑最近邻相互作用在 $x$ 方向与 $y$ 方向的差异，势能写为
-\begin{multline}
-V = \sum_{r,s}\Bigl\{ k_1\bigl[(x_{r+1,s}-x_{rs})^2 + (y_{r,s+1}-y_{rs})^2\bigr] \\
-+ k_2\bigl[(x_{r,s+1}-x_{rs})^2 + (y_{r+1,s}-y_{rs})^2\bigr] \Bigr\}.
-\end{multline}
+\begin{equation}
+\begin{aligned}
+V = \sum_{r,s}\Bigl\{ &k_1\bigl[(x_{r+1,s}-x_{rs})^2 + (y_{r,s+1}-y_{rs})^2\bigr] \\
+&+ k_2\bigl[(x_{r,s+1}-x_{rs})^2 + (y_{r+1,s}-y_{rs})^2\bigr] \Bigr\}.
+\end{aligned}
+\end{equation}
 取 $k_2 = 0.1\,k_1$，求：
 \begin{enumerate}
     \item 整个第一布里渊区的声子普遍色散关系 $\omega_{\vec q,\alpha}$；
@@ -24,7 +26,7 @@ V = \sum_{r,s}\Bigl\{ k_1\bigl[(x_{r+1,s}-x_{rs})^2 + (y_{r,s+1}-y_{rs})^2\bigr]
 
 \begin{tipbox}[考点快速分析]
 \begin{itemize}
-    \item \textbf{二维正方格子}：原胞只含一个原子，故只有声学支，但有两个偏振方向（$x$ 与 $y$）
+    \item \textbf{二维正方格子}：原胞只含一个原子，共 2 支，均为声学支，对应 $x$、$y$ 两个偏振方向
     \item \textbf{各向异性耦合}：水平键与垂直键的力常数不同，导致 $x$、$y$ 振动解耦但各自感受到的``横向''刚度不同
     \item \textbf{布里渊区}：二维正方格子的第一布里渊区为正方形 $[-\pi/a,\pi/a]\times[-\pi/a,\pi/a]$
     \item \textbf{长波极限}：两支行波在 $q\to0$ 时均趋于零，斜率由 $k_1$、$k_2$ 组合决定
@@ -32,6 +34,23 @@ V = \sum_{r,s}\Bigl\{ k_1\bigl[(x_{r+1,s}-x_{rs})^2 + (y_{r,s+1}-y_{rs})^2\bigr]
 \end{tipbox}
 
 \begin{derivationbox}[标准解题过程]
+\textbf{Step 0: 势能形式的直观理解}
+
+在代入公式之前，先读懂势能的\textbf{几何结构}。把格点 $(r,s)$ 与其四个最近邻画出来：
+\begin{itemize}
+    \item \textbf{水平键}（沿 $x$ 方向，连接 $(r,s)\to(r+1,s)$）：
+    \begin{itemize}
+        \item 两原子在 $x$ 方向的相对位移 $(x_{r+1,s}-x_{rs})$，弹性系数为 $k_1$（``纵向''硬弹簧）
+        \item 两原子在 $y$ 方向的相对位移 $(y_{r+1,s}-y_{rs})$，弹性系数为 $k_2$（``横向''软弹簧）
+    \end{itemize}
+    \item \textbf{垂直键}（沿 $y$ 方向，连接 $(r,s)\to(r,s+1)$）：
+    \begin{itemize}
+        \item 两原子在 $y$ 方向的相对位移 $(y_{r,s+1}-y_{rs})$，弹性系数为 $k_1$
+        \item 两原子在 $x$ 方向的相对位移 $(x_{r,s+1}-x_{rs})$，弹性系数为 $k_2$
+    \end{itemize}
+\end{itemize}
+\textit{物理图像}：晶体像一张``正交各向异性''的网——$x$ 方向的主刚度是 $k_1$，$y$ 方向的主刚度也是 $k_1$，但每个键的``侧向''弯曲刚度只有 $k_2$。由于 $k_2\ll k_1$，沿 $x$ 方向传播的横波（$y$ 方向振动）会明显比纵波（$x$ 方向振动）慢。
+
 \textbf{Step 1: 运动方程}
 
 对 $x_{rs}$ 求 $-\partial V/\partial x_{rs}$。$x_{rs}$ 出现在四个差分项中（来自 $(r,s)$、$(r-1,s)$、$(r,s)$、$(r,s-1)$ 四项的导数），得
@@ -116,11 +135,22 @@ $\alpha=2$（$y$ 主导） & $\displaystyle \omega_2(\xi)=\sqrt{0.1}\,\omega_0\s
 \end{formulabox}
 
 \begin{insightbox}[物理图像与定性作图]
-\textbf{1. 为什么没有光学支？}
+\textbf{1. 支数、偏振与光学/声学支的普遍规则}
 
-原胞只含一个原子，自由度数为 2（$x$、$y$ 振动）。两支色散都是\textbf{声学支}，在 $\vec q\to\vec0$ 时 $\omega\to0$，对应原胞质心的整体平移。
+\begin{itemize}
+    \item \textbf{总支数} $=$ 原胞内原子数 $n$ $\times$ 空间维度 $d$（每个原子贡献 $d$ 个振动自由度）。
+    \item 这 $nd$ 支中，一定有 \textbf{$d$ 支是声学支}（对应质心在 $d$ 个方向上的整体平移），\textbf{其余 $(n-1)d$ 支是光学支}。
+    \item \textbf{声学支}：$\vec q\to\vec0$ 时 $\omega\to0$，所有原子同相运动。
+    \item \textbf{光学支}：$\vec q\to\vec0$ 时 $\omega\neq0$，原胞内不同原子反相振动。
+\end{itemize}
 
-\textbf{2. 两支的物理意义}
+对本题（$n=1$，$d=2$）：总共 $1\times2=2$ 支，其中 $d=2$ 支声学支，$0$ 支光学支。两支分别对应 $x$、$y$ \textbf{偏振方向}——在二维中，``偏振''就是振动方向与波传播方向的相对关系。
+
+对 sec39 一维双原子链（$n=2$，$d=1$）：总共 $2$ 支，其中 $1$ 支声学支、$1$ 支光学支。
+
+对三维 NaCl（$n=2$，$d=3$）：总共 $6$ 支，其中 $3$ 支声学支（1 纵 2 横）、$3$ 支光学支（1 纵 2 横）。
+
+\textbf{2. 两支的物理意义（偏振图像）}
 
 \begin{itemize}
     \item $\omega_{\vec q,1}$：$x$ 方向偏振主导。当 $\vec q$ 沿 $x$ 轴时（$q_y=0$），它感受到的是 $k_1$ 键的全刚度，故频率较高。
@@ -137,9 +167,22 @@ $\alpha=2$（$y$ 主导） & $\displaystyle \omega_2(\xi)=\sqrt{0.1}\,\omega_0\s
     \item 在边界 $\xi=\pi/a$ 处，两支行波的群速 $d\omega/dq$ 均为零（驻波）。
 \end{itemize}
 
-\textbf{4. 布里渊区对称性}
+\textbf{4. 二维布里渊区到底怎么定？}
 
-二维正方格子的第一布里渊区是 $q$ 空间中的正方形，顶点在 $(\pm\pi/a,\pm\pi/a)$。色散关系 \eqref{eq:2d-disp-1}--\eqref{eq:2d-disp-2} 对 $q_x\leftrightarrow q_y$ 的互换具有镜像对称性，但对 $q_x$ 单独反演（$q_x\to -q_x$）或 $q_y$ 单独反演保持不变，因为只出现 $\sin^2$。
+二维正方格子的确定方法与一维完全类似：
+\begin{enumerate}
+    \item \textbf{正格矢}：基矢 $\vec a_1=(a,0)$，$\vec a_2=(0,a)$。最小平移周期是 $a$（沿 $x$ 和 $y$ 方向都如此）。
+    \item \textbf{倒格矢}：由 $\vec a_i\cdot\vec b_j = 2\pi\delta_{ij}$ 得
+    \[
+    \vec b_1 = \Bigl(\frac{2\pi}{a},0\Bigr), \qquad \vec b_2 = \Bigl(0,\frac{2\pi}{a}\Bigr).
+    \]
+    \item \textbf{第一布里渊区}：到原点的最近倒格点距离相等的中垂面（二维为中垂线）围成的区域。对正方格子，就是
+    \[
+    \boxed{-\frac{\pi}{a} \le q_x \le \frac{\pi}{a}, \quad -\frac{\pi}{a} \le q_y \le \frac{\pi}{a}}.
+    \]
+    这是一个以原点为中心、边长为 $2\pi/a$ 的正方形，四个顶点在 $(\pm\pi/a,\pm\pi/a)$，称为 \textbf{M 点}。
+\end{enumerate}
+\textit{关键记忆点}：布里渊区的形状由\textbf{晶格对称性}决定（正方格子→正方布里渊区），大小由\textbf{晶格常数}决定（$a$ 越大，布里渊区越小），与具体力常数 $k_1,k_2$ 无关。
 \end{insightbox}
 
 \begin{thinkbox}[考场速记：从势能直接读出色散]
