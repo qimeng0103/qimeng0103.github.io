@@ -1,0 +1,167 @@
+% ============================================================
+% Section 47: 二维正方晶格的声子态密度与高温均方位移
+% ============================================================
+\newpage
+\section{固体理论：二维正方晶格的声子态密度与高温均方位移}
+\label{sec:2d-square-dos}
+
+\begin{modelbox}[题目：二维正方晶格的态密度与热涨落]
+考虑每格点具有一个质量为 $m$ 的原子的二维正方晶格，仅计最近邻相互作用，力常数为 $\beta$。色散关系为
+\[
+\omega_q = \sqrt{\frac{4\beta}{m}}\,\bigl|\sin\tfrac{qa}{2}\bigr|.
+\]
+\begin{enumerate}
+    \item 在长波极限下，求声子态密度 $D(\omega)$；
+    \item 在高温极限 $k_BT\gg\hbar\omega$ 下，求一个原子偏离其平衡位置的平均平方位移。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{二维各向同性色散}：长波极限 $\omega=vq$，$v=a\sqrt{\beta/m}$
+    \item \textbf{二维态密度}：$D(\omega)\propto\omega$（$d$ 维时 $D\propto\omega^{d-1}$）
+    \item \textbf{双声学支}：二维单原子晶格有 $x$、$y$ 两支声学模（偏振方向不同）
+    \item \textbf{高温能量均分}：每个模式平均能量 $k_BT$，总模式数 $2N$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 长波色散与波速}
+
+长波极限 $qa\ll1$ 时，$\sin(qa/2)\approx qa/2$，色散简化为
+\begin{equation}
+\omega \approx \sqrt{\frac{4\beta}{m}}\cdot\frac{qa}{2} = a\sqrt{\frac{\beta}{m}}\,q \equiv vq,
+\end{equation}
+其中弹性波速
+\begin{equation}
+\boxed{v = a\sqrt{\frac{\beta}{m}}.}
+\end{equation}
+
+\textbf{Step 2: 二维态密度 $D(\omega)$}
+
+在二维 $\vec q$ 空间中，$q$ 到 $q+dq$ 的圆环面积内包含的模式数为
+\begin{equation}
+dN = \underbrace{\frac{S}{(2\pi)^2}}_{\text{单位面积内的 }q\text{ 点数}} \times \underbrace{2\pi q\,dq}_{\text{圆环面积}} = \frac{S}{2\pi}\,q\,dq,
+\end{equation}
+$S$ 为晶格面积。
+
+由 $\omega=vq$ 得 $q=\omega/v$，$dq=d\omega/v$。代入得
+\begin{equation}
+dN = \frac{S}{2\pi}\cdot\frac{\omega}{v}\cdot\frac{d\omega}{v} = \frac{S}{2\pi v^2}\,\omega\,d\omega.
+\end{equation}
+
+\textit{注意}：上式给出的是\textbf{单支}声学模（一个偏振方向）的态密度。二维单原子晶格共有 2 支声学模（$x$、$y$ 偏振），总态密度需乘以 2。但以下按题目惯例先给出单支结果，在能量计算时统一用总模式数处理。
+
+单支态密度：
+\begin{equation}
+\boxed{D(\omega) = \frac{dN}{d\omega} = \frac{S\,\omega}{2\pi v^2} = \frac{Sm\,\omega}{2\pi a^2\beta}.}
+\label{eq:2d-dos}
+\end{equation}
+
+\textit{验证}：积分应给出正确的模式数。单支总模式数为 $N$（原子数），故
+\begin{equation}
+\int_0^{\omega_D} D(\omega)\,d\omega = \frac{Sm}{2\pi a^2\beta}\cdot\frac{\omega_D^2}{2} = N \quad\Longrightarrow\quad \omega_D^2 = \frac{4\pi N a^2\beta}{Sm} = \frac{4\pi a^2\beta n}{m},
+\end{equation}
+其中 $n=N/S$ 为面密度。若考虑双支，则总模式数为 $2N$，$\omega_D$ 相应增大 $\sqrt{2}$ 倍。
+
+\textbf{Step 3: 高温极限下的均方位移}
+
+设原子平均平方位移为 $\langle r^2\rangle$。在简谐近似下，每个原子的平均势能可写为
+\begin{equation}
+\langle U_{\text{atom}}\rangle = \frac12\beta\langle r^2\rangle.
+\end{equation}
+（这来自 4 根最近邻键，每根键分摊 $1/4$，总势能 $=4\times\frac14\times\frac12\beta\langle r^2\rangle=\frac12\beta\langle r^2\rangle$。）
+
+晶格总势能
+\begin{equation}
+\langle U\rangle = N\cdot\frac12\beta\langle r^2\rangle.
+\end{equation}
+
+对简谐系统，势能等于总能量的一半（能量均分）：$\langle U\rangle=\langle K\rangle=\frac12\langle E\rangle$，故
+\begin{equation}
+\frac12 N\beta\langle r^2\rangle = \frac12\langle E\rangle \quad\Longrightarrow\quad \langle r^2\rangle = \frac{\langle E\rangle}{N\beta}.
+\label{eq:msd-energy}
+\end{equation}
+
+高温极限下，每个振动模式平均能量为 $k_BT$（经典能量均分）。二维单原子晶格有 $N$ 个原子、每个原子 2 个自由度，总模式数 $2N$，故
+\begin{equation}
+\langle E\rangle = 2N\cdot k_BT.
+\end{equation}
+
+代入式 \eqref{eq:msd-energy}：
+\begin{equation}
+\boxed{\langle r^2\rangle = \frac{2Nk_BT}{N\beta} = \frac{2k_BT}{\beta}.}
+\end{equation}
+
+\textit{另一种等价推导}：直接对每支声学模用能量均分。每支有 $N$ 个模式，每模式能量 $k_BT$，其中势能 $k_BT/2$。单支总势能 $=Nk_BT/2$，两支总势能 $=Nk_BT$，与上式一致。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{cl}
+\toprule
+问 & 结果 \\
+\midrule
+(1) 长波极限态密度（单支） & $\displaystyle D(\omega) = \frac{Sm\,\omega}{2\pi a^2\beta}\propto\omega$ \\[10pt]
+(2) 高温极限均方位移 & $\displaystyle \langle r^2\rangle = \frac{2k_BT}{\beta}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像与概念深化]
+\textbf{1. 二维态密度 $D(\omega)\propto\omega$ 的物理}
+
+对比三个维度：
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+维度 & $D(\omega)$ & $\omega_D$ 的标度 & 总模式数 \\
+\midrule
+$d=1$ & 常数 & $\propto n$ & $N$ \\
+$d=2$ & $\propto\omega$ & $\propto\sqrt{n}$ & $2N$ \\
+$d=3$ & $\propto\omega^2$ & $\propto n^{1/3}$ & $3N$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+二维的特殊性在于：频率每增加一倍，$q$ 空间中的圆环面积（$	imes q$）和频率间隔（$\times dq/d\omega=1/v$）恰好使 $D(\omega)$ 线性增长。这是 $d$ 维几何的直接后果。
+
+\textbf{2. 为什么均方位移与 $m$ 无关？}
+
+结果 $\langle r^2\rangle=2k_BT/\beta$ 不含质量 $m$。这是因为：
+\begin{itemize}
+    \item 从能量均分角度，高温下经典谐振子的平均能量与 $m$、$\omega$ 均无关（恒为 $k_BT$）
+    \item 从势能角度，$\langle U\rangle=\frac12\beta\langle r^2\rangle$ 只与弹簧常数 $\beta$ 有关
+    \item 质量 $m$ 只影响动力学（频率、波速），不影响热平衡统计
+\end{itemize}
+这与爱因斯坦模型中高温极限 $\langle x^2\rangle=k_BT/(m\omega_E^2)$ 的形式不同——那里 $m$ 和 $\omega_E$ 是独立参数；本题中 $m$ 通过色散关系与 $\beta$ 耦合，最终在高经典极限下消去。
+
+\textbf{3. 与 \ref{sec:d-dimensional-fluctuation} 的联系}
+
+在 \ref{sec:d-dimensional-fluctuation} 中，我们用德拜模型证明：
+\begin{itemize}
+    \item $d=1$：$T=0$ 时 $\langle R^2\rangle$ 发散（红外发散）
+    \item $d=2$：$T=0$ 时 $\langle R^2\rangle$ 有限，但 $T>0$ 时热涨落导致发散
+\end{itemize}
+本题给出的是 $d=2$、$T\gg\Theta_D$ 的高温经典极限，此时热涨落被截断在德拜频率处，故 $\langle r^2\rangle$ 有限。如果继续降温到 $T\to0$，量子效应会使二维晶格失去长程序——这是低维物理的核心结论之一。
+
+\textbf{4. 德拜频率的数值意义}
+
+由归一化条件可估算 $\omega_D$。设面密度 $n=1/a^2$（正方密排），则
+\begin{equation}
+\omega_D = 2\sqrt{\frac{\pi\beta}{m}}.
+\end{equation}
+对典型参数 $\beta\sim10\,\mathrm{N/m}$、$m\sim10^{-25}\,\mathrm{kg}$，$\omega_D\sim10^{13}\,\mathrm{s^{-1}}$，对应德拜温度 $\Theta_D=\hbar\omega_D/k_B\sim100\text{--}300\,\mathrm{K}$。这意味着室温 ($T\sim300\,\mathrm{K}$) 恰好在经典极限边缘，量子修正不可完全忽略。
+\end{insightbox}
+
+\begin{thinkbox}[考场速记：态密度 + 均方位移问题的四步法]
+遇到``求 $d$ 维晶格态密度 + 高温均方位移''类问题：
+\begin{enumerate}
+    \item \textbf{写长波色散}：$\omega=vq$，定出 $v$（由微观参数 $a,\beta,m$ 表达）
+    \item \textbf{数 $q$ 空间态}：$dN\propto q^{d-1}\,dq$，代入 $\omega=vq$ 得 $D(\omega)\propto\omega^{d-1}$
+    \item \textbf{能量均分}：总能量 $=$ 总模式数 $\times k_BT$，总势能 $=$ 总能量$/2$
+    \item \textbf{联立解位移}：$N\cdot\frac12\beta\langle r^2\rangle = \frac12\times(2N)\times k_BT$
+\end{enumerate}
+\textit{检验}：结果应与 $m$ 无关（经典极限），与 $T$ 成正比，与 $\beta$ 成反比。
+\end{thinkbox}
