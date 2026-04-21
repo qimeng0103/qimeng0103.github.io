@@ -1,0 +1,138 @@
+% ============================================================
+% Section 43: 爱因斯坦模型与面心立方晶体的均方位移
+% ============================================================
+\newpage
+\section{固体理论：爱因斯坦模型与面心立方晶体的均方位移}
+\label{sec:einstein-msd}
+
+\begin{modelbox}[题目：FCC 晶体中原子的平均平方位移]
+一种密度为 $\rho$ 的材料具有面心立方（FCC）晶格结构，立方边长为 $a$，爱因斯坦温度为 $\Theta_E$。对高温极限 $T\gg\Theta_E$，用 $\rho$、$a$、$\Theta_E$ 及其他必要物理常数表示出 $x$ 方向上的原子平均平方位移 $\overline{r_x^2}$。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{FCC 结构}：惯用晶胞含 4 个原子，由密度求单原子质量 $m$
+    \item \textbf{爱因斯坦模型}：所有原子以相同频率 $\omega_E$ 独立振动，$\Theta_E=\hbar\omega_E/k_B$
+    \item \textbf{高温极限}：$T\gg\Theta_E$ 时量子谐振子回到经典极限，$\langle\varepsilon\rangle\to k_BT$
+    \item \textbf{能量均分}：一维谐振子平均势能 = 平均总能量的一半 = $\frac12 k_BT$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 由 FCC 结构求原子质量}
+
+面心立方惯用晶胞（边长 $a$）含 4 个原子，每个原子所占体积为 $a^3/4$。由密度定义
+\begin{equation}
+\rho = \frac{m}{a^3/4} = \frac{4m}{a^3},
+\end{equation}
+解得
+\begin{equation}
+\boxed{m = \frac{\rho a^3}{4}.}
+\label{eq:fcc-mass}
+\end{equation}
+
+\textbf{Step 2: 爱因斯坦模型与高温极限}
+
+爱因斯坦温度定义为
+\begin{equation}
+\hbar\omega_E = k_B\Theta_E.
+\label{eq:einstein-temp}
+\end{equation}
+
+量子谐振子的平均能量为
+\begin{equation}
+\langle\varepsilon\rangle = \Bigl(\langle n\rangle + \frac12\Bigr)\hbar\omega_E, \qquad \langle n\rangle = \frac{1}{e^{\hbar\omega_E/k_BT}-1} = \frac{1}{e^{\Theta_E/T}-1}.
+\end{equation}
+
+高温极限 $T\gg\Theta_E$ 时，$\Theta_E/T\ll1$，对指数展开 $e^x\approx1+x$：
+\begin{equation}
+\langle n\rangle \approx \frac{1}{1+\Theta_E/T-1} = \frac{T}{\Theta_E}.
+\end{equation}
+于是平均能量（略去零点能 $\frac12\hbar\omega_E$，或视为高温下小量）：
+\begin{equation}
+\langle\varepsilon\rangle \approx \frac{T}{\Theta_E}\cdot\hbar\omega_E = \frac{T}{\Theta_E}\cdot k_B\Theta_E = k_BT.
+\end{equation}
+这正是经典能量均分定理的结果——一维谐振子的平均热能为 $k_BT$。
+
+\textbf{Step 3: 均方位移的计算}
+
+将 $x$ 方向振动视为角频率为 $\omega_E$ 的一维谐振子，势能为
+\begin{equation}
+U = \frac12 m\omega_E^2 x^2.
+\end{equation}
+根据能量均分定理，平均势能等于平均总能量的一半：
+\begin{equation}
+\langle U\rangle = \frac12\langle\varepsilon\rangle = \frac12 k_BT.
+\end{equation}
+代入势能表达式：
+\begin{equation}
+\frac12 m\omega_E^2\,\overline{r_x^2} = \frac12 k_BT \quad\Longrightarrow\quad \overline{r_x^2} = \frac{k_BT}{m\omega_E^2}.
+\label{eq:msd-raw}
+\end{equation}
+
+利用式 \eqref{eq:einstein-temp} 消去 $\omega_E=k_B\Theta_E/\hbar$：
+\begin{equation}
+\overline{r_x^2} = \frac{k_BT}{m(k_B\Theta_E/\hbar)^2} = \frac{\hbar^2 T}{mk_B\Theta_E^2}.
+\end{equation}
+
+最后代入式 \eqref{eq:fcc-mass} 消去 $m$：
+\begin{equation}
+\boxed{\overline{r_x^2} = \frac{\hbar^2 T}{(\rho a^3/4)\,k_B\Theta_E^2} = \frac{4\hbar^2 T}{\rho a^3 k_B\Theta_E^2}.}
+\end{equation}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+在高温极限 $T\gg\Theta_E$ 下，FCC 晶体中原子在 $x$ 方向的平均平方位移为
+\begin{equation}
+\boxed{\overline{r_x^2} = \frac{4\hbar^2 T}{\rho a^3 k_B\Theta_E^2}.}
+\end{equation}
+其中 $\hbar$ 为约化普朗克常数，$k_B$ 为玻尔兹曼常数。
+\end{formulabox}
+
+\begin{insightbox}[物理图像与概念串联]
+\textbf{1. 结果的量纲检验}
+
+右边量纲：$[\hbar^2]=({\rm J\cdot s})^2$，$[T]={\rm K}$，$[\rho]={\rm kg/m^3}$，$[a^3]={\rm m^3}$，$[k_B]={\rm J/K}$，$[\Theta_E^2]={\rm K^2}$。
+\begin{equation}
+\frac{[\hbar^2][T]}{[\rho][a^3][k_B][\Theta_E^2]} = \frac{{\rm J^2\cdot s^2\cdot K}}{{\rm kg\cdot m^3 \cdot J/K \cdot K^2}} = \frac{{\rm J\cdot s^2}}{{\rm kg\cdot m^3}} = \frac{{\rm kg\cdot m^2/s^2 \cdot s^2}}{{\rm kg\cdot m^3}} = {\rm m^2}.
+\end{equation}
+与左边 $\overline{r_x^2}$ 的量纲一致 \checkmark。
+
+\textbf{2. 爱因斯坦模型的局限性}
+
+爱因斯坦模型假设所有原子以相同频率振动，忽略了晶格波的色散（声学支和光学支）。因此：
+\begin{itemize}
+    \item 在低温 $T\ll\Theta_E$ 时，爱因斯坦模型预测热容 $C_V\propto e^{-\Theta_E/T}$（指数激活），而实验给出德拜 $T^3$ 律。这是因为它没有考虑低频声学模的贡献。
+    \item 在均方位移问题上，爱因斯坦模型给出单原子、单频率的结果，无法区分纵向和横向振动差异（这些需要德拜模型或更完整的晶格动力学）。
+\end{itemize}
+
+\textbf{3. 与德拜模型的对比}
+
+\begin{itemize}
+    \item \textbf{爱因斯坦模型}：所有模式频率相同 $\omega=\omega_E$，简化为独立谐振子集合。
+    \item \textbf{德拜模型}：把晶格当作连续弹性介质，频率上限为 $\omega_D$，低温时主要激发低频声学模，成功解释 $C_V\propto T^3$。
+    \item 在均方位移问题上，德拜模型给出的低温行为与爱因斯坦模型不同（德拜：$\langle x^2\rangle\propto T$，爱因斯坦：$\langle x^2\rangle\propto T$；但在更精确的低温极限，德拜模型有对数修正），但高温极限二者趋于一致。
+\end{itemize}
+
+\textbf{4. Lindemann 判据的视角}
+
+本题可与 \ref{sec:1d-chain-energy} 的 Lindemann 判据联系起来。Lindemann 认为熔化的条件是
+\begin{equation}
+\sqrt{\overline{r_x^2}} \sim (0.1\text{--}0.15)\,a.
+\end{equation}
+若将本题结果代入，可反解熔点温度：
+\begin{equation}
+T_m \sim \frac{\rho a^5 k_B\Theta_E^2}{400\hbar^2} \quad (\text{取 }10\%\text{ 判据}).
+\end{equation}
+这表明熔点温度与晶格刚度（通过 $\Theta_E$）和原子堆积密度（通过 $\rho$、$a$）密切相关。
+\end{insightbox}
+
+\begin{thinkbox}[考场速记：爱因斯坦模型问题的答题模板]
+遇到``爱因斯坦温度 + 均方位移/热容''类问题：
+\begin{enumerate}
+    \item \textbf{写定义}：$\Theta_E=\hbar\omega_E/k_B$，$m=\rho a^3/Z$（FCC 取 $Z=4$，BCC 取 $Z=2$，SC 取 $Z=1$）
+    \item \textbf{高温展开}：$\langle n\rangle\approx T/\Theta_E$，$\langle\varepsilon\rangle\approx k_BT$
+    \item \textbf{能量均分}：$\frac12 m\omega_E^2\langle x^2\rangle = \frac12 k_BT$
+    \item \textbf{联立消元}：把 $\omega_E$ 和 $m$ 都消掉，得到只含宏观量 $(\rho,a,\Theta_E,T)$ 的最终表达式
+\end{enumerate}
+\end{thinkbox}
