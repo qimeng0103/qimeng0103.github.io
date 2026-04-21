@@ -9,8 +9,8 @@
 考虑一个内部原子振动的固体。
 \begin{enumerate}
     \item 计算温度为 $T$ 时频率为 $\omega$ 的声子模的自由能 $F$；
-    \item 假设此固体是简谐的，体积弹性模量为 $K$，相对体积变化为 $\Delta$，忽略声子模的色散关系，即认为 $\omega_q=\omega$，写出晶体的自由能；
-    \item 如果 $\omega$ 与体积关系为 $\displaystyle\frac{\partial\omega}{\omega}=-\gamma\frac{\Delta V}{V}$，其中 $\gamma$ 称为格林艾森常量，那么温度为 $T$ 时收缩为多少？
+    \item 假设此固体是简谐的，体积弹性模量为 $K$，相对体积变化为 $\Delta=(V-V_0)/V_0$，忽略声子模的色散关系，即认为 $\omega_q=\omega$，写出晶体的自由能；
+    \item 如果 $\omega$ 与体积关系为 $\displaystyle\frac{\delta\omega}{\omega}=-\gamma\frac{\delta V}{V_0}$（$\delta V$ 为体积变化量），其中 $\gamma$ 称为格林艾森常量，那么温度为 $T$ 时相对体积变化 $\Delta$ 为多少？
     \item 讨论格林艾森常量的物理意义。
 \end{enumerate}
 \end{modelbox}
@@ -21,7 +21,7 @@
     \item \textbf{晶体自由能}：静态晶格能 $U(V)$ + 所有声子模自由能之和
     \item \textbf{状态方程}：$P=-(\partial F/\partial V)_T$，热平衡时 $P=0$
     \item \textbf{格林艾森关系}：$\partial\ln\omega/\partial\ln V=-\gamma$，联系振动频率与体积变化
-    \item \textbf{热膨胀}：$\Delta V/V_0=\gamma E/(KV_0)$，非简谐效应的直接体现
+    \item \textbf{热膨胀}：$\Delta=\gamma E/(KV_0)$，非简谐效应的直接体现
 \end{itemize}
 \end{tipbox}
 
@@ -78,22 +78,20 @@ P=-\frac{\partial U}{\partial V}-\frac{E}{\omega}\frac{\partial\omega}{\partial 
 \label{eq:state-equation}
 \end{equation}
 
-\textit{格林艾森关系}：题设频率随体积的变化满足
+\textit{格林艾森关系}：格林艾森常量的严格定义是
 \begin{equation}
-\frac{d\omega}{\omega}=-\gamma\frac{dV}{V},
-\qquad\text{即}\qquad
-\frac{d\ln\omega}{d\ln V}=-\gamma.
+\gamma=-\frac{d\ln\omega}{d\ln V}=-\frac{V}{\omega}\frac{d\omega}{dV}.
 \label{eq:gruneisen-relation}
 \end{equation}
 
-这里 $dV$ 是体积的无穷小变化。对有限小变形 $\Delta V=V-V_0$，上式积分（或一阶泰勒展开）给出
+它描述体积的无穷小相对变化 $dV/V$ 引起频率的相对变化 $d\omega/\omega$。对有限小变形，一阶泰勒展开给出
 \begin{equation}
-\frac{\Delta\omega}{\omega}\approx-\gamma\frac{\Delta V}{V},
+\frac{\delta\omega}{\omega}\approx-\gamma\frac{\delta V}{V_0}=-\gamma\Delta,
 \qquad\text{即}\qquad
-\frac{\partial\omega}{\partial V}\approx-\gamma\frac{\omega}{V}.
+\frac{\partial\omega}{\partial V}\approx-\gamma\frac{\omega}{V_0}.
 \end{equation}
 
-\textit{符号说明}：$\gamma>0$ 时，体积增大（$\Delta V>0$）导致频率降低（$\Delta\omega<0$）——原子间距变大，弹簧变``松''，振动变慢。这正是日常经验：拉伸橡皮筋，振动频率降低。
+\textit{符号约定}：$\Delta=(V-V_0)/V_0$ 为相对体积变化；$\delta V=V-V_0$ 为体积变化量。$\gamma>0$ 时，体积增大（$\Delta>0$）导致频率降低（$\delta\omega<0$）——原子间距变大，弹簧变``松''，振动变慢。
 
 代入 \eqref{eq:state-equation}：
 \begin{equation}
@@ -105,24 +103,24 @@ P=-\frac{\partial U}{\partial V}+\gamma\frac{E}{V}.
 \frac{\partial U}{\partial V}=\gamma\frac{E}{V}.
 \end{equation}
 
-将 $\partial U/\partial V$ 在静态体积 $V_0$ 附近泰勒展开至一阶：
+将 $\partial U/\partial V$ 在静态体积 $V_0$ 附近泰勒展开至一阶。令 $\delta V=V-V_0$，则
 \begin{equation}
-\frac{\partial U}{\partial V}=\Bigl(\frac{\partial U}{\partial V}\Bigr)_{V_0}+\Bigl(\frac{\partial^2U}{\partial V^2}\Bigr)_{V_0}\Delta V.
+\frac{\partial U}{\partial V}=\Bigl(\frac{\partial U}{\partial V}\Bigr)_{V_0}+\Bigl(\frac{\partial^2U}{\partial V^2}\Bigr)_{V_0}\delta V.
 \end{equation}
 
 静态平衡时 $(\partial U/\partial V)_{V_0}=0$。体弹性模量定义为 $K=V_0(\partial^2U/\partial V^2)_{V_0}$，故
 \begin{equation}
-\frac{\partial U}{\partial V}\approx\frac{K}{V_0}\Delta V.
+\frac{\partial U}{\partial V}\approx\frac{K}{V_0}\delta V=K\Delta.
 \end{equation}
 
 代入热平衡条件（小变形下 $V\approx V_0$）：
 \begin{equation}
-\frac{K}{V_0}\Delta V=\gamma\frac{E}{V_0}
+K\Delta=\gamma\frac{E}{V_0}
 \quad\Longrightarrow\quad
-\boxed{\frac{\Delta V}{V_0}=\frac{\gamma E}{KV_0}}.
+\boxed{\Delta=\frac{\gamma E}{KV_0}}.
 \end{equation}
 
-由于 $E>0$，若 $\gamma>0$ 则 $\Delta V>0$，表现为\textbf{热膨胀}；若 $E$ 小于零温参照值（如负温度情形），则相应为\textbf{收缩}。通常情况下热振动能随温度升高而增大，故 $\Delta V>0$。
+由于 $E>0$，若 $\gamma>0$ 则 $\Delta>0$，表现为\textbf{热膨胀}（$V>V_0$）；若 $E$ 小于零温参照值（如负温度情形），则相应为\textbf{收缩}（$V<V_0$）。通常情况下热振动能随温度升高而增大，故 $\Delta>0$。
 
 \textbf{Step 4: 格林艾森常量的物理意义}
 
@@ -134,11 +132,11 @@ P=-\frac{\partial U}{\partial V}+\gamma\frac{E}{V}.
 
 即体积的相对变化引起频率的相对变化的比例系数（负号表示体积增大通常导致频率降低）。
 
-\textit{与热膨胀的关系}：由 $\Delta V/V_0=\gamma E/(KV_0)$ 对 $T$ 求导，得热膨胀系数
+\textit{与热膨胀的关系}：由 $\Delta=\gamma E/(KV_0)$ 对 $T$ 求导，得热膨胀系数
 \begin{equation}
-\alpha=\frac{1}{V_0}\frac{\partial(\Delta V)}{\partial T}
+\alpha=\frac{1}{V_0}\frac{\partial(\delta V)}{\partial T}=\frac{\partial\Delta}{\partial T}
 =\frac{\gamma}{KV_0}\frac{\partial E}{\partial T}
-=\frac{\gamma C_V}{KV}.
+=\frac{\gamma C_V}{KV_0}.
 \end{equation}
 
 \textit{物理意义总结}：
@@ -157,7 +155,7 @@ P=-\frac{\partial U}{\partial V}+\gamma\frac{E}{V}.
 \midrule
 (1) 单模自由能 & $F_1=\dfrac{1}{2}\hbar\omega+k_BT\ln\bigl(1-e^{-\hbar\omega/k_BT}\bigr)$ \\[10pt]
 (2) 晶体自由能 & $F=U(V)+N\bigl[\tfrac{1}{2}\hbar\omega+k_BT\ln(1-e^{-\hbar\omega/k_BT})\bigr]$ \\[10pt]
-(3) 热膨胀 & $\dfrac{\Delta V}{V_0}=\dfrac{\gamma E}{KV_0}$ \\[10pt]
+(3) 热膨胀 & $\Delta=\dfrac{\gamma E}{KV_0}$ \\[10pt]
 (4) $\gamma$ 的物理意义 & 非简谐效应度量；$\gamma=0$ 则无热膨胀 \\
 \bottomrule
 \end{tabular}
@@ -226,8 +224,8 @@ Fe & $\sim1.6$ & 金刚石 & $\sim1.1$ \\
     \item \textbf{写单模自由能}：$F_1=\tfrac{1}{2}\hbar\omega+k_BT\ln(1-e^{-\hbar\omega/k_BT})$
     \item \textbf{写晶体自由能}：$F=U(V)+\sum F_1$
     \item \textbf{状态方程}：$P=-(\partial F/\partial V)_T=0$，引入格林艾森关系 $\partial\omega/\partial V=-\gamma\omega/V$
-    \item \textbf{泰勒展开}：$\partial U/\partial V\approx K\Delta V/V_0$，解得 $\Delta V/V_0=\gamma E/(KV_0)$
+    \item \textbf{泰勒展开}：$\partial U/\partial V\approx K\Delta$，解得 $\Delta=\gamma E/(KV_0)$
     \item \textbf{物理意义}：$\gamma$ 衡量非简谐性，$\gamma=0$ 无热膨胀
 \end{enumerate}
-\textit{核心逻辑链}：温度 $\to$ 热振动能 $E$ $\to$ 通过 $\gamma$ 耦合到体积 $V$ $\to$ 弹性恢复力（$K$）抵抗膨胀 $\to$ 平衡时 $\Delta V/V=\gamma E/(KV)$。
+\textit{核心逻辑链}：温度 $\to$ 热振动能 $E$ $\to$ 通过 $\gamma$ 耦合到体积 $V$ $\to$ 弹性恢复力（$K$）抵抗膨胀 $\to$ 平衡时 $\Delta=\gamma E/(KV_0)$。
 \end{thinkbox}
