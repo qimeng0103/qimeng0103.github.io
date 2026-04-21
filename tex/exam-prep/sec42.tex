@@ -122,9 +122,20 @@ A = 0.1\,a = \frac{a}{10}.
 \end{formulabox}
 
 \begin{insightbox}[物理图像与深层联系]
-\textbf{1. 为什么 $\langle K\rangle=\langle U\rangle$？}
+\textbf{1. 为什么 $\langle K\rangle=\langle U\rangle$？——能量均分定理与``自由度''的准确含义}
 
-对任何简谐振子（无论是一维、二维还是三维），动能正比于 $\sin^2(\omega t+\phi)$，势能正比于 $\cos^2(\omega t+\phi)$（或反之）。由于 $\langle\sin^2\rangle=\langle\cos^2\rangle=1/2$，两者的时间平均值必然相等。这一结论与维度、晶格结构、波矢 $q$ 的具体取值均无关，是简谐近似的普适结果。
+对任何简谐振子，动能正比于 $\sin^2(\omega t+\phi)$，势能正比于 $\cos^2(\omega t+\phi)$，时间平均必然相等。这背后更根本的原理是\textbf{经典能量均分定理}：
+
+> 哈密顿量中每一个\textbf{独立平方项}的平均能量为 $\frac12 k_BT$。
+
+一维谐振子的哈密顿量 $H=\frac{p^2}{2m}+\frac12 m\omega^2 x^2$ 含有\textbf{两个}独立平方项（动量 $p$ 和坐标 $x$ 各一个），因此：
+\begin{itemize}
+    \item 动能项 $\frac{p^2}{2m}$ → $\langle K\rangle = \frac12 k_BT$
+    \item 势能项 $\frac12 m\omega^2 x^2$ → $\langle U\rangle = \frac12 k_BT$
+    \item 总能量 $\langle E\rangle = k_BT$
+\end{itemize}
+
+\textit{为什么固体物理常说``3个自由度''却给出 $3k_BT$？} 因为这里``自由度''指空间维度（$x,y,z$），而\textbf{每个空间维度}都包含动能+势能两个平方项，共 6 项，每项 $\frac12 k_BT$，所以总能量 $3k_BT$。这就是杜隆-珀蒂定律的来源。
 
 \textbf{2. 势能计算中的 $1/2$ 因子陷阱}
 
@@ -135,7 +146,18 @@ A = 0.1\,a = \frac{a}{10}.
 \end{itemize}
 最清晰的归属方式是：\textbf{先算单键能量，再乘以 $1/2$ 归给一个原子}。
 
-\textbf{3. Lindemann 判据的简化版}
+\textbf{3. 为什么熔点附近满足经典极限？}
+
+经典极限的严格条件是 $k_BT \gg \hbar\omega$。以典型金属 Cu 为例：
+\begin{itemize}
+    \item 德拜温度 $\Theta_D \approx 343$ K，爱因斯坦温度 $\Theta_E\sim\Theta_D$
+    \item 熔点 $T_m \approx 1356$ K
+    \item $\displaystyle\frac{\hbar\omega_E}{k_BT_m} = \frac{\Theta_E}{T_m} \sim \frac{300}{1356} \approx 0.22 \ll 1$
+\end{itemize}
+
+\textit{更直观的判据}：平均声子数 $\langle n\rangle \approx k_BT/\hbar\omega \gg 1$。熔点附近原子振幅达到晶格常数的 $\sim10\%$，振动能量 $k_BT_m\sim 4\hbar\omega_E$，对应的量子数很大，能级分立性被``抹平''，量子效应不可分辨——这正是经典行为。
+
+\textbf{4. Lindemann 判据的简化版}
 
 本题是\textbf{Lindemann 熔化判据}的一维简化形式。该判据认为：当原子热振动的均方根振幅达到晶格常数的某一临界比例（三维通常取 $10\%\text{--}15\%$）时，晶格失稳熔化。本题直接给定临界比例 $\eta=A/a=0.1$，结合能量均分定理即可导出熔点频率。
 
