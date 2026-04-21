@@ -54,15 +54,25 @@ E = \frac{\hbar^2k^2}{2M}, \qquad E' = \frac{\hbar^2k'^2}{2M}.
 
 \textit{Umklapp 过程}：即使 $\vec k-\vec k'$ 超出第一布里渊区，加上（或减去）一个倒格矢 $\vec G$ 后，仍可折叠回第一布里渊区找到一个等价的 $\vec q$。这是晶体周期性带来的独特效应。
 
-\textbf{Step 4: 反推声子色散}
+\textbf{Step 4: 从守恒方程反推声子色散}
 
-由守恒方程反解：
+将守恒方程改写成``测量量 → 声子参量''的形式：
 \begin{align}
-    \hbar\omega(\vec q) &= \bigl|\,E - E'\,\bigr| = \frac{\hbar^2}{2M}\bigl|\,k^2 - k'^2\,\bigr|, \\
-    \vec q &= \pm(\vec k - \vec k' + \vec G) \equiv \pm(\vec Q + \vec G).
+    \hbar\omega(\vec q) &= \Delta E = E - E' = \frac{\hbar^2}{2M}(k^2 - k'^2), \label{eq:phonon-energy-from-neutron}\\
+    \vec q &= \vec Q + \vec G = (\vec k - \vec k') + \vec G. \label{eq:phonon-q-from-neutron}
 \end{align}
+（符号约定：$\Delta E>0$ 对应发射声子，$\Delta E<0$ 对应吸收声子。）
 
-通过测量不同 $\vec Q$ 方向上的能量转移 $\Delta E = E - E'$，当散射强度出现峰值（共振）时，即对应某支声子模式的能量和波矢。
+\textbf{实验操作逻辑}：
+\begin{enumerate}
+    \item 选定入射中子能量 $E$ 和散射方向（即固定 $\vec Q=\vec k-\vec k'$）。
+    \item 扫描出射能量 $E'$，记录散射强度 $I(E')$。
+    \item 当 $E'$ 满足式 \eqref{eq:phonon-energy-from-neutron} 时，中子与声子发生\textbf{共振非弹性散射}，$I(E')$ 出现尖锐峰值。
+    \item 峰位给出该 $\vec Q$ 对应的声子能量 $\hbar\omega$；由式 \eqref{eq:phonon-q-from-neutron} 得到声子波矢 $\vec q$。
+    \item 改变晶体取向或散射角，测量不同 $\vec Q$ 方向的峰位，逐点描出声子色散曲线 $\omega(\vec q)$。
+\end{enumerate}
+
+\textit{为什么出现峰值？} 中子与晶格相互作用的散射截面正比于声子态密度和玻色占据因子。当能量、动量\textbf{同时满足}守恒条件时，相空间允许的最终态数目出现奇点（类似共振），散射强度显著增强。
 \end{derivationbox}
 
 \begin{formulabox}[守恒方程汇总]
