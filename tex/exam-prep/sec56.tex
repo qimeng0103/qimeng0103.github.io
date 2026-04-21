@@ -80,7 +80,7 @@ P=-\frac{\partial U}{\partial V}-\frac{E}{\omega}\frac{\partial\omega}{\partial 
 
 \textit{格林艾森关系}：格林艾森常量的严格定义是
 \begin{equation}
-\gamma=-\frac{d\ln\omega}{d\ln V}=-\frac{V}{\omega}\frac{d\omega}{dV}.
+\gamma=-\frac{\partial\ln\omega}{\partial\ln V}=-\frac{V}{\omega}\frac{\partial\omega}{\partial V}.
 \label{eq:gruneisen-relation}
 \end{equation}
 
@@ -120,24 +120,25 @@ K\Delta=\gamma\frac{E}{V_0}
 \boxed{\Delta=\frac{\gamma E}{KV_0}}.
 \end{equation}
 
-由于 $E>0$，若 $\gamma>0$ 则 $\Delta>0$，表现为\textbf{热膨胀}（$V>V_0$）；若 $E$ 小于零温参照值（如负温度情形），则相应为\textbf{收缩}（$V<V_0$）。通常情况下热振动能随温度升高而增大，故 $\Delta>0$。
+由于 $E>0$（热振动能总是正的），若 $\gamma>0$ 则 $\Delta>0$，表现为\textbf{热膨胀}（$V>V_0$）。通常情况下热振动能随温度升高而增大，故 $\Delta>0$。
 
 \textbf{Step 4: 格林艾森常量的物理意义}
 
 \textit{定义}：
 \begin{equation}
-\gamma=-\frac{d\ln\omega}{d\ln V}
-=-\frac{V}{\omega}\frac{d\omega}{dV}.
+\gamma=-\frac{\partial\ln\omega}{\partial\ln V}
+=-\frac{V}{\omega}\frac{\partial\omega}{\partial V}.
 \end{equation}
 
-用 $d$ 而非 $\partial$ 是因为在爱因斯坦近似下，$\omega$ 仅是体积 $V$ 的单变量函数，与温度 $T$ 无关（温度只改变声子占据数，不改变频率本身）。
 
-\textit{与热膨胀的关系}：由 $\Delta=\gamma E/(KV_0)$ 对 $T$ 求导，得热膨胀系数
+\textit{与热膨胀的关系}：由 $\Delta=\gamma E/(KV_0)$ 对 $T$ 求导，得\textbf{体膨胀系数}
 \begin{equation}
-\alpha=\frac{1}{V_0}\frac{\partial(\delta V)}{\partial T}=\frac{\partial\Delta}{\partial T}
+\beta=\frac{1}{V}\left(\frac{\partial V}{\partial T}\right)_P\approx\frac{\partial\Delta}{\partial T}
 =\frac{\gamma}{KV_0}\frac{\partial E}{\partial T}
 =\frac{\gamma C_V}{KV_0}.
 \end{equation}
+
+对于各向同性固体，\textbf{线膨胀系数} $\alpha$ 与体膨胀系数的关系为 $\beta\approx3\alpha$。格林艾森理论直接给出的是体膨胀系数。
 
 \textit{物理意义总结}：
 \begin{itemize}
@@ -205,7 +206,17 @@ Fe & $\sim1.6$ & 金刚石 & $\sim1.1$ \\
 
 \textbf{4. 与德拜模型的关联}
 
-\ref{sec:debye-phonon-number}（德拜模型）中假设频率与体积无关，即 $\partial\omega/\partial V=0$，$\gamma=0$。这是\textbf{简谐近似}的结果，因此德拜模型本身不能解释热膨胀。要在德拜框架下讨论热膨胀，必须引入格林艾森修正：假设所有模式的 $\omega$ 都以相同的 $\gamma$ 随体积变化，这就是\textbf{德拜-格林艾森模型}。
+\ref{sec:debye-phonon-number}（德拜模型）中假设频率与体积无关，即 $\partial\omega/\partial V=0$，$\gamma=0$。这是\textbf{纯简谐近似}的结果，因此严格简谐的德拜模型本身\textbf{不能解释热膨胀}——这是一个深刻的理论缺陷。
+
+\textbf{德拜-格林艾森模型}的修正方案：
+\begin{enumerate}
+    \item 保留德拜模型的模式密度 $D(\omega)\propto\omega^2$ 和声子统计
+    \item 但允许每个模式的频率 $\omega_{\vec q,s}$ 依赖于体积 $V$
+    \item 引入模式格林艾森常量 $\gamma_{\vec q,s}=-\dfrac{\partial\ln\omega_{\vec q,s}}{\partial\ln V}$
+    \item 对所有模式取平均得到 $\bar\gamma$，代入 Mie-Gr"uneisen 方程
+\end{enumerate}
+
+这样，德拜模型负责``计数''（有多少模式被激发），格林艾森常量负责``耦合''（这些模式如何推挤晶格），二者结合才能完整描述热膨胀。这是现代固体状态方程的标准处理方法。
 
 \textbf{5. 负热膨胀（NTE）材料}
 
