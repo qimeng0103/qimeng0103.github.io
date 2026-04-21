@@ -116,9 +116,49 @@ $|\vec q_3|$ & $\approx1.30\times10^{10}\,\mathrm{m^{-1}}$ \\
 
 在第一布里渊区外定义的波矢 $\vec q$ 与区内的 $\vec q+\vec G$ 描述的是\textbf{同一个晶格振动模式}（因为 $e^{i(\vec q+\vec G)\cdot\vec R}=e^{i\vec q\cdot\vec R}$ 对格点 $\vec R$ 成立）。因此，物理上所有信息都包含在第一布里渊区内，超出边界的波矢必须``折叠''回来才有意义。
 
-\textbf{4. 能量守恒的隐含检查}
+\textbf{4. 能量守恒的隐含检查——为什么本题是 toy model？}
 
-三声子过程还需满足能量守恒 $\omega_1+\omega_2=\omega_3$。在德拜模型 $\omega=vq$ 下，本题三个声子大小相同（$|q_1|=|q_2|=|q_3|$），故 $\omega_1=\omega_2=\omega_3$，能量守恒要求 $\omega_3=2\omega_1$ 或 $0$——\textbf{这不可能严格满足}。因此本题实际上是一个`` toy model ''，重点在于演示准动量守恒和布里渊区折叠，而非真实的物理过程。实际晶体中，三声子过程通常涉及不同分支（如声学支+声学支$\to$光学支）或不同频率的声子，以满足能量守恒。
+三声子过程还需满足能量守恒 $\omega_1+\omega_2=\omega_3$。在德拜模型 $\omega=vq$ 下，本题三个声子大小相同（$|q_1|=|q_2|=|q_3|$），故 $\omega_1=\omega_2=\omega_3$，能量守恒要求 $\omega_3=2\omega_1$ 或 $0$——\textbf{这不可能严格满足}。因此本题实际上是一个`` toy model ''，重点在于演示准动量守恒和布里渊区折叠，而非真实的物理过程。
+
+\textbf{真实晶体中能量守恒如何实现？} 关键在于晶体有\textbf{多分支声子色散}（不止德拜的一支声学模）：
+\begin{itemize}
+    \item 若原胞含 $N$ 个原子，声子色散共有 $3N$ 支：3 支声学支 + $3(N-1)$ 支光学支
+    \item 声学支长波极限 $\omega\to0$，光学支在 $q=0$ 处 $\omega\neq0$
+    \item \textbf{声学支 + 声学支 $\to$ 光学支}：$\omega_A+\omega_A=\omega_O$ 是最常见的三声子过程，完全可满足能量与准动量守恒
+    \item 例如：$q=0$ 的光学声子可通过 $\omega_O(0)=\omega_A(q)+\omega_A(-q)$ 衰变成两个反向传播的声学声子——这正是光学声子具有有限寿命的微观机制
+\end{itemize}
+
+\textbf{5. N 过程与 U 过程的物理后果——为什么 U 过程产生热阻？}
+
+\textit{热流的微观本质}：热流不是声子从热端``跑''到冷端，而是声子气体在温度梯度下形成\textbf{非平衡分布}，携带一个净准动量 $\sum_{\vec q}\hbar\vec q\,n(\vec q)$，对应热流方向。
+
+\begin{center}
+\begin{tabular}{p{2.5cm}p{5cm}p{5cm}}
+\toprule
+ & \textbf{N 过程} ($\vec G=0$) & \textbf{U 过程} ($\vec G\neq0$) \\
+\midrule
+准动量守恒 & $\vec q_1+\vec q_2=\vec q_3$ & $\vec q_1+\vec q_2=\vec q_3+\vec G$ \\
+\addlinespace
+热流影响 & 不改变声子气体的净准动量，整体定向运动保留 & 净准动量被倒格矢``吸收''，声子方向大幅偏转甚至反向 \\
+\addlinespace
+热阻贡献 & \textbf{无贡献}。若只有 N 过程，声子气体可携带任意净准动量而不衰减，热导率发散 & \textbf{热阻的主要来源}。持续破坏热流定向运动，必须靠温度梯度不断``泵入''能量 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textit{直观图像}：N 过程就像传送带上的小球互相碰撞交换动量，但所有小球仍在传送带上同向运动，传送带速度（热流）不变。U 过程则像碰撞后有小球被传送带的机械结构反弹反向——传送带整体运动被破坏，速度下降，这就是热阻。
+
+\textbf{本题中的方向反转}：两个入射声子都沿``前进''方向（$[100]$ 和 $[110]$），U 过程折叠后 $\vec q_3$ 的 $x$ 分量变负（$[\bar1,1,0]$）。原本都往 $+x$ 传播的热流，碰撞后一部分声子开始往 $-x$ 走，净输运被抵消，热量``倒流''。
+
+\textbf{6. 什么叫``短波非物理区''？}
+
+晶体原子只在离散格点 $\vec R$ 上有定义，位移 $u(\vec R)=u_0 e^{i\vec q\cdot\vec R}$。若 $|q|>\pi/a$（即波长 $\lambda<2a$），根据\textbf{采样定理}（奈奎斯特极限），晶格常数 $a$ 作为``采样间隔''太粗，无法分辨这种快速振荡的波。
+
+更根本地，对任意格点 $\vec R$：
+\begin{equation}
+e^{i(\vec q+\vec G)\cdot\vec R} = e^{i\vec q\cdot\vec R}\cdot e^{i\vec G\cdot\vec R} = e^{i\vec q\cdot\vec R}
+\end{equation}
+因为 $\vec G\cdot\vec R=2\pi n$。所以格点上的原子\textbf{完全无法区分} $q$ 与 $q'=q-G$。$|q|>\pi/a$ 的波与第一布里渊区内的某波在物理上描述的是同一个晶格振动模式，超出边界的波矢没有独立的物理意义，必须折叠回来。
 \end{insightbox}
 
 \begin{thinkbox}[考场速记：声子碰撞问题的三步法]
