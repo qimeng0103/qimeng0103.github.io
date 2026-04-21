@@ -93,16 +93,23 @@ D(\omega)\,d\omega=2\cdot\frac{L}{2\pi}\,dq=\frac{2Na}{\pi v_p}\,d\omega.
 
 \textbf{Step 3: 格林艾森常量}
 
-\textit{标准定义}（一维链）：
+\textbf{从标准定义到微观形式的过渡}：三维中的标准定义为（见~\S\ref{sec:gruneisen-thermal-expansion}）
 \begin{equation}
-\gamma=-\frac{a}{2}\frac{d\ln\omega}{da}=-\frac{a}{2\beta}\frac{d\beta}{da}.
+\gamma=-\frac{\partial\ln\omega}{\partial\ln V}=-\frac{V}{\omega}\frac{\partial\omega}{\partial V}.
 \end{equation}
-
-由于长波声速 $v_p\propto\sqrt{\beta a^2/M}$，频率 $\omega=v_pq\propto\sqrt{\beta}$（$q$ 由边界条件固定，与 $a$ 无关），故 $d\ln\omega/da=\frac{1}{2\beta}d\beta/da$。
-
-更直接地，格林艾森常量可由势函数的高阶导数表示：
+对于一维链，``体积''即链长 $L=2Na$（$N$ 为原胞数，固定不变），故 $\gamma=-\partial\ln\omega/\partial\ln L$。长波声学支频率满足 $\omega=v_p q\propto\sqrt{\beta}$（$q$ 由固定边界条件确定，不随 $L$ 变），因此
 \begin{equation}
-\gamma=-\frac{a}{2}\frac{u'''(a)}{u''(a)}.
+\frac{\partial\ln\omega}{\partial\ln L}=\frac{1}{2}\frac{\partial\ln\beta}{\partial\ln L}
+\quad\Longrightarrow\quad
+\gamma=-\frac{1}{2}\frac{\partial\ln\beta}{\partial\ln L}=-\frac{L}{2\beta}\frac{d\beta}{dL}.
+\end{equation}
+又因为 $\beta=u''(a)$ 且 $a=L/(2N)$，有
+\begin{equation}
+\frac{d\beta}{dL}=u'''(a)\frac{da}{dL}=\frac{u'''(a)}{2N}=\frac{a\,u'''(a)}{L},
+\end{equation}
+代入即得一维链的微观公式（注意 $1/2$ 因子的来源正是 $\omega\propto\sqrt{\beta}$）：
+\begin{equation}
+\boxed{\gamma=-\frac{a}{2}\frac{u'''(a)}{u''(a)}}.
 \end{equation}
 
 \textit{计算高阶导数}：
