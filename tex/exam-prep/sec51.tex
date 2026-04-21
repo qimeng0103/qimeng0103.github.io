@@ -119,19 +119,61 @@
 
 布里渊散射本质上是光子与\textbf{声学声子}的非弹性碰撞。声子作为晶格集体运动的量子化激发，为光子提供了一个``运动靶''，使得散射光子的能量和动量发生可测量的改变。
 
-\textbf{2. 斯托克斯线与反斯托克斯线的强度差异}
+\textbf{2. 斯托克斯线与反斯托克斯线的强度差异——为什么一个是 $n+1$、一个是 $n$？}
+
+\textit{核心图像}：把晶格的每个振动模式看作一个量子谐振子，能级为 $E_n=(n+\tfrac{1}{2})\hbar\omega$。光子与谐振子相互作用时，通过升降算符改变声子数：
+
+\begin{itemize}
+    \item \textbf{发射声子}（斯托克斯）：谐振子从 $|n\rangle\to|n+1\rangle$，需要升算符 $a^\dagger$。由于 $a^\dagger|n\rangle=\sqrt{n+1}\,|n+1\rangle$，跃迁矩阵元 $|\langle n+1|a^\dagger|n\rangle|^2=n+1$。\textbf{即使 $n=0$（绝对零度），$+1$ 项仍然存在}——这叫``自发''发射，来源于量子力学的零点涨落。
+    \item \textbf{吸收声子}（反斯托克斯）：谐振子从 $|n\rangle\to|n-1\rangle$，需要降算符 $a$。由于 $a|n\rangle=\sqrt{n}\,|n-1\rangle$，跃迁矩阵元 $|\langle n-1|a|n\rangle|^2=n$。\textbf{若 $n=0$，矩阵元为零}——没有声子可供吸收，过程无法进行。
+\end{itemize}
 
 在热平衡下，声子占据数服从玻色-爱因斯坦分布：
 \begin{equation}
 n_\mathrm{BE}(\omega_\mathrm{ph}) = \frac{1}{e^{\hbar\omega_\mathrm{ph}/k_\mathrm{B}T} - 1}.
 \end{equation}
 
+因此：
 \begin{itemize}
-    \item \textbf{斯托克斯过程}（发射声子）：需要晶体中已存在可被激发的振动模式，强度正比于 $n_\mathrm{BE}+1$
-    \item \textbf{反斯托克斯过程}（吸收声子）：需要预先存在热声子，强度正比于 $n_\mathrm{BE}$
+    \item 斯托克斯强度 $\propto n_\mathrm{BE}+1$（包含自发 + 受激两部分）
+    \item 反斯托克斯强度 $\propto n_\mathrm{BE}$（只有受激吸收）
 \end{itemize}
 
-因此，在室温下斯托克斯线通常比反斯托克斯线\textbf{更强}。低温下 $n_\mathrm{BE}\to0$，反斯托克斯线几乎消失。这一强度比是测量样品温度的常用手段。
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+温度 & 斯托克斯线 & 反斯托克斯线 \\
+\midrule
+$T=0$ & 存在（$n=0$，自发散射） & \textbf{消失}（$n=0$，无法吸收） \\
+室温 & 强 & 较弱 \\
+高温 & 都强，但斯托克斯始终更强 & 强度比 $I_\text{AS}/I_\text{S}=n/(n+1)\to1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+测量斯托克斯与反斯托克斯的强度比，可直接反解 $n_\mathrm{BE}$，从而测定样品温度——这是非接触式测温的重要方法。
+
+\textbf{3. 红移与蓝移——一个不漏的记忆法}
+
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+过程 & 光子能量变化 & 频率变化 & 颜色说法 \\
+\midrule
+\textbf{斯托克斯}（发射声子） & 光子\textbf{损失}能量 & $\omega\downarrow$ & \textbf{红移} \\
+\textbf{反斯托克斯}（吸收声子） & 光子\textbf{获得}能量 & $\omega\uparrow$ & \textbf{蓝移} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textit{记忆技巧}：
+\begin{enumerate}
+    \item \textbf{能量口诀}：斯托克斯 = ``斯托''谐音``损失''→光子损失能量→频率降低→\textbf{红移}；反斯托克斯 = ``反''→反过来→光子获得能量→频率升高→\textbf{蓝移}。
+    \item \textbf{颜色口诀}：可见光谱中，红光波长\textbf{最长}、频率最低；蓝光/紫光波长\textbf{较短}、频率较高。``红长蓝短''——红移就是往长波方向移，蓝移就是往短波方向移。
+    \item \textbf{波长变化}：看公式中的 $\pm$ 号。$\Delta\lambda=\lambda-\lambda_0=\pm\cdots$。斯托克斯取 $+$（因为 $1/\lambda-1/\lambda_0=-\cdots$，通分后 $\lambda>\lambda_0$），波长变\textbf{长}→红移；反斯托克斯取 $-$，波长变\textbf{短}→蓝移。
+\end{enumerate}
+
+\textbf{4. 为什么 $|\vec k|\approx|\vec k_0|$ 是良好近似？}
 
 \textbf{3. 为什么 $|\vec k|\approx|\vec k_0|$ 是良好近似？}
 
@@ -143,7 +185,7 @@ n_\mathrm{BE}(\omega_\mathrm{ph}) = \frac{1}{e^{\hbar\omega_\mathrm{ph}/k_\mathr
 
 相对频移 $\Delta\lambda/\lambda_0 \sim 10^{-5}$，确实极小。这意味着光子几乎把所有能量带走，只``施舍''给声子一点点能量——这正是弹性近似成立的基础。
 
-\textbf{4. 布里渊散射的实验应用：测量声速}
+\textbf{5. 布里渊散射的实验应用：测量声速}
 
 从布里渊频移公式反解声速：
 \begin{equation}
@@ -152,7 +194,7 @@ v = \frac{c\Delta\lambda}{2n\lambda_0\sin(\theta/2)} = \frac{c\Delta f}{2nf_0\si
 
 通过精确测量散射光的频率移动 $\Delta f$，可以无损伤地测定透明固体中的声速，进而研究其\textbf{弹性模量}、\textbf{相变}（声速在相变点附近反常）、以及\textbf{薄膜}和\textbf{微结构}的力学性质。布里渊光谱仪是现代凝聚态物理和材料科学的重要工具。
 
-\textbf{5. 与 X 射线/中子非弹性散射的对照}
+\textbf{6. 与 X 射线/中子非弹性散射的对照}
 
 \begin{itemize}
     \item \textbf{X 射线非弹性散射}：光子能量高（$\sim 10^{4}\,\mathrm{eV}$），声子能量相对可忽略，但动量匹配好，可测完整声子色散 $\omega(q)$
