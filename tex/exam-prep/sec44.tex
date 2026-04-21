@@ -25,13 +25,26 @@
 \begin{derivationbox}[标准解题过程]
 \textbf{Step 1: 建立三维爱因斯坦模型的均方位移公式}
 
-在爱因斯坦模型中，每个原子在 $x,y,z$ 三个方向独立振动，频率均为 $\omega_E$。对一维谐振子：
+\begin{insightbox}[一维量子谐振子的均方位移推导]
+对一维谐振子 $H=\frac{p^2}{2m}+\frac12m\omega_E^2x^2$，能量本征值 $E_n=(n+\frac12)\hbar\omega_E$。由维里定理，平均势能等于总能量的一半：
+\[
+\frac12m\omega_E^2\langle x^2\rangle_n = \frac12E_n = \frac12\Bigl(n+\frac12\Bigr)\hbar\omega_E.
+\]
+故在第 $n$ 个本征态中：
 \begin{equation}
-\langle x^2\rangle = \frac{\hbar}{2m\omega_E}\coth\frac{\hbar\omega_E}{2k_BT} = \frac{\hbar^2}{2mk_B\Theta_E}\coth\frac{\Theta_E}{2T}.
+\langle x^2\rangle_n = \frac{(n+\frac12)\hbar}{m\omega_E}.
 \end{equation}
-三维总均方位移
+
+对热平衡分布求平均，利用平均声子数 $\langle n\rangle=[e^{\hbar\omega_E/k_BT}-1]^{-1}$：
 \begin{equation}
-\boxed{\langle r^2\rangle = 3\langle x^2\rangle = \frac{3\hbar^2}{2mk_B\Theta_E}\coth\frac{\Theta_E}{2T}.}
+\langle x^2\rangle = \frac{(\langle n\rangle+\frac12)\hbar}{m\omega_E} = \frac{\hbar}{2m\omega_E}\coth\frac{\hbar\omega_E}{2k_BT}.
+\end{equation}
+最后一步利用了恒等式 $\coth x = \frac{e^x+e^{-x}}{e^x-e^{-x}} = 1+\frac{2}{e^{2x}-1}$ 以及 $\langle n\rangle=1/(e^{2x}-1)$（令 $x=\hbar\omega_E/2k_BT$）。
+\end{insightbox}
+
+在爱因斯坦模型中，每个原子在 $x,y,z$ 三个方向独立振动，频率均为 $\omega_E$。三维总均方位移为三个方向之和：
+\begin{equation}
+\boxed{\langle r^2\rangle = 3\langle x^2\rangle = \frac{3\hbar}{2m\omega_E}\coth\frac{\hbar\omega_E}{2k_BT} = \frac{3\hbar^2}{2mk_B\Theta_E}\coth\frac{\Theta_E}{2T}.}
 \label{eq:diamond-msd-full}
 \end{equation}
 
@@ -70,9 +83,27 @@
 \sqrt{\langle r^2\rangle} \approx \sqrt{1.14\times10^{-4}}\,\text{\AA} \approx 1.07\times10^{-2}\,\text{\AA} \approx 0.0107\,\text{\AA}.
 \end{equation}
 
-金刚石为金刚石结构（可视为两套 FCC 套构），最近邻原子间距为体对角线的 $1/4$：
+\begin{insightbox}[金刚石结构的几何——8 个原子与最近邻距]
+\textbf{1. 为什么晶胞含 8 个原子？}
+
+金刚石结构由\textbf{两套 FCC 晶格}沿体对角线方向套构而成，套构位移为 $(\frac14,\frac14,\frac14)a$。
+\begin{itemize}
+    \item 单套 FCC 晶胞的原子数：$8\times\frac18$（角）$+6\times\frac12$（面）$=4$
+    \item 两套 FCC 套构：$4\times2=8$ 个原子
+\end{itemize}
+
+\textbf{2. 为什么最近邻距 $d=\sqrt3\,a/4$？}
+
+取第一套 FCC 角上的原子（坐标 $(0,0,0)$），它到第二套 FCC 中最近原子的距离为：
+\[
+d = \sqrt{\Bigl(\frac{a}{4}\Bigr)^2+\Bigl(\frac{a}{4}\Bigr)^2+\Bigl(\frac{a}{4}\Bigr)^2} = \sqrt{\frac{3a^2}{16}} = \frac{\sqrt3}{4}a.
+\]
+金刚石中每个碳原子与周围 4 个碳原子形成正四面体配位，键角 $109.5^\circ$，键长正是 $d=\sqrt3\,a/4$。
+\end{insightbox}
+
+金刚石为金刚石结构，最近邻原子间距：
 \begin{equation}
-d = \frac{\sqrt3}{4}a = \frac{\sqrt3}{4}\times3.57\,\text{\AA} \approx 1.546\,\text{\AA}.
+\boxed{d = \frac{\sqrt3}{4}a = \frac{\sqrt3}{4}\times3.57\,\text{\AA} \approx 1.546\,\text{\AA}.}
 \end{equation}
 所求比值
 \begin{equation}
