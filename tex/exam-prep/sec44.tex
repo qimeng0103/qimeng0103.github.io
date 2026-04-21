@@ -1,0 +1,179 @@
+% ============================================================
+% Section 44: 金刚石的爱因斯坦模型——均方位移与零点能
+% ============================================================
+\newpage
+\section{固体理论：金刚石的爱因斯坦模型——均方位移与零点能}
+\label{sec:diamond-einstein}
+
+\begin{modelbox}[题目：金刚石的爱因斯坦模型数值计算]
+已知金刚石的爱因斯坦温度 $\Theta_E=1320\,\mathrm{K}$，碳原子质量 $m=19.92\times10^{-27}\,\mathrm{kg}$，晶格常数 $a=3.57\,\text{\AA}$。
+\begin{enumerate}
+    \item 估算室温 ($300\,\mathrm{K}$) 时，碳原子的方均根位移与原子间距的比值；
+    \item 计算绝对零度下金刚石的单位体积零点振动能。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{三维爱因斯坦模型}：$3N$ 个独立谐振子，频率均为 $\omega_E$
+    \item \textbf{均方位移公式}：$\langle r^2\rangle = \dfrac{3\hbar^2}{2mk_B\Theta_E}\coth\dfrac{\Theta_E}{2T}$
+    \item \textbf{零点能}：$T=0$ 时每个模式仍有 $\dfrac12\hbar\omega_E$
+    \item \textbf{金刚石结构}：晶胞含 8 个原子，最近邻距 $d=\dfrac{\sqrt3}{4}a$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 建立三维爱因斯坦模型的均方位移公式}
+
+在爱因斯坦模型中，每个原子在 $x,y,z$ 三个方向独立振动，频率均为 $\omega_E$。对一维谐振子：
+\begin{equation}
+\langle x^2\rangle = \frac{\hbar}{2m\omega_E}\coth\frac{\hbar\omega_E}{2k_BT} = \frac{\hbar^2}{2mk_B\Theta_E}\coth\frac{\Theta_E}{2T}.
+\end{equation}
+三维总均方位移
+\begin{equation}
+\boxed{\langle r^2\rangle = 3\langle x^2\rangle = \frac{3\hbar^2}{2mk_B\Theta_E}\coth\frac{\Theta_E}{2T}.}
+\label{eq:diamond-msd-full}
+\end{equation}
+
+利用 $\coth x = 1+\dfrac{2}{e^{2x}-1}$，可写成等价形式：
+\begin{equation}
+\langle r^2\rangle = \frac{3\hbar^2}{mk_B\Theta_E}\Bigl(\frac{1}{e^{\Theta_E/T}-1}+\frac12\Bigr).
+\label{eq:diamond-msd-alt}
+\end{equation}
+其中第一项为\textbf{热激发贡献}，第二项为\textbf{零点振动}。
+
+\textbf{Step 2: 室温 ($300\,\mathrm{K}$) 下的方均根位移}
+
+对金刚石，$T=300\,\mathrm{K}\ll\Theta_E=1320\,\mathrm{K}$，故 $e^{\Theta_E/T}=e^{4.4}\approx81.45\gg1$。
+
+\textit{说明}：本题原解答中只取了热激发项（略去零点振动的 $1/2$）。严格来说 $T\ll\Theta_E$ 时零点振动占主导，不应略去；但以下按题目/教材的处理方式展示。
+
+取热激发项：
+\begin{equation}
+\langle r^2\rangle \approx \frac{3\hbar^2}{mk_B\Theta_E}\cdot\frac{1}{e^{\Theta_E/T}-1}.
+\end{equation}
+代入常数：
+\begin{align}
+    \frac{3\hbar^2}{mk_B\Theta_E} &= \frac{3\times(1.0546\times10^{-34})^2}{(19.92\times10^{-27})(1.3807\times10^{-23})(1320)} \nonumber\\
+    &\approx 9.19\times10^{-23}\,\mathrm{m^2} = 9.19\times10^{-3}\,\text{\AA}^2.
+\end{align}
+热激发因子：
+\begin{equation}
+\frac{1}{e^{4.4}-1} \approx \frac{1}{80.45} \approx 0.01243.
+\end{equation}
+因此
+\begin{equation}
+\langle r^2\rangle \approx 9.19\times10^{-23}\times0.01243 \approx 1.14\times10^{-24}\,\mathrm{m^2} = 1.14\times10^{-4}\,\text{\AA}^2.
+\end{equation}
+方均根位移
+\begin{equation}
+\sqrt{\langle r^2\rangle} \approx \sqrt{1.14\times10^{-4}}\,\text{\AA} \approx 1.07\times10^{-2}\,\text{\AA} \approx 0.0107\,\text{\AA}.
+\end{equation}
+
+金刚石为金刚石结构（可视为两套 FCC 套构），最近邻原子间距为体对角线的 $1/4$：
+\begin{equation}
+d = \frac{\sqrt3}{4}a = \frac{\sqrt3}{4}\times3.57\,\text{\AA} \approx 1.546\,\text{\AA}.
+\end{equation}
+所求比值
+\begin{equation}
+\boxed{\frac{\sqrt{\langle r^2\rangle}}{d} \approx \frac{0.0107}{1.546} \approx 6.9\times10^{-3} \approx 0.69\%.}
+\end{equation}
+
+\textbf{Step 3: 绝对零度下的单位体积零点振动能}
+
+$T=0$ 时热激发为零，但每个谐振子仍有零点能 $\dfrac12\hbar\omega_E$。晶体共 $N$ 个原子、$3N$ 个振动模式，总零点能
+\begin{equation}
+E_{\text{zero}} = 3N\cdot\frac12\hbar\omega_E = \frac32 Nk_B\Theta_E.
+\end{equation}
+
+金刚石结构晶胞体积 $a^3$ 内含 8 个原子，原子数密度 $N/V=8/a^3$。单位体积零点能
+\begin{equation}
+\boxed{E_0 = \frac{E_{\text{zero}}}{V} = \frac32\cdot\frac{8}{a^3}\cdot k_B\Theta_E = \frac{12k_B\Theta_E}{a^3}.}
+\label{eq:diamond-zero-energy}
+\end{equation}
+
+代入数值：
+\begin{align}
+    a^3 &= (3.57\times10^{-10})^3 \approx 4.55\times10^{-29}\,\mathrm{m^3}, \\
+    E_0 &= \frac{12\times(1.3807\times10^{-23})\times1320}{4.55\times10^{-29}} \nonumber\\
+    &\approx \frac{2.186\times10^{-19}}{4.55\times10^{-29}} \approx 4.8\times10^9\,\mathrm{J/m^3}.
+\end{align}
+换算为 $\mathrm{cal/m^3}$（$1\,\mathrm{cal}=4.184\,\mathrm{J}$）：
+\begin{equation}
+\boxed{E_0 \approx 4.8\times10^9\,\mathrm{J/m^3} \approx 1.15\times10^9\,\mathrm{cal/m^3}.}
+\end{equation}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{cl}
+\toprule
+问 & 结果 \\
+\midrule
+(1) 方均根位移/原子间距 & $\displaystyle \approx 0.69\%$ \\[8pt]
+(2) 单位体积零点能 & $\displaystyle \approx 4.8\times10^9\,\mathrm{J/m^3}\;(=1.15\times10^9\,\mathrm{cal/m^3})$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像与概念深化]
+\textbf{1. 室温下零点振动是否可略？}
+
+严格公式 \eqref{eq:diamond-msd-alt} 中，$T=300\,\mathrm{K}$、$\Theta_E=1320\,\mathrm{K}$ 时：
+\begin{itemize}
+    \item 热激发项：$\dfrac{1}{e^{4.4}-1}\approx0.012$
+    \item 零点项：$\dfrac12=0.5$
+\end{itemize}
+零点项是热激发项的 $\sim40$ 倍！若按完整公式计算：
+\begin{equation}
+\sqrt{\langle r^2\rangle_{\text{full}}} \approx \sqrt{1.14\times10^{-24}\times\frac{0.5+0.012}{0.012}} \approx \sqrt{4.86\times10^{-23}} \approx 0.070\,\text{\AA},
+\end{equation}
+比值约为 $4.5\%$，远大于 $0.69\%$。
+
+\textit{为什么原题可以略去？} 取决于``位移''的定义：
+\begin{itemize}
+    \item 若指\textbf{热振动位移}（相对于 $T=0$ 平衡位置的额外偏移），则只取热激发项合理；
+    \item 若指\textbf{总量子涨落}（含零点振动），则必须保留 $1/2$。
+\end{itemize}
+X射线衍射的 Debye--Waller 因子包含零点贡献，但在估算``热振幅''时常常只计热激发部分。
+
+\textbf{2. 为什么金刚石的爱因斯坦温度如此高？}
+
+$\Theta_E=1320\,\mathrm{K}$ 远高于室温，说明：
+\begin{itemize}
+    \item 碳原子质量轻 ($m\sim20\times10^{-27}\,\mathrm{kg}$)，惯性小
+    \item C--C 共价键极强，有效弹簧常数 $k$ 很大
+    \item 由 $\omega=\sqrt{k/m}$，轻质量 + 硬弹簧 → 高频率 → 高爱因斯坦温度
+\end{itemize}
+因此金刚石在室温下仍``冻结''在量子基态附近，热激发很弱，这正是它超高硬度和热稳定性的微观来源。
+
+\textbf{3. 零点能的宏观意义}
+
+单位体积零点能 $E_0\sim4.8\times10^9\,\mathrm{J/m^3}$ 是一个巨大的数字。作为对比：
+\begin{itemize}
+    \item 水的汽化热 $\sim2.3\times10^9\,\mathrm{J/m^3}$
+    \item 金刚石的零点能与水的汽化热同数量级
+\end{itemize}
+零点能是量子力学不可避免的效应，即使在绝对零度也无法``关掉''晶格振动。对于轻元素（H、C）晶体，零点能尤为显著，甚至在某些情况下（如氦）会导致量子熔化。
+
+\textbf{4. 爱因斯坦模型的数值计算技巧}
+
+遇到``给定 $\Theta_E$、$m$、$a$，求具体数值''的问题：
+\begin{enumerate}
+    \item 先写出解析公式（如式 \eqref{eq:diamond-msd-full} 或 \eqref{eq:diamond-zero-energy}）
+    \item 把所有常数一次性代入计算器，避免中间步骤舍入误差
+    \item 注意单位统一（建议全部转换为国际单位制：$\text{\AA}\to10^{-10}\,\mathrm{m}$，$\mathrm{eV}\to1.6\times10^{-19}\,\mathrm{J}$）
+    \item 最后检验数量级是否合理（金刚石原子间距 $\sim1.5\,\text{\AA}$，均方位移不可能超过此值）
+\end{enumerate}
+\end{insightbox}
+
+\begin{thinkbox}[考场速记：爱因斯坦模型数值题的五步法]
+\begin{enumerate}
+    \item \textbf{写通式}：先写出不含数值的普遍公式（如 $E_0=12k_B\Theta_E/a^3$）
+    \item \textbf{查结构}：确认晶胞原子数（金刚石 8、FCC 4、BCC 2、SC 1）
+    \item \textbf{定方向}：均方位移注意是求一维分量还是三维总位移
+    \item \textbf{判温区}：$T/\Theta_E\gg1$ 用经典近似，$T/\Theta_E\ll1$ 保留零点能
+    \item \textbf{验数量级}：最终结果与原子间距、结合能等特征量比较，确认合理
+\end{enumerate}
+\end{thinkbox}
