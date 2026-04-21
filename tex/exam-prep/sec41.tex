@@ -72,23 +72,35 @@ m\ddot x_{nm} = c_1(x_{n+1,m}+x_{n-1,m}-2x_{nm}) + c_2(x_{n,m+1}+x_{n,m-1}-2x_{n
 \]
 在 $q_2=0$、$q_1\to0$ 极限下同样得到 $v_g=a\sqrt{c_1/m}$，与上式一致。
 
-\textbf{Step 3: 空位浓度与衰减长度}
+\textbf{Step 3: 空位浓度与衰减长度——Beer--Lambert 定律的微观推导}
 
-设声波强度为 $I$，传播方向横截面积为 $S$。在距离 $dx$ 内遇到的空位数为 $nS\,dx$。
+\begin{insightbox}[散射问题的通用思路：从``单个散射体''到``宏观衰减'']
+这类问题的标准套路是三步走：
+\begin{enumerate}
+    \item \textbf{单个散射体}：题目给出散射幅 $A/\lambda$，求出散射截面 $\sigma\propto|{\text{散射幅}}|^2$
+    \item \textbf{单位长度的散射概率}：设空位浓度为 $n$（单位体积内的空位数），在截面积 $S$、厚度 $dx$ 的薄层内，空位总数为 $nS\,dx$
+    \item \textbf{Beer--Lambert 定律}：入射强度 $I$ 经过薄层后，被散射走的能量比例 = 所有空位的总散射截面 / 入射截面积
+\end{enumerate}
+\end{insightbox}
 
-每个空位的散射幅为 $A/\lambda$，散射截面（正比于散射幅的平方）为
+具体计算：
+\begin{itemize}
+    \item 每个空位的散射幅为 $A/\lambda$，散射截面正比于散射幅的平方：
+    \begin{equation}
+    \sigma \propto \Bigl(\frac{A}{\lambda}\Bigr)^2 = \frac{A^2}{\lambda^2}.
+    \end{equation}
+    \item 在截面积 $S$、厚度 $dx$ 的薄层内，空位总数 = $nS\,dx$，总散射截面 = $\sigma\cdot nS\,dx$
+    \item 被散射走的能量比例 = 总散射截面 / 入射截面积 $S$ = $\sigma n\,dx$
+\end{itemize}
+因此强度衰减为
 \begin{equation}
-\sigma \propto \Bigl(\frac{A}{\lambda}\Bigr)^2 = \frac{A^2}{\lambda^2}.
+-dI = I\cdot\sigma n\,dx \quad\Longrightarrow\quad \frac{dI}{I} = -\sigma n\,dx.
 \end{equation}
-强度衰减满足
+代入 $\sigma=cA^2/\lambda^2$（$c$ 为待定比例常数）：
 \begin{equation}
--dI\cdot S \propto I\cdot\sigma\cdot nS\,dx = I\,\frac{A^2}{\lambda^2}\,nS\,dx.
+\frac{dI}{I} = -\frac{c\,nA^2}{\lambda^2}\,dx.
 \end{equation}
-整理得
-\begin{equation}
-\frac{dI}{I} = -\frac{c\,nA^2}{\lambda^2}\,dx,
-\end{equation}
-其中 $c$ 为待定比例常数。积分得 $I(x)=I_0\exp(-x/l)$，衰减长度
+积分得 $I(x)=I_0\exp(-x/l)$，其中衰减长度
 \begin{equation}
 \boxed{l = \frac{\lambda^2}{c\,nA^2}\propto\frac{\lambda^2}{n}.}
 \end{equation}
@@ -96,10 +108,18 @@ m\ddot x_{nm} = c_1(x_{n+1,m}+x_{n-1,m}-2x_{nm}) + c_2(x_{n,m+1}+x_{n,m-1}-2x_{n
 
 \textbf{Step 4: 衰减长度与温度的关系}
 
-空位由热激活产生，服从 Boltzmann 分布
+空位是\textbf{热激活缺陷}：要从完整晶格中移走一个原子形成空位，需要克服周围原子的束缚，付出能量 $\varepsilon$（称为\textbf{空位形成能}）。在温度 $T$ 下，热涨落有一定概率提供这部分能量。根据 Boltzmann 分布，该概率正比于 $e^{-\varepsilon/k_BT}$，因此空位浓度
 \begin{equation}
 n \propto e^{-\varepsilon/k_BT}.
 \end{equation}
+
+\textit{直观理解}：
+\begin{itemize}
+    \item $T=0$ 时，$n\to0$，没有热激发，晶格完美
+    \item $T$ 升高时，指数因子缓慢增大，空位浓度指数增长
+    \item $\varepsilon$ 越大，形成空位越困难，同一温度下 $n$ 越小
+\end{itemize}
+
 代入衰减长度表达式：
 \begin{equation}
 \boxed{l \propto \frac{1}{n} \propto e^{\,\varepsilon/k_BT}.}
@@ -108,17 +128,25 @@ n \propto e^{-\varepsilon/k_BT}.
 
 \textbf{Step 5: 声速与温度的关系}
 
-存在空位时，有效恢复力系数被削弱。设完整晶体的系数为 $c_1^{(0)},c_2^{(0)}$，则
+存在空位时，为什么恢复力系数会被削弱？\textbf{微观图像}：空位处少了一个原子，导致周围的键缺失。当相邻原子振动时，一部分恢复力本应由空位原子提供，现在``无人回应''，宏观上表现为有效弹性常数下降。
+
+\textbf{定量分析}：设完整晶体的恢复力系数为 $c_1^{(0)},c_2^{(0)}$。空位浓度为 $n$ 意味着有 $n$ 比例的键失效（或弱化）。在稀薄极限下，有效系数与完整晶体系数的关系可线性近似为
 \begin{equation}
 c_1 = c_1^{(0)}(1-Bn), \qquad c_2 = c_2^{(0)}(1-Bn),
 \end{equation}
-$B$ 为与空位浓度成正比的削弱系数。
+其中 $B$ 为比例常数（与空位对近邻环境的具体影响有关，题目不要求算出具体值，保留即可）。
+
+\textit{为什么是这个形式？} 可以把晶体看作``完整部分''和``缺陷部分''的并联：完整部分占 $(1-n)$，缺陷部分的恢复力近似为零，故整体等效刚度 $\approx c^{(0)}(1-n)$。更精确地，由于缺陷周围原子重排，可能有一定残余恢复力，所以写成 $c^{(0)}(1-Bn)$，$B\sim O(1)$。
 
 声速 $v_s\propto\sqrt{c_1}$，故
 \begin{equation}
 v_s \propto \sqrt{c_1^{(0)}(1-Bn)} = v_s^{(0)}\sqrt{1-Bn}.
 \end{equation}
-对稀薄空位 $Bn\ll1$，展开得 $v_s\approx v_s^{(0)}(1-\frac{Bn}{2})$。代入 $n\propto e^{-\varepsilon/k_BT}$：
+对稀薄空位 $Bn\ll1$，泰勒展开 $\sqrt{1-x}\approx 1-x/2$：
+\begin{equation}
+v_s \approx v_s^{(0)}\Bigl(1-\frac{Bn}{2}\Bigr).
+\end{equation}
+代入 $n\propto e^{-\varepsilon/k_BT}$：
 \begin{equation}
 \boxed{v_s(T) \propto \sqrt{1-B'\,e^{-\varepsilon/k_BT}} \approx v_s^{(0)}\Bigl(1-\frac{B'}{2}e^{-\varepsilon/k_BT}\Bigr).}
 \end{equation}
@@ -142,11 +170,11 @@ v_s \propto \sqrt{c_1^{(0)}(1-Bn)} = v_s^{(0)}\sqrt{1-Bn}.
 \end{formulabox}
 
 \begin{insightbox}[物理图像与概念串联]
-\textbf{1. 与 sec40 的对比}
+\textbf{1. 与 \ref{sec:2d-square-phonon} 的对比}
 
-本题与 sec40 的数学结构几乎相同（都是二维正方格子、各向异性耦合），但有本质区别：
+本题与 \ref{sec:2d-square-phonon} 的数学结构几乎相同（都是二维正方格子、各向异性耦合），但有本质区别：
 \begin{itemize}
-    \item \textbf{sec40}：考虑 $x$、$y$ 两个偏振方向，得到两支色散（两支声学支）。
+    \item \textbf{\ref{sec:2d-square-phonon}}：考虑 $x$、$y$ 两个偏振方向，得到两支色散（两支声学支）。
     \item \textbf{本题}：只考虑 $x$ 方向位移（平面纵波），得到\textbf{一支}色散。$y$ 方向的邻居只通过 $c_2$ 对 $x$ 振动产生``侧向''恢复力，不引入新的偏振自由度。
 \end{itemize}
 
