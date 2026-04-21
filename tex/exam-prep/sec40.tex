@@ -1,0 +1,158 @@
+% ============================================================
+% Section 40: 二维正方晶格的各向异性声子色散
+% ============================================================
+\newpage
+\section{固体理论：二维正方晶格的各向异性声子色散}
+\label{sec:2d-square-phonon}
+
+\begin{modelbox}[题目：理想二维晶体的简正模式]
+一理想二维晶体由质量为 $m$ 的同种原子组成，原子平衡位置位于正方格子
+\[
+\vec R_{rs}^{(0)} = (ra,\, sa), \qquad r,s = 1,2,\dots,N.
+\]
+瞬时位置为 $\vec R_{rs} = (ra+x_{rs},\, sa+y_{rs})$。在简谐近似下，考虑最近邻相互作用在 $x$ 方向与 $y$ 方向的差异，势能写为
+\begin{multline}
+V = \sum_{r,s}\Bigl\{ k_1\bigl[(x_{r+1,s}-x_{rs})^2 + (y_{r,s+1}-y_{rs})^2\bigr] \\
++ k_2\bigl[(x_{r,s+1}-x_{rs})^2 + (y_{r+1,s}-y_{rs})^2\bigr] \Bigr\}.
+\end{multline}
+取 $k_2 = 0.1\,k_1$，求：
+\begin{enumerate}
+    \item 整个第一布里渊区的声子普遍色散关系 $\omega_{\vec q,\alpha}$；
+    \item 对 $\vec q=(\xi,0)$（$0\le\xi\le\pi/a$），画出 $\omega_{\vec q,\alpha}$ 随 $\xi$ 的变化。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{二维正方格子}：原胞只含一个原子，故只有声学支，但有两个偏振方向（$x$ 与 $y$）
+    \item \textbf{各向异性耦合}：水平键与垂直键的力常数不同，导致 $x$、$y$ 振动解耦但各自感受到的``横向''刚度不同
+    \item \textbf{布里渊区}：二维正方格子的第一布里渊区为正方形 $[-\pi/a,\pi/a]\times[-\pi/a,\pi/a]$
+    \item \textbf{长波极限}：两支行波在 $q\to0$ 时均趋于零，斜率由 $k_1$、$k_2$ 组合决定
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 运动方程}
+
+对 $x_{rs}$ 求 $-\partial V/\partial x_{rs}$。$x_{rs}$ 出现在四个差分项中（来自 $(r,s)$、$(r-1,s)$、$(r,s)$、$(r,s-1)$ 四项的导数），得
+\begin{equation}
+m\ddot x_{rs} = 2k_1(x_{r+1,s}+x_{r-1,s}-2x_{rs}) + 2k_2(x_{r,s+1}+x_{r,s-1}-2x_{rs}).
+\label{eq:x-motion}
+\end{equation}
+同理，$y$ 方向的运动方程为
+\begin{equation}
+m\ddot y_{rs} = 2k_1(y_{r,s+1}+y_{r,s-1}-2y_{rs}) + 2k_2(y_{r+1,s}+y_{r-1,s}-2y_{rs}).
+\label{eq:y-motion}
+\end{equation}
+注意：$x$ 与 $y$ 完全解耦，但各自的``纵向''与``横向''耦合常数互换。
+
+\textbf{Step 2: 格波假设与代入}
+
+设平面波解
+\[
+x_{rs} = A_x\,e^{i(q_x ra + q_y sa - \omega t)}, \qquad y_{rs} = A_y\,e^{i(q_x ra + q_y sa - \omega t)}.
+\]
+对 $x$ 分量，利用 $x_{r\pm1,s} = x_{rs}e^{\pm iq_x a}$、$x_{r,s\pm1} = x_{rs}e^{\pm iq_y a}$，代入式 \eqref{eq:x-motion} 并消去公共因子 $e^{i(\vec q\cdot\vec R_{rs}^{(0)}-\omega t)}$：
+\begin{align}
+    -m\omega^2 A_x &= \bigl[2k_1(e^{iq_x a}+e^{-iq_x a}-2) + 2k_2(e^{iq_y a}+e^{-iq_y a}-2)\bigr]A_x \nonumber\\
+    &= \bigl[-8k_1\sin^2\tfrac{q_x a}{2} - 8k_2\sin^2\tfrac{q_y a}{2}\bigr]A_x.
+\end{align}
+因此
+\begin{equation}
+m\omega^2 = 8k_1\sin^2\frac{q_x a}{2} + 8k_2\sin^2\frac{q_y a}{2}.
+\label{eq:x-dispersion-raw}
+\end{equation}
+
+同理，对 $y$ 分量代入式 \eqref{eq:y-motion}，只是把 $q_x\leftrightarrow q_y$、$k_1\leftrightarrow k_2$ 互换：
+\begin{equation}
+m\omega^2 = 8k_1\sin^2\frac{q_y a}{2} + 8k_2\sin^2\frac{q_x a}{2}.
+\label{eq:y-dispersion-raw}
+\end{equation}
+
+\textbf{Step 3: 色散关系的标准化写法}
+
+定义
+\begin{equation}
+\boxed{\omega_0 = \sqrt{\frac{8k_1}{m}}}
+\end{equation}
+并令 $k_2 = 0.1\,k_1$。由式 \eqref{eq:x-dispersion-raw} 与 \eqref{eq:y-dispersion-raw} 得到两支独立的色散关系：
+\begin{align}
+    \omega_{\vec q,1} &= \omega_0\sqrt{\sin^2\frac{q_x a}{2} + 0.1\,\sin^2\frac{q_y a}{2}}, \label{eq:2d-disp-1}\\[4pt]
+    \omega_{\vec q,2} &= \omega_0\sqrt{0.1\,\sin^2\frac{q_x a}{2} + \sin^2\frac{q_y a}{2}}. \label{eq:2d-disp-2}
+\end{align}
+这两支覆盖整个二维第一布里渊区
+\[
+-\frac{\pi}{a} < q_x,\,q_y \le \frac{\pi}{a}.
+\]
+
+\textbf{Step 4: 沿 $\vec q=(\xi,0)$ 方向的色散}
+
+将 $q_x=\xi$、$q_y=0$ 代入式 \eqref{eq:2d-disp-1}--\eqref{eq:2d-disp-2}，注意 $\sin 0=0$，得
+\begin{align}
+    \omega_1(\xi) &= \omega_0\,\bigl|\sin\tfrac{\xi a}{2}\bigr|, \label{eq:xi-disp-1}\\[4pt]
+    \omega_2(\xi) &= \sqrt{0.1}\,\omega_0\,\bigl|\sin\tfrac{\xi a}{2}\bigr| \approx 0.316\,\omega_0\,\bigl|\sin\tfrac{\xi a}{2}\bigr|. \label{eq:xi-disp-2}
+\end{align}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\textbf{普遍色散关系}（第一布里渊区 $|\vec q|\le\pi/a$）：
+\begin{align}
+    \omega_{\vec q,1} &= \omega_0\sqrt{\sin^2\frac{q_x a}{2} + 0.1\,\sin^2\frac{q_y a}{2}}, \\
+    \omega_{\vec q,2} &= \omega_0\sqrt{0.1\,\sin^2\frac{q_x a}{2} + \sin^2\frac{q_y a}{2}}.
+\end{align}
+
+\textbf{沿 $q=(\xi,0)$}（$0\le\xi\le\pi/a$）：
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+模式 & 色散关系 & 边界值 $\xi=\pi/a$ \\
+\midrule
+$\alpha=1$（$x$ 主导） & $\displaystyle \omega_1(\xi)=\omega_0\sin\frac{\xi a}{2}$ & $\omega_0$ \\[8pt]
+$\alpha=2$（$y$ 主导） & $\displaystyle \omega_2(\xi)=\sqrt{0.1}\,\omega_0\sin\frac{\xi a}{2}\approx0.316\,\omega_0\sin\frac{\xi a}{2}$ & $\sqrt{0.1}\,\omega_0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+（在 $0\le\xi\le\pi/a$ 范围内 $\sin(\xi a/2)\ge0$，可去掉绝对值。）
+\end{formulabox}
+
+\begin{insightbox}[物理图像与定性作图]
+\textbf{1. 为什么没有光学支？}
+
+原胞只含一个原子，自由度数为 2（$x$、$y$ 振动）。两支色散都是\textbf{声学支}，在 $\vec q\to\vec0$ 时 $\omega\to0$，对应原胞质心的整体平移。
+
+\textbf{2. 两支的物理意义}
+
+\begin{itemize}
+    \item $\omega_{\vec q,1}$：$x$ 方向偏振主导。当 $\vec q$ 沿 $x$ 轴时（$q_y=0$），它感受到的是 $k_1$ 键的全刚度，故频率较高。
+    \item $\omega_{\vec q,2}$：$y$ 方向偏振主导。当 $\vec q$ 沿 $x$ 轴时，$y$ 方向的振动只能借助``横向''耦合 $k_2$ 传递，故频率被压低为 $\sqrt{0.1}\approx31.6\%$。
+\end{itemize}
+
+\textbf{3. 沿 $q=(\xi,0)$ 的函数图像}
+
+以 $\xi a$ 为横坐标（$0\to\pi$），$\omega/\omega_0$ 为纵坐标：
+\begin{itemize}
+    \item 两条曲线均为\textbf{正弦半波}，从原点单调上升至边界。
+    \item 高频支 ($\alpha=1$)：幅值为 $1$，在 $\xi a=\pi$ 处达 $\omega_0$。
+    \item 低频支 ($\alpha=2$)：幅值为 $\sqrt{0.1}\approx0.316$，形状与高频支完全相同，仅整体缩放。
+    \item 在边界 $\xi=\pi/a$ 处，两支行波的群速 $d\omega/dq$ 均为零（驻波）。
+\end{itemize}
+
+\textbf{4. 布里渊区对称性}
+
+二维正方格子的第一布里渊区是 $q$ 空间中的正方形，顶点在 $(\pm\pi/a,\pm\pi/a)$。色散关系 \eqref{eq:2d-disp-1}--\eqref{eq:2d-disp-2} 对 $q_x\leftrightarrow q_y$ 的互换具有镜像对称性，但对 $q_x$ 单独反演（$q_x\to -q_x$）或 $q_y$ 单独反演保持不变，因为只出现 $\sin^2$。
+\end{insightbox}
+
+\begin{thinkbox}[考场速记：从势能直接读出色散]
+对于二维（或三维）简谐晶格，若各方向解耦，可快速写出
+\[
+m\omega^2 = \sum_{\text{方向 }i} 2k_i^{(\text{eff})}\bigl(1-\cos q_i a_i\bigr) = \sum_i 4k_i^{(\text{eff})}\sin^2\frac{q_i a_i}{2}.
+\]
+\textbf{记忆口诀}：每个有效耦合方向贡献 $4k\sin^2(qa/2)$，系数 4 来自二阶差分的两倍（$2\times2$）。
+
+对本题快速检验：
+\begin{itemize}
+    \item $q_x=q_y=0$：两项均为 0，$\omega=0$ \checkmark（声学支）
+    \item $q=(\pi/a,0)$：$\sin^2(\pi/2)=1$，$\omega_1=\omega_0$、$\omega_2=\sqrt{0.1}\,\omega_0$ \checkmark
+    \item $q=(\pi/a,\pi/a)$：$\omega_1=\omega_2=\omega_0\sqrt{1.1}$ \checkmark（两支简并，因 $x$、$y$ 分量各贡献 1 和 0.1）
+\end{itemize}
+\end{thinkbox}
