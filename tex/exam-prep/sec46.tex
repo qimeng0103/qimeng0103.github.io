@@ -43,13 +43,43 @@ D(\omega)\,d\omega = \text{该频率区间内的模式数}.
     \item 频率上限 $\omega_D$，由总模式数 $=3N$ 确定
 \end{enumerate}
 
-\textbf{三维 $D(\omega)\propto\omega^2$ 的来源}
+\textbf{三维 $D(\omega)\propto\omega^2$ 的来源——等号是怎么建立的？}
 
-在 $\vec q$ 空间中，每个允许的 $\vec q$ 点占体积 $(2\pi)^3/V$。半径 $q$、厚度 $dq$ 的球壳内有 $Vq^2\,dq/(2\pi^2)$ 个 $\vec q$ 点。乘以 3 支声学模，再代入 $\omega=vq$：
-\[
-D(\omega)\,d\omega = \frac{3V}{2\pi^2}\Bigl(\frac{\omega}{v}\Bigr)^2\frac{d\omega}{v} \quad\Longrightarrow\quad D(\omega)=\frac{3V\omega^2}{2\pi^2v^3}.
-\]
-\textit{本质}：这是 3 维空间中``球壳面积 $\propto q^2$''的几何结果。
+\textbf{Step A: 在 $\vec q$ 空间中数模式数}
+
+每个允许的 $\vec q$ 点占体积 $(2\pi)^3/V$。半径 $q$、厚度 $dq$ 的球壳内的 $\vec q$ 点数为：
+\begin{equation}
+dN_q = \underbrace{\frac{Vq^2\,dq}{2\pi^2}}_{\text{几何因子：球壳面积}\propto q^2} \times \underbrace{3}_{\text{3 支声学模}} = \frac{3V}{2\pi^2}\,q^2\,dq.
+\label{eq:q-space-dN}
+\end{equation}
+
+\textbf{Step B: 为什么 $dN_q$ 等于 $D(\omega)\,d\omega$？}
+
+$dN$ 是\textbf{客观的模式数}，不依赖于你用 $q$ 还是 $\omega$ 来标记。同一个物理区间内的模式，既可以用 $[q,q+dq]$ 描述，也可以用对应的 $[\omega,\omega+d\omega]$ 描述。因此：
+\begin{equation}
+\boxed{dN \equiv D(\omega)\,d\omega = dN_q.}
+\label{eq:dN-equivalence}
+\end{equation}
+
+\textbf{Step C: 变量替换 $\omega=vq$}
+
+德拜假设线性色散 $\omega=vq$，因此：
+\begin{equation}
+q = \frac{\omega}{v}, \qquad dq = \frac{d\omega}{v}.
+\end{equation}
+
+将 $q$ 和 $dq$ 代入式 \eqref{eq:q-space-dN}，利用式 \eqref{eq:dN-equivalence}：
+\begin{align}
+D(\omega)\,d\omega &= \frac{3V}{2\pi^2}\Bigl(\frac{\omega}{v}\Bigr)^2\cdot\frac{d\omega}{v} \nonumber\\
+&= \frac{3V}{2\pi^2v^3}\,\omega^2\,d\omega.
+\end{align}
+
+两边消去 $d\omega$，得到频率空间的态密度：
+\begin{equation}
+\boxed{D(\omega) = \frac{3V\omega^2}{2\pi^2v^3}.}
+\end{equation}
+
+\textit{记忆口诀}：$D(\omega)\,d\omega = D_q(q)\,dq$，即``频率空间的面元 = $q$ 空间的面元 × 雅可比行列式 $|dq/d\omega|$''。这里的 $|dq/d\omega|=1/v$ 就是坐标变换的 Jacobian。
 
 \textbf{维度对比}
 \begin{center}
