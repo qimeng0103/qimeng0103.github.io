@@ -97,20 +97,40 @@ D(\omega)\,d\omega=2\cdot\frac{L}{2\pi}\,dq=\frac{2Na}{\pi v_p}\,d\omega.
 \begin{equation}
 \gamma=-\frac{\partial\ln\omega}{\partial\ln V}=-\frac{V}{\omega}\frac{\partial\omega}{\partial V}.
 \end{equation}
-对于一维链，``体积''即链长 $L=2Na$（$N$ 为原胞数，固定不变），故 $\gamma=-\partial\ln\omega/\partial\ln L$。长波声学支频率满足 $\omega=v_p q\propto\sqrt{\beta}$（$q$ 由固定边界条件确定，不随 $L$ 变），因此
+
+对于一维链，``体积''就是链长 $L=2Na$（$N$ 为原胞数，固定不变），故 $\gamma=-\partial\ln\omega/\partial\ln L$。
+
+\textit{关键：}$\omega$ 作为 $L$ 的函数到底是什么？长波声学支（式~(290)）为
 \begin{equation}
-\frac{\partial\ln\omega}{\partial\ln L}=\frac{1}{2}\frac{\partial\ln\beta}{\partial\ln L}
-\quad\Longrightarrow\quad
-\gamma=-\frac{1}{2}\frac{\partial\ln\beta}{\partial\ln L}=-\frac{L}{2\beta}\frac{d\beta}{dL}.
+\omega_- = \sqrt{\frac{2\beta}{M}}\,a|q|.
 \end{equation}
-又因为 $\beta=u''(a)$ 且 $a=L/(2N)$，有
+周期边界条件给出允许的波矢 $q_m=2\pi m/L=\pi m/(Na)$（$m$ 为整数），代入得
 \begin{equation}
-\frac{d\beta}{dL}=u'''(a)\frac{da}{dL}=\frac{u'''(a)}{2N}=\frac{a\,u'''(a)}{L},
+\omega_- = \sqrt{\frac{2\beta}{M}}\,a\cdot\frac{\pi|m|}{Na}
+= \frac{\pi|m|}{N}\sqrt{\frac{2\beta}{M}}.
 \end{equation}
-代入即得一维链的微观公式（注意 $1/2$ 因子的来源正是 $\omega\propto\sqrt{\beta}$）：
+\textbf{晶格常数 $a$ 恰好消掉}！因此，对某一个固定的振动模式（$m$ 固定），频率只通过恢复力常数 $\beta$ 依赖于 $a$：
+\begin{equation}
+\omega\propto\sqrt{\beta},\qquad\text{即}\quad \ln\omega = \tfrac12\ln\beta + \text{const}.
+\end{equation}
+
+由此得到
+\begin{equation}
+\frac{\partial\ln\omega}{\partial\ln L}
+=\frac{\partial\ln\omega}{\partial\ln a}
+=\frac12\frac{d\ln\beta}{d\ln a}
+=\frac{a}{2\beta}\frac{d\beta}{da},
+\end{equation}
+于是
+\begin{equation}
+\gamma=-\frac{\partial\ln\omega}{\partial\ln L}=-\frac{a}{2\beta}\frac{d\beta}{da}.
+\end{equation}
+
+最后代入 $\beta=u''(a)$，则 $d\beta/da=u'''(a)$，即得一维链的微观公式：
 \begin{equation}
 \boxed{\gamma=-\frac{a}{2}\frac{u'''(a)}{u''(a)}}.
 \end{equation}
+（式中 $1/2$ 因子的来源：$\omega\propto\sqrt{\beta}$，求对数导数时甩出一个 $1/2$。）
 
 \textit{计算高阶导数}：
 \begin{align}
