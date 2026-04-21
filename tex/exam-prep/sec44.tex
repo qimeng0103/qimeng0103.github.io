@@ -16,16 +16,15 @@
 \begin{tipbox}[考点快速分析]
 \begin{itemize}
     \item \textbf{三维爱因斯坦模型}：$3N$ 个独立谐振子，频率均为 $\omega_E$
-    \item \textbf{均方位移公式}：$\langle r^2\rangle = \dfrac{3\hbar^2}{2mk_B\Theta_E}\coth\dfrac{\Theta_E}{2T}$
-    \item \textbf{零点能}：$T=0$ 时每个模式仍有 $\dfrac12\hbar\omega_E$
+    \item \textbf{均方位移}：一维谐振子 $\langle x^2\rangle=\dfrac{(\langle n\rangle+1/2)\hbar}{m\omega_E}$，三维为三倍
+    \item \textbf{零点能}：$T=0$ 时每个模式仍有 $\dfrac12\hbar\omega_E$，不可略去
     \item \textbf{金刚石结构}：晶胞含 8 个原子，最近邻距 $d=\dfrac{\sqrt3}{4}a$
 \end{itemize}
 \end{tipbox}
 
 \begin{derivationbox}[标准解题过程]
-\textbf{Step 1: 建立三维爱因斯坦模型的均方位移公式}
+\textbf{Step 1: 均方位移的量子力学推导}
 
-\begin{insightbox}[一维量子谐振子的均方位移推导]
 对一维谐振子 $H=\frac{p^2}{2m}+\frac12m\omega_E^2x^2$，能量本征值 $E_n=(n+\frac12)\hbar\omega_E$。由维里定理，平均势能等于总能量的一半：
 \[
 \frac12m\omega_E^2\langle x^2\rangle_n = \frac12E_n = \frac12\Bigl(n+\frac12\Bigr)\hbar\omega_E.
@@ -39,76 +38,63 @@
 \begin{equation}
 \langle x^2\rangle = \frac{(\langle n\rangle+\frac12)\hbar}{m\omega_E} = \frac{\hbar}{2m\omega_E}\coth\frac{\hbar\omega_E}{2k_BT}.
 \end{equation}
-最后一步利用了恒等式 $\coth x = \frac{e^x+e^{-x}}{e^x-e^{-x}} = 1+\frac{2}{e^{2x}-1}$ 以及 $\langle n\rangle=1/(e^{2x}-1)$（令 $x=\hbar\omega_E/2k_BT$）。
-\end{insightbox}
 
-在爱因斯坦模型中，每个原子在 $x,y,z$ 三个方向独立振动，频率均为 $\omega_E$。三维总均方位移为三个方向之和：
+在爱因斯坦模型中，每个原子在 $x,y,z$ 三个方向独立振动，频率均为 $\omega_E$。三维总均方位移为：
 \begin{equation}
-\boxed{\langle r^2\rangle = 3\langle x^2\rangle = \frac{3\hbar}{2m\omega_E}\coth\frac{\hbar\omega_E}{2k_BT} = \frac{3\hbar^2}{2mk_B\Theta_E}\coth\frac{\Theta_E}{2T}.}
+\boxed{\langle r^2\rangle = 3\langle x^2\rangle = \frac{3\hbar^2}{2mk_B\Theta_E}\coth\frac{\Theta_E}{2T} = \frac{3\hbar^2}{mk_B\Theta_E}\Bigl(\frac{1}{e^{\Theta_E/T}-1}+\frac12\Bigr).}
 \label{eq:diamond-msd-full}
 \end{equation}
-
-利用 $\coth x = 1+\dfrac{2}{e^{2x}-1}$，可写成等价形式：
-\begin{equation}
-\langle r^2\rangle = \frac{3\hbar^2}{mk_B\Theta_E}\Bigl(\frac{1}{e^{\Theta_E/T}-1}+\frac12\Bigr).
-\label{eq:diamond-msd-alt}
-\end{equation}
-其中第一项为\textbf{热激发贡献}，第二项为\textbf{零点振动}。
+其中第一项为热激发贡献，第二项 $1/2$ 为零点振动。二者均不可随意略去——$T\ll\Theta_E$ 时零点项反而占主导。
 
 \textbf{Step 2: 室温 ($300\,\mathrm{K}$) 下的方均根位移}
 
 对金刚石，$T=300\,\mathrm{K}\ll\Theta_E=1320\,\mathrm{K}$，故 $e^{\Theta_E/T}=e^{4.4}\approx81.45\gg1$。
 
-\textit{说明}：本题原解答中只取了热激发项（略去零点振动的 $1/2$）。严格来说 $T\ll\Theta_E$ 时零点振动占主导，不应略去；但以下按题目/教材的处理方式展示。
-
-取热激发项：
-\begin{equation}
-\langle r^2\rangle \approx \frac{3\hbar^2}{mk_B\Theta_E}\cdot\frac{1}{e^{\Theta_E/T}-1}.
-\end{equation}
-代入常数：
+先计算系数：
 \begin{align}
     \frac{3\hbar^2}{mk_B\Theta_E} &= \frac{3\times(1.0546\times10^{-34})^2}{(19.92\times10^{-27})(1.3807\times10^{-23})(1320)} \nonumber\\
     &\approx 9.19\times10^{-23}\,\mathrm{m^2} = 9.19\times10^{-3}\,\text{\AA}^2.
 \end{align}
-热激发因子：
+
+两个贡献分别为：
+\begin{itemize}
+    \item 热激发因子：$\displaystyle\frac{1}{e^{4.4}-1}\approx\frac{1}{80.45}\approx0.01243$
+    \item 零点项：$\displaystyle\frac12=0.5$
+\end{itemize}
+
+代入完整公式：
 \begin{equation}
-\frac{1}{e^{4.4}-1} \approx \frac{1}{80.45} \approx 0.01243.
-\end{equation}
-因此
-\begin{equation}
-\langle r^2\rangle \approx 9.19\times10^{-23}\times0.01243 \approx 1.14\times10^{-24}\,\mathrm{m^2} = 1.14\times10^{-4}\,\text{\AA}^2.
+\langle r^2\rangle \approx 9.19\times10^{-23}\times(0.01243+0.5) \approx 4.71\times10^{-23}\,\mathrm{m^2} = 4.71\times10^{-3}\,\text{\AA}^2.
 \end{equation}
 方均根位移
 \begin{equation}
-\sqrt{\langle r^2\rangle} \approx \sqrt{1.14\times10^{-4}}\,\text{\AA} \approx 1.07\times10^{-2}\,\text{\AA} \approx 0.0107\,\text{\AA}.
+\sqrt{\langle r^2\rangle} \approx \sqrt{4.71\times10^{-3}}\,\text{\AA} \approx 6.86\times10^{-2}\,\text{\AA} \approx 0.0686\,\text{\AA}.
 \end{equation}
 
 \begin{insightbox}[金刚石结构的几何——8 个原子与最近邻距]
-\textbf{1. 为什么晶胞含 8 个原子？}
-
 金刚石结构由\textbf{两套 FCC 晶格}沿体对角线方向套构而成，套构位移为 $(\frac14,\frac14,\frac14)a$。
 \begin{itemize}
     \item 单套 FCC 晶胞的原子数：$8\times\frac18$（角）$+6\times\frac12$（面）$=4$
     \item 两套 FCC 套构：$4\times2=8$ 个原子
 \end{itemize}
 
-\textbf{2. 为什么最近邻距 $d=\sqrt3\,a/4$？}
-
 取第一套 FCC 角上的原子（坐标 $(0,0,0)$），它到第二套 FCC 中最近原子的距离为：
 \[
-d = \sqrt{\Bigl(\frac{a}{4}\Bigr)^2+\Bigl(\frac{a}{4}\Bigr)^2+\Bigl(\frac{a}{4}\Bigr)^2} = \sqrt{\frac{3a^2}{16}} = \frac{\sqrt3}{4}a.
+d = \sqrt{\Bigl(\frac{a}{4}\Bigr)^2+\Bigl(\frac{a}{4}\Bigr)^2+\Bigl(\frac{a}{4}\Bigr)^2} = \frac{\sqrt3}{4}a.
 \]
 金刚石中每个碳原子与周围 4 个碳原子形成正四面体配位，键角 $109.5^\circ$，键长正是 $d=\sqrt3\,a/4$。
 \end{insightbox}
 
-金刚石为金刚石结构，最近邻原子间距：
+金刚石最近邻原子间距：
 \begin{equation}
 \boxed{d = \frac{\sqrt3}{4}a = \frac{\sqrt3}{4}\times3.57\,\text{\AA} \approx 1.546\,\text{\AA}.}
 \end{equation}
 所求比值
 \begin{equation}
-\boxed{\frac{\sqrt{\langle r^2\rangle}}{d} \approx \frac{0.0107}{1.546} \approx 6.9\times10^{-3} \approx 0.69\%.}
+\boxed{\frac{\sqrt{\langle r^2\rangle}}{d} \approx \frac{0.0686}{1.546} \approx 4.4\times10^{-2} \approx 4.5\%.}
 \end{equation}
+
+\textit{附注}：若只计热激发部分（相对于 $T=0$ 平衡位置的额外偏移），则 $\langle r^2\rangle_{\text{thermal}}\approx1.14\times10^{-4}\,\text{\AA}^2$，对应比值仅约 $0.69\%$。这一区别在 $\Theta_E\gg T$ 时尤为显著——零点振动是低温区均方位移的主要来源。
 
 \textbf{Step 3: 绝对零度下的单位体积零点振动能}
 
@@ -141,7 +127,7 @@ E_{\text{zero}} = 3N\cdot\frac12\hbar\omega_E = \frac32 Nk_B\Theta_E.
 \toprule
 问 & 结果 \\
 \midrule
-(1) 方均根位移/原子间距 & $\displaystyle \approx 0.69\%$ \\[8pt]
+(1) 方均根位移/原子间距 & $\displaystyle \approx 4.5\%$（总量子涨落，含零点振动） \\[8pt]
 (2) 单位体积零点能 & $\displaystyle \approx 4.8\times10^9\,\mathrm{J/m^3}\;(=1.15\times10^9\,\mathrm{cal/m^3})$ \\
 \bottomrule
 \end{tabular}
@@ -149,32 +135,21 @@ E_{\text{zero}} = 3N\cdot\frac12\hbar\omega_E = \frac32 Nk_B\Theta_E.
 \end{formulabox}
 
 \begin{insightbox}[物理图像与概念深化]
-\textbf{1. 原题解答是否严谨？——零点振动不可略}
+\textbf{1. 热贡献 vs 零点贡献的区分}
 
-严格公式 \eqref{eq:diamond-msd-alt} 中，$T=300\,\mathrm{K}$、$\Theta_E=1320\,\mathrm{K}$ 时：
+在爱因斯坦模型中，均方位移公式 \eqref{eq:diamond-msd-full} 的两项有明确的物理含义：
 \begin{itemize}
-    \item 热激发项：$\dfrac{1}{e^{4.4}-1}\approx0.012$
-    \item 零点项：$\dfrac12=0.5$
-\end{itemize}
-零点项是热激发项的 $\sim40$ 倍！若按完整公式计算：
-\begin{align}
-    \langle r^2\rangle_{\text{full}} &= \frac{3\hbar^2}{mk_B\Theta_E}\Bigl(0.012+\frac12\Bigr) \approx 9.19\times10^{-23}\times0.512 \nonumber\\
-    &\approx 4.7\times10^{-23}\,\mathrm{m^2} = 4.7\times10^{-3}\,\text{\AA}^2,\\
-    \sqrt{\langle r^2\rangle_{\text{full}}} &\approx \sqrt{4.7\times10^{-3}}\,\text{\AA} \approx 0.069\,\text{\AA}.
-\end{align}
-所求比值
-\begin{equation}
-\frac{\sqrt{\langle r^2\rangle_{\text{full}}}}{d} \approx \frac{0.069}{1.546} \approx 4.5\%.
-\end{equation}
-
-\textit{结论}：
-\begin{itemize}
-    \item 若问\textbf{总量子涨落}（绝对均方位移，含零点振动），正确答案应为 $\bm{\sim4.5\%}$，原题解答的 $0.69\%$ \textbf{遗漏了主导的零点贡献}，不够严谨。
-    \item 若问\textbf{热振动位移}（仅由温度引起的、相对于 $T=0$ 平衡位置的额外偏移），则 $0.69\%$ 是合理的。这对应于估算热膨胀、Lindemann 判据等情境。
-    \item 在 X射线衍射的 Debye--Waller 因子中，均方位移必须包含零点贡献；在讨论``热振幅''时，教材有时会只计热激发部分，但这需要明确说明。
+    \item $\dfrac{1}{e^{\Theta_E/T}-1}$：热激发声子引起的位移涨落，$T\to0$ 时趋于零
+    \item $\dfrac12$：零点量子涨落，即使 $T=0$ 仍存在
 \end{itemize}
 
-\textbf{建议}：考试中若题目只说``估算均方位移''而未限定``热''，应给出完整结果（含零点能），或在答案中明确指出所作近似。
+$T\ll\Theta_E$ 时（如金刚石在室温），$e^{\Theta_E/T}\gg1$，热激发项被强烈抑制，零点项占绝对主导。此时若只计算热贡献，会严重低估实际均方位移。
+
+不同物理情境下应选用不同量：
+\begin{itemize}
+    \item \textbf{X射线衍射 Debye--Waller 因子}、\textbf{穆斯堡尔效应}：需用总量子涨落（含零点项）
+    \item \textbf{Lindemann 判据}、\textbf{热膨胀估算}：通常关注热激发引起的额外偏移（相对于 $T=0$ 基态）
+\end{itemize}
 
 \textbf{2. 为什么金刚石的爱因斯坦温度如此高？}
 
@@ -182,7 +157,7 @@ $\Theta_E=1320\,\mathrm{K}$ 远高于室温，说明：
 \begin{itemize}
     \item 碳原子质量轻 ($m\sim20\times10^{-27}\,\mathrm{kg}$)，惯性小
     \item C--C 共价键极强，有效弹簧常数 $k$ 很大
-    \item 由 $\omega=\sqrt{k/m}$，轻质量 + 硬弹簧 → 高频率 → 高爱因斯坦温度
+    \item 由 $\omega=\sqrt{k/m}$，轻质量 + 硬弹簧 $\to$ 高频率 $\to$ 高爱因斯坦温度
 \end{itemize}
 因此金刚石在室温下仍``冻结''在量子基态附近，热激发很弱，这正是它超高硬度和热稳定性的微观来源。
 
