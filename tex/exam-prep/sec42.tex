@@ -1,0 +1,160 @@
+% ============================================================
+% Section 42: 一维单原子链的晶格波能量与熔点频率
+% ============================================================
+\newpage
+\section{固体理论：一维单原子链的晶格波能量与熔点频率}
+\label{sec:1d-chain-energy}
+
+\begin{modelbox}[题目：晶格波的时间平均能量与熔点频率]
+考虑一个纵波 $x_n=A\cos(\omega t-qna)$ 在原子质量为 $m$、间距为 $a$ 的单原子线型点阵中传播。只考虑最近邻相互作用，恢复力系数为 $\beta$。
+\begin{enumerate}
+    \item 求每个原子的时间平均总能量；
+    \item 设一维晶体在熔点 $T_m$ 时的原子振动振幅是平衡间距的 $10\%$，证明熔点附近原子的振动频率
+    \[
+    \omega = \frac{10}{a}\sqrt{\frac{2k_BT_m}{m}}.
+    \]
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{动能与势能的时间平均}：谐振子中 $\langle K\rangle=\langle U\rangle$，总能量 $E=2\langle K\rangle$
+    \item \textbf{键能的归属}：每根键由两个原子共享，计算单原子势能时要乘 $1/2$
+    \item \textbf{色散关系的化简}：利用 $\omega^2=(4\beta/m)\sin^2(qa/2)$ 把势能表达式中的 $\beta$ 消去
+    \item \textbf{能量均分定理}：经典极限下每个自由度的平均能量为 $k_BT$
+    \item \textbf{Lindemann 判据}：熔点振幅 $\sim(0.1\text{--}0.15)a$ 是经验规律，本题取 $10\%$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 时间平均动能}
+
+第 $n$ 个原子的瞬时动能
+\begin{equation}
+K_n = \frac12 m\dot x_n^{\,2} = \frac12 m\omega^2 A^2\sin^2(\omega t-qna).
+\end{equation}
+对周期 $T=2\pi/\omega$ 求时间平均，利用 $\langle\sin^2\rangle=1/2$：
+\begin{equation}
+\boxed{\langle K\rangle = \frac14 m\omega^2 A^2.}
+\label{eq:1d-K-avg}
+\end{equation}
+
+\textbf{Step 2: 时间平均势能}
+
+只计最近邻，第 $n$ 与 $n+1$ 原子间的键能为
+\begin{equation}
+U_{n,n+1} = \frac12\beta(x_n-x_{n+1})^2.
+\end{equation}
+每根键由两端原子共享，故第 $n$ 个原子分摊的势能为
+\begin{equation}
+U_n = \frac12 U_{n,n+1} = \frac14\beta(x_n-x_{n+1})^2.
+\end{equation}
+
+计算位移差（和差化积）：
+\begin{align}
+x_n-x_{n+1} &= A\bigl[\cos(\omega t-qna)-\cos(\omega t-q(n+1)a)\bigr] \nonumber\\
+&= 2A\sin\frac{qa}{2}\,\sin\Bigl(\omega t-qna-\frac{qa}{2}\Bigr).
+\end{align}
+平方后对时间取平均，$\langle\sin^2\rangle=1/2$：
+\begin{equation}
+\overline{(x_n-x_{n+1})^2} = 4A^2\sin^2\frac{qa}{2}\cdot\frac12 = 2A^2\sin^2\frac{qa}{2}.
+\end{equation}
+因此
+\begin{equation}
+\langle U\rangle = \frac14\beta\cdot 2A^2\sin^2\frac{qa}{2} = \frac12\beta A^2\sin^2\frac{qa}{2}.
+\label{eq:1d-U-avg-raw}
+\end{equation}
+
+\textbf{Step 3: 利用色散关系化简势能}
+
+一维单原子链的色散关系为
+\begin{equation}
+\omega^2 = \frac{2\beta}{m}(1-\cos qa) = \frac{4\beta}{m}\sin^2\frac{qa}{2},
+\end{equation}
+即
+\begin{equation}
+\beta\sin^2\frac{qa}{2} = \frac14 m\omega^2.
+\end{equation}
+代入式 \eqref{eq:1d-U-avg-raw}：
+\begin{equation}
+\langle U\rangle = \frac12\cdot\frac14 m\omega^2 A^2 = \frac14 m\omega^2 A^2.
+\end{equation}
+与式 \eqref{eq:1d-K-avg} 比较，得到\textbf{能量均分}：
+\begin{equation}
+\boxed{\langle K\rangle = \langle U\rangle = \frac14 m\omega^2 A^2.}
+\end{equation}
+
+\textbf{Step 4: 每个原子的时间平均总能量}
+\begin{equation}
+\boxed{\langle E\rangle = \langle K\rangle + \langle U\rangle = \frac12 m\omega^2 A^2.}
+\label{eq:1d-E-avg}
+\end{equation}
+
+\textbf{Step 5: 熔点频率的推导}
+
+在经典极限下（熔点附近通常满足），一维谐振子每个自由度的平均能量为 $k_BT$（动能贡献 $\frac12k_BT$，势能贡献 $\frac12k_BT$）。由式 \eqref{eq:1d-E-avg}：
+\begin{equation}
+\frac12 mA^2\omega^2 = k_BT_m.
+\end{equation}
+
+题设熔点时振动振幅为平衡间距的 $10\%$，即
+\begin{equation}
+A = 0.1\,a = \frac{a}{10}.
+\end{equation}
+代入解出 $\omega$：
+\begin{equation}
+\omega = \frac{1}{A}\sqrt{\frac{2k_BT_m}{m}} = \frac{10}{a}\sqrt{\frac{2k_BT_m}{m}}.
+\end{equation}
+证毕。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{cl}
+\toprule
+问 & 结果 \\
+\midrule
+(1) 时间平均总能量 & $\displaystyle \langle E\rangle = \frac12 m\omega^2 A^2$ \\[8pt]
+(2) 熔点附近振动频率 & $\displaystyle \omega = \frac{10}{a}\sqrt{\frac{2k_BT_m}{m}}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像与深层联系]
+\textbf{1. 为什么 $\langle K\rangle=\langle U\rangle$？}
+
+对任何简谐振子（无论是一维、二维还是三维），动能正比于 $\sin^2(\omega t+\phi)$，势能正比于 $\cos^2(\omega t+\phi)$（或反之）。由于 $\langle\sin^2\rangle=\langle\cos^2\rangle=1/2$，两者的时间平均值必然相等。这一结论与维度、晶格结构、波矢 $q$ 的具体取值均无关，是简谐近似的普适结果。
+
+\textbf{2. 势能计算中的 $1/2$ 因子陷阱}
+
+初学者常犯的错误：
+\begin{itemize}
+    \item 错误 1：直接用 $U_n=\frac12\beta(x_n-x_{n+1})^2$，忘了每根键由两个原子共享，多算了一倍。
+    \item 错误 2：把所有与原子 $n$ 相连的键（左右两根）都算作 $U_n$ 的独享，得到 $U_n=\frac14\beta[(x_n-x_{n-1})^2+(x_n-x_{n+1})^2]$。这在数学上其实等价于正确结果（因为每根键只出现一次），但概念上容易混淆。
+\end{itemize}
+最清晰的归属方式是：\textbf{先算单键能量，再乘以 $1/2$ 归给一个原子}。
+
+\textbf{3. Lindemann 判据的简化版}
+
+本题是\textbf{Lindemann 熔化判据}的一维简化形式。该判据认为：当原子热振动的均方根振幅达到晶格常数的某一临界比例（三维通常取 $10\%\text{--}15\%$）时，晶格失稳熔化。本题直接给定临界比例 $\eta=A/a=0.1$，结合能量均分定理即可导出熔点频率。
+
+从式 \eqref{eq:1d-E-avg} 出发，可反解熔点温度：
+\[
+T_m = \frac{m\omega^2 A^2}{2k_B} = \frac{m\omega^2 a^2\eta^2}{2k_B}.
+\]
+若已知晶格参数 $a$ 和力常数 $\beta$（从而确定 $\omega$），即可估算熔点。这是固体物理中从微观参数预测宏观相变温度的经典范例。
+
+\textbf{4. 与德拜模型的联系}
+
+在德拜模型中，晶格的总零点能和热容均由声子模式的能量叠加得到。单个模式的平均能量正是 $\langle E\rangle=\hbar\omega(n_B+1/2)$。本题的经典极限对应高温 $k_BT\gg\hbar\omega$，此时 $\langle E\rangle\approx k_BT$，与量子结果自然衔接。
+\end{insightbox}
+
+\begin{thinkbox}[考场速记：简谐链能量问题的三步走]
+\begin{enumerate}
+    \item \textbf{写动能}：$K=\frac12 m\dot x^2$，时间平均得 $\langle K\rangle=\frac14 m\omega^2 A^2$
+    \item \textbf{写势能}：先算键能 $U_{\text{bond}}=\frac12\beta(\Delta x)^2$，单原子分摊乘 $1/2$
+    \item \textbf{用色散化简}：把 $\beta\sin^2(qa/2)$ 换成 $\frac14 m\omega^2$，得到 $\langle U\rangle=\langle K\rangle$
+\end{enumerate}
+\textit{检验}：若结果中 $\langle K\rangle\neq\langle U\rangle$，必定在某一步漏了因子 $2$ 或 $1/2$。
+\end{thinkbox}
