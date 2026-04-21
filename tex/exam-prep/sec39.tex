@@ -1,0 +1,126 @@
+% ============================================================
+% Section 39: 一维复式格子的晶格振动——双原子分子晶体的声子色散
+% ============================================================
+\newpage
+\section{固体理论：一维复式格子的晶格振动——双原子分子晶体的声子色散}
+\label{sec:diatomic-lattice-vibration}
+
+\begin{modelbox}[题目：双原子分子晶体的简正振动模式]
+讨论双原子分子晶体如固态 $\mathrm{H}_2$ 的简正振动模式。晶体可用一维复式格子模拟：格点上原子相同，质量为 $m$，相邻原子间距均为 $a/2$（晶格常数为 $a$），但最近邻原子间相互作用恢复力系数交错取值
+\[
+\beta_1 = 10c, \qquad \beta_2 = c.
+\]
+试求 $q=0$ 及布里渊区边界处的 $\omega(q)$，并定性画出色散关系。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{一维复式格子}：基元含两个原子，出现声学支与光学支两支色散
+    \item \textbf{运动方程与格波假设}：偶数、奇数原子位移耦合，得到 $2\times2$ 本征值问题
+    \item \textbf{长波极限}：声学支 $\omega\propto q$（弹性波），光学支 $\omega(0)\neq 0$
+    \item \textbf{布里渊区边界}：当 $\beta_1\neq\beta_2$ 时出现频率禁带
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 模型与运动方程}
+
+设第 $2n$ 个原子位移为 $u_{2n}$，第 $2n+1$ 个原子位移为 $u_{2n+1}$。运动方程为
+\begin{align}
+    m\ddot{u}_{2n} &= \beta_1(u_{2n+1}-u_{2n}) + \beta_2(u_{2n-1}-u_{2n}), \\
+    m\ddot{u}_{2n+1} &= \beta_2(u_{2n+2}-u_{2n+1}) + \beta_1(u_{2n}-u_{2n+1}).
+\end{align}
+
+\textbf{Step 2: 格波假设与本征方程}
+
+设格波解（注意奇数原子位置偏移 $a/2$）：
+\[
+u_{2n} = A e^{i(qna-\omega t)}, \qquad u_{2n+1} = B e^{i[q(n+\frac12)a-\omega t]}.
+\]
+代入运动方程，整理得关于 $A,B$ 的齐次线性方程组。非零解条件要求系数行列式为零，得到色散关系：
+\begin{equation}
+\boxed{m\omega^2 = (\beta_1+\beta_2) \pm \sqrt{\beta_1^2+\beta_2^2+2\beta_1\beta_2\cos(qa)}}
+\end{equation}
+或等价写成
+\begin{equation}
+\omega_{\pm}^2(q) = \frac{1}{m}\Bigl[(\beta_1+\beta_2) \pm \sqrt{(\beta_1+\beta_2)^2 - 4\beta_1\beta_2\sin^2\frac{qa}{2}}\Bigr].
+\label{eq:diatomic-dispersion}
+\end{equation}
+其中 $\omega_-$ 为\textbf{声学支}，$\omega_+$ 为\textbf{光学支}。
+
+\textbf{Step 3: 长波极限 $q\to 0$}
+
+当 $q\to0$ 时，$\sin^2(qa/2)\approx (qa)^2/4$。对式 \eqref{eq:diatomic-dispersion} 中的根号作泰勒展开 $\sqrt{1-x}\approx 1-x/2$：
+
+\textit{声学支}：
+\begin{align}
+    \omega_-^2(q) &\approx \frac{1}{m}\Bigl[(\beta_1+\beta_2) - (\beta_1+\beta_2)\Bigl(1-\frac{2\beta_1\beta_2}{(\beta_1+\beta_2)^2}\frac{(qa)^2}{4}\Bigr)\Bigr] \nonumber\\
+    &= \frac{\beta_1\beta_2}{2m(\beta_1+\beta_2)}(qa)^2.
+\end{align}
+故
+\begin{equation}
+\boxed{\omega_-(q) \approx \sqrt{\frac{\beta_1\beta_2}{2m(\beta_1+\beta_2)}}\,a\,|q| \quad (q\to0)}
+\end{equation}
+即 $\omega_-\propto q$，对应弹性波；且 $\omega_-(0)=0$。
+
+\textit{光学支}：
+\begin{equation}
+    \omega_+^2(q) \approx \frac{2(\beta_1+\beta_2)}{m} - \frac{\beta_1\beta_2}{2m(\beta_1+\beta_2)}(qa)^2.
+\end{equation}
+在 $q=0$ 处
+\begin{equation}
+\boxed{\omega_+(0) = \sqrt{\frac{2(\beta_1+\beta_2)}{m}} = \sqrt{\frac{22c}{m}}}
+\end{equation}
+（代入 $\beta_1=10c,\beta_2=c$）。
+
+\textbf{Step 4: 布里渊区边界 $q=\pm\pi/a$}
+
+在边界处 $\sin^2(qa/2)=1$，式 \eqref{eq:diatomic-dispersion} 简化为
+\begin{equation}
+    \omega_{\pm}^2\Bigl(\frac{\pi}{a}\Bigr) = \frac{1}{m}\Bigl[(\beta_1+\beta_2)\pm(\beta_1-\beta_2)\Bigr].
+\end{equation}
+因此
+\begin{align}
+    \omega_-^2\Bigl(\frac{\pi}{a}\Bigr) &= \frac{2\beta_2}{m} \quad\Longrightarrow\quad \boxed{\omega_-\Bigl(\frac{\pi}{a}\Bigr)=\sqrt{\frac{2c}{m}}}, \\[4pt]
+    \omega_+^2\Bigl(\frac{\pi}{a}\Bigr) &= \frac{2\beta_1}{m} \quad\Longrightarrow\quad \boxed{\omega_+\Bigl(\frac{\pi}{a}\Bigr)=\sqrt{\frac{20c}{m}}}.
+\end{align}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+波矢 $q$ & 声学支 $\omega_-$ & 光学支 $\omega_+$ \\
+\midrule
+$q=0$ & $0$ & $\displaystyle\sqrt{\frac{22c}{m}}$ \\[6pt]
+$q=\pm\pi/a$ & $\displaystyle\sqrt{\frac{2c}{m}}$ & $\displaystyle\sqrt{\frac{20c}{m}}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[色散关系的物理图像]
+\begin{itemize}
+    \item \textbf{声学支}：描述原胞质心的整体运动。$q=0$ 时所有原子同相振动，频率为零；向边界单调上升，斜率由等效弹性常数决定。
+    \item \textbf{光学支}：描述原胞内两原子的相对振动。$q=0$ 时同胞内原子反相振动，频率最高；向边界略向下弯曲（因 $22c>20c$）。
+    \item \textbf{频率禁带}：由于 $\beta_1\neq\beta_2$，布里渊区边界处两支频率不简并，存在禁带
+    \[
+    \Delta\omega = \sqrt{\frac{20c}{m}} - \sqrt{\frac{2c}{m}}.
+    \]
+    若 $\beta_1=\beta_2$，则禁带闭合，退化为单原子链的简并点。
+    \item \textbf{与单缝/双缝的类比}（供记忆）：声学支像``基态''，光学支像``激发态''；禁带宽度直接反映两种键的强度差异。
+\end{itemize}
+\end{insightbox}
+
+\begin{thinkbox}[考场速记：双原子链色散公式的快速重建]
+核心结构：
+\[
+m\omega^2 = (\beta_1+\beta_2) \pm \sqrt{(\beta_1+\beta_2)^2 - 4\beta_1\beta_2\sin^2\frac{qa}{2}}.
+\]
+快速检验：
+\begin{enumerate}
+    \item $q=0$：根号内 $=(\beta_1+\beta_2)^2$，声学支 $m\omega^2=(\beta_1+\beta_2)-(\beta_1+\beta_2)=0$ \checkmark
+    \item $q=\pi/a$：根号内 $=(\beta_1-\beta_2)^2$，两支分别为 $2\beta_2$ 与 $2\beta_1$ \checkmark
+    \item 若 $\beta_1=\beta_2=\beta$：退化为单原子链 $m\omega^2 = 2\beta(1\pm\cos\frac{qa}{2})$，即 $4\beta\sin^2\frac{qa}{4}$ 与 $4\beta\cos^2\frac{qa}{4}$，边界处简并 \checkmark
+\end{enumerate}
+\end{thinkbox}
