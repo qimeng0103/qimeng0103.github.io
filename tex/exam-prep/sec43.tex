@@ -106,13 +106,29 @@ U = \frac12 m\omega_E^2 x^2.
     \item 在均方位移问题上，爱因斯坦模型给出单原子、单频率的结果，无法区分纵向和横向振动差异（这些需要德拜模型或更完整的晶格动力学）。
 \end{itemize}
 
-\textbf{3. 与德拜模型的对比}
+\textbf{3. 爱因斯坦模型 vs 德拜模型——均方位移的温度依赖}
+
+两种模型在高温极限给出相同结果 $\langle x^2\rangle\propto T$，但低温行为截然不同：
+
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+ & \textbf{高温} ($T\gg\Theta$) & \textbf{低温} ($T\ll\Theta$) \\
+\midrule
+\textbf{爱因斯坦} & $\displaystyle\langle x^2\rangle\approx\frac{k_BT}{m\omega_E^2}\propto T$ & $\displaystyle\langle x^2\rangle\to\frac{\hbar}{2m\omega_E}=\text{常数}$ \\[10pt]
+\textbf{德拜 (3D)} & $\displaystyle\langle r^2\rangle\propto T$ & $\displaystyle\langle r^2\rangle\propto T$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textit{为什么低温行为不同？}
 
 \begin{itemize}
-    \item \textbf{爱因斯坦模型}：所有模式频率相同 $\omega=\omega_E$，简化为独立谐振子集合。
-    \item \textbf{德拜模型}：把晶格当作连续弹性介质，频率上限为 $\omega_D$，低温时主要激发低频声学模，成功解释 $C_V\propto T^3$。
-    \item 在均方位移问题上，德拜模型给出的低温行为与爱因斯坦模型不同（德拜：$\langle x^2\rangle\propto T$，爱因斯坦：$\langle x^2\rangle\propto T$；但在更精确的低温极限，德拜模型有对数修正），但高温极限二者趋于一致。
+    \item \textbf{爱因斯坦模型}：所有原子以\textbf{单一频率} $\omega_E$ 振动。当 $k_BT\ll\hbar\omega_E$ 时，热激发被``冻结''，原子只保留零点振动，故 $\langle x^2\rangle$ 趋于常数。
+    \item \textbf{德拜模型}：存在一系列从 $0$ 到 $\omega_D$ 的声学模。即使温度很低，总有 $\omega\ll k_BT/\hbar$ 的低频模被热激发。三维下低频态密度 $g(\omega)\propto\omega^2$，积分后仍给出 $\langle r^2\rangle\propto T$（不会饱和）。
 \end{itemize}
+
+\textit{简言之}：爱因斯坦模型``忘记''了晶格中存在任意低频的声学振动，因此在低温下错误地预测了振动冻结；德拜模型通过引入声子谱，成功描述了低温下持续的热激发。
 
 \textbf{4. Lindemann 判据的视角}
 
