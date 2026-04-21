@@ -1,0 +1,175 @@
+% ============================================================
+% Section 51: 布里渊散射——光子与声子的非弹性散射
+% ============================================================
+\newpage
+\section{固体理论：布里渊散射——光子与声子的非弹性散射}
+\label{sec:brillouin-scattering}
+
+\begin{modelbox}[题目：光受透明固体的散射与声子相互作用]
+光受透明固体的散射可以看成是光量子与声子相互作用过程的结果。试利用能量和动量守恒定律证明，由于散射而偏转了 $\theta$ 角的光束必定包含这样的成分，其波长相对于入射光移动了
+\begin{equation}
+\Delta\lambda = \pm\frac{2nv}{c}\lambda_0\sin\frac{\theta}{2}
+\end{equation}
+式中，$n$ 为物质的折射率，$v$ 为固体中的声速，$c$ 为真空中的光速，$\lambda_0$ 为入射光在真空中的波长。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{布里渊散射}：光子与声子的非弹性散射，属于拉曼散射的近亲，频移在 $10^{9}\sim10^{11}\,\mathrm{Hz}$ 量级
+    \item \textbf{守恒律}：准动量守恒 $\vec k_0 = \vec k \pm \vec q$（$+$ 发射声子，$-$ 吸收声子）；能量守恒 $\hbar\omega_0 = \hbar\omega \pm \hbar\omega_\mathrm{ph}$
+    \item \textbf{小频移近似}：声子能量远小于光子能量，$|\omega_0 - \omega| \ll \omega_0$，故 $|\vec k| \approx |\vec k_0|$
+    \item \textbf{斯托克斯 / 反斯托克斯}：发射声子（$+$）对应斯托克斯线（红移）；吸收声子（$-$）对应反斯托克斯线（蓝移）
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 光子与声子的动量关系}
+
+光在介质中的波矢大小为
+\begin{equation}
+|\vec k| = \frac{2\pi n}{\lambda},
+\end{equation}
+其中 $\lambda$ 为光在真空中的波长。对于可见光，光子动量远大于声子动量，散射过程中光子能量变化极小，因此可近似认为散射光子动量大小等于入射光子动量：
+\begin{equation}
+|\vec k| \approx |\vec k_0| = \frac{2\pi n}{\lambda_0}.
+\end{equation}
+
+设入射光波矢为 $\vec k_0$，散射光波矢为 $\vec k$，散射角为 $\theta$。在声子参与的过程中，准动量守恒为
+\begin{equation}
+\vec k_0 = \vec k \pm \vec q,
+\end{equation}
+其中 $\vec q$ 为被吸收（$-$）或发射（$+$）的声子波矢。由矢量几何关系（等腰三角形，顶角为 $\theta$），声子波矢大小为
+\begin{equation}
+|\vec q| = 2|\vec k_0|\sin\frac{\theta}{2} = \frac{4\pi n}{\lambda_0}\sin\frac{\theta}{2}.
+\label{eq:brillouin-q}
+\end{equation}
+
+\textbf{Step 2: 能量守恒与频率关系}
+
+设声速为 $v$，声子角频率为 $\omega_\mathrm{ph} = v|\vec q|$（声学支色散）。代入 \eqref{eq:brillouin-q}：
+\begin{equation}
+\omega_\mathrm{ph} = v\cdot\frac{4\pi n}{\lambda_0}\sin\frac{\theta}{2} = \frac{4\pi nv}{\lambda_0}\sin\frac{\theta}{2}.
+\end{equation}
+
+入射光子和散射光子的角频率分别为
+\begin{equation}
+\omega_0 = \frac{2\pi c}{\lambda_0}, \qquad \omega = \frac{2\pi c}{\lambda}.
+\end{equation}
+（注：光子的能量仅与频率有关，与介质折射率无关，故用真空中的 $c$ 和真空波长。介质中的波矢因子 $n$ 已在动量守恒中体现。）
+
+能量守恒定律为
+\begin{equation}
+\hbar\omega - \hbar\omega_0 = \pm\hbar\omega_\mathrm{ph},
+\end{equation}
+正号对应\textbf{反斯托克斯过程}（吸收声子，散射光频率升高），负号对应\textbf{斯托克斯过程}（发射声子，散射光频率降低）。代入频率表达式：
+\begin{equation}
+\frac{2\pi c}{\lambda} - \frac{2\pi c}{\lambda_0} = \pm\frac{4\pi nv}{\lambda_0}\sin\frac{\theta}{2}.
+\end{equation}
+
+两边约去 $2\pi c$：
+\begin{equation}
+\frac{1}{\lambda} - \frac{1}{\lambda_0} = \pm\frac{2nv}{c\lambda_0}\sin\frac{\theta}{2}.
+\end{equation}
+
+\textbf{Step 3: 波长移动的化简}
+
+将左边通分：
+\begin{equation}
+\frac{\lambda_0 - \lambda}{\lambda\lambda_0} = \pm\frac{2nv}{c\lambda_0}\sin\frac{\theta}{2}.
+\end{equation}
+
+由于声子能量远小于光子能量，波长变化极小，$\lambda \approx \lambda_0$，于是 $\lambda\lambda_0 \approx \lambda_0^2$：
+\begin{equation}
+\frac{\lambda_0 - \lambda}{\lambda_0^2} \approx \pm\frac{2nv}{c\lambda_0}\sin\frac{\theta}{2}
+\quad\Longrightarrow\quad
+\Delta\lambda = \lambda - \lambda_0 \approx \pm\frac{2nv}{c}\lambda_0\sin\frac{\theta}{2}.
+\end{equation}
+
+证毕。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{cl}
+\toprule
+量 & 结果 \\
+\midrule
+声子波矢大小 $|\vec q|$ & $\displaystyle \frac{4\pi n}{\lambda_0}\sin\frac{\theta}{2}$ \\[10pt]
+声子角频率 $\omega_\mathrm{ph}$ & $\displaystyle \frac{4\pi nv}{\lambda_0}\sin\frac{\theta}{2}$ \\[10pt]
+波长移动量 $\Delta\lambda$ & $\displaystyle \pm\frac{2nv}{c}\lambda_0\sin\frac{\theta}{2}$ \\[10pt]
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像与概念深化]
+\textbf{1. 布里渊散射与瑞利散射、拉曼散射的区别}
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+特征 & \textbf{瑞利散射} & \textbf{布里渊散射} & \textbf{拉曼散射} \\
+\midrule
+散射中心 & 静态杂质/密度涨落 & \textbf{声子}（声学支） & 光学声子 / 分子振动 \\
+频移大小 & $0$（弹性） & $\sim 10^{9}\text{--}10^{11}\,\mathrm{Hz}$ & $\sim 10^{12}\text{--}10^{13}\,\mathrm{Hz}$ \\
+频移来源 & --- & 声子能量 $\hbar\omega_\mathrm{ph}$ & 光学模 / 分子振动能级 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+布里渊散射本质上是光子与\textbf{声学声子}的非弹性碰撞。声子作为晶格集体运动的量子化激发，为光子提供了一个``运动靶''，使得散射光子的能量和动量发生可测量的改变。
+
+\textbf{2. 斯托克斯线与反斯托克斯线的强度差异}
+
+在热平衡下，声子占据数服从玻色-爱因斯坦分布：
+\begin{equation}
+n_\mathrm{BE}(\omega_\mathrm{ph}) = \frac{1}{e^{\hbar\omega_\mathrm{ph}/k_\mathrm{B}T} - 1}.
+\end{equation}
+
+\begin{itemize}
+    \item \textbf{斯托克斯过程}（发射声子）：需要晶体中已存在可被激发的振动模式，强度正比于 $n_\mathrm{BE}+1$
+    \item \textbf{反斯托克斯过程}（吸收声子）：需要预先存在热声子，强度正比于 $n_\mathrm{BE}$
+\end{itemize}
+
+因此，在室温下斯托克斯线通常比反斯托克斯线\textbf{更强}。低温下 $n_\mathrm{BE}\to0$，反斯托克斯线几乎消失。这一强度比是测量样品温度的常用手段。
+
+\textbf{3. 为什么 $|\vec k|\approx|\vec k_0|$ 是良好近似？}
+
+以典型值估算：取 $\lambda_0 = 500\,\mathrm{nm}$，$n=1.5$，$v = 5\times10^{3}\,\mathrm{m/s}$，$\theta = 90^\circ$：
+\begin{align}
+\Delta\lambda &\approx \frac{2\times1.5\times5\times10^{3}}{3\times10^{8}}\times500\times10^{-9}\times\sin45^\circ \\
+&\approx 1.8\times10^{-11}\,\mathrm{m} = 0.018\,\mathrm{nm}.
+\end{align}
+
+相对频移 $\Delta\lambda/\lambda_0 \sim 10^{-5}$，确实极小。这意味着光子几乎把所有能量带走，只``施舍''给声子一点点能量——这正是弹性近似成立的基础。
+
+\textbf{4. 布里渊散射的实验应用：测量声速}
+
+从布里渊频移公式反解声速：
+\begin{equation}
+v = \frac{c\Delta\lambda}{2n\lambda_0\sin(\theta/2)} = \frac{c\Delta f}{2nf_0\sin(\theta/2)}.
+\end{equation}
+
+通过精确测量散射光的频率移动 $\Delta f$，可以无损伤地测定透明固体中的声速，进而研究其\textbf{弹性模量}、\textbf{相变}（声速在相变点附近反常）、以及\textbf{薄膜}和\textbf{微结构}的力学性质。布里渊光谱仪是现代凝聚态物理和材料科学的重要工具。
+
+\textbf{5. 与 X 射线/中子非弹性散射的对照}
+
+\begin{itemize}
+    \item \textbf{X 射线非弹性散射}：光子能量高（$\sim 10^{4}\,\mathrm{eV}$），声子能量相对可忽略，但动量匹配好，可测完整声子色散 $\omega(q)$
+    \item \textbf{中子非弹性散射}：中子质量大，$E\sim\hbar^2k^2/2M$，能量和动量都与声子匹配，是测量声子色散的``黄金标准''
+    \item \textbf{布里渊散射}（可见光）：光子能量远大于声子，只能测 $q\to0$ 的长波声学支（$\omega=vq$），但设备简单、无损伤、空间分辨率高
+\end{itemize}
+
+三者的共同点是都利用\textbf{能量-动量守恒}来探测声子激发，区别在于探针与声子的能量/动量匹配程度不同。
+\end{insightbox}
+
+\begin{thinkbox}[考场速记：布里渊散射问题的四步法]
+遇到``光与声子散射导致波长/频率移动''类问题：
+\begin{enumerate}
+    \item \textbf{写准动量守恒}：$\vec k_0 = \vec k \pm \vec q$，利用 $|\vec k|\approx|\vec k_0|$ 和散射角 $\theta$ 求 $|\vec q| = 2k_0\sin(\theta/2)$
+    \item \textbf{写能量守恒}：$\hbar\omega_0 = \hbar\omega \pm \hbar\omega_\mathrm{ph}$，代入声子色散 $\omega_\mathrm{ph}=vq$
+    \item \textbf{化简}：利用 $\lambda\approx\lambda_0$（小频移近似），通分后取 $\lambda\lambda_0\to\lambda_0^2$
+    \item \textbf{定号}：斯托克斯（$+$，红移）vs 反斯托克斯（$-$，蓝移），注意温度对强度的影响
+\end{enumerate}
+\textit{记忆口诀}：动量守恒得波矢，能量守恒得频移，小量近似化波长，斯托克斯反斯托克斯分左右。
+\end{thinkbox}
