@@ -53,11 +53,19 @@ dN_q = \underbrace{\frac{Vq^2\,dq}{2\pi^2}}_{\text{几何因子：球壳面积}\
 \label{eq:q-space-dN}
 \end{equation}
 
-\textbf{Step B: 为什么 $dN_q$ 等于 $D(\omega)\,d\omega$？}
+\textbf{Step B: 为什么 $dN_q$ 等于 $D(\omega)\,d\omega$？——数的是同一个东西}
 
-$dN$ 是\textbf{客观的模式数}，不依赖于你用 $q$ 还是 $\omega$ 来标记。同一个物理区间内的模式，既可以用 $[q,q+dq]$ 描述，也可以用对应的 $[\omega,\omega+d\omega]$ 描述。因此：
+\textit{我们在数什么？} 数的是\textbf{振动模式的数量}。比如问：``频率在 $[\omega,\omega+d\omega]$ 之间的模式有多少个？''
+
+\textit{两种数法}：
+\begin{itemize}
+    \item \textbf{按 $q$ 数}：波矢在 $[q,q+dq]$ 之间的模式数叫 $dN_q$
+    \item \textbf{按 $\omega$ 数}：频率在 $[\omega,\omega+d\omega]$ 之间的模式数叫 $D(\omega)\,d\omega$
+\end{itemize}
+
+由于德拜假设 $\omega=vq$（一一对应），$[q,q+dq]$ 这个区间\textbf{恰好对应} $[\omega,\omega+d\omega]$ 这个区间。就像教室里同一群人，既可以按``座位号 1--10''数，也可以按``身高 160--170 cm''数——\textbf{人数是同一个客观数量}，不依赖于你用什么标签去分类。因此：
 \begin{equation}
-\boxed{dN \equiv D(\omega)\,d\omega = dN_q.}
+\boxed{dN \equiv D(\omega)\,d\omega = dN_q = \frac{3V}{2\pi^2}\,q^2\,dq.}
 \label{eq:dN-equivalence}
 \end{equation}
 

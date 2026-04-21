@@ -50,19 +50,17 @@ $S$ 为晶格面积。
 dN = \frac{S}{2\pi}\cdot\frac{\omega}{v}\cdot\frac{d\omega}{v} = \frac{S}{2\pi v^2}\,\omega\,d\omega.
 \end{equation}
 
-\textit{注意}：上式给出的是\textbf{单支}声学模（一个偏振方向）的态密度。二维单原子晶格共有 2 支声学模（$x$、$y$ 偏振），总态密度需乘以 2。但以下按题目惯例先给出单支结果，在能量计算时统一用总模式数处理。
-
-单支态密度：
+\textit{注意}：二维单原子晶格有 $x$、$y$ 两个偏振方向，对应\textbf{2 支}声学模。在各方同性假设下两支色散相同，故\textbf{总态密度}为单支的 2 倍：
 \begin{equation}
-\boxed{D(\omega) = \frac{dN}{d\omega} = \frac{S\,\omega}{2\pi v^2} = \frac{Sm\,\omega}{2\pi a^2\beta}.}
+\boxed{D(\omega) = 2\times\frac{S\,\omega}{2\pi v^2} = \frac{S\,\omega}{\pi v^2} = \frac{Sm\,\omega}{\pi a^2\beta}.}
 \label{eq:2d-dos}
 \end{equation}
 
-\textit{验证}：积分应给出正确的模式数。单支总模式数为 $N$（原子数），故
+\textit{验证}：归一化条件要求总模式数 $=2N$（$N$ 个原子 $\times$ 2 个自由度）：
 \begin{equation}
-\int_0^{\omega_D} D(\omega)\,d\omega = \frac{Sm}{2\pi a^2\beta}\cdot\frac{\omega_D^2}{2} = N \quad\Longrightarrow\quad \omega_D^2 = \frac{4\pi N a^2\beta}{Sm} = \frac{4\pi a^2\beta n}{m},
+\int_0^{\omega_D} D(\omega)\,d\omega = \frac{Sm}{\pi a^2\beta}\cdot\frac{\omega_D^2}{2} = 2N \quad\Longrightarrow\quad \omega_D^2 = \frac{4\pi a^2\beta n}{m},
 \end{equation}
-其中 $n=N/S$ 为面密度。若考虑双支，则总模式数为 $2N$，$\omega_D$ 相应增大 $\sqrt{2}$ 倍。
+其中 $n=N/S$ 为面密度。若只考虑单支，则 $\omega_D$ 应减小 $\sqrt{2}$ 倍。
 
 \textbf{Step 3: 高温极限下的均方位移}
 
