@@ -1,0 +1,187 @@
+% ============================================================
+% Section 46: d 维德拜晶格的零点涨落——均方位移与应变
+% ============================================================
+\newpage
+\section{固体理论：$d$ 维德拜晶格的零点涨落——均方位移与应变}
+\label{sec:d-dimensional-fluctuation}
+
+\begin{modelbox}[题目：$d$ 维晶格在绝对零度下的零点涨落]
+考虑绝对零度下的 $d$ 维振动晶格，原子数密度为 $n$，质量为 $m$。利用德拜近似并假定所有声波具有相同速度 $v$。
+\begin{enumerate}
+    \item 对 $d=3$，计算平均平方位移 $\overline{R^2}$；
+    \item 对 $d=1$，计算 $\overline{R^2}$，并讨论它与实验的关联；
+    \item 对 $d=1$，计算平均平方应变 $\overline{(\partial R/\partial x)^2}$。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{零点振动}：$T=0$ 时 $n_j=0$，但每个模式仍有零点能 $\frac12\hbar\omega_j$
+    \item \textbf{均方位移}：$\overline{R^2}=\dfrac{\hbar}{2mN}\displaystyle\sum_j\frac{1}{\omega_j}$，低频模式贡献权重 $\sim\omega^{-1}$
+    \item \textbf{维度效应}：$d$ 维德拜态密度 $D(\omega)\propto\omega^{d-1}$，积分收敛性由 $d$ 决定
+    \item \textbf{Landau--Peierls 定理}：一维系统在 $T=0$ 时均方位移发散，长程序被破坏
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 0: 单模式零点涨落}
+
+第 $j$ 个简正模式的位移可写为 $r_j=r_{0j}\cos(q_jx-\omega_jt)$。时间平均平方位移
+\begin{equation}
+\overline{r_j^2} = \frac12 r_{0j}^2.
+\end{equation}
+该模式的时间平均动能
+\begin{equation}
+\overline{K_j} = \frac14 m\omega_j^2 r_{0j}^2 = \frac12 m\omega_j^2\,\overline{r_j^2}.
+\end{equation}
+
+量子谐振子在 $T=0$ 时总能量 $E_j=\frac12\hbar\omega_j$，平均动能等于总能量的一半：
+\begin{equation}
+\frac12 m\omega_j^2\,\overline{r_j^2} = \frac12\cdot\frac12\hbar\omega_j \quad\Longrightarrow\quad \overline{r_j^2} = \frac{\hbar}{2m\omega_j}.
+\label{eq:single-mode-msd}
+\end{equation}
+
+晶体总均方位移为所有模式贡献之和除以原子数 $N$：
+\begin{equation}
+\boxed{\overline{R^2} = \frac{1}{N}\sum_j\overline{r_j^2} = \frac{\hbar}{2mN}\sum_j\frac{1}{\omega_j} = \frac{\hbar}{2mN}\int_0^{\omega_D}\frac{D(\omega)}{\omega}\,d\omega.}
+\label{eq:general-msd}
+\end{equation}
+
+\textbf{Step 1: $d=3$ 的三维均方位移}
+
+三维德拜模型（1 纵 + 2 横，共 3 支，速度均取 $v$）的态密度：
+\begin{equation}
+D(\omega) = \frac{3V}{2\pi^2}\frac{\omega^2}{v^3}.
+\end{equation}
+由总模式数 $3N$ 确定截止频率：
+\begin{equation}
+\int_0^{\omega_D} D(\omega)\,d\omega = 3N \quad\Longrightarrow\quad \omega_D^3 = 6\pi^2 v^3 n, \quad n=\frac{N}{V}.
+\end{equation}
+
+代入式 \eqref{eq:general-msd}：
+\begin{align}
+    \overline{R^2} &= \frac{\hbar}{2mN}\int_0^{\omega_D}\frac{1}{\omega}\cdot\frac{3V\omega^2}{2\pi^2v^3}\,d\omega \nonumber\\
+    &= \frac{3\hbar V}{4\pi^2 mNv^3}\int_0^{\omega_D}\omega\,d\omega \nonumber\\
+    &= \frac{3\hbar V}{4\pi^2 mNv^3}\cdot\frac{\omega_D^2}{2} \nonumber\\
+    &= \frac{3\hbar\omega_D^2}{8\pi^2 mnv^3}.
+\end{align}
+\begin{equation}
+\boxed{\overline{R^2}\big|_{d=3} = \frac{3\hbar\omega_D^2}{8\pi^2 mnv^3} = \frac{9\hbar}{4m}\Bigl(\frac{n}{6\pi^2}\Bigr)^{\!2/3}\frac{1}{v}.}
+\label{eq:3d-msd}
+\end{equation}
+（最后一步利用了 $\omega_D=v(6\pi^2n)^{1/3}$。）
+
+\textbf{Step 2: $d=1$ 的一维均方位移——红外发散}
+
+一维单原子链的德拜态密度（考虑正负传播方向）：
+\begin{equation}
+D(\omega) = \frac{L}{\pi v}, \qquad \omega_D = \pi vn, \quad n=\frac{N}{L}.
+\end{equation}
+
+代入式 \eqref{eq:general-msd}：
+\begin{equation}
+\overline{R^2} = \frac{\hbar}{2mN}\int_0^{\omega_D}\frac{1}{\omega}\cdot\frac{L}{\pi v}\,d\omega = \frac{\hbar}{2\pi mnv}\int_0^{\omega_D}\frac{d\omega}{\omega}.
+\end{equation}
+该积分在下限 $\omega\to0$ 处对数发散：
+\begin{equation}
+\boxed{\overline{R^2}\big|_{d=1} = \frac{\hbar}{2\pi mnv}\bigl[\ln\omega\bigr]_0^{\omega_D} \to \infty.}
+\end{equation}
+
+\textit{物理根源}：一维德拜态密度 $D(\omega)\propto\omega^0=$ 常数，而均方位移积分含因子 $1/\omega$，导致 $\int d\omega/\omega$ 在低频端发散。低频长波模式（声学模）的零点振动在一维中贡献过大，无法被截止频率截断。
+
+\textbf{Step 3: $d=1$ 的平均平方应变}
+
+第 $j$ 个模式的应变 $\partial r_j/\partial x = -q_j r_{0j}\sin(q_jx-\omega_jt)$，时间平均：
+\begin{equation}
+\overline{\Bigl(\frac{\partial r_j}{\partial x}\Bigr)^2} = \frac12 q_j^2 r_{0j}^2 = q_j^2\,\overline{r_j^2} = \frac{\omega_j^2}{v^2}\cdot\frac{\hbar}{2m\omega_j} = \frac{\hbar\omega_j}{2mv^2}.
+\end{equation}
+
+对全链平均：
+\begin{equation}
+\overline{\Bigl(\frac{\partial R}{\partial x}\Bigr)^2} = \frac{1}{N}\sum_j\frac{\hbar\omega_j}{2mv^2} = \frac{\hbar}{2mNv^2}\int_0^{\omega_D}\omega D(\omega)\,d\omega.
+\end{equation}
+
+代入一维态密度：
+\begin{align}
+    \overline{\Bigl(\frac{\partial R}{\partial x}\Bigr)^2} &= \frac{\hbar}{2mNv^2}\int_0^{\omega_D}\omega\cdot\frac{L}{\pi v}\,d\omega \nonumber\\
+    &= \frac{\hbar L}{2\pi mNv^3}\cdot\frac{\omega_D^2}{2} \nonumber\\
+    &= \frac{\hbar\omega_D^2}{4\pi mnv^3}.
+\end{align}
+\begin{equation}
+\boxed{\overline{\Bigl(\frac{\partial R}{\partial x}\Bigr)^2}\bigg|_{d=1} = \frac{\hbar\omega_D^2}{4\pi mnv^3} = \frac{\pi\hbar n}{4m v}.}
+\label{eq:1d-strain}
+\end{equation}
+（最后一步利用了 $\omega_D=\pi vn$。）
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{cl}
+\toprule
+维度/物理量 & 结果 \\
+\midrule
+$d=3$：均方位移 $\overline{R^2}$ & $\displaystyle \frac{3\hbar\omega_D^2}{8\pi^2 mnv^3}$（有限） \\[10pt]
+$d=1$：均方位移 $\overline{R^2}$ & $\displaystyle \infty$（对数发散） \\[10pt]
+$d=1$：平均平方应变 & $\displaystyle \frac{\hbar\omega_D^2}{4\pi mnv^3}$（有限） \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像与概念深化]
+\textbf{1. 为什么维度决定了发散与否？}
+
+关键在于被积函数的幂次。$d$ 维德拜态密度 $D(\omega)\propto\omega^{d-1}$，而均方位移积分含额外因子 $1/\omega$：
+\begin{equation}
+\overline{R^2}\propto\int_0^{\omega_D}\frac{D(\omega)}{\omega}\,d\omega\propto\int_0^{\omega_D}\omega^{d-2}\,d\omega.
+\end{equation}
+\begin{itemize}
+    \item $d=3$：$\int\omega\,d\omega\sim\omega_D^2$，\textbf{收敛}
+    \item $d=2$：$\int d\omega\sim\omega_D$，\textbf{收敛}
+    \item $d=1$：$\int d\omega/\omega\sim\ln\omega$，\textbf{对数发散}
+\end{itemize}
+因此，\textbf{严格的一维晶格在 $T=0$ 时不存在长程有序}——即使绝对零度，量子零点涨落也足以破坏晶格的长程序。
+
+\textbf{2. 一维发散的实验关联——Landau--Peierls 定理}
+
+\begin{itemize}
+    \item \textbf{理论预言}：纯粹一维系统的均方位移在 $T=0$ 时发散，意味着 Bragg 峰消失，X射线衍射无法观测到尖锐的衍射斑点。
+    \item \textbf{实际材料}：严格的物理一维链不存在。准一维材料（如有机导体 TTF--TCNQ、碳纳米管、聚合物链）总存在：
+    \begin{itemize}
+        \item 弱的链间耦合（提供额外刚度，等效于高维``支架''）
+        \item 有限尺寸效应（链长有限，最低频模式被截断）
+        \item 衬底或环境的约束
+    \end{itemize}
+    这些因素在极低频处引入有效截止，使 $\overline{R^2}$ 变为有限。
+    \item \textbf{二维推广}：Landau--Peierls 定理还指出，\textbf{二维晶格在有限温度下}均方位移也发散（热涨落破坏长程序），导致二维薄膜没有真正的晶体长程有序，只有准长程有序。
+\end{itemize}
+
+\textbf{3. 为什么应变是收敛的？}
+
+应变积分中被积函数多一个 $\omega$ 因子：
+\begin{equation}
+\overline{(\partial_x R)^2}\propto\int_0^{\omega_D}\omega\cdot\frac{D(\omega)}{\omega}\,d\omega\propto\int_0^{\omega_D}\omega^{d-1}\,d\omega,
+\end{equation}
+对 $d=1$ 为 $\int d\omega$，线性收敛。物理上，\textbf{应变由短波长（高频）模式主导}，而短波模式在链上感受的是近邻原子间的局部剪切，不受长程``软模''影响。
+
+\textbf{4. 三维结果的物理意义}
+
+式 \eqref{eq:3d-msd} 表明，三维晶体的零点均方位移与德拜频率的平方成正比：
+\begin{itemize}
+    \item 原子越轻（$m$ 小）、键越强（$v$ 大、$\omega_D$ 高），零点位移越小
+    \item 原子越密（$n$ 大），零点位移越小（因为同体积内更多原子``分担''约束）
+\end{itemize}
+对典型金属（$\omega_D\sim10^{13}\,\mathrm{s^{-1}}$，$m\sim10^{-25}\,\mathrm{kg}$，$v\sim10^3\,\mathrm{m/s}$，$n\sim10^{29}\,\mathrm{m^{-3}}$），可估算得 $\sqrt{\overline{R^2}}\sim0.01\,\text{\AA}$，与原子间距（$\sim2\,\text{\AA}$）相比不足 $1\%$，说明三维晶格的量子零点效应虽不可忽略，但不破坏结构稳定性。
+\end{insightbox}
+
+\begin{thinkbox}[考场速记：低维涨落问题的普适分析]
+遇到``$d$ 维晶格 + 德拜模型 + 涨落/位移''类问题：
+\begin{enumerate}
+    \item \textbf{写单模结果}：$\overline{r_j^2}=\hbar/(2m\omega_j)$（$T=0$）
+    \item \textbf{写态密度}：$D(\omega)\propto\omega^{d-1}$（系数通过总模式数定）
+    \item \textbf{判断收敛性}：看积分 $\int\omega^{d-2}\,d\omega$ 在 $\omega\to0$ 的行为
+    \item \textbf{若收敛}：算出结果；\textbf{若发散}：指出红外发散并讨论物理含义
+    \item \textbf{应变/梯度}：多乘 $q^2\propto\omega^2$ 因子，收敛性通常更好
+\end{enumerate}
+\textit{记忆口诀}：$d=1$ 位移发散、应变收敛；$d\ge2$ 位移收敛；$d\ge1$ 应变收敛。
+\end{thinkbox}
