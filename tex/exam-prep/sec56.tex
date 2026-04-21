@@ -1,0 +1,218 @@
+% ============================================================
+% Section 56: 格林艾森常量与晶格热膨胀
+% ============================================================
+\newpage
+\section{固体理论：格林艾森常量与晶格热膨胀}
+\label{sec:gruneisen-thermal-expansion}
+
+\begin{modelbox}[题目：简谐晶体的自由能与热膨胀]
+考虑一个内部原子振动的固体。
+\begin{enumerate}
+    \item 计算温度为 $T$ 时频率为 $\omega$ 的声子模的自由能 $F$；
+    \item 假设此固体是简谐的，体积弹性模量为 $K$，相对体积变化为 $\Delta$，忽略声子模的色散关系，即认为 $\omega_q=\omega$，写出晶体的自由能；
+    \item 如果 $\omega$ 与体积关系为 $\displaystyle\frac{\partial\omega}{\omega}=-\gamma\frac{\Delta V}{V}$，其中 $\gamma$ 称为格林艾森常量，那么温度为 $T$ 时收缩为多少？
+    \item 讨论格林艾森常量的物理意义。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{单模自由能}：由配分函数 $Z$ 出发，$F=-k_BT\ln Z$
+    \item \textbf{晶体自由能}：静态晶格能 $U(V)$ + 所有声子模自由能之和
+    \item \textbf{状态方程}：$P=-(\partial F/\partial V)_T$，热平衡时 $P=0$
+    \item \textbf{格林艾森关系}：$\partial\ln\omega/\partial\ln V=-\gamma$，联系振动频率与体积变化
+    \item \textbf{热膨胀}：$\Delta V/V_0=\gamma E/(KV_0)$，非简谐效应的直接体现
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 单个声子模的自由能}
+
+频率为 $\omega$ 的量子谐振子，能级为 $E_n=(n+\tfrac{1}{2})\hbar\omega$（$n=0,1,2,\ldots$）。配分函数：
+\begin{equation}
+Z=\sum_{n=0}^{\infty}e^{-(n+1/2)\hbar\omega/k_BT}
+=e^{-\hbar\omega/2k_BT}\sum_{n=0}^{\infty}\bigl(e^{-\hbar\omega/k_BT}\bigr)^n
+=\frac{e^{-\hbar\omega/2k_BT}}{1-e^{-\hbar\omega/k_BT}}.
+\end{equation}
+
+自由能 $F=-k_BT\ln Z$：
+\begin{align}
+F_1&=-k_BT\Bigl[-\frac{\hbar\omega}{2k_BT}-\ln\bigl(1-e^{-\hbar\omega/k_BT}\bigr)\Bigr]\\
+&=\frac{1}{2}\hbar\omega+k_BT\ln\bigl(1-e^{-\hbar\omega/k_BT}\bigr).
+\end{align}
+
+其中 $\tfrac{1}{2}\hbar\omega$ 为零点能，$k_BT\ln(1-e^{-\hbar\omega/k_BT})$ 为热激发贡献。
+
+\textbf{Step 2: 简谐晶体的自由能}
+
+假设所有振动模式具有相同频率 $\omega$（爱因斯坦近似），总自由度为 $N$（三维单原子晶体 $N=3N_{\text{atom}}$）。晶体自由能为静态晶格能 $U(V)$ 与所有声子模自由能之和：
+\begin{equation}
+F(V,T)=U(V)+N\Bigl[\frac{1}{2}\hbar\omega+k_BT\ln\bigl(1-e^{-\hbar\omega/k_BT}\bigr)\Bigr].
+\label{eq:crystal-free-energy}
+\end{equation}
+
+\textit{注}：$U(V)$ 是 $T=0$ 时晶体的内能（仅与体积有关），来源于原子间的静态相互作用势。
+
+\textbf{Step 3: 热膨胀（或收缩）的计算}
+
+\textit{状态方程}：压强由自由能对体积的偏导给出：
+\begin{equation}
+P=-\Bigl(\frac{\partial F}{\partial V}\Bigr)_T
+=-\frac{\partial U}{\partial V}-N\Bigl(\frac{1}{2}\hbar+\frac{\hbar}{e^{\hbar\omega/k_BT}-1}\Bigr)\frac{\partial\omega}{\partial V}.
+\end{equation}
+
+括号内的项正是单个模式的平均振动能：
+\begin{equation}
+\bar{E}_1=\frac{1}{2}\hbar\omega+\frac{\hbar\omega}{e^{\hbar\omega/k_BT}-1}.
+\end{equation}
+
+总振动能 $E=N\bar{E}_1$，状态方程可简洁写为
+\begin{equation}
+P=-\frac{\partial U}{\partial V}-\frac{E}{\omega}\frac{\partial\omega}{\partial V}.
+\label{eq:state-equation}
+\end{equation}
+
+\textit{格林艾森关系}：题设
+\begin{equation}
+\frac{\partial\omega}{\omega}=-\gamma\frac{\Delta V}{V},
+\qquad\text{即}\qquad
+\frac{\partial\omega}{\partial V}=-\gamma\frac{\omega}{V}.
+\label{eq:gruneisen-relation}
+\end{equation}
+
+代入 \eqref{eq:state-equation}：
+\begin{equation}
+P=-\frac{\partial U}{\partial V}+\gamma\frac{E}{V}.
+\end{equation}
+
+\textit{热平衡条件}：无外压时 $P=0$，晶体体积由热振动自发调整：
+\begin{equation}
+\frac{\partial U}{\partial V}=\gamma\frac{E}{V}.
+\end{equation}
+
+将 $\partial U/\partial V$ 在静态体积 $V_0$ 附近泰勒展开至一阶：
+\begin{equation}
+\frac{\partial U}{\partial V}=\Bigl(\frac{\partial U}{\partial V}\Bigr)_{V_0}+\Bigl(\frac{\partial^2U}{\partial V^2}\Bigr)_{V_0}\Delta V.
+\end{equation}
+
+静态平衡时 $(\partial U/\partial V)_{V_0}=0$。体弹性模量定义为 $K=V_0(\partial^2U/\partial V^2)_{V_0}$，故
+\begin{equation}
+\frac{\partial U}{\partial V}\approx\frac{K}{V_0}\Delta V.
+\end{equation}
+
+代入热平衡条件（小变形下 $V\approx V_0$）：
+\begin{equation}
+\frac{K}{V_0}\Delta V=\gamma\frac{E}{V_0}
+\quad\Longrightarrow\quad
+\boxed{\frac{\Delta V}{V_0}=\frac{\gamma E}{KV_0}}.
+\end{equation}
+
+由于 $E>0$，若 $\gamma>0$ 则 $\Delta V>0$，表现为\textbf{热膨胀}；若 $E$ 小于零温参照值（如负温度情形），则相应为\textbf{收缩}。通常情况下热振动能随温度升高而增大，故 $\Delta V>0$。
+
+\textbf{Step 4: 格林艾森常量的物理意义}
+
+\textit{定义}：
+\begin{equation}
+\gamma=-\frac{\partial\ln\omega}{\partial\ln V}
+=-\frac{V}{\omega}\frac{\partial\omega}{\partial V}.
+\end{equation}
+
+即体积的相对变化引起频率的相对变化的比例系数（负号表示体积增大通常导致频率降低）。
+
+\textit{与热膨胀的关系}：由 $\Delta V/V_0=\gamma E/(KV_0)$ 对 $T$ 求导，得热膨胀系数
+\begin{equation}
+\alpha=\frac{1}{V_0}\frac{\partial(\Delta V)}{\partial T}
+=\frac{\gamma}{KV_0}\frac{\partial E}{\partial T}
+=\frac{\gamma C_V}{KV}.
+\end{equation}
+
+\textit{物理意义总结}：
+\begin{itemize}
+    \item \textbf{非简谐效应的度量}：严格简谐晶体中振动频率与体积无关，$\gamma=0$，则热膨胀系数 $\alpha=0$。$\gamma\neq0$ 是晶格非简谐性的直接体现。
+    \item \textbf{热学与力学的桥梁}：格林艾森常量将固体的热学性质（热容、热膨胀）与力学性质（弹性模量、状态方程）定量联系起来，是 Mie-Gr\"uneisen 物态方程的核心参数。
+    \item \textbf{微观图像}：$\gamma$ 的大小反映原子间相互作用势的非对称性——排斥势随距离变化陡峭，吸引势相对平缓。典型固体的 $\gamma$ 值在 $1\sim3$ 之间。
+\end{itemize}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{cl}
+\toprule
+问题 & 结果 \\
+\midrule
+(1) 单模自由能 & $F_1=\dfrac{1}{2}\hbar\omega+k_BT\ln\bigl(1-e^{-\hbar\omega/k_BT}\bigr)$ \\[10pt]
+(2) 晶体自由能 & $F=U(V)+N\bigl[\tfrac{1}{2}\hbar\omega+k_BT\ln(1-e^{-\hbar\omega/k_BT})\bigr]$ \\[10pt]
+(3) 热膨胀 & $\dfrac{\Delta V}{V_0}=\dfrac{\gamma E}{KV_0}$ \\[10pt]
+(4) $\gamma$ 的物理意义 & 非简谐效应度量；$\gamma=0$ 则无热膨胀 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像与概念深化]
+\textbf{1. 为什么简谐晶体没有热膨胀？}
+
+简谐近似下，原子间相互作用势为抛物线 $U(r)\approx U_0+\tfrac{1}{2}\beta(r-r_0)^2$。势能关于平衡位置对称：原子在平衡位置两侧的概率分布相同，平均位移为零。无论温度多高，原子振动始终对称地分布在 $r_0$ 两侧，不会导致平均间距变化。
+
+热膨胀来源于势能曲线的\textbf{非对称性}（非简谐效应）：
+\begin{itemize}
+    \item 排斥支陡峭（短程强斥力）
+    \item 吸引支平缓（长程弱引力）
+    \item 温度升高时，原子更倾向于向排斥侧偏移（因为吸引侧``更深更宽''），平均间距增大
+\end{itemize}
+
+格林艾森常量 $\gamma$ 正是对这种非对称性的定量刻画。
+
+\textbf{2. 自由能的两部分贡献}
+
+\eqref{eq:crystal-free-energy} 中：
+\begin{itemize}
+    \item $U(V)$：静态晶格能（$T=0$ 时的原子相互作用势），决定晶体的平衡结构和体积
+    \item 声子项：热振动的贡献，包含零点能（量子效应）和热激发能（温度依赖）
+\end{itemize}
+
+在热力学中，$F(V,T)$ 是描述晶体平衡性质的势函数：给定 $T$，晶体自发调整 $V$ 使 $F$ 最小。这正是热膨胀的微观机制。
+
+\textbf{3. 格林艾森常量的典型数值}
+
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+材料 & $\gamma$ & 材料 & $\gamma$ \\
+\midrule
+Cu & $\sim1.9$ & NaCl & $\sim1.5$ \\
+Al & $\sim2.2$ & KCl & $\sim1.4$ \\
+Fe & $\sim1.6$ & 金刚石 & $\sim1.1$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+金刚石 $\gamma$ 较小（$\sim0$），说明其共价键势阱接近对称，但仍存在微弱的非简谐性。金刚石的低热膨胀系数（室温下 $\sim10^{-6}\,\mathrm{K^{-1}}$）与其高硬度、高德拜温度一致。
+
+\textbf{4. 与德拜模型的关联}
+
+\ref{sec:debye-phonon-number}（德拜模型）中假设频率与体积无关，即 $\partial\omega/\partial V=0$，$\gamma=0$。这是\textbf{简谐近似}的结果，因此德拜模型本身不能解释热膨胀。要在德拜框架下讨论热膨胀，必须引入格林艾森修正：假设所有模式的 $\omega$ 都以相同的 $\gamma$ 随体积变化，这就是\textbf{德拜-格林艾森模型}。
+
+\textbf{5. 负热膨胀（NTE）材料}
+
+某些材料（如 $\mathrm{ZrW_2O_8}$、部分框架结构材料）在特定温区表现出\textbf{负热膨胀}（温度升高，体积收缩）。其微观机制通常与：
+\begin{itemize}
+    \item 特殊的声子模式（如转动机理，rattling phonons）
+    \item 强的非简谐耦合导致某些模式 $\gamma<0$
+    \item 电子贡献（如巡游电子体系的磁性相变）
+\end{itemize}
+
+负热膨胀材料在精密仪器（如光学平台、航天器结构）中有重要应用价值。
+\end{insightbox}
+
+\begin{thinkbox}[考场速记：格林艾森问题答题框架]
+遇到``热膨胀与格林艾森常量''类问题：
+\begin{enumerate}
+    \item \textbf{写单模自由能}：$F_1=\tfrac{1}{2}\hbar\omega+k_BT\ln(1-e^{-\hbar\omega/k_BT})$
+    \item \textbf{写晶体自由能}：$F=U(V)+\sum F_1$
+    \item \textbf{状态方程}：$P=-(\partial F/\partial V)_T=0$，引入格林艾森关系 $\partial\omega/\partial V=-\gamma\omega/V$
+    \item \textbf{泰勒展开}：$\partial U/\partial V\approx K\Delta V/V_0$，解得 $\Delta V/V_0=\gamma E/(KV_0)$
+    \item \textbf{物理意义}：$\gamma$ 衡量非简谐性，$\gamma=0$ 无热膨胀
+\end{enumerate}
+\textit{核心逻辑链}：温度 $\to$ 热振动能 $E$ $\to$ 通过 $\gamma$ 耦合到体积 $V$ $\to$ 弹性恢复力（$K$）抵抗膨胀 $\to$ 平衡时 $\Delta V/V=\gamma E/(KV)$。
+\end{thinkbox}
