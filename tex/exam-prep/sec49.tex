@@ -1,0 +1,150 @@
+% ============================================================
+% Section 49: 中子非弹性散射与声子色散测量
+% ============================================================
+\newpage
+\section{固体理论：中子非弹性散射与声子色散测量}
+\label{sec:neutron-scattering}
+
+\begin{modelbox}[题目：用中子衍射测量声子色散关系]
+中子衍射可用于测量晶体中某种激发的 $\omega$ 和 $\vec k$ 的关系。假设晶体的对称性已知，写出衍射的能量、动量守恒式。指出必须测量什么参数以确定 $\omega(\vec q)$。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{中子非弹性散射}：中子与声子交换能量和动量，是测量声子色散的``金标准''
+    \item \textbf{能量守恒}：中子动能变化 = 声子能量 $\hbar\omega(\vec q)$（吸收或发射）
+    \item \textbf{准动量守恒}：模去倒格矢 $\vec G$（Umklapp 过程）
+    \item \textbf{实验三要素}：入射波矢 $\vec k$、散射波矢 $\vec k'$、散射方向（即 $\vec Q=\vec k-\vec k'$）
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 物理图像}
+
+中子不带电，不受电子云屏蔽影响，可直接与原子核发生强相互作用。当晶格中存在声子（量子化的晶格振动）时，入射中子可以与声子发生\textbf{非弹性散射}：
+\begin{itemize}
+    \item \textbf{发射声子}：中子损失能量 $\hbar\omega$，动量转移给一个声子
+    \item \textbf{吸收声子}：中子获得能量 $\hbar\omega$，消灭一个已有声子
+\end{itemize}
+
+设中子质量为 $M$，入射波矢为 $\vec k$，散射波矢为 $\vec k'$：
+\begin{equation}
+E = \frac{\hbar^2k^2}{2M}, \qquad E' = \frac{\hbar^2k'^2}{2M}.
+\end{equation}
+
+\textbf{Step 2: 能量守恒}
+
+散射前后中子能量变化等于声子能量（含正负号）：
+\begin{equation}
+\boxed{\frac{\hbar^2k^2}{2M} = \frac{\hbar^2k'^2}{2M} \pm \hbar\omega(\vec q).}
+\label{eq:neutron-energy}
+\end{equation}
+\begin{itemize}
+    \item $+$ 号：\textbf{声子发射}（中子损失能量，$E>E'$）
+    \item $-$ 号：\textbf{声子吸收}（中子获得能量，$E<E'$）
+\end{itemize}
+
+\textbf{Step 3: 准动量守恒}
+
+晶体具有离散平移对称性，因此动量守恒只在模去一个倒格矢 $\vec G$ 的意义下成立：
+\begin{equation}
+\boxed{\hbar\vec k = \hbar\vec k' \pm \hbar\vec q - \hbar\vec G \quad\text{或}\quad \vec k - \vec k' = \pm\vec q - \vec G.}
+\label{eq:neutron-momentum}
+\end{equation}
+
+\textit{Umklapp 过程}：即使 $\vec k-\vec k'$ 超出第一布里渊区，加上（或减去）一个倒格矢 $\vec G$ 后，仍可折叠回第一布里渊区找到一个等价的 $\vec q$。这是晶体周期性带来的独特效应。
+
+\textbf{Step 4: 反推声子色散}
+
+由守恒方程反解：
+\begin{align}
+    \hbar\omega(\vec q) &= \bigl|\,E - E'\,\bigr| = \frac{\hbar^2}{2M}\bigl|\,k^2 - k'^2\,\bigr|, \\
+    \vec q &= \pm(\vec k - \vec k' + \vec G) \equiv \pm(\vec Q + \vec G).
+\end{align}
+
+通过测量不同 $\vec Q$ 方向上的能量转移 $\Delta E = E - E'$，当散射强度出现峰值（共振）时，即对应某支声子模式的能量和波矢。
+\end{derivationbox}
+
+\begin{formulabox}[守恒方程汇总]
+\begin{center}
+\begin{tabular}{cl}
+\toprule
+守恒律 & 方程 \\
+\midrule
+能量守恒 & $\displaystyle \frac{\hbar^2k^2}{2M} = \frac{\hbar^2k'^2}{2M} \pm \hbar\omega(\vec q)$ \\[10pt]
+准动量守恒 & $\displaystyle \vec k - \vec k' = \pm\vec q - \vec G$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[实验方法与深层理解]
+\textbf{1. 为什么选中子而不是 X射线或光子？}
+
+\begin{itemize}
+    \item \textbf{能量匹配}：热中子能量 $\sim10\text{--}100\,\mathrm{meV}$，与声子能量同数量级（$k_BT_{\text{room}}\approx25\,\mathrm{meV}$），可发生显著的非弹性散射。
+    \item \textbf{X射线/光子}：能量太高（$\sim\mathrm{keV}$），声子能量仅为入射能量的 $10^{-5}$ 量级，能量分辨率不足以分辨。
+    \item \textbf{动量匹配}：中子波长 $\sim1\,\text{\AA}$，与晶格常数同数量级，满足 Bragg 条件的动量转移恰好落在布里渊区尺度上。
+\end{itemize}
+
+\textbf{2. 实验必须测量的三个参数}
+
+\begin{enumerate}
+    \item \textbf{入射中子波矢} $\vec k$（或能量 $E$）
+    \begin{itemize}
+        \item 通过单色器晶体（如热解石墨、Ge 单晶）选择特定波长
+        \item 常用方法：Bragg 衍射 $n\lambda=2d\sin\theta$
+    \end{itemize}
+    \item \textbf{散射中子波矢} $\vec k'$（或能量 $E'$）
+    \begin{itemize}
+        \item 通过分析器晶体选择特定散射能量的中子
+        \item 能量分辨率决定可分辨的声子线宽
+    \end{itemize}
+    \item \textbf{散射方向}（动量转移 $\vec Q=\vec k-\vec k'$）
+    \begin{itemize}
+        \item 转动探测器和样品，改变散射角 $2\theta$
+        \item 确定 $\vec Q$ 在倒空间中的位置
+    \end{itemize}
+\end{enumerate}
+
+\textbf{3. 三轴谱仪（Triple-Axis Spectrometer, TAS）}
+
+TAS 是三台晶体（单色器--样品--分析器）围绕样品转动的装置：
+\begin{itemize}
+    \item 第一轴（单色器）：选定入射能量 $E$
+    \item 第二轴（样品台）：改变样品取向，调节 $\vec Q$
+    \item 第三轴（分析器）：选定出射能量 $E'$
+\end{itemize}
+固定 $E$ 和 $E'$，扫描 $\vec Q$；或固定 $\vec Q$，扫描 $E-E'$（能量扫描），即可逐点测量色散关系。
+
+\textbf{4. Umklapp 过程的实验意义}
+
+如果只测量第一布里渊区内的声子，似乎不需要 Umklapp。但实际上：
+\begin{itemize}
+    \item 声子色散 $\omega(\vec q)$ 在第一布里渊区内已经完整（周期性重复）
+    \item 但实验上中子动量转移 $|\vec Q|$ 可能很大，需要利用 $\vec q=\vec Q+\vec G$ 把大 $\vec Q$ ``折叠''回第一布里渊区
+    \item 这使得同一条色散曲线可在不同 $\vec Q$ 位置被重复观测，用于验证和精修
+\end{itemize}
+
+\textbf{5. 声子谱的物理信息}
+
+通过中子散射测得的声子色散 $\omega(\vec q)$ 可提取：
+\begin{itemize}
+    \item \textbf{力常数}：从色散曲线斜率（长波声速）和曲率（近边界行为）
+    \item \textbf{晶格稳定性}：若某支色散出现虚频（$\omega^2<0$），晶格不稳定
+    \item \textbf{电子-声子耦合}：通过谱线宽度和非谐效应
+    \item \textbf{相变信息}：软模（频率趋于零）预示结构相变
+\end{itemize}
+\end{insightbox}
+
+\begin{thinkbox}[考场速记：中子散射问题的答题模板]
+遇到``用中子/光子散射测声子/磁振子色散''类问题：
+\begin{enumerate}
+    \item \textbf{写出能量守恒}：$E_i = E_f \pm \hbar\omega(\vec q)$（$+$ 发射，$-$ 吸收）
+    \item \textbf{写出准动量守恒}：$\vec k_i - \vec k_f = \pm\vec q - \vec G$
+    \item \textbf{说明测量量}：入射能量 $E$、散射能量 $E'$、散射角 $2\theta$（即 $\vec Q$）
+    \item \textbf{说明 Umklapp}：$\vec G$ 使大 $\vec Q$ 折叠回第一布里渊区
+    \item \textbf{说明为什么选中子}：能量/动量与声子匹配（X射线能量太高，光子动量太小）
+\end{enumerate}
+\textit{核心口诀}：能量守恒看声子能量，准动量守恒看声子波矢；Umklapp 让大 $\vec Q$ 变小 $\vec q$。
+\end{thinkbox}
