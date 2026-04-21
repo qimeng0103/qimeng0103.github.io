@@ -184,7 +184,27 @@ U=\int_0^{\omega_D}\hbar\omega\,n(\omega)D(\omega)\,d\omega\propto T^4\;(T\ll\Th
 
 对比声子总数：$N_{\text{ph}}\propto T^3$（低温），$U\propto T^4$，$C_V\propto T^3$。三者的温度依赖不同，但都源于同一模式密度 $D(\omega)\propto\omega^2$ 和普朗克分布。热容比声子总数多一个能量因子 $\hbar\omega$，导致多一个 $T$ 的幂次。
 
-\textbf{3. 平均声速 $v_p$ 的定义}
+\textbf{3. 各向同性为什么还能区分纵波和横波？}
+
+这是一个常见的概念困惑。\textbf{``各向同性''不等于``只有一种波''}。各向同性只意味着弹性性质不随方向变化（波速与传播方向无关），但纵波和横波由于\textbf{偏振方式不同}、激发的弹性形变类型不同，仍然有不同的波速。
+
+在连续介质力学中，各向同性弹性固体的位移场 $\vec u(\vec r,t)$ 满足标准的弹性波动方程。通过 Helmholtz 分解 $\vec u=\vec u_l+\vec u_t$，其中
+\begin{itemize}
+    \item $\nabla\times\vec u_l=0$（无旋）：\textbf{纵波}，质点振动方向与传播方向平行，引起压缩/膨胀（改变体积）
+    \item $\nabla\cdot\vec u_t=0$（无散）：\textbf{横波}，质点振动方向与传播方向垂直，引起纯剪切（不改变体积）
+\end{itemize}
+
+两类波满足的方程和波速不同：
+\begin{equation}
+v_l=\sqrt{\frac{B+\frac{4}{3}\mu}{\rho}},\qquad v_t=\sqrt{\frac{\mu}{\rho}},
+\end{equation}
+其中 $B$ 为体积模量，$\mu$ 为剪切模量，$\rho$ 为密度。由于 $B>0$，总有 $v_l>v_t$（除非 $\mu=0$ 的液体，此时不存在横波）。
+
+横波有两个正交的偏振方向（均垂直于 $\vec q$），各向同性下二者简并，故共有\textbf{1支纵波 + 2支横波}。
+
+\textit{与真实晶体的对比}：在各向异性晶体（如立方晶系）中，纵波和横波的波速还会随传播方向变化，横波的两个偏振也可能不简并。德拜模型的``各向同性''假设是把方向依赖性平均掉了，但保留了偏振（纵/横）这个根本区别——因为纵波压缩和横波剪切是两种物理上完全不同的形变模式。
+
+\textbf{4. 平均声速 $v_p$ 的定义}
 
 注意 $v_p$ \textbf{不是}简单的算术平均或调和平均，而是
 \begin{equation}
@@ -193,7 +213,7 @@ U=\int_0^{\omega_D}\hbar\omega\,n(\omega)D(\omega)\,d\omega\propto T^4\;(T\ll\Th
 
 这是由模式密度对 $v^{-3}$ 加权决定的。由于低频声学支中纵波和横波各贡献一定比例的模式，$v_p$ 实际上是\textbf{对模式密度的倒立方平均}。不要误写成 $3/v_p=1/v_l+2/v_t$。
 
-\textbf{4. 德拜温度的物理意义}
+\textbf{5. 德拜温度的物理意义}
 
 $\Theta_D$ 是德拜模型的特征温度，标志着：
 \begin{itemize}
@@ -204,7 +224,7 @@ $\Theta_D$ 是德拜模型的特征温度，标志着：
 
 典型金属的德拜温度：Cu $\sim340\,\mathrm{K}$，Al $\sim428\,\mathrm{K}$，金刚石 $\sim2230\,\mathrm{K}$。金刚石的高 $\Theta_D$ 解释了它为什么热导率极高、比热极低（室温下 $T\ll\Theta_D$）。
 
-\textbf{5. 面心立方的 $N/V$}
+\textbf{6. 面心立方的 $N/V$}
 
 面心立方晶胞边长为 $a$，顶点 8 个原子各贡献 $1/8$，面心 6 个原子各贡献 $1/2$：
 \begin{equation}
