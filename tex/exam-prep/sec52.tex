@@ -185,16 +185,14 @@ n_\mathrm{FD}(\omega)=\frac{1}{e^{(\hbar\omega-\mu)/k_BT}+1},
 \toprule
  & \textbf{高温} ($T\gg\Theta_D$) & \textbf{低温} ($T\ll\Theta_D$) \\
 \midrule
-被激发模式数 & 全部 $3N$ 个（常数） & 仅 $\omega\lesssim k_BT/\hbar$ 的低频模式，数 $\propto T^3$ \\
-\addlinespace
+被激发模式数 & 全部 $3N$ 个（常数） & 仅 $\omega\lesssim k_BT/\hbar$ 的模式，数 $\propto T^3$ \\
 每个模式声子数 & $n\approx k_BT/\hbar\omega\gg1$，$\propto T$ & $n\sim O(1)$ \\
-\addlinespace
 总声子数 & $(\text{常数})\times T\Rightarrow\propto T$ & $T^3\times O(1)\Rightarrow\propto T^3$ \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-高温和低温的幂律差异，本质上来自于\textbf{``哪些模式被激发''}（低温）vs \textbf{``每个模式有多少声子''}（高温）。
+推导过程中已给出详细积分（高温 $e^x-1\approx x$，低温用 $2\zeta(3)$）。此表仅作快速参考：高温时全部模式都被激发，总声子数正比于每个模式的声子数（$\propto T$）；低温时只有少量低频模式被激发（模式数 $\propto T^3$），每个模式声子数 $\sim O(1)$，故总声子数 $\propto T^3$。
 
 \textbf{2. 与热容 $C_V$ 的对比}
 
@@ -208,23 +206,60 @@ U=\int_0^{\omega_D}\hbar\omega\,n(\omega)D(\omega)\,d\omega\propto T^4\;(T\ll\Th
 
 \textbf{3. 各向同性为什么还能区分纵波和横波？}
 
-这是一个常见的概念困惑。\textbf{``各向同性''不等于``只有一种波''}。各向同性只意味着弹性性质不随方向变化（波速与传播方向无关），但纵波和横波由于\textbf{偏振方式不同}、激发的弹性形变类型不同，仍然有不同的波速。
+\textbf{（a）``各向同性''到底同的是什么？}
 
-在连续介质力学中，各向同性弹性固体的位移场 $\vec u(\vec r,t)$ 满足标准的弹性波动方程。通过 Helmholtz 分解 $\vec u=\vec u_l+\vec u_t$，其中
+这个概念困惑非常普遍。\textbf{各向同性不是说``没有方向''，而是说``物理性质不随方向变化''}。在任何一条你选定的传播方向上，介质都一视同仁地响应——但传播方向和质点振动方向之间的\textbf{相对关系}仍然是客观存在的。
+
+想象一根均匀橡皮筋（各向同性）：
 \begin{itemize}
-    \item $\nabla\times\vec u_l=0$（无旋）：\textbf{纵波}，质点振动方向与传播方向平行，引起压缩/膨胀（改变体积）
-    \item $\nabla\cdot\vec u_t=0$（无散）：\textbf{横波}，质点振动方向与传播方向垂直，引起纯剪切（不改变体积）
+    \item 你沿长度方向推拉它（纵波）——橡皮筋被压缩/拉伸，长度改变，\textbf{体积变化}，感受到的阻力由体积模量 $B$ 和剪切模量 $\mu$ 共同决定
+    \item 你横向抖动它（横波）——橡皮筋发生侧向弯曲，各截面横向错动，\textbf{形状改变但长度不变}（体积近似不变），感受到的阻力仅由剪切模量 $\mu$ 决定
 \end{itemize}
 
-两类波满足的方程和波速不同：
+无论你从哪个方向观察这根橡皮筋，上述两种响应方式都存在，且各自的波速固定不变——这就是各向同性。如果橡皮筋是各向异性的（比如有纤维取向），那么不同方向上的波速会不同，但纵/横两种偏振模式依然存在。
+
+\textbf{（b）为什么横波是纯剪切？——从形变类型理解}
+
+固体中的弹性形变分为两种基本类型：
+
+\begin{center}
+\begin{tabular}{p{3cm}p{5cm}p{5cm}}
+\toprule
+ & \textbf{压缩/膨胀}（纵波） & \textbf{剪切}（横波） \\
+\midrule
+形变图像 & 弹簧被压缩/拉伸 & 一叠纸被横向推动，各层错开 \\
+体积变化 & \textbf{改变}（$\Delta V\neq0$） & \textbf{不变}（$\Delta V=0$） \\
+形状变化 & 可能不变 & 一定改变 \\
+恢复力来源 & 体积模量 $B$ + 剪切模量 $\mu$ & 仅剪切模量 $\mu$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+横波传播时，介质质点在垂直于传播方向的方向上振动。设想一列横波沿 $x$ 方向传播：
+\begin{itemize}
+    \item $x$ 处质点向上位移，$x+dx$ 处质点向下位移
+    \item 两相邻层面之间发生横向错动，像一叠扑克牌被横向推开
+    \item 这种错动不改变层与层之间的距离（$dx$ 不变），故体积不变
+    \item 但层间相对位移产生了剪切应力，提供恢复力
+\end{itemize}
+
+这就是``纯剪切''的物理：只改变形状，不改变体积。
+
+\textbf{（c）Helmholtz 分解的物理}
+
+数学上，任意位移场 $\vec u(\vec r,t)$ 可分解为无旋部分和无散部分：
 \begin{equation}
-v_l=\sqrt{\frac{B+\frac{4}{3}\mu}{\rho}},\qquad v_t=\sqrt{\frac{\mu}{\rho}},
+\vec u=\vec u_l+\vec u_t,\qquad \nabla\times\vec u_l=0,\quad \nabla\cdot\vec u_t=0.
 \end{equation}
-其中 $B$ 为体积模量，$\mu$ 为剪切模量，$\rho$ 为密度。由于 $B>0$，总有 $v_l>v_t$（除非 $\mu=0$ 的液体，此时不存在横波）。
 
-横波有两个正交的偏振方向（均垂直于 $\vec q$），各向同性下二者简并，故共有\textbf{1支纵波 + 2支横波}。
+这种分解之所以可行，是因为压缩形变和剪切形变在能量上是\textbf{独立}的——改变体积不做剪切功，改变形状不做体积功。两种形变对应两种独立的弹性恢复力，故产生两种独立的波：
+\begin{equation}
+v_l=\sqrt{\frac{B+\frac{4}{3}\mu}{\rho}},\qquad v_t=\sqrt{\frac{\mu}{\rho}}.
+\end{equation}
 
-\textit{与真实晶体的对比}：在各向异性晶体（如立方晶系）中，纵波和横波的波速还会随传播方向变化，横波的两个偏振也可能不简并。德拜模型的``各向同性''假设是把方向依赖性平均掉了，但保留了偏振（纵/横）这个根本区别——因为纵波压缩和横波剪切是两种物理上完全不同的形变模式。
+横波有两个正交偏振方向（均垂直于 $\vec q$），各向同性下二者简并（波速相同），故共\textbf{1支纵波 + 2支横波}。
+
+\textit{与真实晶体的对比}：在各向异性晶体中，纵波和横波的波速还会随传播方向变化，横波的两个偏振也可能不简并。德拜模型的``各向同性''假设把方向依赖性平均掉了，但保留了偏振（纵/横）这个根本区别——因为压缩和剪切是两种物理上完全不同的形变模式。
 
 \textbf{4. 平均声速 $v_p$ 的定义}
 

@@ -43,12 +43,22 @@
 \vec P_{\text{total}}=\sum_{\vec q,s}\hbar\vec q\,n_s(\vec q).
 \end{equation}
 
-热流密度与声子分布的关系：
+\textbf{热流密度与声子分布的关系}：
 \begin{equation}
 \vec J=\sum_{\vec q,s}\hbar\omega_s(\vec q)\,\vec v_s(\vec q)\,n_s(\vec q),
 \label{eq:heat-current}
 \end{equation}
-其中群速度 $\vec v_s(\vec q)=\nabla_{\vec q}\omega_s(\vec q)$。在德拜模型中 $\vec v_s\parallel\vec q$，故热流方向与总准动量方向一致。
+其中群速度 $\vec v_s(\vec q)=\nabla_{\vec q}\omega_s(\vec q)$。
+
+\textit{这个公式的物理来源}：把声子气体类比为经典理想气体。考虑模式 $(\vec q,s)$ 上的声子：
+\begin{itemize}
+    \item 每个声子携带能量 $\hbar\omega_s(\vec q)$
+    \item 声子以群速度 $\vec v_s(\vec q)$ 传播（注意：相速度 $\omega/q$ 描述的是等相位面的移动，群速度描述的是能量/波包的移动，热输运由群速度决定）
+    \item 该模式的声子占据数为 $n_s(\vec q)$
+\end{itemize}
+因此该模式对热流的贡献 = ``每个声子的能量 $\times$ 声子运动速度 $\times$ 声子数''，对所有模式求和即得总热流。这与气体动理论中 $J=\sum_i \varepsilon_i\vec v_i f_i$ 的形式完全一致——声子就是热量子的``载流子''。
+
+在德拜模型中，由于 $\omega=vq$，群速度 $\vec v=\nabla_{\vec q}\omega=v\,\hat q$ 与波矢 $\vec q$ 同向，故热流方向与总准动量 $\sum\hbar\vec q$ 的方向一致。这一对应关系是 N 过程无法消除热流的根本原因：N 过程保持总准动量不变，等价于保持热流方向不变。
 
 N 过程保持总准动量不变：
 \begin{equation}
