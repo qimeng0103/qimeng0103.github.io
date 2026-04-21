@@ -34,22 +34,43 @@ V = \sum_{r,s}\Bigl\{ &k_1\bigl[(x_{r+1,s}-x_{rs})^2 + (y_{r,s+1}-y_{rs})^2\bigr
 \end{tipbox}
 
 \begin{derivationbox}[标准解题过程]
-\textbf{Step 0: 势能形式的直观理解}
+\textbf{Step 0: 势能形式的直观理解——最容易误解的地方}
 
-在代入公式之前，先读懂势能的\textbf{几何结构}。把格点 $(r,s)$ 与其四个最近邻画出来：
+\begin{warnbox}[关键澄清：不是``$x$ 方向一个刚度，$y$ 方向一个刚度'']
+很多人第一眼会误以为：``$x$ 方向的位移差都用 $k_1$，$y$ 方向的位移差都用 $k_2$''——\textbf{这是错的}。
+
+正确的理解是：\textbf{每条键有自己的纵向刚度和横向刚度}，与全局坐标轴无关。
+\begin{itemize}
+    \item \textbf{纵向}（沿键方向）：刚度为 $k_1$（硬）
+    \item \textbf{横向}（垂直于键方向）：刚度为 $k_2$（软）
+\end{itemize}
+$k_1$、$k_2$ 是\textbf{键的属性}，不是\textbf{空间方向的属性}。
+\end{warnbox}
+
+把格点 $(r,s)$ 与其四个最近邻画出来，逐条键拆解：
 \begin{itemize}
     \item \textbf{水平键}（沿 $x$ 方向，连接 $(r,s)\to(r+1,s)$）：
     \begin{itemize}
-        \item 两原子在 $x$ 方向的相对位移 $(x_{r+1,s}-x_{rs})$，弹性系数为 $k_1$（``纵向''硬弹簧）
-        \item 两原子在 $y$ 方向的相对位移 $(y_{r+1,s}-y_{rs})$，弹性系数为 $k_2$（``横向''软弹簧）
+        \item 键的\textbf{纵向}是 $x$ 方向：相对位移 $(x_{r+1,s}-x_{rs})$，系数 $k_1$
+        \item 键的\textbf{横向}是 $y$ 方向：相对位移 $(y_{r+1,s}-y_{rs})$，系数 $k_2$
     \end{itemize}
     \item \textbf{垂直键}（沿 $y$ 方向，连接 $(r,s)\to(r,s+1)$）：
     \begin{itemize}
-        \item 两原子在 $y$ 方向的相对位移 $(y_{r,s+1}-y_{rs})$，弹性系数为 $k_1$
-        \item 两原子在 $x$ 方向的相对位移 $(x_{r,s+1}-x_{rs})$，弹性系数为 $k_2$
+        \item 键的\textbf{纵向}是 $y$ 方向：相对位移 $(y_{r,s+1}-y_{rs})$，系数 $k_1$
+        \item 键的\textbf{横向}是 $x$ 方向：相对位移 $(x_{r,s+1}-x_{rs})$，系数 $k_2$
     \end{itemize}
 \end{itemize}
-\textit{物理图像}：晶体像一张``正交各向异性''的网——$x$ 方向的主刚度是 $k_1$，$y$ 方向的主刚度也是 $k_1$，但每个键的``侧向''弯曲刚度只有 $k_2$。由于 $k_2\ll k_1$，沿 $x$ 方向传播的横波（$y$ 方向振动）会明显比纵波（$x$ 方向振动）慢。
+
+\textit{为什么运动方程中 $x$ 分量既有 $k_1$ 又有 $k_2$？}
+
+看式 \eqref{eq:x-motion}：$x_{rs}$ 的恢复力来自
+\begin{itemize}
+    \item \textbf{左右邻居}（水平键）：$x$ 方向是水平键的\textbf{纵向}，刚度 $k_1$
+    \item \textbf{上下邻居}（垂直键）：$x$ 方向是垂直键的\textbf{横向}，刚度 $k_2$
+\end{itemize}
+所以 $x$ 方向的运动同时感受到 $k_1$（来自水平键的纵向）和 $k_2$（来自垂直键的横向）。同理，$y$ 方向的运动也同时感受到 $k_1$（垂直键纵向）和 $k_2$（水平键横向）。
+
+\textit{一句话物理图像}：晶体像一张``正交各向异性''的网——每条键本身沿自身方向很硬（$k_1$），但侧向很软（$k_2$）。由于 $k_2\ll k_1$，沿 $x$ 方向传播的 $y$-偏振横波（主要靠垂直键的横向 $k_2$ 传递）会明显慢于 $x$-偏振纵波（靠水平键的纵向 $k_1$ 传递）。
 
 \textbf{Step 1: 运动方程}
 
@@ -153,8 +174,8 @@ $\alpha=2$（$y$ 主导） & $\displaystyle \omega_2(\xi)=\sqrt{0.1}\,\omega_0\s
 \textbf{2. 两支的物理意义（偏振图像）}
 
 \begin{itemize}
-    \item $\omega_{\vec q,1}$：$x$ 方向偏振主导。当 $\vec q$ 沿 $x$ 轴时（$q_y=0$），它感受到的是 $k_1$ 键的全刚度，故频率较高。
-    \item $\omega_{\vec q,2}$：$y$ 方向偏振主导。当 $\vec q$ 沿 $x$ 轴时，$y$ 方向的振动只能借助``横向''耦合 $k_2$ 传递，故频率被压低为 $\sqrt{0.1}\approx31.6\%$。
+    \item $\omega_{\vec q,1}$：$x$ 方向偏振主导。当 $\vec q$ 沿 $x$ 轴时（$q_y=0$），$x$ 方向振动主要靠\textbf{水平键的纵向} $k_1$ 传递，故频率高。
+    \item $\omega_{\vec q,2}$：$y$ 方向偏振主导。当 $\vec q$ 沿 $x$ 轴时，$y$ 方向振动主要靠\textbf{垂直键的横向} $k_2$ 传递，故频率被压低为 $\sqrt{0.1}\approx31.6\%$。
 \end{itemize}
 
 \textbf{3. 沿 $q=(\xi,0)$ 的函数图像}
