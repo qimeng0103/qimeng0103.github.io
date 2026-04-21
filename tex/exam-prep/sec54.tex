@@ -57,15 +57,15 @@ mM\omega^4-2\beta(m+M)\omega^2+4\beta^2\sin^2(qa)=0.
 解得两支格波：
 \begin{equation}
 \omega_{\pm}^2=\frac{\beta}{mM}\Bigl[(m+M)\pm\sqrt{(m+M)^2-4mM\sin^2(qa)}\Bigr].
-\label{eq:diatomic-dispersion}
+\label{eq:diatomic-dispersion-sec54}
 \end{equation}
 
-\textit{光学支}（$\omega_+$，取 $+$ 号）：在 $M\gg m$ 时，$m/M\ll1$，对 \eqref{eq:diatomic-dispersion} 中根号内展开：
+\textit{光学支}（$\omega_+$，取 $+$ 号）：在 $M\gg m$ 时，$m/M\ll1$，对 \eqref{eq:diatomic-dispersion-sec54} 中根号内展开：
 \begin{equation}
 \sqrt{(m+M)^2-4mM\sin^2(qa)}=(m+M)\sqrt{1-\frac{4mM}{(m+M)^2}\sin^2(qa)}.
 \end{equation}
 
-当 $m/M\ll1$ 时，$4mM/(m+M)^2\approx4m/M\ll1$，根号 $\	o1$（与 $q$ 的依赖为 $O(m/M)$ 高阶小量），故
+当 $m/M\ll1$ 时，$4mM/(m+M)^2\approx4m/M\ll1$，根号 $\to 1$（与 $q$ 的依赖为 $O(m/M)$ 高阶小量），故
 \begin{equation}
 \omega_+^2\approx\frac{\beta}{mM}\Bigl[(m+M)+(m+M)\Bigr]=\frac{2\beta(m+M)}{mM}\approx\frac{2\beta}{m}\equiv\omega_0^2.
 \end{equation}
@@ -183,20 +183,24 @@ C_V^+\approx Nk_B\Bigl(\frac{\Theta_E}{T}\Bigr)^2e^{-\Theta_E/T}\to0.
 \end{equation}
 光学支被指数冻结，贡献可忽略。
 
-\textit{声学支}：低温下只有 $\omega\ll\omega_0'$ 的低频模式被激发，可作近似：
+\textit{声学支}：低温下只有 $\omega\ll\omega_0'$ 的低频模式被激发，可作两个近似：
 \begin{itemize}
-    \item 分母 $\sqrt{\omega_0'^2-\omega^2}\approx\omega_0'$（常数）
-    \item 积分上限延拓至 $\infty$（因高频端被玻色因子截断）
-    \item $e^{\hbar\omega/k_BT}-1\approx e^{\hbar\omega/k_BT}$（$\hbar\omega\gg k_BT$ 不成立，但可用精确形式）
+    \item 分母 $\sqrt{\omega_0'^2-\omega^2}\approx\omega_0'$（常数），因主要贡献来自 $\omega\sim k_BT/\hbar\ll\omega_0'$
+    \item 积分上限延拓至 $\infty$（因玻色因子在 $\omega\gtrsim k_BT/\hbar$ 处指数截断，$\omega_0'$ 处无贡献）
 \end{itemize}
 
-令 $x=\hbar\omega/k_BT$，$d\omega=k_BT\,dx/\hbar$：
+于是
+\begin{equation}
+C_V^-\approx\frac{2Nk_B}{\pi\omega_0'}\int_0^{\infty}\Bigl(\frac{\hbar\omega}{k_BT}\Bigr)^2\frac{e^{\hbar\omega/k_BT}}{\bigl(e^{\hbar\omega/k_BT}-1\bigr)^2}\,d\omega.
+\end{equation}
+
+令 $x=\hbar\omega/k_BT$，则 $\hbar\omega/k_BT=x$，$d\omega=k_BT\,dx/\hbar$：
 \begin{align}
-C_V^-&\approx\frac{2Nk_B}{\pi\omega_0'}\int_0^{\infty}\Bigl(\frac{k_BTx}{\hbar}\Bigr)^2\frac{e^x}{(e^x-1)^2}\,\frac{k_BT}{\hbar}\,dx\cdot\frac{\hbar^2}{k_B^2T^2}\\
+C_V^-&\approx\frac{2Nk_B}{\pi\omega_0'}\int_0^{\infty}x^2\frac{e^x}{(e^x-1)^2}\cdot\frac{k_BT}{\hbar}\,dx\\
 &=\frac{2Nk_B}{\pi\omega_0'}\cdot\frac{k_BT}{\hbar}\int_0^{\infty}\frac{x^2e^x}{(e^x-1)^2}\,dx.
 \end{align}
 
-利用 $\displaystyle\int_0^{\infty}\frac{x^2e^x}{(e^x-1)^2}\,dx=2\zeta(2)=\frac{\pi^2}{3}$，得
+利用标准积分 $\displaystyle\int_0^{\infty}\frac{x^2e^x}{(e^x-1)^2}\,dx=2\zeta(2)=\frac{\pi^2}{3}$，得
 \begin{equation}
 C_V^-\approx\frac{2Nk_B}{\pi\omega_0'}\cdot\frac{k_BT}{\hbar}\cdot\frac{\pi^2}{3}
 =\frac{2\pi Nk_B^2T}{3\hbar\omega_0'}\propto T.
