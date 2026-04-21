@@ -118,7 +118,7 @@ E_{\text{zero}} = 3N\cdot\frac12\hbar\omega_E = \frac32 Nk_B\Theta_E.
 \end{formulabox}
 
 \begin{insightbox}[物理图像与概念深化]
-\textbf{1. 室温下零点振动是否可略？}
+\textbf{1. 原题解答是否严谨？——零点振动不可略}
 
 严格公式 \eqref{eq:diamond-msd-alt} 中，$T=300\,\mathrm{K}$、$\Theta_E=1320\,\mathrm{K}$ 时：
 \begin{itemize}
@@ -126,17 +126,24 @@ E_{\text{zero}} = 3N\cdot\frac12\hbar\omega_E = \frac32 Nk_B\Theta_E.
     \item 零点项：$\dfrac12=0.5$
 \end{itemize}
 零点项是热激发项的 $\sim40$ 倍！若按完整公式计算：
+\begin{align}
+    \langle r^2\rangle_{\text{full}} &= \frac{3\hbar^2}{mk_B\Theta_E}\Bigl(0.012+\frac12\Bigr) \approx 9.19\times10^{-23}\times0.512 \nonumber\\
+    &\approx 4.7\times10^{-23}\,\mathrm{m^2} = 4.7\times10^{-3}\,\text{\AA}^2,\\
+    \sqrt{\langle r^2\rangle_{\text{full}}} &\approx \sqrt{4.7\times10^{-3}}\,\text{\AA} \approx 0.069\,\text{\AA}.
+\end{align}
+所求比值
 \begin{equation}
-\sqrt{\langle r^2\rangle_{\text{full}}} \approx \sqrt{1.14\times10^{-24}\times\frac{0.5+0.012}{0.012}} \approx \sqrt{4.86\times10^{-23}} \approx 0.070\,\text{\AA},
+\frac{\sqrt{\langle r^2\rangle_{\text{full}}}}{d} \approx \frac{0.069}{1.546} \approx 4.5\%.
 \end{equation}
-比值约为 $4.5\%$，远大于 $0.69\%$。
 
-\textit{为什么原题可以略去？} 取决于``位移''的定义：
+\textit{结论}：
 \begin{itemize}
-    \item 若指\textbf{热振动位移}（相对于 $T=0$ 平衡位置的额外偏移），则只取热激发项合理；
-    \item 若指\textbf{总量子涨落}（含零点振动），则必须保留 $1/2$。
+    \item 若问\textbf{总量子涨落}（绝对均方位移，含零点振动），正确答案应为 $\bm{\sim4.5\%}$，原题解答的 $0.69\%$ \textbf{遗漏了主导的零点贡献}，不够严谨。
+    \item 若问\textbf{热振动位移}（仅由温度引起的、相对于 $T=0$ 平衡位置的额外偏移），则 $0.69\%$ 是合理的。这对应于估算热膨胀、Lindemann 判据等情境。
+    \item 在 X射线衍射的 Debye--Waller 因子中，均方位移必须包含零点贡献；在讨论``热振幅''时，教材有时会只计热激发部分，但这需要明确说明。
 \end{itemize}
-X射线衍射的 Debye--Waller 因子包含零点贡献，但在估算``热振幅''时常常只计热激发部分。
+
+\textbf{建议}：考试中若题目只说``估算均方位移''而未限定``热''，应给出完整结果（含零点能），或在答案中明确指出所作近似。
 
 \textbf{2. 为什么金刚石的爱因斯坦温度如此高？}
 
