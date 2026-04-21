@@ -120,7 +120,39 @@ $q\neq0$ 的声子模式总动量严格为零，但我们在声子--电子、声
 
 $q=0$ 的光学模描述原胞内不同原子反相振动，质心仍不动，因此总动量也为零。只有 $q=0$ 的\textbf{声学模}（所有原子同相）才携带物理动量。
 
-\textbf{5. 与德布罗意关系的类比}
+\textbf{5. 什么是``晶体动量''（Crystal Momentum）？}
+
+\begin{insightbox}[晶体动量 vs 真实动量]
+在周期性势场中，Bloch 定理告诉我们电子波函数可写成：
+\[
+\psi_k(\vec r) = e^{i\vec k\cdot\vec r}\,u_k(\vec r),
+\]
+其中 $u_k(\vec r)$ 具有晶格周期性。这里的 $\hbar\vec k$ 就是\textbf{晶体动量}。
+
+\textbf{与真实动量的本质区别}：
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+ & \textbf{真实动量} $\vec p$ & \textbf{晶体动量} $\hbar\vec k$ \\
+\midrule
+定义 & $-i\hbar\nabla$ 的本征值 & Bloch 波的标记量子数 \\
+守恒性 & 严格守恒（连续平移对称） & 模倒格矢守恒（离散平移对称） \\
+物理意义 & 质心整体运动 & 波包在周期性结构中的等效动量 \\
+取值范围 & $(-\infty,+\infty)$ & 第一布里渊区内（$k\sim k+G$ 等价） \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{为什么叫``动量''？}
+
+因为在与电子、光子相互作用时，$\hbar\vec k$ 满足\textbf{类似于动量守恒}的守恒律：
+\[
+\vec k_{\text{初}} = \vec k_{\text{末}} + \vec q + \vec G.
+\]
+看起来就像``动量守恒''，但由于晶格是\textbf{离散}周期结构而非连续空间，守恒只在模去一个倒格矢 $\vec G$ 的意义下成立。这就是``准''字的来源——它像动量，但不是真正的动量。
+
+\textbf{一句话总结}：晶体动量是周期性结构赋予波包的``等效动量标签''，它让离散晶格中的散射过程也能写出漂亮的守恒律。
+\end{insightbox}
 
 虽然声子不携带真实动量，但 $\hbar q$ 在形式上满足与光子动量完全类似的守恒律。这提示我们：准动量是晶格周期性势场中波包的\textbf{晶体动量}（crystal momentum），类似于 Bloch 电子的动量 $\hbar k$。
 \end{insightbox}

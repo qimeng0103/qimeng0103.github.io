@@ -62,36 +62,36 @@ dN = \frac{S}{2\pi}\cdot\frac{\omega}{v}\cdot\frac{d\omega}{v} = \frac{S}{2\pi v
 \end{equation}
 其中 $n=N/S$ 为面密度。若只考虑单支，则 $\omega_D$ 应减小 $\sqrt{2}$ 倍。
 
-\textbf{Step 3: 高温极限下的均方位移}
+\textbf{Step 3: 高温极限下的均方位移——用能量均分定理直接推导}
 
-设原子平均平方位移为 $\langle r^2\rangle$。在简谐近似下，每个原子的平均势能可写为
-\begin{equation}
-\langle U_{\text{atom}}\rangle = \frac12\beta\langle r^2\rangle.
-\end{equation}
-（这来自 4 根最近邻键，每根键分摊 $1/4$，总势能 $=4\times\frac14\times\frac12\beta\langle r^2\rangle=\frac12\beta\langle r^2\rangle$。）
+\begin{insightbox}[为什么不从``单键势能分摊''推导？]
+从微观键能出发的推导容易混乱：每根键的势能是 $\frac12\beta(\Delta r)^2$（相对位移），而我们要的是单原子的绝对位移 $\langle r^2\rangle$。在高温极限下，$\langle(\Delta r)^2\rangle$ 与 $\langle r^2\rangle$ 的关系需要额外证明。\textbf{最干净的方法}是直接从能量均分定理出发，绕过复杂的键能归属。
+\end{insightbox}
 
-晶格总势能
-\begin{equation}
-\langle U\rangle = N\cdot\frac12\beta\langle r^2\rangle.
-\end{equation}
+对简谐系统，能量均分定理给出：
+\begin{itemize}
+    \item 每个振动模式的平均总能量 $= k_BT$（经典极限）
+    \item 其中平均势能 $= \frac12 k_BT$，平均动能 $= \frac12 k_BT$
+\end{itemize}
 
-对简谐系统，势能等于总能量的一半（能量均分）：$\langle U\rangle=\langle K\rangle=\frac12\langle E\rangle$，故
+二维单原子晶格有 $N$ 个原子、每个原子 2 个自由度，总模式数 $2N$。因此晶格总势能：
 \begin{equation}
-\frac12 N\beta\langle r^2\rangle = \frac12\langle E\rangle \quad\Longrightarrow\quad \langle r^2\rangle = \frac{\langle E\rangle}{N\beta}.
-\label{eq:msd-energy}
-\end{equation}
-
-高温极限下，每个振动模式平均能量为 $k_BT$（经典能量均分）。二维单原子晶格有 $N$ 个原子、每个原子 2 个自由度，总模式数 $2N$，故
-\begin{equation}
-\langle E\rangle = 2N\cdot k_BT.
+\langle U\rangle = 2N \times \frac12 k_BT = Nk_BT.
+\label{eq:total-potential-2d}
 \end{equation}
 
-代入式 \eqref{eq:msd-energy}：
+另一方面，若把每个原子等效为一个二维各向同性谐振子（有效劲度系数为 $\beta$），则总势能也可写为
 \begin{equation}
-\boxed{\langle r^2\rangle = \frac{2Nk_BT}{N\beta} = \frac{2k_BT}{\beta}.}
+\langle U\rangle = N \times \frac12\beta\langle r^2\rangle.
+\label{eq:potential-effective}
 \end{equation}
 
-\textit{另一种等价推导}：直接对每支声学模用能量均分。每支有 $N$ 个模式，每模式能量 $k_BT$，其中势能 $k_BT/2$。单支总势能 $=Nk_BT/2$，两支总势能 $=Nk_BT$，与上式一致。
+联立式 \eqref{eq:total-potential-2d} 与 \eqref{eq:potential-effective}：
+\begin{equation}
+\frac12 N\beta\langle r^2\rangle = Nk_BT \quad\Longrightarrow\quad \boxed{\langle r^2\rangle = \frac{2k_BT}{\beta}.}
+\end{equation}
+
+\textit{检验}：对一维单原子链（1 个自由度/原子），总模式数 $N$，总势能 $=Nk_BT/2$，若写 $\langle U\rangle=\frac12N\beta\langle x^2\rangle$，则 $\langle x^2\rangle=k_BT/\beta$，与熟知结果一致。
 \end{derivationbox}
 
 \begin{formulabox}[答案汇总]
