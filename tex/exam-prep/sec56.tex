@@ -51,7 +51,13 @@ F(V,T)=U(V)+N\Bigl[\frac{1}{2}\hbar\omega+k_BT\ln\bigl(1-e^{-\hbar\omega/k_BT}\b
 \label{eq:crystal-free-energy}
 \end{equation}
 
-\textit{注}：$U(V)$ 是 $T=0$ 时晶体的内能（仅与体积有关），来源于原子间的静态相互作用势。
+\textit{自由能的物理意义}：$F(V,T)$ 是描述晶体热力学平衡的势函数。给定温度 $T$，晶体自发调整体积 $V$ 使 $F$ 取极小值。它包含两部分：
+\begin{itemize}
+    \item $U(V)$：\textbf{静态晶格能}（$T=0$ 时的原子相互作用势）。即使温度为零，原子间也存在相互作用（吸引+排斥），这部分能量与热振动无关，只由原子间距（即体积）决定。它决定了晶体的``骨架''——平衡体积 $V_0$ 和结合强度。
+    \item 声子项：\textbf{热振动的量子化能量}。声子不是势能本身，而是原子在平衡位置附近振动的\textbf{激发量子}。把原子从静止的平衡位置``推''一下，它以频率 $\omega$ 振动，这就是声子。声子的能量（零点能+热激发能）叠加在静态晶格能之上，构成总自由能。
+\end{itemize}
+
+\textit{类比}：把晶体想象成一张拉紧的鼓面。$U(V)$ 是鼓面被拉紧时储存的弹性势能（与绷紧程度有关）；声子项是敲击鼓面后产生的声波（振动模式）的能量。鼓面越紧（$U$ 越大），声波传播越快（$\omega$ 越大），二者通过 $U(V)$ 间接耦合——这就是热膨胀的微观根源。
 
 \textbf{Step 3: 热膨胀（或收缩）的计算}
 
@@ -72,13 +78,22 @@ P=-\frac{\partial U}{\partial V}-\frac{E}{\omega}\frac{\partial\omega}{\partial 
 \label{eq:state-equation}
 \end{equation}
 
-\textit{格林艾森关系}：题设
+\textit{格林艾森关系}：题设频率随体积的变化满足
 \begin{equation}
-\frac{\partial\omega}{\omega}=-\gamma\frac{\Delta V}{V},
+\frac{d\omega}{\omega}=-\gamma\frac{dV}{V},
 \qquad\text{即}\qquad
-\frac{\partial\omega}{\partial V}=-\gamma\frac{\omega}{V}.
+\frac{d\ln\omega}{d\ln V}=-\gamma.
 \label{eq:gruneisen-relation}
 \end{equation}
+
+这里 $dV$ 是体积的无穷小变化。对有限小变形 $\Delta V=V-V_0$，上式积分（或一阶泰勒展开）给出
+\begin{equation}
+\frac{\Delta\omega}{\omega}\approx-\gamma\frac{\Delta V}{V},
+\qquad\text{即}\qquad
+\frac{\partial\omega}{\partial V}\approx-\gamma\frac{\omega}{V}.
+\end{equation}
+
+\textit{符号说明}：$\gamma>0$ 时，体积增大（$\Delta V>0$）导致频率降低（$\Delta\omega<0$）——原子间距变大，弹簧变``松''，振动变慢。这正是日常经验：拉伸橡皮筋，振动频率降低。
 
 代入 \eqref{eq:state-equation}：
 \begin{equation}
