@@ -1,0 +1,192 @@
+% ============================================================
+% Section 55: 石墨的低温热容——准二维德拜模型
+% ============================================================
+\newpage
+\section{固体理论：石墨的低温热容——准二维德拜模型}
+\label{sec:graphite-2d-debye}
+
+\begin{modelbox}[题目：石墨低温比热与德拜理论]
+石墨具有层状晶体结构，不同层的碳原子之间的相互作用比同层碳原子之间的相互作用弱得多。实验上发现，低温下其比热正比于 $T^2$，如何用德拜理论给予解释？
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{层状结构}：层内强共价键，层间弱范德瓦耳斯力
+    \item \textbf{准二维系统}：低温下层间耦合模式未被激发，振动主要表现为各层独立的二维平面内运动
+    \item \textbf{二维模式密度}：$D(\omega)\propto\omega$（三维为 $\omega^2$）
+    \item \textbf{低温热容}：$C_V\propto T^2$（三维为 $T^3$，一维为 $T$）
+    \item \textbf{根源}：维度决定模式密度的幂次，进而决定低温热容的温度依赖
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 0: 物理模型——从三维到二维的过渡}
+
+石墨是典型的层状晶体：
+\begin{itemize}
+    \item 每层内：碳原子通过强的共价键结合，形成二维蜂巢结构
+    \item 层与层之间：依靠微弱的范德瓦耳斯力结合
+\end{itemize}
+
+在德拜理论中，模式密度 $D(\omega)$ 与系统的有效维度密切相关。由于石墨层间耦合极弱，低温下层间振动模式（沿 $c$ 轴方向的低频模式）难以被激发。晶格振动主要表现为各层独立的二维平面内振动。因此整个晶体的模式密度可近似为各单层模式密度的叠加，仍然保持与频率的线性关系：
+\begin{equation}
+D(\omega)=A\omega,
+\label{eq:2d-Domega}
+\end{equation}
+其中 $A$ 为待定常数。
+
+\textbf{Step 1: 模式密度的归一化}
+
+设晶体共有 $N$ 个原子，每个原子有 3 个振动自由度，总模式数为 $3N$。德拜模型将频谱截断在最高频率 $\omega_D$（德拜频率），满足：
+\begin{equation}
+\int_0^{\omega_D}D(\omega)\,d\omega=3N.
+\end{equation}
+
+代入 \eqref{eq:2d-Domega}：
+\begin{equation}
+\int_0^{\omega_D}A\omega\,d\omega=\frac{1}{2}A\omega_D^2=3N
+\quad\Longrightarrow\quad
+A=\frac{6N}{\omega_D^2}.
+\end{equation}
+
+因此模式密度为
+\begin{equation}
+D(\omega)=\frac{6N}{\omega_D^2}\,\omega.
+\end{equation}
+
+\textbf{Step 2: 低温比热的计算}
+
+晶格总振动能：
+\begin{equation}
+E=\int_0^{\omega_D}\frac{\hbar\omega}{e^{\hbar\omega/k_BT}-1}\,D(\omega)\,d\omega
+=\frac{6N}{\omega_D^2}\int_0^{\omega_D}\frac{\hbar\omega^2}{e^{\hbar\omega/k_BT}-1}\,d\omega.
+\end{equation}
+
+热容量：
+\begin{equation}
+C_V=\frac{\partial E}{\partial T}
+=\frac{6N}{\omega_D^2}\int_0^{\omega_D}\hbar\omega^2\,\frac{\partial}{\partial T}\Bigl(\frac{1}{e^{\hbar\omega/k_BT}-1}\Bigr)\,d\omega.
+\end{equation}
+
+对玻色因子求导：
+\begin{equation}
+\frac{\partial}{\partial T}\Bigl(\frac{1}{e^{\hbar\omega/k_BT}-1}\Bigr)
+=\frac{\hbar\omega}{k_BT^2}\frac{e^{\hbar\omega/k_BT}}{\bigl(e^{\hbar\omega/k_BT}-1\bigr)^2}.
+\end{equation}
+
+代入并整理：
+\begin{equation}
+C_V=\frac{6N}{\omega_D^2}\cdot\frac{1}{k_BT^2}\int_0^{\omega_D}\frac{(\hbar\omega)^3e^{\hbar\omega/k_BT}}{\bigl(e^{\hbar\omega/k_BT}-1\bigr)^2}\,d\omega.
+\end{equation}
+
+令 $x=\hbar\omega/k_BT$，$d\omega=k_BT\,dx/\hbar$，上限 $x_D=\hbar\omega_D/k_BT=\Theta_D/T$：
+\begin{equation}
+C_V=\frac{6N}{\omega_D^2}\cdot k_B\Bigl(\frac{k_BT}{\hbar}\Bigr)^2\int_0^{\Theta_D/T}\frac{x^3e^x}{(e^x-1)^2}\,dx.
+\end{equation}
+
+利用 $\omega_D=k_B\Theta_D/\hbar$，即 $1/\omega_D^2\cdot(k_BT/\hbar)^2=(T/\Theta_D)^2$，得
+\begin{equation}
+C_V=6Nk_B\Bigl(\frac{T}{\Theta_D}\Bigr)^2\int_0^{\Theta_D/T}\frac{x^3e^x}{(e^x-1)^2}\,dx.
+\end{equation}
+
+\textbf{Step 3: 低温极限 ($T\ll\Theta_D$)}
+
+此时 $\Theta_D/T\to\infty$，积分上限可延拓至 $\infty$。利用标准积分
+\begin{equation}
+\int_0^{\infty}\frac{x^3e^x}{(e^x-1)^2}\,dx=3\zeta(3)\Gamma(3)=6\zeta(3)\approx7.212,
+\end{equation}
+
+其中 $\zeta(3)\approx1.202$ 为 Ap\'ery 常数。因此
+\begin{equation}
+\boxed{C_V\propto T^2}.
+\end{equation}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{cl}
+\toprule
+结论 & 内容 \\
+\midrule
+模式密度 & $D(\omega)=\dfrac{6N}{\omega_D^2}\,\omega$（二维） \\
+低温热容 & $C_V=6Nk_B\left(\dfrac{T}{\Theta_D}\right)^2\times6\zeta(3)\propto T^2$ \\
+物理根源 & 层状结构 $\to$ 准二维振动 $\to D(\omega)\propto\omega\to C_V\propto T^2$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像与概念深化]
+\textbf{1. 为什么二维 $D(\omega)\propto\omega$？}
+
+从波矢空间到频率空间的``体积元''变换：
+\begin{itemize}
+    \item 三维：$q$ 空间球壳体积 $4\pi q^2\,dq$，故 $D(\omega)\propto q^2\,dq/d\omega\propto\omega^2$
+    \item 二维：$q$ 空间圆环面积 $2\pi q\,dq$，故 $D(\omega)\propto q\,dq/d\omega\propto\omega$
+    \item 一维：$q$ 空间两点距离 $dq$，故 $D(\omega)\propto dq/d\omega\propto\omega^0$（常数）
+\end{itemize}
+
+\begin{center}
+\begin{tabular}{cccc}
+\toprule
+维度 & $q$ 空间体积元 & $D(\omega)$ & 低温 $C_V$ \\
+\midrule
+3D & $4\pi q^2\,dq$ & $\propto\omega^2$ & $\propto T^3$ \\
+2D & $2\pi q\,dq$ & $\propto\omega$ & $\propto T^2$ \\
+1D & $dq$ & $\propto\omega^0$（常数） & $\propto T$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{2. 为什么石墨是``准二维''而非严格二维？}
+
+严格二维系统在热力学极限下不存在长程序（Mermin-Wagner 定理），但石墨层间毕竟有范德瓦耳斯耦合，只是极弱。这种``弱耦合层状结构''的特点：
+\begin{itemize}
+    \item 高温：层间模式被激发，系统表现为三维，$C_V\propto T^3$
+    \item 中温：层间模式部分被冻结，出现过渡行为
+    \item 低温：层间模式完全冻结，只有层内二维振动被激发，$C_V\propto T^2$
+\end{itemize}
+
+实验上观测到的 $C_V\propto T^2$ 是判断材料是否具有层状结构的灵敏指标。
+
+\textbf{3. 与 sec52（三维德拜）和 sec54（一维链）的维度链条}
+
+\begin{center}
+\begin{tabular}{p{2.5cm}ccc}
+\toprule
+ & \textbf{三维} & \textbf{二维（石墨）} & \textbf{一维} \\
+\midrule
+典型体系 & 各向同性晶体 & 层状晶体、薄膜 & 聚合物链、纳米线 \\
+$D(\omega)$ & $\propto\omega^2$ & $\propto\omega$ & $\propto\omega^0$（常数） \\
+低温 $C_V$ & $\propto T^3$ & $\propto T^2$ & $\propto T$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+石墨的 $T^2$ 定律恰好填补了``三维 $T^3$''和``一维 $T$''之间的空白，形成了完整的维度依赖链条。
+
+\textbf{4. 积分常数 $6\zeta(3)$ 的数值}
+
+$\zeta(3)\approx1.2020569$，故 $6\zeta(3)\approx7.212$。这是一个纯数学常数，与材料无关。不同二维材料（石墨烯、$\mathrm{MoS}_2$、黑磷等）的低温热容都满足 $C_V\propto T^2$，只是比例系数（通过 $\Theta_D$ 体现）不同。
+
+\textbf{5. 实验验证的要点}
+
+测量石墨低温热容时需要注意：
+\begin{itemize}
+    \item 温度必须足够低（$T\ll\Theta_D$），确保只有线性色散的声学支被激发
+    \item 样品质量要足够高，避免缺陷和杂质的额外贡献（这些可能引入额外的 $T$ 线性项或常数项）
+    \item 磁场和应力可能改变层间耦合，影响二维-三维过渡的温度范围
+\end{itemize}
+\end{insightbox}
+
+\begin{thinkbox}[考场速记：低维系统热容问题的答题框架]
+遇到``为什么某材料低温热容是 $T^2$ 或 $T$''类问题：
+\begin{enumerate}
+    \item \textbf{判断有效维度}：层状/薄膜 $\to$ 2D，链状/纳米线 $\to$ 1D
+    \item \textbf{写模式密度}：2D $D(\omega)\propto\omega$，1D $D(\omega)\propto\text{const}$
+    \item \textbf{归一化}：$\int_0^{\omega_D}D(\omega)\,d\omega=3N$（或 $2N$、$N$）
+    \item \textbf{求热容}：$C_V=k_B\int\left(\frac{\hbar\omega}{k_BT}\right)^2\frac{e^{\hbar\omega/k_BT}}{(e^{\hbar\omega/k_BT}-1)^2}D(\omega)\,d\omega$
+    \item \textbf{低温极限}：积分化为纯数值，温度依赖由 $(k_BT/\hbar)^{\text{维度}}$ 决定
+\end{enumerate}
+\textit{核心口诀}：三维立方二维线，一维常数零次幂；维度决定 $D(\omega)$，$D$ 的幂次定 $T$ 幂。
+\end{thinkbox}
