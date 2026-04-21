@@ -28,12 +28,25 @@
     \item 层与层之间：依靠微弱的范德瓦耳斯力结合
 \end{itemize}
 
-在德拜理论中，模式密度 $D(\omega)$ 与系统的有效维度密切相关。由于石墨层间耦合极弱，低温下层间振动模式（沿 $c$ 轴方向的低频模式）难以被激发。晶格振动主要表现为各层独立的二维平面内振动。因此整个晶体的模式密度可近似为各单层模式密度的叠加，仍然保持与频率的线性关系：
+在德拜理论中，模式密度 $D(\omega)$ 与系统的有效维度密切相关。由于石墨层间耦合极弱，低温下层间振动模式（沿 $c$ 轴方向的低频模式）难以被激发。晶格振动主要表现为各层独立的二维平面内振动。因此整个晶体的模式密度可近似为各单层模式密度的叠加，仍然保持与频率的线性关系。
+
+\textit{二维模式密度的推导}：考虑石墨单层，面积为 $S$。波矢 $\vec q$ 在二维平面内取值，$q$ 空间单位面积内的模式数为 $S/(2\pi)^2$。在德拜模型中，频率 $\omega$ 附近的模式位于 $q$ 空间半径为 $q$、宽度为 $dq$ 的圆环内，面积为 $2\pi q\,dq$。因此频率区间 $d\omega$ 内的模式数为
 \begin{equation}
-D(\omega)=A\omega,
+dn=\frac{S}{(2\pi)^2}\cdot2\pi q\,dq=\frac{S}{2\pi}\,q\,dq.
+\end{equation}
+
+对于声学支线性色散 $\omega=v_pq$（$v_p$ 为面内声速），有 $q=\omega/v_p$，$dq=d\omega/v_p$。代入得
+\begin{equation}
+D(\omega)=\frac{dn}{d\omega}=\frac{S}{2\pi v_p^2}\,\omega.
+\end{equation}
+
+\textit{多层叠加}：若有 $N_{\text{layer}}$ 层，每层面积 $S$，总原子数 $N=N_{\text{layer}}\cdot n_{\text{atom}}$（$n_{\text{atom}}$ 为单层原子数），则总模式密度为各层之和：
+\begin{equation}
+D_{\text{total}}(\omega)=N_{\text{layer}}\cdot\frac{S}{2\pi v_p^2}\,\omega
+=\frac{N\cdot s_{\text{atom}}}{2\pi v_p^2}\,\omega\equiv A\omega,
 \label{eq:2d-Domega}
 \end{equation}
-其中 $A$ 为待定常数。
+其中 $s_{\text{atom}}=S/n_{\text{atom}}$ 为每个原子占据的面积。可见无论层数多少，只要层间耦合可忽略，$D(\omega)\propto\omega$ 的线性关系始终成立。
 
 \textbf{Step 1: 模式密度的归一化}
 
@@ -138,13 +151,32 @@ C_V=6Nk_B\Bigl(\frac{T}{\Theta_D}\Bigr)^2\int_0^{\Theta_D/T}\frac{x^3e^x}{(e^x-1
 \end{tabular}
 \end{center}
 
-\textbf{2. 为什么石墨是``准二维''而非严格二维？}
+\textbf{2. 为什么石墨是``准二维''而非严格二维？——Mermin-Wagner 定理}
 
-严格二维系统在热力学极限下不存在长程序（Mermin-Wagner 定理），但石墨层间毕竟有范德瓦耳斯耦合，只是极弱。这种``弱耦合层状结构''的特点：
+\textit{Mermin-Wagner 定理}：在具有连续平移对称性的系统中，若空间维度 $d\leq2$，则热涨落在热力学极限下会摧毁任何长程有序。对晶格振动而言，这意味着严格二维晶格在任意有限温度 $T>0$ 下，原子的均方位移
+\begin{equation}
+\langle u^2\rangle\sim\int\frac{d^2q}{q^2}\to\infty
+\end{equation}
+是发散的——晶格会``热融化''，不存在稳定的晶体结构。
+
+\textit{石墨为什么能稳定存在？} 石墨层间有范德瓦耳斯耦合，虽然极弱（约为层内共价键的 $1/100$），但足以：
+\begin{enumerate}
+    \item \textbf{``钉扎''二维晶格}：层间耦合提供了一个微小的``势阱''，阻止原子均方位移的发散，使晶格在有限温度下稳定
+    \item \textbf{恢复三维特征}：在足够高的温度下，层间模式被热激发，系统恢复三维行为
+\end{enumerate}
+
+\textit{Mermin-Wagner 定理在石墨中的体现}：
 \begin{itemize}
-    \item 高温：层间模式被激发，系统表现为三维，$C_V\propto T^3$
-    \item 中温：层间模式部分被冻结，出现过渡行为
-    \item 低温：层间模式完全冻结，只有层内二维振动被激发，$C_V\propto T^2$
+    \item 若把石墨的单层（石墨烯）真正孤立出来（悬浮、无衬底、无层间耦合），它在有限温度下会发生剧烈的热起伏（$\langle u^2\rangle$ 对数发散），表现为``涟漪''（ripples）
+    \item 实际石墨中，层间范德瓦耳斯力抑制了这种发散，使原子维持在平衡位置附近
+    \item 这种抑制在低温下已经足够有效，但在极低温下，若层间耦合进一步减弱（如高度剥离的少层石墨烯），热起伏效应会重新显现
+\end{itemize}
+
+\textit{``弱耦合层状结构''的温度行为}：
+\begin{itemize}
+    \item 高温（$T\gtrsim\Theta_{\perp}$，$\Theta_{\perp}$ 为层间德拜温度）：层间模式被激发，系统表现为三维，$C_V\propto T^3$
+    \item 中温（$T\sim\Theta_{\perp}/10$）：层间模式部分被冻结，出现过渡行为
+    \item 低温（$T\ll\Theta_{\perp}$）：层间模式完全冻结，只有层内二维振动被激发，$C_V\propto T^2$
 \end{itemize}
 
 实验上观测到的 $C_V\propto T^2$ 是判断材料是否具有层状结构的灵敏指标。
