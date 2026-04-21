@@ -49,6 +49,13 @@ n(\omega)=\frac{1}{e^{\hbar\omega/k_BT}-1}.
 \label{eq:planck}
 \end{equation}
 
+\textit{关于 $n(\omega)$ 与 $D(\omega)$ 的物理角色}：
+\begin{itemize}
+    \item $D(\omega)$ 是\textbf{系统的固有属性}（单位频率内的模式数），由晶体结构、维度、色散关系决定，与温度无关。类比：宿舍楼的``房间容量表''——每层楼有多少个房间。
+    \item $n(\omega)$ 是\textbf{热平衡下的统计占据}（每个模式上的平均声子数），由温度和玻色子统计决定。类比：每间宿舍平均住了多少学生。
+    \item 二者相乘再积分：$\displaystyle N_{\text{ph}}=\int n(\omega)D(\omega)\,d\omega$，即``每个模式的人数 × 模式总数''，得到整个系统的总声子数。类似地，$U=\int\hbar\omega\,n(\omega)D(\omega)\,d\omega$ 只是多了一个每个声子的能量因子 $\hbar\omega$。
+\end{itemize}
+
 总声子数：
 \begin{equation}
 N_{\text{ph}}=\int_0^{\omega_D}n(\omega)D(\omega)\,d\omega
@@ -156,6 +163,21 @@ v_p&=\Bigl(\frac{3}{5.34\times10^{-17}}\Bigr)^{1/3}\approx3.83\times10^5\;\mathr
 \end{formulabox}
 
 \begin{insightbox}[物理图像与概念深化]
+\textbf{普朗克分布与玻色-爱因斯坦统计}
+
+式 \eqref{eq:planck} 中的 $n(\omega)$ 本质上是\textbf{玻色-爱因斯坦分布}在化学势 $\mu=0$ 时的特例：
+\begin{equation}
+n_\mathrm{BE}(\omega)=\frac{1}{e^{(\hbar\omega-\mu)/k_BT}-1},\qquad \text{声子：}\mu=0.
+\end{equation}
+
+\textbf{为什么声子的 $\mu=0$？} 因为声子数不守恒——晶格振动可以激发任意多个声子，也可以全部湮灭回基态。系统不固定声子总数，热平衡时化学势自然为零。这与光子（黑体辐射）完全相同，因此声子和光子服从同一分布，统称\textbf{普朗克分布}。
+
+\textbf{与费米子的对比}：电子、质子等费米子服从费米-狄拉克分布
+\begin{equation}
+n_\mathrm{FD}(\omega)=\frac{1}{e^{(\hbar\omega-\mu)/k_BT}+1},
+\end{equation}
+分母中的 $+1$ 来源于泡利不相容原理（每个量子态最多一个费米子）。玻色子则``喜欢扎堆''，可以无限多个占据同一态，因此在低温下会出现玻色-爱因斯坦凝聚。
+
 \textbf{1. 为什么高温 $N_{\text{ph}}\propto T$ 而低温 $N_{\text{ph}}\propto T^3$？}
 
 \begin{center}
