@@ -102,7 +102,41 @@ N_{\text{ph}} = \frac{3V}{2\pi^2v_p^3}\Bigl(\frac{k_BT}{\hbar}\Bigr)^3\cdot2\zet
 
 系数为常数，故 \textbf{$N_{\text{ph}}\propto T^3$}（低温）。
 
-\textit{物理图像}：低温下只有 $\hbar\omega\lesssim k_BT$ 的低频模式被热激发。由色散 $\omega=vq$ 和 $D(\omega)\propto\omega^2$，被激发的模式数正比于 $(k_BT/\hbar)^3$，每个模式声子数 $\sim1$（玻色子基态附近），故总声子数 $\propto T^3$。
+\textit{物理图像——三步拆解}：
+
+\textbf{第一步：哪些模式被激发？}
+
+看普朗克分布 $n(\omega)=1/(e^{\hbar\omega/k_BT}-1)$。当 $\hbar\omega\gg k_BT$ 时，指数项 $e^{\hbar\omega/k_BT}\gg1$，故 $n(\omega)\approx e^{-\hbar\omega/k_BT}\to0$——这些高频模式上几乎没有声子，相当于``冻结''了。只有当 $\hbar\omega\lesssim k_BT$ 时，$n(\omega)\sim O(1)$，模式才被显著激发。
+
+因此，低温下有效的频率范围被热能量 $k_BT$ 截断在
+\begin{equation}
+\omega_{\text{cutoff}}\sim\frac{k_BT}{\hbar}.
+\end{equation}
+
+\textbf{第二步：这个频率范围内有多少个模式？}
+
+模式密度 $D(\omega)\propto\omega^2$。被激发的模式总数 = 对 $D(\omega)$ 从 $0$ 到 $\omega_{\text{cutoff}}$ 积分：
+\begin{equation}
+N_{\text{modes}}\sim\int_0^{k_BT/\hbar}\omega^2\,d\omega\sim\Bigl(\frac{k_BT}{\hbar}\Bigr)^3\propto T^3.
+\end{equation}
+
+这是 $T^3$ 的第一个来源——\textbf{``有资格被激发的房间数''随温度三次方增长}。
+
+\textbf{第三步：每个被激发的模式上有多少个声子？}
+
+在截断频率 $\omega\sim k_BT/\hbar$ 处：
+\begin{equation}
+n\sim\frac{1}{e^{1}-1}\approx0.58\sim O(1).
+\end{equation}
+
+在更低的频率处 $n$ 更大，但大部分被积模式的 $n$ 在 $0.5\sim2$ 之间，平均下来是一个与温度无关的常数（约为 $1.2$，由积分中的 $2\zeta(3)/\text{积分上限}^3$ 决定）。
+
+因此：
+\begin{equation}
+\underbrace{N_{\text{ph}}}_{\propto T^3}=\underbrace{N_{\text{modes}}}_{\propto T^3}\times\underbrace{\langle n\rangle}_{\sim O(1)}.
+\end{equation}
+
+$\boxed{T^3}$ 的本质：低温下热能量 $k_BT$ 很小，只能``唤醒''频率低于 $k_BT/\hbar$ 的模式。而三维空间中模式密度 $D(\omega)\propto\omega^2$，低频模式极其稀少——就像一个倒立的锥体，越靠近底部（低频）空间越小。温度升高时，$k_BT$ 这个``唤醒阈值''上移，允许被激发的模式数按体积（$\propto T^3$）增长。
 
 \textbf{Step 3: 计算面心立方晶体的德拜温度}
 
