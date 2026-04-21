@@ -1,0 +1,132 @@
+% ============================================================
+% Section 50: 声子三声子过程与 Umklapp 散射
+% ============================================================
+\newpage
+\section{固体理论：声子三声子过程与 Umklapp 散射}
+\label{sec:three-phonon-umklapp}
+
+\begin{modelbox}[题目：简立方晶体中两个声子合并]
+具有简立方结构的晶体，原子间距为 $2\,\text{\AA}$。由于非简谐作用，一个沿 $[1,0,0]$ 方向传播、波矢大小为 $1.3\times10^{10}\,\mathrm{m^{-1}}$ 的声子，同另一个波矢大小相等但沿 $[1,1,0]$ 方向传播的声子相互作用，合并成第三个声子。试求新形成的第三个声子的波矢。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{简立方倒格子}：倒格常数 $b=2\pi/a$，第一布里渊区为边长 $2\pi/a$ 的立方体
+    \item \textbf{准动量守恒}：$\vec q_1+\vec q_2=\vec q_3+\vec G$（三声子过程）
+    \item \textbf{N 过程 vs U 过程}：$\vec G=0$ 为正规过程；$\vec G\neq0$ 为倒逆过程（U 过程）
+    \item \textbf{布里渊区折叠}：超出第一布里渊区的波矢需用倒格矢折叠回去
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 倒格子与布里渊区}
+
+简立方正格子基矢 $a_1=a\hat i,\,a_2=a\hat j,\,a_3=a\hat k$，晶格常数
+\begin{equation}
+a = 2\,\text{\AA} = 2\times10^{-10}\,\mathrm{m}.
+\end{equation}
+
+倒格子基矢
+\begin{equation}
+b_1 = \frac{2\pi}{a}\hat i, \quad b_2 = \frac{2\pi}{a}\hat j, \quad b_3 = \frac{2\pi}{a}\hat k.
+\end{equation}
+
+倒格常数
+\begin{equation}
+b = \frac{2\pi}{a} = \pi\times10^{10}\,\mathrm{m^{-1}} \approx 3.14\times10^{10}\,\mathrm{m^{-1}}.
+\end{equation}
+
+第一布里渊区沿主轴的边界在 $\pm\pi/a = \pm1.57\times10^{10}\,\mathrm{m^{-1}}$。
+
+\textbf{Step 2: 两个初始声子的波矢}
+
+声子 1（沿 $[1,0,0]$）：
+\begin{equation}
+\vec q_1 = 1.3\times10^{10}\,\hat i\;(\mathrm{m^{-1}}).
+\end{equation}
+
+声子 2（沿 $[1,1,0]$，大小同为 $1.3\times10^{10}$）：
+\begin{equation}
+\vec q_2 = 1.3\times10^{10}\times\frac{\hat i+\hat j}{\sqrt2} \approx 0.919\times10^{10}\,(\hat i+\hat j)\;(\mathrm{m^{-1}}).
+\end{equation}
+
+\textbf{Step 3: 准动量守恒与简约}
+
+三声子过程的准动量守恒：
+\begin{equation}
+\vec q_1 + \vec q_2 = \vec q_3 + \vec G.
+\end{equation}
+
+先计算直接和（暂令 $\vec G=0$）：
+\begin{equation}
+\vec q_1+\vec q_2 = (1.3+0.919)\times10^{10}\,\hat i + 0.919\times10^{10}\,\hat j = 2.219\times10^{10}\,\hat i + 0.919\times10^{10}\,\hat j.
+\end{equation}
+
+$x$ 分量 $2.219\times10^{10} > \pi/a\approx1.57\times10^{10}$，已超出第一布里渊区。需选择一个倒格矢将其折叠回去。取 $\vec G=-\vec b_1$：
+\begin{equation}
+\vec q_3 = (\vec q_1+\vec q_2) - \vec b_1 = (2.219-\pi)\times10^{10}\,\hat i + 0.919\times10^{10}\,\hat j \approx -0.92\times10^{10}\,\hat i + 0.92\times10^{10}\,\hat j.
+\end{equation}
+
+\textbf{Step 4: 验证}
+
+新声子波矢的大小：
+\begin{equation}
+|\vec q_3| = \sqrt{(-0.92)^2+(0.92)^2}\times10^{10} \approx 1.30\times10^{10}\,\mathrm{m^{-1}},
+\end{equation}
+与入射声子大小相同。方向为 $[\bar1,1,0]$（与 $[1,1,0]$ 正交）。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{cl}
+\toprule
+量 & 结果 \\
+\midrule
+初始波矢和 $\vec q_1+\vec q_2$ & $2.219\times10^{10}\,\hat i + 0.919\times10^{10}\,\hat j$ \\[8pt]
+折叠所用倒格矢 & $\vec G=-\vec b_1=-3.14\times10^{10}\,\hat i$ \\[8pt]
+新声子波矢 $\vec q_3$ & $-0.92\times10^{10}\,\hat i + 0.92\times10^{10}\,\hat j$ \\[8pt]
+$|\vec q_3|$ & $\approx1.30\times10^{10}\,\mathrm{m^{-1}}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像与概念深化]
+\textbf{1. 为什么必须是 U 过程？}
+
+本题中两个声子都沿``前进''方向传播（$[100]$ 和 $[110]$），合并后若准动量严格守恒（$\vec G=0$），新声子的 $x$ 分量将达到 $2.22\times10^{10}\,\mathrm{m^{-1}}$，远超布里渊区边界。晶体不允许存在如此大波矢的稳定声子（波长 $<a$，进入短波非物理区），因此必须借助倒格矢将其折叠回第一布里渊区。
+
+\textbf{2. N 过程与 U 过程的物理后果}
+
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+ & \textbf{N 过程} ($\vec G=0$) & \textbf{U 过程} ($\vec G\neq0$) \\
+\midrule
+准动量守恒 & $\vec q_1+\vec q_2=\vec q_3$ & $\vec q_1+\vec q_2=\vec q_3+\vec G$ \\
+热流影响 & 不改变声子定向运动 & 使声子运动方向大幅偏转甚至反向 \\
+热阻贡献 & 无贡献 & \textbf{热阻的主要来源} \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textit{直观图像}：N 过程就像两辆同向行驶的汽车轻轻碰撞后交换乘客，整体车流方向不变；U 过程则像高速公路上的大掉头——碰撞后汽车反向行驶，严重破坏车流方向，造成``拥堵''（热阻）。
+
+\textbf{3. 第一布里渊区的物理意义}
+
+在第一布里渊区外定义的波矢 $\vec q$ 与区内的 $\vec q+\vec G$ 描述的是\textbf{同一个晶格振动模式}（因为 $e^{i(\vec q+\vec G)\cdot\vec R}=e^{i\vec q\cdot\vec R}$ 对格点 $\vec R$ 成立）。因此，物理上所有信息都包含在第一布里渊区内，超出边界的波矢必须``折叠''回来才有意义。
+
+\textbf{4. 能量守恒的隐含检查}
+
+三声子过程还需满足能量守恒 $\omega_1+\omega_2=\omega_3$。在德拜模型 $\omega=vq$ 下，本题三个声子大小相同（$|q_1|=|q_2|=|q_3|$），故 $\omega_1=\omega_2=\omega_3$，能量守恒要求 $\omega_3=2\omega_1$ 或 $0$——\textbf{这不可能严格满足}。因此本题实际上是一个`` toy model ''，重点在于演示准动量守恒和布里渊区折叠，而非真实的物理过程。实际晶体中，三声子过程通常涉及不同分支（如声学支+声学支$\to$光学支）或不同频率的声子，以满足能量守恒。
+\end{insightbox}
+
+\begin{thinkbox}[考场速记：声子碰撞问题的三步法]
+遇到``声子相互作用求末态波矢''类问题：
+\begin{enumerate}
+    \item \textbf{写准动量守恒}：$\vec q_1+\vec q_2=\vec q_3+\vec G$（或合并/衰变的对应形式）
+    \item \textbf{先算直接和}：令 $\vec G=0$ 求 $\vec q_3^{(0)}=\vec q_1+\vec q_2$
+    \item \textbf{判断并折叠}：若 $\vec q_3^{(0)}$ 超出第一布里渊区，选取适当的 $\vec G$ 使其折回
+\end{enumerate}
+\textit{判断口诀}：$|q_i|>\pi/a$（简立方主轴）即需折叠；折叠后 $|\vec q_3|$ 应与色散关系自洽。
+\end{thinkbox}
