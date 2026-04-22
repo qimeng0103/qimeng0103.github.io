@@ -48,7 +48,17 @@ W(n) = W_1 W_2 = \frac{N!\,N'!}{(N-n)!\,(N'-n)!\,(n!)^2}.
 \begin{equation}
 Z = \sum_n W(n)\, e^{-nu/k_{\!B}T}.
 \end{equation}
-在热平衡时，系统处于最概然分布，对应 $W(n)\,e^{-nu/k_{\!B}T}$ 取极大值。
+配分函数中每一项 $W(n)\,e^{-nu/k_{\!B}T}$ 是系统具有 $n$ 个缺陷时的\textbf{统计权重}（微观状态数乘以玻尔兹曼因子）。根据玻尔兹曼分布，出现 $n$ 个缺陷的概率正比于该项：
+\begin{equation}
+P(n) \propto W(n)\,e^{-nu/k_{\!B}T}.
+\end{equation}
+热平衡时系统处于\textbf{概率最大}的状态，即 $P(n)$ 取极大值。由于归一化因子 $Z$ 与 $n$ 无关，$P(n)$ 的极大值等价于 $W(n)\,e^{-nu/k_{\!B}T}$ 的极大值。
+
+\textit{等价视角}：对权重取对数，
+\begin{equation}
+\ln\!\bigl[W(n)\,e^{-nu/k_{\!B}T}\bigr] = \frac{-F(n)}{k_{\!B}T},
+\end{equation}
+其中 $F(n)=U(n)-TS(n)=nu-k_{\!B}T\ln W(n)$ 是产生 $n$ 个缺陷时的自由能。因此，\textbf{权重取极大} $\Leftrightarrow$ \textbf{自由能取极小}（$\partial F/\partial n=0$），两种方法数学等价。
 
 \textbf{Step 3: 斯特林公式求极值}
 
@@ -130,11 +140,19 @@ T = \frac{1.602\times 10^{-19}}{2\times 1.381\times 10^{-23}\times 6.9078}
 \[
 2k_{\!B}T\ln n \sim u \quad\Longrightarrow\quad n\sim e^{-u/2k_{\!B}T}.
 \]
-\textbf{对比}：
-\begin{itemize}
-    \item \textbf{单质肖特基缺陷}（单一原子晶体）：仅一类空位，$W=\binom{N}{n}$，故 $n = N e^{-u/k_{\!B}T}$，指数上无 $1/2$。
-    \item \textbf{离子晶体肖特基缺陷}（正负离子空位成对）：$W=\binom{N}{n}^2$，与弗仑克尔缺陷形式相同，$n = N e^{-u/2k_{\!B}T}$，指数上也有 $1/2$。
-\end{itemize}
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+\textbf{缺陷类型} & \textbf{微观图像} & \textbf{微观状态数 $W$} & \textbf{指数因子} \\
+\midrule
+弗仑克尔 & 格点$\to$间隙（双过程） & $\displaystyle\binom{N}{n}\binom{N'}{n}$ & $e^{-u/2k_{\!B}T}$ \\
+离子肖特基 & 正负离子空位对（双过程） & $\displaystyle\binom{N}{n}^2$ & $e^{-u/2k_{\!B}T}$ \\
+单质肖特基 & 单一空位（单过程） & $\displaystyle\binom{N}{n}$ & $e^{-u/k_{\!B}T}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{4pt}
+\textbf{记忆规律}：$W$ 含两个独立组合因子（两类位置各选 $n$ 个）$\Rightarrow$ 求导后出现 $2\ln n$ $\Rightarrow$ 指数带 $1/2$；$W$ 只含一个组合因子（一类位置选 $n$ 个）$\Rightarrow$ 求导后只出现 $1\ln n$ $\Rightarrow$ 指数不带 $1/2$。
 \end{insightbox}
 
 \begin{thinkbox}[考场速记：缺陷统计问题的答题模板]
@@ -152,5 +170,23 @@ T = \frac{1.602\times 10^{-19}}{2\times 1.381\times 10^{-23}\times 6.9078}
         \item 单质肖特基缺陷（单一空位）：$W=\binom{N}{n}$，$n\sim e^{-u/k_{\!B}T}$
     \end{itemize}
 \end{enumerate}
-\textit{陷阱提醒}：不要混淆 $N$（格点数）和 $N'$（间隙位置数）。简单晶格中可假设 $N'=N$，但体心立方/面心立方的间隙位置数不同（八面体间隙、四面体间隙数目不同），此时 $N'\neq N$。
+\textit{间隙位置数速查}（以 $N$ 个原子为基准）：
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{结构} & \textbf{八面体间隙} & \textbf{四面体间隙} \\
+\midrule
+简单立方（sc） & $N$（体心） & $2N$ \\
+面心立方（fcc） & $N$ & $2N$ \\
+体心立方（bcc） & $3N$ & $6N$ \\
+六角密堆（hcp） & $N$ & $2N$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{2pt}
+弗仑克尔缺陷中 $N'$ 指\textbf{可被占据的间隙位置总数}。简单晶格通常取 $N'=N$；fcc 若只计八面体间隙则 $N'=N$，若同时计四面体间隙则 $N'=3N$。考试中若未指明，默认按题设条件或取 $N'=N$。
+
+\textbf{反位缺陷（anti-site）}：化合物晶体（如 GaAs、NaCl）中，一种原子占据了另一种原子的格点位置，例如 Ga 占据 As 位。其组合数 $W=\binom{N}{n}$（$N$ 为被取代原子类的格点数），指数上无 $1/2$。
+
+\textit{陷阱提醒}：不要混淆 $N$（格点数）和 $N'$（间隙位置数）。
 \end{thinkbox}
