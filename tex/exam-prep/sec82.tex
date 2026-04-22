@@ -1,0 +1,127 @@
+% ============================================================
+% Section 82: 简立方晶体Σ轴上的能带、速度与有效质量
+% ============================================================
+\section{固体理论：简立方晶体$\Sigma$轴上的能带、速度与有效质量}
+\label{sec:simple-cubic-sigma-axis}
+
+\begin{modelbox}[题目：简立方$s$带沿$\Sigma$轴的色散、速度、有效质量与加速度]
+在晶格常数为 $a$ 的简立方晶体中，由原子$s$态波函数形成的能带
+\[
+E(\bm{k})=E_s+J_{0,0}^{s}+2J_s\bigl(\cos k_xa+\cos k_ya+\cos k_za\bigr),
+\]
+其中 $J_{0,0}^{s},J_s<0$ 为交换积分。
+\begin{enumerate}
+    \item 画出$\Sigma$轴上能带图；
+    \item 画出$\Sigma$轴上电子公有化运动速度图；
+    \item 画出$\Sigma$轴上电子有效质量图；
+    \item 画出$\Sigma$轴有恒定电场时电子加速度曲线。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{$\Sigma$轴}：$\Gamma\to M$ 方向，沿 $\langle110\rangle$，$k_x=k_y=k/\sqrt{2}$，$k_z=0$
+    \item \textbf{$J_s<0$}：$\Gamma$点为带底，$M$点为带顶
+    \item \textbf{群速度}：$v=\hbar^{-1}\,dE/dk$，带边为零，带中最大
+    \item \textbf{有效质量}：$m^*=\hbar^2/(d^2E/dk^2)$，带底正、带顶负，拐点发散
+    \item \textbf{加速度}：$a=F/m^*$，$m^*$变号导致加速度变号
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{$\Sigma$轴的参数化}
+
+$\Sigma$轴即 $\Gamma M$ 方向，沿 $[1,1,0]$。设波矢大小为 $k$（$0\le k\le\sqrt{2}\pi/a$），则
+\begin{equation}
+k_x=k_y=\frac{k}{\sqrt{2}},\qquad k_z=0.
+\end{equation}
+
+\textbf{Step 1: $\Sigma$轴上能带}
+
+代入能带表达式：
+\begin{align}
+E(k)&=E_s+J_{0,0}^{s}+2J_s\bigl[\cos\bigl(\tfrac{ka}{\sqrt{2}}\bigr)+\cos\bigl(\tfrac{ka}{\sqrt{2}}\bigr)+\cos0\bigr] \notag\\
+&=\boxed{E_s+J_{0,0}^{s}+2J_s+4J_s\cos\Bigl(\frac{ka}{\sqrt{2}}\Bigr).}
+\end{align}
+
+极值点：
+\begin{itemize}
+    \item $\Gamma$点（$k=0$）：$\cos=1$，$E(\Gamma)=E_s+J_{0,0}^{s}+6J_s$（\textbf{带底}，因 $J_s<0$）
+    \item $M$点（$k=\sqrt{2}\pi/a$）：$\cos=-1$，$E(M)=E_s+J_{0,0}^{s}-2J_s$（\textbf{带顶}）
+\end{itemize}
+能带沿 $\Sigma$ 轴从 $\Gamma$ 到 $M$ 单调上升，呈余弦曲线的一半。中间有一\textbf{拐点} $A$，位于 $ka/\sqrt{2}=\pi/2$ 即 $k=\sqrt{2}\pi/(2a)$ 处，此处曲率变号。
+
+\textbf{Step 2: 电子公有化运动速度}
+
+群速度
+\begin{equation}
+v(k)=\frac{1}{\hbar}\frac{dE}{dk}
+=\frac{1}{\hbar}\cdot4J_s\Bigl(-\sin\frac{ka}{\sqrt{2}}\Bigr)\cdot\frac{a}{\sqrt{2}}
+=-\frac{2\sqrt{2}J_sa}{\hbar}\sin\Bigl(\frac{ka}{\sqrt{2}}\Bigr).
+\end{equation}
+
+因 $J_s<0$，系数 $-2\sqrt{2}J_sa/\hbar>0$。故
+\begin{itemize}
+    \item $\Gamma$点：$v=0$
+    \item 随 $k$ 增大，$v>0$ 且增大
+    \item 拐点 $A$：$\sin(\pi/2)=1$，速度取\textbf{最大值} $v_{\max}=-2\sqrt{2}J_sa/\hbar$
+    \item $M$点：$v=0$
+\end{itemize}
+速度曲线呈正弦半波形，从 0 上升到最大再下降到 0。
+
+\textbf{Step 3: 电子有效质量}
+
+\begin{equation}
+m^*(k)=\frac{\hbar^2}{d^2E/dk^2},\qquad
+\frac{d^2E}{dk^2}=-2J_sa^2\cos\Bigl(\frac{ka}{\sqrt{2}}\Bigr).
+\end{equation}
+因 $J_s<0$，分母 $-2J_sa^2>0$。
+\begin{itemize}
+    \item $\Gamma$点（$k=0$，$\cos=1$）：$m^*=\dfrac{\hbar^2}{-2J_sa^2}>0$（\textbf{正值}，较小）
+    \item 随 $k$ 增大，$\cos$ 减小，$m^*$ 增大
+    \item 拐点 $A$（$\cos=0$）：$m^*\to\pm\infty$（\textbf{发散}）
+    \item 过 $A$ 点后，$\cos<0$，$m^*<0$（\textbf{负值}），从 $-\infty$ 逐渐增大（绝对值减小）
+    \item $M$点（$\cos=-1$）：$m^*=-\dfrac{\hbar^2}{-2J_sa^2}<0$
+\end{itemize}
+
+\textbf{Step 4: 恒定电场下的加速度}
+
+设恒定电场 $\mathcal{E}$ 沿 $\Sigma$ 轴方向，电子受力 $F=-e\mathcal{E}$。加速度
+\begin{equation}
+a(k)=\frac{F}{m^*(k)}=-e\mathcal{E}\cdot\frac{-2J_sa^2\cos(ka/\sqrt{2})}{\hbar^2}
+=\frac{2e\mathcal{E}J_sa^2}{\hbar^2}\cos\Bigl(\frac{ka}{\sqrt{2}}\Bigr).
+\end{equation}
+因 $J_s<0$，系数 $2e\mathcal{E}J_sa^2/\hbar^2<0$（设 $e>0$，$\mathcal{E}>0$）。
+\begin{itemize}
+    \item $\Gamma$点：$\cos=1$，加速度为\textbf{负的最大绝对值}
+    \item 随 $k$ 增大，加速度绝对值减小
+    \item 拐点 $A$：$\cos=0$，加速度为\textbf{零}
+    \item 过 $A$ 点后，$\cos<0$，加速度变为\textbf{正}
+    \item $M$点：$\cos=-1$，加速度为\textbf{正的最大值}
+\end{itemize}
+加速度在拐点处变号，这是有效质量由正变负的直接后果。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{物理量} & \textbf{表达式} & \textbf{曲线特征} \\
+\midrule
+能带 $E(k)$ & $E_s+J_{0,0}^{s}+2J_s+4J_s\cos\bigl(\frac{ka}{\sqrt{2}}\bigr)$ & $\Gamma\to M$ 单调上升，余弦形 \\
+速度 $v(k)$ & $-\frac{2\sqrt{2}J_sa}{\hbar}\sin\bigl(\frac{ka}{\sqrt{2}}\bigr)$ & 正弦半波，$A$点最大 \\
+有效质量 $m^*(k)$ & $\dfrac{\hbar^2}{-2J_sa^2\cos(ka/\sqrt{2})}$ & $\Gamma$正，$A$发散，$M$负 \\
+加速度 $a(k)$ & $\dfrac{2e\mathcal{E}J_sa^2}{\hbar^2}\cos\bigl(\frac{ka}{\sqrt{2}}\bigr)$ & 负余弦形，$A$点为零 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 沿 $\Gamma M$ 方向，$s$ 带从成键态（$\Gamma$ 点，所有布洛赫分量同相，能量最低）到反键态（$M$ 点，相邻原子反相，能量最高）。
+    \item \textbf{速度}在能带中点（拐点）最大，在带边为零。这类似于驻波--行波的过渡：带边是纯驻波（布拉格反射完全），带中是行波（无反射）。
+    \item \textbf{有效质量}在拐点处发散，对应能带曲率为零（$d^2E/dk^2=0$）。此时电子对外场的惯性响应趋于无穷大——实际上电子正在从``被晶格反射''转变为``自由穿行''的临界点。
+    \item \textbf{加速度变号}是布洛赫振荡的核心机制：电子在恒定电场中在 $k$ 空间匀速漂移，但由于 $m^*$ 在布里渊区边界附近变负，电子在实空间做周期性往复运动（振荡），而非持续加速。这正是金属中电子不一直被电场加速的原因。
+\end{itemize}
+\end{insightbox}

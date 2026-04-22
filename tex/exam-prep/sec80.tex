@@ -1,0 +1,114 @@
+% ============================================================
+% Section 80: 二维矩形晶体的紧束缚能带与有效质量张量
+% ============================================================
+\section{固体理论：二维矩形晶体的紧束缚能带与有效质量张量}
+\label{sec:2d-rectangular-tight-binding}
+
+\begin{modelbox}[题目：二维矩形晶格$s$态紧束缚能带与有效质量]
+设有二维矩形晶体，$x$方向格常数为 $a$，$y$方向格常数为 $b$（$a\neq b$）。
+\begin{enumerate}
+    \item 在最近邻近似下，由紧束缚方法求出晶体$s$态电子能量表达式；
+    \item 求晶体$s$态电子的能带宽度；
+    \item 求能带底电子与能带顶空穴的有效质量张量。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{二维矩形}：4 个最近邻（$\pm a$ 在 $x$，$\pm b$ 在 $y$），能带各向异性
+    \item \textbf{能带宽度}：$\cos$ 从 $+1$ 到 $-1$，$\Delta E=8J$
+    \item \textbf{有效质量张量}：$\bigl(\frac{1}{m^*}\bigr)_{ij}=\frac{1}{\hbar^2}\frac{\partial^2E}{\partial k_i\partial k_j}$，带底正、带顶负
+    \item \textbf{空穴}：带顶电子有效质量的相反数，恒为正
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 紧束缚近似下的$s$态能带}
+
+二维矩形晶格中，任一格点有 4 个最近邻：$(\pm a,0)$ 和 $(0,\pm b)$。设原地能量为 $E_0$，最近邻跃迁积分为 $-J$（$J>0$，保证带底在 $\Gamma$ 点）。紧束缚能带为
+\begin{align}
+E(\bm{k})&=E_0-J\bigl(e^{ik_xa}+e^{-ik_xa}+e^{ik_yb}+e^{-ik_yb}\bigr) \notag\\
+&=\boxed{E_0-2J\bigl(\cos k_xa+\cos k_yb\bigr).}
+\end{align}
+
+\textbf{Step 2: 能带宽度}
+
+极值出现在余弦取 $\pm1$ 处：
+\begin{itemize}
+    \item \textbf{带底}（$\Gamma$点，$k_x=k_y=0$）：$\cos=1$
+    \begin{equation}
+    E_{\min}=E_0-2J(1+1)=E_0-4J.
+    \end{equation}
+    \item \textbf{带顶}（$k_x=\pi/a$，$k_y=\pi/b$）：$\cos=-1$
+    \begin{equation}
+    E_{\max}=E_0-2J(-1-1)=E_0+4J.
+    \end{equation}
+\end{itemize}
+能带宽度
+\begin{equation}
+\boxed{\Delta E=E_{\max}-E_{\min}=8J.}
+\end{equation}
+
+\textbf{Step 3: 有效质量张量}
+
+有效质量逆张量定义为
+\begin{equation}
+\Bigl(\frac{1}{m^*}\Bigr)_{ij}=\frac{1}{\hbar^2}\frac{\partial^2E}{\partial k_i\partial k_j}.
+\end{equation}
+
+计算二阶偏导：
+\begin{equation}
+\frac{\partial^2E}{\partial k_x^2}=2Ja^2\cos k_xa,\quad
+\frac{\partial^2E}{\partial k_y^2}=2Jb^2\cos k_yb,\quad
+\frac{\partial^2E}{\partial k_x\partial k_y}=0.
+\end{equation}
+
+故逆张量为对角矩阵
+\begin{equation}
+\frac{1}{m^*}=\frac{2J}{\hbar^2}
+\begin{pmatrix}
+a^2\cos k_xa & 0 \\[4pt]
+0 & b^2\cos k_yb
+\end{pmatrix}.
+\end{equation}
+
+\textbf{带底电子}（$k_x=k_y=0$，$\cos=1$）：
+\begin{equation}
+\boxed{m_{ex}^*=\frac{\hbar^2}{2Ja^2},\qquad m_{ey}^*=\frac{\hbar^2}{2Jb^2}.}
+\end{equation}
+均为正值，且因 $a\neq b$ 而各向异性。晶格常数越小的方向，有效质量越小（能带越宽，电子越容易运动）。
+
+\textbf{带顶电子}（$k_x=\pi/a$，$k_y=\pi/b$，$\cos=-1$）：
+\begin{equation}
+m_{ex}^*=m_{ey}^*=-\frac{\hbar^2}{2Ja^2}\;(\text{或}\;-\frac{\hbar^2}{2Jb^2})<0.
+\end{equation}
+
+\textbf{带顶空穴}（电子有效质量的相反数）：
+\begin{equation}
+\boxed{m_{hx}^*=\frac{\hbar^2}{2Ja^2},\qquad m_{hy}^*=\frac{\hbar^2}{2Jb^2}.}
+\end{equation}
+空穴有效质量恒为正，与带底电子有效质量数值相同。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{问题} & \textbf{答案} \\
+\midrule
+(1) 能带 & $E(\bm{k})=E_0-2J(\cos k_xa+\cos k_yb)$ \\
+(2) 带宽 & $\Delta E=8J$ \\
+(3) 带底电子有效质量 & $m_{ex}^*=\hbar^2/(2Ja^2)$，$m_{ey}^*=\hbar^2/(2Jb^2)$ \\
+(3) 带顶空穴有效质量 & $m_{hx}^*=\hbar^2/(2Ja^2)$，$m_{hy}^*=\hbar^2/(2Jb^2)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 有效质量张量的各向异性直接反映了晶格结构的各向异性。$a\neq b$ 时，$x$ 和 $y$ 方向的有效质量不同，电子在外场中的响应呈``椭圆''状。
+    \item 带顶电子有效质量为负，意味着电子在能带顶部附近的行为与自由电子相反：外场使电子获得与力方向相反的加速度。用空穴概念替代后，空穴具有正的有效质量和正电荷，更符合物理直觉。
+    \item 若 $a=b$（正方晶格），则 $m_{ex}^*=m_{ey}^*$，有效质量各向同性，但张量形式仍然保持（退化为标量乘以单位矩阵）。
+\end{itemize}
+\end{insightbox}
