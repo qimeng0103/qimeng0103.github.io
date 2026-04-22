@@ -1,0 +1,135 @@
+% ============================================================
+% Section 93: 银与铯的接触电势差与热电偶
+% ============================================================
+\section{固体理论：银与铯的接触电势差与热电偶}
+\label{sec:ag-cs-contact-potential}
+
+\begin{modelbox}[题目：由低温比热与光电效应求接触电势差和温差电动势]
+低温下银及铯的电子摩尔热容量分别为 $C_e^{\text{Ag}}=0.65T\,\text{mJ/(mol}\cdot\text{K)}$ 及 $C_e^{\text{Cs}}=2.38T\,\text{mJ/(mol}\cdot\text{K)}$。室温下光电效应测得它们的光电效应阈值分别为 $4.8\,\text{eV}$ 及 $1.8\,\text{eV}$。
+\begin{enumerate}
+    \item 分别求银与铯的 $E_F^0$ 及功函数 $W$；
+    \item 若把银与铯两种金属接触在一起，求室温下它们的接触电势差；
+    \item 求出接触电势差与温度间的依赖关系；
+    \item 求出银-铯接触电势差随温度的变化速率；
+    \item 若用银-铯组成热电偶，求 $1000^\circ\text{C}$ 时的温差电动势。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{低温比热}：$\gamma=\pi^2Rk_B^2/(2E_F^0)$，由 $\gamma$ 求 $E_F^0$
+    \item \textbf{功函数}：光电效应阈值即 $W$
+    \item \textbf{接触电势差}：$V=(W_1-W_2)/e$
+    \item \textbf{温度依赖}：$E_F(T)=E_F^0[1-\pi^2(k_BT/E_F^0)^2/12]$
+    \item \textbf{温差电动势}：塞贝克效应，$E\propto(T^2-T_0^2)$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 费米能与功函数}
+
+低温电子摩尔比热 $C_e=\gamma T$，其中
+\begin{equation}
+\gamma=\frac{\pi^2Rk_B^2}{2E_F^0}
+\quad\Longrightarrow\quad
+E_F^0=\frac{\pi^2Rk_B^2}{2\gamma}.
+\end{equation}
+数值上 $\pi^2Rk_B^2/2\approx5.65\times10^{-22}\,\text{J}\cdot\text{K}$。
+
+\textbf{银}：$\gamma_{\text{Ag}}=0.65\times10^{-3}\,\text{J/(mol}\cdot\text{K}^2)$
+\begin{equation}
+E_{F,\text{Ag}}^0=\frac{5.65\times10^{-22}}{0.65\times10^{-3}}
+\approx8.69\times10^{-19}\,\text{J}\approx\boxed{5.4\,\text{eV}.}
+\end{equation}
+
+\textbf{铯}：$\gamma_{\text{Cs}}=2.38\times10^{-3}\,\text{J/(mol}\cdot\text{K}^2)$
+\begin{equation}
+E_{F,\text{Cs}}^0=\frac{5.65\times10^{-22}}{2.38\times10^{-3}}
+\approx2.37\times10^{-19}\,\text{J}\approx\boxed{1.48\,\text{eV}.}
+\end{equation}
+
+光电效应阈值即功函数：
+\begin{equation}
+\boxed{W_{\text{Ag}}=4.8\,\text{eV},\qquad W_{\text{Cs}}=1.8\,\text{eV}.}
+\end{equation}
+
+\textbf{Step 2: 室温接触电势差}
+
+两种金属接触时，电势差为功函数之差除以电子电荷：
+\begin{equation}
+\boxed{V_{\text{Cs-Ag}}=\frac{W_{\text{Ag}}-W_{\text{Cs}}}{e}=\frac{4.8-1.8}{1}=3.0\,\text{V}.}
+\end{equation}
+铯端为正（功函数小，电子易逸出）。
+
+\textbf{Step 3: 接触电势差的温度依赖}
+
+有限温度下费米能
+\begin{equation}
+E_F(T)=E_F^0\Bigl[1-\frac{\pi^2}{12}\Bigl(\frac{k_BT}{E_F^0}\Bigr)^2\Bigr].
+\end{equation}
+
+功函数 $W=\chi-E_F$，$\chi$ 为势阱深度（与温度关系微弱）。接触电势差
+\begin{equation}
+V_{21}(T)=\frac{1}{e}\bigl[(E_{F2}(T)-E_{F1}(T))+(\chi_1-\chi_2)\bigr].
+\end{equation}
+
+展开并保留至 $T^2$ 项：
+\begin{equation}
+\boxed{V_{21}(T)=V_{21}^0+\frac{\pi^2k_B^2}{12e}\Bigl(\frac{1}{E_{F1}^0}-\frac{1}{E_{F2}^0}\Bigr)T^2.}
+\end{equation}
+
+对铯（2）和银（1）：
+\begin{equation}
+V_{\text{Cs-Ag}}(T)=V_{\text{Cs-Ag}}^0+\frac{\pi^2k_B^2}{12e}\frac{E_{F,\text{Ag}}^0-E_{F,\text{Cs}}^0}{E_{F,\text{Ag}}^0E_{F,\text{Cs}}^0}T^2.
+\end{equation}
+
+\textbf{Step 4: 温度变化速率}
+
+\begin{equation}
+\frac{dV_{\text{Cs-Ag}}}{dT}=\frac{\pi^2k_B^2}{6e}\frac{E_{F,\text{Ag}}^0-E_{F,\text{Cs}}^0}{E_{F,\text{Ag}}^0E_{F,\text{Cs}}^0}T.
+\end{equation}
+
+代入 $k_B=8.617\times10^{-5}\,\text{eV/K}$，$E_{F,\text{Ag}}^0=5.4\,\text{eV}$，$E_{F,\text{Cs}}^0=1.48\,\text{eV}$：
+\begin{equation}
+\boxed{\frac{dV}{dT}\approx5.9\times10^{-9}\,T\;\text{V/K}.}
+\end{equation}
+
+\textbf{Step 5: 1000$^\circ$C 温差电动势}
+
+冷端 $T_0=0^\circ\text{C}=273\,\text{K}$，热端 $T=1000^\circ\text{C}=1273\,\text{K}$。
+
+温差电动势
+\begin{equation}
+\mathcal{E}=V(T)-V(T_0)=\frac{\pi^2k_B^2}{12e}\frac{E_{F,\text{Ag}}^0-E_{F,\text{Cs}}^0}{E_{F,\text{Ag}}^0E_{F,\text{Cs}}^0}(T^2-T_0^2).
+\end{equation}
+
+系数 $\approx5.92\times10^{-9}\,\text{V/K}^2$。代入得
+\begin{equation}
+\boxed{\mathcal{E}\approx5.92\times10^{-9}\times(1273^2-273^2)\approx9.2\,\text{mV}.}
+\end{equation}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{物理量} & \textbf{银 (Ag)} & \textbf{铯 (Cs)} \\
+\midrule
+$E_F^0$ & $5.4\,\text{eV}$ & $1.48\,\text{eV}$ \\
+$W$ & $4.8\,\text{eV}$ & $1.8\,\text{eV}$ \\
+\midrule
+\multicolumn{2}{l}{室温接触电势差 $V_{\text{Cs-Ag}}$} & $3.0\,\text{V}$ \\
+\multicolumn{2}{l}{$dV/dT$} & $\approx5.9\times10^{-9}T\,\text{V/K}$ \\
+\multicolumn{2}{l}{1000$^\circ$C 温差电动势} & $\approx9.2\,\text{mV}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 接触电势差源于两种金属\textbf{功函数不同}。电子从功函数小的金属流向功函数大的金属，直到积累的电荷产生的电场阻止进一步流动，达到动态平衡。
+    \item 温度依赖性来自\textbf{费米能级的温度修正}。由于不同金属的费米能温度修正幅度不同（修正 $\propto T^2/E_F^0$），接触电势差也随温度变化。
+    \item 塞贝克效应（热电偶）正是利用两种金属接触电势差的温度依赖性。银-铯热电偶在 $1000^\circ\text{C}$ 时仅产生约 $9\,\text{mV}$ 的电动势，说明单对热电偶的灵敏度较低，实际应用中常将多对串联成热电堆。
+\end{itemize}
+\end{insightbox}
