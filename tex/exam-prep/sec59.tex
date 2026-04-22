@@ -89,7 +89,7 @@ W = W_+ W_- = \left[\frac{N!}{(N-n)!\,n!}\right]^2.
     \begin{equation}
     m' = \frac{\rho\,v_{\mathrm{cell}}\,N_{\!A}}{n},
     \end{equation}
-    称为\textbf{表观分子量}。由于 $v_{\mathrm{cell}}$ 被空位膨胀高估，$m'$ 会\textbf{偏小}。
+    称为\textbf{表观分子量}。实际晶胞内只有 $n(1-c)$ 个原子（$c$ 为空位浓度），但反推时假设有 $n$ 个，故 $m'$ 被\textbf{低估}为 $m(1-c)$。
     \item \textbf{化学法}：通过化学分析确定晶体中各元素的原子比例，直接计算出\textbf{真实分子量} $m$（与体积无关）。
 \end{itemize}
 
@@ -102,9 +102,9 @@ W = W_+ W_- = \left[\frac{N!}{(N-n)!\,n!}\right]^2.
 
 表观分子量 $m'$ 用实际密度 $\rho$ 和膨胀体积 $V$ 计算，相当于假设原子完整：
 \begin{equation}
-m' = \frac{\rho V}{n/N_{\!A}} = \frac{M_0(1-c)}{n/N_{\!A}} = m(1-c).
+m' = \frac{\rho V}{n/N_{\!A}} = \frac{M_0(1-c)}{V_0(1+c)} \cdot V_0(1+c) \cdot \frac{N_{\!A}}{n} = \frac{M_0(1-c)}{n/N_{\!A}} = m(1-c).
 \end{equation}
-真实分子量 $m$ 对应完整晶体。因此
+\textit{注意}：密度 $\rho$ 中的体积膨胀因子 $(1+c)$ 与 $m'$ 公式中的 $V$ 恰好抵消，故 $m'$ 偏小的唯一原因是实际原子数减少了 $(1-c)$。真实分子量 $m$ 对应完整晶体。因此
 \begin{equation}
 \frac{m}{m'} = \frac{1}{1-c} \approx 1+c = \frac{V}{V_0}.
 \end{equation}
