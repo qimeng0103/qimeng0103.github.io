@@ -1,0 +1,113 @@
+% ============================================================
+% Section 78: 方势垒/势阱周期场的能带
+% ============================================================
+\section{固体理论：方势垒/势阱周期场的能带}
+\label{sec:square-barrier-band}
+
+\begin{modelbox}[题目：方势垒周期势的近自由电子能带]
+电子在周期势能中的势能函数
+\[
+V(x)=\begin{cases}
+0, & na<x\le(n+1)a-d\\
+V_0, & (n+1)a-d<x\le(n+1)a
+\end{cases}
+\]
+其中 $a=2d$。
+\begin{enumerate}
+    \item 画出势能曲线，并求其平均值；
+    \item 用近自由电子近似，求第一和第二个禁带宽度；
+    \item 当每个原胞有 2 个或 4 个电子时，分别对应导体还是非导体？为什么？
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{周期势的傅里叶展开}：$V(x)=\sum_n V_n e^{i2\pi nx/a}$
+    \item \textbf{能隙公式}：$E_{g,n}=2|V_n|$
+    \item \textbf{对称性导致的消光}：偶函数/奇函数的特定傅里叶分量可能为零
+    \item \textbf{导电性判据}：满带+非零禁带=绝缘体；能带部分填充或接触=金属
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 势能曲线与平均值}
+
+势能周期为 $a=2d$。一个周期内（取 $n=0$，$0\le x\le2d$）：
+\begin{itemize}
+    \item $0\le x\le d$：$V=0$（势阱区，宽度 $d$）
+    \item $d<x\le2d$：$V=V_0$（势垒区，宽度 $d$）
+\end{itemize}
+整个空间由该图形以 $a=2d$ 为周期重复。
+
+平均值
+\begin{equation}
+\bar{V}=\frac{1}{a}\int_0^a V(x)\,dx=\frac{1}{2d}\Bigl(\int_0^d 0\,dx+\int_d^{2d}V_0\,dx\Bigr)=\frac{V_0\cdot d}{2d}=\boxed{\frac{V_0}{2}.}
+\end{equation}
+
+\textbf{Step 2: 第一和第二禁带宽度}
+
+近自由电子近似下，布里渊区边界 $k=n\pi/a$ 处的能隙由势能的傅里叶分量决定：
+\begin{equation}
+E_{g,n}=2|V_n|,\qquad V_n=\frac{1}{a}\int_0^a V(x)e^{-i\frac{2\pi n}{a}x}\,dx.
+\end{equation}
+
+代入 $V(x)$ 的表达式（仅 $d<x<2d$ 内非零）：
+\begin{align}
+V_n&=\frac{1}{2d}\int_d^{2d}V_0 e^{-i\frac{\pi n}{d}x}\,dx \notag\\
+&=\frac{V_0}{2d}\cdot\frac{d}{-i\pi n}\bigl(e^{-i2\pi n}-e^{-i\pi n}\bigr) \notag\\
+&=\frac{V_0}{-i2\pi n}\bigl(1-(-1)^n\bigr).
+\end{align}
+
+模为
+\begin{equation}
+|V_n|=\frac{V_0}{2\pi n}\bigl|1-(-1)^n\bigr|.
+\end{equation}
+
+\textbf{第一禁带}（$n=1$）：
+\begin{equation}
+|V_1|=\frac{V_0}{2\pi}|1-(-1)|=\frac{V_0}{\pi}
+\quad\Longrightarrow\quad
+\boxed{E_{g,1}=\frac{2V_0}{\pi}.}
+\end{equation}
+
+\textbf{第二禁带}（$n=2$）：
+\begin{equation}
+|V_2|=\frac{V_0}{4\pi}|1-1|=0
+\quad\Longrightarrow\quad
+\boxed{E_{g,2}=0.}
+\end{equation}
+
+\textbf{结论}：第二禁带宽度为零，即第二和第三能带在布里渊区边界处接触。这是势阱/势垒对称分布导致的偶数阶傅里叶分量消光。
+
+\textbf{Step 3: 导电性判据}
+
+一维晶格每条能带可容纳 $2N$ 个电子（$N$ 为原胞数，因子 2 来自自旋）。
+
+\textbf{每原胞 2 个电子}：总电子数 $2N$。第一能带恰好被填满。由于第一禁带 $E_{g,1}\neq0$，第一能带与第二能带分离，费米能级落在禁带中。满带不导电，材料为\textbf{绝缘体}（或非导体）。
+
+\textbf{每原胞 4 个电子}：总电子数 $4N$。第一能带填满（$2N$ 个电子），第二能带填满（$2N$ 个电子）。但由于第二禁带为零（$E_{g,2}=0$），第二能带与第三能带在边界处接触，形成一条连续的允许能带。电子可占据第三能带的底部，费米能级落在允许带内。因此材料具有\textbf{金属性}（或半金属性）。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{问题} & \textbf{答案} \\
+\midrule
+(1) 势能平均值 & $\bar{V}=V_0/2$ \\
+(2) 第一禁带宽度 & $E_{g,1}=2V_0/\pi$ \\
+(2) 第二禁带宽度 & $E_{g,2}=0$ \\
+(3) 每原胞 2 电子 & \textbf{绝缘体}（满带+非零禁带） \\
+(3) 每原胞 4 电子 & \textbf{金属/半金属}（能带接触） \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 方波势的傅里叶系数仅含奇数阶（$n$ 为奇数），偶数阶因对称性相消为零。这是周期势具有反演对称性 $V(x+a/2)=V(-x+a/2)$ 的直接结果。
+    \item 导电性由能带填充和费米能级附近态密度共同决定。每原胞电子数为偶数时，若所有相邻能带间都有非零禁带，则为绝缘体；但若某些禁带为零导致能带接触，则仍为金属（如二价碱土金属）。
+    \item 本题是理解``为什么二价金属不一定是绝缘体''的典型例题。
+\end{itemize}
+\end{insightbox}

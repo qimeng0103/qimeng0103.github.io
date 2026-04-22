@@ -1,0 +1,136 @@
+% ============================================================
+% Section 77: 一维周期势的散射系数与能带
+% ============================================================
+\section{固体理论：一维周期势的散射系数与能带}
+\label{sec:kronig-penney-scattering}
+
+\begin{modelbox}[题目：一维周期势的布洛赫波与能带（散射系数法）]
+考虑一维周期势场 $u(x)=\sum_{n=-\infty}^{+\infty}V(x-na)$，其中单势垒 $V(x)$（中心在 $x=0$，宽度为 $a$）可用入射电子的透射系数 $t(k)$ 和反射系数 $r(k)$ 表征，电子能量 $E=\hbar^2k^2/2m$。
+\begin{enumerate}
+    \item 对单势垒，写出能量为 $E$ 的电子波函数的最一般解；
+    \item 对晶体哈密顿量 $u(x)$，布洛赫电子的能量与波矢 $K$ 的关系如何？证明 $V=0$ 时给出自由电子正确答案；
+    \item 利用 $r$ 和 $t$ 的基本性质，证明布洛赫波只在一些能带中才能发生；
+    \item 假定势场很弱（$|t|\approx1$，$|r|\approx0$），求出能隙宽度的简单表达式。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{Kronig-Penney 模型}：用单势垒的散射系数构造周期势的能带
+    \item \textbf{布洛赫定理}：$\Psi(x+a)=e^{iKa}\Psi(x)$
+    \item \textbf{概率守恒}：$|r|^2+|t|^2=1$
+    \item \textbf{能带条件}：$|\cos(ka+\delta)|\le|t|$，其中 $t=|t|e^{i\delta}$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 单势垒的最一般解}
+
+设单势垒 $V(x)$ 在 $|x|\le a/2$ 内非零，外部为零。考虑左右两个方向的入射波：
+
+\textbf{从左入射}（$x\to-\infty$ 处入射波 $e^{ikx}$）：
+\begin{equation}
+\Psi_l(x)=\begin{cases}
+e^{ikx}+r_l e^{-ikx}, & x\le -a/2 \quad(\text{入射}+\text{反射})\\
+t_l e^{ikx}, & x\ge a/2 \quad(\text{透射})
+\end{cases}
+\end{equation}
+
+\textbf{从右入射}（$x\to+\infty$ 处入射波 $e^{-ikx}$）：
+\begin{equation}
+\Psi_r(x)=\begin{cases}
+e^{-ikx}+r_r e^{ikx}, & x\ge a/2 \\
+t_r e^{-ikx}, & x\le -a/2
+\end{cases}
+\end{equation}
+
+最一般解为两者的线性叠加：
+\begin{equation}
+\boxed{\Psi(x)=A\,\Psi_l(x)+B\,\Psi_r(x).}
+\end{equation}
+在势垒内部（$|x|\le a/2$），波函数由具体势场决定。
+
+\textbf{Step 2: 周期势中的布洛赫能量--波矢关系}
+
+布洛赫定理要求
+\begin{equation}
+\Psi(x+a)=e^{iKa}\Psi(x),\qquad \Psi'(x+a)=e^{iKa}\Psi'(x).
+\end{equation}
+
+在一个原胞内（$-a/2\le x\le a/2$），波函数仍为 $\Psi=A\Psi_l+B\Psi_r$。将布洛赫条件应用于 $x=-a/2$ 和 $x=a/2$，代入 $\Psi_l$、$\Psi_r$ 在这两点的值，经代数化简（对对称势垒 $r_l=r_r=r$，$t_l=t_r=t$），得到关于 $A,B$ 的齐次方程组。非零解条件给出色散关系：
+\begin{equation}
+\boxed{\cos(Ka)=\frac{t^2-r^2}{2t}e^{ika}+\frac{1}{2t}e^{-ika}.}
+\end{equation}
+
+\textbf{自由电子极限验证}：当 $V=0$ 时，$t=1$，$r=0$，代入得
+\begin{equation}
+\cos(Ka)=\frac{1}{2}e^{ika}+\frac{1}{2}e^{-ika}=\cos(ka),
+\end{equation}
+故 $K=k$，布洛赫波矢等于自由电子波矢，符合预期。
+
+\textbf{Step 3: 能带存在的证明}
+
+由概率流守恒：$|r|^2+|t|^2=1$。设 $t=|t|e^{i\delta}$。对实势场，可证 $r/t^*$ 为纯虚数，故 $r=\pm i|r|e^{i\delta}$。
+
+将 $t,r$ 的表达式代入色散关系，化简得
+\begin{equation}
+\boxed{\cos(Ka)=\frac{\cos(ka+\delta)}{|t|}.}
+\end{equation}
+
+由于 $|t|\le1$，等式右边可能超出 $[-1,1]$。但 $\cos(Ka)$ 的取值范围恰为 $[-1,1]$。因此，只有当
+\begin{equation}
+-1\le\frac{\cos(ka+\delta)}{|t|}\le 1
+\end{equation}
+时，才存在实数 $K$，对应布洛赫波的允许能量（\textbf{能带}）。当右边超出 $[-1,1]$ 时，$K$ 为复数，对应衰减态（\textbf{禁带}）。
+
+由于 $|t|<1$（非零势垒）且随能量变化，必然存在某些 $k$ 区间使不等式不成立，从而形成能带与禁带的交替结构。
+
+\textbf{Step 4: 弱势极限下的能隙宽度}
+
+弱势时 $|r|\to0$，$|t|\to1$，$\delta\to0$。色散关系近似为
+\begin{equation}
+\cos(Ka)\approx\frac{\cos(ka)}{|t|}\approx\cos(ka)\Bigl(1+\frac{|r|^2}{2}\Bigr).
+\end{equation}
+
+能隙中心位于 $ka=n\pi$（$n$ 为整数）。在能隙边缘，$\cos(Ka)=\pm1$，故
+\begin{equation}
+\frac{\cos(ka)}{|t|}=\pm1\quad\Longrightarrow\quad\cos(ka)=\pm|t|=\pm\sqrt{1-|r|^2}\approx\pm\Bigl(1-\frac{|r|^2}{2}\Bigr).
+\end{equation}
+
+设 $ka=n\pi\pm\epsilon$，$\epsilon$ 为小量。由 $\cos(n\pi\pm\epsilon)\approx(-1)^n(1-\epsilon^2/2)$，解得
+\begin{equation}
+\epsilon\approx|r|.
+\end{equation}
+
+能隙对应的波矢宽度 $\Delta k=2\epsilon/a\approx2|r|/a$。能隙能量
+\begin{equation}
+E_{\text{gap}}\approx\frac{\dd E}{\dd k}\Delta k=\frac{\hbar^2k_0}{m}\cdot\frac{2|r|}{a},
+\end{equation}
+其中 $k_0=n\pi/a$ 为能隙中心波矢。代入得
+\begin{equation}
+\boxed{E_{\text{gap}}\approx\frac{2n\pi\hbar^2}{ma^2}\,|r|.}
+\end{equation}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{问题} & \textbf{答案} \\
+\midrule
+(1) 一般解 & $\Psi=A\Psi_l+B\Psi_r$（左右入射解叠加） \\
+(2) 色散关系 & $\cos(Ka)=\frac{t^2-r^2}{2t}e^{ika}+\frac{1}{2t}e^{-ika}$；$V=0$ 时 $K=k$ \\
+(3) 能带条件 & $|\cos(ka+\delta)|\le|t|$；超出则为禁带 \\
+(4) 弱势能隙 & $E_{\text{gap}}\approx\dfrac{2n\pi\hbar^2}{ma^2}|r|$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 一维周期势的能带结构完全由单势垒的散射系数 $t$ 和 $r$ 确定。这是 Kronig-Penney 模型的最一般形式，适用于任意形状的单势垒。
+    \item 透射系数 $|t|$ 扮演``能带宽度调制器''的角色：$|t|$ 越接近 1（势垒越弱），允许的能量范围越大（能带越宽），禁带越窄。
+    \item 弱势下能隙宽度正比于 $|r|$，即正比于势垒的反射能力。这与近自由电子近似中``能隙 $=2|V_G|$''的结论本质一致：弱势的反射系数与势的傅里叶分量成正比。
+\end{itemize}
+\end{insightbox}
