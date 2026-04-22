@@ -1,0 +1,91 @@
+% ============================================================
+% Section 89: 钠金属的费米能
+% ============================================================
+\section{固体理论：钠金属的费米能}
+\label{sec:sodium-fermi-energy}
+
+\begin{modelbox}[题目：钠金属传导电子浓度与费米能的计算]
+金属钠是体心立方结构，晶格常数 $a=4.25\times10^{-8}\,\text{cm}$。求传导电子浓度。假定每个原子贡献一个传导电子，用自由电子气模型，推导 $T=0\,$K 时费米能的表达式，并说明它只与传导电子浓度有关而与晶体体积无关。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{BCC电子浓度}：每个惯用晶胞含 2 个原子，$n=2/a^3$
+    \item \textbf{费米能推导}：由态密度积分，总电子数 $N=\int_0^{E_F}g(E)dE$
+    \item \textbf{核心结论}：$E_F\propto n^{2/3}$，与 $V$ 无关
+    \item \textbf{数值估算}：钠的 $E_F\sim3\,$eV，$T_F\sim3.7\times10^4\,$K
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 传导电子浓度}
+
+钠为体心立方（BCC）结构，每个惯用晶胞含 2 个原子。晶格常数 $a=4.25\times10^{-8}\,\text{cm}=4.25\times10^{-10}\,\text{m}$。
+
+每个钠原子贡献 1 个传导电子，电子数密度
+\begin{equation}
+n=\frac{2}{a^3}=\frac{2}{(4.25\times10^{-10})^3}
+\approx\frac{2}{7.676\times10^{-29}}
+\approx\boxed{2.6\times10^{28}\,\text{m}^{-3}.}
+\end{equation}
+
+\textbf{Step 2: 绝对零度费米能的推导}
+
+自由电子气模型中，考虑自旋简并，三维态密度
+\begin{equation}
+g(E)=\frac{V}{2\pi^2}\Bigl(\frac{2m}{\hbar^2}\Bigr)^{3/2}E^{1/2}.
+\end{equation}
+
+$T=0$ 时，费米面以下所有态被占据。总电子数
+\begin{equation}
+N=\int_0^{E_F^0}g(E)\,dE
+=\frac{V}{2\pi^2}\Bigl(\frac{2m}{\hbar^2}\Bigr)^{3/2}\int_0^{E_F^0}E^{1/2}\,dE
+=\frac{V}{3\pi^2}\Bigl(\frac{2m}{\hbar^2}\Bigr)^{3/2}(E_F^0)^{3/2}.
+\end{equation}
+
+解出费米能
+\begin{equation}
+\boxed{E_F^0=\frac{\hbar^2}{2m}(3\pi^2n)^{2/3}.}
+\end{equation}
+
+\textbf{与体积的关系}：$E_F^0$ 仅依赖于电子数密度 $n=N/V$（以及基本常数 $m$ 和 $\hbar$），而与晶体总体积 $V$ 无关。只要 $n$ 不变，无论晶体尺寸如何，费米能均相同。这是自由电子气模型的重要特征，反映了电子的量子简并性。
+
+\textbf{Step 3: 数值计算}
+
+代入 $n=2.6\times10^{28}\,\text{m}^{-3}$：
+\begin{align}
+E_F^0&=\frac{(1.055\times10^{-34})^2}{2\times9.11\times10^{-31}}\times\bigl(3\pi^2\times2.6\times10^{28}\bigr)^{2/3} \notag\\
+&\approx6.11\times10^{-39}\times(7.70\times10^{29})^{2/3} \notag\\
+&\approx6.11\times10^{-39}\times8.40\times10^{19} \notag\\
+&\approx5.13\times10^{-19}\,\text{J}\approx\boxed{3.2\,\text{eV}.}
+\end{align}
+
+对应的费米温度
+\begin{equation}
+T_F=\frac{E_F^0}{k_B}\approx\frac{3.2\times1.6\times10^{-19}}{1.38\times10^{-23}}\approx3.7\times10^4\,\text{K}.
+\end{equation}
+远高于室温，因此常温下钠中电子处于高度简并态。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{物理量} & \textbf{表达式 / 数值} \\
+\midrule
+电子浓度 & $n=2/a^3\approx2.6\times10^{28}\,\text{m}^{-3}$ \\
+费米能 & $E_F^0=\dfrac{\hbar^2}{2m}(3\pi^2n)^{2/3}\approx3.2\,\text{eV}$ \\
+与体积关系 & $E_F^0$ 仅依赖于 $n$，与 $V$ 无关 \\
+费米温度 & $T_F\approx3.7\times10^4\,\text{K}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 费米能是电子简并压力的体现。即使 $T=0$，电子也因泡利不相容原理而具有巨大的零点动能。金属的刚性、电子的高热导率等性质都与此有关。
+    \item $E_F\propto n^{2/3}$ 意味着电子浓度越高，费米能越大。碱金属（如 Na、K）的费米能在 $2\!\sim\!4\,$eV 量级；过渡金属（如 Cu、Ag）因 $d$ 电子贡献，$n$ 更大，$E_F$ 可达 $5\!\sim\!7\,$eV。
+    \item ``与体积无关''的结论在热力学极限（$N\to\infty$，$V\to\infty$，$n$ 固定）下严格成立。对于纳米尺度的金属颗粒，量子尺寸效应会导致能级离散化，此时费米能的定义需要修正。
+\end{itemize}
+\end{insightbox}

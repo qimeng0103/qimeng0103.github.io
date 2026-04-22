@@ -1,0 +1,104 @@
+% ============================================================
+% Section 88: 硅的回旋共振实验
+% ============================================================
+\section{固体理论：硅的回旋共振实验}
+\label{sec:silicon-cyclotron}
+
+\begin{modelbox}[题目：由硅回旋共振实验测定纵向和横向有效质量]
+试推导磁场 $\bm{B}$ 在 $[1,0,0]$ 方向上时，进行半导体硅电子回旋共振实验来测定硅电子纵向有效质量 $m_l$ 和横向有效质量 $m_t$ 的计算式子。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{硅导带}：6 个等价谷，位于 $\langle100\rangle$ 方向的 $\Delta$ 轴上
+    \item \textbf{旋转椭球}：每个谷的等能面为以 $\langle100\rangle$ 为轴的旋转椭球，$m_1^*=m_2^*=m_t$，$m_3^*=m_l$
+    \item \textbf{$B\parallel[100]$}：6 个谷分为两类——4 个旋转轴 $\perp B$，2 个旋转轴 $\parallel B$
+    \item \textbf{两个共振峰}：分别对应 $m_1^*=\sqrt{m_tm_l}$ 和 $m_2^*=m_t$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 硅的导带结构与等能面}
+
+硅的导带底位于布里渊区中 $\langle100\rangle$ 方向的六个等价点，即
+\begin{equation}
+[100],\;[\bar100],\;[010],\;[0\bar10],\;[001],\;[00\bar1].
+\end{equation}
+
+每个谷附近的等能面是以该对称轴为旋转轴的\textbf{旋转椭球}。有效质量张量主值为
+\begin{equation}
+m_1^*=m_2^*=m_t\quad(\text{横向}),\qquad m_3^*=m_l\quad(\text{纵向}).
+\end{equation}
+
+\textbf{Step 2: 磁场沿 $[1,0,0]$ 方向时各谷的取向}
+
+$\bm{B}\parallel[100]$（$x$轴）。6个谷分为两类：
+
+\textbf{第一类}（4个谷）：旋转轴垂直于 $B$。包括旋转轴沿 $[010],[0\bar10],[001],[00\bar1]$ 的谷。
+磁场与旋转轴夹角 $\alpha_3=90^\circ$，$\cos\alpha_3=0$，$\sin\alpha_3=1$。
+
+\textbf{第二类}（2个谷）：旋转轴平行于 $B$。包括旋转轴沿 $[100],[\bar100]$ 的谷。
+磁场与旋转轴夹角 $\alpha_3=0^\circ$，$\cos\alpha_3=1$，$\sin\alpha_3=0$。
+
+\textbf{Step 3: 各谷的回旋共振有效质量}
+
+对旋转椭球（$m_1^*=m_2^*=m_t$，$m_3^*=m_l$），由 sec87 的结果，当磁场与旋转轴夹角为 $\alpha_3$ 时
+\begin{equation}
+\frac{1}{m^*}=\sqrt{\frac{m_t(1-\cos^2\alpha_3)+m_l\cos^2\alpha_3}{m_t^2m_l}}.
+\end{equation}
+
+\textbf{第一类谷}（$\cos\alpha_3=0$）：
+\begin{equation}
+\frac{1}{m_1^*}=\sqrt{\frac{m_t}{m_t^2m_l}}=\frac{1}{\sqrt{m_tm_l}}
+\quad\Longrightarrow\quad
+m_1^*=\sqrt{m_tm_l}.
+\end{equation}
+
+\textbf{第二类谷}（$\cos\alpha_3=1$）：
+\begin{equation}
+\frac{1}{m_2^*}=\sqrt{\frac{m_l}{m_t^2m_l}}=\frac{1}{m_t}
+\quad\Longrightarrow\quad
+m_2^*=m_t.
+\end{equation}
+
+\textbf{Step 4: 由实验值计算 $m_l$ 和 $m_t$}
+
+实验中观察到\textbf{两个共振峰}，对应两个不同的回旋共振有效质量 $m_1^*$ 和 $m_2^*$：
+\begin{itemize}
+    \item \textbf{第二个峰}（来自2个轴平行于 $B$ 的谷）直接给出
+    \begin{equation}
+    \boxed{m_t=m_2^*.}
+    \end{equation}
+    \item \textbf{第一个峰}（来自4个轴垂直于 $B$ 的谷）给出 $m_1^*=\sqrt{m_tm_l}$，因此
+    \begin{equation}
+    \boxed{m_l=\frac{(m_1^*)^2}{m_2^*}=\frac{(m_1^*)^2}{m_t}.}
+    \end{equation}
+\end{itemize}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{clcl}
+\toprule
+\textbf{谷的类型} & \textbf{旋转轴与 $B$ 关系} & \textbf{回旋有效质量} & \textbf{谷数} \\
+\midrule
+第一类 & $\perp B$ ($\alpha_3=90^\circ$) & $m_1^*=\sqrt{m_tm_l}$ & 4 \\
+第二类 & $\parallel B$ ($\alpha_3=0^\circ$) & $m_2^*=m_t$ & 2 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+由实验值计算有效质量的公式：
+\begin{equation}
+m_t=m_2^*,\qquad m_l=\frac{(m_1^*)^2}{m_2^*}.
+\end{equation}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 硅的多谷能带结构导致回旋共振实验中出现\textbf{多个共振峰}，峰的个数和相对强度由磁场方向与各谷对称轴的相对取向决定。
+    \item 通过改变磁场方向、测量共振峰的角依赖关系，可以唯一地确定椭球等能面的纵向和横向有效质量。
+    \item 硅的实测值为 $m_t\approx0.19m_0$，$m_l\approx0.98m_0$。这一显著的各向异性对硅的输运性质（如电导率、迁移率的方向依赖）有重要影响。
+    \item 本题是 sec87 一般理论在硅这一具体半导体上的直接应用，展示了``从一般到特殊''的物理推导路径。
+\end{itemize}
+\end{insightbox}

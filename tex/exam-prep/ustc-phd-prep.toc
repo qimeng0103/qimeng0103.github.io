@@ -198,173 +198,177 @@
 \contentsline {section}{\numberline {43}固体理论：一维晶体中空穴的物理量}{171}{section.43}%
 \contentsline {section}{\numberline {44}固体理论：布洛赫振荡与齐纳隧穿}{173}{section.44}%
 \contentsline {section}{\numberline {45}固体理论：一维晶体能带结构与电子运动}{175}{section.45}%
-\contentsline {section}{\numberline {46}固体理论：一维复式格子的晶格振动——双原子分子晶体的声子色散}{177}{section.46}%
-\contentsline {section}{\numberline {47}固体理论：二维正方晶格的各向异性声子色散}{180}{section.47}%
-\contentsline {section}{\numberline {48}固体理论：弗仑克尔缺陷的平衡浓度}{184}{section.48}%
-\contentsline {section}{\numberline {49}固体理论：离子晶体肖特基缺陷的平衡浓度与体积变化}{187}{section.49}%
-\contentsline {section}{\numberline {50}固体理论：单质晶体空位缺陷的振动熵修正}{190}{section.50}%
-\contentsline {section}{\numberline {51}固体理论：肖特基缺陷的综合热力学修正}{193}{section.51}%
-\contentsline {section}{\numberline {52}固体理论：掺杂杂质晶格位置的实验判定}{197}{section.52}%
-\contentsline {section}{\numberline {53}固体理论：简立方晶体的滑移面与临界切应力}{200}{section.53}%
-\contentsline {section}{\numberline {54}固体理论：面心立方晶体的滑移系统与位错密度估算}{203}{section.54}%
-\contentsline {section}{\numberline {55}固体理论：空位热平衡、凝聚与位错环形成}{206}{section.55}%
-\contentsline {section}{\numberline {56}固体理论：二维晶格的声子色散与空位缺陷散射}{208}{section.56}%
-\contentsline {section}{\numberline {57}固体理论：一维单原子链的晶格波能量与熔点频率}{212}{section.57}%
-\contentsline {section}{\numberline {58}固体理论：爱因斯坦模型与面心立方晶体的均方位移}{215}{section.58}%
-\contentsline {section}{\numberline {59}固体理论：金刚石的爱因斯坦模型——均方位移与零点能}{218}{section.59}%
-\contentsline {section}{\numberline {60}固体理论：一维单原子链的长波极限——从离散晶格到连续弹性波}{221}{section.60}%
-\contentsline {section}{\numberline {61}固体理论：$d$ 维德拜晶格的零点涨落——均方位移与应变}{224}{section.61}%
-\contentsline {section}{\numberline {62}固体理论：二维正方晶格的声子态密度与高温均方位移}{229}{section.62}%
-\contentsline {section}{\numberline {63}固体理论：一维晶格的总动量与声子准动量}{232}{section.63}%
-\contentsline {section}{\numberline {64}固体理论：中子非弹性散射与声子色散测量}{235}{section.64}%
-\contentsline {section}{\numberline {65}固体理论：声子三声子过程与 Umklapp 散射}{237}{section.65}%
-\contentsline {section}{\numberline {66}固体理论：布里渊散射——光子与声子的非弹性散射}{240}{section.66}%
-\contentsline {section}{\numberline {67}固体理论：德拜模型——声子总数的温度依赖与德拜温度计算}{243}{section.67}%
-\contentsline {section}{\numberline {68}固体理论：N 过程与 U 过程——声子热平衡与热阻的机制}{248}{section.68}%
-\contentsline {section}{\numberline {69}固体理论：一维双原子链的热容——$M\gg m$极限}{251}{section.69}%
-\contentsline {section}{\numberline {70}固体理论：石墨的低温热容——准二维德拜模型}{255}{section.70}%
-\contentsline {section}{\numberline {71}固体理论：格林艾森常量与晶格热膨胀}{258}{section.71}%
-\contentsline {section}{\numberline {72}固体理论：一维离子晶体的德拜温度与格林艾森常量}{262}{section.72}%
-\contentsline {section}{\numberline {73}固体理论：一维离子晶格的马德隆常数}{266}{section.73}%
-\contentsline {subsection}{\numberline {73.1}概念铺垫：什么是马德隆常数？}{266}{subsection.73.1}%
-\contentsline {subsection}{\numberline {73.2}马德隆常数的推导}{267}{subsection.73.2}%
-\contentsline {subsubsection}{\numberline {73.2.1}选取参考离子并写级数}{267}{subsubsection.73.2.1}%
-\contentsline {subsubsection}{\numberline {73.2.2}级数求和}{267}{subsubsection.73.2.2}%
-\contentsline {subsubsection}{\numberline {73.2.3}提取马德隆常数}{267}{subsubsection.73.2.3}%
-\contentsline {subsection}{\numberline {73.3}物理图像与拓展}{268}{subsection.73.3}%
-\contentsline {subsubsection}{\numberline {73.3.1}一维 vs 三维：维度对 $M$ 的影响}{268}{subsubsection.73.3.1}%
-\contentsline {section}{\numberline {74}固体理论：一维离子链的平衡与压缩——库仑吸引+短程排斥}{269}{section.74}%
-\contentsline {subsection}{\numberline {74.1}概念铺垫：为什么需要排斥项？}{269}{subsection.74.1}%
-\contentsline {subsection}{\numberline {74.2}平衡间距 $R_0$ 与平衡能 $U(R_0)$}{269}{subsection.74.2}%
-\contentsline {subsubsection}{\numberline {74.2.1}总相互作用能}{269}{subsubsection.74.2.1}%
-\contentsline {subsubsection}{\numberline {74.2.2}平衡条件}{270}{subsubsection.74.2.2}%
-\contentsline {subsubsection}{\numberline {74.2.3}平衡能}{270}{subsubsection.74.2.3}%
-\contentsline {subsection}{\numberline {74.3}压缩做功（精确到 $\delta ^2$）}{270}{subsection.74.3}%
-\contentsline {subsubsection}{\numberline {74.3.1}做功的定义}{270}{subsubsection.74.3.1}%
-\contentsline {subsubsection}{\numberline {74.3.2}为什么只保留到 $\delta ^2$？——平衡点展开的必然性}{271}{subsubsection.74.3.2}%
-\contentsline {subsubsection}{\numberline {74.3.3}具体计算}{271}{subsubsection.74.3.3}%
-\contentsline {subsection}{\numberline {74.4}与已知结果的联系}{272}{subsection.74.4}%
-\contentsline {section}{\numberline {75}固体理论：NaCl 晶体——由宏观量求微观结合能}{273}{section.75}%
-\contentsline {subsection}{\numberline {75.1}物理模型与结合能公式}{273}{subsection.75.1}%
-\contentsline {subsubsection}{\numberline {75.1.1}平衡条件}{274}{subsubsection.75.1.1}%
-\contentsline {subsubsection}{\numberline {75.1.2}平衡时的晶体结合能}{274}{subsubsection.75.1.2}%
-\contentsline {subsection}{\numberline {75.2}由比重求平衡间距 $r_0$}{274}{subsection.75.2}%
-\contentsline {subsection}{\numberline {75.3}由弹性模量求排斥指数 $n$}{276}{subsection.75.3}%
-\contentsline {subsubsection}{\numberline {75.3.1}体积弹性模量公式}{276}{subsubsection.75.3.1}%
-\contentsline {subsubsection}{\numberline {75.3.2}二阶导数的计算}{276}{subsubsection.75.3.2}%
-\contentsline {subsubsection}{\numberline {75.3.3}数值代入}{277}{subsubsection.75.3.3}%
-\contentsline {subsection}{\numberline {75.4}计算结合能}{277}{subsection.75.4}%
-\contentsline {subsection}{\numberline {75.5}答案汇总与数量级检验}{277}{subsection.75.5}%
-\contentsline {section}{\numberline {76}固体理论：离子晶体的压缩系数——从势能到体积模量}{278}{section.76}%
-\contentsline {subsection}{\numberline {76.1}压缩系数与弹性模量的关系}{278}{subsection.76.1}%
-\contentsline {subsection}{\numberline {76.2}晶体体积与原子间距的关系}{278}{subsection.76.2}%
-\contentsline {subsection}{\numberline {76.3}利用平衡条件化简二阶导数}{280}{subsection.76.3}%
-\contentsline {subsubsection}{\numberline {76.3.1}求二阶导数}{280}{subsubsection.76.3.1}%
-\contentsline {subsection}{\numberline {76.4}计算弹性模量 $K$ 与压缩系数 $B$}{280}{subsection.76.4}%
-\contentsline {section}{\numberline {77}体积弹性模量的估算与应用}{282}{section.77}%
-\contentsline {subsection}{\numberline {77.1}估计压缩到正常密度 $\alpha $ 倍所需的压强}{282}{subsection.77.1}%
-\contentsline {subsection}{\numberline {77.2}NaCl 在高压下离子间距的缩小百分比}{282}{subsection.77.2}%
-\contentsline {section}{\numberline {78}Lennard-Jones 势与惰性气体晶体}{285}{section.78}%
-\contentsline {subsection}{\numberline {78.1}题目}{285}{subsection.78.1}%
-\contentsline {subsection}{\numberline {78.2}解答}{285}{subsection.78.2}%
-\contentsline {subsubsection}{\numberline {78.2.1}(1) 总相互作用势能表达式}{285}{subsubsection.78.2.1}%
-\contentsline {subsubsection}{\numberline {78.2.2}(2) Kr 晶体的具体计算}{287}{subsubsection.78.2.2}%
-\contentsline {section}{\numberline {79}固体理论：约瑟夫森结与超导量子比特}{290}{section.79}%
-\contentsline {subsection}{\numberline {79.1}题型分类与核心考点}{290}{subsection.79.1}%
-\contentsline {subsection}{\numberline {79.2}第 (1) 问：LC 电路的谐振子化}{290}{subsection.79.2}%
-\contentsline {subsection}{\numberline {79.3}从 LC 谐振子到约瑟夫森结：两问之间的联系}{291}{subsection.79.3}%
-\contentsline {subsection}{\numberline {79.4}第 (2) 问：电荷量子比特的矩阵表示}{292}{subsection.79.4}%
-\contentsline {subsubsection}{\numberline {79.4.1}矩阵形式}{292}{subsubsection.79.4.1}%
-\contentsline {subsubsection}{\numberline {79.4.2}泡利矩阵展开}{292}{subsubsection.79.4.2}%
-\contentsline {subsubsection}{\numberline {79.4.3}在 $n_g = 1/2$ 处的简并微扰论}{292}{subsubsection.79.4.3}%
-\contentsline {subsubsection}{\numberline {79.4.4}$n_g = 1/2 + \delta $ 附近的避免交叉（Avoided Crossing）}{293}{subsubsection.79.4.4}%
-\contentsline {subsection}{\numberline {79.5}Transmon 量子比特的物理图像}{294}{subsection.79.5}%
-\contentsline {subsubsection}{\numberline {79.5.1}从电荷比特到 Transmon：参数比例的反转}{294}{subsubsection.79.5.1}%
-\contentsline {subsubsection}{\numberline {79.5.2}深势阱中的近似分析——一个奇妙的表象变换}{294}{subsubsection.79.5.2}%
-\contentsline {subsubsection}{\numberline {79.5.3}一阶微扰论求非谐性能级}{295}{subsubsection.79.5.3}%
-\contentsline {subsection}{\numberline {79.6}考场总结：两种超导比特的对比}{296}{subsection.79.6}%
-\contentsline {subsection}{\numberline {79.7}策略反省与注意力管理}{296}{subsection.79.7}%
-\contentsline {section}{\numberline {80}固体理论：约瑟夫森结在磁场中的衍射效应}{297}{section.80}%
-\contentsline {subsection}{\numberline {80.1}DC-SQUID 的理论分析与双缝干涉类比}{307}{subsection.80.1}%
-\contentsline {section}{\numberline {81}量子力学：Hellmann--Feynman 定理——从参数求导到期望值}{309}{section.81}%
-\contentsline {subsection}{\numberline {81.1}题型反射弧标签}{309}{subsection.81.1}%
-\contentsline {subsection}{\numberline {81.2}HF 定理的完整证明}{309}{subsection.81.2}%
-\contentsline {subsection}{\numberline {81.3}用 HF 定理证明维里定理}{310}{subsection.81.3}%
-\contentsline {subsection}{\numberline {81.4}谐振子：动能期望值的秒杀}{310}{subsection.81.4}%
-\contentsline {subsection}{\numberline {81.5}氢原子期望值的 HF 套路}{310}{subsection.81.5}%
-\contentsline {subsubsection}{\numberline {81.5.1}求 $\langle 1/r\rangle $——把 $e^2$ 当参数}{311}{subsubsection.81.5.1}%
-\contentsline {subsubsection}{\numberline {81.5.2}求 $\langle 1/r^2\rangle $——把角动量量子数 $l$ 当参数（严格版）}{311}{subsubsection.81.5.2}%
-\contentsline {subsection}{\numberline {81.6}考场速记卡：常见模型的二级结论}{312}{subsection.81.6}%
-\contentsline {subsection}{\numberline {81.7}策略反省与注意力管理}{312}{subsection.81.7}%
-\contentsline {section}{\numberline {82}量子力学：Pöschl--Teller 势的低能散射——精确解与相移提取}{313}{section.82}%
-\contentsline {subsection}{\numberline {82.1}题型反射弧标签}{313}{subsection.82.1}%
-\contentsline {subsection}{\numberline {82.2}标准解题过程}{314}{subsection.82.2}%
-\contentsline {subsection}{\numberline {82.3}物理图像与补充说明}{315}{subsection.82.3}%
-\contentsline {section}{\numberline {83}量子力学：振子强度求和规则——从谐振子到普遍束缚系统}{317}{section.83}%
-\contentsline {subsection}{\numberline {83.1}一维谐振子}{317}{subsection.83.1}%
-\contentsline {subsubsection}{\numberline {83.1.1}能级与矩阵元}{317}{subsubsection.83.1.1}%
-\contentsline {subsubsection}{\numberline {83.1.2}计算 $f_n$}{317}{subsubsection.83.1.2}%
-\contentsline {subsubsection}{\numberline {83.1.3}求和结果}{317}{subsubsection.83.1.3}%
-\contentsline {subsection}{\numberline {83.2}一般一维束缚系统}{318}{subsection.83.2}%
-\contentsline {subsubsection}{\numberline {83.2.1}核心对易关系}{318}{subsubsection.83.2.1}%
-\contentsline {subsubsection}{\numberline {83.2.2}$P$ 的跃迁矩阵元}{318}{subsubsection.83.2.2}%
-\contentsline {subsubsection}{\numberline {83.2.3}利用完备性求和}{318}{subsubsection.83.2.3}%
-\contentsline {subsubsection}{\numberline {83.2.4}得到振子强度求和}{318}{subsubsection.83.2.4}%
-\contentsline {subsection}{\numberline {83.3}物理意义与考场策略}{319}{subsection.83.3}%
-\contentsline {subsubsection}{\numberline {83.3.1}物理意义}{319}{subsubsection.83.3.1}%
-\contentsline {subsubsection}{\numberline {83.3.2}常见错误}{319}{subsubsection.83.3.2}%
-\contentsline {subsubsection}{\numberline {83.3.3}考场速记}{319}{subsubsection.83.3.3}%
-\contentsline {section}{\numberline {84}量子力学：一维谐振子与位移算符——从对易关系到相干态}{320}{section.84}%
-\contentsline {subsection}{\numberline {84.1}对易关系 $[a, F(X)]$ 的证明}{320}{subsection.84.1}%
-\contentsline {subsubsection}{\numberline {84.1.1}基本对易子}{320}{subsubsection.84.1.1}%
-\contentsline {subsubsection}{\numberline {84.1.2}幂级数展开}{320}{subsubsection.84.1.2}%
-\contentsline {subsection}{\numberline {84.2}递推关系的推导}{321}{subsection.84.2}%
-\contentsline {subsection}{\numberline {84.3}计算具体矩阵元}{321}{subsection.84.3}%
-\contentsline {subsubsection}{\numberline {84.3.1}基态矩阵元 $\langle 0|e^{ikX}|0\rangle $}{321}{subsubsection.84.3.1}%
-\contentsline {subsection}{\numberline {84.4}$t=0$ 时的期望值}{321}{subsection.84.4}%
-\contentsline {subsubsection}{\numberline {84.4.1}归一化验证}{321}{subsubsection.84.4.1}%
-\contentsline {subsubsection}{\numberline {84.4.2}位置与动量期望值}{322}{subsubsection.84.4.2}%
-\contentsline {subsection}{\numberline {84.5}$t$ 时刻能量测量概率}{322}{subsection.84.5}%
-\contentsline {subsubsection}{\numberline {84.5.1}初始展开}{322}{subsubsection.84.5.1}%
-\contentsline {subsubsection}{\numberline {84.5.2}时间演化与概率}{322}{subsubsection.84.5.2}%
-\contentsline {subsection}{\numberline {84.6}常见错误与考场策略}{323}{subsection.84.6}%
-\contentsline {section}{\numberline {85}量子力学：匀强磁场中的电子与反常磁矩——$g-2$ 实验的理论基础}{324}{section.85}%
-\contentsline {subsection}{\numberline {85.1}验证对易关系}{324}{subsection.85.1}%
-\contentsline {subsubsection}{\numberline {85.1.1}速度分量的对易子}{324}{subsubsection.85.1.1}%
-\contentsline {subsubsection}{\numberline {85.1.2}$[V_i, H]$ 的推导}{324}{subsubsection.85.1.2}%
-\contentsline {subsection}{\numberline {85.2}期望值的时间演化方程}{325}{subsection.85.2}%
-\contentsline {subsubsection}{\numberline {85.2.1}自旋的海森堡方程}{325}{subsubsection.85.2.1}%
-\contentsline {subsubsection}{\numberline {85.2.2}速度的海森堡方程}{325}{subsubsection.85.2.2}%
-\contentsline {subsubsection}{\numberline {85.2.3}$C_1, C_2, C_3$ 的耦合方程}{325}{subsubsection.85.2.3}%
-\contentsline {subsection}{\numberline {85.3}$\langle \bm {S}\cdot \bm {V}\rangle $ 的时间演化}{326}{subsection.85.3}%
-\contentsline {subsubsection}{\numberline {85.3.1}解耦与振荡频率}{326}{subsubsection.85.3.1}%
-\contentsline {subsubsection}{\numberline {85.3.2}物理讨论}{326}{subsubsection.85.3.2}%
-\contentsline {subsubsection}{\numberline {85.3.3}与 $g-2$ 实验的联系}{326}{subsubsection.85.3.3}%
-\contentsline {subsection}{\numberline {85.4}常见错误与考场策略}{327}{subsection.85.4}%
-\contentsline {section}{\numberline {86}量子力学：Dirac--Kirkwood 分布——从联合概率到密度矩阵重构}{328}{section.86}%
-\contentsline {subsection}{\numberline {86.1}联合概率的两种表达式等价}{328}{subsection.86.1}%
-\contentsline {subsubsection}{\numberline {86.1.1}标准联合概率}{328}{subsubsection.86.1.1}%
-\contentsline {subsubsection}{\numberline {86.1.2}迹形式}{328}{subsubsection.86.1.2}%
-\contentsline {subsection}{\numberline {86.2}DK 概率与密度矩阵重构}{329}{subsection.86.2}%
-\contentsline {subsubsection}{\numberline {86.2.1}DK 概率的定义}{329}{subsubsection.86.2.1}%
-\contentsline {subsubsection}{\numberline {86.2.2}从 DK 概率提取跃迁矩阵元}{329}{subsubsection.86.2.2}%
-\contentsline {subsubsection}{\numberline {86.2.3}重构 $\langle \beta _m|\rho |\beta _n\rangle $}{329}{subsubsection.86.2.3}%
-\contentsline {subsection}{\numberline {86.3}物理意义与拓展}{330}{subsection.86.3}%
-\contentsline {subsubsection}{\numberline {86.3.1}DK 分布 vs 标准概率}{330}{subsubsection.86.3.1}%
-\contentsline {subsubsection}{\numberline {86.3.2}与 Wigner 函数的联系}{330}{subsubsection.86.3.2}%
-\contentsline {subsection}{\numberline {86.4}常见错误与考场策略}{330}{subsection.86.4}%
-\contentsline {section}{\numberline {87}量子信息：单量子比特的迹距离——Bloch 球上的几何距离}{331}{section.87}%
-\contentsline {subsection}{\numberline {87.1}迹距离的定义}{331}{subsection.87.1}%
-\contentsline {subsection}{\numberline {87.2}Bloch 表示}{331}{subsection.87.2}%
-\contentsline {subsubsection}{\numberline {87.2.1}单量子比特密度矩阵}{331}{subsubsection.87.2.1}%
-\contentsline {subsubsection}{\numberline {87.2.2}计算 $\rho -\rho '$}{331}{subsubsection.87.2.2}%
-\contentsline {subsubsection}{\numberline {87.2.3}$\Delta \bm {r}\cdot \bm {\sigma }$ 的特征值}{331}{subsubsection.87.2.3}%
-\contentsline {subsubsection}{\numberline {87.2.4}求 $|\rho -\rho '|$ 的迹}{331}{subsubsection.87.2.4}%
-\contentsline {subsection}{\numberline {87.3}矩阵元表示}{332}{subsection.87.3}%
-\contentsline {subsubsection}{\numberline {87.3.1}Bloch 分量与矩阵元的对应}{332}{subsubsection.87.3.1}%
-\contentsline {subsubsection}{\numberline {87.3.2}用矩阵元表示迹距离}{332}{subsubsection.87.3.2}%
-\contentsline {subsection}{\numberline {87.4}物理意义与取值范围}{332}{subsection.87.4}%
-\contentsline {subsubsection}{\numberline {87.4.1}几何解释}{332}{subsubsection.87.4.1}%
-\contentsline {subsubsection}{\numberline {87.4.2}最优测量区分概率}{332}{subsubsection.87.4.2}%
-\contentsline {subsubsection}{\numberline {87.4.3}与保真度的关系}{332}{subsubsection.87.4.3}%
-\contentsline {subsection}{\numberline {87.5}常见错误与考场策略}{333}{subsection.87.5}%
+\contentsline {section}{\numberline {46}固体理论：朗道能级与回旋共振测量有效质量}{177}{section.46}%
+\contentsline {section}{\numberline {47}固体理论：各向异性有效质量的回旋共振}{179}{section.47}%
+\contentsline {section}{\numberline {48}固体理论：硅的回旋共振实验}{181}{section.48}%
+\contentsline {section}{\numberline {49}固体理论：钠金属的费米能}{183}{section.49}%
+\contentsline {section}{\numberline {50}固体理论：一维复式格子的晶格振动——双原子分子晶体的声子色散}{185}{section.50}%
+\contentsline {section}{\numberline {51}固体理论：二维正方晶格的各向异性声子色散}{188}{section.51}%
+\contentsline {section}{\numberline {52}固体理论：弗仑克尔缺陷的平衡浓度}{192}{section.52}%
+\contentsline {section}{\numberline {53}固体理论：离子晶体肖特基缺陷的平衡浓度与体积变化}{195}{section.53}%
+\contentsline {section}{\numberline {54}固体理论：单质晶体空位缺陷的振动熵修正}{198}{section.54}%
+\contentsline {section}{\numberline {55}固体理论：肖特基缺陷的综合热力学修正}{201}{section.55}%
+\contentsline {section}{\numberline {56}固体理论：掺杂杂质晶格位置的实验判定}{205}{section.56}%
+\contentsline {section}{\numberline {57}固体理论：简立方晶体的滑移面与临界切应力}{208}{section.57}%
+\contentsline {section}{\numberline {58}固体理论：面心立方晶体的滑移系统与位错密度估算}{211}{section.58}%
+\contentsline {section}{\numberline {59}固体理论：空位热平衡、凝聚与位错环形成}{214}{section.59}%
+\contentsline {section}{\numberline {60}固体理论：二维晶格的声子色散与空位缺陷散射}{216}{section.60}%
+\contentsline {section}{\numberline {61}固体理论：一维单原子链的晶格波能量与熔点频率}{220}{section.61}%
+\contentsline {section}{\numberline {62}固体理论：爱因斯坦模型与面心立方晶体的均方位移}{223}{section.62}%
+\contentsline {section}{\numberline {63}固体理论：金刚石的爱因斯坦模型——均方位移与零点能}{226}{section.63}%
+\contentsline {section}{\numberline {64}固体理论：一维单原子链的长波极限——从离散晶格到连续弹性波}{229}{section.64}%
+\contentsline {section}{\numberline {65}固体理论：$d$ 维德拜晶格的零点涨落——均方位移与应变}{232}{section.65}%
+\contentsline {section}{\numberline {66}固体理论：二维正方晶格的声子态密度与高温均方位移}{237}{section.66}%
+\contentsline {section}{\numberline {67}固体理论：一维晶格的总动量与声子准动量}{240}{section.67}%
+\contentsline {section}{\numberline {68}固体理论：中子非弹性散射与声子色散测量}{243}{section.68}%
+\contentsline {section}{\numberline {69}固体理论：声子三声子过程与 Umklapp 散射}{245}{section.69}%
+\contentsline {section}{\numberline {70}固体理论：布里渊散射——光子与声子的非弹性散射}{248}{section.70}%
+\contentsline {section}{\numberline {71}固体理论：德拜模型——声子总数的温度依赖与德拜温度计算}{251}{section.71}%
+\contentsline {section}{\numberline {72}固体理论：N 过程与 U 过程——声子热平衡与热阻的机制}{256}{section.72}%
+\contentsline {section}{\numberline {73}固体理论：一维双原子链的热容——$M\gg m$极限}{259}{section.73}%
+\contentsline {section}{\numberline {74}固体理论：石墨的低温热容——准二维德拜模型}{263}{section.74}%
+\contentsline {section}{\numberline {75}固体理论：格林艾森常量与晶格热膨胀}{266}{section.75}%
+\contentsline {section}{\numberline {76}固体理论：一维离子晶体的德拜温度与格林艾森常量}{270}{section.76}%
+\contentsline {section}{\numberline {77}固体理论：一维离子晶格的马德隆常数}{274}{section.77}%
+\contentsline {subsection}{\numberline {77.1}概念铺垫：什么是马德隆常数？}{274}{subsection.77.1}%
+\contentsline {subsection}{\numberline {77.2}马德隆常数的推导}{275}{subsection.77.2}%
+\contentsline {subsubsection}{\numberline {77.2.1}选取参考离子并写级数}{275}{subsubsection.77.2.1}%
+\contentsline {subsubsection}{\numberline {77.2.2}级数求和}{275}{subsubsection.77.2.2}%
+\contentsline {subsubsection}{\numberline {77.2.3}提取马德隆常数}{275}{subsubsection.77.2.3}%
+\contentsline {subsection}{\numberline {77.3}物理图像与拓展}{276}{subsection.77.3}%
+\contentsline {subsubsection}{\numberline {77.3.1}一维 vs 三维：维度对 $M$ 的影响}{276}{subsubsection.77.3.1}%
+\contentsline {section}{\numberline {78}固体理论：一维离子链的平衡与压缩——库仑吸引+短程排斥}{277}{section.78}%
+\contentsline {subsection}{\numberline {78.1}概念铺垫：为什么需要排斥项？}{277}{subsection.78.1}%
+\contentsline {subsection}{\numberline {78.2}平衡间距 $R_0$ 与平衡能 $U(R_0)$}{277}{subsection.78.2}%
+\contentsline {subsubsection}{\numberline {78.2.1}总相互作用能}{277}{subsubsection.78.2.1}%
+\contentsline {subsubsection}{\numberline {78.2.2}平衡条件}{278}{subsubsection.78.2.2}%
+\contentsline {subsubsection}{\numberline {78.2.3}平衡能}{278}{subsubsection.78.2.3}%
+\contentsline {subsection}{\numberline {78.3}压缩做功（精确到 $\delta ^2$）}{278}{subsection.78.3}%
+\contentsline {subsubsection}{\numberline {78.3.1}做功的定义}{278}{subsubsection.78.3.1}%
+\contentsline {subsubsection}{\numberline {78.3.2}为什么只保留到 $\delta ^2$？——平衡点展开的必然性}{279}{subsubsection.78.3.2}%
+\contentsline {subsubsection}{\numberline {78.3.3}具体计算}{279}{subsubsection.78.3.3}%
+\contentsline {subsection}{\numberline {78.4}与已知结果的联系}{280}{subsection.78.4}%
+\contentsline {section}{\numberline {79}固体理论：NaCl 晶体——由宏观量求微观结合能}{281}{section.79}%
+\contentsline {subsection}{\numberline {79.1}物理模型与结合能公式}{281}{subsection.79.1}%
+\contentsline {subsubsection}{\numberline {79.1.1}平衡条件}{282}{subsubsection.79.1.1}%
+\contentsline {subsubsection}{\numberline {79.1.2}平衡时的晶体结合能}{282}{subsubsection.79.1.2}%
+\contentsline {subsection}{\numberline {79.2}由比重求平衡间距 $r_0$}{282}{subsection.79.2}%
+\contentsline {subsection}{\numberline {79.3}由弹性模量求排斥指数 $n$}{284}{subsection.79.3}%
+\contentsline {subsubsection}{\numberline {79.3.1}体积弹性模量公式}{284}{subsubsection.79.3.1}%
+\contentsline {subsubsection}{\numberline {79.3.2}二阶导数的计算}{284}{subsubsection.79.3.2}%
+\contentsline {subsubsection}{\numberline {79.3.3}数值代入}{285}{subsubsection.79.3.3}%
+\contentsline {subsection}{\numberline {79.4}计算结合能}{285}{subsection.79.4}%
+\contentsline {subsection}{\numberline {79.5}答案汇总与数量级检验}{285}{subsection.79.5}%
+\contentsline {section}{\numberline {80}固体理论：离子晶体的压缩系数——从势能到体积模量}{286}{section.80}%
+\contentsline {subsection}{\numberline {80.1}压缩系数与弹性模量的关系}{286}{subsection.80.1}%
+\contentsline {subsection}{\numberline {80.2}晶体体积与原子间距的关系}{286}{subsection.80.2}%
+\contentsline {subsection}{\numberline {80.3}利用平衡条件化简二阶导数}{288}{subsection.80.3}%
+\contentsline {subsubsection}{\numberline {80.3.1}求二阶导数}{288}{subsubsection.80.3.1}%
+\contentsline {subsection}{\numberline {80.4}计算弹性模量 $K$ 与压缩系数 $B$}{288}{subsection.80.4}%
+\contentsline {section}{\numberline {81}体积弹性模量的估算与应用}{290}{section.81}%
+\contentsline {subsection}{\numberline {81.1}估计压缩到正常密度 $\alpha $ 倍所需的压强}{290}{subsection.81.1}%
+\contentsline {subsection}{\numberline {81.2}NaCl 在高压下离子间距的缩小百分比}{290}{subsection.81.2}%
+\contentsline {section}{\numberline {82}Lennard-Jones 势与惰性气体晶体}{293}{section.82}%
+\contentsline {subsection}{\numberline {82.1}题目}{293}{subsection.82.1}%
+\contentsline {subsection}{\numberline {82.2}解答}{293}{subsection.82.2}%
+\contentsline {subsubsection}{\numberline {82.2.1}(1) 总相互作用势能表达式}{293}{subsubsection.82.2.1}%
+\contentsline {subsubsection}{\numberline {82.2.2}(2) Kr 晶体的具体计算}{295}{subsubsection.82.2.2}%
+\contentsline {section}{\numberline {83}固体理论：约瑟夫森结与超导量子比特}{298}{section.83}%
+\contentsline {subsection}{\numberline {83.1}题型分类与核心考点}{298}{subsection.83.1}%
+\contentsline {subsection}{\numberline {83.2}第 (1) 问：LC 电路的谐振子化}{298}{subsection.83.2}%
+\contentsline {subsection}{\numberline {83.3}从 LC 谐振子到约瑟夫森结：两问之间的联系}{299}{subsection.83.3}%
+\contentsline {subsection}{\numberline {83.4}第 (2) 问：电荷量子比特的矩阵表示}{300}{subsection.83.4}%
+\contentsline {subsubsection}{\numberline {83.4.1}矩阵形式}{300}{subsubsection.83.4.1}%
+\contentsline {subsubsection}{\numberline {83.4.2}泡利矩阵展开}{300}{subsubsection.83.4.2}%
+\contentsline {subsubsection}{\numberline {83.4.3}在 $n_g = 1/2$ 处的简并微扰论}{300}{subsubsection.83.4.3}%
+\contentsline {subsubsection}{\numberline {83.4.4}$n_g = 1/2 + \delta $ 附近的避免交叉（Avoided Crossing）}{301}{subsubsection.83.4.4}%
+\contentsline {subsection}{\numberline {83.5}Transmon 量子比特的物理图像}{302}{subsection.83.5}%
+\contentsline {subsubsection}{\numberline {83.5.1}从电荷比特到 Transmon：参数比例的反转}{302}{subsubsection.83.5.1}%
+\contentsline {subsubsection}{\numberline {83.5.2}深势阱中的近似分析——一个奇妙的表象变换}{302}{subsubsection.83.5.2}%
+\contentsline {subsubsection}{\numberline {83.5.3}一阶微扰论求非谐性能级}{303}{subsubsection.83.5.3}%
+\contentsline {subsection}{\numberline {83.6}考场总结：两种超导比特的对比}{304}{subsection.83.6}%
+\contentsline {subsection}{\numberline {83.7}策略反省与注意力管理}{304}{subsection.83.7}%
+\contentsline {section}{\numberline {84}固体理论：约瑟夫森结在磁场中的衍射效应}{305}{section.84}%
+\contentsline {subsection}{\numberline {84.1}DC-SQUID 的理论分析与双缝干涉类比}{315}{subsection.84.1}%
+\contentsline {section}{\numberline {85}量子力学：Hellmann--Feynman 定理——从参数求导到期望值}{317}{section.85}%
+\contentsline {subsection}{\numberline {85.1}题型反射弧标签}{317}{subsection.85.1}%
+\contentsline {subsection}{\numberline {85.2}HF 定理的完整证明}{317}{subsection.85.2}%
+\contentsline {subsection}{\numberline {85.3}用 HF 定理证明维里定理}{318}{subsection.85.3}%
+\contentsline {subsection}{\numberline {85.4}谐振子：动能期望值的秒杀}{318}{subsection.85.4}%
+\contentsline {subsection}{\numberline {85.5}氢原子期望值的 HF 套路}{318}{subsection.85.5}%
+\contentsline {subsubsection}{\numberline {85.5.1}求 $\langle 1/r\rangle $——把 $e^2$ 当参数}{319}{subsubsection.85.5.1}%
+\contentsline {subsubsection}{\numberline {85.5.2}求 $\langle 1/r^2\rangle $——把角动量量子数 $l$ 当参数（严格版）}{319}{subsubsection.85.5.2}%
+\contentsline {subsection}{\numberline {85.6}考场速记卡：常见模型的二级结论}{320}{subsection.85.6}%
+\contentsline {subsection}{\numberline {85.7}策略反省与注意力管理}{320}{subsection.85.7}%
+\contentsline {section}{\numberline {86}量子力学：Pöschl--Teller 势的低能散射——精确解与相移提取}{321}{section.86}%
+\contentsline {subsection}{\numberline {86.1}题型反射弧标签}{321}{subsection.86.1}%
+\contentsline {subsection}{\numberline {86.2}标准解题过程}{322}{subsection.86.2}%
+\contentsline {subsection}{\numberline {86.3}物理图像与补充说明}{323}{subsection.86.3}%
+\contentsline {section}{\numberline {87}量子力学：振子强度求和规则——从谐振子到普遍束缚系统}{325}{section.87}%
+\contentsline {subsection}{\numberline {87.1}一维谐振子}{325}{subsection.87.1}%
+\contentsline {subsubsection}{\numberline {87.1.1}能级与矩阵元}{325}{subsubsection.87.1.1}%
+\contentsline {subsubsection}{\numberline {87.1.2}计算 $f_n$}{325}{subsubsection.87.1.2}%
+\contentsline {subsubsection}{\numberline {87.1.3}求和结果}{325}{subsubsection.87.1.3}%
+\contentsline {subsection}{\numberline {87.2}一般一维束缚系统}{326}{subsection.87.2}%
+\contentsline {subsubsection}{\numberline {87.2.1}核心对易关系}{326}{subsubsection.87.2.1}%
+\contentsline {subsubsection}{\numberline {87.2.2}$P$ 的跃迁矩阵元}{326}{subsubsection.87.2.2}%
+\contentsline {subsubsection}{\numberline {87.2.3}利用完备性求和}{326}{subsubsection.87.2.3}%
+\contentsline {subsubsection}{\numberline {87.2.4}得到振子强度求和}{326}{subsubsection.87.2.4}%
+\contentsline {subsection}{\numberline {87.3}物理意义与考场策略}{327}{subsection.87.3}%
+\contentsline {subsubsection}{\numberline {87.3.1}物理意义}{327}{subsubsection.87.3.1}%
+\contentsline {subsubsection}{\numberline {87.3.2}常见错误}{327}{subsubsection.87.3.2}%
+\contentsline {subsubsection}{\numberline {87.3.3}考场速记}{327}{subsubsection.87.3.3}%
+\contentsline {section}{\numberline {88}量子力学：一维谐振子与位移算符——从对易关系到相干态}{328}{section.88}%
+\contentsline {subsection}{\numberline {88.1}对易关系 $[a, F(X)]$ 的证明}{328}{subsection.88.1}%
+\contentsline {subsubsection}{\numberline {88.1.1}基本对易子}{328}{subsubsection.88.1.1}%
+\contentsline {subsubsection}{\numberline {88.1.2}幂级数展开}{328}{subsubsection.88.1.2}%
+\contentsline {subsection}{\numberline {88.2}递推关系的推导}{329}{subsection.88.2}%
+\contentsline {subsection}{\numberline {88.3}计算具体矩阵元}{329}{subsection.88.3}%
+\contentsline {subsubsection}{\numberline {88.3.1}基态矩阵元 $\langle 0|e^{ikX}|0\rangle $}{329}{subsubsection.88.3.1}%
+\contentsline {subsection}{\numberline {88.4}$t=0$ 时的期望值}{329}{subsection.88.4}%
+\contentsline {subsubsection}{\numberline {88.4.1}归一化验证}{329}{subsubsection.88.4.1}%
+\contentsline {subsubsection}{\numberline {88.4.2}位置与动量期望值}{330}{subsubsection.88.4.2}%
+\contentsline {subsection}{\numberline {88.5}$t$ 时刻能量测量概率}{330}{subsection.88.5}%
+\contentsline {subsubsection}{\numberline {88.5.1}初始展开}{330}{subsubsection.88.5.1}%
+\contentsline {subsubsection}{\numberline {88.5.2}时间演化与概率}{330}{subsubsection.88.5.2}%
+\contentsline {subsection}{\numberline {88.6}常见错误与考场策略}{331}{subsection.88.6}%
+\contentsline {section}{\numberline {89}量子力学：匀强磁场中的电子与反常磁矩——$g-2$ 实验的理论基础}{332}{section.89}%
+\contentsline {subsection}{\numberline {89.1}验证对易关系}{332}{subsection.89.1}%
+\contentsline {subsubsection}{\numberline {89.1.1}速度分量的对易子}{332}{subsubsection.89.1.1}%
+\contentsline {subsubsection}{\numberline {89.1.2}$[V_i, H]$ 的推导}{332}{subsubsection.89.1.2}%
+\contentsline {subsection}{\numberline {89.2}期望值的时间演化方程}{333}{subsection.89.2}%
+\contentsline {subsubsection}{\numberline {89.2.1}自旋的海森堡方程}{333}{subsubsection.89.2.1}%
+\contentsline {subsubsection}{\numberline {89.2.2}速度的海森堡方程}{333}{subsubsection.89.2.2}%
+\contentsline {subsubsection}{\numberline {89.2.3}$C_1, C_2, C_3$ 的耦合方程}{333}{subsubsection.89.2.3}%
+\contentsline {subsection}{\numberline {89.3}$\langle \bm {S}\cdot \bm {V}\rangle $ 的时间演化}{334}{subsection.89.3}%
+\contentsline {subsubsection}{\numberline {89.3.1}解耦与振荡频率}{334}{subsubsection.89.3.1}%
+\contentsline {subsubsection}{\numberline {89.3.2}物理讨论}{334}{subsubsection.89.3.2}%
+\contentsline {subsubsection}{\numberline {89.3.3}与 $g-2$ 实验的联系}{334}{subsubsection.89.3.3}%
+\contentsline {subsection}{\numberline {89.4}常见错误与考场策略}{335}{subsection.89.4}%
+\contentsline {section}{\numberline {90}量子力学：Dirac--Kirkwood 分布——从联合概率到密度矩阵重构}{336}{section.90}%
+\contentsline {subsection}{\numberline {90.1}联合概率的两种表达式等价}{336}{subsection.90.1}%
+\contentsline {subsubsection}{\numberline {90.1.1}标准联合概率}{336}{subsubsection.90.1.1}%
+\contentsline {subsubsection}{\numberline {90.1.2}迹形式}{336}{subsubsection.90.1.2}%
+\contentsline {subsection}{\numberline {90.2}DK 概率与密度矩阵重构}{337}{subsection.90.2}%
+\contentsline {subsubsection}{\numberline {90.2.1}DK 概率的定义}{337}{subsubsection.90.2.1}%
+\contentsline {subsubsection}{\numberline {90.2.2}从 DK 概率提取跃迁矩阵元}{337}{subsubsection.90.2.2}%
+\contentsline {subsubsection}{\numberline {90.2.3}重构 $\langle \beta _m|\rho |\beta _n\rangle $}{337}{subsubsection.90.2.3}%
+\contentsline {subsection}{\numberline {90.3}物理意义与拓展}{338}{subsection.90.3}%
+\contentsline {subsubsection}{\numberline {90.3.1}DK 分布 vs 标准概率}{338}{subsubsection.90.3.1}%
+\contentsline {subsubsection}{\numberline {90.3.2}与 Wigner 函数的联系}{338}{subsubsection.90.3.2}%
+\contentsline {subsection}{\numberline {90.4}常见错误与考场策略}{338}{subsection.90.4}%
+\contentsline {section}{\numberline {91}量子信息：单量子比特的迹距离——Bloch 球上的几何距离}{339}{section.91}%
+\contentsline {subsection}{\numberline {91.1}迹距离的定义}{339}{subsection.91.1}%
+\contentsline {subsection}{\numberline {91.2}Bloch 表示}{339}{subsection.91.2}%
+\contentsline {subsubsection}{\numberline {91.2.1}单量子比特密度矩阵}{339}{subsubsection.91.2.1}%
+\contentsline {subsubsection}{\numberline {91.2.2}计算 $\rho -\rho '$}{339}{subsubsection.91.2.2}%
+\contentsline {subsubsection}{\numberline {91.2.3}$\Delta \bm {r}\cdot \bm {\sigma }$ 的特征值}{339}{subsubsection.91.2.3}%
+\contentsline {subsubsection}{\numberline {91.2.4}求 $|\rho -\rho '|$ 的迹}{339}{subsubsection.91.2.4}%
+\contentsline {subsection}{\numberline {91.3}矩阵元表示}{340}{subsection.91.3}%
+\contentsline {subsubsection}{\numberline {91.3.1}Bloch 分量与矩阵元的对应}{340}{subsubsection.91.3.1}%
+\contentsline {subsubsection}{\numberline {91.3.2}用矩阵元表示迹距离}{340}{subsubsection.91.3.2}%
+\contentsline {subsection}{\numberline {91.4}物理意义与取值范围}{340}{subsection.91.4}%
+\contentsline {subsubsection}{\numberline {91.4.1}几何解释}{340}{subsubsection.91.4.1}%
+\contentsline {subsubsection}{\numberline {91.4.2}最优测量区分概率}{340}{subsubsection.91.4.2}%
+\contentsline {subsubsection}{\numberline {91.4.3}与保真度的关系}{340}{subsubsection.91.4.3}%
+\contentsline {subsection}{\numberline {91.5}常见错误与考场策略}{341}{subsection.91.5}%

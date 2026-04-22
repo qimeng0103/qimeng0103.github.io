@@ -1,0 +1,113 @@
+% ============================================================
+% Section 86: 朗道能级与回旋共振
+% ============================================================
+\section{固体理论：朗道能级与回旋共振测量有效质量}
+\label{sec:landau-levels}
+
+\begin{modelbox}[题目：均匀磁场中晶体电子的朗道能级与回旋共振原理]
+设晶体电子有一统一有效质量 $m^*$，在恒定磁场 $\bm{B}$ 中。证明电子能量为
+\[
+E=\frac{\hbar^2k_z^2}{2m^*}+\hbar\omega_c\Bigl(n+\frac12\Bigr),\qquad \omega_c=\frac{eB}{m^*},
+\]
+并说明电子回旋共振测量有效质量的原理。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{有效质量近似}：用包络函数 $F(\bm{r})$ 描述，哈密顿量如自由电子但质量换为 $m^*$
+    \item \textbf{朗道规范}：$\bm{A}=(-By,0,0)$，适合 $B\parallel z$
+    \item \textbf{分离变量}：$F=e^{ik_xx+ik_zz}\phi(y)$，$y$ 方向化为简谐振子
+    \item \textbf{回旋共振}：$\omega=\omega_c$ 时共振吸收，由 $B$ 和 $\omega$ 求 $m^*$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 有效质量方程与矢势选取}
+
+在有效质量近似下，包络函数 $F(\bm{r})$ 满足类薛定谔方程
+\begin{equation}
+\frac{1}{2m^*}(-i\hbar\nabla+e\bm{A})^2F(\bm{r})=EF(\bm{r}).
+\end{equation}
+设磁场沿 $z$ 方向：$\bm{B}=(0,0,B)$。取\textbf{朗道规范}
+\begin{equation}
+\bm{A}=(-By,0,0)\quad\Longrightarrow\quad\nabla\times\bm{A}=(0,0,B).
+\end{equation}
+
+代入方程：
+\begin{equation}
+\frac{1}{2m^*}\Bigl[\Bigl(-i\hbar\frac{\partial}{\partial x}-eBy\Bigr)^2-\hbar^2\frac{\partial^2}{\partial y^2}-\hbar^2\frac{\partial^2}{\partial z^2}\Bigr]F=EF.
+\end{equation}
+
+\textbf{Step 2: 分离变量与简谐振子方程}
+
+由于哈密顿量与 $x,z$ 坐标无关（除导数外），设试探解
+\begin{equation}
+F(\bm{r})=e^{ik_xx+ik_zz}\,\phi(y).
+\end{equation}
+
+代入后，$x$ 和 $z$ 部分分别给出本征值 $(\hbar k_x-eBy)^2$ 和 $\hbar^2k_z^2$。方程化为
+\begin{equation}
+-\frac{\hbar^2}{2m^*}\frac{d^2\phi}{dy^2}+\frac{e^2B^2}{2m^*}\Bigl(y-\frac{\hbar k_x}{eB}\Bigr)^2\phi=\Bigl(E-\frac{\hbar^2k_z^2}{2m^*}\Bigr)\phi.
+\end{equation}
+
+令 $y_0=\hbar k_x/(eB)$，$y'=y-y_0$，并定义\textbf{回旋频率}
+\begin{equation}
+\omega_c=\frac{eB}{m^*},
+\end{equation}
+方程变为标准的一维简谐振子形式
+\begin{equation}
+-\frac{\hbar^2}{2m^*}\frac{d^2\phi}{dy'^2}+\frac12m^*\omega_c^2y'^2\phi=E'\phi,
+\qquad E'=E-\frac{\hbar^2k_z^2}{2m^*}.
+\end{equation}
+
+\textbf{Step 3: 朗道能级}
+
+简谐振子能量本征值 $E'_n=\hbar\omega_c(n+\tfrac12)$，$n=0,1,2,\ldots$。因此电子总能量
+\begin{equation}
+\boxed{E_n(k_z)=\frac{\hbar^2k_z^2}{2m^*}+\hbar\omega_c\Bigl(n+\frac12\Bigr).}
+\end{equation}
+
+物理意义：
+\begin{itemize}
+    \item 沿磁场方向（$z$）：电子仍自由运动，能量连续（一维自由电子气）
+    \item 垂直于磁场的平面内：运动量子化为分立的\textbf{朗道能级}，间隔 $\hbar\omega_c$
+\end{itemize}
+
+\textbf{Step 4: 回旋共振测量有效质量的原理}
+
+对半导体施加恒定磁场 $B$ 和高频交变电磁场（频率 $\omega$）。当
+\begin{equation}
+\omega=\omega_c=\frac{eB}{m^*}
+\end{equation}
+时，电子发生\textbf{共振吸收}，从交变场吸收能量 $\hbar\omega_c$，在相邻朗道能级间跃迁（$\Delta n=\pm1$）。
+
+测量共振时的 $B$ 和 $\omega$，即可求出有效质量
+\begin{equation}
+\boxed{m^*=\frac{eB}{\omega}.}
+\end{equation}
+
+\textbf{意义}：回旋共振是实验测定半导体导带底/价带顶电子（空穴）有效质量最直接、最精确的方法。改变磁场方向还可测量有效质量的各向异性。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{项目} & \textbf{结果} \\
+\midrule
+朗道能级 & $E_n(k_z)=\dfrac{\hbar^2k_z^2}{2m^*}+\hbar\omega_c\bigl(n+\tfrac12\bigr)$ \\
+回旋频率 & $\omega_c=eB/m^*$ \\
+能级间隔 & $\Delta E=\hbar\omega_c=\hbar eB/m^*$ \\
+有效质量测量 & $m^*=eB/\omega$（共振条件） \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 磁场使电子在垂直平面内的连续能量\textbf{量子化}为朗道能级，是磁场中电子运动的典型量子效应。每个朗道能级对应极大的简并度（正比于磁场面积），这在量子霍尔效应中至关重要。
+    \item 沿磁场方向电子仍保持自由运动，因此每个 $n$ 对应一条一维子带（抛物线色散），形成所谓的\textbf{朗道管}。
+    \item 回旋共振实验通常在微波或远红外频段进行。对于典型半导体（$m^*\sim0.1m_0$），在 $B\sim1\,$T 时 $\omega_c/2\pi\sim$\,GHz--THz 量级，对应微波波段。
+\end{itemize}
+\end{insightbox}
