@@ -1,0 +1,113 @@
+% ============================================================
+% Section 91: 自由电子气的压强与体积弹性模量
+% ============================================================
+\section{固体理论：自由电子气的压强与体积弹性模量}
+\label{sec:free-electron-pressure}
+
+\begin{modelbox}[题目：自由电子气压强、弹性模量的推导与数值估算]
+在绝对零度下：
+\begin{enumerate}
+    \item 证明金属自由电子气的压强 $p=\dfrac{2}{3}\dfrac{U_0}{V}$，其中 $U_0$ 为电子气总能量，$V$ 为金属体积；
+    \item 证明电子气的体积弹性模量 $K=-V\dfrac{\partial p}{\partial V}=\dfrac{10}{9}\dfrac{U_0}{V}$；
+    \item 钾金属电子浓度为 $n=1.40\times10^{22}\,\text{cm}^{-3}$，计算 $p$ 和 $K$。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{热力学关系}：$p=-(\partial U_0/\partial V)_N$（$T=0$ 时 $dS=0$）
+    \item \textbf{费米能的体积依赖}：$E_F\propto V^{-2/3}$，$U_0\propto V^{-2/3}$
+    \item \textbf{弹性模量}：$K=-V\partial p/\partial V$，反映抗压缩性
+    \item \textbf{数量级}：电子简并压达数万大气压
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 压强的证明}
+
+$T=0$ 时，$dS=0$，热力学关系给出
+\begin{equation}
+p=-\Bigl(\frac{\partial U_0}{\partial V}\Bigr)_N.
+\end{equation}
+
+自由电子气中，$T=0$ 时每个电子平均能量
+\begin{equation}
+\bar E=\frac{U_0}{N}=\frac{3}{5}E_F^0,
+\end{equation}
+其中 $E_F^0=\dfrac{\hbar^2}{2m}(3\pi^2N/V)^{2/3}$。总能量
+\begin{equation}
+U_0=\frac{3}{5}N\frac{\hbar^2}{2m}\Bigl(\frac{3\pi^2N}{V}\Bigr)^{2/3}=CV^{-2/3},
+\end{equation}
+$C$ 与 $V$ 无关。
+
+求导得
+\begin{equation}
+p=-C\Bigl(-\frac{2}{3}\Bigr)V^{-5/3}=\frac{2}{3}CV^{-2/3}
+=\frac{2}{3}\frac{U_0}{V}.
+\end{equation}
+故
+\begin{equation}
+\boxed{p=\frac{2}{3}\frac{U_0}{V}=\frac{2}{5}nE_F^0.}
+\end{equation}
+
+\textbf{Step 2: 体积弹性模量的证明}
+
+体积弹性模量
+\begin{equation}
+K=-V\frac{\partial p}{\partial V}.
+\end{equation}
+
+由 $U_0\propto V^{-2/3}$ 知 $p=\dfrac{2}{3}\dfrac{U_0}{V}\propto V^{-5/3}$，故
+\begin{equation}
+\frac{\partial p}{\partial V}=-\frac{5}{3}\frac{p}{V}.
+\end{equation}
+
+代入得
+\begin{equation}
+K=-V\Bigl(-\frac{5}{3}\frac{p}{V}\Bigr)=\frac{5}{3}p
+=\frac{5}{3}\cdot\frac{2}{3}\frac{U_0}{V}
+=\boxed{\frac{10}{9}\frac{U_0}{V}=\frac{2}{3}nE_F^0.}
+\end{equation}
+
+\textbf{Step 3: 钾金属的 $p$ 和 $K$}
+
+已知 $n=1.40\times10^{28}\,\text{m}^{-3}$。先算费米能
+\begin{equation}
+E_F^0=\frac{\hbar^2}{2m}(3\pi^2n)^{2/3}
+\approx\frac{(1.055\times10^{-34})^2}{2\times9.11\times10^{-31}}\times(4.145\times10^{29})^{2/3}
+\approx3.40\times10^{-19}\,\text{J}\approx2.12\,\text{eV}.
+\end{equation}
+
+压强
+\begin{equation}
+\boxed{p=\frac{2}{5}nE_F^0=\frac{2}{5}\times1.40\times10^{28}\times3.40\times10^{-19}
+\approx1.90\times10^9\,\text{Pa}\approx1.90\times10^4\,\text{atm}.}
+\end{equation}
+
+体积弹性模量
+\begin{equation}
+\boxed{K=\frac{5}{3}p\approx\frac{5}{3}\times1.90\times10^9
+\approx3.17\times10^9\,\text{Pa}\approx3.17\times10^4\,\text{atm}.}
+\end{equation}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{问题} & \textbf{表达式} & \textbf{数值（钾）} \\
+\midrule
+(1) 压强 & $p=\dfrac{2}{3}\dfrac{U_0}{V}=\dfrac{2}{5}nE_F^0$ & $1.90\times10^9\,\text{Pa}$ \\
+(2) 弹性模量 & $K=\dfrac{10}{9}\dfrac{U_0}{V}=\dfrac{2}{3}nE_F^0$ & $3.17\times10^9\,\text{Pa}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 自由电子气具有巨大的\textbf{简并压}（数万大气压），源于泡利不相容原理导致的基态零点动能。即使在绝对零度，电子气仍对外施加巨大压力，这是金属具有有限平衡体积的重要原因之一。
+    \item 体积弹性模量 $K$ 是金属\textbf{抗压缩性}的量度。碱金属的 $K$ 主要由自由电子气贡献；对于过渡金属，$d$ 电子的库仑关联也会显著贡献 $K$。
+    \item 本题将金属的宏观力学性质（压强、弹性模量）与微观电子浓度联系起来，是理解金属状态方程的基础。实际金属的总压强还需包含离子实的排斥贡献，二者平衡决定晶格常数。
+\end{itemize}
+\end{insightbox}

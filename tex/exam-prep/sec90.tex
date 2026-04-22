@@ -1,0 +1,103 @@
+% ============================================================
+% Section 90: 钾金属低温电子热容与费米参数
+% ============================================================
+\section{固体理论：钾金属低温电子热容与费米参数}
+\label{sec:potassium-specific-heat}
+
+\begin{modelbox}[题目：由低温电子热容实验估算钾的费米参数]
+低温下金属钾的摩尔电子热容实验结果为 $c_e=2.08T\,\text{mJ/(mol}\cdot\text{K)}$。X射线衍射测得晶格常数 $a=5.333$ \AA。在自由电子气模型下估算：
+\begin{enumerate}
+    \item 费米温度 $T_F$；
+    \item 导带电子有效质量 $m^*$；
+    \item 费米速度 $v_F$；
+    \item 费米面上的能态密度 $\rho(E_F)$。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{低温电子比热}：$c_e=\dfrac{\pi^2}{2}ZR\dfrac{T}{T_F}$，线性温度依赖
+    \item \textbf{费米温度}：由比热系数直接提取
+    \item \textbf{有效质量}：$m^*=\hbar^2k_F^2/(2k_BT_F)$，反映能带修正
+    \item \textbf{态密度}：$\rho(E_F)=3n/(2E_F)$，决定输运和热力学性质
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 费米温度}
+
+自由电子气模型中，低温摩尔电子热容
+\begin{equation}
+c_e=\frac{\pi^2}{2}ZR\frac{T}{T_F},
+\end{equation}
+其中 $Z=1$（钾为单价金属），$R=8.314\,\text{J/(mol}\cdot\text{K)}$。
+
+已知 $c_e/T=2.08\times10^{-3}\,\text{J/(mol}\cdot\text{K}^2)$，故
+\begin{equation}
+\boxed{T_F=\frac{\pi^2R}{2\times2.08\times10^{-3}}
+=\frac{9.87\times8.314}{4.16\times10^{-3}}
+\approx1.97\times10^4\,\text{K}.}
+\end{equation}
+
+\textbf{Step 2: 导带电子有效质量}
+
+钾为 BCC 结构，$n=2/a^3$。费米波矢
+\begin{equation}
+k_F=(3\pi^2n)^{1/3}=\frac{(6\pi^2)^{1/3}}{a}
+\approx\frac{3.898}{5.333\times10^{-10}}
+\approx7.31\times10^9\,\text{m}^{-1}.
+\end{equation}
+
+由 $E_F=\hbar^2k_F^2/(2m^*)=k_BT_F$，解出
+\begin{equation}
+\boxed{m^*=\frac{\hbar^2k_F^2}{2k_BT_F}
+\approx\frac{(1.055\times10^{-34})^2\times(7.31\times10^9)^2}{2\times1.38\times10^{-23}\times1.97\times10^4}
+\approx1.09\times10^{-30}\,\text{kg}\approx1.2\,m_0.}
+\end{equation}
+
+\textbf{Step 3: 费米速度}
+
+\begin{equation}
+\boxed{v_F=\frac{\hbar k_F}{m^*}
+\approx\frac{1.055\times10^{-34}\times7.31\times10^9}{1.09\times10^{-30}}
+\approx7.05\times10^5\,\text{m/s}=0.705\times10^8\,\text{cm/s}.}
+\end{equation}
+
+\textbf{Step 4: 费米面态密度}
+
+三维自由电子气态密度
+\begin{equation}
+\rho(E)=\frac{1}{2\pi^2}\Bigl(\frac{2m^*}{\hbar^2}\Bigr)^{3/2}E^{1/2}.
+\end{equation}
+
+在费米面处
+\begin{align}
+\rho(E_F)&=\frac{1}{2\pi^2}\Bigl(\frac{2m^*}{\hbar^2}\Bigr)^{3/2}(k_BT_F)^{1/2} \notag\\
+&\approx7.28\times10^{46}\,\text{J}^{-1}\text{m}^{-3} \notag\\
+&\approx\boxed{1.17\times10^{28}\,\text{eV}^{-1}\text{m}^{-3}.}
+\end{align}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{物理量} & \textbf{数值} \\
+\midrule
+费米温度 $T_F$ & $1.97\times10^4\,\text{K}$ \\
+有效质量 $m^*$ & $1.2\,m_0$ \\
+费米速度 $v_F$ & $0.705\times10^8\,\text{cm/s}$ \\
+态密度 $\rho(E_F)$ & $1.17\times10^{28}\,\text{eV}^{-1}\text{m}^{-3}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 低温电子比热是测定金属费米能和有效质量的\textbf{标准实验手段}。钾的 $m^*\approx1.2m_0$ 接近自由电子质量，说明钾是近自由电子金属，电子--声子和电子--电子相互作用对能带的修正较小。
+    \item 费米速度 $v_F\sim10^5\,$m/s 虽然远小于光速，但比室温下气体分子热运动速度快约两个数量级，体现了电子简并态的高动能特征。
+    \item 费米面态密度 $\rho(E_F)$ 是决定金属电导率（$
+ho(E_F)$ 越大，载流子越多）、热导率、泡利顺磁磁化率等输运性质的核心参数。
+\end{itemize}
+\end{insightbox}
