@@ -1,0 +1,163 @@
+% ============================================================
+% Section 67: 二元合金的混合熵、相互作用能与相分离
+% ============================================================
+\newpage
+\section{固体理论：二元合金的混合熵、相互作用能与相分离}
+\label{sec:alloy-mixing-entropy}
+
+\begin{modelbox}[题目：简立方二元合金的统计热力学与相分离]
+考虑由 $N$ 个原子组成的简立方晶体，其中 $A$、$B$ 两种原子随机混合。$A$--$A$ 和 $B$--$B$ 近邻相互作用能为 $-J$，$A$--$B$ 近邻相互作用能为 $+J$（$J>0$）。设 $A$ 原子数为 $N_A=N(1+x)/2$，$B$ 原子数为 $N_B=N(1-x)/2$。
+\begin{enumerate}
+    \item 计算系统的位形熵 $S$；
+    \item 用平均场近似计算系统的总相互作用能 $U$；
+    \item 写出自由能 $F(x)$ 并求临界温度 $T_c$；
+    \item 当 $T<T_c$ 时，求 Spinodal 曲线（失稳分解线）$x_p(T)$。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{位形熵}：混合熵 $S=k_B\ln W$，用斯特林近似化简
+    \item \textbf{平均场近似}：任一格点周围出现 $A$ 或 $B$ 的概率等于各自的浓度
+    \item \textbf{自由能展开}：小 $x$ 下对数项泰勒展开，得到朗道型自由能
+    \item \textbf{临界温度}：$\partial^2 F/\partial x^2|_{x=0}=0$ 给出 $T_c$
+    \item \textbf{Spinodal 分解}：$\partial^2 F/\partial x^2<0$ 的成分区间内，任何涨落均导致自发分相
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 位形熵的计算}
+
+$N$ 个格点中，$N_A$ 个为 $A$ 原子，$N_B$ 个为 $B$ 原子。排列方式数为
+\begin{equation}
+W = \binom{N}{N_A} = \frac{N!}{N_A!\,N_B!}.
+\end{equation}
+位形熵 $S=k_{\!B}\ln W$。利用斯特林近似 $\ln M!\approx M\ln M-M$：
+\begin{align}
+S &= k_{\!B}\bigl[N\ln N - N_A\ln N_A - N_B\ln N_B\bigr] \notag\\
+&= k_{\!B}\Bigl[N\ln N - \frac{N(1+x)}{2}\ln\!\Bigl(\frac{N(1+x)}{2}\Bigr) - \frac{N(1-x)}{2}\ln\!\Bigl(\frac{N(1-x)}{2}\Bigr)\Bigr].
+\end{align}
+展开对数项 $\ln[N(1\pm x)/2]=\ln N + \ln(1\pm x)-\ln 2$，化简得
+\begin{equation}
+\boxed{S = Nk_{\!B}\ln 2 - \frac{Nk_{\!B}}{2}\Bigl[(1+x)\ln(1+x) + (1-x)\ln(1-x)\Bigr].}
+\end{equation}
+
+\textbf{Step 2: 总相互作用能的计算}
+
+简立方结构中每个原子有 $6$ 个最近邻。在平均场近似下，任一格点周围出现 $A$ 原子的概率为 $N_A/N$，出现 $B$ 原子的概率为 $N_B/N$。
+
+一个 $A$ 原子与周围 $6$ 个原子的平均相互作用能为
+\begin{equation}
+u_A = 6\Bigl[(-J)\frac{N_A}{N} + (+J)\frac{N_B}{N}\Bigr] = \frac{6J}{N}(-N_A+N_B).
+\end{equation}
+一个 $B$ 原子的平均相互作用能为
+\begin{equation}
+u_B = 6\Bigl[(-J)\frac{N_B}{N} + (+J)\frac{N_A}{N}\Bigr] = \frac{6J}{N}(-N_B+N_A).
+\end{equation}
+
+系统总相互作用能（每对键被计算两次，故乘 $1/2$）：
+\begin{align}
+U &= \frac{1}{2}(N_A\nu_A + N_B\nu_B)
+= \frac{3J}{N}\bigl[-N_A^2 - N_B^2 + 2N_A N_B\bigr] \notag\\
+&= -\frac{3J}{N}(N_A-N_B)^2.
+\end{align}
+代入 $N_A-N_B=Nx$：
+\begin{equation}
+\boxed{U = -3NJx^2.}
+\end{equation}
+
+\textbf{Step 3: 自由能展开与临界温度}
+
+自由能 $F=U-TS$：
+\begin{multline}
+F(x) = -3NJx^2 - Nk_{\!B}T\ln 2 \\
++ \frac{Nk_{\!B}T}{2}\Bigl[(1+x)\ln(1+x) + (1-x)\ln(1-x)\Bigr].
+\end{multline}
+
+小 $x$ 下对数项泰勒展开：
+\begin{equation}
+(1+x)\ln(1+x) + (1-x)\ln(1-x) = x^2 + \frac{x^4}{6} + O(x^6).
+\end{equation}
+保留至 $x^4$ 项：
+\begin{equation}
+F(x) \approx -Nk_{\!B}T\ln 2 + \frac{1}{2}Nk_{\!B}(T-T_c)x^2 + \frac{1}{12}Nk_{\!B}Tx^4,
+\end{equation}
+其中
+\begin{equation}
+\boxed{T_c = \frac{6J}{k_{\!B}}.}
+\end{equation}
+
+\textit{稳定性分析}：
+\begin{equation}
+\frac{\partial^2 F}{\partial x^2}\bigg|_{x=0} = Nk_{\!B}(T-T_c).
+\end{equation}
+\begin{itemize}
+    \item $T>T_c$：$\partial^2 F/\partial x^2|_{x=0}>0$，$x=0$ 为极小值，单相固溶体稳定
+    \item $T<T_c$：$\partial^2 F/\partial x^2|_{x=0}<0$，$x=0$ 为极大值，系统不稳定，发生相分离
+\end{itemize}
+
+\textbf{Step 4: Spinodal 曲线与相成分}
+
+当 $T<T_c$ 时，自由能曲线在 $x=0$ 两侧出现两个极小值点，对应平衡的两相成分。由自由能极小条件 $\partial F/\partial x=0$：
+\begin{equation}
+\frac{\partial F}{\partial x} = Nk_{\!B}(T-T_c)x + \frac{1}{3}Nk_{\!B}Tx^3 = 0.
+\end{equation}
+舍去 $x=0$ 的平庸解，得
+\begin{equation}
+(T-T_c) + \frac{T}{3}x^2 = 0
+\quad\Longrightarrow\quad
+\boxed{x_p(T) = \pm\sqrt{\frac{3(T_c-T)}{T}}.}
+\end{equation}
+
+\textit{物理意义}：在 $|x|<x_p(T)$ 的成分区间内，$\partial^2 F/\partial x^2<0$，系统处于热力学\textbf{不稳定状态}（Spinodal 区），任何微小的成分涨落都会导致系统自发分解为两相（成核生长或 Spinodal 分解）。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{问题} & \textbf{答案} \\
+\midrule
+(1) 位形熵 & $\displaystyle S = Nk_{\!B}\ln 2 - \frac{Nk_{\!B}}{2}\bigl[(1+x)\ln(1+x)+(1-x)\ln(1-x)\bigr]$ \\
+(2) 总相互作用能 & $U = -3NJx^2$ \\
+(3) 临界温度 & $T_c = 6J/k_{\!B}$ \\
+(4) Spinodal 曲线 & $\displaystyle x_p(T) = \pm\sqrt{3(T_c-T)/T}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像：为什么低温下会相分离？]
+本题的核心竞争在于\textbf{能量}与\textbf{熵}的博弈：
+\begin{itemize}
+    \item \textbf{能量项}（$U=-3NJx^2$）：$J>0$ 意味着 $A$--$B$ 相互作用（$+J$）比 $A$--$A$、$B$--$B$（$-J$）更不利。系统倾向于\textbf{分离}为 $A$ 富集相和 $B$ 富集相，以降低能量
+    \item \textbf{熵项}（混合熵）：系统倾向于\textbf{混合}，因为混合态的微观状态数更多
+\end{itemize}
+
+\textbf{温度决定胜负}：
+\begin{itemize}
+    \item 高温：熵主导，$F$ 在 $x=0$ 处取极小，\textbf{单相固溶体}稳定
+    \item 低温：能量主导，$F$ 在 $x=0$ 处取极大，系统\textbf{自发分相}
+    \item $T=T_c$：能量与熵势均力敌，临界点
+\end{itemize}
+
+\textbf{与 Ising 模型的联系}：本题本质上是 $z=6$（简立方配位数）的伊辛模型在平均场近似下的结果。临界温度 $T_c=zJ/k_{\!B}=6J/k_{\!B}$ 与平均场理论一致。
+\end{insightbox}
+
+\begin{thinkbox}[考场速记：二元合金相分离问题的通用框架]
+遇到``混合熵''``临界温度''``Spinodal''类问题：
+\begin{enumerate}
+    \item \textbf{写位形熵}：$S=k_{\!B}\ln W = k_{\!B}[N\ln N - N_A\ln N_A - N_B\ln N_B]$
+    \item \textbf{写相互作用能}：平均场近似下，$U\propto -(N_A-N_B)^2$ 或更一般地 $U\propto -x^2$
+    \item \textbf{写自由能}：$F=U-TS$，对数项小 $x$ 展开：$(1\pm x)\ln(1\pm x)\approx x^2\pm x^3/3+x^4/6$
+    \item \textbf{求临界温度}：$\partial^2 F/\partial x^2|_{x=0}=0$
+    \item \textbf{求 Spinodal}：$\partial F/\partial x=0$ 的非零解
+\end{enumerate}
+
+\textbf{自由能曲线的形状判断}：
+\begin{itemize}
+    \item $T>T_c$：单谷，$x=0$ 为全局极小（混合相）
+    \item $T<T_c$：双谷，$x=0$ 为局部极大（分相），两侧极小为两相平衡成分
+\end{itemize}
+\textit{陷阱提醒}：总相互作用能公式中的 $1/2$ 因子（每对键被计算两次）不要遗漏；泰勒展开时注意 $(1+x)\ln(1+x)$ 的展开式中 $x^3$ 项系数为 $+1/6$，而 $(1-x)\ln(1-x)$ 中为 $-1/6$，两者相加后奇次项抵消。
+\end{thinkbox}
