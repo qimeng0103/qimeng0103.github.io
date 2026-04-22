@@ -63,9 +63,9 @@ N_B^{(\mathrm{int})} = \frac{8x}{1-x} \approx 8x(1+x) \approx 0.02520.
 \begin{align}
 \rho_{\mathrm{sub}}
 &= \frac{8(1-x)M_{\mathrm{Si}} + 8x M_B}{N_{\!A}(a')^{3}}\times 10^{-3}\,\mathrm{kg/m^{3}} \notag\\
-&= \frac{7.9488\times 28.086 + 0.02512\times 10.811}{6.022\times 10^{23}\times(5.4249\times 10^{-10})^{3}}\times 10^{-3} \notag\\
-&\approx \frac{223.562}{9.614\times 10^{-2}} \notag\\
-&\approx \boxed{2325\,\mathrm{kg/m^{3}}}.
+&= \frac{7.97488\times 28.086 + 0.02512\times 10.811}{6.022\times 10^{23}\times(5.4249\times 10^{-10})^{3}}\times 10^{-3} \notag\\
+&\approx \frac{224.254}{9.614\times 10^{-5}}\times 10^{-3} \notag\\
+&\approx \boxed{2332.6\,\mathrm{kg/m^{3}}}.
 \label{eq:sub-density}
 \end{align}
 
@@ -74,41 +74,34 @@ N_B^{(\mathrm{int})} = \frac{8x}{1-x} \approx 8x(1+x) \approx 0.02520.
 \rho_{\mathrm{int}}
 &= \frac{8M_{\mathrm{Si}} + \frac{8x}{1-x}M_B}{N_{\!A}(a')^{3}}\times 10^{-3}\,\mathrm{kg/m^{3}} \notag\\
 &= \frac{8\times 28.086 + 0.02520\times 10.811}{6.022\times 10^{23}\times(5.4249\times 10^{-10})^{3}}\times 10^{-3} \notag\\
-&\approx \frac{224.960}{9.614\times 10^{-2}} \notag\\
+&\approx \frac{224.960}{9.614\times 10^{-5}}\times 10^{-3} \notag\\
 &\approx \boxed{2340\,\mathrm{kg/m^{3}}}.
 \label{eq:int-density}
 \end{align}
 
-\textit{数值速算}：直接利用 $N_{\!A}(a')^{3}\approx 9.614\times 10^{-2}\,\mathrm{m^{3}/mol}$，分子单位为 $\mathrm{g/mol}$，结果自然为 $\mathrm{kg/m^{3}}$。
+\textit{数值速算}：分母 $N_{\!A}(a')^{3}\approx 9.614\times 10^{-5}\,\mathrm{m^{3}/mol}$。分子单位为 $\mathrm{g/mol}$，除以分母得 $\mathrm{g/m^{3}}$，再乘 $10^{-3}$ 即得 $\mathrm{kg/m^{3}}$。
 
 \textbf{Step 4: 结果比较与结论}
 
 \begin{center}
 \begin{tabular}{lccc}
 \toprule
-\textbf{模型} & \textbf{计算密度} $(\mathrm{kg/m^{3}})$ & \textbf{实测密度} $(\mathrm{kg/m^{3}})$ & \textbf{偏差} \\
+\textbf{模型} & \textbf{计算密度} $(\mathrm{kg/m^{3}})$ & \textbf{实测密度} $(\mathrm{kg/m^{3}})$ & \textbf{相对偏差} \\
 \midrule
-间隙式 & $2340$ & $2332.14$ & $+7.86$ \\
-替位式 & $2325$ & $2332.14$ & $-7.14$ \\
+间隙式 & $2340$ & $2332.14$ & $+0.34\%$ \\
+替位式 & $2332.6$ & $2332.14$ & $+0.02\%$ \\
 \bottomrule
 \end{tabular}
 \end{center}
 
-两种模型的计算值都与实测值有一定偏差，但\textbf{相对变化趋势}是关键：
+\textbf{定量判断}：替位式模型的计算密度 $2332.6\,\mathrm{kg/m^{3}}$ 与实测值 $2332.14\,\mathrm{kg/m^{3}}$ 仅相差 $0.46\,\mathrm{kg/m^{3}}$（约 $0.02\%$），吻合极好；而间隙式模型偏差达 $7.86\,\mathrm{kg/m^{3}}$（约 $0.34\%$），是前者的 $17$ 倍。
+
+\textbf{定性佐证}：
 \begin{itemize}
-    \item 间隙式：额外增加轻硼原子，晶格常数又减小（体积收缩），密度应\textbf{显著上升}
-    \item 替位式：轻硼取代重硅，质量减少，但体积也收缩，密度变化\textbf{相对温和}
+    \item 间隙式额外增加轻硼原子，且晶格常数减小（体积收缩），密度应\textbf{显著上升}（预测增幅 $\sim 0.4\%$）
+    \item 替位式轻硼取代重硅，质量减少抵消部分体积收缩效应，密度变化\textbf{相对温和}（预测增幅 $\sim 0.09\%$）
 \end{itemize}
-
-实测密度从 $2330.6$ 仅增加到 $2332.14$（增幅 $0.07\%$），这与替位式模型的预期一致。间隙式模型预测的密度增幅过大（约 $0.4\%$），与实验不符。
-
-或者，更精确地对比：
-\begin{itemize}
-    \item 替位式模型预测密度 $2325\,\mathrm{kg/m^{3}}$，实测 $2332.14\,\mathrm{kg/m^{3}}$，差距 $7.14\,\mathrm{kg/m^{3}}$
-    \item 间隙式模型预测密度 $2340\,\mathrm{kg/m^{3}}$，实测 $2332.14\,\mathrm{kg/m^{3}}$，差距 $7.86\,\mathrm{kg/m^{3}}$
-\end{itemize}
-
-两种模型的绝对偏差相近，但\textbf{方向}不同：替位式计算值偏低（质量被高估减少），间隙式计算值偏高（质量被高估增加）。考虑到晶格常数测量误差和原子百分比的精度，替位式模型的偏差方向与物理图像更自洽。
+实测密度从 $2330.6$ 仅增加到 $2332.14$（增幅 $0.07\%$），与替位式的温和预期完全一致。
 
 \textbf{结论}：\textit{硼在硅中为替位式杂质。}
 \end{derivationbox}
@@ -121,7 +114,7 @@ N_B^{(\mathrm{int})} = \frac{8x}{1-x} \approx 8x(1+x) \approx 0.02520.
 \midrule
 掺杂后晶格常数 $a'$ & $5.4249\,\text{\AA}$ \\
 掺杂后密度 $\rho'$ & $2332.14\,\mathrm{kg/m^{3}}$ \\
-替位式理论密度 $\rho_{\mathrm{sub}}$ & $\approx 2325\,\mathrm{kg/m^{3}}$ \\
+替位式理论密度 $\rho_{\mathrm{sub}}$ & $\approx 2332.6\,\mathrm{kg/m^{3}}$ \\
 间隙式理论密度 $\rho_{\mathrm{int}}$ & $\approx 2340\,\mathrm{kg/m^{3}}$ \\
 \midrule
 \textbf{判断} & \textbf{替位式} \\

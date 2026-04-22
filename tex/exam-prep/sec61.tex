@@ -73,24 +73,24 @@ W = \binom{N+n}{n} = \frac{(N+n)!}{n!\,N!}.
 \textbf{Step 5: 振动熵 $\Delta S_{\mathrm{vib}}$（一般温度）}
 
 采用爱因斯坦模型。完整晶体有 $3N$ 个振动模式，频率均为 $\omega_E$。由配分函数，其振动熵为
-\begin{equation}
-S_0 = -k_{\!B}\sum_{i=1}^{3N}\left[\frac{\hbar\omega_E}{2k_{\!B}T} + \ln\!\left(1-e^{-\hbar\omega_E/k_{\!B}T}\right)\right]
-= -\frac{3Nk_{\!B}}{2}\frac{\hbar\omega_E}{k_{\!B}T} - 3Nk_{\!B}\ln\!\left(1-e^{-\hbar\omega_E/k_{\!B}T}\right).
-\end{equation}
+\begin{align}
+S_0 &= -k_{\!B}\sum_{i=1}^{3N}\left[\frac{\hbar\omega_E}{2k_{\!B}T} + \ln\!\left(1-e^{-\hbar\omega_E/k_{\!B}T}\right)\right] \notag\\
+&= -\frac{3N\hbar\omega_E}{2T} - 3Nk_{\!B}\ln\!\left(1-e^{-\hbar\omega_E/k_{\!B}T}\right).
+\end{align}
 
 产生 $n$ 个空位后，每个空位周围有 $m$ 个原子振动频率变为 $\omega'$。共有 $3nm$ 个模式频率为 $\omega'$，其余 $3(N-nm)$ 个模式频率仍为 $\omega_E$。此时振动熵为
-\begin{multline}
-S = -\frac{3(N-nm)k_{\!B}}{2}\frac{\hbar\omega_E}{k_{\!B}T} - \frac{3nmk_{\!B}}{2}\frac{\hbar\omega'}{k_{\!B}T} \\
-- 3(N-nm)k_{\!B}\ln\!\left(1-e^{-\hbar\omega_E/k_{\!B}T}\right)
-- 3nmk_{\!B}\ln\!\left(1-e^{-\hbar\omega'/k_{\!B}T}\right).
-\end{multline}
+\begin{align}
+S &= -\frac{3(N-nm)\hbar\omega_E}{2T} - \frac{3nm\hbar\omega'}{2T} \notag\\
+&\quad - 3(N-nm)k_{\!B}\ln\!\left(1-e^{-\hbar\omega_E/k_{\!B}T}\right) \notag\\
+&\quad - 3nmk_{\!B}\ln\!\left(1-e^{-\hbar\omega'/k_{\!B}T}\right).
+\end{align}
 
 振动熵变 $\Delta S_{\mathrm{vib}} = S - S_0$，化简得
-\begin{multline}
-\Delta S_{\mathrm{vib}} = -\frac{3nm\hbar(\omega'-\omega_E)}{2T} \\
-+ 3nmk_{\!B}\ln\!\left[\frac{1-e^{-\hbar\omega_E/k_{\!B}T}}{1-e^{-\hbar\omega'/k_{\!B}T}}\right].
+\begin{align}
+\Delta S_{\mathrm{vib}} &= -\frac{3nm\hbar(\omega'-\omega_E)}{2T} \notag\\
+&\quad + 3nmk_{\!B}\ln\!\left[\frac{1-e^{-\hbar\omega_E/k_{\!B}T}}{1-e^{-\hbar\omega'/k_{\!B}T}}\right].
 \label{eq:schottky-vib-entropy-general}
-\end{multline}
+\end{align}
 
 \textit{高温极限}（$\hbar\omega\ll k_{\!B}T$）：$1-e^{-x}\approx x$，对数项退化为
 \begin{equation}
