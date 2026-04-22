@@ -1,0 +1,131 @@
+% ============================================================
+% Section 65: 空位热平衡、凝聚与位错环形成
+% ============================================================
+\newpage
+\section{固体理论：空位热平衡、凝聚与位错环形成}
+\label{sec:vacancy-condensation}
+
+\begin{modelbox}[题目：空位热平衡浓度与空位圆片崩塌]
+(1) 设有某种简立方晶体，熔点为 $800^{\circ}\mathrm{C}$。由熔点结晶后，晶粒大小为 $L=1\,\mu\mathrm{m}$ 的立方体，晶格常数 $a=4\,\text{\AA}$。求结晶后每个晶粒中的空位数，已知空位的形成能为 $1\,\mathrm{eV}$；
+
+(2) 若晶体在高温形成的空位，降温到室温时，聚集在一个晶面上，形成一个空位圆片，以致引起晶体内部的崩塌，结果将转变为何种形式的晶格缺陷；
+
+(3) 求此时每个晶粒中的位错密度。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{空位热平衡浓度}：$n/N=e^{-u/k_{\!B}T}$，高温（熔点）下浓度最高
+    \item \textbf{过饱和空位}：快速冷却时高温空位被``冻结''，浓度远超室温平衡值
+    \item \textbf{空位凝聚机制}：过饱和空位倾向于聚集成空位团（圆片、空洞）以降低表面能
+    \item \textbf{位错环形成}：空位圆片崩塌后，边缘原子面错排形成位错环——这是铸造/生长晶体中位错的重要来源
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 结晶后每个晶粒中的空位数}
+
+\textit{晶粒内原子总数。}简立方结构每个晶胞含 $1$ 个原子。晶粒为边长 $L=1\,\mu\mathrm{m}=10^{-6}\,\mathrm{m}$ 的立方体，晶格常数 $a=4\,\text{\AA}=4\times 10^{-10}\,\mathrm{m}$。原子总数为
+\begin{equation}
+N = \left(\frac{L}{a}\right)^{3}
+= \left(\frac{10^{-6}}{4\times 10^{-10}}\right)^{3}
+= (2500)^{3}
+\approx 1.56\times 10^{10}.
+\end{equation}
+
+\textit{热平衡空位数。}空位形成能 $u=1\,\mathrm{eV}=1.60\times 10^{-19}\,\mathrm{J}$，熔点温度 $T=800^{\circ}\mathrm{C}=1073\,\mathrm{K}$。热平衡空位浓度为
+\begin{equation}
+\frac{n}{N} = e^{-u/k_{\!B}T}.
+\end{equation}
+代入数值：
+\begin{align}
+\frac{u}{k_{\!B}T} &= \frac{1.60\times 10^{-19}}{1.38\times 10^{-23}\times 1073}
+= \frac{1.60\times 10^{-19}}{1.48\times 10^{-20}}
+\approx 10.81,\\[4pt]
+e^{-10.81} &\approx 2.0\times 10^{-5}.
+\end{align}
+空位数
+\begin{equation}
+n = N e^{-u/k_{\!B}T}
+= 1.56\times 10^{10}\times 2.0\times 10^{-5}
+\approx \boxed{3.2\times 10^{5}}.
+\end{equation}
+
+\textbf{Step 2: 空位凝聚形成的晶格缺陷}
+
+在高温下处于热平衡的大量空位，当晶体\textbf{快速冷却}至室温时，会变成\textbf{过饱和空位}（室温平衡浓度远低于熔点时的浓度）。这些过饱和空位倾向于\textbf{聚集}以降低系统能量。
+
+题设空位聚集在某一晶面上，形成一个\textbf{圆盘状的空位团}（空位圆片）。当空位圆片尺寸足够大时，其上下两侧的晶面由于失去了支撑，会在内应力作用下发生\textbf{崩塌}。
+
+空位圆片崩塌后，圆片边缘处的原子面发生错排，形成一个\textbf{位错环}。在位错环与晶粒横截面的交截处，出现一对符号相反的\textbf{刃位错}。
+
+\textbf{结论}：空位凝聚崩塌后形成的晶格缺陷是\textbf{位错环}（具体表现为一对异号刃位错）。
+
+\textbf{Step 3: 每个晶粒中的位错密度}
+
+\textit{位错数目。}由 Step 2 的分析，一个空位圆片崩塌后，在垂直于该晶面的横截面上产生 $2$ 条位错线穿过（位错环与截面的两个交点）。每个晶粒由高温空位凝聚形成一个空位圆片，因此在晶粒的横截面上共有 $2$ 条位错线。
+
+\textit{位错密度。}位错密度定义为单位面积内穿过的位错线数目。晶粒横截面积为
+\begin{equation}
+S = L^{2} = (1\,\mu\mathrm{m})^{2} = (10^{-4}\,\mathrm{cm})^{2} = 10^{-8}\,\mathrm{cm^{2}}.
+\end{equation}
+位错密度为
+\begin{equation}
+\rho = \frac{2}{S} = \frac{2}{10^{-8}}
+= \boxed{2\times 10^{8}\,\mathrm{cm^{-2}}}.
+\end{equation}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{问题} & \textbf{答案} \\
+\midrule
+(1) 每个晶粒的空位数 & $n \approx 3.2\times 10^{5}$ \\
+(2) 形成的晶格缺陷 & 位错环（一对异号刃位错） \\
+(3) 位错密度 & $\rho \approx 2\times 10^{8}\,\mathrm{cm^{-2}}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像：从空位到位错的完整链条]
+本题展示了晶体缺陷演化的经典链条：
+\begin{center}
+\textbf{热平衡空位} $\xrightarrow{\text{快冷}}$ \textbf{过饱和空位} $\xrightarrow{\text{聚集}}$ \textbf{空位圆片} $\xrightarrow{\text{崩塌}}$ \textbf{位错环}
+\end{center}
+
+\textbf{数量级对比}：
+\begin{itemize}
+    \item 熔点时空位浓度：$n/N \sim 10^{-5}$（每 $10^{5}$ 个原子约 $1$ 个空位）
+    \item 室温平衡浓度：$n/N \sim e^{-1\,\mathrm{eV}/0.025\,\mathrm{eV}} \sim 10^{-17}$（几乎为零）
+    \item 快冷``冻结''的空位：仍保持熔点时的 $10^{-5}$ 量级，严重过饱和
+\end{itemize}
+
+过饱和空位若均匀分布，能量较高；聚集成圆片后，虽然多了``表面''（圆片上下边界），但总的畸变能降低。圆片崩塌形成位错环是能量最低的路径。
+
+铸造金属或从熔体生长的晶体中，位错密度常达 $10^{6}\sim 10^{8}\,\mathrm{cm^{-2}}$，其主要来源正是空位凝聚-崩塌机制。
+\end{insightbox}
+
+\begin{thinkbox}[考场速记：空位→位错转化的记忆框架]
+\textbf{三步转化}：
+\begin{enumerate}
+    \item \textbf{快冷冻结}：高温空位被保留到室温，形成过饱和
+    \item \textbf{聚集成盘}：空位在晶面上聚集成圆片（降低表面能）
+    \item \textbf{崩塌成环}：圆片上下晶面崩塌，边缘形成位错环
+\end{enumerate}
+
+\textbf{位错密度速算}（空位崩塌机制）：
+\begin{itemize}
+    \item 一个空位圆片 $\rightarrow$ 一个位错环
+    \item 位错环与横截面交于 $2$ 点 $\rightarrow$ $2$ 条位错线穿过
+    \item $\rho = 2/S = 2/L^{2}$（$S$ 为晶粒横截面积）
+\end{itemize}
+
+\textbf{对比}：
+\begin{itemize}
+    \item sec64（范性形变）：位错密度由宏观滑移量估算，$\rho = \Delta L/(bS)$
+    \item sec65（空位崩塌）：位错密度由几何交截决定，$\rho = 2/S$
+\end{itemize}
+\end{thinkbox}
