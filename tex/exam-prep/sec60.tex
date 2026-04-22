@@ -46,11 +46,32 @@ W = \binom{N}{n} = \frac{N!}{(N-n)!\,n!}.
 
 \textbf{Step 2: 考虑振动频率变化的修正}
 
-\textit{振动自由能（爱因斯坦模型）。}在高温近似（$\hbar\omega\ll k_{\!B}T$）下，一个频率为 $\omega$ 的谐振子对自由能的贡献为
+\textit{振动自由能（爱因斯坦模型）。}单个谐振子的配分函数为
 \begin{equation}
-f(\omega) = k_{\!B}T\ln\!\left(\frac{\hbar\omega}{k_{\!B}T}\right).
+Z = \sum_{n=0}^{\infty} e^{-\beta(n+\frac{1}{2})\hbar\omega}
+= e^{-\beta\hbar\omega/2}\sum_{n=0}^{\infty}\left(e^{-\beta\hbar\omega}\right)^{n}
+= \frac{e^{-\beta\hbar\omega/2}}{1-e^{-\beta\hbar\omega}},
 \end{equation}
-（推导：配分函数 $Z=\sum_n e^{-(n+1/2)\hbar\omega/k_{\!B}T}\approx k_{\!B}T/\hbar\omega$，则 $F=-k_{\!B}T\ln Z=k_{\!B}T\ln(\hbar\omega/k_{\!B}T)$。）
+其中 $\beta=1/k_{\!B}T$。最后一步用了等比级数公式 $\sum_{n=0}^{\infty}r^{n}=1/(1-r)$（$r=e^{-\beta\hbar\omega}<1$）。
+
+自由能 $F=-k_{\!B}T\ln Z$：
+\begin{equation}
+F = \frac{\hbar\omega}{2} + k_{\!B}T\ln\!\left(1-e^{-\beta\hbar\omega}\right).
+\end{equation}
+第一项为零点能，与温度无关；第二项为热激发贡献。
+
+\textbf{高温近似}（$\hbar\omega\ll k_{\!B}T$，即 $\beta\hbar\omega\ll 1$）：
+\begin{itemize}
+    \item $e^{-\beta\hbar\omega/2}\approx 1$（零点能项相对于 $k_{\!B}T$ 可忽略，或并入常数）
+    \item $1-e^{-\beta\hbar\omega}\approx \beta\hbar\omega = \hbar\omega/k_{\!B}T$
+\end{itemize}
+于是
+\begin{equation}
+Z \approx \frac{1}{\beta\hbar\omega} = \frac{k_{\!B}T}{\hbar\omega},
+\qquad
+f(\omega) = -k_{\!B}T\ln Z \approx k_{\!B}T\ln\!\left(\frac{\hbar\omega}{k_{\!B}T}\right).
+\end{equation}
+这就是高温下单个振子对自由能的贡献。
 
 \textit{无缺陷时的振动自由能。}完整晶体有 $N$ 个原子，每个原子 3 个振动自由度，总模式数 $3N$。设所有原子振动频率均为 $\omega$，则
 \begin{equation}
@@ -77,11 +98,22 @@ F_{\mathrm{vib}} = 18n k_{\!B}T\ln\!\left(\frac{\hbar\omega'}{k_{\!B}T}\right) +
 \label{eq:vib-free-energy-change}
 \end{align}
 
-\textit{总自由能变化与平衡浓度。}总自由能变化为
+\textit{总自由能变化。}产生 $n$ 个空位时，系统的自由能变化由三部分组成：
+\begin{equation}
+\Delta F = \underbrace{\Delta U}_{\text{形成能}} - \underbrace{T\Delta S_{\mathrm{config}}}_{\text{位形熵}} + \underbrace{\Delta F_{\mathrm{vib}}}_{\text{振动自由能}}.
+\end{equation}
+分别代入：
+\begin{itemize}
+    \item $\Delta U = nu$（产生 $n$ 个空位，每个能量 $u$）
+    \item $-T\Delta S_{\mathrm{config}} = -k_{\!B}T\ln W = -k_{\!B}T\ln\!\left[\frac{N!}{(N-n)!\,n!}\right]$（位形熵贡献）
+    \item $\Delta F_{\mathrm{vib}} = 18n k_{\!B}T\ln\!\left(\frac{\omega'}{\omega}\right)$（近邻原子振动软化带来的自由能降低）
+\end{itemize}
+得到
 \begin{equation}
 \Delta F = nu - k_{\!B}T\ln\!\left[\frac{N!}{(N-n)!\,n!}\right] + 18n k_{\!B}T\ln\!\left(\frac{\omega'}{\omega}\right).
 \end{equation}
-对 $n$ 求导并令其为零（利用斯特林公式）：
+
+\textit{平衡浓度。}对 $n$ 求导并令其为零（利用斯特林公式）：
 \begin{equation}
 u - k_{\!B}T\ln\!\left(\frac{N}{n}\right) + 18k_{\!B}T\ln\!\left(\frac{\omega'}{\omega}\right) = 0.
 \end{equation}

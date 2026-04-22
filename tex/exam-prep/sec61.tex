@@ -36,7 +36,16 @@ n = N\left(\frac{\omega_E}{\omega'}\right)^{\!3m}
 \begin{derivationbox}[标准解题过程]
 \textbf{Step 1: 吉布斯自由能变化的框架}
 
-肖特基缺陷的形成是等温等压过程，系统的热力学平衡由吉布斯自由能 $G=U-TS+pV$ 的极小值决定。设形成 $n$ 个肖特基缺陷（空位），吉布斯自由能变化为
+\textit{为什么用 $G$ 而不是 $F$？} 热力学中，平衡条件由\textbf{适当的热力学势}取极小决定：
+\begin{itemize}
+    \item 等温等容（$T,V$ 固定）：用亥姆霍兹自由能 $F=U-TS$
+    \item 等温等压（$T,p$ 固定）：用吉布斯自由能 $G=U-TS+pV=H-TS$
+\end{itemize}
+肖特基缺陷的形成伴随体积膨胀（$\Delta V=nV_0\neq 0$），晶体在常压环境下生长/存在，压强 $p$ 由外界大气固定。因此这是\textbf{等温等压过程}，必须用 $G$。若用 $F$ 则会遗漏体积膨胀对抗外压所做的功 $p\Delta V$，导致缺陷浓度被高估。
+
+前四题（sec58--60）中：弗仑克尔缺陷体积不变（$\Delta V=0$），单质肖特基在常压下 $p\Delta V$ 很小可忽略，故用 $F$ 足够；本题显式计入 $p\Delta V$，故升级到 $G$。
+
+设形成 $n$ 个肖特基缺陷（空位），吉布斯自由能变化为
 \begin{equation}
 \Delta G = \Delta U - T\Delta S + p\Delta V.
 \end{equation}
