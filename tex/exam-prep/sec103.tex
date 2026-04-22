@@ -1,0 +1,94 @@
+% ============================================================
+% Section 103: 一维晶格的X射线衍射
+% ============================================================
+\section{固体理论：一维晶格的X射线衍射}
+\label{sec:1d-lattice-diffraction}
+
+\begin{modelbox}[题目：一维晶格的衍射条件与强度]
+设波长为 $\lambda$ 的单色 X 射线垂直于二维晶格入射，晶格中电子密度分布为
+\begin{equation}
+\rho(x)=\rho_1\cos\frac{2\pi x}{a}+\rho_2\cos\frac{4\pi x}{a},
+\end{equation}
+其中 $a$ 为晶格常数，$\rho_1$、$\rho_2$ 为常数。
+
+(1) 导出 X 射线与晶格发生衍射加强的条件；
+(2) 问能观察到的衍射角 $\theta_n$；
+(3) 求出每条衍射线的强度。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{一维衍射条件}：$a\cos\theta_n=n\lambda$（程差等于波长整数倍）
+    \item \textbf{电子密度的傅里叶分析}：将 $\rho(x)$ 写成复指数级数，提取各阶傅里叶系数
+    \item \textbf{结构因子}：衍射强度 $I_n\propto|\rho_n|^2$
+    \item \textbf{选择定则}：只有傅里叶分量非零的衍射级数才出现
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 衍射加强条件}
+
+X 射线垂直于晶格方向入射。相邻原子（间距 $a$）的散射波程差为 $a\cos\theta$。衍射加强条件（一维布拉格条件）为
+\begin{equation}
+\boxed{a\cos\theta_n=n\lambda,\qquad n=0,\pm1,\pm2,\ldots}
+\end{equation}
+
+\textbf{(2) 可观测的衍射角}
+
+衍射强度由原子散射因子（电子密度的傅里叶变换）决定。将电子密度写成复指数级数：
+\begin{align}
+\rho(x)&=\rho_1\cos\frac{2\pi x}{a}+\rho_2\cos\frac{4\pi x}{a}\\
+&=\frac{\rho_1}{2}\left(e^{i2\pi x/a}+e^{-i2\pi x/a}\right)
++\frac{\rho_2}{2}\left(e^{i4\pi x/a}+e^{-i4\pi x/a}\right).
+\end{align}
+
+对比傅里叶级数 $\rho(x)=\sum_n\rho_n e^{i2\pi nx/a}$，非零系数为
+\begin{equation}
+\rho_{\pm1}=\frac{\rho_1}{2},\qquad\rho_{\pm2}=\frac{\rho_2}{2},
+\end{equation}
+其余 $\rho_n=0$。
+
+原子散射因子正比于傅里叶系数 $f\propto\rho_n$。因此只有 $n=\pm1,\pm2$ 的衍射级数具有非零强度。
+
+由衍射条件，可观测的衍射角为
+\begin{align}
+n=\pm1:&\quad\cos\theta_{\pm1}=\pm\frac{\lambda}{a}\;\Rightarrow\;\theta_{\pm1}=\arccos\!\left(\pm\frac{\lambda}{a}\right),\\
+n=\pm2:&\quad\cos\theta_{\pm2}=\pm\frac{2\lambda}{a}\;\Rightarrow\;\theta_{\pm2}=\arccos\!\left(\pm\frac{2\lambda}{a}\right).
+\end{align}
+（要求 $\lambda/a\le1$ 和 $2\lambda/a\le1$ 以保证角度存在。）
+
+\textbf{(3) 每条衍射线的强度}
+
+衍射强度与原子散射因子的模平方成正比：
+\begin{equation}
+I_n\propto|f(G_n)|^2\propto|\rho_n|^2.
+\end{equation}
+
+因此各衍射线的相对强度为
+\begin{equation}
+\boxed{I_{\pm1}\propto\frac{\rho_1^2}{4},\qquad I_{\pm2}\propto\frac{\rho_2^2}{4},}
+\end{equation}
+其余级数（$n=0,\pm3,\pm4,\ldots$）的强度为零。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{项目} & \textbf{结果} \\
+\midrule
+衍射条件 & $a\cos\theta_n=n\lambda$ \\
+可观测衍射角 & $\theta_{\pm1}=\arccos(\pm\lambda/a)$，$\theta_{\pm2}=\arccos(\pm2\lambda/a)$ \\
+衍射线强度 & $I_{\pm1}\propto\rho_1^2/4$，$I_{\pm2}\propto\rho_2^2/4$，其余为零 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 一维晶格的衍射条件是三维布拉格定律的简化形式：衍射线的位置由晶格周期性（倒格矢 $G_n=2\pi n/a$）决定。
+    \item 电子密度分布的傅里叶分量直接决定了哪些衍射级数会出现及其强度。$\rho(x)$ 只含基波和二次谐波，故只有 $n=\pm1,\pm2$ 有衍射峰。
+    \item 衍射线的位置与原胞内的电子分布无关，但强度由原胞内电子密度的傅里叶系数决定——这正是 X 射线衍射测定晶体结构的物理基础。
+\end{itemize}
+\end{insightbox}
