@@ -1,0 +1,118 @@
+% ============================================================
+% Section 64: 面心立方晶体的滑移系统与位错密度估算
+% ============================================================
+\newpage
+\section{固体理论：面心立方晶体的滑移系统与位错密度估算}
+\label{sec:fcc-slip-dislocation}
+
+\begin{modelbox}[题目：FCC滑移系统与位错密度]
+(1) 指出面心立方晶体原子最密排列的晶列方向，并求出最小滑移间距；
+
+(2) 一个刃位错扫过一个滑移面后产生一个等于原子间距的滑移量。现在要把长 $1\,\mathrm{cm}$、横截面积 $1\,\mathrm{mm^2}$ 的铝丝拉长产生 $5\%$ 范性形变时，估算 $(1,1,1)$ 面上的位错密度（铝是面心立方结构，晶格常数为 $0.4\,\mathrm{nm}$）。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{FCC滑移系统}：密排面 $\{111\}$ + 密排方向 $\langle 110\rangle$，共 $12$ 个等效滑移系统
+    \item \textbf{最小滑移间距}：等于最密排方向上相邻原子间距，即伯格斯矢量大小 $b=a/\sqrt{2}$
+    \item \textbf{位错密度定义}：单位面积内穿过的位错线数目，$\rho=N/S$
+    \item \textbf{宏观-微观联系}：总滑移量 $\Delta L = N\cdot b$，单根位错扫过整个截面贡献一个原子间距的滑移
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: FCC晶体的滑移系统与最小滑移间距}
+
+\textit{密排面。}面心立方（FCC）晶体中，$\{111\}$ 晶面族是\textbf{原子密排面}——每个原子与周围 $6$ 个原子紧密接触，面内原子面密度最大。因此 $\{111\}$ 是 FCC 的主要滑移面。
+
+\textit{密排方向与最小滑移间距。}在 $(111)$ 面上，原子最密排的方向是 $\langle 110\rangle$。沿该方向，相邻原子的间距（即最近邻距离）为
+\begin{equation}
+b = \frac{\sqrt{2}}{2}\,a = \frac{a}{\sqrt{2}}.
+\end{equation}
+这也是一个刃位错扫过滑移面后产生的滑移量，即\textbf{最小滑移间距}（伯格斯矢量的大小）。
+
+已知铝的晶格常数 $a=0.4\,\mathrm{nm}=4\times 10^{-10}\,\mathrm{m}$，故
+\begin{equation}
+b = \frac{\sqrt{2}}{2}\times 4\times 10^{-10}
+\approx 2.83\times 10^{-10}\,\mathrm{m} = 2.83\,\text{\AA}.
+\end{equation}
+
+\textbf{结论}：面心立方晶体的最密排晶列方向为 $\langle 110\rangle$，最小滑移间距为 $b=a/\sqrt{2}$。
+
+\textbf{Step 2: 位错密度的估算}
+
+\textit{总滑移量。}铝丝原长 $L_0=1\,\mathrm{cm}=10^{-2}\,\mathrm{m}$，范性伸长 $5\%$，总滑移量为
+\begin{equation}
+\Delta L = 10^{-2}\times 0.05 = 5\times 10^{-4}\,\mathrm{m}.
+\end{equation}
+
+\textit{所需位错数目。}每一条刃位错完全扫过滑移面，产生的滑移量为一个伯格斯矢量 $b$。因此，产生总滑移量 $\Delta L$ 所需的位错总数为
+\begin{equation}
+N = \frac{\Delta L}{b} = \frac{5\times 10^{-4}}{2.83\times 10^{-10}}
+\approx 1.77\times 10^{6}.
+\end{equation}
+
+\textit{位错密度。}位错密度定义为单位面积内穿过的位错线数目。假设形变过程中铝丝的横截面积近似不变（小应变），即 $S=1\,\mathrm{mm^2}=10^{-2}\,\mathrm{cm^2}$。所有位错均穿过该横截面，故位错密度为
+\begin{equation}
+\rho = \frac{N}{S} = \frac{1.77\times 10^{6}}{10^{-2}}
+= 1.77\times 10^{8}\,\mathrm{cm^{-2}}.
+\end{equation}
+取两位有效数字：
+\begin{equation}
+\boxed{\rho \approx 1.8\times 10^{8}\,\mathrm{cm^{-2}}.}
+\end{equation}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{问题} & \textbf{答案} \\
+\midrule
+(1) 最密排方向 & $\langle 110\rangle$ \\
+(1) 最小滑移间距 & $b = a/\sqrt{2} \approx 2.83\,\text{\AA}$ \\
+(2) 位错密度 & $\rho \approx 1.8\times 10^{8}\,\mathrm{cm^{-2}}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像：位错与宏观范性形变]
+退火态金属的位错密度通常为 $10^{6}\sim 10^{8}\,\mathrm{cm^{-2}}$。本题估算的 $1.8\times 10^{8}\,\mathrm{cm^{-2}}$ 处于该范围的上限，对应于已发生一定范性形变的状态。
+
+\textbf{几点深化}：
+\begin{itemize}
+    \item 一个位错扫过整个截面在现实中极少见（通常位错移动一段距离即被晶界、杂质等阻碍），且实际形变中位错会大量增殖
+    \item 实验观察到滑移带上的滑移台阶常达 $100\sim 1000\,b$，这证实了位错源（Frank--Read源）的开动和位错的大量增殖
+    \item 本题估算给出的是\textbf{下限}：实际参与形变的位错数目远大于 $N=\Delta L/b$，因为多数位错只移动了部分距离
+\end{itemize}
+\end{insightbox}
+
+\begin{thinkbox}[考场速记：FCC滑移与位错密度速算]
+\textbf{FCC滑移系统速查}：
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+\textbf{结构} & \textbf{滑移面} & \textbf{滑移方向} \\
+\midrule
+简立方（sc） & $\{001\}$ & $\langle 100\rangle$ \\
+面心立方（fcc） & $\{111\}$ & $\langle 110\rangle$ \\
+体心立方（bcc） & $\{110\},\{112\},\{123\}$ & $\langle 111\rangle$ \\
+六角密堆（hcp） & $\{0001\}$（基面） & $\langle 11\bar{2}0\rangle$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{4pt}
+\textbf{位错密度估算三步法}：
+\begin{enumerate}
+    \item 求伯格斯矢量：$b = $ 最密排方向上的原子间距（fcc：$a/\sqrt{2}$，bcc：$\sqrt{3}a/2$，sc：$a$）
+    \item 求总位错数：$N = \Delta L / b$（总滑移量除以单根位错贡献）
+    \item 求位错密度：$\rho = N / S$（注意面积单位统一，$1\,\mathrm{mm^2}=10^{-2}\,\mathrm{cm^2}$）
+\end{enumerate}
+\textit{陷阱提醒}：
+\begin{itemize}
+    \item FCC 的滑移面是 $\{111\}$（密排面），不是因为面间距最大，而是因为面内原子密度最大
+    \item 横截面积单位转换：$1\,\mathrm{mm^2} = 10^{-2}\,\mathrm{cm^2} = 10^{-6}\,\mathrm{m^2}$
+    \item 位错密度的常用单位是 $\mathrm{cm^{-2}}$，计算时注意统一
+\end{itemize}
+\end{thinkbox}
