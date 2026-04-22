@@ -1,0 +1,126 @@
+% ============================================================
+% Section 68: 紧束缚近似——面心立方晶体Δ轴能带
+% ============================================================
+\section{固体理论：紧束缚近似——面心立方晶体$\Delta$轴能带}
+\label{sec:tight-binding-fcc-delta}
+
+\begin{modelbox}[题目：FCC晶体s态紧束缚能带的$\Delta$轴色散关系]
+在紧束缚近似下，晶体中电子状态可用$s$态原子波函数的布洛赫和表示：
+\[
+\Psi_{\bm{k}}(\bm{r}) = C\sum_{n}e^{i\bm{k}\cdot\bm{R}_n}\varphi_s(\bm{r}-\bm{R}_n),
+\]
+相应能量为
+\[
+E_s(\bm{k}) = E_s + J_{0,0}^{s} + \sum_{l}e^{i\bm{k}\cdot\bm{R}_l}J_{0,l}^{s},
+\]
+其中 $E_s$ 为自由原子$s$态能量本征值，$J_{0,l}^{s}\le 0$ 为交换积分，$\bm{R}_l$ 为最近邻格矢。
+
+设面心立方晶体的晶格常数为 $2a$，试求：
+\begin{enumerate}
+    \item $\Gamma X$轴（$\Delta$轴）上的 $E$-$k$ 关系；
+    \item $\Delta$轴方向能带的带底、带顶及能带宽度；
+    \item 画出$\Delta$轴能带图，标明对称点、对称轴及能带宽度。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{紧束缚近似}：原子轨道线性组合（LCAO），最近邻跃迁主导
+    \item \textbf{FCC最近邻}：12个最近邻，坐标为 $(\pm1,\pm1,0)$、$(\pm1,0,\pm1)$、$(0,\pm1,\pm1)$（以 $a$ 为单位）
+    \item \textbf{$\Delta$轴}：沿 $\langle100\rangle$ 方向，$k_x=k$，$k_y=k_z=0$
+    \item \textbf{能带极值}：$J_s<0$ 时，$\cos(ka)$ 最大处能量最低（成键态）
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: FCC紧束缚能带的一般表达式}
+
+面心立方晶格中，任一格点有 12 个最近邻。取参考原点 $(0,0,0)$，最近邻坐标（以 $a$ 为单位）为
+\[
+(\pm1,\pm1,0),\quad (\pm1,0,\pm1),\quad (0,\pm1,\pm1).
+\]
+
+由于 $s$ 态波函数球对称，各方向交换积分相等，记为 $J_s=J_{0,l}^{s}\le 0$。能带公式为
+\begin{equation}
+E_s(\bm{k}) = E_s + J_{0,0}^{s} + J_s\sum_{l_1,l_2,l_3}e^{ia(l_1k_x+l_2k_y+l_3k_z)}.
+\end{equation}
+
+对 12 个最近邻求和。注意每组如 $(\pm1,\pm1,0)$ 包含 4 个点（$\pm1$ 与 $\pm1$ 独立组合）：
+\begin{align}
+\sum_l e^{i\bm{k}\cdot\bm{R}_l}
+&= e^{ia(k_x+k_y)} + e^{ia(k_x-k_y)} + e^{ia(-k_x+k_y)} + e^{ia(-k_x-k_y)} \notag\\
+&\quad + e^{ia(k_x+k_z)} + e^{ia(k_x-k_z)} + e^{ia(-k_x+k_z)} + e^{ia(-k_x-k_z)} \notag\\
+&\quad + e^{ia(k_y+k_z)} + e^{ia(k_y-k_z)} + e^{ia(-k_y+k_z)} + e^{ia(-k_y-k_z)} \notag\\
+&= 4\cos(ak_x)\cos(ak_y) + 4\cos(ak_x)\cos(ak_z) + 4\cos(ak_y)\cos(ak_z) \notag\\
+&= 4\bigl[\cos(ak_x)\cos(ak_y) + \cos(ak_y)\cos(ak_z) + \cos(ak_z)\cos(ak_x)\bigr].
+\end{align}
+
+因此 FCC $s$ 带紧束缚能带为
+\begin{equation}
+\boxed{E_s(\bm{k}) = E_s + J_{0,0}^{s} + 4J_s\bigl[\cos(ak_x)\cos(ak_y) + \cos(ak_y)\cos(ak_z) + \cos(ak_z)\cos(ak_x)\bigr].}
+\end{equation}
+
+\textbf{Step 2: $\Delta$轴上的色散关系}
+
+$\Delta$轴沿 $\langle100\rangle$ 方向，即 $k_x=k$，$k_y=k_z=0$，其中 $k\in[0,\pi/a]$（从 $\Gamma$ 点到 $X$ 点）。代入得
+\begin{align}
+E_{\Delta}(k)
+&= E_s + J_{0,0}^{s} + 4J_s\bigl[\cos(ka)\cdot 1 + 1\cdot 1 + 1\cdot\cos(ka)\bigr] \notag\\
+&= E_s + J_{0,0}^{s} + 4J_s\bigl[1 + 2\cos(ka)\bigr] \notag\\
+&= \boxed{E_s + J_{0,0}^{s} + 4J_s + 8J_s\cos(ka).}
+\end{align}
+
+\textbf{Step 3: 带底、带顶与能带宽度}
+
+由于 $J_s<0$，能量随 $\cos(ka)$ 的增大而减小：
+\begin{itemize}
+    \item \textbf{带底}（$\Gamma$点，$k=0$）：$\cos(ka)=1$
+    \begin{equation}
+    E(\Gamma) = E_s + J_{0,0}^{s} + 4J_s + 8J_s = E_s + J_{0,0}^{s} + 12J_s.
+    \end{equation}
+    因 $J_s<0$，这是能量最小值。
+    \item \textbf{带顶}（$X$点，$k=\pi/a$）：$\cos(ka)=-1$
+    \begin{equation}
+    E(X) = E_s + J_{0,0}^{s} + 4J_s - 8J_s = E_s + J_{0,0}^{s} - 4J_s.
+    \end{equation}
+    因 $J_s<0$，$-4J_s>0$，这是能量最大值。
+\end{itemize}
+
+能带宽度
+\begin{equation}
+\boxed{\Delta E = E(X) - E(\Gamma) = (E_s+J_{0,0}^{s}-4J_s) - (E_s+J_{0,0}^{s}+12J_s) = -16J_s = 16|J_s|.}
+\end{equation}
+
+\textbf{Step 4: 能带图与对称性}
+
+$\Delta$轴能带示意图：余弦曲线，$\Gamma$点为极小（带底），$X$点为极大（带顶），带宽 $16|J_s|$。
+
+\begin{itemize}
+    \item $\Gamma$点：波函数 $\Psi_{\Gamma}(\bm{r})\propto\sum_n\varphi_s(\bm{r}-\bm{R}_n)$。$s$轨道球对称，在立方点群 $O_h$ 的所有操作下不变，对应全对称表示 $\Gamma_1$（一维，非简并）。
+    \item $\Delta$轴：保持波矢不变的操作构成 $C_{4v}$ 群（8个操作）。$s$带波函数在 $C_{4v}$ 下同样不变，标记为 $\Delta_1$（一维，非简并）。
+\end{itemize}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{问题} & \textbf{答案} \\
+\midrule
+(1) $\Delta$轴 $E$-$k$ & $E_{\Delta}(k) = E_s+J_{0,0}^{s}+4J_s+8J_s\cos(ka)$ \\
+(2) 带底 & $\Gamma$点，$E(\Gamma)=E_s+J_{0,0}^{s}+12J_s$ \\
+(2) 带顶 & $X$点，$E(X)=E_s+J_{0,0}^{s}-4J_s$ \\
+(2) 带宽 & $\Delta E=16|J_s|$ \\
+(3) 对称性 & $\Gamma_1$（全对称），$\Delta_1$（全对称），均非简并 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item $J_s<0$ 对应成键态：电子在原子间交叠区域出现的概率增大，能量降低。$\Gamma$点所有布洛赫分量同相叠加，电子云交叠最强，能量最低。
+    \item 能带宽度正比于 $|J_s|$，反映原子间轨道耦合的强弱。带宽越大，电子巡游性越强。
+    \item FCC有12个最近邻，是常见金属结构中配位数最高的之一，因此其$s$带通常较宽。
+\end{itemize}
+\end{insightbox}
