@@ -1,0 +1,178 @@
+% ============================================================
+% Section 59: 离子晶体肖特基缺陷的平衡浓度与体积变化
+% ============================================================
+\newpage
+\section{固体理论：离子晶体肖特基缺陷的平衡浓度与体积变化}
+\label{sec:schottky-defect}
+
+\begin{modelbox}[题目：离子晶体肖特基缺陷的统计热力学]
+(1) 在离子晶体中，由于电中性的要求，肖特基缺陷都是成对地产生。令 $n$ 代表正负离子空位的对数，$u$ 是产生一对肖特基缺陷所需要的能量，$N$ 为整个离子晶体中正负离子对的数目。试证明：
+\begin{equation}
+n = N e^{-u/2k_{\!B}T}.
+\end{equation}
+
+(2) 肖特基缺陷是晶体内部的原子（离子）跑到晶体表面上，而使原来的位置变为空位缺陷，因此肖特基缺陷将引起晶体体积增大。试由上述结论估计离子晶体中有肖特基缺陷时其体积相对变化 $\Delta V/V$；
+
+(3) 设 NaCl 只有肖特基缺陷，在 $800^{\circ}\mathrm{C}$ 时用 X 射线衍射测定 NaCl 的离子间隙，由此确定的质量密度计算得的分子量为 $58.430$，而用化学方法测定得分子量为 $58.454$。试计算在 $800^{\circ}\mathrm{C}$ 时缺陷的相对浓度以及正负离子空位对应的形成能。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{电中性约束}：离子晶体中，单独的正离子空位或负离子空位都会破坏电中性，因此肖特基缺陷必须以\textbf{正负离子空位对}的形式出现
+    \item \textbf{与弗仑克尔缺陷的对比}：两者都涉及两个独立的选择过程（弗仑克尔：格点+间隙；肖特基：正离子格点+负离子格点），故指数上均有 $1/2$
+    \item \textbf{体积效应}：肖特基缺陷的物理图像是内部离子``迁移到表面''，晶体整体增加一个原胞体积，这是区别于弗仑克尔缺陷的关键特征
+    \item \textbf{实验测定}：X 射线衍射测晶格常数（得到``表观密度''），化学法测真实质量与体积（得到``真实密度''），两者差异反映空位导致的体积膨胀
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 肖特基缺陷平衡浓度的证明}
+
+\textit{自由能变化。}肖特基缺陷是热平衡缺陷。在恒温恒压下，系统的自由能 $F = U - TS$ 在平衡时取极小值。产生 $n$ 对正负离子空位时：
+\begin{itemize}
+    \item 内能增加：$\Delta U = nu$
+    \item 熵增加：来源于组态熵
+\end{itemize}
+
+\textit{组态熵计算。}正离子空位和负离子空位各自独立地在 $N$ 个格点上分布。正离子空位的排列方式数为
+\begin{equation}
+W_+ = \binom{N}{n} = \frac{N!}{(N-n)!\,n!}.
+\end{equation}
+负离子空位的排列方式数相同：$W_- = W_+$。总微观状态数为
+\begin{equation}
+W = W_+ W_- = \left[\frac{N!}{(N-n)!\,n!}\right]^2.
+\label{eq:schottky-W}
+\end{equation}
+组态熵为
+\begin{equation}
+\Delta S = k_{\!B}\ln W = 2k_{\!B}\ln\!\left[\frac{N!}{(N-n)!\,n!}\right].
+\end{equation}
+
+\textit{平衡条件。}自由能变化
+\begin{equation}
+\Delta F = \Delta U - T\Delta S = nu - 2k_{\!B}T\ln\!\left[\frac{N!}{(N-n)!\,n!}\right].
+\end{equation}
+利用斯特林近似 $\ln x! \approx x\ln x - x$，对 $n$ 求导并令其为零：
+\begin{equation}
+\frac{\partial\Delta F}{\partial n} = u - 2k_{\!B}T\ln\!\left(\frac{N-n}{n}\right) = 0.
+\end{equation}
+解得
+\begin{equation}
+\frac{N-n}{n} = e^{-u/2k_{\!B}T}.
+\end{equation}
+在缺陷浓度很低时（$n\ll N$），$N-n\approx N$，故
+\begin{equation}
+\boxed{n = N e^{-u/2k_{\!B}T}.}
+\label{eq:schottky-approx}
+\end{equation}
+\textit{证毕。}
+
+\textbf{Step 2: 肖特基缺陷引起的体积相对变化}
+
+肖特基缺陷的形成机制是内部离子迁移到表面，在原位留下空位。每产生一对正负离子空位，相当于把一个原胞体积的离子对从内部搬到了表面，晶体体积增加一个分子体积 $v$。
+
+设无缺陷时晶体体积 $V_0 = Nv$，产生 $n$ 对空位后体积增加 $\Delta V = nv$。因此相对体积变化为
+\begin{equation}
+\frac{\Delta V}{V_0} = \frac{nv}{Nv} = \frac{n}{N}.
+\end{equation}
+代入 \eqref{eq:schottky-approx} 得
+\begin{equation}
+\boxed{\frac{\Delta V}{V_0} = e^{-u/2k_{\!B}T}.}
+\end{equation}
+\textit{结论}：肖特基缺陷引起的体积相对膨胀\textbf{直接等于缺陷浓度}。
+
+\textbf{Step 3: 实验数据求缺陷浓度与形成能}
+
+\textit{基本原理。}X 射线衍射测量晶格常数，得到的是实际原子间距。由此计算出的密度对应\textbf{实际晶体体积}（含空位膨胀后的体积 $V$）。化学方法测量宏观密度（质量/体积），但计算分子量时需使用真实体积。若误用实际体积，则得到偏小的表观分子量。
+
+设真实分子量为 $m$（无缺陷时的理论值，化学法测得），表观分子量为 $m'$（X 射线数据计算值）。由密度公式
+\begin{equation}
+\rho = \frac{M}{V} = \frac{m'N_{\!A}}{v_{\mathrm{cell}}},\qquad
+\rho_0 = \frac{mN_{\!A}}{v_{\mathrm{cell}}},
+\end{equation}
+得
+\begin{equation}
+\frac{m}{m'} = \frac{\rho_0}{\rho} = \frac{V}{V_0}.
+\end{equation}
+即真实分子量与表观分子量之比等于晶体实际体积与理想体积之比。
+
+\textit{计算缺陷浓度。}已知
+\begin{equation}
+\frac{m}{m'} = \frac{58.454}{58.430} \approx 1.00041,
+\end{equation}
+因此
+\begin{equation}
+\frac{V}{V_0} = 1 + \frac{\Delta V}{V_0} = 1.00041
+\quad\Longrightarrow\quad
+\frac{\Delta V}{V_0} = 0.00041 = 4.1\times 10^{-4}.
+\end{equation}
+由 Step 2 的结论，缺陷相对浓度即为
+\begin{equation}
+\boxed{\frac{n}{N} = \frac{\Delta V}{V_0} = 4.1\times 10^{-4}.}
+\end{equation}
+
+\textit{计算形成能 $u$。}由 $n/N = e^{-u/2k_{\!B}T}$，取对数：
+\begin{equation}
+u = 2k_{\!B}T\ln\!\left(\frac{N}{n}\right).
+\end{equation}
+代入数值：
+\begin{align}
+T &= 800^{\circ}\mathrm{C} = 1073\,\mathrm{K},\\
+k_{\!B} &= 8.617\times 10^{-5}\,\mathrm{eV/K},\\
+\ln(N/n) &= \ln(1/0.00041) = \ln 2439 \approx 7.80,
+\end{align}
+得
+\begin{equation}
+u = 2\times 8.617\times 10^{-5}\times 1073\times 7.80
+\approx \boxed{1.44\,\mathrm{eV}}.
+\end{equation}
+\textit{注}：NaCl 肖特基缺陷形成能的实验值约为 $2.0\sim 2.5\,\mathrm{eV}$。本题数据简化处理得到的 $1.44\,\mathrm{eV}$ 为估算数量级。若按教材原始数据 $k_{\!B}=8.615\times 10^{-5}\,\mathrm{eV/K}$ 并取 $\ln 2439\approx 7.799$，可得 $u\approx 1.44\,\mathrm{eV}$。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{问题} & \textbf{答案} \\
+\midrule
+(1) 平衡浓度 & $n = N e^{-u/2k_{\!B}T}$ \\
+(2) 体积相对变化 & $\displaystyle\frac{\Delta V}{V_0} = \frac{n}{N} = e^{-u/2k_{\!B}T}$ \\
+(3) $800^{\circ}\mathrm{C}$ 缺陷浓度 & $n/N = 4.1\times 10^{-4}$ \\
+(3) 形成能 & $u \approx 1.44\,\mathrm{eV}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像：为什么肖特基缺陷会增大体积？]
+弗仑克尔缺陷是内部原子在晶体内部``搬家''（格点$\to$间隙），晶体总体积\textbf{不变}——原子没离开晶体，只是换了位置。
+
+肖特基缺陷的本质不同：内部原子\textbf{跑到了晶体表面}，在原位留下空位。这意味着：
+\begin{enumerate}
+    \item 晶体内部少了 $n$ 个原胞的内容物
+    \item 但晶体表面增加了 $n$ 个原子层，使整体外轮廓扩大
+    \item 净效果：体积增加 $n$ 个分子体积 $v$
+\end{enumerate}
+\textbf{定量关系}：$\Delta V/V_0 = n/N$。这个简洁结果说明，通过测量晶格常数（X射线）和宏观密度（化学法）的差异，可以直接读出缺陷浓度——这是固体物理中经典的\textbf{点缺陷实验诊断方法}。
+\end{insightbox}
+
+\begin{thinkbox}[考场速记：缺陷统计问题的对比表]
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+\textbf{缺陷类型} & \textbf{微观图像} & \textbf{微观状态数} & \textbf{平衡浓度} \\
+\midrule
+弗仑克尔 & 格点$\to$间隙（内部搬家） & $\displaystyle\binom{N}{n}\binom{N'}{n}$ & $\displaystyle n=\sqrt{NN'}e^{-u/2k_{\!B}T}$ \\
+肖特基（离子晶体） & 内部$\to$表面（留下空位对） & $\displaystyle\binom{N}{n}^2$ & $\displaystyle n=N e^{-u/2k_{\!B}T}$ \\
+肖特基（单质） & 内部$\to$表面（留下单空位） & $\displaystyle\binom{N}{n}$ & $\displaystyle n=N e^{-u/k_{\!B}T}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\vspace{4pt}
+\textbf{记忆口诀}：
+\begin{itemize}
+    \item 两种子系统 $W=W_1W_2$（弗仑克尔或离子肖特基）$\Rightarrow$ 指数带 $1/2$
+    \item 一种子系统 $W=W_1$（单质肖特基）$\Rightarrow$ 指数不带 $1/2$
+    \item 体积变化只与肖特基有关：$\Delta V/V_0 = n/N$
+\end{itemize}
+\end{thinkbox}

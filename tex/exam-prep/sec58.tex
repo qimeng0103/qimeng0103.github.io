@@ -53,10 +53,11 @@ Z = \sum_n W(n)\, e^{-nu/k_{\!B}T}.
 \textbf{Step 3: 斯特林公式求极值}
 
 对 $W(n)\,e^{-nu/k_{\!B}T}$ 取对数，利用斯特林近似 $\ln x! \approx x\ln x - x$（$x\gg 1$）：
-\begin{multline}
-\ln\bigl[W(n)\,e^{-nu/k_{\!B}T}\bigr] = N\ln N + N'\ln N' - 2n\ln n \\
-- (N-n)\ln(N-n) - (N'-n)\ln(N'-n) - \frac{nu}{k_{\!B}T}.
-\end{multline}
+\begin{align}
+\ln\bigl[W(n)\,e^{-nu/k_{\!B}T}\bigr]
+&= N\ln N + N'\ln N' - 2n\ln n \notag\\
+&\quad - (N-n)\ln(N-n) - (N'-n)\ln(N'-n) - \frac{nu}{k_{\!B}T}.
+\end{align}
 对 $n$ 求导，由极值条件 $\partial/\partial n = 0$：
 \begin{equation}
 -2\ln n + \ln(N-n) + \ln(N'-n) - \frac{u}{k_{\!B}T} = 0.
@@ -129,7 +130,11 @@ T = \frac{1.602\times 10^{-19}}{2\times 1.381\times 10^{-23}\times 6.9078}
 \[
 2k_{\!B}T\ln n \sim u \quad\Longrightarrow\quad n\sim e^{-u/2k_{\!B}T}.
 \]
-\textbf{对比}：肖特基缺陷（仅空位，无填隙原子）只有一个组合过程，故 $n = N e^{-u/k_{\!B}T}$，指数上没有 $1/2$。
+\textbf{对比}：
+\begin{itemize}
+    \item \textbf{单质肖特基缺陷}（单一原子晶体）：仅一类空位，$W=\binom{N}{n}$，故 $n = N e^{-u/k_{\!B}T}$，指数上无 $1/2$。
+    \item \textbf{离子晶体肖特基缺陷}（正负离子空位成对）：$W=\binom{N}{n}^2$，与弗仑克尔缺陷形式相同，$n = N e^{-u/2k_{\!B}T}$，指数上也有 $1/2$。
+\end{itemize}
 \end{insightbox}
 
 \begin{thinkbox}[考场速记：缺陷统计问题的答题模板]
@@ -142,8 +147,9 @@ T = \frac{1.602\times 10^{-19}}{2\times 1.381\times 10^{-23}\times 6.9078}
     \item \textbf{低浓度近似}：$n\ll N$ 时 $N-n\approx N$，得到最终简洁形式
     \item \textbf{检验指数}：
     \begin{itemize}
-        \item 弗仑克尔（成对）：$e^{-u/2k_{\!B}T}$
-        \item 肖特基（单空位）：$e^{-u/k_{\!B}T}$
+        \item 弗仑克尔缺陷（空位+填隙原子）：$W=\binom{N}{n}\binom{N'}{n}$，$n\sim e^{-u/2k_{\!B}T}$
+        \item 离子晶体肖特基缺陷（正负离子空位成对）：$W=\binom{N}{n}^2$，$n\sim e^{-u/2k_{\!B}T}$
+        \item 单质肖特基缺陷（单一空位）：$W=\binom{N}{n}$，$n\sim e^{-u/k_{\!B}T}$
     \end{itemize}
 \end{enumerate}
 \textit{陷阱提醒}：不要混淆 $N$（格点数）和 $N'$（间隙位置数）。简单晶格中可假设 $N'=N$，但体心立方/面心立方的间隙位置数不同（八面体间隙、四面体间隙数目不同），此时 $N'\neq N$。
