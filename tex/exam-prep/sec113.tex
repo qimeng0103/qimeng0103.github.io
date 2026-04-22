@@ -1,0 +1,134 @@
+% ============================================================
+% Section 113: 交换作用对泡利顺磁的修正（Stoner模型）
+% ============================================================
+\section{固体物理：交换作用对泡利顺磁的修正}
+\label{sec:stoner-correction}
+
+\begin{modelbox}[题目：Stoner 平均场下的电子气磁性]
+考虑一在绝对零度、弱磁场 $B$ 下的传导电子气。自旋向上和向下的电子浓度可由参量 $x$ 表示：
+\begin{equation*}
+N_+=\frac{1}{2}N(1+x),\qquad N_-=\frac{1}{2}N(1-x),
+\end{equation*}
+其中 $N$ 是电子总浓度。
+
+(1) 计算气体的总能量和磁化强度；
+
+(2) 假定只有自旋平行的传导电子之间有相互作用能 $-U$（$U>0$），对传导电子之间的交换作用效应作一近似。问磁化强度应作怎样的修正？
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{能带填充}：两种自旋子能带在磁场中发生相对位移
+    \item \textbf{总能量}：动能 + 塞曼能，对 $x$ 求极小
+    \item \textbf{Stoner 模型}：同自旋电子间的交换作用等效为平均场，增强磁化率
+    \item \textbf{Stoner 判据}：$UN/(2E_F)\to1$ 时磁化率发散，出现铁磁性
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 无相互作用时的总能量与磁化强度}
+
+在磁场 $B$ 中，自旋与磁场平行（自旋向下，磁矩向上）的电子能量降低 $\mu_BB$；反平行（自旋向上）的能量升高 $\mu_BB$。两种自旋电子填充到各自的最高能量 $E_+$ 和 $E_-$，平衡时两者最高动能相等，设为 $\varepsilon_0$：
+\begin{equation}
+E_+=\varepsilon_0-\mu_BB,\qquad E_-=\varepsilon_0+\mu_BB.
+\end{equation}
+
+三维自由电子态密度 $g(E)=cE^{1/2}$，$c=V(2m)^{3/2}/(2\pi^2\hbar^3)$。电子浓度：
+\begin{equation}
+N_\pm=\frac{c}{V}\int_0^{E_\pm}E^{1/2}\,dE=\frac{2c}{3V}E_\pm^{3/2}.
+\end{equation}
+
+无磁场时 $N=2\times(2c/3V)E_F^{3/2}$，故 $c/V=3N/(4E_F^{3/2})$。代入 $N_\pm=\frac{1}{2}N(1\pm x)$ 并与 $E_\pm=E_F(1\pm x)^{2/3}$ 对比（利用 $E_\pm^{3/2}\propto N_\pm$），得
+\begin{equation}
+\varepsilon_0\mp\mu_BB=E_F(1\pm x)^{2/3}.
+\end{equation}
+
+两式相减，弱场 $x\ll1$ 下展开：
+\begin{equation}
+2\mu_BB=E_F\bigl[(1+x)^{2/3}-(1-x)^{2/3}\bigr]\approx E_F\cdot\frac{4}{3}x,
+\end{equation}
+解得
+\begin{equation}
+\boxed{x\approx\frac{3\mu_BB}{2E_F}.}
+\end{equation}
+
+\textbf{总能量}。自旋向上和向下电子的总动能：
+\begin{equation}
+E_{\text{kin}}^\pm=\frac{c}{V}\int_0^{E_\pm}E\cdot E^{1/2}\,dE=\frac{2c}{5V}E_\pm^{5/2}=\frac{3}{10}NE_F(1\pm x)^{5/3}.
+\end{equation}
+
+塞曼能 $-\mu_BBN_++\mu_BBN_-=-\mu_BBNx$。总能量
+\begin{equation}
+E_{\text{tot}}=\frac{3}{10}NE_F\bigl[(1+x)^{5/3}+(1-x)^{5/3}\bigr]-\mu_BBNx.
+\end{equation}
+
+将 $(1\pm x)^{5/3}\approx1\pm\frac{5}{3}x+\frac{5}{9}x^2$ 展开：
+\begin{equation}
+E_{\text{tot}}\approx\frac{3}{5}NE_F+\frac{1}{3}NE_Fx^2-\mu_BBNx.
+\end{equation}
+代入 $x=3\mu_BB/(2E_F)$：
+\begin{equation}
+\boxed{E_{\text{tot}}\approx\frac{3}{5}NE_F-\frac{3N\mu_B^2B^2}{4E_F}.}
+\end{equation}
+
+\textbf{磁化强度}。$M=\mu_B(N_--N_+)=\mu_BNx$，故
+\begin{equation}
+\boxed{M=\frac{3N\mu_B^2}{2E_F}B,\qquad \chi_0=\frac{3N\mu_B^2}{2E_F}.}
+\end{equation}
+与题 3.11 结果一致。
+
+\textbf{(2) 考虑交换作用后的修正}
+
+Stoner 平均场模型：自旋平行的电子间存在交换相互作用 $-U$（$U>0$），每个电子感受到的等效平均场能量与同自旋电子数密度成正比。自旋向上电子的交换能（因子 $1/2$ 避免重复计算）：
+\begin{equation}
+E_{\text{ex}}^+=-\frac{1}{2}UN_+^2=-\frac{1}{8}UN^2(1+x)^2.
+\end{equation}
+自旋向下类似：$E_{\text{ex}}^-=-\frac{1}{8}UN^2(1-x)^2$。
+
+总能量修正为：
+\begin{equation}
+E_{\text{tot}}=\frac{3}{10}NE_F\bigl[(1+x)^{5/3}+(1-x)^{5/3}\bigr]-\mu_BBNx-\frac{1}{8}UN^2\bigl[(1+x)^2+(1-x)^2\bigr].
+\end{equation}
+
+对 $x$ 求极小值（$\partial E_{\text{tot}}/\partial x=0$）。$x\ll1$ 展开并保留线性项：
+\begin{equation}
+\frac{\partial E_{\text{tot}}}{\partial x}\approx\frac{3}{10}NE_F\cdot\frac{10}{3}x-\mu_BBN-\frac{1}{2}UN^2x=0,
+\end{equation}
+解得
+\begin{equation}
+x=\frac{\mu_BB}{E_F-\frac{1}{2}UN}.
+\end{equation}
+
+磁化强度 $M=\mu_BNx$：
+\begin{equation}
+M=\frac{N\mu_B^2B}{E_F-\frac{1}{2}UN}.
+\end{equation}
+
+磁化率
+\begin{equation}
+\boxed{\chi=\frac{N\mu_B^2}{E_F-\frac{1}{2}UN}=\frac{\chi_0}{1-\frac{UN}{2E_F}},}
+\end{equation}
+其中 $\chi_0=3N\mu_B^2/(2E_F)$ 为无相互作用时的泡利磁化率。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{项目} & \textbf{无相互作用} & \textbf{有交换作用 ($U>0$)} \\
+\midrule
+总能量 & $\displaystyle E_{\text{tot}}\approx\frac{3}{5}NE_F-\frac{3N\mu_B^2B^2}{4E_F}$ & 动能 + 塞曼能 + 交换能 \\
+磁化强度 & $\displaystyle M=\frac{3N\mu_B^2}{2E_F}B$ & $\displaystyle M=\frac{N\mu_B^2B}{E_F-\frac{1}{2}UN}$ \\
+磁化率 & $\chi_0=3N\mu_B^2/(2E_F)$ & $\displaystyle\chi=\frac{\chi_0}{1-UN/(2E_F)}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 交换作用（洪特规则在巡游电子系统中的体现）使同自旋电子相互回避，降低库仑排斥能，等效为吸引相互作用，促进自旋极化。
+    \item \textbf{Stoner 增强因子} $S=(1-UN/2E_F)^{-1}$。当 $UN/(2E_F)\to1$ 时，$\chi\to\infty$，系统发生\textbf{Stoner 失稳}，出现自发磁化（铁磁性）。这是 Fe、Co、Ni 等过渡金属铁磁性的微观理论基础。
+    \item Stoner 判据 $UN(0)>1$（更严格形式）是巡游电子铁磁性的经典判据。
+\end{itemize}
+\end{insightbox}

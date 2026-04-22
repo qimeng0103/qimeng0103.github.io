@@ -1,0 +1,113 @@
+% ============================================================
+% Section 115: 库珀对的形成与BCS能隙方程
+% ============================================================
+\section{固体物理：库珀对的形成与 BCS 能隙方程}
+\label{sec:cooper-pair-bcs}
+
+\begin{modelbox}[题目：电子-声子吸引与库珀对结合能]
+简明地解释为什么晶格中两个电子可以有吸引作用而形成库珀对。
+
+考虑总动量为零、自旋单态的电子对，处于费米能为 $\epsilon_F$、态密度为 $N$ 的金属中。电子对薛定谔方程 $(H_0+H_1)\psi(\bm{r})=E\psi(\bm{r})$，其中 $H_0$ 为动能算符，$H_1$ 为两电子相互作用，$\bm{r}$ 为相对坐标。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{有效吸引起源}：电子-声子相互作用，虚声子交换产生延迟吸引
+    \item \textbf{配对条件}：费米面附近、$|\epsilon|<\hbar\omega_D$、总动量为零、自旋单态
+    \item \textbf{BCS 近似}：常数吸引势 $-V$ 在壳层内，壳层外为零
+    \item \textbf{能隙方程}：$1=\frac{N(0)V}{2}\ln\!\bigl(1+2\hbar\omega_D/\delta\bigr)$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. 电子间有效吸引的物理起源}
+
+在晶格中，两个电子之间除了裸库仑排斥外，还可以通过\textbf{交换虚声子}产生间接相互作用。
+
+\textbf{物理图像}：
+\begin{enumerate}
+    \item 第一个电子在运动过程中吸引周围正离子，引起晶格局部畸变（极化）。
+    \item 晶格畸变以声子形式传播，产生局域正电荷富集区。
+    \item 第二个电子被这个正电荷富集区吸引，间接感受到第一个电子的吸引作用。
+\end{enumerate}
+
+由于晶格响应（离子运动）比电子运动慢得多（$\tau_{\text{ion}}\sim1/\omega_D\gg\hbar/E_F$），第二个电子到达时，第一个电子早已离开，但晶格极化仍存在。这种\textbf{延迟效应}使两电子间有效相互作用在一定条件下呈现净吸引。
+
+\textbf{量子力学描述}：第一个电子从 $k_1$ 散射到 $k_1-q$ 并发射波矢为 $q$ 的虚声子；第二个电子吸收该虚声子，从 $k_2$ 散射到 $k_2+q$。当能量差 $|\epsilon(k_1)-\epsilon(k_1-q)|<\hbar\omega_D$ 时，声子交换的净效果为等效弱吸引。由于泡利原理，只有费米面附近能量在 $\pm\hbar\omega_D$ 范围内的电子才满足条件。
+
+\textbf{2. 库珀对薛定谔方程的求解}
+
+总动量为零、自旋单态的两电子，在质心系中波函数仅依赖于相对坐标 $\bm{r}=\bm{r}_1-\bm{r}_2$。展开为平面波叠加：
+\begin{equation}
+\psi(\bm{r})=\sum_{\bm{k}}g(\bm{k})e^{i\bm{k}\cdot\bm{r}},
+\end{equation}
+其中每个电子的波矢分别为 $\bm{k}$ 和 $-\bm{k}$。
+
+代入薛定谔方程，得到动量空间方程：
+\begin{equation}
+\frac{\hbar^2k^2}{m}g(\bm{k})+\sum_{\bm{k}'}V_{\bm{k}\bm{k}'}g(\bm{k}')=Eg(\bm{k}),
+\end{equation}
+其中 $V_{\bm{k}\bm{k}'}$ 为相互作用势的傅里叶分量，约化质量为 $m/2$。
+
+\textbf{BCS 简化模型}：仅当两电子能量（相对费米能）均在 $\pm\hbar\omega_D$ 范围内时，$V_{\bm{k}\bm{k}'}=-V$（$V>0$）；否则为零：
+\begin{equation}
+V_{\bm{k}\bm{k}'}=
+\begin{cases}
+-V, & |\epsilon_{\bm{k}}|,|\epsilon_{\bm{k}'}|\le\hbar\omega_D,\\
+0, & \text{其他}.
+\end{cases}
+\end{equation}
+
+方程化为
+\begin{equation}
+\left(\frac{\hbar^2k^2}{m}-E\right)g(\bm{k})=V\sideset{}{'}\sum_{\bm{k}'}g(\bm{k}'),
+\end{equation}
+其中带撇求和限于壳层内。由于右端与 $\bm{k}$ 无关，令 $C=V\sum'_{\bm{k}'}g(\bm{k}')$，则
+\begin{equation}
+g(\bm{k})=\frac{C}{\hbar^2k^2/m-E}.
+\end{equation}
+
+代入 $C$ 的定义，约去 $C$（设 $C\neq0$），得自洽方程：
+\begin{equation}
+1=V\sideset{}{'}\sum_{\bm{k}}\frac{1}{\hbar^2k^2/m-E}.
+\end{equation}
+
+将求和化为能量积分。利用 $\hbar^2k^2/m=2(\epsilon+\epsilon_F)$，令 $E=2\epsilon_F-\delta$（$\delta>0$ 为结合能），态密度在费米面附近近似为常数 $N(0)$，积分限 $0\le\epsilon\le\hbar\omega_D$：
+\begin{equation}
+1=\frac{N(0)V}{2}\int_0^{\hbar\omega_D}\frac{d\epsilon}{\epsilon+\delta/2}
+=\frac{N(0)V}{2}\ln\!\left(1+\frac{2\hbar\omega_D}{\delta}\right).
+\end{equation}
+
+解得
+\begin{equation}
+\delta=\frac{2\hbar\omega_D}{e^{2/N(0)V}-1}.
+\end{equation}
+
+弱耦合极限 $N(0)V\ll1$ 下：
+\begin{equation}
+\boxed{\delta\approx2\hbar\omega_D\,e^{-2/N(0)V}.}
+\end{equation}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{项目} & \textbf{结果} \\
+\midrule
+吸引作用起源 & 电子-声子相互作用：虚声子交换产生延迟等效吸引 \\
+配对条件 & 费米面附近、$|\epsilon|<\hbar\omega_D$、动量相反、自旋相反 \\
+库珀对结合能 & $\displaystyle\delta=\frac{2\hbar\omega_D}{e^{2/N(0)V}-1}$；弱耦合 $\delta\approx2\hbar\omega_D e^{-2/N(0)V}$ \\
+结论 & 任意弱净吸引均导致费米面失稳，形成束缚电子对 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 库珀对的形成是\textbf{费米面失稳}（Cooper 不稳定）的体现：无论吸引多弱，费米海都不是真正的基态。这一发现彻底改变了人们对金属基态的认识，为 BCS 理论奠定了基础。
+    \item 结合能 $\delta$ 与德拜频率 $\omega_D$ 成正比，且对耦合强度 $N(0)V$ 呈\textbf{非解析依赖}（指数型），这是微扰论无法捕获的结果。
+    \item 声子交换机制是传统 BCS 超导体中电子配对的主要来源。库珀对的质心动量为零、自旋单态是最稳定的配对形式。
+\end{itemize}
+\end{insightbox}

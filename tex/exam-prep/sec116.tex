@@ -1,0 +1,86 @@
+% ============================================================
+% Section 116: 约瑟夫森隧道效应
+% ============================================================
+\section{固体物理：约瑟夫森隧道效应}
+\label{sec:josephson-effect}
+
+\begin{modelbox}[题目：约瑟夫森结的直流与交流效应]
+简要描述约瑟夫森隧道效应。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{结构}：超导体--绝缘层--超导体（S--I--S）弱连接
+    \item \textbf{直流效应}：$V=0$ 时存在超导电流 $j=j_c\sin\Delta\varphi$
+    \item \textbf{交流效应}：$V\neq0$ 时产生频率 $f=2eV/h$ 的交变超流
+    \item \textbf{核心}：库珀对宏观量子相干隧穿，相位差驱动超流
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. 约瑟夫森结的结构}
+
+约瑟夫森结由两块超导体 $S_1$ 和 $S_2$ 中间夹一层极薄绝缘层（厚度约 $10\,\text{\AA}$）构成。绝缘层作为势垒，将两块超导体\textbf{弱连接}起来。
+
+\textbf{2. 物理机制——直流约瑟夫森效应}
+
+超导体中的库珀对（电荷 $q=-2e$）由宏观波函数 $\psi=\sqrt{n_s}\,e^{i\varphi}$ 描述，$n_s$ 为超导电子密度，$\varphi$ 为宏观相位。
+
+库珀对可作为整体隧穿绝缘势垒。两侧波函数以指数衰减形式渗透入绝缘层。设 $S_1$ 和 $S_2$ 的波函数在绝缘层中的相位分别为 $\varphi_1$ 和 $\varphi_2$，总波函数
+\begin{equation}
+\psi(x)=e^{i\varphi_1}e^{-\kappa(x+a)}+e^{i\varphi_2}e^{\kappa(x-a)},
+\end{equation}
+其中 $\kappa$ 为衰减常数，$2a$ 为势垒宽度。
+
+由量子力学概率流密度
+\begin{equation}
+J=\frac{\hbar}{2mi}(\psi^*\nabla\psi-\psi\nabla\psi^*),
+\end{equation}
+乘以库珀对电荷 $q=-2e$，得超导电流密度：
+\begin{equation}
+j=qJ_x=\frac{2\hbar|q|\kappa}{m}e^{-2\kappa a}\sin(\varphi_2-\varphi_1)=j_c\sin\Delta\varphi,
+\end{equation}
+其中临界电流密度 $j_c=2\hbar|q|\kappa e^{-2\kappa a}/m$，$\Delta\varphi=\varphi_2-\varphi_1$ 为相位差。
+
+\textbf{结论}：
+\begin{itemize}
+    \item 即使没有外加电压（$V=0$），只要 $\Delta\varphi\neq0$，就有直流超导电流通过结区——\textbf{直流约瑟夫森效应}。
+    \item 最大无阻电流为 $j_c$。当电流超过 $j_c$ 时，结区出现电压，进入有限电压态。
+\end{itemize}
+
+\textbf{3. 交流约瑟夫森效应}
+
+若在结两端施加直流电压 $V$，两超导体的相位差随时间线性变化：
+\begin{equation}
+\frac{d(\Delta\varphi)}{dt}=\frac{2eV}{\hbar}.
+\end{equation}
+
+此时超导电流变为交变电流：
+\begin{equation}
+j(t)=j_c\sin\!\left(\Delta\varphi_0+\frac{2eV}{\hbar}t\right),
+\end{equation}
+频率 $f=2eV/h$。这就是\textbf{交流约瑟夫森效应}。
+
+\textbf{意义}：它提供了电压--频率的精确转换关系 $V=(h/2e)f$，是电压量子基准的基础。由于 $h$ 和 $e$ 是基本物理常数，该关系具有普适性和极高精度。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{效应} & \textbf{条件} & \textbf{电流表达式} & \textbf{特征} \\
+\midrule
+直流约瑟夫森 & $V=0$，$\Delta\varphi\neq0$ & $j=j_c\sin\Delta\varphi$ & 无电压时有直流超流 \\
+交流约瑟夫森 & $V\neq0$ & $j=j_c\sin(\Delta\varphi_0+2eVt/\hbar)$ & 直流电压产生高频交变超流 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 约瑟夫森效应是超导\textbf{宏观量子相干}性的直接体现。相位差 $\Delta\varphi$ 是驱动超流的核心物理量，这与正常导体中电压驱动电流形成鲜明对比。
+    \item 直流约瑟夫森效应表明超导电流可在无电场的情况下穿过绝缘层，是库珀对作为玻色子相干隧穿的宏观量子现象。
+    \item 约瑟夫森效应是超导量子干涉仪（SQUID）、超导量子比特、电压基准等精密测量和量子器件的物理基础。其频率--电压关系的精确性使约瑟夫森结阵列成为国际电压标准。
+\end{itemize}
+\end{insightbox}
