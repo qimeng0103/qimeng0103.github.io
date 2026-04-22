@@ -1,0 +1,108 @@
+% ============================================================
+% Section 84: 布洛赫振荡与齐纳隧穿
+% ============================================================
+\section{固体理论：布洛赫振荡与齐纳隧穿}
+\label{sec:bloch-oscillation}
+
+\begin{modelbox}[题目：一维晶格中电子在电场下的运动]
+考虑一电荷为 $-e$ 的电子在一维点阵中，能量 $E(k)=-2T\cos ka$，$a$ 为晶格常数。有一小的均匀电场 $\mathcal{E}$ 施加在平行于晶格的方向上。定性地描述电子在 $k$ 空间和真实空间的运动：
+\begin{enumerate}
+    \item 无散射情况下；
+    \item 有散射情况下。
+\end{enumerate}
+电场``小''的意思是什么？当电场不再是小量时，实际晶体（具有多支能带）中会发生什么现象？
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{准经典运动}：$\hbar\,dk/dt=F=-e\mathcal{E}$，$k$ 空间匀速漂移
+    \item \textbf{布洛赫振荡}：$k$ 空间周期运动，真实空间交流振荡
+    \item \textbf{散射的影响}：弛豫时间 $\tau$ 决定能否完成振荡
+    \item \textbf{齐纳隧穿}：强电场下电子穿越能隙跃迁到高能带
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 无散射情况（理想晶体）}
+
+\textbf{$k$ 空间运动}：准经典方程
+\begin{equation}
+\hbar\frac{dk}{dt}=-e\mathcal{E}
+\quad\Longrightarrow\quad
+k(t)=k(0)-\frac{e\mathcal{E}}{\hbar}t.
+\end{equation}
+波矢随时间线性变化，电子在 $k$ 空间以恒定速率沿电场反方向匀速移动。
+
+当电子到达布里渊区边界 $k=\pi/a$ 时，由于能带的周期性 $E(k)=E(k+2\pi/a)$，该状态等价于 $k=-\pi/a$。电子被``反射''并在另一端重新出现，继续匀速运动。$k$ 空间运动是周期性的，\textbf{布洛赫振荡周期}
+\begin{equation}
+\boxed{T_B=\frac{2\pi/a}{e\mathcal{E}/\hbar}=\frac{2\pi\hbar}{e\mathcal{E}a}.}
+\end{equation}
+
+\textbf{真实空间运动}：群速度
+\begin{equation}
+v(k)=\frac{1}{\hbar}\frac{dE}{dk}=\frac{2Ta}{\hbar}\sin ka.
+\end{equation}
+由于 $k(t)$ 线性变化，$v(t)$ 呈正弦振荡。电子在真实空间的位置
+\begin{equation}
+x(t)=\int v(t)\,dt\propto-\cos\bigl(ka(t)\bigr),
+\end{equation}
+即电子在真实空间作周期性振荡（\textbf{布洛赫振荡}），振幅 $\Delta x\sim 2T/e\mathcal{E}$，频率 $f_B=1/T_B=e\mathcal{E}a/(2\pi\hbar)$。
+
+\textbf{结论}：无散射时，直流电场导致 $k$ 空间周期性运动和真实空间交流振荡。
+
+\textbf{Step 2: 有散射情况（实际晶体）}
+
+实际晶体中电子受声子、杂质、缺陷等散射，弛豫时间为 $\tau$。
+
+若 $\tau\ll T_B$（散射频繁），电子在两次散射之间只能移动很小的波矢
+\begin{equation}
+\Delta k=\frac{e\mathcal{E}\tau}{\hbar}\ll\frac{\pi}{a},
+\end{equation}
+远不足以到达布里渊区边界。散射使电子波矢不断重新分布，阻碍布洛赫振荡的形成。电子表现为服从\textbf{欧姆定律}的漂移运动。
+
+\textbf{布洛赫振荡的实验观测}：仅在极纯净的半导体超晶格中，且低温下（$\tau$ 足够长），才能通过太赫兹辐射等手段观测到。
+
+\textbf{Step 3: ``小电场''的物理意义}
+
+``小电场''指电场不足以引起显著的\textbf{带间隧穿}（齐纳隧穿，Zener tunneling）。电子在 $k$ 空间运动时，若能隙较小，电子有一定概率隧穿到更高能带，而非被反射回同一能带。
+
+避免显著带间隧穿的临界条件为
+\begin{equation}
+\boxed{e\mathcal{E}a\ll\frac{E_{\text{gap}}^2}{E_F},}
+\end{equation}
+其中 $E_{\text{gap}}$ 为布里渊区边界处的能隙，$E_F$ 为费米能（或带宽量级）。此条件确保电子始终停留在同一能带内，准经典近似和单带有效质量理论成立。
+
+\textbf{Step 4: 强电场下的现象}
+
+当电场不再是小量（$e\mathcal{E}a\sim E_{\text{gap}}^2/E_F$）时：
+\begin{itemize}
+    \item 带间隧穿概率显著增大，电子可跃迁到更高能带
+    \item 发生\textbf{齐纳击穿}（Zener breakdown），晶体的导电性急剧变化
+    \item 绝缘体可变为导体，这一现象在\textbf{齐纳二极管}中被实际应用
+\end{itemize}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{情况} & \textbf{$k$ 空间运动} & \textbf{真实空间运动} \\
+\midrule
+无散射 & 匀速运动，布里渊区边界反射，周期 $T_B=2\pi\hbar/(e\mathcal{E}a)$ & 周期性交流振荡（布洛赫振荡） \\
+有散射 & $\Delta k=e\mathcal{E}\tau/\hbar\ll\pi/a$，不形成振荡 & 漂移运动，服从欧姆定律 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{``小电场''}：$e\mathcal{E}a\ll E_{\text{gap}}^2/E_F$，避免齐纳隧穿。
+
+\textbf{强电场}：发生齐纳隧穿，导致齐纳击穿。
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 布洛赫振荡是周期势场中电子在外电场下的\textbf{本征量子力学响应}，但通常在普通金属和半导体中无法观测，因为电子在飞秒--皮秒时间尺度内就被散射，远未完成一个振荡周期。
+    \item 超晶格（人工周期结构，晶格常数 $a$ 可达纳米量级）可降低振荡频率、延长振荡周期，使得在低温高纯样品中观测布洛赫振荡成为可能。
+    \item 齐纳隧穿是理解绝缘体击穿、齐纳二极管稳压原理的关键机制。它本质上是外电场诱导的能带间量子隧穿，与单粒子隧穿（如扫描隧道显微镜）不同，是集体电子态的跃迁。
+\end{itemize}
+\end{insightbox}
