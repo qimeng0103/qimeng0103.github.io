@@ -1,0 +1,110 @@
+% ============================================================
+% Section 112: 泡利自旋磁化率与温度依赖
+% ============================================================
+\section{固体物理：泡利自旋磁化率与温度依赖}
+\label{sec:pauli-susceptibility}
+
+\begin{modelbox}[题目：独立电子气的自旋磁化率]
+(1) 证明``独立''电子气在绝对零度时的自旋磁化率为
+\begin{equation*}
+\chi=\mu_B^2\,g(E_F),
+\end{equation*}
+其中 $\mu_B$ 是玻尔磁子，$g(E_F)$ 是费米能级处的态密度；
+
+(2) 计算自由电子气（电子--离子相互作用忽略）的 $g(E_F)$；
+
+(3) 自旋磁化率微弱地依赖于温度的形式
+\begin{equation*}
+\chi(T)=\chi(0)\left(1+aT^2\right),
+\end{equation*}
+你认为 $a$ 是正的还是负的？（定性论证即可）。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{泡利顺磁图像}：磁场使自旋向上/向下子能带发生相对位移，电子翻转导致净磁矩
+    \item \textbf{态密度}：3D 自由电子气 $g(E_F)=3N/(2E_F)$
+    \item \textbf{温度修正}：索末菲展开 $E_F(T)=E_F(0)[1-\pi^2(k_BT/E_F)^2/12+\cdots]$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 绝对零度泡利顺磁化率的证明}
+
+无外磁场时，自旋向上和向下的电子填充到相同费米能级 $E_F$，总磁矩为零。
+
+施加磁场 $B$ 后，自旋与磁场平行（磁矩向上）的电子能量降低 $\mu_BB$；反平行（磁矩向下）的电子能量升高 $\mu_BB$。两子能带费米能级相对位移，自旋反平行的电子翻转为平行，直到两者费米能级再次对齐。
+
+翻转的电子数等于费米面附近能量宽度 $\mu_BB$ 范围内的状态数的一半（态密度 $g(E_F)$ 包含两种自旋）：
+\begin{equation}
+\Delta N\approx\frac{1}{2}\,g(E_F)\cdot(\mu_BB).
+\end{equation}
+
+每个翻转电子，磁矩由 $-\mu_B$ 变为 $+\mu_B$，改变量为 $2\mu_B$。总磁矩
+\begin{equation}
+M=\Delta N\cdot2\mu_B=\frac{1}{2}g(E_F)\mu_BB\cdot2\mu_B=\mu_B^2\,g(E_F)\,B.
+\end{equation}
+
+磁化率 $\chi=M/B$，故
+\begin{equation}
+\boxed{\chi=\mu_B^2\,g(E_F).}
+\end{equation}
+（SI 单位制中需乘以 $\mu_0$：$\chi=\mu_0\mu_B^2g(E_F)$；高斯制中 $\mu_0=1$。）
+
+\textbf{(2) 自由电子气的态密度 $g(E_F)$}
+
+三维自由电子气（包含自旋简并）的态密度：
+\begin{equation}
+g(E)=\frac{V}{2\pi^2}\left(\frac{2m}{\hbar^2}\right)^{3/2}E^{1/2}.
+\end{equation}
+
+在费米能级处，利用 $E_F=\hbar^2(3\pi^2n)^{2/3}/(2m)$（$n=N/V$），化简得
+\begin{equation}
+g(E_F)=\frac{3N}{2E_F}.
+\end{equation}
+
+因此泡利磁化率也可写为
+\begin{equation}
+\chi=\frac{3}{2}\frac{N\mu_B^2}{E_F},
+\end{equation}
+与题 3.9 公式一致。
+
+\textbf{(3) 温度依赖系数 $a$ 的符号}
+
+有限温度下，费米--狄拉克分布使费米面附近电子被热激发。由于态密度 $g(E)\propto E^{1/2}$ 随能量增加而增大，电子从低于 $E_F$ 的态跃迁到高于 $E_F$ 的态时，为保持总电子数守恒，费米能级必须略微\textbf{降低}。
+
+由索末菲展开：
+\begin{equation}
+E_F(T)=E_F(0)\left[1-\frac{\pi^2}{12}\left(\frac{k_BT}{E_F(0)}\right)^2+\cdots\right].
+\end{equation}
+
+泡利磁化率 $\chi\propto g(E_F)\propto E_F^{1/2}$。由于 $E_F(T)<E_F(0)$，故 $g(E_F(T))<g(E_F(0))$，磁化率随温度升高而\textbf{减小}。
+
+展开到 $T^2$：
+\begin{equation}
+\chi(T)\approx\chi(0)\left[1-\frac{\pi^2}{24}\left(\frac{k_BT}{E_F(0)}\right)^2\right].
+\end{equation}
+因此系数 $a$ 为\textbf{负值}（$a<0$）。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{项目} & \textbf{结果} \\
+\midrule
+(1) 泡利磁化率 & $\chi=\mu_B^2\,g(E_F)$（高斯制） \\
+(2) 态密度 & $g(E_F)=3N/(2E_F)$ \\
+(3) 温度系数 & $a<0$（负值），因 $E_F(T)$ 随 $T$ 升高下降 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 泡利顺磁性是金属自由电子的基本磁性，源于费米面附近电子的自旋翻转。其磁化率远小于经典居里顺磁性，且几乎与温度无关。
+    \item 自由电子气的态密度随能量以 $E^{1/2}$ 增长，这是导致 $a<0$ 的根本原因。若态密度随能量减小，则 $a$ 可能为正。
+    \item 金属的实测磁化率还包含朗道抗磁性（轨道效应）、电子--电子相互作用增强因子等，但泡利顺磁是其主导项之一。
+\end{itemize}
+\end{insightbox}
