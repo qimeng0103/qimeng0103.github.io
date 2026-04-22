@@ -83,18 +83,32 @@ W = W_+ W_- = \left[\frac{N!}{(N-n)!\,n!}\right]^2.
 
 \textbf{Step 3: 实验数据求缺陷浓度与形成能}
 
-\textit{基本原理。}X 射线衍射测量晶格常数，得到的是实际原子间距。由此计算出的密度对应\textbf{实际晶体体积}（含空位膨胀后的体积 $V$）。化学方法测量宏观密度（质量/体积），但计算分子量时需使用真实体积。若误用实际体积，则得到偏小的表观分子量。
+\textit{基本原理。}本题通过比较两种独立测量手段的结果来推断缺陷浓度：
+\begin{itemize}
+    \item \textbf{X射线衍射法}：测量晶格常数 $a$，计算晶胞体积 $v_{\mathrm{cell}}=a^3$。这个体积是含空位膨胀后的\textbf{实际体积} $V$（大于理想体积 $V_0$）。若\textbf{假设晶体完整}（晶胞内原子数仍为 $n$），则由测得的宏观密度 $\rho$ 反推的``分子量''为
+    \begin{equation}
+    m' = \frac{\rho\,v_{\mathrm{cell}}\,N_{\!A}}{n},
+    \end{equation}
+    称为\textbf{表观分子量}。由于 $v_{\mathrm{cell}}$ 被空位膨胀高估，$m'$ 会\textbf{偏小}。
+    \item \textbf{化学法}：通过化学分析确定晶体中各元素的原子比例，直接计算出\textbf{真实分子量} $m$（与体积无关）。
+\end{itemize}
 
-设真实分子量为 $m$（无缺陷时的理论值，化学法测得），表观分子量为 $m'$（X 射线数据计算值）。由密度公式
+\textit{定量关系。}设空位浓度为 $c=n/N$。由 Step 2，体积相对膨胀 $\Delta V/V_0 = c$，即 $V = V_0(1+c)$。
+
+实际晶体的质量等于完整晶体质量乘以 $(1-c)$（少了 $c$ 比例的原子），故实际密度
 \begin{equation}
-\rho = \frac{M}{V} = \frac{m'N_{\!A}}{v_{\mathrm{cell}}},\qquad
-\rho_0 = \frac{mN_{\!A}}{v_{\mathrm{cell}}},
+\rho = \frac{M}{V} = \frac{M_0(1-c)}{V_0(1+c)} \approx \rho_0(1-2c)\quad(c\ll 1).
 \end{equation}
-得
+
+表观分子量 $m'$ 用实际密度 $\rho$ 和膨胀体积 $V$ 计算，相当于假设原子完整：
 \begin{equation}
-\frac{m}{m'} = \frac{\rho_0}{\rho} = \frac{V}{V_0}.
+m' = \frac{\rho V}{n/N_{\!A}} = \frac{M_0(1-c)}{n/N_{\!A}} = m(1-c).
 \end{equation}
-即真实分子量与表观分子量之比等于晶体实际体积与理想体积之比。
+真实分子量 $m$ 对应完整晶体。因此
+\begin{equation}
+\frac{m}{m'} = \frac{1}{1-c} \approx 1+c = \frac{V}{V_0}.
+\end{equation}
+\textbf{关键结论}：真实分子量与表观分子量之比等于实际体积与理想体积之比，直接给出缺陷浓度 $c = m/m' - 1$。
 
 \textit{计算缺陷浓度。}已知
 \begin{equation}
@@ -126,23 +140,8 @@ k_{\!B} &= 8.617\times 10^{-5}\,\mathrm{eV/K},\\
 u = 2\times 8.617\times 10^{-5}\times 1073\times 7.80
 \approx \boxed{1.44\,\mathrm{eV}}.
 \end{equation}
-\textit{注}：NaCl 肖特基缺陷形成能的实验值约为 $2.0\sim 2.5\,\mathrm{eV}$。本题数据简化处理得到的 $1.44\,\mathrm{eV}$ 为估算数量级。若按教材原始数据 $k_{\!B}=8.615\times 10^{-5}\,\mathrm{eV/K}$ 并取 $\ln 2439\approx 7.799$，可得 $u\approx 1.44\,\mathrm{eV}$。
+\textit{注}：NaCl 肖特基缺陷形成能的实验值约为 $2.0\sim 2.5\,\mathrm{eV}$。本题数据为简化处理，得到的 $1.44\,\mathrm{eV}$ 仅为估算数量级。
 \end{derivationbox}
-
-\begin{formulabox}[答案汇总]
-\begin{center}
-\begin{tabular}{ll}
-\toprule
-\textbf{问题} & \textbf{答案} \\
-\midrule
-(1) 平衡浓度 & $n = N e^{-u/2k_{\!B}T}$ \\
-(2) 体积相对变化 & $\displaystyle\frac{\Delta V}{V_0} = \frac{n}{N} = e^{-u/2k_{\!B}T}$ \\
-(3) $800^{\circ}\mathrm{C}$ 缺陷浓度 & $n/N = 4.1\times 10^{-4}$ \\
-(3) 形成能 & $u \approx 1.44\,\mathrm{eV}$ \\
-\bottomrule
-\end{tabular}
-\end{center}
-\end{formulabox}
 
 \begin{insightbox}[物理图像：为什么肖特基缺陷会增大体积？]
 弗仑克尔缺陷是内部原子在晶体内部``搬家''（格点$\to$间隙），晶体总体积\textbf{不变}——原子没离开晶体，只是换了位置。
