@@ -1,0 +1,182 @@
+% ============================================================
+% Section 62: 掺杂杂质晶格位置的实验判定
+% ============================================================
+\newpage
+\section{固体理论：掺杂杂质晶格位置的实验判定}
+\label{sec:doping-site-determination}
+
+\begin{modelbox}[题目：硅中硼杂质的间隙式/替位式判断]
+单晶硅晶格常数 $a=5.4295\,\text{\AA}$，密度 $\rho=2.3306\times 10^{3}\,\mathrm{kg/m^{3}}$。当掺入 $0.314\%$（原子百分比）硼后，晶格常数减少了 $0.0046\,\text{\AA}$，密度增加了 $1.54\,\mathrm{kg/m^{3}}$。掺杂硼前后均在 $T=293\,\mathrm{K}$ 下进行测量。试用这些数据判断掺入的硼在硅中是间隙式或替位式杂质。（硼原子量 $10.811$，硅原子量 $28.086$。）
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{晶体结构}：硅为金刚石结构，每个惯用晶胞含 $8$ 个原子
+    \item \textbf{两种掺杂模型}：
+    \begin{itemize}
+        \item 替位式：硼占据硅格点，晶胞内总原子数不变（$8$ 个），质量减少（轻原子取代重原子）
+        \item 间隙式：硼进入间隙位置，晶胞内硅原子数仍为 $8$，额外增加硼原子，质量增加
+    \end{itemize}
+    \item \textbf{关键对比量}：理论密度与实测密度的偏差，而非绝对值
+    \item \textbf{原子百分比}：$x = N_B/(N_{\mathrm{Si}}+N_B) = 0.00314$，需正确换算为晶胞内的原子数
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 实验数据整理}
+
+掺杂后硅晶体的实测参数：
+\begin{align}
+\rho' &= 2.3306\times 10^{3} + 1.54 = 2332.14\,\mathrm{kg/m^{3}},\\
+a' &= 5.4295 - 0.0046 = 5.4249\,\text{\AA} = 5.4249\times 10^{-10}\,\mathrm{m}.
+\end{align}
+
+\textbf{Step 2: 晶胞内的原子数}
+
+硅为金刚石结构，每个惯用晶胞含 $8$ 个格点。设硼的原子百分比为 $x=0.314\%=0.00314$。
+
+\textit{替位式模型}：硼取代硅格点，晶胞内总原子数仍为 $8$。
+\begin{equation}
+N_{\mathrm{Si}}^{(\mathrm{sub})} = 8(1-x) = 7.9488,\qquad
+N_B^{(\mathrm{sub})} = 8x = 0.02512.
+\end{equation}
+
+\textit{间隙式模型}：硅原子仍在 $8$ 个格点上，硼进入间隙位置。
+设晶胞内硼原子数为 $N_B^{(\mathrm{int})}$，则
+\begin{equation}
+\frac{N_B^{(\mathrm{int})}}{8+N_B^{(\mathrm{int})}} = x
+\quad\Longrightarrow\quad
+N_B^{(\mathrm{int})} = \frac{8x}{1-x} \approx 8x(1+x) \approx 0.02520.
+\end{equation}
+（$x\ll 1$ 时 $N_B^{(\mathrm{int})}\approx N_B^{(\mathrm{sub})}$，差异仅约 $0.3\%$。）
+
+\textbf{Step 3: 两种模型的理论密度}
+
+晶胞体积 $V = (a')^{3}$。理论密度公式为
+\begin{equation}
+\rho = \frac{\text{晶胞总质量}}{V}
+= \frac{N_{\mathrm{Si}}M_{\mathrm{Si}} + N_B M_B}{N_{\!A}\,V},
+\end{equation}
+其中 $N_{\!A}=6.022\times 10^{23}\,\mathrm{mol^{-1}}$，质量以 $\mathrm{g}$ 为单位，最后乘以 $10^{-3}$ 换算为 $\mathrm{kg/m^{3}}$。
+
+\textit{替位式模型}：
+\begin{align}
+\rho_{\mathrm{sub}}
+&= \frac{8(1-x)M_{\mathrm{Si}} + 8x M_B}{N_{\!A}(a')^{3}}\times 10^{-3}\,\mathrm{kg/m^{3}} \notag\\
+&= \frac{7.9488\times 28.086 + 0.02512\times 10.811}{6.022\times 10^{23}\times(5.4249\times 10^{-10})^{3}}\times 10^{-3} \notag\\
+&\approx \frac{223.562}{9.614\times 10^{-2}} \notag\\
+&\approx \boxed{2325\,\mathrm{kg/m^{3}}}.
+\label{eq:sub-density}
+\end{align}
+
+\textit{间隙式模型}：
+\begin{align}
+\rho_{\mathrm{int}}
+&= \frac{8M_{\mathrm{Si}} + \frac{8x}{1-x}M_B}{N_{\!A}(a')^{3}}\times 10^{-3}\,\mathrm{kg/m^{3}} \notag\\
+&= \frac{8\times 28.086 + 0.02520\times 10.811}{6.022\times 10^{23}\times(5.4249\times 10^{-10})^{3}}\times 10^{-3} \notag\\
+&\approx \frac{224.960}{9.614\times 10^{-2}} \notag\\
+&\approx \boxed{2340\,\mathrm{kg/m^{3}}}.
+\label{eq:int-density}
+\end{align}
+
+\textit{数值速算}：直接利用 $N_{\!A}(a')^{3}\approx 9.614\times 10^{-2}\,\mathrm{m^{3}/mol}$，分子单位为 $\mathrm{g/mol}$，结果自然为 $\mathrm{kg/m^{3}}$。
+
+\textbf{Step 4: 结果比较与结论}
+
+\begin{center}
+\begin{tabular}{lccc}
+\toprule
+\textbf{模型} & \textbf{计算密度} $(\mathrm{kg/m^{3}})$ & \textbf{实测密度} $(\mathrm{kg/m^{3}})$ & \textbf{偏差} \\
+\midrule
+间隙式 & $2340$ & $2332.14$ & $+7.86$ \\
+替位式 & $2325$ & $2332.14$ & $-7.14$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+两种模型的计算值都与实测值有一定偏差，但\textbf{相对变化趋势}是关键：
+\begin{itemize}
+    \item 间隙式：额外增加轻硼原子，晶格常数又减小（体积收缩），密度应\textbf{显著上升}
+    \item 替位式：轻硼取代重硅，质量减少，但体积也收缩，密度变化\textbf{相对温和}
+\end{itemize}
+
+实测密度从 $2330.6$ 仅增加到 $2332.14$（增幅 $0.07\%$），这与替位式模型的预期一致。间隙式模型预测的密度增幅过大（约 $0.4\%$），与实验不符。
+
+或者，更精确地对比：
+\begin{itemize}
+    \item 替位式模型预测密度 $2325\,\mathrm{kg/m^{3}}$，实测 $2332.14\,\mathrm{kg/m^{3}}$，差距 $7.14\,\mathrm{kg/m^{3}}$
+    \item 间隙式模型预测密度 $2340\,\mathrm{kg/m^{3}}$，实测 $2332.14\,\mathrm{kg/m^{3}}$，差距 $7.86\,\mathrm{kg/m^{3}}$
+\end{itemize}
+
+两种模型的绝对偏差相近，但\textbf{方向}不同：替位式计算值偏低（质量被高估减少），间隙式计算值偏高（质量被高估增加）。考虑到晶格常数测量误差和原子百分比的精度，替位式模型的偏差方向与物理图像更自洽。
+
+\textbf{结论}：\textit{硼在硅中为替位式杂质。}
+\end{derivationbox}
+
+\begin{formulabox}[核心公式与数值]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{参数} & \textbf{数值} \\
+\midrule
+掺杂后晶格常数 $a'$ & $5.4249\,\text{\AA}$ \\
+掺杂后密度 $\rho'$ & $2332.14\,\mathrm{kg/m^{3}}$ \\
+替位式理论密度 $\rho_{\mathrm{sub}}$ & $\approx 2325\,\mathrm{kg/m^{3}}$ \\
+间隙式理论密度 $\rho_{\mathrm{int}}$ & $\approx 2340\,\mathrm{kg/m^{3}}$ \\
+\midrule
+\textbf{判断} & \textbf{替位式} \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像：为什么替位式更合理？]
+从两种模型的物理图像定性分析：
+
+\textbf{替位式}（轻原子取代重原子）：
+\begin{itemize}
+    \item 质量效应：$M_B < M_{\mathrm{Si}}$，单个晶胞质量减小 $\rightarrow$ 密度下降
+    \item 体积效应：硼原子半径小于硅，晶格收缩（$a' < a$）$\rightarrow$ 密度上升
+    \item 竞争结果：实测密度微增，说明体积收缩效应略占优
+\end{itemize}
+
+\textbf{间隙式}（额外原子挤入间隙）：
+\begin{itemize}
+    \item 质量效应：额外增加硼原子 $\rightarrow$ 密度上升
+    \item 体积效应：间隙原子推开周围晶格，通常导致晶格膨胀；但实测晶格收缩
+    \item 矛盾：间隙杂质一般引起晶格膨胀，而实验观察到收缩
+\end{itemize}
+
+\textbf{双重判据}：密度变化 + 晶格常数变化的\textbf{符号组合}是判断掺杂位置的关键：
+\begin{center}
+\begin{tabular}{lcc}
+\toprule
+\textbf{掺杂类型} & \textbf{晶格常数} & \textbf{密度变化} \\
+\midrule
+替位式（小原子取代大原子） & 收缩（$-$） & 温和上升或下降 \\
+替位式（大原子取代小原子） & 膨胀（$+$） & 温和上升 \\
+间隙式 & 通常膨胀（$+$） & 显著上升 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{insightbox}
+
+\begin{thinkbox}[考场速记：杂质位置判定的速算技巧]
+遇到``判断杂质是间隙式还是替位式''的问题：
+\begin{enumerate}
+    \item \textbf{确定晶体结构}：写出每个晶胞的原子数（金刚石 $8$、NaCl $4$、CsCl $1$ 对等）
+    \item \textbf{正确换算浓度}：
+    \begin{itemize}
+        \item 替位式：晶胞总原子数不变，$N_{\mathrm{imp}} = N_{\mathrm{total}}\times x$
+        \item 间隙式：$N_{\mathrm{host}}$ 不变，$N_{\mathrm{imp}} = N_{\mathrm{host}}\times x/(1-x)$
+    \end{itemize}
+    \item \textbf{列出密度公式}：$\rho = \frac{\sum N_i M_i}{N_{\!A}a^{3}}\times 10^{-3}\,\mathrm{kg/m^{3}}$
+    \item \textbf{定性预判}（省时间）：
+    \begin{itemize}
+        \item 间隙式必增质量，密度增幅大
+        \item 替位式：轻取代重 $\rightarrow$ 质量减、密度可能降；重取代轻 $\rightarrow$ 质量增、密度升
+    \end{itemize}
+    \item \textbf{结合晶格常数变化方向}判断：间隙式通常伴随晶格膨胀（$a$ 增大），若实测 $a$ 减小则大概率是替位式
+\end{enumerate}
+\textit{常见错误}：忽略原子百分比的定义，错误地认为间隙式晶胞内也是 $N_{\mathrm{host}}(1-x)$ 个宿主原子。间隙式中宿主原子数不变（仍占满格点），只是总原子数增加了。
+\end{thinkbox}
