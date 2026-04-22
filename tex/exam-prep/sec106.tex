@@ -1,0 +1,103 @@
+% ============================================================
+% Section 106: 朗之万顺电理论与德拜弛豫
+% ============================================================
+\section{统计物理：朗之万顺电理论与德拜弛豫}
+\label{sec:langevin-polarization}
+
+\begin{modelbox}[题目：固有电偶极子气体的极化与水的介电响应]
+(1) 利用经典统计力学，计算 $N$ 个独立的固有电偶极子（电矩为 $p$）组成的气体的总极化强度；
+(2) 证明在弱场时，每个电偶极子的取向极化率与温度成反比；
+(3) 水是极性分子，讨论高频及低频时上述现象对其介电常数的影响。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{玻尔兹曼统计}：$P(\theta)\propto e^{-U/k_BT}\sin\theta\,d\theta$
+    \item \textbf{朗之万函数}：$L(\beta)=\coth\beta-1/\beta$
+    \item \textbf{弱场展开}：$L(\beta)\approx\beta/3$，得居里定律 $\alpha=p^2/(3k_BT)$
+    \item \textbf{德拜弛豫}：$\varepsilon(\omega)=\varepsilon_\infty+(\varepsilon_s-\varepsilon_\infty)/(1+i\omega\tau)$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 总极化强度的计算}
+
+偶极子与外场夹角为 $\theta$ 时，势能 $U=-pE\cos\theta$。沿电场方向的平均电矩
+\begin{equation}
+\langle p\rangle=\frac{\int_0^\pi p\cos\theta\,e^{pE\cos\theta/k_BT}\,2\pi\sin\theta\,d\theta}
+{\int_0^\pi e^{pE\cos\theta/k_BT}\,2\pi\sin\theta\,d\theta}.
+\end{equation}
+
+令 $x=\cos\theta$，$\beta=pE/k_BT$，积分化为
+\begin{equation}
+\langle p\rangle=p\,\frac{\int_{-1}^1 xe^{\beta x}dx}{\int_{-1}^1 e^{\beta x}dx}.
+\end{equation}
+
+计算得
+\begin{equation}
+\int_{-1}^1 e^{\beta x}dx=\frac{2\sinh\beta}{\beta},\qquad
+\int_{-1}^1 xe^{\beta x}dx=\frac{2(\beta\cosh\beta-\sinh\beta)}{\beta^2}.
+\end{equation}
+
+因此
+\begin{equation}
+\langle p\rangle=p\bigl(\coth\beta-\tfrac{1}{\beta}\bigr)\equiv p\,L(\beta),
+\end{equation}
+其中 $L(\beta)$ 为\textbf{朗之万函数}。$N$ 个偶极子的总极化强度
+\begin{equation}
+\boxed{P=Np\,L(\beta)=Np\left(\coth\frac{pE}{k_BT}-\frac{k_BT}{pE}\right).}
+\end{equation}
+
+\textbf{(2) 弱场下的取向极化率}
+
+弱场时 $\beta\ll1$，展开 $L(\beta)=\beta/3-\beta^3/45+\cdots$，故
+\begin{equation}
+\langle p\rangle\approx\frac{p^2E}{3k_BT}.
+\end{equation}
+
+取向极化率定义为 $\langle p\rangle=\alpha E$，因此
+\begin{equation}
+\boxed{\alpha=\frac{p^2}{3k_BT}\propto\frac{1}{T}.}
+\end{equation}
+此即\textbf{居里定律}：极性气体的电极化率与绝对温度成反比。
+
+\textbf{(3) 水的介电常数频率依赖}
+
+水是强极性分子，偶极子取向需要克服分子间相互作用，是一个弛豫过程，特征时间为 $\tau$。
+
+\textbf{低频}（$\omega\tau\ll1$）：偶极子有充足时间跟随电场取向，取向极化完全建立。介电常数实部达到静态值 $\varepsilon_s$，损耗极小。
+\begin{equation}
+\varepsilon'\approx\varepsilon_s,\qquad\varepsilon''\approx0.
+\end{equation}
+
+\textbf{高频}（$\omega\tau\gg1$）：电场变化太快，偶极子完全来不及响应。取向极化无贡献，仅剩电子极化等瞬时机制，介电常数降至高频极限 $\varepsilon_\infty$。
+\begin{equation}
+\varepsilon'\approx\varepsilon_\infty,\qquad\varepsilon''\approx0.
+\end{equation}
+
+\textbf{中间频率}（$\omega\tau\sim1$）：偶极子取向存在显著相位滞后，介质损耗 $\varepsilon''$ 达到最大，$\varepsilon'$ 从 $\varepsilon_s$ 陡降至 $\varepsilon_\infty$——称为\textbf{德拜弛豫区}。
+
+实例：常温下水的 $\tau\approx8\times10^{-12}\,$s，弛豫频率约 $20\,$GHz。微波炉频率 $2.45\,$GHz 正位于此区，水分子取向滞后产生显著介电损耗，将电磁能转化为热能——这正是微波加热的基本原理。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{项目} & \textbf{结果} \\
+\midrule
+总极化强度 & $P=Np\bigl(\coth\beta-1/\beta\bigr)$，$\beta=pE/k_BT$ \\
+弱场极化率 & $\alpha=p^2/(3k_BT)\propto T^{-1}$（居里定律） \\
+低频介电常数 & $\varepsilon'\approx\varepsilon_s$，损耗极小 \\
+高频介电常数 & $\varepsilon'\approx\varepsilon_\infty$，取向极化无贡献 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 朗之万顺电理论是经典统计力学处理偶极子取向的典范，与顺磁性的布里渊函数同源。居里定律揭示了热运动对有序取向的破坏作用。
+    \item 德拜弛豫模型成功描述了极性液体介电常数的频率依赖关系，是介电谱学和微波工程的理论基础。水在 GHz 频段的强吸收是生物组织微波热疗和微波炉设计的核心物理。
+\end{itemize}
+\end{insightbox}

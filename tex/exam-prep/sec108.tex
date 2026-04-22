@@ -1,0 +1,118 @@
+% ============================================================
+% Section 108: 洛伦兹振子模型与群速度超光速
+% ============================================================
+\section{电磁学：洛伦兹振子模型与群速度超光速}
+\label{sec:lorentz-oscillator}
+
+\begin{modelbox}[题目：阻尼谐振子的色散、吸收与信号传播]
+一固体由全同原子组成，每个原子可看作电荷为 $q$、质量为 $m$ 的电子被弹性常数 $\kappa$ 的弹簧固定，阻尼力为 $-b\dot{\bm{r}}$。原子浓度为 $N$，电磁波频率为 $\omega$。令 $\omega_0^2=\kappa/m$，$\gamma=b/m$，$\omega_p^2=4\pi Nq^2/m$（CGS）。
+
+(1) 计算折射率 $\tilde{n}(\omega)$；
+(2) 画出低密度极限下 $\tilde{n}(\omega)$ 的实部和虚部；
+(3) 共振时（$\omega=\omega_0$），计算低密度极限下固体中的衰减长度；
+(4) 在共振附近，群速度可以超过光速，解释为什么这不违背因果律。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{受迫振子方程}：$m\ddot{r}+b\dot{r}+\kappa r=-qE$
+    \item \textbf{极化与介电函数}：$P=-Nqr$，$\varepsilon=1+4\pi P/E$
+    \item \textbf{复折射率}：$\tilde{n}^2=\varepsilon$，分离实部 $n$ 和虚部 $\eta$
+    \item \textbf{群速度失效}：强吸收区波包畸变，群速度不代表能量传播速度
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 复折射率的计算}
+
+电子在电场 $E=E_0e^{-i\omega t}$ 中的受迫振动方程
+\begin{equation}
+m\ddot{r}+b\dot{r}+\kappa r=-qE_0e^{-i\omega t}.
+\end{equation}
+
+设稳态解 $r=r_0e^{-i\omega t}$，代入得
+\begin{equation}
+(-m\omega^2-i\omega b+\kappa)r_0=-qE_0
+\quad\Longrightarrow\quad
+r=\frac{-q/m}{\omega_0^2-\omega^2-i\gamma\omega}E.
+\end{equation}
+
+极化强度 $P=-Nqr$，故
+\begin{equation}
+P=\frac{Nq^2}{m}\frac{1}{\omega_0^2-\omega^2-i\gamma\omega}E.
+\end{equation}
+
+在 CGS 单位制中，$\chi=4\pi P/E$，介电函数
+\begin{equation}
+\varepsilon(\omega)=1+\chi=1+\frac{\omega_p^2}{\omega_0^2-\omega^2-i\gamma\omega}.
+\end{equation}
+
+复折射率 $\tilde{n}=n-i\eta$ 满足 $\tilde{n}^2=\varepsilon$，因此
+\begin{equation}
+\boxed{\tilde{n}(\omega)=\sqrt{1+\frac{\omega_p^2}{\omega_0^2-\omega^2-i\gamma\omega}}.}
+\end{equation}
+
+\textbf{(2) 低密度极限下的实部和虚部}
+
+低密度时 $\omega_p\ll\omega_0,\gamma$，$\varepsilon\approx1$。展开得
+\begin{align}
+n^2-\eta^2&=1+\frac{\omega_p^2(\omega_0^2-\omega^2)}{(\omega_0^2-\omega^2)^2+\gamma^2\omega^2},\\
+2n\eta&=\frac{\omega_p^2\gamma\omega}{(\omega_0^2-\omega^2)^2+\gamma^2\omega^2}.
+\end{align}
+
+近似 $n\approx1$，$\eta\ll1$：
+\begin{itemize}
+    \item \textbf{实部} $n(\omega)$：在 $\omega_0$ 附近呈反常色散（S 形，先升后降）。
+    \item \textbf{虚部} $\eta(\omega)$：在 $\omega=\omega_0$ 处出现洛伦兹吸收峰，峰宽 $\sim\gamma$。
+\end{itemize}
+
+\textbf{(3) 共振时的衰减长度}
+
+$\omega=\omega_0$ 时，$n^2-\eta^2=1$，$2n\eta=\omega_p^2/(\gamma\omega_0)$。低密度下 $n\approx1$，故
+\begin{equation}
+\eta\approx\frac{\omega_p^2}{2\gamma\omega_0}.
+\end{equation}
+
+吸收系数 $\alpha=2\omega\eta/c=\omega_p^2/(c\gamma)$。衰减长度（光强衰减至 $1/e$ 的距离）
+\begin{equation}
+\boxed{l=\frac{1}{\alpha}=\frac{c\gamma}{\omega_p^2}.}
+\end{equation}
+
+\textbf{(4) 群速度超光速与因果律}
+
+由 $k=\omega\tilde{n}/c$，群速度
+\begin{equation}
+v_g=\frac{d\omega}{dk}=\frac{c}{\tilde{n}+\omega\,d\tilde{n}/d\omega}.
+\end{equation}
+
+在 $\omega_0$ 附近色散剧烈，$d\tilde{n}/d\omega$ 为很大的负值，可使分母小于 1，从而 $v_g>c$。
+
+\textbf{不违背因果律的原因}：
+\begin{itemize}
+    \item \textbf{群速度失效}：在强吸收和反常色散区，波包传播过程中严重畸变，群速度不再是能量传播速度的有效描述。
+    \item \textbf{信号速度}：因果律要求的是信号波前不能以超光速传播。波前速度由 $\omega\to\infty$ 时的折射率决定（$\tilde{n}\to1$），故波前始终以 $c$ 传播。
+    \item $v_g>c$ 是色散引起的干涉效应，不传递信息和能量，因此与狭义相对论无矛盾。
+\end{itemize}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{项目} & \textbf{结果} \\
+\midrule
+复折射率 & $\displaystyle\tilde{n}(\omega)=\sqrt{1+\frac{\omega_p^2}{\omega_0^2-\omega^2-i\gamma\omega}}$ \\
+实部/虚部曲线 & 实部：反常色散（S 形）；虚部：洛伦兹吸收峰 \\
+共振衰减长度 & $l=c\gamma/\omega_p^2$ \\
+群速度超光速 & 强吸收区群速度失效；信号/能量速度仍 $\le c$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 洛伦兹振子模型是经典色散理论的基础，成功描述了绝缘体和半导体在带间跃迁区的光学性质。复折射率的虚部对应吸收，实部对应色散。
+    \item 群速度超光速是反常色散区的常见现象，属于``赝超光速''。在吸收带内使用群速度概念需格外谨慎——能量传播速度应由信号速度或坡印廷矢量定义，它们始终不超过光速 $c$。
+\end{itemize}
+\end{insightbox}

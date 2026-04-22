@@ -1,0 +1,103 @@
+% ============================================================
+% Section 107: 自由电子气的介电常数与金属钠的截止波长
+% ============================================================
+\section{固体理论：自由电子气的介电常数与截止波长}
+\label{sec:free-electron-dielectric}
+
+\begin{modelbox}[题目：自由电子气介电函数与金属光学透明性]
+(1) 导出浓度为 $n$ 的自由电子气的介电常数
+\begin{equation}
+\varepsilon(\omega)=1-\frac{\omega_p^2}{\omega^2},\qquad\omega_p^2=\frac{ne^2}{\varepsilon_0 m};
+\end{equation}
+(2) 说明金属对 $\omega<\omega_p$ 的光不透明；
+(3) 计算金属钠的截止波长（钠的原胞体积为 $35\times10^{-30}\,\text{m}^3$）。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{电子运动方程}：$m\ddot{x}=-eE_0e^{-i\omega t}$
+    \item \textbf{极化强度}：$P=-nex$
+    \item \textbf{介电函数}：$\varepsilon=1+P/(\varepsilon_0E)=1-\omega_p^2/\omega^2$
+    \item \textbf{不透明条件}：$\varepsilon<0$ 时折射率纯虚，波指数衰减
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 自由电子气介电常数的推导}
+
+在交变电场 $E=E_0e^{-i\omega t}$ 中，电子运动方程（忽略阻尼）
+\begin{equation}
+m\frac{d^2x}{dt^2}=-eE_0e^{-i\omega t}.
+\end{equation}
+
+设稳态解 $x=x_0e^{-i\omega t}$，代入得
+\begin{equation}
+-m\omega^2x_0=-eE_0\quad\Longrightarrow\quad x_0=\frac{eE_0}{m\omega^2}.
+\end{equation}
+
+电子位移产生极化强度 $P=-nex$，故
+\begin{equation}
+P=-n e\cdot\frac{eE_0}{m\omega^2}e^{-i\omega t}=-\frac{ne^2}{m\omega^2}E.
+\end{equation}
+
+由 $\varepsilon=1+\chi=1+P/(\varepsilon_0E)$，得
+\begin{equation}
+\boxed{\varepsilon(\omega)=1-\frac{ne^2}{\varepsilon_0m\omega^2}\equiv1-\frac{\omega_p^2}{\omega^2},}
+\end{equation}
+其中 $\omega_p=\sqrt{ne^2/(\varepsilon_0m)}$ 为\textbf{等离子体频率}。
+
+\textbf{(2) 金属对 $\omega<\omega_p$ 的光不透明}
+
+复折射率 $\tilde{n}$ 满足 $\tilde{n}^2=\varepsilon$。当 $\omega<\omega_p$ 时，$\omega_p^2/\omega^2>1$，故 $\varepsilon<0$。
+
+此时 $\tilde{n}=i\kappa$ 为纯虚数（$\kappa>0$）。电磁波传播因子
+\begin{equation}
+e^{i(kz-\omega t)}=e^{i(\tilde{n}\omega z/c-\omega t)}=e^{-\kappa\omega z/c}e^{-i\omega t},
+\end{equation}
+呈指数衰减——波在极短距离内被反射或吸收，无法穿透金属。因此金属对 $\omega<\omega_p$ 的电磁波\textbf{不透明}，呈现高反射率（金属光泽）。
+
+当 $\omega>\omega_p$ 时，$\varepsilon>0$，折射率为实数，金属变得透明（如碱金属在紫外的透明现象）。
+
+\textbf{(3) 金属钠的截止波长}
+
+钠为单价金属，每个原胞含 1 个原子，贡献 1 个自由电子。由题给原胞体积 $V=35\times10^{-30}\,\text{m}^3$：
+\begin{equation}
+n=\frac{1}{V}\approx2.86\times10^{28}\,\text{m}^{-3}.
+\end{equation}
+
+等离子体频率
+\begin{equation}
+\omega_p=\sqrt{\frac{ne^2}{\varepsilon_0m}}
+=\sqrt{\frac{2.86\times10^{28}\times(1.6\times10^{-19})^2}{8.85\times10^{-12}\times9.11\times10^{-31}}}
+\approx9.5\times10^{15}\,\text{rad/s}.
+\end{equation}
+
+截止波长
+\begin{equation}
+\lambda_p=\frac{2\pi c}{\omega_p}
+=\frac{2\pi\times3\times10^8}{9.5\times10^{15}}
+\approx\boxed{1.98\times10^{-7}\,\text{m}\approx1980\,\text{\AA}.}
+\end{equation}
+（更精确计算得约 $1976\,\text{\AA}$。）该波长位于紫外波段，故钠对可见光不透明，呈现金属光泽；对波长 $<2000\,\text{\AA}$ 的紫外光则透明。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{项目} & \textbf{结果} \\
+\midrule
+介电常数 & $\varepsilon(\omega)=1-\omega_p^2/\omega^2$ \\
+不透明机制 & $\omega<\omega_p$ 时 $\varepsilon<0$，折射率虚数，波指数衰减 \\
+钠截止波长 & $\lambda_p\approx1976\,\text{\AA}$（紫外） \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 德鲁德自由电子模型预言了金属的等离子体频率和紫外透明现象，是金属光学和等离子体光子学的理论基础。
+    \item 等离子体频率由电子密度唯一决定：碱金属 $n$ 较小，$\omega_p$ 较低，截止波长在紫外；贵金属（Cu、Ag、Au）因 $d$ 带电子参与，有效 $n$ 更大，$\omega_p$ 落入可见光区，呈现特征颜色。
+\end{itemize}
+\end{insightbox}
