@@ -1,0 +1,99 @@
+% ============================================================
+% Section 105: NaCl晶体的X射线衍射与系统消光
+% ============================================================
+\section{固体理论：NaCl晶体的X射线衍射与系统消光}
+\label{sec:nacl-diffraction}
+
+\begin{modelbox}[题目：NaCl衍射峰的选择定则与强度比较]
+面心立方结构晶体氯化钠（NaCl）由 Na$^+$ 和 Cl$^-$ 组成，钠和氯的原子序数分别是 11 和 17。
+
+决定哪组 X 射线衍射能被观察到（对于通常的立方原胞）；在这些衍射中，哪一组强，哪一组弱？
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{NaCl结构}：Na$^+$ 和 Cl$^-$ 各自构成 FCC 子晶格，沿 $(a/2,0,0)$ 套构
+    \item \textbf{结构因子}：$F_{hkl}=\sum_j f_j e^{2\pi i(hx_j+ky_j+lz_j)}$
+    \item \textbf{FCC消光规律}：$h,k,l$ 必须同奇同偶，否则消光
+    \item \textbf{强度差异}：全偶 $F\propto f_{\text{Na}}+f_{\text{Cl}}$（强）；全奇 $F\propto f_{\text{Na}}-f_{\text{Cl}}$（弱）
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: NaCl的晶体结构与离子坐标}
+
+NaCl 由 Na$^+$ 和 Cl$^-$ 各自的 FCC 子晶格沿 $(a/2,0,0)$ 套构而成。在惯用立方原胞（边长 $a$）中，8 个离子的分数坐标为：
+
+\textbf{Na$^+$（4个）}：$(0,0,0)$，$(0,\tfrac12,\tfrac12)$，$(\tfrac12,0,\tfrac12)$，$(\tfrac12,\tfrac12,0)$。
+
+\textbf{Cl$^-$（4个）}：$(\tfrac12,0,0)$，$(0,\tfrac12,0)$，$(0,0,\tfrac12)$，$(\tfrac12,\tfrac12,\tfrac12)$。
+
+\textbf{Step 2: 几何结构因子}
+
+衍射强度正比于结构因子的模平方 $I_{hkl}\propto|F_{hkl}|^2$，其中
+\begin{equation}
+F_{hkl}=\sum_j f_j\,e^{2\pi i(hx_j+ky_j+lz_j)}.
+\end{equation}
+
+代入坐标并利用 $e^{\pi im}=(-1)^m$：
+\begin{align}
+F_{hkl}&=f_{\text{Na}}\bigl[1+(-1)^{k+l}+(-1)^{h+l}+(-1)^{h+k}\bigr]\notag\\
+&\quad+f_{\text{Cl}}\bigl[(-1)^h+(-1)^k+(-1)^l+(-1)^{h+k+l}\bigr].
+\end{align}
+
+\textbf{Step 3: 消光规律与强度分析}
+
+分三种情况讨论：
+
+\textbf{(i) $h,k,l$ 奇偶混合}：两个括号内的求和均因相位不同而抵消，$F_{hkl}=0$。\textbf{无衍射（消光）。}
+
+\textbf{(ii) $h,k,l$ 全为偶数}：所有 $(-1)^{\text{偶数}}=1$，
+\begin{equation}
+F_{hkl}=4f_{\text{Na}}+4f_{\text{Cl}}=4(f_{\text{Na}}+f_{\text{Cl}}).
+\end{equation}
+两离子散射波\textbf{同相叠加}，强度
+\begin{equation}
+I\propto16(f_{\text{Na}}+f_{\text{Cl}})^2\quad\text{—— 强衍射}.
+\end{equation}
+
+\textbf{(iii) $h,k,l$ 全为奇数}：所有 $(-1)^{\text{奇数}}=-1$，
+\begin{equation}
+F_{hkl}=4f_{\text{Na}}-4f_{\text{Cl}}=4(f_{\text{Na}}-f_{\text{Cl}}).
+\end{equation}
+两离子散射波\textbf{反相叠加}，部分抵消，强度
+\begin{equation}
+I\propto16(f_{\text{Na}}-f_{\text{Cl}})^2\quad\text{—— 弱衍射}.
+\end{equation}
+
+\textbf{Step 4: 强度比较}
+
+原子散射因子近似正比于原子序数 $Z$。Na 的 $Z=11$，Cl 的 $Z=17$，故 $f_{\text{Cl}}>f_{\text{Na}}$。
+
+以 $f_{\text{Cl}}/f_{\text{Na}}\approx17/11\approx1.55$ 估算，全奇数衍射强度约为全偶数的
+\begin{equation}
+\left(\frac{17-11}{17+11}\right)^2=\left(\frac{6}{28}\right)^2\approx0.046\;(4.6\%),
+\end{equation}
+确为弱衍射。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{衍射指数} & \textbf{结构因子} & \textbf{强度} & \textbf{备注} \\
+\midrule
+$h,k,l$ 奇偶混合 & $0$ & 无（消光） & 系统消光 \\
+全偶数 & $4(f_{\text{Na}}+f_{\text{Cl}})$ & 强 & 同相叠加 \\
+全奇数 & $4(f_{\text{Na}}-f_{\text{Cl}})$ & 弱 & 反相抵消 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item NaCl 的衍射谱中只出现全奇或全偶指数的衍射峰，这是面心立方布拉维格子的消光规律（$h,k,l$ 必须同奇同偶）与复式格子附加消光的共同结果。
+    \item 全偶数峰来自 Na$^+$ 和 Cl$^-$ 的散射同相叠加，强度大；全奇数峰来自两者反相叠加，由于散射因子差异未完全抵消，呈现弱峰。
+    \item 这种强度差异是区分 NaCl 结构中离子位置、验证晶体结构模型的重要实验依据。若将 NaCl 误认为是简单立方（如 CsCl 型），则衍射规律将完全不同。
+\end{itemize}
+\end{insightbox}
