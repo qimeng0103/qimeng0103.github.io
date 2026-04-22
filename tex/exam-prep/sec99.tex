@@ -1,0 +1,129 @@
+% ============================================================
+% Section 99: 磁场中金属的电阻率张量与螺旋波色散
+% ============================================================
+\section{固体理论：磁场中金属的电阻率张量与螺旋波}
+\label{sec:resistivity-tensor-helicon}
+
+\begin{modelbox}[题目：磁场中金属的电阻率张量与低频电磁波色散]
+一块 $\mu=1$ 的金属置于均匀静磁场 $\bm{B}=B_0\hat{\bm{z}}$ 中，导电电子可看作散射时间为 $\tau$、数密度为 $n$ 的自由电子气。
+
+(1) 导出这块金属电阻率张量的表达式；
+(2) 利用 (1) 的结果，导出沿 $z$ 方向传播的波的低频色散关系（相对于回旋频率 $\omega_0$ 可忽略 $1/\tau$ 和 $\omega$）。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{洛伦兹力}：$\bm{F}=-e\bm{E}-e\bm{v}\times\bm{B}$
+    \item \textbf{电阻率张量}：$\bm{E}=\bar{\rho}\bm{j}$，非对角元即霍尔电阻率
+    \item \textbf{麦克斯韦方程}：波动方程 $k\times(k\times\bm{E})=-\omega^2\mu_0\varepsilon_0\bm{E}+i\omega\mu_0\bm{j}$
+    \item \textbf{螺旋波}：$\omega\propto k^2$，低频磁等离子体中的特征模式
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 电阻率张量的推导}
+
+电子在电场 $\bm{E}$ 和磁场 $\bm{B}$ 中的运动方程（德鲁德模型）：
+\begin{equation}
+m\frac{d\bm{v}}{dt}=-e\bm{E}-e\bm{v}\times\bm{B}-\frac{m\bm{v}}{\tau}.
+\end{equation}
+
+电流密度 $\bm{j}=-ne\bm{v}$，即 $\bm{v}=-\bm{j}/(ne)$。代入并设时谐形式 $e^{-i\omega t}$（$d/dt\to -i\omega$）：
+\begin{equation}
+\bm{E}=\left[\frac{m}{ne^2}\left(\frac{1}{\tau}-i\omega\right)\right]\bm{j}-\frac{1}{ne}\bm{B}\times\bm{j}.
+\end{equation}
+
+令 $\bm{B}=B_0\hat{\bm{z}}$，则 $\bm{B}\times\bm{j}=B_0(-j_y\hat{\bm{x}}+j_x\hat{\bm{y}})$。写成分量形式：
+\begin{equation}
+\begin{cases}
+E_x=\dfrac{m}{ne^2}\left(\dfrac{1}{\tau}-i\omega\right)j_x+\dfrac{B_0}{ne}j_y,\\[8pt]
+E_y=-\dfrac{B_0}{ne}j_x+\dfrac{m}{ne^2}\left(\dfrac{1}{\tau}-i\omega\right)j_y,\\[8pt]
+E_z=\dfrac{m}{ne^2}\left(\dfrac{1}{\tau}-i\omega\right)j_z.
+\end{cases}
+\end{equation}
+
+因此电阻率张量 $\bar{\rho}$（满足 $\bm{E}=\bar{\rho}\bm{j}$）为
+\begin{equation}
+\boxed{
+\bar{\rho}=\begin{pmatrix}
+\dfrac{m}{ne^2}\left(\dfrac{1}{\tau}-i\omega\right) & \dfrac{B_0}{ne} & 0\\[10pt]
+-\dfrac{B_0}{ne} & \dfrac{m}{ne^2}\left(\dfrac{1}{\tau}-i\omega\right) & 0\\[10pt]
+0 & 0 & \dfrac{m}{ne^2}\left(\dfrac{1}{\tau}-i\omega\right)
+\end{pmatrix}
+}
+\end{equation}
+非对角元 $\pm B_0/(ne)$ 即为\textbf{霍尔电阻率}。
+
+\textbf{(2) 低频色散关系的推导}
+
+设电磁波沿 $z$ 方向传播，波矢 $\bm{k}=k\hat{\bm{z}}$。麦克斯韦方程给出波动方程：
+\begin{equation}
+\nabla\times(\nabla\times\bm{E})=-\mu_0\frac{\partial^2\bm{D}}{\partial t^2}.
+\end{equation}
+
+对时谐场，$\nabla\to i\bm{k}$，$\partial/\partial t\to -i\omega$，且 $\bm{D}=\varepsilon_0\bm{E}+\bm{P}$，$\bm{j}=-i\omega\bm{P}$。波动方程化为
+\begin{equation}
+\bm{k}\times(\bm{k}\times\bm{E})=-\frac{\omega^2}{c^2}\bm{E}+i\omega\mu_0\bm{j}.
+\end{equation}
+
+利用 $\bm{k}\times(\bm{k}\times\bm{E})=-k^2\bm{E}_\perp$（$\bm{E}_\perp$ 为垂直于 $z$ 的分量），并定义
+\begin{equation}
+\chi=\frac{c^2k^2}{\omega^2}-1,
+\end{equation}
+则横向电场可写为 $\bm{E}_\perp=\dfrac{i}{\varepsilon_0\chi\omega}\bm{j}_\perp$。写为矩阵形式 $\bm{E}=\bar{T}\bm{j}$，其中
+\begin{equation}
+\bar{T}=\frac{i}{\varepsilon_0\omega}\begin{pmatrix}\chi^{-1}&0&0\\0&\chi^{-1}&0\\0&0&1\end{pmatrix}.
+\end{equation}
+
+由 $\bm{E}=\bar{\rho}\bm{j}$ 和 $\bm{E}=\bar{T}\bm{j}$，非零解要求
+\begin{equation}
+\det(\bar{\rho}-\bar{T})=0.
+\end{equation}
+
+对 $xy$ 平面内的分量，行列式方程为
+\begin{equation}
+\begin{vmatrix}\rho_{xx}-T_{xx}&\rho_{xy}\\-\rho_{xy}&\rho_{xx}-T_{xx}\end{vmatrix}=0
+\quad\Longrightarrow\quad
+(\rho_{xx}-T_{xx})^2+\rho_{xy}^2=0.
+\end{equation}
+
+代入 $\rho_{xx}=\dfrac{m}{ne^2}\left(\dfrac{1}{\tau}-i\omega\right)$，$\rho_{xy}=\dfrac{B_0}{ne}$，$T_{xx}=\dfrac{i}{\varepsilon_0\chi\omega}$。引入\textbf{等离子体频率} $\omega_p^2=\dfrac{ne^2}{m\varepsilon_0}$ 和\textbf{回旋频率} $\omega_0=\dfrac{eB_0}{m}$，整理得
+\begin{equation}
+\left[\left(\frac{1}{\tau}-i\omega\right)-\frac{i\omega_p^2}{\chi\omega}\right]^2+\omega_0^2=0.
+\end{equation}
+
+题设低频近似：相对于 $\omega_0$ 可忽略 $1/\tau$ 和 $\omega$。方程简化为
+\begin{equation}
+\left(-\frac{i\omega_p^2}{\chi\omega}\right)^2+\omega_0^2=0
+\quad\Longrightarrow\quad
+\chi=\pm\frac{\omega_p^2}{\omega\omega_0}.
+\end{equation}
+
+代回 $\chi=c^2k^2/\omega^2-1$，在极低频下 $1$ 可忽略（$\omega_p^2/\omega\omega_0\gg1$），得
+\begin{equation}
+\frac{c^2k^2}{\omega^2}\approx\pm\frac{\omega_p^2}{\omega\omega_0}
+\quad\Longrightarrow\quad
+\boxed{\omega\approx\frac{c^2k^2\omega_0}{\omega_p^2}.}
+\end{equation}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{项目} & \textbf{结果} \\
+\midrule
+电阻率张量 & 对角元 $\rho_{xx}=\dfrac{m}{ne^2}\left(\dfrac{1}{\tau}-i\omega\right)$，非对角元 $\rho_{xy}=\dfrac{B_0}{ne}$ \\
+低频色散关系 & $\displaystyle\omega\approx\frac{c^2k^2\omega_0}{\omega_p^2}$（螺旋波，$\omega\propto k^2$） \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 磁场使电阻率张量出现反对称的非对角元（霍尔电阻率），这是霍尔效应的微观体现。在强磁场下，非对角元可与对角元相比拟，导致输运性质的显著各向异性。
+    \item 在磁场中的等离子体可以支持低频的\textbf{螺旋波（helicon wave）}传播，其色散关系 $\omega\propto k^2$ 与普通电磁波的 $\omega=ck$ 截然不同。螺旋波的电场矢量在传播过程中旋转，形成螺旋状极化。
+    \item 螺旋波在固态等离子体（金属、半导体）和电离层中均可被激发，是测量载流子浓度和迁移率的重要实验手段。其色散的 $k^2$ 依赖性意味着群速度 $v_g=d\omega/dk\propto k$，即低频分量传播更慢。
+\end{itemize}
+\end{insightbox}

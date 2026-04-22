@@ -1,0 +1,98 @@
+% ============================================================
+% Section 98: 德鲁德交流电导率
+% ============================================================
+\section{固体理论：德鲁德交流电导率}
+\label{sec:drude-ac-conductivity}
+
+\begin{modelbox}[题目：交变电场中金属电导率的推导]
+若金属中电子的碰撞阻力可写成 $-m\bm{v}_d/\tau$，$\tau$ 为平均自由时间，则电子漂移速度 $\bm{v}_d$ 的方程为
+\begin{equation}
+m\left(\frac{d\bm{v}_d}{dt}+\frac{\bm{v}_d}{\tau}\right)=-e\bm{\mathcal{E}}.
+\end{equation}
+证明在外电场 $\bm{\mathcal{E}}=\bm{\mathcal{E}}_0e^{-i\omega t}$ 中，金属的电导率为
+\begin{equation}
+\sigma(\omega)=\sigma(0)\frac{1+i\omega\tau}{1+(\omega\tau)^2}.
+\end{equation}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{稳态解}：设 $v_d(t)=v_{d0}e^{-i\omega t}$，代入一阶线性 ODE
+    \item \textbf{复电导率}：实部耗散、虚部色散（感性响应）
+    \item \textbf{极限行为}：$\omega\tau\ll1$ 恢复直流；$\omega\tau\gg1$ 纯虚数衰减
+    \item \textbf{光学应用}：解释金属红外/微波频段的光学性质
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{Step 1: 漂移速度方程的求解}
+
+将交变电场 $\bm{\mathcal{E}}(t)=\bm{\mathcal{E}}_0e^{-i\omega t}$ 代入漂移速度方程：
+\begin{equation}
+m\left(\frac{d\bm{v}_d}{dt}+\frac{\bm{v}_d}{\tau}\right)=-e\bm{\mathcal{E}}_0e^{-i\omega t}.
+\end{equation}
+
+这是一阶线性常微分方程。齐次方程 $d\bm{v}_d/dt+\bm{v}_d/\tau=0$ 的通解为 $\bm{v}_{d,h}=\bm{A}e^{-t/\tau}$，描述随时间指数衰减的暂态过程。
+
+设非齐次方程的稳态特解为 $\bm{v}_{d,p}=\bm{B}e^{-i\omega t}$，代入方程：
+\begin{equation}
+m\left(-i\omega\bm{B}+\frac{\bm{B}}{\tau}\right)e^{-i\omega t}=-e\bm{\mathcal{E}}_0e^{-i\omega t}.
+\end{equation}
+
+约去 $e^{-i\omega t}$，解得
+\begin{equation}
+\bm{B}\left(\frac{1}{\tau}-i\omega\right)=-\frac{e\bm{\mathcal{E}}_0}{m}
+\quad\Longrightarrow\quad
+\bm{B}=-\frac{e\tau}{m}\cdot\frac{\bm{\mathcal{E}}_0}{1-i\omega\tau}.
+\end{equation}
+
+因此稳态漂移速度
+\begin{equation}
+\bm{v}_d(t)=-\frac{e\tau}{m}\cdot\frac{\bm{\mathcal{E}}_0e^{-i\omega t}}{1-i\omega\tau}.
+\end{equation}
+
+\textbf{Step 2: 电流密度与交流电导率}
+
+设电子数密度为 $n$，电流密度
+\begin{equation}
+\bm{j}(t)=-ne\bm{v}_d(t)=\frac{ne^2\tau}{m}\cdot\frac{\bm{\mathcal{E}}_0e^{-i\omega t}}{1-i\omega\tau}.
+\end{equation}
+
+由欧姆定律的交流形式 $\bm{j}(t)=\sigma(\omega)\bm{\mathcal{E}}(t)$，得
+\begin{equation}
+\sigma(\omega)=\frac{ne^2\tau}{m}\cdot\frac{1}{1-i\omega\tau}.
+\end{equation}
+
+令 $\sigma(0)=ne^2\tau/m$ 为直流电导率。将分母有理化：
+\begin{equation}
+\sigma(\omega)=\sigma(0)\frac{1+i\omega\tau}{(1-i\omega\tau)(1+i\omega\tau)}
+=\boxed{\sigma(0)\frac{1+i\omega\tau}{1+(\omega\tau)^2}.}
+\end{equation}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{项目} & \textbf{结果} \\
+\midrule
+交流电导率 & $\displaystyle\sigma(\omega)=\sigma(0)\frac{1+i\omega\tau}{1+(\omega\tau)^2}$ \\
+实部（耗散） & $\displaystyle\operatorname{Re}[\sigma(\omega)]=\frac{\sigma(0)}{1+(\omega\tau)^2}$ \\
+虚部（色散） & $\displaystyle\operatorname{Im}[\sigma(\omega)]=\frac{\sigma(0)\omega\tau}{1+(\omega\tau)^2}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 交流电导率为复数，其实部 $\operatorname{Re}[\sigma(\omega)]$ 随频率增大而减小，反映电子惯性的影响——高频下电子来不及响应电场的快速变化。
+    \item 虚部为正，表明电流相位滞后于电场（感性响应）。这对应于交变磁场中电子的惯性延迟。
+    \item \textbf{极限行为}：
+    \begin{itemize}
+        \item $\omega\tau\ll1$（低频）：$\sigma(\omega)\approx\sigma(0)$，恢复直流欧姆定律
+        \item $\omega\tau\gg1$（高频）：$\sigma(\omega)\approx i\sigma(0)/(\omega\tau)$，电导率变为纯虚数且幅值衰减，金属呈现透明性（趋肤效应减弱）
+    \end{itemize}
+    \item 该结果即\textbf{德鲁德交流电导率模型}，成功解释了金属在红外及微波频段的光学性质和表面等离子体激元行为。
+\end{itemize}
+\end{insightbox}
