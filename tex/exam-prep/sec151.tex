@@ -1,0 +1,85 @@
+% ============================================================
+% Section 151: 平面转子的本征态与含时演化
+% ============================================================
+\section{量子力学：平面转子的本征态与含时演化}
+\label{sec:planar-rotor}
+
+\begin{modelbox}[题目：平面转子的本征态与矩形波包的演化]
+一平面转子的 Hamilton 量为 $\hat H=-\dfrac{\hbar^2}{2I_z}\dfrac{\partial^2}{\partial\varphi^2}$，其中 $I_z$ 为转动惯量，$\varphi$ 为转角（$0\leq\varphi<2\pi$）。
+
+(1) 求系统的本征函数和能量本征值；
+
+(2) 若在 $t=0$ 时波函数为 $\psi(\varphi,0)=A\sin^2\varphi$，求归一化常数 $A$，并将初态展开为本征态的叠加；
+
+(3) 写出 $t>0$ 时的完整波函数 $\psi(\varphi,t)$。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{平面转子}：一维角坐标，周期性边界条件 $\psi(\varphi+2\pi)=\psi(\varphi)$
+    \item \textbf{本征函数}：$\psi_n(\varphi)=\dfrac{1}{\sqrt{2\pi}}e^{in\varphi}$，$n\in\mathbb{Z}$
+    \item \textbf{能量}：$E_n=\dfrac{n^2\hbar^2}{2I_z}$
+    \item \textbf{三角恒等}：$\sin^2\varphi=\dfrac{1}{2}-\dfrac{1}{4}e^{i2\varphi}-\dfrac{1}{4}e^{-i2\varphi}$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 本征函数与能量本征值}
+
+定态 Schrödinger 方程：
+\[
+-\frac{\hbar^2}{2I_z}\frac{d^2\psi}{d\varphi^2}=E\psi.
+\]
+通解 $\psi(\varphi)=e^{in\varphi}$，周期性边界条件要求 $n\in\mathbb{Z}$。归一化：
+\[
+\psi_n(\varphi)=\frac{1}{\sqrt{2\pi}}e^{in\varphi},\qquad n=0,\pm1,\pm2,\ldots
+\]
+能量本征值：
+\begin{equation}
+\boxed{E_n=\frac{n^2\hbar^2}{2I_z}.}
+\end{equation}
+
+\textbf{(2) 归一化与初态展开}
+
+归一化条件：
+\[
+\int_0^{2\pi}|A|^2\sin^4\varphi\,d\varphi=|A|^2\cdot\frac{3\pi}{4}=1\implies A=\sqrt{\frac{4}{3\pi}}=\frac{2}{\sqrt{3\pi}}.
+\]
+
+利用 $\sin^2\varphi=\dfrac{1}{2}-\dfrac{1}{4}e^{i2\varphi}-\dfrac{1}{4}e^{-i2\varphi}$：
+\[
+\psi(\varphi,0)=A\left(\frac{1}{2}-\frac{1}{4}e^{i2\varphi}-\frac{1}{4}e^{-i2\varphi}\right).
+\]
+对比 $\psi_n(\varphi)=\dfrac{1}{\sqrt{2\pi}}e^{in\varphi}$，初态仅由 $n=0$ 和 $n=\pm2$ 三个本征态叠加而成。
+
+\textbf{(3) 时间演化}
+
+各本征态按 $e^{-iE_nt/\hbar}$ 演化。$E_0=0$，$E_{\pm2}=\dfrac{2\hbar^2}{I_z}$。
+
+将 $A=\dfrac{2}{\sqrt{3\pi}}$ 代入并整理：
+\begin{equation}
+\boxed{\psi(\varphi,t)=\frac{1}{\sqrt{3\pi}}\left(1-e^{-i2\hbar t/I_z}\cos2\varphi\right).}
+\end{equation}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+本征函数 & $\psi_n(\varphi)=\dfrac{1}{\sqrt{2\pi}}e^{in\varphi}$，$n\in\mathbb{Z}$ \\
+能量本征值 & $E_n=\dfrac{n^2\hbar^2}{2I_z}$ \\
+归一化常数 & $A=\dfrac{2}{\sqrt{3\pi}}$ \\
+含时波函数 & $\psi(\varphi,t)=\dfrac{1}{\sqrt{3\pi}}\left(1-e^{-i2\hbar t/I_z}\cos2\varphi\right)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 平面转子的本征态是角动量本征态，能量与角动量量子数 $n$ 的平方成正比。$n=0$ 对应转子静止，$n\neq0$ 对应正反向转动。
+    \item 初态 $\sin^2\varphi$ 是 $n=0,\pm2$ 三个定态的叠加，其时间演化表现为不同频率的相因子干涉，产生一个随时间振荡的概率分布。这展示了量子力学中叠加原理与含时演化的基本特征。
+\end{itemize}
+\end{insightbox}

@@ -1,0 +1,81 @@
+% ============================================================
+% Section 149: 定态的时间演化与矩形波包展开
+% ============================================================
+\section{量子力学：定态的时间演化与矩形波包展开}
+\label{sec:stationary-state-evolution}
+
+\begin{modelbox}[题目：定态的时间演化与初始波包展开]
+(1) 由 Schrödinger 方程证明：若 $|\psi(t_0)\rangle$ 和 $|\phi(t_0)\rangle$ 是任意两个态矢量，则内积 $\langle\psi(t)|\phi(t)\rangle$ 不随时间变化。
+
+(2) 证明：若 $\psi(t_0)$ 是哈密顿量 $\hat H$ 的能量本征态（本征值 $E$），则对任意时刻 $t$，$\psi(t)=e^{-iE(t-t_0)/\hbar}\psi(t_0)$ 仍是同一能量本征值的定态。
+
+(3) 若在 $t=0$ 时，波函数在 $-a<x<a$ 范围内是常数，而在其他处为零，利用系统的本征态表达以后时间的完整波函数。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{概率守恒}：Schrödinger 方程保持内积不变，是幺正演化的体现
+    \item \textbf{定态演化}：能量本征态只获得相位因子 $e^{-iEt/\hbar}$
+    \item \textbf{本征态展开}：任意初态可展开为定态叠加，各分量独立演化
+    \item \textbf{矩形波包}：不连续导致动能期望值发散，数学上仍可形式处理
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 内积的时间守恒}
+
+由 Schrödinger 方程 $i\hbar\partial_t\psi=\hat H\psi$ 及其厄米共轭 $-i\hbar\partial_t\psi^*=\hat H\psi^*$：
+\[
+i\hbar\frac{d}{dt}\langle\psi|\phi\rangle=i\hbar\int(\partial_t\psi^*)\phi\,dx+i\hbar\int\psi^*(\partial_t\phi)\,dx=\int(-\hat H\psi^*)\phi\,dx+\int\psi^*(\hat H\phi)\,dx=0.
+\]
+因此 $\langle\psi(t)|\phi(t)\rangle=\text{常数}$，概率守恒。
+
+\textbf{(2) 能量本征态的时间演化}
+
+设 $\hat H\psi(t_0)=E\psi(t_0)$。含时 Schrödinger 方程的解为 $\psi(t)=e^{-i\hat H(t-t_0)/\hbar}\psi(t_0)$。作用于能量本征态：
+\[
+\hat H\psi(t)=e^{-iE(t-t_0)/\hbar}\hat H\psi(t_0)=e^{-iE(t-t_0)/\hbar}E\psi(t_0)=E\psi(t).
+\]
+故 $\psi(t)$ 仍是同一能量 $E$ 的定态，仅多一个相位因子。
+
+\textbf{(3) 矩形初始波包的演化}
+
+初始波函数：
+\[
+\psi(x,0)=\begin{cases}c,&|x|<a\\0,&|x|\geq a\end{cases}
+\]
+归一化得 $c=1/\sqrt{2a}$（取实数）。设系统本征态完备集 $\{\psi_n(x)\}$，满足 $\hat H\psi_n=E_n\psi_n$。
+
+展开系数：
+\[
+a_n=\int_{-\infty}^{\infty}\psi_n^*(x)\psi(x,0)\,dx=\frac{1}{\sqrt{2a}}\int_{-a}^{a}\psi_n^*(x)\,dx.
+\]
+
+任意时刻波函数：
+\begin{equation}
+\boxed{\psi(x,t)=\sum_n a_n e^{-iE_nt/\hbar}\psi_n(x).}
+\end{equation}
+
+\textit{讨论}：矩形波函数在 $x=\pm a$ 处不连续，导致动能期望值发散（二阶导数含 $\delta$ 函数）。这提醒我们在物理上初始态必须足够光滑，但在数学展开中仍可形式处理。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+(1) 内积守恒 & $\langle\psi(t)|\phi(t)\rangle=\text{常数}$ \\
+(2) 定态演化 & $\psi(t)=e^{-iE(t-t_0)/\hbar}\psi(t_0)$ \\
+(3) 波包展开 & $\psi(x,t)=\sum_n a_n e^{-iE_nt/\hbar}\psi_n(x)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 能量本征态在含时演化中只获得一个相因子，因此永远是定态。任意初态可展开为定态叠加，演化后各分量带有相应相因子，这是量子力学处理初值问题的标准方法。
+    \item 矩形波包虽然数学上不光滑，但其 Fourier 展开（或本征态展开）仍能给出正确的演化图像，体现了量子态叠加原理的普适性。
+\end{itemize}
+\end{insightbox}

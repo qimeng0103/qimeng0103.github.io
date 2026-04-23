@@ -1,0 +1,75 @@
+% ============================================================
+% Section 148: 一维束缚态的非简并性与实波函数
+% ============================================================
+\section{量子力学：一维束缚态的非简并性与实波函数}
+\label{sec:1d-bound-state-nondegenerate}
+
+\begin{modelbox}[题目：一维束缚态的非简并性与实波函数]
+考虑任意势 $V(x)$ 的时间无关一维 Schrödinger 方程，证明：如果一个解 $\psi(x)$ 满足当 $x\to\pm\infty$ 时 $\psi(x)\to0$，则该解必然非简并，进而是实的（除了一个可能的整体相因子）。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{Wronskian}：两解的 Wronskian $W=\psi'\phi-\phi'\psi$ 为常数
+    \item \textbf{边界条件}：$x\to\pm\infty$ 时 $\psi,\phi\to0$，可定出 $W=0$
+    \item \textbf{非简并}：$W=0\implies\phi=c\psi$，同一量子态
+    \item \textbf{实波函数}：$\psi^*$ 也是同能量解，非简并性要求 $\psi^*=e^{i\delta}\psi$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{第一步：设定反证法}
+
+假设存在另一个波函数 $\phi(x)$ 与 $\psi(x)$ 具有相同的能量 $E$，且满足相同的边界条件 $\lim_{x\to\pm\infty}\phi(x)=0$。两者均满足定态 Schrödinger 方程：
+\[
+\psi''=-\frac{2m}{\hbar^2}(E-V)\psi,\qquad \phi''=-\frac{2m}{\hbar^2}(E-V)\phi.
+\]
+
+\textbf{第二步：导出守恒量}
+
+两式分别除以 $\psi$ 和 $\phi$ 得 $\psi''/\psi=\phi''/\phi$。交叉相乘：
+\[
+\psi''\phi-\phi''\psi=0\implies\frac{d}{dx}(\psi'\phi-\phi'\psi)=0.
+\]
+因此 Wronskian $W=\psi'\phi-\phi'\psi=$ 常数。
+
+\textbf{第三步：利用边界条件定常数}
+
+当 $x\to\pm\infty$ 时 $\psi\to0$、$\phi\to0$，故 $W\to0$。该常数必为零，对所有 $x$ 有
+\[
+\psi'\phi=\phi'\psi\implies\frac{\phi'}{\phi}=\frac{\psi'}{\psi}\implies\left(\ln\frac{\phi}{\psi}\right)'=0.
+\]
+积分得 $\phi(x)=c\,\psi(x)$。因此 $\psi$ 与 $\phi$ 代表同一个量子态，能量 $E$ 的束缚态\textbf{非简并}。
+
+\textbf{第四步：证明波函数可取为实函数}
+
+若 $V(x)$ 为实数，则 Schrödinger 方程具有实系数。对 $\psi(x)$ 取复共轭得 $-\dfrac{\hbar^2}{2m}\psi^{*''}+V\psi^*=E\psi^*$，即 $\psi^*$ 也是能量为 $E$ 的解，且满足同样的边界条件。
+
+由非简并性可知 $\psi^*(x)=c\,\psi(x)$。再取一次复共轭得 $\psi(x)=c^*c\,\psi(x)=|c|^2\psi(x)$，故 $|c|^2=1$，即 $c=e^{i\delta}$（$\delta\in\mathbb{R}$）。
+
+定义 $\tilde\psi(x)=e^{-i\delta/2}\psi(x)$，则
+\[
+\tilde\psi^*(x)=e^{i\delta/2}\psi^*(x)=e^{i\delta/2}\cdot e^{i\delta}\psi(x)=e^{i\delta/2}\cdot e^{i\delta}\cdot e^{i\delta/2}\tilde\psi(x)=e^{i\delta}\tilde\psi(x).
+\]
+取 $\delta=0$ 或 $\pi$（即 $c=\pm1$），或直接利用非简并性允许选择相位，可令 $\tilde\psi$ 为实函数。因此一维束缚态波函数\textbf{可取为实函数}（除一个整体相因子）。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+非简并性 & 一维束缚态能量非简并 \\
+实波函数 & 可取为实函数（至多差一个全局相因子） \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 一维束缚态非简并是一维量子力学的基本定理，与三维情况（如氢原子能级简并）形成鲜明对比。其根源在于一维空间中边界条件过于``严格''，不允许两个线性无关的解同时满足两端趋于零。
+    \item 实波函数结论大大简化了一维问题的求解，所有束缚态本征函数均可选为实函数，无需考虑复相位。
+\end{itemize}
+\end{insightbox}
