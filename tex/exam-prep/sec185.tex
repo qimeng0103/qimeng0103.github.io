@@ -1,0 +1,95 @@
+% ============================================================
+% Section 185: 一维谐振子阱中N个全同费米子
+% ============================================================
+\section{量子力学：一维谐振子阱中\texorpdfstring{$N$}{N}个全同费米子}
+\label{sec:fermions-ho-trap}
+
+\begin{modelbox}[题目：一维谐振子阱中\texorpdfstring{$N$}{N}个全同费米子]
+一维谐振子阱中有 $N$ 个（$N$ 大）无自旋全同费米子，两两之间有排斥 $\delta$ 势
+\[
+V=\frac{k}{2}\sum_{i=1}^{N}x_i^2+\frac{\lambda}{2}\sum_{i\neq j}\delta(x_i-x_j),\quad k,\lambda>0.
+\]
+\begin{enumerate}
+    \item 用归一化谐振子单粒子波函数表示三个最低能量的归一化波函数和能量，求简并度；
+    \item 对这些态计算 $\sum_{i=1}^N x_i^2$ 的期望值。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{Slater行列式}：费米子波函数的反对称构造
+    \item \textbf{Pauli不相容}：单粒子量子数必须两两不同
+    \item \textbf{$\delta$相互作用}：对反对称波函数一级修正为零（接触点波函数为零）
+    \item \textbf{Virial定理}：$\langle\sum x_i^2\rangle=E/(m\omega^2)$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. 零级波函数与能级}
+
+单粒子能级 $\varepsilon_n=\hbar\omega(n+\frac12)$，$\omega=\sqrt{k/m}$。零级总波函数为Slater行列式
+\[
+\Psi_{n_1\cdots n_N}=\frac{1}{\sqrt{N!}}\det\bigl[\psi_{n_i}(x_j)\bigr],\quad n_1<n_2<\cdots<n_N.
+\]
+
+总能量 $E^{(0)}=\hbar\omega\bigl(\frac{N}{2}+\sum_i n_i\bigr)$。$\delta$相互作用对反对称波函数的一级修正为零。
+
+\textit{基态}：填充最低 $N$ 个能级 $0,1,\ldots,N-1$。
+\begin{equation}
+\boxed{E_0=\frac{\hbar\omega}{2}N^2,\quad\text{简并度}=1.}
+\end{equation}
+
+\textit{第一激发态}：将最高占据粒子 $N-1$ 激发到 $N$，占据 $0,1,\ldots,N-2,N$。
+\begin{equation}
+\boxed{E_1=\frac{\hbar\omega}{2}(N^2+2),\quad\text{简并度}=1.}
+\end{equation}
+
+\textit{第二激发态}：两种等价组态，总激励子数均为 $2$：
+\begin{itemize}
+    \item $0,1,\ldots,N-2,N+1$（单粒子激发两步）
+    \item $0,1,\ldots,N-3,N-1,N$（双粒子各激发一步）
+\end{itemize}
+\begin{equation}
+\boxed{E_2=\frac{\hbar\omega}{2}(N^2+4),\quad\text{简并度}=2.}
+\end{equation}
+
+\textbf{2. $\sum x_i^2$ 的期望值}
+
+总势能 $V=\frac12m\omega^2\sum x_i^2+V_\delta$。Virial定理：
+\[
+2\langle T\rangle=\Bigl\langle\sum_i x_i\frac{\partial V}{\partial x_i}\Bigr\rangle=\langle2V_{\text{ho}}-V_\delta\rangle.
+\]
+
+利用 $E=\langle T\rangle+\langle V_{\text{ho}}\rangle+\langle V_\delta\rangle$ 且 $\langle V_\delta\rangle=0$（一级近似），得
+\[
+\langle V_{\text{ho}}\rangle=\frac{E}{2}.
+\]
+
+由 $V_{\text{ho}}=\frac12m\omega^2\sum x_i^2$：
+\begin{equation}
+\boxed{\Bigl\langle\sum_{i=1}^N x_i^2\Bigr\rangle=\frac{E}{m\omega^2}=\frac{\hbar}{2m\omega}\bigl(N^2+2k\bigr),}
+\end{equation}
+其中 $k=0,2,4$ 分别对应基态、第一激发态、第二激发态。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{态} & \textbf{占据} & \textbf{能量} & \textbf{简并度} \\
+\midrule
+基态 & $0,1,\ldots,N-1$ & $\hbar\omega N^2/2$ & 1 \\
+第一激发态 & $0,1,\ldots,N-2,N$ & $\hbar\omega(N^2+2)/2$ & 1 \\
+第二激发态 & $0,\ldots,N-2,N+1$ 或 $0,\ldots,N-3,N-1,N$ & $\hbar\omega(N^2+4)/2$ & 2 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 排斥 $\delta$ 相互作用对费米子能级的一阶修正为零，这是Pauli不相容原理的直接后果：费米子波函数在两粒子坐标重合时自动为零，因此接触相互作用无法``感知''到彼此。
+    \item 该结果推广到高维：对于自旋极化费米气（无 $s$ 波散射），短程排斥相互作用在低密度极限下对能量几乎无贡献，这一性质被冷原子实验广泛利用。
+    \item Virial定理给出的 $\langle\sum x_i^2\rangle\propto N^2$ 关系说明费米子在谐振子阱中的空间扩展远大于玻色子（后者 $\propto N^{1/2}$），体现了Pauli排斥导致的``费米压''。
+\end{itemize}
+\end{insightbox}
