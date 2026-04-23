@@ -1,0 +1,87 @@
+% ============================================================
+% Section 153: 半壁无限高方势阱的束缚态
+% ============================================================
+\section{量子力学：半壁无限高方势阱的束缚态}
+\label{sec:half-infinite-well}
+
+\begin{modelbox}[题目：半壁无限高方势阱的能级与波函数]
+设粒子处于半壁无限高的势场中
+\[
+V(x)=\begin{cases}\infty,&x<0\\0,&0\leq x\leq a\\V_0,&x>a\end{cases}
+\]
+证明束缚态能级由方程 $\tan\left(\dfrac{\sqrt{2mE}\,a}{\hbar}\right)=-\sqrt{\dfrac{E}{V_0-E}}$ 给出；不进一步求解，大致画出基态波函数的形状。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{分区求解}：I区 $x<0$（$\psi=0$），II区 $0\leq x\leq a$（正弦/余弦），III区 $x>a$（指数衰减）
+    \item \textbf{边界条件}：$x=0$ 处 $\psi=0$；$x=a$ 处 $\psi$ 和 $\psi'$ 连续
+    \item \textbf{束缚态}：$0<E<V_0$，III区波函数指数衰减
+    \item \textbf{能级方程}：由连续性条件导出超越方程
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 证明束缚态能级方程}
+
+考虑束缚态 $0<E<V_0$。
+
+\textit{区域 I}（$x<0$）：$V=\infty$，$\psi_{\text{I}}(x)=0$。
+
+\textit{区域 II}（$0\leq x\leq a$）：$V=0$。令 $k=\sqrt{2mE}/\hbar$，Schrödinger 方程：
+\[
+\psi''+k^2\psi=0\implies\psi_{\text{II}}(x)=C\sin(kx)+D\cos(kx).
+\]
+由 $x=0$ 处 $\psi=0$ 得 $D=0$，故 $\psi_{\text{II}}(x)=C\sin(kx)$。
+
+\textit{区域 III}（$x>a$）：$V=V_0$。令 $\kappa=\sqrt{2m(V_0-E)}/\hbar$，方程：
+\[
+\psi''-\kappa^2\psi=0\implies\psi_{\text{III}}(x)=Fe^{-\kappa x}+Ge^{\kappa x}.
+\]
+束缚态要求 $x\to\infty$ 时 $\psi\to0$，故 $G=0$，$\psi_{\text{III}}(x)=Fe^{-\kappa x}$。
+
+\textit{边界条件}（$x=a$）：
+\begin{align*}
+C\sin(ka)&=Fe^{-\kappa a},\quad\text{(波函数连续)}\\
+Ck\cos(ka)&=-\kappa Fe^{-\kappa a}.\quad\text{(导数连续)}
+\end{align*}
+两式相除得 $k\cot(ka)=-\kappa$，即
+\begin{equation}
+\boxed{\tan(ka)=-\frac{k}{\kappa}=-\sqrt{\frac{E}{V_0-E}}.}
+\end{equation}
+
+\textbf{(2) 基态波函数的形状}
+
+\[
+\psi(x)=\begin{cases}0,&x<0\\C\sin(kx),&0\leq x\leq a\\C\sin(ka)\,e^{\kappa(a-x)},&x>a\end{cases}
+\]
+
+基态特征：
+\begin{itemize}
+    \item 在 $[0,a]$ 内：从 $x=0$ 处零值开始，按正弦函数上升。基态对应 $ka<\pi$，无节点，$\sin(ka)>0$。
+    \item 在 $x=a$ 处：波函数值为正，斜率为负（与指数衰减光滑连接）。
+    \item 在 $x>a$ 后：指数衰减趋近于 0。
+\end{itemize}
+
+形状类似半个被压扁的正弦拱形，然后拖着一条指数衰减的尾巴。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+能级方程 & $\tan(ka)=-\sqrt{E/(V_0-E)}$，$k=\sqrt{2mE}/\hbar$ \\
+基态波函数 & 正弦上升段 + 指数衰减尾巴，无节点 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 半壁无限高势阱是理解有限势阱和表面态的入门模型。左侧硬壁（$\psi=0$）与右侧软壁（指数穿透）的结合，使能级方程成为超越方程，需数值求解。
+    \item 与对称有限势阱相比，半壁势阱由于左右不对称，波函数在两侧的行为截然不同，这在金属表面电子态、半导体异质结等问题中有实际对应。
+\end{itemize}
+\end{insightbox}
