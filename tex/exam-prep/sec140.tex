@@ -1,0 +1,88 @@
+% ============================================================
+% Section 140: 低温反常霍尔效应与杂质带导电
+% ============================================================
+\section{半导体物理：低温反常霍尔效应与杂质带导电}
+\label{sec:anomalous-hall-effect}
+
+\begin{modelbox}[题目：杂质带导电与低温反常霍尔效应]
+在低温下，当能带中载流子极少时，杂质带中载流子的导电性将表现出来。设杂质带中电子迁移率为 $\mu_D$，半导体导带中电子迁移率为 $\mu_n$。可以把它们看作两种不同的载流子，试求磁场作用下的霍尔系数，并由此解释低温反常霍尔效应。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{双载流子模型}：导带电子 + 杂质带电子，均带负电
+    \item \textbf{霍尔系数}：$R_H=-\dfrac{n\mu_n^2+n_D\mu_D^2}{e(n\mu_n+n_D\mu_D)^2}$
+    \item \textbf{低温反常}：导带电子冻结后，$R_H$ 从极大值回落至饱和值
+    \item \textbf{杂质带导电}：重掺杂半导体极低温下的重要输运机制
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. 两种载流子的霍尔系数}
+
+设有导带电子（浓度 $n$，迁移率 $\mu_n$）和杂质带电子（浓度 $n_D$，迁移率 $\mu_D$）。在电场 $\varepsilon_x$ 和磁场 $B_z$ 作用下：
+
+$x$ 方向总电流密度：
+\[
+j_x=e(n\mu_n+n_D\mu_D)\varepsilon_x.
+\]
+
+磁场使电子轨迹偏转。导带电子偏转电流：
+\[
+(j_n)_y=-ne\mu_n^2\varepsilon_xB.
+\]
+杂质带电子偏转电流：
+\[
+(j_D)_y=-n_De\mu_D^2\varepsilon_xB.
+\]
+
+稳态时霍尔电场 $\varepsilon_y$ 抵消总偏转电流：
+\[
+e(n\mu_n+n_D\mu_D)\varepsilon_y=e(n\mu_n^2+n_D\mu_D^2)\varepsilon_xB.
+\]
+
+霍尔系数：
+\begin{equation}
+\boxed{R_H=-\frac{n\mu_n^2+n_D\mu_D^2}{e(n\mu_n+n_D\mu_D)^2}.}
+\end{equation}
+
+\textbf{2. 低温反常霍尔效应的解释}
+
+\textit{正常情况}（无杂质带导电）：随温度降低，导带电子浓度 $n$ 指数衰减。若仅有导带导电，$|R_H|\approx1/(ne)$ 将随温度降低而指数增大，$T\to0$ 时趋于无穷大。
+
+\textit{存在杂质带导电时}：极低温下 $n\to0$，但杂质带电子浓度 $n_D$ 趋于饱和值（等于掺杂浓度 $N_D$）。此时霍尔系数趋近于
+\[
+R_H\approx-\frac{1}{n_De}=-\frac{1}{N_De},
+\]
+为一个与饱和区相近的有限值。
+
+\textit{温度依赖曲线}：
+\begin{itemize}
+    \item 高温区：$n\approx N_D$，$|R_H|$ 较小且平缓；
+    \item 降温至杂质电离区：$n$ 随 $T$ 下降而指数减小，$|R_H|$ 指数上升，达到极大值；
+    \item 极低温区：导带电子冻结，杂质带导电主导，$|R_H|$ 从极大值回落至较低的饱和值。
+\end{itemize}
+
+这种在低温下霍尔系数出现极大值然后下降并趋于饱和的现象，称为\textbf{低温反常霍尔效应}，是杂质带导电的直接证据。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{项目} & \textbf{结果} \\
+\midrule
+两种载流子霍尔系数 & $R_H=-\dfrac{n\mu_n^2+n_D\mu_D^2}{e(n\mu_n+n_D\mu_D)^2}$ \\
+低温反常霍尔效应 & 极低温下导带电子冻结，杂质带导电主导，$R_H\approx-1/(N_De)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 杂质带导电是重掺杂半导体在低温下的重要输运机制，电子通过杂质原子的波函数交叠实现跳跃传导，迁移率极低。
+    \item 低温反常霍尔效应是区分导带导电和杂质带导电的经典实验判据，为杂质带理论提供了有力支持。
+    \item 霍尔系数的峰值位置和高度与杂质浓度、补偿度及杂质带迁移率密切相关。
+\end{itemize}
+\end{insightbox}

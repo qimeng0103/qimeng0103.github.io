@@ -1,0 +1,108 @@
+% ============================================================
+% Section 143: n型硅表面空穴注入的扩散与复合
+% ============================================================
+\section{半导体物理：n型硅表面空穴注入的扩散与复合}
+\label{sec:surface-injection-diffusion}
+
+\begin{modelbox}[题目：n型硅表面空穴注入的稳态扩散]
+在一块足够厚的 n 型硅样品表面上有稳定的空穴注入，$(\Delta p)_0=10^{13}\,\text{cm}^{-3}$，空穴寿命 $\tau_p=5\,\mu\text{s}$，迁移率 $\mu_p=500\,\text{cm}^2/(\text{V}\cdot\text{s})$。
+
+(1) 求空穴的扩散电流表达式和表面处的注入电流；
+
+(2) 计算过剩载流子空穴浓度降到 $10^{12}\,\text{cm}^{-3}$ 时离开表面的距离；
+
+(3) 证明单位时间注入样品的空穴数目等于样品中过剩空穴数目除以空穴寿命，其物理意义是什么？
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{一维稳态扩散}：$\Delta p(x)=(\Delta p)_0e^{-x/L_p}$
+    \item \textbf{扩散长度}：$L_p=\sqrt{D_p\tau_p}$
+    \item \textbf{爱因斯坦关系}：$D_p=\mu_pk_BT/e$
+    \item \textbf{粒子数守恒}：稳态下注入率 = 体内总复合率
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 空穴扩散电流与表面注入电流}
+
+扩散系数由爱因斯坦关系：
+\[
+D_p=\frac{k_BT}{e}\mu_p\approx0.026\times500=13\,\text{cm}^2/\text{s}.
+\]
+扩散长度：
+\[
+L_p=\sqrt{D_p\tau_p}=\sqrt{13\times5\times10^{-6}}\approx8.06\times10^{-3}\,\text{cm}.
+\]
+
+过剩空穴浓度分布：
+\[
+\Delta p(x)=(\Delta p)_0e^{-x/L_p}.
+\]
+
+空穴扩散电流密度：
+\[
+J_p(x)=-eD_p\frac{d\Delta p}{dx}=eD_p\frac{(\Delta p)_0}{L_p}e^{-x/L_p}.
+\]
+
+表面处注入电流：
+\begin{equation}
+\boxed{J_p(0)=e(\Delta p)_0\frac{D_p}{L_p}\approx1.6\times10^{-19}\times10^{13}\times\frac{13}{8.06\times10^{-3}}\approx2.58\times10^{-3}\,\text{A/cm}^2.}
+\end{equation}
+
+\textbf{(2) 浓度降至 $10^{12}\,\text{cm}^{-3}$ 的距离}
+
+由 $\Delta p(x)=(\Delta p)_0e^{-x/L_p}$，令 $\Delta p(x)=10^{12}\,\text{cm}^{-3}$：
+\[
+10^{12}=10^{13}e^{-x/L_p}\implies e^{-x/L_p}=0.1\implies\frac{x}{L_p}=\ln10\approx2.303.
+\]
+\begin{equation}
+\boxed{x=2.303\times8.06\times10^{-3}\approx1.85\times10^{-2}\,\text{cm}=185\,\mu\text{m}.}
+\end{equation}
+
+\textbf{(3) 注入与复合的平衡}
+
+单位面积内总的过剩空穴数：
+\[
+\Delta P=\int_0^\infty\Delta p(x)\,dx=(\Delta p)_0L_p.
+\]
+
+单位时间、单位面积复合掉的空穴数：
+\[
+R=\frac{\Delta P}{\tau_p}=\frac{(\Delta p)_0L_p}{\tau_p}=(\Delta p)_0\frac{D_p}{L_p}.
+\]
+
+表面注入率（粒子流密度）：
+\[
+\frac{J_p(0)}{e}=(\Delta p)_0\frac{D_p}{L_p}=R.
+\]
+
+\begin{equation}
+\boxed{\text{注入率 = 复合率。}}
+\end{equation}
+
+\textbf{物理意义}：在稳态下，系统处于动态平衡。表面不断注入的非平衡少子（空穴），在向体内扩散的过程中不断与多子（电子）复合而消失。注入的速率恰好等于整个样品内复合的速率，从而维持过剩载流子浓度分布的恒定。这是稳态扩散-复合过程的粒子数守恒体现。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{物理量} & \textbf{表达式 / 数值} \\
+\midrule
+(1) 扩散电流表达式 & $J_p(x)=eD_p\dfrac{(\Delta p)_0}{L_p}e^{-x/L_p}$ \\
+(1) 表面注入电流 & $J_p(0)\approx2.58\times10^{-3}\,\text{A/cm}^2$ \\
+(2) 浓度降至 $10^{12}\,\text{cm}^{-3}$ 的距离 & $x\approx185\,\mu\text{m}$ \\
+(3) 粒子数平衡 & 表面注入率 = 体内总复合率 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 少子扩散长度 $L_p$ 是表征非平衡载流子衰减的特征尺度。在距表面几倍 $L_p$ 处，过剩浓度已极低。
+    \item 稳态下注入与复合的平衡是半导体非平衡输运的基本原理，广泛应用于 pn 结、双极性晶体管等器件的分析中。
+    \item 爱因斯坦关系 $D/\mu=k_BT/e$ 是联系载流子扩散与漂移的桥梁，体现了热平衡下涨落-耗散定理。
+\end{itemize}
+\end{insightbox}

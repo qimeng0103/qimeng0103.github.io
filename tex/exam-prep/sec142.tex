@@ -1,0 +1,95 @@
+% ============================================================
+% Section 142: 光激发过剩载流子分布与光电导
+% ============================================================
+\section{半导体物理：光激发过剩载流子分布与光电导}
+\label{sec:photoconductivity}
+
+\begin{modelbox}[题目：表面光激发半导体的载流子分布与光电导]
+如图，用 $4880\,\text{\AA}$ Ar$^+$ 激光照射一块长度及宽度远大于厚度 $t$ 及扩散长度 $L$ 的半导体 Si。入射光在表面层内被完全吸收，样品上下表面复合速度分别为 $S_1$、$S_2$，单位面积光生载流子激发率为 $g$。
+
+(1) 写出光激发产生过剩载流子运动方程及边界条件；
+
+(2) 试证光生载流子沿厚度 $x$ 的分布为
+\[
+\Delta p(x)=\frac{Lg}{D}F_1,\quad F_1=\frac{\cosh\dfrac{t-x}{L}+a_2\sinh\dfrac{t-x}{L}}{(a_1+a_2)\cosh\dfrac{t}{L}+(1+a_1a_2)\sinh\dfrac{t}{L}},
+\]
+其中 $L$、$\tau$ 为扩散长度及寿命，$D$ 为双极扩散系数，$a_1=S_1L/D$，$a_2=S_2L/D$；
+
+(3) 试求单位面积样品光电导
+\[
+\Delta G=eg\tau\mu_p(1+b)F_2,
+\]
+其中 $b=\mu_n/\mu_p$。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{稳态双极扩散方程}：$D\dfrac{d^2\Delta p}{dx^2}-\dfrac{\Delta p}{\tau}=0$
+    \item \textbf{边界条件}：上表面 $-D\dfrac{d\Delta p}{dx}\big|_0+S_1\Delta p(0)=g$；下表面 $-D\dfrac{d\Delta p}{dx}\big|_t-S_2\Delta p(t)=0$
+    \item \textbf{双曲函数化简}：通解 $\Delta p(x)=Ae^{-x/L}+Be^{x/L}$
+    \item \textbf{光电导}：$\Delta G=e(\mu_n\Delta n+\mu_p\Delta p)=e\mu_p(1+b)\Delta P$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 运动方程与边界条件}
+
+过剩载流子浓度 $\Delta p(x)\approx\Delta n(x)$ 满足一维稳态双极扩散方程：
+\[
+D\frac{d^2\Delta p}{dx^2}-\frac{\Delta p}{\tau}=0,
+\]
+其中 $L=\sqrt{D\tau}$ 为扩散长度。
+
+边界条件：
+\begin{itemize}
+    \item 上表面（$x=0$）：$-D\dfrac{d\Delta p}{dx}\big|_{x=0}+S_1\Delta p(0)=g$
+    \item 下表面（$x=t$）：$-D\dfrac{d\Delta p}{dx}\big|_{x=t}-S_2\Delta p(t)=0$
+\end{itemize}
+
+\textbf{(2) 载流子分布的推导}
+
+通解 $\Delta p(x)=Ae^{-x/L}+Be^{x/L}$。代入边界条件，定义 $a_1=S_1L/D$，$a_2=S_2L/D$，解出 $A$、$B$ 并化简得
+\[
+\Delta p(x)=\frac{Lg}{D}\cdot\frac{\cosh\dfrac{t-x}{L}+a_2\sinh\dfrac{t-x}{L}}{(a_1+a_2)\cosh\dfrac{t}{L}+(1+a_1a_2)\sinh\dfrac{t}{L}}=\frac{Lg}{D}F_1.
+\]
+
+\textbf{(3) 单位面积光电导}
+
+单位面积内总的过剩空穴数：
+\[
+\Delta P=\int_0^t\Delta p(x)\,dx=\frac{Lg}{D}\cdot\frac{L\left(\sinh\dfrac{t}{L}+a_2\cosh\dfrac{t}{L}-a_2\right)}{(a_1+a_2)\cosh\dfrac{t}{L}+(1+a_1a_2)\sinh\dfrac{t}{L}}.
+\]
+单位面积光电导：
+\[
+\Delta G=e(\mu_n\Delta n+\mu_p\Delta p)=e\mu_p(1+b)\Delta P,
+\]
+其中 $b=\mu_n/\mu_p$，$\Delta n=\Delta p$。利用 $L^2=D\tau$ 化简得
+\begin{equation}
+\boxed{\Delta G=eg\tau\mu_p(1+b)F_2,}
+\end{equation}
+其中
+\[
+F_2=\frac{\sinh\dfrac{t}{L}+a_2\cosh\dfrac{t}{L}-a_2}{(a_1+a_2)\cosh\dfrac{t}{L}+(1+a_1a_2)\sinh\dfrac{t}{L}}.
+\]
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{项目} & \textbf{表达式} \\
+\midrule
+过剩载流子分布 & $\Delta p(x)=\dfrac{Lg}{D}F_1$ \\
+单位面积光电导 & $\Delta G=eg\tau\mu_p(1+b)F_2$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 表面复合速度 $S_1$、$S_2$ 对载流子分布和光电导有重要影响。无量纲参数 $a_1$、$a_2$ 表征表面复合与体扩散的相对强弱。
+    \item 当样品厚度 $t\ll L$（薄样品）或 $t\gg L$（厚样品）时，$F_1$、$F_2$ 可进一步简化，对应不同的光电导响应。
+    \item 双极扩散系数 $D$ 和双极迁移率是描述电子-空穴耦合输运的关键参数。本题结果在半导体光电器件（如光电导探测器、太阳电池）的建模中有广泛应用。
+\end{itemize}
+\end{insightbox}
