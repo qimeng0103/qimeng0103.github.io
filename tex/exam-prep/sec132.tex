@@ -1,0 +1,95 @@
+% ============================================================
+% Section 132: n型硅不同掺杂浓度下的费米能级与载流子浓度
+% ============================================================
+\section{半导体物理：n型硅的费米能级与载流子浓度}
+\label{sec:n-si-fermi-level}
+
+\begin{modelbox}[题目：不同掺杂浓度n型硅的统计性质]
+一块掺磷的n型硅样品，杂质浓度分别为 $N_D=1\times10^{16}$、$1\times10^{17}$、$1\times10^{19}\,\text{cm}^{-3}$。求温度 $300\,\text{K}$ 时费米能级、电子与空穴浓度。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{硅室温参数}：$n_i=1.5\times10^{10}\,\text{cm}^{-3}$，$N_c=2.8\times10^{19}\,\text{cm}^{-3}$，$N_v=1.02\times10^{19}\,\text{cm}^{-3}$
+    \item \textbf{磷电离能}：$E_1=E_c-E_D=0.044\,\text{eV}$
+    \item \textbf{电离区划分}：强电离（$8/A\ll1$）、部分电离（$8/A\sim1$）、简并（$8/A\gg1$）
+    \item \textbf{简并统计}：需用费米-狄拉克积分 $F_{1/2}(\xi)$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+已知 $k_BT\approx0.026\,\text{eV}$，$n_i\ll N_D$，本征激发可忽略。定义参数 $A=(N_c/N_D)e^{-E_1/k_BT}$。
+
+\textbf{1. $N_D=1\times10^{16}\,\text{cm}^{-3}$（强电离区）}
+\[
+A=\frac{2.8\times10^{19}}{10^{16}}e^{-0.044/0.026}\approx2.8\times10^3\times0.184\approx515.
+\]
+$8/A\approx0.0155\ll1$，杂质完全电离。
+
+电子浓度：$n\approx N_D=1\times10^{16}\,\text{cm}^{-3}$。
+
+费米能级：
+\[
+E_F=E_c-k_BT\ln\frac{N_c}{n}=E_c-0.026\ln\frac{2.8\times10^{19}}{10^{16}}\approx E_c-0.21\,\text{eV}.
+\]
+
+空穴浓度：
+\[
+p=\frac{n_i^2}{n}=\frac{2.25\times10^{20}}{10^{16}}=2.25\times10^4\,\text{cm}^{-3}.
+\]
+
+\textbf{2. $N_D=1\times10^{17}\,\text{cm}^{-3}$（中间电离区）}
+\[
+A=\frac{2.8\times10^{19}}{10^{17}}\times0.184\approx51.5,\quad 8/A\approx0.155.
+\]
+非简并，但杂质未完全电离。
+
+由 $2Ax^2+Ax-1=0$（$x=e^{(E_F-E_D)/k_BT}$），正根 $x\approx0.0187$。
+
+费米能级：
+\[
+E_F=E_D+k_BT\ln x\approx E_D-0.103\,\text{eV}=E_c-0.147\,\text{eV}.
+\]
+
+电子浓度：$n=N_DAx\approx9.65\times10^{16}\,\text{cm}^{-3}$。
+
+空穴浓度：$p=n_i^2/n\approx2.33\times10^3\,\text{cm}^{-3}$。
+
+\textbf{3. $N_D=1\times10^{19}\,\text{cm}^{-3}$（弱简并区）}
+\[
+A=\frac{2.8\times10^{19}}{10^{19}}\times0.184\approx0.515,\quad 8/A\approx15.5\gg1.
+\]
+费米能级接近导带底，发生弱简并，非简并公式失效。
+
+采用费米-狄拉克积分近似求解，得 $\xi=(E_F-E_c)/k_BT\approx-1.4$。
+
+费米能级：$E_F=E_c-1.4\times0.026\approx E_c-0.036\,\text{eV}$（已进入导带底以下极近处）。
+
+电子浓度：$n=N_cF_{1/2}(-1.4)\approx2.8\times10^{19}\times0.228\approx6.4\times10^{18}\,\text{cm}^{-3}$（略小于 $N_D$，部分杂质未电离）。
+
+空穴浓度：价带仍非简并，$p=N_ve^{-(E_F-E_v)/k_BT}\approx8\,\text{cm}^{-3}$（极少）。
+
+注意：此时 $np\neq n_i^2$，质量作用定律对简并半导体失效。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{lllll}
+\toprule
+$N_D\,(\text{cm}^{-3})$ & $E_F$（相对$E_c$） & $n\,(\text{cm}^{-3})$ & $p\,(\text{cm}^{-3})$ & 特征 \\
+\midrule
+$1\times10^{16}$ & $E_c-0.21\,\text{eV}$ & $1\times10^{16}$ & $2.3\times10^4$ & 强电离，非简并 \\
+$1\times10^{17}$ & $E_c-0.15\,\text{eV}$ & $9.65\times10^{16}$ & $2.3\times10^3$ & 部分电离，非简并 \\
+$1\times10^{19}$ & $E_c-0.036\,\text{eV}$ & $6.4\times10^{18}$ & $\sim8$ & 弱简并 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 随掺杂浓度升高，半导体经历从非简并强电离 $\to$ 非简并部分电离 $\to$ 弱简并的转变。费米能级从禁带中部逐渐向导带底移动，甚至进入导带。
+    \item 简并半导体中电子服从费米-狄拉克统计，质量作用定律 $np=n_i^2$ 不再成立，多数载流子浓度不再等于掺杂浓度。
+    \item 准确计算简并半导体的载流子浓度需使用费米-狄拉克积分，或采用合理的近似解析式。
+\end{itemize}
+\end{insightbox}
