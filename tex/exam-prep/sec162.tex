@@ -1,0 +1,111 @@
+% ============================================================
+% Section 162: 氘核的态成分与纯d态磁矩
+% ============================================================
+\section{量子力学：氘核的态成分与纯\texorpdfstring{$d$}{d}态磁矩}
+\label{sec:deuteron-pg-magnetic}
+
+\begin{modelbox}[题目：氘核的态成分与纯\texorpdfstring{$d$}{d}态磁矩]
+氘核是质子与中子的束缚态，总角动量 $J=1$。已知它主要由 $s$ 态（$l=0$）组成，并有少量 $d$ 态（$l=2$）参与。
+\begin{enumerate}
+    \item 解释为什么 $p$ 态不能混入；
+    \item 解释为什么 $g$ 态不能混入；
+    \item 计算 $n$-$p$ 系统（$J=1$）处在纯 $d$ 态时的磁矩。采用 $L$-$S$ 耦合，用核磁子 $\mu_N$ 表示。已知质子与中子磁矩分别为 $2.79\mu_N$ 和 $-1.91\mu_N$。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{宇称守恒}：强相互作用守恒宇称，内禀宇称 $\times(-1)^l$ 必须相同
+    \item \textbf{角动量耦合}：$\mathbf{J}=\mathbf{L}+\mathbf{S}$，$S=0$ 或 $1$（单态/三重态）
+    \item \textbf{投影定理}：$\langle\mu_z\rangle=\dfrac{\langle\boldsymbol\mu\cdot\mathbf{J}\rangle}{J(J+1)}M_J$
+    \item \textbf{磁矩算符}：$\boldsymbol\mu=g_l^{(p)}\mathbf{L}_p+g_l^{(n)}\mathbf{L}_n+g_p\mathbf{S}_p+g_n\mathbf{S}_n$（以 $\mu_N$ 为单位）
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. 为什么 $p$ 态不能混入？}
+
+强相互作用下宇称守恒。质子和中子的内禀宇称均为正，故氘核宇称 $=(-1)^l$。
+\begin{itemize}
+    \item $s$ 态（$l=0$）：宇称 $+1$
+    \item $d$ 态（$l=2$）：宇称 $+1$
+    \item $p$ 态（$l=1$）：宇称 $-1$
+\end{itemize}
+$p$ 态与主成分 $s$ 态宇称相反，因此宇称守恒禁止 $p$ 态混入。
+
+\textbf{2. 为什么 $g$ 态不能混入？}
+
+质子和中子自旋均为 $1/2$，总自旋 $S$ 可为 $0$（单态）或 $1$（三重态）。
+
+若 $S=0$，则 $J=L$ 要求 $L=1$（$p$ 态），已被宇称排除。
+
+若 $S=1$，则 $L$ 的可能值为 $|J-S|$ 到 $J+S$，即 $L=0,1,2$。排除 $L=1$ 后，仅剩 $L=0$（$s$）和 $L=2$（$d$）。
+
+$g$ 态对应 $L=4$。对于 $S=1$，$L=4$ 与 $S=1$ 耦合可得 $J=3,4,5$，\textbf{无法得到 $J=1$}。因此从角动量耦合规则本身，$g$ 态就不可能形成 $J=1$ 的氘核基态。
+
+\textbf{3. 纯 $d$ 态的磁矩计算}
+
+纯 $d$ 态：$L=2$，$S=1$，$J=1$。采用 $L$-$S$ 耦合。
+
+磁矩算符（以 $\mu_N$ 为单位）：
+\[
+\boldsymbol\mu=g_l^{(p)}\mathbf{L}_p+g_l^{(n)}\mathbf{L}_n+g_p\mathbf{S}_p+g_n\mathbf{S}_n.
+\]
+其中 $g_l^{(p)}=1$，$g_l^{(n)}=0$，$g_p=2\times2.79=5.58$，$g_n=2\times(-1.91)=-3.82$。
+
+在质心系中 $\mathbf{L}_p=\mathbf{L}_n=\frac12\mathbf{L}$，且 $\mathbf{S}_p$、$\mathbf{S}_n$ 在 $\mathbf{S}$ 上的投影系数均为 $1/2$（因两自旋 $1/2$ 对等耦合）。于是
+\[
+\boldsymbol\mu=\frac12\mathbf{L}+\frac{g_p+g_n}{2}\mathbf{S}.
+\]
+
+利用投影定理，对 $M_J=J=1$ 态：
+\[
+\mu=\frac{\langle\boldsymbol\mu\cdot\mathbf{J}\rangle}{J(J+1)}J.
+\]
+
+计算 $\boldsymbol\mu\cdot\mathbf{J}$（$\mathbf{J}=\mathbf{L}+\mathbf{S}$）：
+\begin{align*}
+\boldsymbol\mu\cdot\mathbf{J}&=\frac12\mathbf{L}^2+\frac{g_p+g_n}{2}\mathbf{S}^2+\frac{1+g_p+g_n}{2}\mathbf{L}\cdot\mathbf{S}.
+\end{align*}
+
+由 $\mathbf{J}^2=\mathbf{L}^2+\mathbf{S}^2+2\mathbf{L}\cdot\mathbf{S}$ 得
+\[
+\mathbf{L}\cdot\mathbf{S}=\frac12[J(J+1)-L(L+1)-S(S+1)]=\frac12(2-6-2)=-3.
+\]
+
+代入数值（$g_p+g_n=1.76$）：
+\begin{align*}
+\boldsymbol\mu\cdot\mathbf{J}&=\frac12\times6+\frac{1.76}{2}\times2+\frac{2.76}{2}\times(-3)\\
+&=3+1.76-4.14=0.62\;\mu_N.
+\end{align*}
+
+因此
+\begin{equation}
+\boxed{\mu=\frac{0.62}{1\times2}\times1=0.31\;\mu_N.}
+\end{equation}
+
+实验值 $\mu_{\text{exp}}\approx0.857\mu_N$，介于纯 $s$ 态（$\approx0.88\mu_N$）与纯 $d$ 态之间，证实了 $d$ 态的小混合。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+$p$ 态禁戒原因 & 宇称守恒（$(-1)^l$ 相反） \\
+$g$ 态禁戒原因 & $L=4$ 与 $S=1$ 无法耦合出 $J=1$ \\
+纯 $d$ 态磁矩 & $\mu=0.31\,\mu_N$ \\
+实验磁矩 & $\approx0.857\,\mu_N$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 氘核是核物理中研究核力性质的最简单系统。其磁矩偏离纯 $s$ 态预言值，是 $d$ 态（张量力成分）混合的直接证据。
+    \item 张量力（tensor force）与自旋-轨道耦合不同，它不保持轨道角动量守恒，因此允许 $L=0$ 与 $L=2$ 混合，但不能改变宇称。
+    \item 纯 $d$ 态磁矩 $0.31\mu_N$ 远小于实验值，说明 $s$ 态仍是主要成分（约 $96\%$），$d$ 态混合仅约 $4\%$--$6\%$。
+\end{itemize}
+\end{insightbox}

@@ -1,0 +1,96 @@
+% ============================================================
+% Section 160: 对称方势阱中的束缚态
+% ============================================================
+\section{量子力学：对称方势阱中的束缚态}
+\label{sec:finite-square-well-bound}
+
+\begin{modelbox}[题目：对称方势阱中的束缚态]
+粒子在深度为 $V_0$、宽度为 $a$ 的对称方势阱中运动，求：
+\begin{enumerate}
+    \item 在阱口附近刚好出现一条束缚能级（$E\approx V_0$）的条件；
+    \item 束缚态能级总数。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{阱口条件}：$E\to V_0^-$ 时 $\beta\to0$，阱外波函数几乎为常数
+    \item \textbf{宇称分类}：偶宇称和奇宇称分别讨论
+    \item \textbf{能级总数}：与无限深势阱对比，有限深势阱多一个阈上浅束缚态
+    \item \textbf{一维势阱定理}：任何一维对称吸引势至少存在一个偶宇称束缚态
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. 基本设定}
+
+取阱底势能为零：
+\[
+V(x)=\begin{cases}0, & |x|\le a/2 \\ V_0, & |x|>a/2\end{cases}
+\]
+束缚态能量 $0<E<V_0$。引入波数
+\[
+k=\frac{\sqrt{2mE}}{\hbar},\quad \beta=\frac{\sqrt{2m(V_0-E)}}{\hbar},\quad k_0=\frac{\sqrt{2mV_0}}{\hbar},
+\]
+满足 $k^2+\beta^2=k_0^2$。
+
+阱内：$\psi''+k^2\psi=0$；阱外：$\psi''-\beta^2\psi=0$。
+
+\textbf{2. 阱口条件分析}
+
+当 $E\approx V_0^-$ 时，$\beta\to0^+$，$k\approx k_0$。阱外波函数衰减极慢，几乎为常数。
+
+\textit{偶宇称}：$\psi(x)=C\cos kx$（阱内），$\psi(x)=Ae^{-\beta|x|}$（阱外）。
+
+$x=a/2$ 处连续性：$C\cos(ka/2)\approx A$；
+导数连续性：$-Ck\sin(ka/2)\approx0$，故 $\sin(ka/2)\approx0$，即 $ka\approx2m\pi$（$m=0,1,2,\dots$）。
+
+\textit{奇宇称}：$\psi(x)=C\sin kx$（阱内），$\psi(x)=\pm Ae^{-\beta|x|}$（阱外）。
+
+$x=a/2$ 处连续性：$C\sin(ka/2)\approx A$；
+导数连续性：$Ck\cos(ka/2)\approx0$，故 $\cos(ka/2)\approx0$，即 $ka\approx(2m+1)\pi$（$m=0,1,2,\dots$）。
+
+统一写为 $k_0a\approx n\pi$（$n=1,2,3,\dots$），即
+\begin{equation}
+\boxed{\frac{2mV_0a^2}{\hbar^2}=n^2\pi^2,\quad n=1,2,3,\ldots}
+\end{equation}
+
+$n=1,3,5,\dots$ 对应偶宇称态；$n=2,4,6,\dots$ 对应奇宇称态。偶奇交替出现。
+
+\textbf{3. 束缚态总数}
+
+一维对称吸引势至少存在一个偶宇称束缚态。当 $0<\frac{2mV_0a^2}{\hbar^2}<\pi^2$ 时，只有一个束缚态（基态）。
+
+每增加一个 $n^2\pi^2$ 的阈值，就新增一个束缚态。束缚态总数为
+\begin{equation}
+\boxed{N=1+\left\lfloor\frac{a}{\pi\hbar}\sqrt{2mV_0}\right\rfloor.}
+\end{equation}
+
+\textbf{4. 与无限深势阱的对比}
+
+宽度为 $a$ 的无限深势阱能级 $E_n^{(\infty)}=\frac{n^2\pi^2\hbar^2}{2ma^2}$。若要求 $E_n^{(\infty)}<V_0$，则 $n<\frac{a}{\pi\hbar}\sqrt{2mV_0}$，满足条件的能级数为 $\left\lfloor\frac{a}{\pi\hbar}\sqrt{2mV_0}\right\rfloor=N-1$。
+
+物理原因：有限深势阱的波函数可渗透到阱外，有效宽度更大，动能更低，因此在同一 $V_0$ 上限之下能``多装''一个浅束缚态。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+阱口出现新束缚态条件 & $\displaystyle\frac{2mV_0a^2}{\hbar^2}=n^2\pi^2$（$n=1,2,\ldots$） \\
+束缚态总数 & $N=1+\left\lfloor\dfrac{a}{\pi\hbar}\sqrt{2mV_0}\right\rfloor$ \\
+偶奇交替 & $n$ 为奇数→偶宇称；$n$ 为偶数→奇宇称 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 一维对称势阱的束缚态总数公式与势阱``尺寸'' $k_0a$ 直接相关，每跨过 $n\pi$ 阈值就多一个态。
+    \item 无论势阱多浅多窄，总至少存在一个偶宇称束缚态，这是一维量子力学的重要定理（不存在零能共振的三维情况截然不同）。
+    \item 在阱口附近，波函数在阱外延展极长（$\beta\to0$），有效尺寸趋于无穷，对应``临界束缚''状态。
+\end{itemize}
+\end{insightbox}

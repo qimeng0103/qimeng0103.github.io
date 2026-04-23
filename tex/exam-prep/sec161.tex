@@ -1,0 +1,132 @@
+% ============================================================
+% Section 161: C-G 系数与同位旋反应截面比率
+% ============================================================
+\section{量子力学：C-G 系数与同位旋反应截面比率}
+\label{sec:cg-isospin-reaction}
+
+\begin{modelbox}[题目：C-G 系数与同位旋反应截面比率]
+已知 $j_1=1$，$j_2=\frac12$，总角动量 $\mathbf{J}=\mathbf{j}_1+\mathbf{j}_2$。
+\begin{enumerate}
+    \item 求 $j=\frac32$，$m=\frac32$ 时的 C-G 系数；
+    \item 求 $j=\frac32$，$m=\frac12$ 时的 C-G 系数。
+\end{enumerate}
+
+考虑下列强相互作用反应（共振态为纯同位旋态）：
+\begin{align*}
+K^-p&\to\Sigma^-\pi^+\to\Sigma^+\pi^-\to\Sigma^0\pi^0,\\
+K^-n&\to\Sigma^-\pi^0\to\Sigma^0\pi^-.
+\end{align*}
+已知 $K,n,\Sigma,\pi$ 的同位旋分别为 $\frac12,\frac12,1,1$。在同位旋守恒基础上求相对比率：
+\begin{enumerate}
+    \item[(3)] 对 $I=1$ 共振态；
+    \item[(4)] 对 $I=0$ 共振态。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{升降算符法}：$J_-=J_{1-}+J_{2-}$ 从最高权态递推
+    \item \textbf{同位旋耦合}：$\frac12\otimes\frac12=1\oplus0$，$1\otimes1=2\oplus1\oplus0$
+    \item \textbf{截面比率}：$\sigma\propto|\langle\text{初}|I,I_3\rangle\langle I,I_3|\text{末}\rangle|^2$
+    \item \textbf{初态展开}：$K^-p$ 含 $I=1,0$；$K^-n$ 只有 $I=1$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{一、C-G 系数计算（升降算符法）}
+
+\textit{(1) $j=\frac32$，$m=\frac32$}
+
+$m=m_1+m_2=\frac32$ 的唯一组合为 $m_1=1$，$m_2=\frac12$，故
+\begin{equation}
+\Bigl|\frac32,\frac32\Bigr\rangle=|1,1\rangle\Bigl|\frac12,\frac12\Bigr\rangle.
+\end{equation}
+C-G 系数 $\langle1,1;\frac12,\frac12|\frac32,\frac32\rangle=1$。
+
+\textit{(2) $j=\frac32$，$m=\frac12$}
+
+对最高权态作用 $J_-=J_{1-}+J_{2-}$：
+\begin{align*}
+J_-\Bigl|\frac32,\frac32\Bigr\rangle&=\hbar\sqrt3\Bigl|\frac32,\frac12\Bigr\rangle,\\
+J_{1-}|1,1\rangle&=\hbar\sqrt2\,|1,0\rangle,\quad
+J_{2-}\Bigl|\frac12,\frac12\Bigr\rangle=\hbar\Bigl|\frac12,-\frac12\Bigr\rangle.
+\end{align*}
+联立得
+\begin{equation}
+\Bigl|\frac32,\frac12\Bigr\rangle=\sqrt{\frac23}\,|1,0\rangle\Bigl|\frac12,\frac12\Bigr\rangle+\sqrt{\frac13}\,|1,1\rangle\Bigl|\frac12,-\frac12\Bigr\rangle.
+\end{equation}
+C-G 系数分别为 $\sqrt{2/3}$ 和 $\sqrt{1/3}$。
+
+\textbf{二、同位旋态展开}
+
+\textit{初态：}
+\begin{align*}
+|K^-p\rangle&=\Bigl|\frac12,-\frac12\Bigr\rangle\Bigl|\frac12,\frac12\Bigr\rangle
+=\sqrt{\frac12}\,|1,0\rangle-\sqrt{\frac12}\,|0,0\rangle,\\
+|K^-n\rangle&=\Bigl|\frac12,-\frac12\Bigr\rangle\Bigl|\frac12,-\frac12\Bigr\rangle=|1,-1\rangle.
+\end{align*}
+
+\textit{末态（$I_3=0$ 的 $K^-p$ 产物）：}
+\begin{align*}
+|\Sigma^-\pi^+\rangle&=|1,-1\rangle|1,1\rangle=\sqrt{\frac16}\,|2,0\rangle-\sqrt{\frac12}\,|1,0\rangle+\sqrt{\frac13}\,|0,0\rangle,\\
+|\Sigma^+\pi^-\rangle&=|1,1\rangle|1,-1\rangle=\sqrt{\frac16}\,|2,0\rangle+\sqrt{\frac12}\,|1,0\rangle+\sqrt{\frac13}\,|0,0\rangle,\\
+|\Sigma^0\pi^0\rangle&=|1,0\rangle|1,0\rangle=\sqrt{\frac23}\,|2,0\rangle-\sqrt{\frac13}\,|0,0\rangle.
+\end{align*}
+
+\textit{末态（$I_3=-1$ 的 $K^-n$ 产物）：}
+\begin{align*}
+|\Sigma^-\pi^0\rangle&=|1,-1\rangle|1,0\rangle=\sqrt{\frac12}\,|2,-1\rangle-\sqrt{\frac12}\,|1,-1\rangle,\\
+|\Sigma^0\pi^-\rangle&=|1,0\rangle|1,-1\rangle=\sqrt{\frac12}\,|2,-1\rangle+\sqrt{\frac12}\,|1,-1\rangle.
+\end{align*}
+
+\textbf{三、截面相对比率}
+
+反应截面 $\sigma\propto|\langle\text{初}|I,I_3\rangle\langle I,I_3|\text{末}\rangle|^2$。
+
+\textit{(3) $I=1$ 共振态}
+
+$K^-p$：初态 $I=1$ 分量系数为 $-\sqrt{1/2}$。
+\begin{equation}
+\sigma(\Sigma^-\pi^+):\sigma(\Sigma^+\pi^-):\sigma(\Sigma^0\pi^0)=\frac12:\frac12:0=\boxed{1:1:0}.
+\end{equation}
+
+$K^-n$：初态为纯 $|1,-1\rangle$，系数为 $1$。
+\begin{equation}
+\sigma(\Sigma^-\pi^0):\sigma(\Sigma^0\pi^-)=\frac12:\frac12=\boxed{1:1}.
+\end{equation}
+
+\textit{(4) $I=0$ 共振态}
+
+仅 $K^-p$ 含 $I=0$ 分量（系数 $-\sqrt{1/2}$），$K^-n$ 无 $I=0$ 分量（截面均为零）。
+
+$K^-p$ 产物中 $I=0$ 分量系数均为 $\sqrt{1/3}$（符号不同），模平方后相同：
+\begin{equation}
+\sigma(\Sigma^-\pi^+):\sigma(\Sigma^+\pi^-):\sigma(\Sigma^0\pi^0)=\frac16:\frac16:\frac16=\boxed{1:1:1}.
+\end{equation}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+$\langle1,1;\frac12,\frac12|\frac32,\frac32\rangle$ & $1$ \\
+$\langle1,0;\frac12,\frac12|\frac32,\frac12\rangle$ & $\sqrt{2/3}$ \\
+$\langle1,1;\frac12,-\frac12|\frac32,\frac12\rangle$ & $\sqrt{1/3}$ \\
+$I=1$：$K^-p$ 产物比 & $\Sigma^-\pi^+:\Sigma^+\pi^-:\Sigma^0\pi^0=1:1:0$ \\
+$I=1$：$K^-n$ 产物比 & $\Sigma^-\pi^0:\Sigma^0\pi^-=1:1$ \\
+$I=0$：$K^-p$ 产物比 & $\Sigma^-\pi^+:\Sigma^+\pi^-:\Sigma^0\pi^0=1:1:1$ \\
+$I=0$：$K^-n$ 产物比 & $0$（初态无 $I=0$ 分量） \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 同位旋守恒类似角动量守恒，反应振幅仅由初末态在同位旋空间的 C-G 系数决定。
+    \item $K^-p$ 系统因 $I_3=0$ 可形成 $I=0$ 或 $I=1$ 共振态；$K^-n$ 系统 $I_3=-1$ 只能形成 $I=1$ 态。这一差异导致 $I=0$ 共振下 $K^-n$ 反应被完全禁戒。
+    \item 该模型历史上在 $K^-p$ 散射的 $Y^*$ 共振（如 $\Lambda(1405)$、$\Sigma(1385)$）分析中起关键作用。
+\end{itemize}
+\end{insightbox}
