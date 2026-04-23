@@ -1,0 +1,76 @@
+% ============================================================
+% Section 180: 氢原子n=2能级在均匀恒定电场中的分裂
+% ============================================================
+\section{量子力学：氢原子\texorpdfstring{$n=2$}{n=2}能级在均匀恒定电场中的分裂}
+\label{sec:hydrogen-n2-stark}
+
+\begin{modelbox}[题目：氢原子\texorpdfstring{$n=2$}{n=2}能级在均匀恒定电场中的分裂]
+忽略自旋效应，主量子数 $n=2$ 的氢原子 4 个态具有同样能量 $E^0$。证明当均匀恒定电场 $\mathcal{E}$ 加到处于这些态的氢原子上时，一阶能量修正为 $E^0\pm3a_0e\mathcal{E},\;E^0,\;E^0$。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{四重简并}：$|200\rangle,|210\rangle,|211\rangle,|21,-1\rangle$
+    \item \textbf{微扰}：$H'=e\mathcal{E}z=e\mathcal{E}r\cos\theta$（奇宇称，$\Delta m=0$）
+    \item \textbf{选择定则}：仅 $\langle200|H'|210\rangle$ 非零
+    \item \textbf{矩阵对角化}：$2\times2$ 子空间给出分裂，$|211\rangle,|21,-1\rangle$ 不受影响
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. 未微扰态与简并}
+
+$n=2$ 四重简并：$|200\rangle,|210\rangle,|211\rangle,|21,-1\rangle$，能量 $E^0=-e^2/(8a_0)$。
+
+\textbf{2. 微扰矩阵元}
+
+$H'=e\mathcal{E}r\cos\theta$。奇宇称使对角元为零；与 $L_z$ 对易使 $\Delta m\neq0$ 的矩阵元为零。故仅 $\langle200|H'|210\rangle$ 可能非零。
+
+利用归一化波函数（见题 7.41）：
+\[
+\psi_{200}=\frac{1}{\sqrt{32\pi a_0^3}}\Bigl(2-\frac{r}{a_0}\Bigr)e^{-r/2a_0},\quad
+\psi_{210}=\frac{1}{\sqrt{32\pi a_0^3}}\frac{r}{a_0}e^{-r/2a_0}\cos\theta.
+\]
+
+计算得
+\[
+\langle200|H'|210\rangle=e\mathcal{E}\int_0^\infty\!r^3R_{20}R_{21}dr\int d\Omega\,Y_{00}\cos\theta\,Y_{10}=-3ea_0\mathcal{E}\equiv-A.
+\]
+
+\textbf{3. 简并微扰矩阵与本征值}
+
+在基 $\{|211\rangle,|21,-1\rangle,|210\rangle,|200\rangle\}$ 中：
+\[
+H'=\begin{pmatrix}0&0&0&0\\0&0&0&0\\0&0&0&-A\\0&0&-A&0\end{pmatrix}.
+\]
+
+前两个基矢各自解耦（本征值 $0$）；后两个构成 $2\times2$ 子空间，本征值 $\pm A$。
+
+\begin{equation}
+\boxed{E^{(1)}=0,\;0,\;+3ea_0\mathcal{E},\;-3ea_0\mathcal{E}.}
+\end{equation}
+
+对应本征态：$|211\rangle$、$|21,-1\rangle$、$\dfrac{1}{\sqrt2}(|200\rangle-|210\rangle)$、$\dfrac{1}{\sqrt2}(|200\rangle+|210\rangle)$。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+一级修正 & $E^{(1)}=0,\;0,\;\pm3ea_0\mathcal{E}$ \\
+分裂宽度 & $\Delta E=6ea_0\mathcal{E}$ \\
+不受影响态 & $|211\rangle,|21,-1\rangle$（横向极化） \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item $n=2$ 的线性 Stark 分裂是氢原子特有的，源于库仑势的 $l$ 简并。组合态 $\dfrac{1}{\sqrt2}(|200\rangle\pm|210\rangle)$ 对应沿 $z$ 轴方向的永久电偶极矩 $\pm3ea_0$。
+    \item $|211\rangle$ 和 $|21,-1\rangle$ 不受电场影响，因为它们对应电子在 $xy$ 平面内的运动，平均偶极矩为零。
+    \item 该结果是理解里德伯原子 Stark 效应和波包动力学的起点：高 $n$ 态的分裂更复杂，形成 Stark 流形（Stark manifold）。
+\end{itemize}
+\end{insightbox}

@@ -1,0 +1,92 @@
+% ============================================================
+% Section 182: 两能级原子的Rabi振荡
+% ============================================================
+\section{量子力学：两能级原子的Rabi振荡}
+\label{sec:rabi-oscillation}
+
+\begin{modelbox}[题目：两能级原子的Rabi振荡]
+两能级原子，能级差 $E_2-E_1=\hbar\omega_{21}$。初始处于基态 $|1\rangle$，受到电磁辐射 $\mathcal{E}(t)=\mathcal{E}_m(e^{i\omega t}+e^{-i\omega t})$ 作用。
+\begin{enumerate}
+    \item 若 $\omega=\omega_{21}$，计算一段时间后原子处于 $|2\rangle$ 的概率；
+    \item 若 $\omega$ 只是近似等于 $\omega_{21}$，定性差别如何？重新计算上述概率。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{旋波近似}：保留 $e^{\pm i(\omega-\omega_{21})t}$，略去 $e^{\pm i(\omega+\omega_{21})t}$
+    \item \textbf{Rabi频率}：$\Omega=|a_{21}|=|d_{21}\mathcal{E}_m|/\hbar$
+    \item \textbf{共振}：完全振荡，$P_{1\to2}=\sin^2(\Omega t)$
+    \item \textbf{失谐}：有效频率增大为 $\Lambda/2=\sqrt{\Delta^2+4\Omega^2}/2$，最大概率降低
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. 基本方程}
+
+设 $|\psi(t)\rangle=c_1(t)e^{-i\omega_1t}|1\rangle+c_2(t)e^{-i\omega_2t}|2\rangle$。微扰 $H'=-ex\mathcal{E}(t)$，矩阵元 $H'_{ij}=\hbar a_{ij}(e^{i\omega t}+e^{-i\omega t})$。
+
+旋波近似下（$\omega\approx\omega_{21}$）：
+\[
+\dot{c}_1=-ia_{12}c_2e^{i(\omega-\omega_{21})t},\quad\dot{c}_2=-ia_{21}c_1e^{-i(\omega-\omega_{21})t}.
+\]
+
+记失谐 $\Delta=\omega_{21}-\omega$，$\Omega=|a_{21}|$。
+
+\textbf{2. 共振情形 ($\omega=\omega_{21}$)}
+
+$\Delta=0$，方程简化为 $\ddot{c}_2=-\Omega^2c_2$。由 $c_2(0)=0$，$\dot{c}_2(0)=-ia_{21}$：
+\[
+c_2(t)=-i\frac{a_{21}}{\Omega}\sin\Omega t.
+\]
+
+跃迁概率：
+\begin{equation}
+\boxed{P_{1\to2}(t)=|c_2(t)|^2=\sin^2(\Omega t).}
+\end{equation}
+
+原子以 \textbf{Rabi 频率} $\Omega$ 在基态与激发态之间完全振荡。
+
+\textbf{3. 近共振情形 ($\omega\approx\omega_{21}$)}
+
+消去 $c_1$ 得 $\ddot{c}_2+i\Delta\dot{c}_2+\Omega^2c_2=0$。特征根 $\lambda_\pm=\frac12(\Delta\pm\Lambda)$，$\Lambda=\sqrt{\Delta^2+4\Omega^2}$。
+
+由初值条件：
+\[
+c_2(t)=-i\frac{2a_{21}}{\Lambda}e^{i\Delta t/2}\sin\frac{\Lambda t}{2}.
+\]
+
+跃迁概率：
+\begin{equation}
+\boxed{P_{1\to2}(t)=\frac{4\Omega^2}{\Delta^2+4\Omega^2}\sin^2\Bigl(\frac{\Lambda t}{2}\Bigr)=\frac{4\Omega^2}{\Delta^2+4\Omega^2}\sin^2\Bigl(\frac{\sqrt{\Delta^2+4\Omega^2}}{2}t\Bigr).}
+\end{equation}
+
+\textit{定性差别}：
+\begin{itemize}
+    \item 最大概率 $\dfrac{4\Omega^2}{\Delta^2+4\Omega^2}<1$，失谐越大越难完全跃迁；
+    \item 振荡频率加快为 $\Lambda/2>\Omega$；
+    \item $|\Delta|\gg\Omega$ 时概率极小（远离共振）。
+\end{itemize}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+共振概率 & $P(t)=\sin^2(\Omega t)$ \\
+近共振概率 & $P(t)=\dfrac{4\Omega^2}{\Delta^2+4\Omega^2}\sin^2\Bigl(\dfrac{\sqrt{\Delta^2+4\Omega^2}}{2}t\Bigr)$ \\
+最大概率（失谐） & $<1$，随 $|\Delta|$ 增大而减小 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item Rabi 振荡是量子光学和核磁共振的核心结果。频率 $\Omega$ 正比于耦合强度（电场振幅），反映了原子与光场的能量交换。
+    \item 失谐时的 ``sin$^2$ 因子'' 是量子力学版本的拍频现象：原子与光场的相位差导致有效耦合减弱。
+    \item 在超强场下，旋波近似失效，需用全量子理论（Jaynes-Cummings 模型）处理。
+\end{itemize}
+\end{insightbox}
