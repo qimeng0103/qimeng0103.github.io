@@ -1,0 +1,90 @@
+% ============================================================
+% Section 165: 氨分子钟的工作原理
+% ============================================================
+\section{量子力学：氨分子钟的工作原理}
+\label{sec:ammonia-maser}
+
+\begin{modelbox}[题目：氨分子钟的工作原理]
+氨分子 NH$_3$ 具有三角锥结构，氮原子位于三个氢原子所在平面的两侧，可在两个对称平衡位置之间来回振动。其势能可近似为对称双势阱，氮原子通过隧道效应穿透势垒。试求解相应波函数和能级，并解释氨分子钟的工作原理。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{双势阱模型}：两个对称势阱被势垒隔开，形成近似简并的左右局域态
+    \item \textbf{隧道效应}：量子隧道使简并解除，分裂为偶宇称（低能）和奇宇称（高能）定态
+    \item \textbf{非定态叠加}：初始局域在一侧的态是两定态的等权叠加，概率密度周期性振荡
+    \item \textbf{频率标准}：能级劈裂仅由分子内部结构决定，极稳定
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. 简化物理模型}
+
+将氮原子沿垂直于氢原子平面的方向（设为 $x$ 轴）运动简化为一维问题。对称双势阱模型：两个势阱分别位于 $x\approx\pm b$ 附近，中间被高为 $V_0$、宽为 $2b$ 的势垒隔开。
+
+为突出物理本质，将势垒极限化为 $\delta$ 势垒：两个宽度为 $a$ 的无限深方势阱（分别位于 $-a<x<0$ 和 $0<x<a$）在 $x=0$ 处被 $\delta$ 势垒隔开。
+
+\textbf{2. 定态能级与波函数}
+
+\textit{偶宇称基态}（$n=1$）：波函数在左右阱内分别为 $\sin k_1(x+a)$ 和 $\sin k_1(x-a)$。在 $x=0$ 处对称连接得 $k_1a=\pi/2$，故
+\[
+E_1=\frac{\pi^2\hbar^2}{8ma^2}.
+\]
+
+\textit{奇宇称第一激发态}（$n=2$）：奇宇称要求 $\psi(0)=0$，得 $k_1a=\pi$，故
+\[
+E_2=\frac{\pi^2\hbar^2}{2ma^2}=4E_1.
+\]
+
+在更精确的双势阱模型中，由于隧道耦合，这两个能级实际上形成一个紧密的双重态（劈裂远小于上述简化模型的 $3E_1$），但振荡机制不变。
+
+\textbf{3. 氮原子的振荡与氨分子钟}
+
+设初始时刻氮原子仅局域在左侧势阱，可表示为对称和反对称定态的等权叠加：
+\[
+\phi(x,0)=\frac{1}{\sqrt2}\bigl[\psi_1(x)+\psi_2(x)\bigr],
+\]
+其中 $\psi_1$ 为偶宇称基态，$\psi_2$ 为奇宇称激发态。$t=0$ 时左侧相长、右侧相消。
+
+时间演化：
+\[
+\phi(x,t)=\frac{1}{\sqrt2}\Bigl[\psi_1(x)e^{-iE_1t/\hbar}+\psi_2(x)e^{-iE_2t/\hbar}\Bigr].
+\]
+
+概率密度：
+\[
+|\phi(x,t)|^2=\frac12\Bigl[|\psi_1|^2+|\psi_2|^2+2\psi_1\psi_2\cos\frac{(E_2-E_1)t}{\hbar}\Bigr].
+\]
+
+概率密度峰值在两阱间周期性振荡，周期
+\begin{equation}
+\boxed{T=\frac{2\pi\hbar}{E_2-E_1},\quad \nu=\frac{E_2-E_1}{2\pi\hbar}.}
+\end{equation}
+
+\textbf{4. 氨分子钟}
+
+真实 NH$_3$ 分子中，该能级劈裂对应微波频段 $\nu\approx23.87\,\text{GHz}$。此频率仅由分子内部结构决定，不受温度、压力等外界环境影响，极其稳定。因此氨分子可作为高精度频率标准——\textbf{氨分子钟}（maser 的物理基础）。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+简化模型基态能量 & $E_1=\pi^2\hbar^2/(8ma^2)$ \\
+简化模型激发态能量 & $E_2=4E_1$ \\
+振荡频率 & $\nu=\Delta E/(2\pi\hbar)$ \\
+真实氨分子频率 & $\approx23.87\,\text{GHz}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 氨分子钟是量子力学隧道效应最著名的应用之一。经典力学中氮原子无法穿透氢原子平面；量子隧道使原本简并的左右态耦合，形成能级劈裂。
+    \item 该原理直接催生了微波受激辐射放大器（maser），是激光（laser）的前身。Townes 因此获 1964 年诺贝尔物理学奖。
+    \item 实际氨分子势阱形状更复杂，需用 WKB 法精确计算隧道劈裂，但定性物理图像完全一致。
+\end{itemize}
+\end{insightbox}

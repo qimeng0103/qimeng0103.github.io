@@ -1,0 +1,114 @@
+% ============================================================
+% Section 167: 电子在不可穿入导体表面上方运动
+% ============================================================
+\section{量子力学：电子在不可穿入导体表面上方运动}
+\label{sec:electron-image-charge}
+
+\begin{modelbox}[题目：电子在不可穿入导体表面上方运动]
+一电子在一不可穿入的导体表面上方运动。它被自身的像电荷吸向表面，因而经典地说它沿表面跳跃。
+\begin{enumerate}
+    \item 写出能量本征值和本征函数所满足的 Schrödinger 方程（忽略像电荷惯性效应）；
+    \item 本征态与 $x,z$ 的依赖关系是什么？
+    \item 所保持的边界条件是什么？
+    \item 求出基态和它的能量（提示：与氢原子基态紧密相关）；
+    \item 分立和/或连续能量本征值的完备集合是什么？
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{镜像电荷}：导体表面外电荷 $q$ 在 $y>0$ 的势等效于 $q$ 与其镜像 $-q$ 在真空中的势
+    \item \textbf{有效势}：$V(y)=-e^2/(4y)$，等效于核电荷 $Z=1/4$ 的类氢原子（一维半空间）
+    \item \textbf{边界条件}：$\phi(0)=0$（不可穿入），$\phi(\infty)\to0$（束缚态）
+    \item \textbf{分离变量}：$x,z$ 方向自由运动，$y$ 方向类氢束缚态
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. Schrödinger 方程}
+
+取导体表面为 $y=0$ 平面，电子位于 $y>0$ 半空间。镜像电荷产生势能
+\[
+V(y)=-\frac{e^2}{4y}.
+\]
+
+三维定态 Schrödinger 方程：
+\begin{equation}
+\Bigl(-\frac{\hbar^2}{2m}\nabla^2-\frac{e^2}{4y}\Bigr)\psi(x,y,z)=E\psi(x,y,z).
+\end{equation}
+
+\textbf{2. 与 $x,z$ 的依赖关系}
+
+势能仅依赖于 $y$，$x$ 和 $z$ 方向为自由运动。分离变量：
+\[
+\psi(x,y,z)=\phi_n(y)\cdot\frac{1}{2\pi\hbar}\exp\!\Bigl[\frac{i}{\hbar}(p_xx+p_zz)\Bigr],
+\]
+其中 $p_x,p_z$ 为连续动量本征值。
+
+\textbf{3. 边界条件}
+
+导体不可穿入，$\psi(x,0,z)=0$，故 $\phi_n(0)=0$。束缚态还要求 $\phi_n(y\to\infty)\to0$。
+
+\textbf{4. 基态波函数与能量}
+
+代入分离变量形式，$y$ 方向方程：
+\[
+-\frac{\hbar^2}{2m}\frac{d^2\phi_n}{dy^2}-\frac{e^2}{4y}\phi_n=E_y\phi_n.
+\]
+
+与氢原子 $l=0$ 径向方程（$\chi(r)=rR(r)$）对比：
+\[
+-\frac{\hbar^2}{2m}\frac{d^2\chi}{dr^2}-\frac{e^2}{r}\chi=E\chi,
+\]
+两者形式完全一致，只需作替换 $e^2\to e^2/4$，$r\to y$。
+
+等效玻尔半径 $a'=\dfrac{\hbar^2}{m(e^2/4)}=4a_0$（$a_0=\hbar^2/me^2$ 为玻尔半径）。
+
+类氢基态（$n=1$）的 $\chi_{10}(r)\propto re^{-r/a_0}$，故
+\begin{equation}
+\boxed{\phi_1(y)=2y\Bigl(\frac{me^2}{4\hbar^2}\Bigr)^{3/2}\exp\!\Bigl(-\frac{me^2y}{4\hbar^2}\Bigr).}
+\end{equation}
+
+能量（等效核电荷 $Z=1/4$，$E\propto Z^2$）：
+\begin{equation}
+\boxed{E_{y,1}=-\frac{m(e^2/4)^2}{2\hbar^2}=-\frac{me^4}{32\hbar^2}=\frac{E_1^{(\text{H})}}{16}\approx-0.85\,\text{eV}.}
+\end{equation}
+
+\textbf{5. 完备能量本征值集合}
+
+$y$ 方向形成类氢束缚态序列，总能量为
+\begin{equation}
+\boxed{E_{n,p_x,p_z}=-\frac{me^4}{32\hbar^2n^2}+\frac{p_x^2+p_z^2}{2m},\quad n=1,2,3,\ldots}
+\end{equation}
+
+能谱包含：
+\begin{itemize}
+    \item \textbf{分立谱}：由 $n$ 标记的 $y$ 方向束缚能级；
+    \item \textbf{连续谱}：$p_x,p_z$ 标记的平行表面自由运动，叠加在每个分立能级上形成连续子带。
+\end{itemize}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+Schrödinger 方程 & $\bigl(-\frac{\hbar^2}{2m}\nabla^2-\frac{e^2}{4y}\bigr)\psi=E\psi$ \\
+$x,z$ 依赖 & 平面波 $\exp[i(p_xx+p_zz)/\hbar]$ \\
+边界条件 & $\phi(0)=0$，$\phi(\infty)\to0$ \\
+基态波函数 & $\phi_1(y)=2y\left(\frac{me^2}{4\hbar^2}\right)^{3/2}e^{-me^2y/(4\hbar^2)}$ \\
+基态能量 & $E_1=-\dfrac{me^4}{32\hbar^2}\approx-0.85\,\text{eV}$ \\
+完备能谱 & $E_{n,p_x,p_z}=-\dfrac{me^4}{32\hbar^2n^2}+\dfrac{p_x^2+p_z^2}{2m}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 电子在导体表面上方形成二维电子气（2DEG）的雏形：垂直方向量子化形成分立能级，平行方向自由运动形成子带。该图像是半导体异质结（如 GaAs/AlGaAs）中二维电子气的简化模型。
+    \item 基态电子平均高度 $\langle y\rangle=4a_0\approx2.1\,\text{Å}$，远小于宏观尺度，说明电子被强烈束缚在表面附近。
+    \item 若考虑外加磁场（如表面垂直的磁场），平行运动的连续谱将量子化为 Landau 能级，这是量子 Hall 效应的理论起点之一。
+\end{itemize}
+\end{insightbox}

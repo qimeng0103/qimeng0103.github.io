@@ -1,0 +1,99 @@
+% ============================================================
+% Section 166: 重夸克线性势与WKB近似
+% ============================================================
+\section{量子力学：重夸克线性势与WKB近似}
+\label{sec:quark-linear-potential}
+
+\begin{modelbox}[题目：重夸克线性势与WKB近似]
+重夸克间相互作用近似为 $V(r)=A+Br$（$A,B>0$）。已知 $J/\psi$（$3.1\,\text{GeV}$）和 $\psi'$（$3.7\,\text{GeV}$）是由 $m_c=1.5\,\text{GeV}/c^2$ 的 $c$ 夸克及其反夸克构成的 $l=0$、$n=0,1$ 束缚态；$\Upsilon$（$9.5\,\text{GeV}$）和 $\Upsilon'$ 是由 $m_b=4.5\,\text{GeV}/c^2$ 的 $b$ 夸克及其反夸克构成的 $l=0$、$n=0,1$ 束缚态。
+\begin{enumerate}
+    \item 用量纲分析推出 $\Upsilon$ 与 $\Upsilon'$ 的能量间隔同 $\psi$ 与 $\psi'$ 间隔的关系，并推算 $\Upsilon'$ 的静止能量；
+    \item 将 $n=2$ 的粲粒子记为 $\psi''$，用WKB近似估算 $\psi'$ 与 $\psi''$ 的能级间隔，用 $\psi$ 与 $\psi'$ 的间隔表示，并给出 $\psi''$ 能量的数值估算。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{量纲分析}：$[B]=[E][L]^{-1}$，$[\hbar]=[E]^{1/2}[L][m]^{1/2}$，故 $[E]\propto(B\hbar)^{2/3}\mu^{1/3}$
+    \item \textbf{约化质量}：$q\bar q$ 系统 $\mu=m_q/2$
+    \item \textbf{WKB量子化}：线性势 $V=A+Br$ 的 Bohr--Sommerfeld 条件
+    \item \textbf{能量标度律}：$\Delta E\propto\mu^{1/3}$，同一系统内 $\Delta E_{n}\propto[(n+3/4)^{2/3}-(n-1/4)^{2/3}]$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. 量纲分析与 $\Upsilon'$ 能量}
+
+质心系中约化质量 $\mu=m_q/2$。$l=0$ 径向方程
+\[
+-\frac{\hbar^2}{2\mu}\frac{d^2\chi}{dr^2}+(A+Br)\chi=E_R\chi.
+\]
+
+量纲分析：$[B]=EL^{-1}$，$[\hbar]=E^{1/2}Lm^{1/2}$，相乘得 $[B\hbar]=E^{3/2}m^{1/2}$，故
+\[
+[E]\propto\frac{(B\hbar)^{2/3}}{m^{1/3}}\propto(B\hbar)^{2/3}\mu^{1/3}.
+\]
+
+因此 $E_n=f(n)(B\hbar)^{2/3}\mu^{1/3}$，$f(n)$ 为无量纲函数。对同一势（$A,B$ 相同），能级间隔之比
+\[
+\frac{\Delta E_\Upsilon}{\Delta E_\psi}=\left(\frac{\mu_b}{\mu_c}\right)^{1/3}.
+\]
+
+$m_c=1.5\,\text{GeV}/c^2$，$m_b=4.5\,\text{GeV}/c^2$，则 $\mu_c=0.75$，$\mu_b=2.25$，$\mu_c/\mu_b=1/3$。
+
+\begin{equation}
+\Delta E_\Upsilon=\Bigl(\frac13\Bigr)^{1/3}\Delta E_\psi\approx0.693\times0.6\,\text{GeV}\approx0.42\,\text{GeV}.
+\end{equation}
+
+\begin{equation}
+\boxed{E_{\Upsilon'}\approx9.5+0.42=9.92\,\text{GeV}\approx9.9\,\text{GeV}.}
+\end{equation}
+
+\textbf{2. WKB近似与 $\psi''$ 能量}
+
+对线性势 $V=A+Br$，Bohr--Sommerfeld 量子化条件（$l=0$ 含 Langer 修正后为 $n+3/4$）：
+\[
+2\int_0^a\sqrt{2\mu(E_n-A-Br)}\,dr=\Bigl(n+\frac34\Bigr)h,
+\]
+其中 $a=(E_n-A)/B$ 为转折点。积分得
+\[
+E_n=A+\Bigl[\frac{3\bigl(n+\frac34\bigr)B\hbar}{4\sqrt{2\mu}}\Bigr]^{2/3}.
+\]
+
+同一系统中能级仅依赖于 $\bigl(n+\frac34\bigr)^{2/3}$，故
+\[
+\frac{E_{\psi''}-E_{\psi'}}{E_{\psi'}-E_\psi}=\frac{(2+\frac34)^{2/3}-(1+\frac34)^{2/3}}{(1+\frac34)^{2/3}-(0+\frac34)^{2/3}}=\frac{2.75^{2/3}-1.75^{2/3}}{1.75^{2/3}-0.75^{2/3}}\approx0.81.
+\]
+
+已知 $\Delta E_\psi=E_{\psi'}-E_\psi=0.6\,\text{GeV}$，则
+\begin{equation}
+E_{\psi''}-E_{\psi'}\approx0.81\times0.6\,\text{GeV}\approx0.49\,\text{GeV},
+\end{equation}
+\begin{equation}
+\boxed{E_{\psi''}\approx3.7+0.49=4.19\,\text{GeV}\approx4.2\,\text{GeV}.}
+\end{equation}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+能级间隔质量标度 & $\Delta E\propto\mu^{1/3}$ \\
+$\Upsilon$ 系统能级间隔 & $\approx0.42\,\text{GeV}$ \\
+$\Upsilon'$ 静止能量 & $\approx9.9\,\text{GeV}$ \\
+$\psi''$ 与 $\psi'$ 间隔比 & $\approx0.81$ \\
+$\psi''$ 静止能量 & $\approx4.2\,\text{GeV}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 量纲分析揭示的 $\Delta E\propto\mu^{1/3}$ 标度律是重夸克势模型（quark potential model）的核心结果之一。 heavier 夸克（$b$）的能级间隔反而更小，这是因为约化质量增大使波函数更收缩，对线性势的``平均斜率''感受减弱。
+    \item WKB 给出的 $(n+3/4)^{2/3}$ 增长规律说明线性势中能级间距随 $n$ 增大而缓慢减小，这与谐振子的等间距和库仑势的迅速收敛均不同。
+    \item 实验上 $J/\psi$（$3.097\,\text{GeV}$）、$\psi'$（$3.686\,\text{GeV}$）和 $\psi''$（$3.770\,\text{GeV}$ 附近的 $\psi(3770)$）的观测与势模型预言定性一致。
+\end{itemize}
+\end{insightbox}
