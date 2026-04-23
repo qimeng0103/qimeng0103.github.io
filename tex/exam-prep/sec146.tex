@@ -1,0 +1,86 @@
+% ============================================================
+% Section 146: pn结界面电流比与p⁺n结正向电流
+% ============================================================
+\section{半导体物理：pn结界面电流比与p⁺n结正向电流}
+\label{sec:pn-current-ratio}
+
+\begin{modelbox}[题目：pn结界面电流比与p⁺n结注入特性]
+(1) 试证通过pn结界面空穴电流 $j_p(0)$ 与电子电流 $j_n(0)$ 之比
+\[
+\frac{j_p(0)}{j_n(0)}=\frac{\sigma_pL_n}{\sigma_nL_p},
+\]
+其中 $\sigma_p$ 和 $\sigma_n$ 分别为p区与n区的电导率；
+
+(2) 对p⁺n结施加正向偏压 $V$，流过p⁺n结的电流密度等于多少？说明注入电流的特点并画出p⁺n结电流转换图。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{少子扩散电流}：$j_p(0)=e\dfrac{D_p}{L_p}p_{n0}(e^{eV/k_BT}-1)$，$j_n(0)=e\dfrac{D_n}{L_n}n_{p0}(e^{eV/k_BT}-1)$
+    \item \textbf{爱因斯坦关系}：$D/\mu=k_BT/e$
+    \item \textbf{平衡少子浓度}：$p_{n0}=n_i^2/n_{n0}$，$n_{p0}=n_i^2/p_{p0}$
+    \item \textbf{p⁺n结}：$\sigma_p\gg\sigma_n$，单向注入（空穴为主）
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 电流比的证明}
+
+界面处少子扩散电流密度：
+\[
+j_p(0)=e\frac{D_p}{L_p}p_{n0}(e^{eV/k_BT}-1),\quad j_n(0)=e\frac{D_n}{L_n}n_{p0}(e^{eV/k_BT}-1).
+\]
+
+两者之比：
+\[
+\frac{j_p(0)}{j_n(0)}=\frac{L_n}{L_p}\cdot\frac{D_pp_{n0}}{D_nn_{p0}}.
+\]
+
+利用 $D_p/D_n=\mu_p/\mu_n$ 和 $p_{n0}/n_{p0}=p_{p0}/n_{n0}$，以及电导率 $\sigma_p=e\mu_pp_{p0}$、$\sigma_n=e\mu_nn_{n0}$：
+\[
+\frac{j_p(0)}{j_n(0)}=\frac{L_n}{L_p}\cdot\frac{\sigma_p}{\sigma_n}=\frac{\sigma_pL_n}{\sigma_nL_p}.
+\]
+证毕。
+
+\textbf{(2) p⁺n结的正向电流与注入特性}
+
+p⁺n结中p区为重掺杂，n区为轻掺杂，$\sigma_p\gg\sigma_n$。由(1)的结论 $j_p(0)\gg j_n(0)$，正向电流几乎全部由从p区注入n区的空穴扩散电流贡献：
+\begin{equation}
+\boxed{j\approx j_p(0)=e\frac{D_p}{L_p}p_{n0}(e^{eV/k_BT}-1).}
+\end{equation}
+
+\textit{注入特点}：
+\begin{itemize}
+    \item \textbf{单向注入}：电流主要由一种载流子（空穴）从重掺杂区注入轻掺杂区构成。
+    \item \textbf{少子扩散主导}：在轻掺杂n区，注入的空穴作为非平衡少子，通过扩散运动传输，在扩散长度 $L_p$ 内与多子（电子）复合。
+\end{itemize}
+
+\textit{电流转换图}：
+\begin{itemize}
+    \item p区：电流主要由多子空穴的漂移和扩散承担，越靠近结区空穴扩散流越大。
+    \item 势垒区：空穴以扩散和漂移方式穿过空间电荷区。
+    \item n区：注入的空穴在距结面 $L_p$ 范围内扩散，并与从n区体内流过来的电子复合。电子电流在n区内逐渐转换为空穴电流，总电流保持连续。
+\end{itemize}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{项目} & \textbf{结果} \\
+\midrule
+(1) 电流比 & $j_p(0)/j_n(0)=\sigma_pL_n/(\sigma_nL_p)$ \\
+(2) p⁺n结正向电流 & $j\approx e\dfrac{D_p}{L_p}p_{n0}(e^{eV/k_BT}-1)$ \\
+(2) 注入特点 & 单向注入，少子扩散主导 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item pn结的正向电流由两种少子注入电流之和构成，其相对大小取决于两侧材料的电导率和扩散长度。
+    \item p⁺n结是典型的高注入效率结，广泛应用于双极性晶体管、太阳电池等器件中，以实现单一载流子类型的主导注入。
+    \item 电流转换图清晰展示了半导体中两种载流子、两种运动形式以及产生-复合过程的协同作用，是理解双极性器件工作的基础。
+\end{itemize}
+\end{insightbox}
