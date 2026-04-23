@@ -1,0 +1,84 @@
+% ============================================================
+% Section 139: 本征半导体霍尔系数的推导
+% ============================================================
+\section{半导体物理：本征半导体霍尔系数的推导}
+\label{sec:intrinsic-hall-coefficient}
+
+\begin{modelbox}[题目：推导本征半导体的霍尔系数表示式]
+推导本征半导体的霍尔系数表示式。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{双载流子导电}：本征半导体中电子和空穴同时参与输运
+    \item \textbf{洛伦兹力偏转}：两种载流子在磁场中向同侧偏转，但漂移方向相反
+    \item \textbf{稳态条件}：横向总电流为零，建立霍尔电场
+    \item \textbf{霍尔系数符号}：由迁移率大的载流子主导
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. 物理模型与基本方程}
+
+设样品置于互相垂直的电场 $\varepsilon$（沿 $x$）和磁场 $B$（沿 $z$）中。电子和空穴浓度分别为 $n$、$p$，迁移率分别为 $\mu_n$、$\mu_p$（均取正值），电荷分别为 $-q$、$+q$（$q>0$）。
+
+\textbf{2. 横向电流密度}
+
+在 $y$ 方向，空穴电流密度由霍尔电场漂移和洛伦兹力偏转两部分组成：
+\[
+(J_p)_y=pq\mu_p\varepsilon_y-pq\mu_p^2\varepsilon_xB.
+\]
+电子电流密度：
+\[
+(J_n)_y=-nq\mu_n\varepsilon_y+nq\mu_n^2\varepsilon_xB.
+\]
+
+\textbf{3. 稳态条件与霍尔电场}
+
+稳态开路条件下 $J_y=(J_p)_y+(J_n)_y=0$，解得霍尔电场：
+\[
+\varepsilon_y=\frac{p\mu_p^2-n\mu_n^2}{p\mu_p+n\mu_n}\varepsilon_xB.
+\]
+
+\textbf{4. 霍尔系数 $R_H$}
+
+$x$ 方向总电流密度 $J_x=q(p\mu_p+n\mu_n)\varepsilon_x$。霍尔系数定义为 $R_H=\varepsilon_y/(J_xB)$，代入得一般表达式：
+\[
+R_H=\frac{1}{q}\cdot\frac{p\mu_p^2-n\mu_n^2}{(p\mu_p+n\mu_n)^2}.
+\]
+
+\textbf{5. 本征半导体的情况}
+
+本征半导体中 $n=p=n_i$，代入上式：
+\[
+R_H=\frac{1}{qn_i}\cdot\frac{\mu_p^2-\mu_n^2}{(\mu_p+\mu_n)^2}=\frac{1}{qn_i}\cdot\frac{\mu_p-\mu_n}{\mu_p+\mu_n}.
+\]
+\begin{equation}
+\boxed{R_H=\frac{1}{qn_i}\cdot\frac{\mu_p-\mu_n}{\mu_p+\mu_n}.}
+\end{equation}
+
+由于通常电子迁移率大于空穴迁移率（$\mu_n>\mu_p$），本征半导体的霍尔系数为\textbf{负值}，呈现 n 型导电特征。这并非因为电子浓度多于空穴，而是因为电子迁移率高，对横向电流的贡献更大。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+一般情况 & $R_H=\dfrac{1}{q}\cdot\dfrac{p\mu_p^2-n\mu_n^2}{(p\mu_p+n\mu_n)^2}$ \\
+本征半导体 & $R_H=\dfrac{1}{qn_i}\cdot\dfrac{\mu_p-\mu_n}{\mu_p+\mu_n}$ \\
+符号 & 通常为负（$\mu_n>\mu_p$） \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 本征半导体中电子和空穴同时参与导电，霍尔系数由两种载流子的浓度和迁移率共同决定。
+    \item 由于 $\mu_n>\mu_p$，本征霍尔系数为负，这是区分本征半导体与补偿半导体的重要判据之一。
+    \item 当 $\mu_n=\mu_p$ 时霍尔系数为零，但实际半导体中极少见。
+    \item 本征霍尔系数的温度依赖主要由 $n_i\propto e^{-E_g/2k_BT}$ 主导，随温度升高呈指数下降。
+\end{itemize}
+\end{insightbox}

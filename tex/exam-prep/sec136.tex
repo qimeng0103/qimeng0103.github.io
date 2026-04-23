@@ -1,0 +1,86 @@
+% ============================================================
+% Section 136: 液氦温度光激发锗的电流与扩散系数
+% ============================================================
+\section{半导体物理：低温光激发锗的输运性质}
+\label{sec:photoexcited-ge}
+
+\begin{modelbox}[题目：液氦温度下光激发本征锗的电流与扩散]
+在液氦温度下，用光激发本征锗产生传导电子，其平均密度为 $1\times10^{12}\,\text{cm}^{-3}$。在此温度下，电子和空穴的迁移率相等，$\mu=0.5\times10^4\,\text{cm}^2/(\text{V}\cdot\text{s})$。
+
+(1) 若将 $100\,\text{V}$ 电压加到边长为 $1\,\text{cm}$ 的立方晶体上，产生的电流约为多少？
+
+(2) 电子和空穴的扩散系数的近似值是多少？（室温下 $k_BT/e=26\,\text{mV}$。）
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{本征光激发}：$n=p$，总电导率为电子和空穴贡献之和
+    \item \textbf{电导率}：$\sigma=e(n\mu_n+p\mu_p)=2ne\mu$（迁移率相等时）
+    \item \textbf{爱因斯坦关系}：$D/\mu=k_BT/e$，扩散系数与温度成正比
+    \item \textbf{液氦温度}：$T=77\,\text{K}$，$k_BT/e\approx6.67\,\text{mV}$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 电流的计算}
+
+光激发本征锗中电子和空穴浓度相等：$n=p=1\times10^{12}\,\text{cm}^{-3}$，迁移率相等 $\mu_n=\mu_p=\mu=0.5\times10^4\,\text{cm}^2/(\text{V}\cdot\text{s})$。
+
+电导率：
+\[
+\sigma=e(n\mu_n+p\mu_p)=2ne\mu.
+\]
+外加电压 $V=100\,\text{V}$，晶体边长 $d=1\,\text{cm}$，电场强度 $E=V/d=100\,\text{V/cm}$。
+
+电流密度：
+\[
+j=\sigma E=2ne\mu E.
+\]
+代入数值：
+\[
+j=2\times10^{12}\times1.6\times10^{-19}\times0.5\times10^4\times100=0.16\,\text{A/cm}^2.
+\]
+晶体截面积 $S=1\,\text{cm}^2$，故电流
+\begin{equation}
+\boxed{I=jS=0.16\,\text{A}=160\,\text{mA}.}
+\end{equation}
+
+\textbf{(2) 扩散系数的计算}
+
+爱因斯坦关系：
+\[
+\frac{D}{\mu}=\frac{k_BT}{e}.
+\]
+室温（$T_0=300\,\text{K}$）下 $k_BT_0/e=26\,\text{mV}$。液氦温度 $T=77\,\text{K}$ 时：
+\[
+\frac{k_BT}{e}=26\times10^{-3}\times\frac{77}{300}\approx6.67\times10^{-3}\,\text{V}.
+\]
+扩散系数：
+\[
+D=\mu\cdot\frac{k_BT}{e}=0.5\times10^4\times6.67\times10^{-3}\approx33.35\,\text{cm}^2/\text{s}.
+\]
+\begin{equation}
+\boxed{D\approx3.34\times10^{-3}\,\text{m}^2/\text{s}=33.4\,\text{cm}^2/\text{s}.}
+\end{equation}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{物理量} & \textbf{数值} \\
+\midrule
+(1) 电流 $I$ & $0.16\,\text{A}=160\,\text{mA}$ \\
+(2) 扩散系数 $D$ & $3.34\times10^{-3}\,\text{m}^2/\text{s}=33.4\,\text{cm}^2/\text{s}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 光激发本征半导体中电子和空穴成对产生，浓度相等，总电导率为两者之和。
+    \item 低温下迁移率较高（$0.5\times10^4\,\text{cm}^2/\text{V}\cdot\text{s}$），即使载流子浓度仅 $10^{12}\,\text{cm}^{-3}$，在 $100\,\text{V}$ 电压下也能产生可观的电流（$160\,\text{mA}$）。
+    \item 爱因斯坦关系将扩散系数与迁移率联系起来，是半导体输运理论的基本关系式。低温下扩散系数因 $T$ 降低而减小。
+\end{itemize}
+\end{insightbox}

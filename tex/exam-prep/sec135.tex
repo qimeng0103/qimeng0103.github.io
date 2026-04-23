@@ -1,0 +1,74 @@
+% ============================================================
+% Section 135: 晶格散射与电导率的温度依赖
+% ============================================================
+\section{半导体物理：晶格散射与电导率的温度依赖}
+\label{sec:lattice-scattering}
+
+\begin{modelbox}[题目：晶格散射主导下的电导率温度关系]
+求半导体中电导率 $\sigma=ne^2\tau/m^*$ 对温度的依赖关系（其中 $\tau$ 为弛豫时间）。该半导体处在使其中自由载流子浓度为常数的温度下，并且散射机制是由于晶格原子热振动所引起的晶格散射。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{晶格散射}：电子与声子（晶格振动）相互作用，长声学波为主
+    \item \textbf{声子数}：$n_q\approx k_BT/\hbar\omega_q\propto T$（高温近似）
+    \item \textbf{散射概率}：$P\propto$ 声子数 $\times$ 末态态密度 $\propto T\cdot T^{1/2}=T^{3/2}$
+    \item \textbf{电导率}：$\sigma\propto\tau\propto T^{-3/2}$（晶格散射主导）
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. 晶格散射的物理机制}
+
+晶格原子热振动使晶体势场偏离严格周期性，产生附加的微扰势——形变势。电子与晶格振动（声子）的相互作用导致电子从初态 $k$ 散射到末态 $k'$，满足准动量和能量守恒：
+\[
+\hbar k_f=\hbar k_i\pm\hbar q,\qquad E_f=E_i\pm\hbar\omega_q.
+\]
+在能带极值位于布里渊区中心的半导体中，载流子波矢较小，参与散射的主要是\textbf{长波声子}。长声学波声子能量很小（$\hbar\omega_q\ll k_BT$），可将声子分布近似处理。
+
+\textbf{2. 散射概率与温度的关系}
+
+电子与长声学波声子的耦合强度 $G(q)\propto q$（形变势耦合），色散关系 $\omega_q=v_sq$。
+
+散射概率正比于末态态密度、声子数及耦合强度。在高温近似下声子占据数 $n_q\approx k_BT/\hbar\omega_q\propto T/q$。总散射概率：
+\[
+P\propto\sum_q q\cdot\frac{2k_BT}{\hbar\omega_q}\cdot g(E)\propto T\sum_q g(E).
+\]
+末态态密度 $g(E)\propto E^{1/2}$，而非简并半导体中 $E=\frac{3}{2}k_BT$，故 $E^{1/2}\propto T^{1/2}$。因此
+\[
+P\propto T\cdot T^{1/2}=T^{3/2}.
+\]
+
+\textbf{3. 弛豫时间与电导率的温度依赖}
+
+弛豫时间 $\tau=1/P$，故 $\tau\propto T^{-3/2}$。在载流子浓度 $n$ 恒定的饱和电离区：
+\begin{equation}
+\boxed{\sigma=\frac{ne^2\tau}{m^*}\propto\tau\propto T^{-3/2}.}
+\end{equation}
+
+\textbf{物理意义}：温度升高，晶格振动加剧，声子数增多，电子散射概率增大，迁移率下降，电导率随之降低。
+
+\textbf{与杂质散射的对比}：电离杂质散射主导时 $\mu\propto T^{3/2}$，电导率随温度升高而上升。因此半导体迁移率-温度曲线通常呈现：低温区杂质散射主导（$\mu$ 随 $T$ 上升），高温区晶格散射主导（$\mu$ 随 $T$ 下降），中间存在一个迁移率峰值。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+散射概率 & $P\propto T^{3/2}$ \\
+弛豫时间 & $\tau\propto T^{-3/2}$ \\
+电导率 & $\sigma\propto T^{-3/2}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 晶格散射（声子散射）是非本征半导体在常温和高温下的主导散射机制。
+    \item 散射概率正比于声子数（$\propto T$）和末态态密度（$\propto T^{1/2}$），总效果为 $P\propto T^{3/2}$。
+    \item 电导率随温度下降是晶格散射的特征，是区分半导体中散射机制的重要实验判据。
+\end{itemize}
+\end{insightbox}
