@@ -1,0 +1,84 @@
+% ============================================================
+% Section 130: 非简并半导体电子的能量均分与比热
+% ============================================================
+\section{半导体物理：电子能量均分定理与比热贡献}
+\label{sec:equipartition-specific-heat}
+
+\begin{modelbox}[题目：非简并半导体电子的经典统计行为]
+证明非简并半导体中电子服从能量均分定理，即电子平均动能等于 $\dfrac{3}{2}k_BT$，但电子对半导体比热的贡献可以忽略。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{非简并条件}：玻尔兹曼统计适用，电子气行为类似经典理想气体
+    \item \textbf{能量均分定理}：三维自由粒子平均动能 $\langle E_{\text{kin}}\rangle=\frac{3}{2}k_BT$
+    \item \textbf{Gamma 函数}：$\Gamma(5/2)=3\sqrt{\pi}/4$，$\Gamma(3/2)=\sqrt{\pi}/2$
+    \item \textbf{比热对比}：电子浓度 $n\sim10^{16}\,\text{cm}^{-3}$ 远低于原子密度 $N_{\text{atom}}\sim10^{22}\,\text{cm}^{-3}$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. 非简并半导体中电子的能量分布}
+
+在非简并条件下（$E_c-E_F\gg k_BT$），费米-狄拉克分布退化为玻尔兹曼分布 $f(E)\approx e^{-(E-E_F)/k_BT}$。设导带电子态密度有效质量为 $m_n^*$，则态密度为
+\[
+g(E)=\frac{4\pi(2m_n^*)^{3/2}}{h^3}(E-E_c)^{1/2}.
+\]
+电子按能量的分布函数（单位能量间隔的电子数）为
+\[
+\frac{dn}{dE}=g(E)f(E)\propto(E-E_c)^{1/2}e^{-(E-E_c)/k_BT},
+\]
+这正是经典的麦克斯韦-玻尔兹曼能量分布律在抛物带中的体现。
+
+\textbf{2. 电子平均动能的证明}
+
+电子总能量 $E=E_c+E_{\text{kin}}$，平均能量：
+\[
+\bar{E}=\frac{1}{n}\int_{E_c}^\infty E\,dn=\frac{2}{\sqrt{\pi}}\int_0^\infty(E_c+k_BTx)\,x^{1/2}e^{-x}\,dx,
+\]
+其中 $x=(E-E_c)/k_BT$。利用 $\Gamma(3/2)=\sqrt{\pi}/2$ 和 $\Gamma(5/2)=3\sqrt{\pi}/4$：
+\[
+\bar{E}=\frac{2}{\sqrt{\pi}}\left[E_c\cdot\frac{\sqrt{\pi}}{2}+k_BT\cdot\frac{3\sqrt{\pi}}{4}\right]=E_c+\frac{3}{2}k_BT.
+\]
+因此电子的平均动能为
+\begin{equation}
+\boxed{\bar{E}_{\text{kin}}=\bar{E}-E_c=\frac{3}{2}k_BT.}
+\end{equation}
+电子在导带中的行为与经典理想气体分子一致，服从能量均分定理。
+
+\textbf{3. 电子对比热的贡献为何可忽略}
+
+每个电子对比热的贡献为 $\frac{3}{2}k_B$。设电子浓度为 $n$，则电子气比热 $c_e=\frac{3}{2}nk_B$。
+
+在非简并半导体中，载流子浓度通常很低（$n\sim10^{15\text{--}17}\,\text{cm}^{-3}$），而晶体原子数密度 $N_{\text{atom}}\sim10^{22\text{--}23}\,\text{cm}^{-3}$。晶格比热在室温下 $c_L\approx3N_{\text{atom}}k_B$（杜隆-珀蒂定律）。两者之比：
+\[
+\frac{c_e}{c_L}=\frac{\frac{3}{2}nk_B}{3N_{\text{atom}}k_B}=\frac{n}{2N_{\text{atom}}}\sim\frac{10^{16}}{10^{22}}=10^{-6}.
+\]
+因此
+\begin{equation}
+\boxed{\text{电子对比热的贡献仅为晶格比热的 }10^{-6}\text{ 量级，完全可以忽略。}}
+\end{equation}
+
+只有在极低温下，晶格比热按 $T^3$ 衰减，电子比热才可能显现，但此时半导体往往已进入杂质冻结或强简并状态。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+电子平均动能 & $\bar{E}_{\text{kin}}=\dfrac{3}{2}k_BT$，服从能量均分定理 \\
+电子比热贡献 & 约为晶格比热的 $10^{-6}$，可忽略 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 非简并半导体中的电子气是``经典理想气体''在固体中的完美实例。玻尔兹曼统计完全适用，能量均分定理成立。
+    \item 低载流子浓度是半导体区别于金属的核心特征之一，它使得半导体的热学、输运性质既可用简单的经典理论描述，又可通过掺杂、光照等方式大范围调控。
+    \item 经典电子理论之所以成功应用于非简并半导体，正是因为载流子浓度极低，费米简并效应消失，行为回归经典。同时，低浓度也使得其对比热的贡献微乎其微，不会引起与实验的矛盾（而金属中高浓度电子气的经典比热曾导致严重疑难，最终被量子费米统计解决）。
+\end{itemize}
+\end{insightbox}

@@ -1,0 +1,77 @@
+% ============================================================
+% Section 128: 本征半导体的费米能级与载流子浓度
+% ============================================================
+\section{半导体物理：本征半导体的费米能级与载流子浓度}
+\label{sec:intrinsic-semiconductor}
+
+\begin{modelbox}[题目：本征半导体的统计性质]
+考虑一本征半导体，导带底能量为 $E_c$，价带顶能量为 $E_v$，禁带宽度 $E_g=E_c-E_v=1.5\,\text{eV}$。导带和价带的态密度近似为常数，单位体积单位能量的态密度分别为 $n_0\approx2\times10^{21}\,\text{cm}^{-3}\cdot\text{eV}^{-1}$。
+
+(1) 求本征费米能级的位置；
+
+(2) 写出费米分布函数的表达式；
+
+(3) 计算室温（$T=300\,\text{K}$）下导带的电子浓度。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{本征半导体}：$n=p$，费米能级由电中性条件决定
+    \item \textbf{态密度对称}：若导带和价带态密度相等，$E_F$ 位于禁带中央
+    \item \textbf{玻尔兹曼近似}：$E_c-E_F\gg k_BT$ 时，$f(E)\approx e^{-(E-E_F)/k_BT}$
+    \item \textbf{室温 $k_BT$}：$\approx0.025\,\text{eV}$（$1/40\,\text{eV}$）
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 费米能级位置}
+
+本征半导体满足电中性条件 $n=p$。在导带和价带态密度对称（$g_c=g_v$）的情况下，电子和空穴的分布必须关于禁带中央对称，因此本征费米能级位于禁带中央：
+\begin{equation}
+\boxed{E_F=\frac{E_c+E_v}{2}=E_v+\frac{E_g}{2}=E_c-\frac{E_g}{2}.}
+\end{equation}
+
+\textbf{(2) 费米分布函数}
+
+电子服从费米-狄拉克统计，分布函数为
+\begin{equation}
+\boxed{f(E)=\frac{1}{e^{(E-E_F)/k_BT}+1}.}
+\end{equation}
+
+\textbf{(3) 室温导带电子浓度}
+
+在非简并条件下（$E_c-E_F\gg k_BT$），费米分布可近似为玻尔兹曼分布：
+\[
+n\approx n_0k_BT\,e^{-(E_c-E_F)/k_BT}.
+\]
+室温下 $k_BT\approx0.025\,\text{eV}$，$E_c-E_F=E_g/2=0.75\,\text{eV}$，故
+\[
+n\approx2\times10^{21}\times0.025\times e^{-0.75/0.025}=5\times10^{19}\times e^{-30}.
+\]
+由于 $e^{30}\approx1.07\times10^{13}$，$e^{-30}\approx9.35\times10^{-14}$，因此
+\begin{equation}
+\boxed{n\approx4.68\times10^6\,\text{cm}^{-3}.}
+\end{equation}
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{问题} & \textbf{答案} \\
+\midrule
+(1) 费米能级位置 & 禁带中央，$E_F=(E_c+E_v)/2$ \\
+(2) 费米分布函数 & $f(E)=\bigl[e^{(E-E_F)/k_BT}+1\bigr]^{-1}$ \\
+(3) 室温导带电子浓度 & $\approx4.68\times10^6\,\text{cm}^{-3}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 本征半导体的费米能级位于禁带中央，这是电子和空穴态密度对称的直接结果。
+    \item 即使禁带宽度仅 $1.5\,\text{eV}$，室温下本征载流子浓度也极低（$10^6\,\text{cm}^{-3}$ 量级），体现了玻尔兹曼因子 $e^{-E_g/2k_BT}$ 的强烈抑制作用。这也是常温下纯净半导体近乎绝缘的原因。
+    \item 实际半导体的态密度并非严格常数，但常数近似可给出载流子浓度的数量级估算。更精确的计算需使用抛物带态密度 $N(E)\propto E^{1/2}$ 和有效质量。
+\end{itemize}
+\end{insightbox}

@@ -1,0 +1,107 @@
+% ============================================================
+% Section 129: 本征半导体态密度与载流子浓度
+% ============================================================
+\section{半导体物理：抛物带态密度与载流子浓度}
+\label{sec:parabolic-dos-carrier-density}
+
+\begin{modelbox}[题目：抛物带近似下的载流子统计]
+考虑一本征半导体，设 $E$ 表示一个电子的能量，$g_c(E)$ 表示导带的态密度，$g_v(E)$ 表示价带的态密度。假设 $E_c-E_F\gg k_BT$ 和 $E_F-E_v\gg k_BT$，
+\[
+g_c(E)=c_1(E-E_c)^{1/2},\qquad g_v(E)=c_2(E_v-E)^{1/2},
+\]
+其中 $E_c$ 和 $E_v$ 分别表示导带底和价带顶的能量，$E_F$ 是费米能。
+
+(1) 用 $k_B,T,c_1,E_c,E_F$ 和一个无量纲积分表示导带的电子密度；
+
+(2) 用 $k_B,T,c_2,E_v,E_F$ 和一个无量纲积分表示价带的空穴密度；
+
+(3) 求出 $E_F(T)$ 的明确的表达式；
+
+(4) 如果材料用施主原子掺杂，那么在 (1)、(2)、(3) 的结果中有哪一个（如果有的话）仍能成立？解释之。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{抛物带态密度}：三维 $g(E)\propto(E-E_0)^{1/2}$
+    \item \textbf{玻尔兹曼近似}：非简并条件下费米分布退化为指数形式
+    \item \textbf{Gamma 函数}：$\int_0^\infty x^{1/2}e^{-x}\,dx=\Gamma(3/2)=\sqrt{\pi}/2$
+    \item \textbf{掺杂影响}：破坏 $n=p$ 对称性，费米能级移动
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 导带电子密度 $n$}
+
+在非简并条件下，$f(E)\approx e^{-(E-E_F)/k_BT}$。电子浓度：
+\[
+n=\int_{E_c}^\infty c_1(E-E_c)^{1/2}e^{-(E-E_F)/k_BT}\,dE.
+\]
+令 $x=(E-E_c)/k_BT$，则 $E=E_c+k_BTx$，$dE=k_BT\,dx$：
+\[
+n=c_1(k_BT)^{3/2}e^{-(E_c-E_F)/k_BT}\int_0^\infty x^{1/2}e^{-x}\,dx.
+\]
+其中无量纲积分 $\int_0^\infty x^{1/2}e^{-x}\,dx=\Gamma(3/2)=\sqrt{\pi}/2$。因此
+\begin{equation}
+\boxed{n=\frac{\sqrt{\pi}}{2}\,c_1(k_BT)^{3/2}e^{-(E_c-E_F)/k_BT}.}
+\end{equation}
+
+\textbf{(2) 价带空穴密度 $p$}
+
+空穴占据概率 $1-f(E)\approx e^{-(E_F-E)/k_BT}$：
+\[
+p=\int_{-\infty}^{E_v}c_2(E_v-E)^{1/2}e^{-(E_F-E)/k_BT}\,dE.
+\]
+令 $x=(E_v-E)/k_BT$，则 $E=E_v-k_BTx$，$dE=-k_BT\,dx$：
+\[
+p=c_2(k_BT)^{3/2}e^{-(E_F-E_v)/k_BT}\int_0^\infty x^{1/2}e^{-x}\,dx.
+\]
+因此
+\begin{equation}
+\boxed{p=\frac{\sqrt{\pi}}{2}\,c_2(k_BT)^{3/2}e^{-(E_F-E_v)/k_BT}.}
+\end{equation}
+
+\textbf{(3) 本征费米能级 $E_F(T)$}
+
+本征条件 $n=p$：
+\[
+c_1e^{-(E_c-E_F)/k_BT}=c_2e^{-(E_F-E_v)/k_BT}.
+\]
+取对数并整理：
+\[
+2E_F-E_c-E_v=k_BT\ln\frac{c_1}{c_2}.
+\]
+解得
+\begin{equation}
+\boxed{E_F=\frac{E_c+E_v}{2}+\frac{k_BT}{2}\ln\frac{c_1}{c_2}.}
+\end{equation}
+若 $c_1=c_2$（即电子和空穴有效质量相等），费米能级严格位于禁带中央。一般情况下因 $c\propto(m^*)^{3/2}$，本征费米能级会略微偏离禁带中央。
+
+\textbf{(4) 施主掺杂后的影响}
+
+\textit{(1) 和 (2) 的结果仍成立}：只要半导体处于热平衡且满足非简并条件，导带电子浓度和价带空穴浓度的表达式形式不变，仅 $E_F$ 的具体数值改变。
+
+\textit{(3) 的结果不再成立}：掺入施主后电中性条件变为 $n=p+N_D^+$（$N_D^+$ 为电离施主浓度），$n\neq p$。费米能级将向导带底移动，需由新的电中性方程重新求解。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{问题} & \textbf{答案} \\
+\midrule
+(1) 导带电子密度 & $n=\dfrac{\sqrt{\pi}}{2}\,c_1(k_BT)^{3/2}e^{-(E_c-E_F)/k_BT}$ \\
+(2) 价带空穴密度 & $p=\dfrac{\sqrt{\pi}}{2}\,c_2(k_BT)^{3/2}e^{-(E_F-E_v)/k_BT}$ \\
+(3) 本征费米能级 & $E_F=\dfrac{E_c+E_v}{2}+\dfrac{k_BT}{2}\ln\dfrac{c_1}{c_2}$ \\
+(4) 掺杂影响 & (1)(2) 公式形式仍成立；(3) 不再成立 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 抛物带近似下，载流子浓度正比于 $T^{3/2}e^{-\Delta E/k_BT}$，指数因子主导温度依赖。
+    \item 本征费米能级由导带和价带的有效态密度之比决定，通常靠近禁带中央。掺杂破坏电中性对称性，费米能级移动，是半导体导电性可调的根本原因。
+    \item 非简并统计公式的形式在掺杂后保持不变，仅 $E_F$ 改变，这大大简化了掺杂半导体的理论处理。
+\end{itemize}
+\end{insightbox}
