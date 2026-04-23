@@ -1,0 +1,105 @@
+% ============================================================
+% Section 176: 氦原子的能级、Pauli原理与微扰公式
+% ============================================================
+\section{量子力学：氦原子的能级、Pauli原理与微扰公式}
+\label{sec:helium-levels-pauli}
+
+\begin{modelbox}[题目：氦原子的能级、Pauli原理与微扰公式]
+\begin{enumerate}
+    \item 对氦原子基态和前两个激发态，用能级图给出完全集量子数（总角动量、自旋、宇称）；
+    \item 定性解释Pauli原理在决定能级次序时所起的作用；
+    \item 假设只有Coulomb力，已知$Z=2$的类氢波函数$|1s\rangle,|2s\rangle,|2p\rangle$及能量$E_{1s},E_{2s},E_{2p}$。给出氦原子态能级的微扰公式（不计算积分，解释符号）。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{电子组态}：基态$(1s)^2$，激发态$1s2s$、$1s2p$
+    \item \textbf{仲氦/正氦}：单态$S=0$（空间对称）vs 三重态$S=1$（空间反对称）
+    \item \textbf{Pauli排斥}：三重态空间波函数在$r_{12}\to0$时趋于零，库仑排斥小
+    \item \textbf{微扰公式}：直接积分$K$、交换积分$J$，单态$K+J$，三重态$K-J$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. 能级与量子数}
+
+\textit{基态} $(1s)^2$：两电子同轨道，空间波函数对称，自旋必反对称（$S=0$）。$L=0$，$J=0$，宇称$(+)$。光谱项：\textbf{$1^1S_0$}（仲氦）。
+
+\textit{第一激发组态} $1s2s$：
+\begin{itemize}
+    \item 仲氦（$S=0$）：空间对称，$L=0$，$J=0$。$2^1S_0$。
+    \item 正氦（$S=1$）：空间反对称，$L=0$，$J=1$。$2^3S_1$。
+\end{itemize}
+
+\textit{第二激发组态} $1s2p$：$l_1=0,l_2=1$，$L=1$，宇称$(-)$。
+\begin{itemize}
+    \item 仲氦：$S=0$，$J=1$。$2^1P_1$。
+    \item 正氦：$S=1$，$J=0,1,2$。$2^3P_{0,1,2}$。
+\end{itemize}
+
+能级顺序（定性）：基态$<2^3S_1<2^1S_0<2^3P_J<2^1P_1$。
+
+\textbf{2. Pauli原理的作用}
+
+总波函数必须反对称。
+\begin{itemize}
+    \item \textbf{单态}（仲氦）：自旋反对称$\Rightarrow$空间对称。两电子靠近概率大，$\langle e^2/r_{12}\rangle$大，能级高。
+    \item \textbf{三重态}（正氦）：自旋对称$\Rightarrow$空间反对称。$\mathbf{r}_1\to\mathbf{r}_2$时波函数趋于零（Pauli排斥），平均距离大，$\langle e^2/r_{12}\rangle$小，能级低。
+\end{itemize}
+
+\textbf{3. 微扰公式}
+
+$H_0$：两个$Z=2$类氢哈密顿量之和。微扰 $H'=e^2/|\mathbf{r}_1-\mathbf{r}_2|$。
+
+\textit{基态} $(1s)^2$：空间波函数$\psi_{1s}(\mathbf{r}_1)\psi_{1s}(\mathbf{r}_2)$。
+\[
+\Delta E_{(1s)^2}=\langle1s(1)1s(2)|\frac{e^2}{r_{12}}|1s(1)1s(2)\rangle\equiv K_{1s,1s}.
+\]
+
+\textit{激发组态} $1snl$：对称化空间波函数
+\[
+\Psi_\pm(\mathbf{r}_1,\mathbf{r}_2)=\frac{1}{\sqrt2}\bigl[\psi_{1s}(\mathbf{r}_1)\psi_{nl}(\mathbf{r}_2)\pm\psi_{nl}(\mathbf{r}_1)\psi_{1s}(\mathbf{r}_2)\bigr],
+\]
+$+$对应单态（$S=0$），$-$对应三重态（$S=1$）。
+
+直接积分：
+\[
+K=\langle1s(1)nl(2)|\frac{e^2}{r_{12}}|1s(1)nl(2)\rangle.
+\]
+交换积分：
+\[
+J_{\text{ex}}=\langle1s(1)nl(2)|\frac{e^2}{r_{12}}|nl(1)1s(2)\rangle.
+\]
+
+一级能量修正：
+\begin{equation}
+\boxed{\Delta E_{\text{单态}}=K+J_{\text{ex}},\qquad \Delta E_{\text{三重态}}=K-J_{\text{ex}}.}
+\end{equation}
+
+因 $J_{\text{ex}}>0$，故三重态能级低于单态，与Pauli原理的定性分析一致。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+基态 & $1^1S_0$（仲氦） \\
+$1s2s$ 组态 & $2^1S_0$（仲）, $2^3S_1$（正） \\
+$1s2p$ 组态 & $2^1P_1$（仲）, $2^3P_{0,1,2}$（正） \\
+单态微扰公式 & $\Delta E=K+J_{\text{ex}}$ \\
+三重态微扰公式 & $\Delta E=K-J_{\text{ex}}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 氦原子是理解多电子原子和Pauli原理最简单的实例。交换积分$J_{\text{ex}}$纯为量子效应，无经典对应，是铁磁性、Hund定则等现象的根源。
+    \item 实验上正氦与仲氦之间的跃迁因自旋选择定则被禁戒（寿命很长），历史上导致两者曾被误认为两种不同元素。
+    \item 微扰论对氦基态能量的计算给出$E\approx-74.8\,\text{eV}$（实验$-79.0\,\text{eV}$），误差约$5\%$，说明电子关联效应不可忽略。
+\end{itemize}
+\end{insightbox}
