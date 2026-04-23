@@ -1,0 +1,84 @@
+% ============================================================
+% Section 173: 双原子分子转动能级与电场中的能级移动
+% ============================================================
+\section{量子力学：双原子分子转动能级与电场中的能级移动}
+\label{sec:rotor-stark-effect}
+
+\begin{modelbox}[题目：双原子分子转动能级与电场中的能级移动]
+弱电场中极化的双原子分子，可处理成在弱电场 $\mathcal{E}$ 中转动惯量为 $I$、电偶极矩为 $d$ 的刚性转子。
+\begin{enumerate}
+    \item 忽略质心运动，将转子哈密顿量写为 $H_0+H'$ 形式；
+    \item 求未受微扰的解，讨论能级简并情况；
+    \item 用非简并微扰论对所有能级计算最低阶修正；
+    \item 为什么可以使用非简并微扰论？微扰后简并情况如何？
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{刚性转子}：$H_0=\mathbf{J}^2/(2I)$，本征函数球谐函数 $Y_{jm}$，能级 $(2j+1)$ 重简并
+    \item \textbf{Stark微扰}：$H'=-d\mathcal{E}\cos\theta$，选择定则 $\Delta j=\pm1$，$\Delta m=0$
+    \item \textbf{一级修正为零}：$\langle jm|\cos\theta|jm\rangle=0$
+    \item \textbf{二级修正}：按非简并微扰公式计算，部分解除简并
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. 哈密顿量分解}
+
+取电场沿 $z$ 轴，$\mathbf{d}\cdot\boldsymbol{\mathcal{E}}=d\mathcal{E}\cos\theta$。则
+\[
+H=\frac{\mathbf{J}^2}{2I}-d\mathcal{E}\cos\theta=H_0+H',\quad H_0=\frac{\mathbf{J}^2}{2I},\;H'=-d\mathcal{E}\cos\theta.
+\]
+
+\textbf{2. 未微扰解与简并}
+
+$H_0$ 本征函数为球谐函数 $Y_{jm}(\theta,\varphi)$，能级
+\[
+E_j^{(0)}=\frac{\hbar^2}{2I}j(j+1),\quad j=0,1,2,\ldots
+\]
+每个能级 $(2j+1)$ 重简并（$m=-j,\ldots,j$）。
+
+\textbf{3. 最低阶能量修正}
+
+一级修正：$\langle jm'|H'|jm\rangle=-d\mathcal{E}\langle jm'|\cos\theta|jm\rangle=0$（$\cos\theta\propto Y_{10}$，$\Delta j=0$ 时积分为零）。故 $E_j^{(1)}=0$。
+
+二级修正：利用递推关系
+\[
+\cos\theta\,Y_{jm}=\sqrt{\frac{(j+1)^2-m^2}{(2j+1)(2j+3)}}\,Y_{j+1,m}+\sqrt{\frac{j^2-m^2}{(2j-1)(2j+1)}}\,Y_{j-1,m},
+\]
+非零矩阵元仅当 $\Delta j=\pm1$，$\Delta m=0$。计算得
+\begin{equation}
+\boxed{E_{jm}^{(2)}=\frac{Id^2\mathcal{E}^2}{\hbar^2}\cdot\frac{j(j+1)-3m^2}{j(j+1)(2j-1)(2j+3)}.}
+\end{equation}
+
+\textbf{4. 非简并微扰论的适用性与简并解除}
+
+微扰 $H'$ 在简并子空间 $\{|jm\rangle\}_{m=-j}^j$ 内的矩阵元全为零，即已自动对角化。因此一级修正为零，二级修正可直接用非简并微扰公式（求和限制在子空间外）。
+
+微扰后，能量依赖于 $m^2$：相同 $j$、不同 $|m|$ 的态能量不同，但 $+m$ 与 $-m$ 仍简并（时间反演对称性）。简并未完全消除，保留二重简并（$m\neq0$ 时）。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+哈密顿量 & $H=\dfrac{\mathbf{J}^2}{2I}-d\mathcal{E}\cos\theta$ \\
+未微扰能级 & $E_j^{(0)}=\dfrac{\hbar^2}{2I}j(j+1)$，简并度 $2j+1$ \\
+一级修正 & $E_j^{(1)}=0$ \\
+二级修正 & $E_{jm}^{(2)}=\dfrac{Id^2\mathcal{E}^2}{\hbar^2}\dfrac{j(j+1)-3m^2}{j(j+1)(2j-1)(2j+3)}$ \\
+微扰后简并 & $+m$ 与 $-m$ 仍简并，$|m|$ 不同的态能量不同 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 刚性转子在电场中的能级移动称为 \textbf{Stark 效应}。由于转子无永久电偶极矩的期望（$\langle\cos\theta\rangle=0$），一级 Stark 效应为零，表现为 \textbf{二次 Stark 效应}（$\Delta E\propto\mathcal{E}^2$）。
+    \item 该结果与氢原子的线性 Stark 效应形成对比：氢原子存在 $l$ 简并，$\cos\theta$ 可在相同 $n$ 不同 $l$ 的态间耦合，产生一级效应；转子无此简并，故仅二级效应。
+    \item 分子束实验中，Stark 效应常用于调控分子取向和分离不同 $j,m$ 态（Stark 减速器原理）。
+\end{itemize}
+\end{insightbox}
