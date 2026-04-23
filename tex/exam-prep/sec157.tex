@@ -1,0 +1,81 @@
+% ============================================================
+% Section 157: 无限深势阱中央的$\delta$势垒
+% ============================================================
+\section{量子力学：无限深势阱中央的$\delta$势垒}
+\label{sec:delta-barrier-well}
+
+\begin{modelbox}[题目：无限深势阱中央$\delta$势垒的能级与极限]
+粒子在势场中运动，
+\[
+V(x)=\begin{cases}\gamma\delta(x),&|x|<a\\\infty,&|x|\geq a\end{cases}
+\]
+求能级公式，并讨论 $\gamma$ 很大和很小的极限情况。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{宇称守恒}：$V(x)$ 为偶函数，本征态有确定宇称
+    \item \textbf{奇宇称态}：$\psi(0)=0$，$\delta$ 势无影响
+    \item \textbf{偶宇称态}：$\psi'(0^+)-\psi'(0^-)=\dfrac{2m\gamma}{\hbar^2}\psi(0)$，$\delta$ 势起作用
+    \item \textbf{极限}：$\gamma\to\infty$（强势垒，阱被分割）；$\gamma\to0$（弱势垒，恢复单阱）
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. 奇宇称态}
+
+$\psi(-x)=-\psi(x)\implies\psi(0)=0$。导数跃变为零，$\delta$ 势无影响。
+
+波函数：$\psi_n(x)=\dfrac{1}{\sqrt{a}}\sin\left(\dfrac{n\pi x}{a}\right)$，$n=1,2,3,\ldots$
+
+能级：
+\begin{equation}
+\boxed{E_n^{\text{奇}}=\frac{n^2\pi^2\hbar^2}{2ma^2}.}
+\end{equation}
+
+\textbf{2. 偶宇称态}
+
+$\psi(-x)=\psi(x)$。在 $0<x<a$ 内：$\psi(x)=A\cos kx+B\sin kx$。
+
+由 $\psi(a)=0$：$B=-A\cot ka$。
+
+由导数跃变 $2Bk=\dfrac{2m\gamma}{\hbar^2}A$：$B=\dfrac{m\gamma}{\hbar^2k}A$。
+
+联立得偶宇称能级方程：
+\begin{equation}
+\boxed{\cot ka=-\frac{m\gamma}{\hbar^2k}\quad\text{或}\quad\tan\xi=-\frac{b}{a}\xi,\quad b=\frac{\hbar^2}{m\gamma},\ \xi=ka.}
+\end{equation}
+
+\textbf{3. 极限情况}
+
+\textit{(i) $\gamma$ 很大（$b\to0$，强势垒）}：$\tan\xi\approx0\implies\xi\approx n\pi$。
+
+能级 $E\approx\dfrac{n^2\pi^2\hbar^2}{2ma^2}$，与奇宇称态简并。物理上 $2a$ 宽势阱被分割为两个独立的 $a$ 宽势阱。
+
+\textit{(ii) $\gamma$ 很小（$b\to\infty$，弱势垒）}：$\tan\xi\to-\infty\implies\xi\approx\left(n+\dfrac{1}{2}\right)\pi$。
+
+能级 $E\approx\dfrac{(2n+1)^2\pi^2\hbar^2}{8ma^2}$，恢复为宽度 $2a$ 的普通无限深势阱的偶宇称态能级。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+奇宇称能级 & $E_n^{\text{奇}}=\dfrac{n^2\pi^2\hbar^2}{2ma^2}$（$n=1,2,\ldots$） \\
+偶宇称能级方程 & $\cot ka=-\dfrac{m\gamma}{\hbar^2k}$ \\
+强势垒极限 & $E\approx\dfrac{n^2\pi^2\hbar^2}{2ma^2}$（二重简并） \\
+弱势垒极限 & $E\approx\dfrac{(2n+1)^2\pi^2\hbar^2}{8ma^2}$（宽度 $2a$ 势阱） \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 奇宇称态因波节恰在 $\delta$ 势位置，完全不受其影响，这是对称性保护的结果。
+    \item 强势垒极限下，$\delta$ 势将势阱完全分割为二，奇偶态能量趋于简并（隧穿分裂趋于零）。
+    \item 弱势垒极限下，$\delta$ 势可忽略，系统恢复为宽度 $2a$ 的普通势阱。偶宇称能级对应 $n$ 为奇数，奇宇称能级对应 $n$ 为偶数。
+\end{itemize}
+\end{insightbox}

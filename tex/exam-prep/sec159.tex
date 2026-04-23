@@ -1,0 +1,96 @@
+% ============================================================
+% Section 159: 动量表象中$\delta$势阱的束缚态
+% ============================================================
+\section{量子力学：动量表象中$\delta$势阱的束缚态}
+\label{sec:momentum-delta-well}
+
+\begin{modelbox}[题目：动量表象中$\delta$势阱的束缚态]
+在 $p$ 表象求解一维$\delta$势阱 $V(x)=-\gamma\delta(x)$（$\gamma>0$）中的束缚定态能量和波函数。计算 $\Delta x$ 与 $\Delta p$，并验证不确定性关系。
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{Fourier变换}：$\psi(x)=\dfrac{1}{\sqrt{2\pi\hbar}}\int\varphi(p)e^{ipx/\hbar}dp$
+    \item \textbf{动量表象方程}：代数方程 $(p^2-2\mu E)\varphi(p)=A$（常数）
+    \item \textbf{自洽求解}：$\psi(0)$ 与 $A$ 的关系导出能量本征值
+    \item \textbf{Lorentz型波函数}：$\varphi(p)\propto\dfrac{1}{p^2+\hbar^2\kappa^2}$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{1. 动量表象中的定态方程}
+
+坐标表象方程 Fourier 变换后：
+\[
+\frac{p^2}{2\mu}\varphi(p)-\frac{\gamma}{\sqrt{2\pi\hbar}}\psi(0)=E\varphi(p).
+\]
+令 $A=\dfrac{2\mu\gamma}{\sqrt{2\pi\hbar}}\psi(0)$，则
+\[
+\varphi(p)=\frac{A}{p^2-2\mu E}.
+\]
+
+\textbf{2. 自洽求解能量本征值}
+
+由 $\psi(0)=\dfrac{1}{\sqrt{2\pi\hbar}}\int\varphi(p)\,dp$ 与 $A$ 的定义联立，消去 $\psi(0)$ 和 $A$ 得：
+\[
+\int_{-\infty}^{\infty}\frac{dp}{p^2+\hbar^2\kappa^2}=\frac{\pi\hbar}{\mu\gamma},\quad\kappa=\frac{\sqrt{-2\mu E}}{\hbar}.
+\]
+积分结果为 $\dfrac{\pi}{\hbar\kappa}$，故 $\kappa=\dfrac{\mu\gamma}{\hbar^2}$。
+
+\begin{equation}
+\boxed{E=-\frac{\mu\gamma^2}{2\hbar^2}.}
+\end{equation}
+
+\textbf{3. 归一化动量空间波函数}
+
+由 $\int|\varphi(p)|^2dp=1$ 得 $|A|=\sqrt{\dfrac{2}{\pi}}(\hbar\kappa)^{3/2}$。取正实数：
+\begin{equation}
+\boxed{\varphi(p)=\sqrt{\frac{2}{\pi}}\frac{(\hbar\kappa)^{3/2}}{p^2+\hbar^2\kappa^2},\quad\kappa=\frac{\mu\gamma}{\hbar^2}.}
+\end{equation}
+
+\textbf{4. 不确定度计算}
+
+$\langle p\rangle=0$（奇函数），$\langle p^2\rangle=\hbar^2\kappa^2$，故
+\[
+\Delta p=\hbar\kappa.
+\]
+
+$\langle x\rangle=0$（偶函数），$\langle x^2\rangle=\dfrac{1}{2\kappa^2}$，故
+\[
+\Delta x=\frac{1}{\sqrt{2}\kappa}.
+\]
+
+\textbf{5. 验证不确定性关系}
+\begin{equation}
+\boxed{\Delta x\cdot\Delta p=\frac{\hbar}{\sqrt{2}}\approx0.707\hbar>\frac{\hbar}{2}.}
+\end{equation}
+满足 Heisenberg 不确定性关系。$\delta$ 势阱基态的不确定度乘积为 $\hbar/\sqrt{2}$，大于高斯波包的最小不确定度 $\hbar/2$。
+
+\textbf{附：坐标表象波函数}
+
+Fourier 逆变换得 $\psi(x)=\sqrt{\kappa}\,e^{-\kappa|x|}$，与坐标表象直接求解结果一致。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+束缚态能量 & $E=-\dfrac{\mu\gamma^2}{2\hbar^2}$ \\
+动量波函数 & $\varphi(p)=\sqrt{\dfrac{2}{\pi}}\dfrac{(\hbar\kappa)^{3/2}}{p^2+\hbar^2\kappa^2}$ \\
+坐标不确定度 & $\Delta x=\dfrac{1}{\sqrt{2}\kappa}$ \\
+动量不确定度 & $\Delta p=\hbar\kappa$ \\
+不确定度乘积 & $\Delta x\Delta p=\dfrac{\hbar}{\sqrt{2}}$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 在动量表象中，$\delta$ 势阱的定态方程化为简单的代数方程，束缚态波函数呈 Lorentz 型（柯西分布），这是$\delta$势阱在动量空间的标志性特征。
+    \item 与坐标空间中的指数衰减波函数 $e^{-\kappa|x|}$ 形成对比：坐标空间的局域性对应动量空间的缓慢衰减（$\varphi(p)\sim p^{-2}$），体现了不确定性原理。
+    \item 该例也是练习不同表象下求解量子力学问题的经典范例。
+\end{itemize}
+\end{insightbox}

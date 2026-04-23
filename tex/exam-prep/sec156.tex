@@ -1,0 +1,105 @@
+% ============================================================
+% Section 156: δ势与无限高势壁：初始波包的时间演化
+% ============================================================
+\section{量子力学：$\delta$势与无限高势壁的波包演化}
+\label{sec:delta-wall-evolution}
+
+\begin{modelbox}[题目：$\delta$势与无限高势壁的初始波包演化]
+质量为 $m$ 的粒子在一维势场中运动，
+\[
+V(x)=\begin{cases}\infty,&x\leq-a\\V_0\delta(x),&x>-a\end{cases}
+\]
+定义 $k=\sqrt{2mE}/\hbar$，$\alpha=2mV_0/\hbar^2$。$t=0$ 时，粒子完全禁闭在 $-a<x<0$ 区域中。
+
+(1) 写出 $t=0$ 时粒子最低能量的归一化波函数；
+
+(2) 给出能量本征函数在两区域 (I) $-a<x<0$ 及 (II) $x\geq0$ 中所必须满足的边界条件；
+
+(3) 求两区域中满足边界条件的能量本征波函数（实数解），准确到一个常因子；
+
+(4) $t=0$ 时的波函数可表示为 $\psi(x)=\int_{-\infty}^{\infty}f(k)\psi_k(x)\,dk$，指明如何从 $\psi_k(x)$ 确定 $f(k)$；
+
+(5) 给出波函数随时间演变的表达式。经过长时间后，$k$ 的什么值支配着时间演化过程？
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{初始态}：宽度为 $a$ 的无限深势阱基态
+    \item \textbf{边界条件}：$x=-a$ 处 $\psi=0$；$x=0$ 处 $\psi$ 连续、$\psi'$ 跃变 $\alpha\psi(0)$
+    \item \textbf{连续谱}：$E>0$，$k$ 取连续值，$\delta$ 函数归一化
+    \item \textbf{长时间行为}：稳相法，$k\approx0$（低能成分）主导
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) $t=0$ 时的初始波函数}
+
+粒子被完全禁闭在 $-a<x<0$ 的无限深势阱中。基态（$n=1$）归一化波函数：
+\begin{equation}
+\boxed{\psi(x,0)=\begin{cases}\sqrt{\dfrac{2}{a}}\sin\left(\dfrac{\pi x}{a}\right),&-a<x<0\\0,&\text{其他}\end{cases}}
+\end{equation}
+
+\textbf{(2) 边界条件}
+
+\begin{itemize}
+    \item $x=-a$（无限高势壁）：$\psi^{\text{I}}(-a)=0$
+    \item $x=0$（$\delta$ 势）：$\psi^{\text{I}}(0)=\psi^{\text{II}}(0)$（波函数连续）
+    \item $x=0$（$\delta$ 势）：$\psi^{\text{II}'}(0)-\psi^{\text{I}'}(0)=\alpha\psi(0)$（导数跃变）
+    \item $x\to\infty$：$\psi^{\text{II}}(\infty)$ 有限（散射态）
+\end{itemize}
+
+\textbf{(3) 能量本征波函数}
+
+区域 I：$\psi_k^{\text{I}}(x)=C\sin k(x+a)$（自动满足 $\psi(-a)=0$）。
+
+区域 II：$\psi_k^{\text{II}}(x)=\psi_k^{\text{I}}(x)+A\sin kx$（自动满足 $x=0$ 连续）。
+
+由导数跃变条件 $Ak=\alpha C\sin ka$，得 $A=C\dfrac{\alpha}{k}\sin ka$。
+
+\begin{equation}
+\boxed{\psi_k(x)=\begin{cases}C\sin k(x+a),&-a<x<0\\C\sin k(x+a)+C\dfrac{\alpha}{k}\sin ka\sin kx,&x\geq0\end{cases}}
+\end{equation}
+
+\textbf{(4) 展开系数 $f(k)$}
+
+由 $\delta$ 归一化 $\int\psi_{k'}^*(x)\psi_k(x)\,dx=\delta(k-k')$，得
+\begin{equation}
+\boxed{f(k)=\int_{-\infty}^{\infty}\psi_k^*(x)\psi(x,0)\,dx=\int_{-a}^{0}\psi_k^{\text{I}*}(x)\sqrt{\frac{2}{a}}\sin\frac{\pi x}{a}\,dx.}
+\end{equation}
+
+\textbf{(5) 时间演化与长时间行为}
+
+\[
+\psi(x,t)=\int_{-\infty}^{\infty}f(k)\psi_k(x)e^{-iE_kt/\hbar}\,dk,\quad E_k=\frac{\hbar^2k^2}{2m}.
+\]
+
+由稳相法，长时间后相位 $\phi(k)=kx-\dfrac{\hbar k^2}{2m}t$ 的驻点满足 $\dfrac{d\phi}{dk}=x-\dfrac{\hbar k}{m}t=0$，即 $k=\dfrac{mx}{\hbar t}$。对固定位置 $x$，当 $t\to\infty$ 时 $k\to0$。
+
+\begin{equation}
+\boxed{\text{小 }k\text{ 值（长波长、低能量）支配着长时间演化。}}
+\end{equation}
+物理上：粒子最终逃离初始区域向 $x>0$ 扩散，高能成分早已跑远，低能成分相对更集中。
+\end{derivationbox}
+
+\begin{formulabox}[答案汇总]
+\begin{center}
+\begin{tabular}{ll}
+\toprule
+\textbf{结论} & \textbf{结果} \\
+\midrule
+(1) 初始波函数 & $\sqrt{2/a}\sin(\pi x/a)$（$-a<x<0$） \\
+(3) 本征波函数 & $\psi_k^{\text{I}}=C\sin k(x+a)$；$\psi_k^{\text{II}}=\psi_k^{\text{I}}+C\dfrac{\alpha}{k}\sin ka\sin kx$ \\
+(4) 展开系数 & $f(k)=\int_{-a}^{0}\psi_k^{\text{I}*}(x)\psi(x,0)\,dx$ \\
+(5) 长时间行为 & 小 $k$（低能）主导 \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 该问题完整地展示了量子力学初值问题的标准处理流程：初态准备 $\to$ 本征态求解 $\to$ 谱分解 $\to$ 时间演化 $\to$ 渐近行为分析。
+    \item $\delta$ 势的存在将原本的分立谱（无限深势阱）变为连续谱（半无限空间），导致初始局域态随时间扩散。
+    \item 稳相法是分析波包长时间演化的有力工具，其核心思想是：快速振荡的相位因子导致相消干涉，仅驻点附近贡献显著。
+\end{itemize}
+\end{insightbox}
