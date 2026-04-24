@@ -18,11 +18,58 @@
 \textcolor{ustcblue}{\rule{\linewidth}{2pt}}
 \vspace{8pt}
 
+% ---------- 考试速查导航页 ----------
+\begin{center}
+{\LARGE\bfseries\color{ustcblue} 考试速查导航}\\[4pt]
+\textcolor{ustcblue}{\rule{0.6\linewidth}{1.5pt}}
+\end{center}
+
+\vspace{6pt}
+\begin{center}
+\renewcommand{\arraystretch}{1.5}
+\begin{tabular}{|c|l|c|c|}
+\hline
+\textbf{颜色标记} & \textbf{Part 名称} & \textbf{缩写} & \textbf{页码} \\
+\hline
+\textcolor{ustcblue}{\rule{8pt}{8pt}} & 量子力学 I：基础与算符方法 & QM-I & \pageref{part:qm1} \\
+\hline
+\textcolor{tealcolor}{\rule{8pt}{8pt}} & 量子力学 II：散射与势场问题 & QM-II & \pageref{part:qm2} \\
+\hline
+\textcolor{royalpurple}{\rule{8pt}{8pt}} & 量子力学 III：微扰论与原子物理 & QM-III & \pageref{part:qm3} \\
+\hline
+\textcolor{warnorange}{\rule{8pt}{8pt}} & 量子力学 IV：含时问题与量子跃迁 & QM-IV & \pageref{part:qm4} \\
+\hline
+\textcolor{successgreen}{\rule{8pt}{8pt}} & 固体物理 I：晶体结构、缺陷与结合 & Solid-I & \pageref{part:solid1} \\
+\hline
+\textcolor{alertred}{\rule{8pt}{8pt}} & 固体物理 II：晶格振动与热学性质 & Solid-II & \pageref{part:solid2} \\
+\hline
+\textcolor{USTCBLUE!80!black}{\rule{8pt}{8pt}} & 固体物理 III：能带、输运与电子结构 & Solid-III & \pageref{part:solid3} \\
+\hline
+\textcolor{solidbrown}{\rule{8pt}{8pt}} & 固体物理 IV：光学、磁学与超导 & Solid-IV & \pageref{part:solid4} \\
+\hline
+\textcolor{semigold}{\rule{8pt}{8pt}} & 半导体物理 & Semi & \pageref{part:semi} \\
+\hline
+\end{tabular}
+\end{center}
+
+\vspace{8pt}
+\begin{cheatbox}[翻页提示]
+\begin{itemize}[nosep]
+    \item \textbf{页眉左侧}：显示当前 Part 缩写（带颜色），如 \textcolor{ustcblue}{\textbf{[QM-I]}}
+    \item \textbf{页眉右侧}：显示当前 Section 编号与标题
+    \item \textbf{页脚右侧}：彩色竖条标识当前 Part，一目了然
+    \item \textbf{目录}：从下一页开始，只显示到 Section 级别
+    \item \textbf{PDF 书签}：左侧导航栏可直接跳转到任意 Part/Section
+\end{itemize}
+\end{cheatbox}
+
+\newpage
+
 % ---------- 目录 ----------
 \tableofcontents
 \newpage
 
-\part{量子力学 I：基础与算符方法}
+\part{量子力学 I：基础与算符方法}\label{part:qm1}\setpartcolor{\value{part}}
 
 \newpage
 % ============================================
@@ -278,6 +325,7 @@ S^\dagger(r) H S(r) = E b^\dagger b + \text{const}, \qquad E = \sqrt{\omega^2 - 
 % 核心页：线性势场与相互作用绘景
 % ============================================
 \newpage
+\input{sec02}
 \input{sec26}
 \newpage
 \input{sec28}
@@ -292,7 +340,7 @@ S^\dagger(r) H S(r) = E b^\dagger b + \text{const}, \qquad E = \sqrt{\omega^2 - 
 \newpage
 \input{sec150}
 \newpage
-\part{量子力学 II：散射与势场问题}
+\part{量子力学 II：散射与势场问题}\label{part:qm2}\setpartcolor{\value{part}}
 
 \newpage
 \section{量子力学：线性势场与相互作用绘景}
@@ -1813,7 +1861,7 @@ P_{3/2}(t) + P_{1/2}(t) = \frac{5}{9}+\frac{4}{9}\cos(\omega t) + \frac{8}{9}\cd
 \newpage
 \input{sec167}
 \newpage
-\part{量子力学 III：微扰论与原子物理}
+\part{量子力学 III：微扰论与原子物理}\label{part:qm3}\setpartcolor{\value{part}}
 
 \newpage
 \section{量子力学：二维谐振子耦合与简并微扰论}
@@ -2614,7 +2662,7 @@ E_{n_1',n_2'} = (n_1'+n_2'+1)\hbar\omega + (n_1'-n_2')\lambda
 \newpage
 \input{sec186}
 \newpage
-\part{量子力学 IV：含时问题与量子跃迁}
+\part{量子力学 IV：含时问题与量子跃迁}\label{part:qm4}\setpartcolor{\value{part}}
 
 \newpage
 \section[量子力学：时间反演算符与自旋相位关系]{量子力学：时间反演算符与自旋相位关系}
@@ -4848,10 +4896,11 @@ Optical Bloch & $H=\frac{\Delta}{2}\sigma_z+\frac{\Omega}{2}\sigma_x$ + $\gamma$
 \newpage
 \input{sec184}
 \newpage
-\part{固体物理 I：晶体结构、缺陷与结合}
+\part{固体物理 I：晶体结构、缺陷与结合}\label{part:solid1}\setpartcolor{\value{part}}
 
 \newpage
 % ============================================
+\input{sec01}
 \input{sec24}
 \newpage
 \input{sec25}
@@ -4884,7 +4933,7 @@ Optical Bloch & $H=\frac{\Delta}{2}\sigma_z+\frac{\Omega}{2}\sigma_x$ + $\gamma$
 \newpage
 \input{sec65}
 \newpage
-\part{固体物理 II：晶格振动与热学性质}
+\part{固体物理 II：晶格振动与热学性质}\label{part:solid2}\setpartcolor{\value{part}}
 \newpage
 \input{sec39}
 \newpage
@@ -4924,7 +4973,7 @@ Optical Bloch & $H=\frac{\Delta}{2}\sigma_z+\frac{\Omega}{2}\sigma_x$ + $\gamma$
 \newpage
 \input{sec57}
 \newpage
-\part{固体物理 III：能带、输运与电子结构}
+\part{固体物理 III：能带、输运与电子结构}\label{part:solid3}\setpartcolor{\value{part}}
 \newpage
 \input{sec23}
 \newpage
@@ -4996,7 +5045,7 @@ Optical Bloch & $H=\frac{\Delta}{2}\sigma_z+\frac{\Omega}{2}\sigma_x$ + $\gamma$
 \newpage
 \input{sec99}
 \newpage
-\part{固体物理 IV：光学、磁学与超导}
+\part{固体物理 IV：光学、磁学与超导}\label{part:solid4}\setpartcolor{\value{part}}
 \newpage
 \input{sec100}
 \newpage
@@ -6415,7 +6464,7 @@ DC-SQUID 的临界电流随磁通以周期 $\Phi_0 = h/2e \approx 2.07\times 10^
 \newpage
 \newpage
 
-\part{半导体物理}
+\part{半导体物理}\label{part:semi}\setpartcolor{\value{part}}
 \newpage
 \input{sec119}
 \newpage
