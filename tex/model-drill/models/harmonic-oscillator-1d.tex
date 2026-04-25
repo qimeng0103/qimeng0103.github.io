@@ -268,18 +268,41 @@ A(m,n) = \frac{1}{\sqrt{m!n!}}(\hat{a}^\dagger)^m|0\rangle\langle 0|\hat{a}^n.
 \begin{insightbox}[相干态的物理图像——为什么波包不扩散？]
 相干态是量子谐振子中"最经典"的态。在相空间中，它是一个高斯波包，中心沿经典轨迹 $(\langle X\rangle(t), \langle P\rangle(t))$ 做简谐振荡。
 
-\textbf{关键问题}：一般自由粒子的高斯波包会扩散（$\Delta X$ 随时间增大），为什么谐振子势中的相干态不扩散？
+\textbf{关键问题}：自由粒子的高斯波包会扩散（$\Delta X$ 随时间增大），为什么谐振子势中的相干态不扩散？
 
-根本原因在于谐振子势是严格的\textbf{二次型} $V(x)\propto x^2$，所有高阶导数 $V'''=V^{(4)}=\dots=0$。对一般势 $V(x)$，波包扩散源于不同动量分量的群速度不同（色散）：
+\textbf{回答：因为谐振子提供了恢复力，把波包"拉回来"；自由粒子没有恢复力，波包一旦展开就持续扩散。}
+
+用 Heisenberg 图像可以精确说明。对任意态，位置方差为
 \[
-v_g = \frac{d\omega}{dk} = \frac{dE}{dp} = \frac{p}{m} + \frac{\hbar k}{m}\cdot O(V''').
+(\Delta X)^2(t) = \langle X^2(t)\rangle - \langle X(t)\rangle^2.
 \]
-当 $V'''\neq 0$ 时，不同 $k$ 分量的速度不同，波包逐渐展宽。但对谐振子，$V'''=0$，所有高阶色散项消失。谐振子的传播子可以精确写成高斯形式：
+
+\textbf{自由粒子}（$V=0$）：$X(t) = X + Pt/m$，故
 \[
-K(x,t;x',0) = \sqrt{\frac{m\omega}{2\pi i\hbar\sin\omega t}}
-\exp\!\Bigl\{\frac{im\omega}{2\hbar\sin\omega t}\bigl[(x^2+x'^2)\cos\omega t - 2xx'\bigr]\Bigr\}.
+(\Delta X)^2(t) = (\Delta X)^2_0 + \frac{(\Delta P)^2_0}{m^2}t^2 + \frac{\langle XP+PX\rangle_0 - 2\langle X\rangle_0\langle P\rangle_0}{m}t.
 \]
-因此任何初始高斯波包始终保持高斯型。相干态是其中宽度恰好等于自然宽度 $x_0/\sqrt{2}$ 的特殊情况——它的形状不仅不扩散，而且\textbf{完全不变}。更一般地，一个" squeezed "高斯波包在谐振子势中会以 $2\omega$ 的频率呼吸（宽度周期性变化），而相干态是这种呼吸运动的"平衡点"。
+其中 $t^2$ 项导致方差\textbf{单调增长}，波包不可逆地扩散。
+
+\textbf{谐振子}：$X(t) = X\cos\omega t + \frac{P}{m\omega}\sin\omega t$，故
+\begin{align*}
+(\Delta X)^2(t)
+&= (\Delta X)^2_0\cos^2\omega t + \frac{(\Delta P)^2_0}{m^2\omega^2}\sin^2\omega t \\
+&\quad + \frac{\langle XP+PX\rangle_0 - 2\langle X\rangle_0\langle P\rangle_0}{m\omega}\sin\omega t\cos\omega t.
+\end{align*}
+方差是 $\cos^2\omega t$、$\sin^2\omega t$ 和 $\sin\omega t\cos\omega t$ 的组合，因此以 $2\omega$ 的频率\textbf{周期性振荡}——波包会周期性地"收缩"回来。
+
+\textbf{相干态的特殊性}：相干态是最小不确定态，且 $X$ 与 $P$ 的不确定部分互不关联，交叉项为零。同时其自然宽度恰好满足
+\[
+(\Delta X)^2_0 = \frac{\hbar}{2m\omega},
+\qquad
+\frac{(\Delta P)^2_0}{m^2\omega^2} = \frac{\hbar}{2m\omega} = (\Delta X)^2_0.
+\]
+因此
+\[
+(\Delta X)^2(t) = (\Delta X)^2_0(\cos^2\omega t + \sin^2\omega t) = (\Delta X)^2_0.
+\]
+方差\textbf{严格不随时间变化}——波包形状完全不变，只有中心在振荡。 squeezed 态则对应交叉项非零或 $(\Delta X)_0\neq (\Delta P)_0/(m\omega)$ 的情况，会以 $2\omega$ 频率"呼吸"。
+\end{insightbox}
 \subsubsection{Heisenberg 图像下的时间演化}
 
 在 Heisenberg 图像中，算符随时间演化而态不变。谐振子的 Heisenberg 运动方程为
@@ -311,7 +334,6 @@ K(x,t;x',0) = \sqrt{\frac{m\omega}{2\pi i\hbar\sin\omega t}}
 
 这恰好是相空间中半径为 $\sqrt{2}x_0|\alpha|$ 的圆轨道，角频率 $\omega$。
 
-\end{insightbox}
 % --------------------------------------------------------
 % 6. 含时演化：瞬时脉冲与相干态的物理实现
 % --------------------------------------------------------
