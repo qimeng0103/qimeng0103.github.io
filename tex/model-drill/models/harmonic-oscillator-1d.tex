@@ -1,235 +1,544 @@
 % ============================================================
 % Model: 一维谐振子 (1D Harmonic Oscillator)
-% 来源：ustc-phd-prep.pdf Section 1/4/5/6/10/20/54/65 + WKB验证
+% 叙事逻辑：从模型定义 → 代数解 → 算符结构 → 相干态 →
+%          含时演化 → 半经典极限 → 求和约束 → 对称性工具 →
+%          多体推广 → 一维特例
 % ============================================================
 \section{一维谐振子}
 \label{sec:model-ho-1d}
 
-\begin{tipbox}[关键词标签]
-升降算符 · 相干态 · 位移算符 · 泊松分布 · 振子强度 · TRK求和规则 ·
-WKB量子化 · Virial定理 · Hellmann-Feynman定理 · Slater行列式 · 费米压
+\begin{tipbox}[关键词]
+升降算符 · 相干态 · 位移算符 · 泊松分布 · 振子强度 · WKB量子化 ·
+Virial定理 · Hellmann-Feynman定理 · Slater行列式 · 费米压
 \end{tipbox}
 
 % --------------------------------------------------------
-% 1. 模型定义框
+% 1. 模型定义
 % --------------------------------------------------------
 \begin{modelbox}[模型：一维量子谐振子]
-\textbf{哈密顿量}：
+\textbf{哈密顿量}
 \[
 \hat{H} = \frac{\hat{P}^2}{2m} + \frac{1}{2}m\omega^2 \hat{X}^2
-= \hbar\omega\Bigl(a^\dagger a + \frac{1}{2}\Bigr)
+= \hbar\omega\Bigl(\hat{a}^\dagger \hat{a} + \frac{1}{2}\Bigr).
 \]
 
-\textbf{特征尺度}：
+\textbf{特征尺度}
 \begin{itemize}[nosep]
-    \item 特征长度：$x_0 = \sqrt{\dfrac{\hbar}{m\omega}}$（也常记 $\alpha = \sqrt{\dfrac{m\omega}{\hbar}}$）
-    \item 特征动量：$p_0 = \sqrt{m\omega\hbar}$
-    \item 自然单位：$\xi = \dfrac{x}{x_0} = \alpha x$
+    \item 特征长度 $x_0 = \sqrt{\hbar/m\omega}$，自然坐标 $\xi = x/x_0$
+    \item 特征动量 $p_0 = \sqrt{m\omega\hbar}$
 \end{itemize}
 
-\textbf{升降算符}：
+\textbf{升降算符}
 \[
-a = \sqrt{\frac{m\omega}{2\hbar}}\Bigl(\hat{X} + \frac{i\hat{P}}{m\omega}\Bigr)
-= \frac{1}{\sqrt{2}}(\xi + \partial_\xi),
-\quad
-a^\dagger = \frac{1}{\sqrt{2}}(\xi - \partial_\xi)
-\]
-对易关系：$[a, a^\dagger] = 1$，$[a, a] = [a^\dagger, a^\dagger] = 0$。
-
-\textbf{位置与动量}：
-\[
-\hat{X} = x_0\,\frac{a + a^\dagger}{\sqrt{2}},
+\hat{a} = \frac{1}{\sqrt{2}}\Bigl(\xi + \frac{\partial}{\partial\xi}\Bigr),
 \qquad
-\hat{P} = \frac{p_0}{i}\,\frac{a - a^\dagger}{\sqrt{2}}
+\hat{a}^\dagger = \frac{1}{\sqrt{2}}\Bigl(\xi - \frac{\partial}{\partial\xi}\Bigr),
+\qquad [\hat{a}, \hat{a}^\dagger] = 1.
+\]
+
+\textbf{位置与动量}
+\[
+\hat{X} = x_0\,\frac{\hat{a} + \hat{a}^\dagger}{\sqrt{2}},
+\qquad
+\hat{P} = \frac{p_0}{i}\,\frac{\hat{a} - \hat{a}^\dagger}{\sqrt{2}}.
 \]
 \end{modelbox}
 
 % --------------------------------------------------------
-% 2. 关键公式框
+% 2. 代数解：能谱与本征态
 % --------------------------------------------------------
-\begin{formulabox}[核心公式——必须能独立推导]
-\textbf{能谱}：
+\subsection{代数解：能谱与本征态}
+
+谐振子是少数几个可以用纯代数方法完全求解的模型。核心观察是：哈密顿量可以写成粒子数算符 $\hat{N}=\hat{a}^\dagger\hat{a}$ 的线性函数。
+
+\begin{derivationbox}[能谱推导]
+由对易关系 $[\hat{N}, \hat{a}] = -\hat{a}$ 和 $[\hat{N}, \hat{a}^\dagger] = \hat{a}^\dagger$ 可知：
+若 $\hat{N}|n\rangle = n|n\rangle$，则
 \[
+\hat{N}\bigl(\hat{a}|n\rangle\bigr) = (n-1)\bigl(\hat{a}|n\rangle\bigr),
+\qquad
+\hat{N}\bigl(\hat{a}^\dagger|n\rangle\bigr) = (n+1)\bigl(\hat{a}^\dagger|n\rangle\bigr).
+\]
+因此 $\hat{a}$ 将本征态的量子数减 1，$\hat{a}^\dagger$ 加 1。
+
+由于 $\hat{N}$ 是半正定算符，$\langle n|\hat{N}|n\rangle = \|\hat{a}|n\rangle\|^2 \geq 0$，存在基态 $|0\rangle$ 满足
+\[
+\hat{a}|0\rangle = 0.
+\]
+用坐标表象写出此方程：$x_0(\xi + \partial_\xi)\psi_0 = 0$，解得高斯波函数
+\[
+\psi_0(x) = \Bigl(\frac{m\omega}{\pi\hbar}\Bigr)^{1/4} e^{-\xi^2/2}.
+\]
+反复作用 $\hat{a}^\dagger$ 可得任意激发态。能谱为
+\begin{equation}
 \boxed{E_n = \hbar\omega\Bigl(n + \frac{1}{2}\Bigr),\quad n = 0,1,2,\dots}
-\]
+\end{equation}
+\end{derivationbox}
 
-\textbf{波函数}：
-\[
+能级等间距分布，间隔 $\hbar\omega$。这是谐振子最重要的谱特征，也是后续所有推导（相干态、求和规则、WKB验证）的共同起点。
+
+% --------------------------------------------------------
+% 3. 波函数与 Hermite 多项式
+% --------------------------------------------------------
+\subsection{波函数与 Hermite 多项式}
+
+坐标表象下的定态波函数为
+\begin{equation}
 \psi_n(x) = \frac{1}{\sqrt{2^n n!}}\Bigl(\frac{m\omega}{\pi\hbar}\Bigr)^{1/4}
-H_n(\alpha x)\,e^{-\alpha^2 x^2/2}
-\]
-其中 $H_n$ 为 Hermite 多项式，满足递推：
-$H_{n+1}(\xi) = 2\xi H_n(\xi) - 2n H_{n-1}(\xi)$，
-$H_n'(\xi) = 2n H_{n-1}(\xi)$。
-
-\textbf{升降算符作用}：
+H_n(\xi)\,e^{-\xi^2/2},
+\qquad \xi = \frac{x}{x_0}.
+\end{equation}
+其中 $H_n(\xi)$ 为 Hermite 多项式，满足递推关系
 \[
-\boxed{a|n\rangle = \sqrt{n}\,|n-1\rangle,\quad
-a^\dagger|n\rangle = \sqrt{n+1}\,|n+1\rangle}
+H_{n+1}(\xi) = 2\xi H_n(\xi) - 2n H_{n-1}(\xi),
+\qquad H_n'(\xi) = 2n H_{n-1}(\xi).
 \]
 
-\textbf{能量表象矩阵元}（仅相邻能级非零）：
-\begin{align*}
+\begin{insightbox}[波函数的结构]
+谐振子波函数是\textbf{高斯包络}与\textbf{多项式振荡}的乘积。
+\begin{itemize}[nosep]
+    \item 基态 $|0\rangle$：纯高斯，无节点，最小不确定波包
+    \item 激发态 $|n\rangle$：$n$ 个节点，经典转折点外呈指数衰减，转折点内振荡
+    \item 宇称：$H_n(-\xi) = (-1)^n H_n(\xi)$，故 $\psi_n(x)$ 具有确定宇称 $(-1)^n$
+\end{itemize}
+经典转折点位于 $x_\text{cl} = \pm x_0\sqrt{2n+1}$。当 $n\gg 1$ 时，WKB 近似在该区域给出与精确波函数一致的渐近行为。
+\end{insightbox}
+
+% --------------------------------------------------------
+% 4. 能量表象下的算符结构
+% --------------------------------------------------------
+\subsection{能量表象下的算符结构}
+
+在粒子数基 $\{|n\rangle\}$ 下，升降算符的矩阵元极其简单：
+\begin{equation}
+\boxed{\langle n'|\hat{a}|n\rangle = \sqrt{n}\,\delta_{n',n-1},
+\qquad
+\langle n'|\hat{a}^\dagger|n\rangle = \sqrt{n+1}\,\delta_{n',n+1}.}
+\end{equation}
+
+由此可得位置与动量的矩阵元。由于 $\hat{X}\propto \hat{a}+\hat{a}^\dagger$，它只连接相邻能级：
+\begin{align}
 \langle n'|\hat{X}|n\rangle &= x_0\sqrt{\frac{n+1}{2}}\,\delta_{n',n+1}
-+ x_0\sqrt{\frac{n}{2}}\,\delta_{n',n-1} \\
++ x_0\sqrt{\frac{n}{2}}\,\delta_{n',n-1}, \\
 \langle n'|\hat{P}|n\rangle &= \frac{p_0}{i}\sqrt{\frac{n+1}{2}}\,\delta_{n',n+1}
-- \frac{p_0}{i}\sqrt{\frac{n}{2}}\,\delta_{n',n-1} \\
-\langle n'|\hat{X}^2|n\rangle &= \frac{x_0^2}{2}\Bigl[(2n+1)\delta_{n',n}
-+ \sqrt{(n+1)(n+2)}\,\delta_{n',n+2}
-+ \sqrt{n(n-1)}\,\delta_{n',n-2}\Bigr]
-\end{align*}
+- \frac{p_0}{i}\sqrt{\frac{n}{2}}\,\delta_{n',n-1}.
+\end{align}
 
-\textbf{基态波函数与矩阵元}：
+$\hat{X}^2$ 包含 $(\hat{a}+\hat{a}^\dagger)^2 = \hat{a}^2 + (\hat{a}^\dagger)^2 + 2\hat{a}^\dagger\hat{a} + 1$，因此除对角元外还连接 $|n\rangle$ 与 $|n\pm 2\rangle$：
+\begin{equation}
+\langle n'|\hat{X}^2|n\rangle = \frac{x_0^2}{2}\Bigl[(2n+1)\delta_{n',n}
++ \sqrt{(n+1)(n+2)}\,\delta_{n',n+2}
++ \sqrt{n(n-1)}\,\delta_{n',n-2}\Bigr].
+\end{equation}
+
+\begin{tipbox}[矩阵元的选择定则]
+\begin{itemize}[nosep]
+    \item $\hat{X}$：$\Delta n = \pm 1$（电偶极跃迁选择定则）
+    \item $\hat{X}^2$：$\Delta n = 0, \pm 2$
+    \item $\hat{P}$：与 $\hat{X}$ 同结构，仅系数差一个因子 $i$
+\end{itemize}
+这些选择定则直接决定了谐振子在外场中的响应行为：线性耦合 $x$ 只能诱导相邻能级跃迁，二次耦合 $x^2$ 可诱导同级和隔级跃迁。
+\end{tipbox}
+
+由矩阵元立即可得坐标与动量的方差：
 \[
-\psi_0(x) = \Bigl(\frac{m\omega}{\pi\hbar}\Bigr)^{1/4} e^{-m\omega x^2/2\hbar},
-\quad
-\langle 0|e^{ikX}|0\rangle = \exp\Bigl(-\frac{\hbar k^2}{4m\omega}\Bigr)
+\langle n|\hat{X}^2|n\rangle = \frac{x_0^2}{2}(2n+1) = \frac{(n+\tfrac12)\hbar}{m\omega},
+\qquad
+\langle n|\hat{P}^2|n\rangle = \frac{p_0^2}{2}(2n+1) = (n+\tfrac12)m\omega\hbar.
 \]
+因此不确定度积为
+\[
+\Delta X\,\Delta P = \frac{\hbar}{2}(2n+1) \geq \frac{\hbar}{2},
+\]
+基态达到下限，是标准的"最小不确定态"。
+
+% --------------------------------------------------------
+% 5. 相干态与位移算符
+% --------------------------------------------------------
+\subsection{相干态与位移算符}
+
+升降算符代数不仅给出能谱，还自然引出谐振子的一个核心结构——\textbf{相干态}（coherent state）。
+
+\subsubsection{位移算符的定义}
+
+定义位移算符
+\begin{equation}
+\hat{D}(\alpha) = \exp(\alpha\hat{a}^\dagger - \alpha^*\hat{a}),
+\qquad \alpha\in\mathbb{C}.
+\end{equation}
+由 Baker--Campbell--Hausdorff 公式及 $[\hat{a},\hat{a}^\dagger]=1$ 可得
+\begin{equation}
+\hat{D}(\alpha) = e^{-|\alpha|^2/2}\,e^{\alpha\hat{a}^\dagger}\,e^{-\alpha^*\hat{a}}.
+\end{equation}
+作用在真空态上产生\textbf{相干态} $|\alpha\rangle = \hat{D}(\alpha)|0\rangle$，其在 Fock 基下的展开为
+\begin{equation}
+\boxed{|\alpha\rangle = e^{-|\alpha|^2/2}\sum_{n=0}^{\infty}\frac{\alpha^n}{\sqrt{n!}}|n\rangle.}
+\end{equation}
+
+\subsubsection{位置表象的位移}
+
+将 $\hat{a},\hat{a}^\dagger$ 用 $\hat{X},\hat{P}$ 表示，位移算符可改写为
+\[
+\hat{D}(\alpha) = \exp\Bigl[\frac{i}{\hbar}\bigl(p_0\,\text{Re}\,\alpha\bigr)\hat{X}
+- \frac{i}{\hbar}\bigl(\sqrt{2}\,p_0\,\text{Im}\,\alpha\bigr)\hat{P}\Bigr].
+\]
+
+这意味着：
+\begin{itemize}[nosep]
+    \item 当 $\alpha$ 为\textbf{实数}时，$\hat{D}(\alpha) = \exp(-i p_0 \alpha \hat{X}/\hbar)$，实现\textbf{动量空间的平移}，$\langle\hat{P}\rangle$ 改变而 $\langle\hat{X}\rangle$ 不变
+    \item 当 $\alpha$ 为\textbf{纯虚数}时，$\hat{D}(\alpha) = \exp(i \sqrt{2}p_0 \,\text{Im}\alpha \,\hat{P}/\hbar)$，实现\textbf{位置空间的平移}，$\langle\hat{X}\rangle$ 改变而 $\langle\hat{P}\rangle$ 不变
+\end{itemize}
+
+\begin{formulabox}[相干态的期望值]
+\begin{align*}
+\langle\alpha|\hat{X}|\alpha\rangle &= \sqrt{2}\,x_0\,\text{Re}\,\alpha, \\
+\langle\alpha|\hat{P}|\alpha\rangle &= \sqrt{2}\,p_0\,\text{Im}\,\alpha, \\
+\langle\alpha|\hat{H}|\alpha\rangle &= \hbar\omega\Bigl(|\alpha|^2 + \frac12\Bigr).
+\end{align*}
 \end{formulabox}
 
+\subsubsection{能量测量概率：泊松分布}
+
+相干态在能量本征基上的投影为
+\[
+\langle n|\alpha\rangle = e^{-|\alpha|^2/2}\frac{\alpha^n}{\sqrt{n!}},
+\]
+因此能量测量概率服从\textbf{泊松分布}：
+\begin{equation}
+\boxed{P_n = |\langle n|\alpha\rangle|^2 = \frac{e^{-|\alpha|^2}|\alpha|^{2n}}{n!}
+= \frac{e^{-\bar{n}}\,\bar{n}^{\,n}}{n!},\quad \bar{n}=|\alpha|^2.}
+\end{equation}
+
+泊松分布的涨落特征 $\Delta n = \sqrt{\bar{n}}$ 是相干态的标志性性质。平均能量为
+\[
+\langle E\rangle = \hbar\omega(\bar{n} + \tfrac12)
+= \frac{\langle P\rangle^2}{2m} + \frac12 m\omega^2 \langle X\rangle^2 + \frac{\hbar\omega}{2},
+\]
+其中前两项正是经典谐振子的能量，最后一项是量子零点能。
+
+\begin{insightbox}[相干态的物理图像]
+相干态是量子谐振子中"最经典"的态。在相空间中，它是一个高斯波包，中心沿经典轨迹 $(\langle X\rangle(t), \langle P\rangle(t))$ 做简谐振荡，而波包形状保持不变（不扩散）。这正是谐振子势的二次型特征所致：所有高阶导数 $V'''=V^{(4)}=\dots=0$，因此波包不发生形变。
+\end{insightbox}
 % --------------------------------------------------------
-% 3. 训练点框
+% 6. 含时演化：瞬时脉冲与相干态的物理实现
 % --------------------------------------------------------
-\begin{drillbox}[训练点与考法变体]
-\trainingpoint{1} \textbf{位移算符与相干态}（PDF Sec.6）
+\subsection{含时演化：瞬时脉冲与相干态的物理实现}
 
-题目给 $F(X)$ 求 $[a, F(X)]$，或给 $e^{ikX}|0\rangle$ 求展开系数、期望值、能量概率分布。
-\begin{itemize}[nosep]
-    \item 核心：$[a, X^n] = nX^{n-1}[a,X]$（仅当 $[a,X]$ 为 c 数时成立）
-    \item $e^{ikX}|0\rangle$ 是参数 $\alpha = ik\sqrt{\hbar/2m\omega}$（纯虚数）的相干态
-    \item 能量概率 $P_n = \dfrac{\bar{n}^n}{n!}e^{-\bar{n}}$，$\bar{n} = \dfrac{\hbar k^2}{2m\omega}$
-    \item 纯虚 $\alpha$ 对应\textbf{动量空间平移}：$\langle X\rangle=0$，$\langle P\rangle=\hbar k$
-\end{itemize}
+相干态不仅是数学构造，还是真实物理过程的产物。考虑谐振子基态受到一个瞬时脉冲：
+\[
+\hat{H}'(t) = \lambda\,\hat{X}\,\delta(t).
+\]
 
-\trainingpoint{2} \textbf{$\delta(t)$ 脉冲下的跃迁}（PDF Sec.65）
+\subsubsection{精确时间演化算符}
 
-微扰 $H'(t) = \lambda x\,\delta(t)$，求跃迁概率。
-\begin{itemize}[nosep]
-    \item 时间演化算符：$U = \exp(-i\lambda x/\hbar)$（精确指数，非微扰展开！）
-    \item $U = D(\alpha)$ 是位移算符，$\alpha = -i\lambda/\hbar\cdot x_0$
-    \item 跃迁概率仍为泊松分布：$P_n = e^{-\bar{n}}\bar{n}^n/n!$，
-    $\bar{n} = \lambda^2/(2m\omega\hbar)$
-    \item 基态概率 $P_0 = e^{-\bar{n}}$，激发态总概率 $1-e^{-\bar{n}}$
-\end{itemize}
+对 $\delta(t)$ 型的奇异微扰，不能直接使用含时微扰论。应将薛定谔方程在 $t=0$ 附近积分：
+\[
+|\psi(0^+)\rangle - |\psi(0^-)\rangle
+= \frac{1}{i\hbar}\int_{-\epsilon}^{+\epsilon}\lambda\hat{X}\delta(t')|\psi(t')\rangle\,dt'
+= \frac{\lambda\hat{X}}{i\hbar}|\psi(0)\rangle.
+\]
+因此态矢量在脉冲瞬间发生有限跳跃：
+\begin{equation}
+|\psi(0^+)\rangle = e^{-i\lambda\hat{X}/\hbar}|\psi(0^-)\rangle.
+\end{equation}
+时间演化算符是\textbf{精确指数}，不是微扰级数——这是 $\delta(t)$ 脉冲与常微扰、简谐微扰的本质区别。
 
-\trainingpoint{3} \textbf{振子强度求和规则（TRK）}（PDF Sec.5）
+\subsubsection{与位移算符的对应}
 
-定义 $f_n = \dfrac{2M}{\hbar^2}(E_n-E_0)|\langle n|X|0\rangle|^2$，求 $\sum_n f_n$。
-\begin{itemize}[nosep]
-    \item 谐振子结果：$\sum_n f_n = 1$（只有 $n=1$ 有贡献）
-    \item 一般系统：利用 $[X,H] = i\hbar P/M$ 和 $[X,P]=i\hbar$ + 完备性，也得 $1$
-    \item 考场三步法：写 $[X,H] \to$ 求 $P$ 矩阵元（出能量差）$\to$ 用 $[X,P]$ 闭合
-\end{itemize}
+将 $\hat{X}$ 用升降算符表示：
+\[
+e^{-i\lambda\hat{X}/\hbar}
+= \exp\!\Bigl[-\frac{i\lambda}{\hbar}x_0\frac{\hat{a}+\hat{a}^\dagger}{\sqrt{2}}\Bigr]
+= \exp(\alpha\hat{a}^\dagger - \alpha^*\hat{a})
+= \hat{D}(\alpha),
+\]
+其中
+\begin{equation}
+\alpha = -\frac{i\lambda x_0}{\hbar\sqrt{2}}
+= -\frac{i\lambda}{\hbar}\sqrt{\frac{\hbar}{2m\omega}}.
+\end{equation}
 
-\trainingpoint{4} \textbf{$N$ 个全同费米子}（PDF Sec.54）
+由于 $\alpha$ 是纯虚数，$\hat{D}(\alpha)$ 对应\textbf{位置空间的平移}（动量空间的 kick）。若初态为基态 $|0\rangle$，则末态为相干态 $|\alpha\rangle$。
 
-一维谐振子阱中 $N$ 个无自旋全同费米子，含排斥 $\delta$ 相互作用。
-\begin{itemize}[nosep]
-    \item 零级波函数：Slater 行列式，单粒子能级 $\varepsilon_n = \hbar\omega(n+1/2)$
-    \item Pauli 不相容：填充 $0,1,\dots,N-1$；基态能量 $E_0 = \hbar\omega N^2/2$
-    \item $\delta$ 相互作用对\textbf{反对称波函数一级修正为零}（接触点波函数为零）
-    \item Virial 定理：$\langle\sum x_i^2\rangle = E/(m\omega^2) = \dfrac{\hbar}{2m\omega}(N^2+2k)$
-\end{itemize}
+\subsubsection{跃迁概率}
 
-\trainingpoint{5} \textbf{一维束缚态非简并性与实波函数}（PDF Sec.20）
+既然末态是相干态，能量测量概率直接继承泊松分布：
+\begin{equation}
+\boxed{P_n = \frac{e^{-\bar{n}}\,\bar{n}^{\,n}}{n!},
+\qquad \bar{n} = |\alpha|^2 = \frac{\lambda^2}{2m\omega\hbar}.}
+\end{equation}
+特别地，基态保留概率 $P_0 = e^{-\bar{n}}$，激发总概率 $P_\text{exc}=1-e^{-\bar{n}}$，平均激发数 $\langle n\rangle = \bar{n}$。
 
-证明一维束缚态非简并，波函数可取实。
-\begin{itemize}[nosep]
-    \item 设两解 $\psi, \phi$ 同能量，Wronskian $W = \psi'\phi - \phi'\psi = \text{const}$
-    \item 边界条件 $x\to\pm\infty$ 时 $\psi,\phi\to 0$ $\Rightarrow$ $W=0$ $\Rightarrow$ $\phi = c\psi$
-    \item $\psi^*$ 也是同能量解，非简并要求 $\psi^* = e^{i\delta}\psi$ $\Rightarrow$ 波函数可取实
-    \item 谐振子波函数 $H_n(\xi)$ 满足此定理（宇称确定、可取实）
-\end{itemize}
+\begin{tipbox}[瞬时脉冲 vs 其他微扰]
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{lll}
+\toprule
+\textbf{微扰形式} & \textbf{时间演化} & \textbf{结果特征} \\
+\midrule
+$V\,\Theta(t)$（常微扰） & 微扰级数 & 费米黄金规则 \\
+$V\,e^{-t/T}$（指数衰减） & 微扰级数 & Lorentz 线型 \\
+$V\,\delta(t)$（瞬时脉冲） & \textbf{精确指数} $e^{-iV/\hbar}$ & \textbf{相干态/Poisson} \\
+\bottomrule
+\end{tabular}
+\end{center}
+只有 $\delta(t)$ 能让 $U$ 写成闭式指数，因为积分 $\int\delta(t)\,dt$ 有限；其他形式都需微扰展开。
+\end{tipbox}
 
-\trainingpoint{6} \textbf{WKB 量子化条件验证}（补充）
-
-对 $V(x) = m\omega^2x^2/2$，用 Bohr--Sommerfeld 量子化条件求能级。
-\begin{itemize}[nosep]
-    \item 转折点 $x = \pm a$，$a = \sqrt{2E/m\omega^2}$
-    \item $\displaystyle\oint p\,dx = 2\int_{-a}^{a}\sqrt{2m\bigl(E-m\omega^2x^2/2\bigr)}\,dx = \frac{2\pi E}{\omega}$
-    \item 量子化条件 $\displaystyle\oint p\,dx = 2\pi\hbar\Bigl(n+\frac{1}{2}\Bigr)$
-    \item 得 $E_n = \hbar\omega(n+1/2)$，与精确解完全一致（WKB 对谐振子是精确的）
-\end{itemize}
-
-\trainingpoint{7} \textbf{HF 定理与 Virial 定理}（PDF Sec.4/10）
-
-\begin{itemize}[nosep]
-    \item HF：$\dfrac{\partial E_n}{\partial \omega} = \big\langle n\big|\dfrac{\partial H}{\partial\omega}\big|n\big\rangle$
-    $\Rightarrow$ $E_n = \hbar\omega(n+1/2)$ 对 $\omega$ 求导验证
-    \item Virial：对 $V\propto x^2$，$\langle T\rangle = \langle V\rangle = E/2$
-    $\Rightarrow$ $\langle x^2\rangle = \dfrac{(n+1/2)\hbar}{m\omega}$，$\langle p^2\rangle = (n+1/2)m\omega\hbar$
-\end{itemize}
-\end{drillbox}
 % --------------------------------------------------------
-% 4. 解题技巧框
+% 7. 半经典极限：WKB 量子化条件的验证
 % --------------------------------------------------------
+\subsection{半经典极限：WKB 量子化条件的验证}
+
+谐振子还有一个 remarkable 的性质：WKB 近似对其能谱给出\textbf{精确结果}。这是二次势所特有的——WKB 波函数在转折点附近的行为与精确 Airy 函数渐近形式完全匹配。
+
+对一维势 $V(x)=m\omega^2x^2/2$，Bohr--Sommerfeld 量子化条件（含 Maslov 修正）为
+\begin{equation}
+\oint p\,dx = 2\pi\hbar\Bigl(n + \frac12\Bigr).
+\end{equation}
+
+转折点由 $E=V(x)$ 定出：$x=\pm a$，$a=\sqrt{2E/m\omega^2}$。经典动量 $p(x)=\sqrt{2m(E-m\omega^2x^2/2)}$。于是
+\begin{align*}
+\oint p\,dx &= 2\int_{-a}^{a}\sqrt{2m\Bigl(E - \frac12m\omega^2x^2\Bigr)}\,dx \\
+&= 2\sqrt{2mE}\,a\int_{-\pi/2}^{\pi/2}\cos^2\theta\,d\theta
+\qquad (x = a\sin\theta) \\
+&= 2\sqrt{2mE}\,\sqrt{\frac{2E}{m\omega^2}}\cdot\frac{\pi}{2}
+= \frac{2\pi E}{\omega}.
+\end{align*}
+
+代入量子化条件：
+\[
+\frac{2\pi E}{\omega} = 2\pi\hbar\Bigl(n + \frac12\Bigr)
+\quad\Longrightarrow\quad
+\boxed{E_n = \hbar\omega\Bigl(n + \frac12\Bigr).}
+\]
+
+\begin{insightbox}[WKB 为什么对谐振子精确？]
+WKB 近似的关键假设是：在 de Broglie 波长尺度上势的变化缓慢，即 $\lambda|dV/dx|/|V-E|\ll 1$。对线性势，该条件在转折点附近必然失效；但对\textbf{二次势}，转折点附近的 Airy 函数渐近形式与 WKB 解的匹配恰好给出正确的量子化相位，使得 Maslov 修正 $+1/2$ 完全补偿了转折点处的相位损失。这纯属二次型的"巧合"，不具有普遍性。
+\end{insightbox}
+
+% --------------------------------------------------------
+% 8. 求和规则：矩阵元的系统约束
+% --------------------------------------------------------
+\subsection{求和规则：矩阵元的系统约束}
+
+能量表象中的矩阵元并非彼此独立，它们受到基本对易关系的约束。定义\textbf{振子强度}
+\begin{equation}
+f_n = \frac{2m}{\hbar^2}(E_n - E_0)\,\bigl|\langle n|\hat{X}|0\rangle\bigr|^2,
+\end{equation}
+可以证明对任意一维束缚势都有
+\begin{equation}
+\boxed{\sum_{n=0}^{\infty} f_n = 1.}
+\end{equation}
+这就是 Thomas--Reiche--Kuhn (TRK) 求和规则。
+
+\subsubsection{谐振子的特例}
+
+对谐振子，$\hat{X}$ 只连接相邻能级，$\langle n|\hat{X}|0\rangle = x_0/\sqrt{2}\,\delta_{n,1}$。因此
+\[
+f_1 = \frac{2m}{\hbar^2}\cdot\hbar\omega\cdot\frac{x_0^2}{2}
+= \frac{2m}{\hbar^2}\cdot\hbar\omega\cdot\frac{\hbar}{2m\omega} = 1,
+\]
+而 $f_{n\neq 1}=0$。故 $\sum_n f_n = 1$，谐振子"恰好"由第一激发态贡献全部强度。
+
+\subsubsection{一般束缚势的普适证明}
+
+对一般一维势 $V(x)$，利用 $[\hat{X},\hat{H}] = i\hbar\hat{P}/m$，取 $|0\rangle$ 与 $|n\rangle$ 间的矩阵元：
+\[
+\langle n|\hat{P}|0\rangle = \frac{m}{i\hbar}(E_0 - E_n)\langle n|\hat{X}|0\rangle.
+\]
+
+再对 $[\hat{X},\hat{P}]=i\hbar$ 在基态取期望，插入完备基 $\sum_n|n\rangle\langle n|=I$：
+\begin{align*}
+i\hbar &= \sum_n\Bigl(\langle 0|\hat{X}|n\rangle\langle n|\hat{P}|0\rangle
+- \langle 0|\hat{P}|n\rangle\langle n|\hat{X}|0\rangle\Bigr) \\
+&= \sum_n\frac{2m}{i\hbar}(E_0-E_n)\bigl|\langle n|\hat{X}|0\rangle\bigr|^2.
+\end{align*}
+整理即得 $\sum_n (E_n-E_0)|\langle n|\hat{X}|0\rangle|^2 = \hbar^2/(2m)$，乘以 $2m/\hbar^2$ 后恰为 $\sum_n f_n = 1$。
+
+\begin{tipbox}[TRK 三步法]
+\textbf{Step 1}：写 $[\hat{X},\hat{H}] = i\hbar\hat{P}/m$。
+
+\textbf{Step 2}：求 $\hat{P}$ 的跃迁矩阵元，产生能量差因子 $(E_0-E_n)$。
+
+\textbf{Step 3}：用 $[\hat{X},\hat{P}]=i\hbar$ 在基态期望中闭合，插入完备基。
+
+此过程\textbf{完全不依赖具体势场形式}，是量子完备性与基本对易关系的直接推论。
+\end{tipbox}
+
+% --------------------------------------------------------
+% 9. 对称性工具：HF 定理与 Virial 定理
+% --------------------------------------------------------
+\subsection{对称性工具：HF 定理与 Virial 定理}
+
+谐振子的能谱和期望值还可通过参数依赖性和尺度对称性导出，无需解微分方程。
+
+\subsubsection{Hellmann--Feynman 定理}
+
+若 $H(\lambda)$ 含参，$|n(\lambda)\rangle$ 归一化，则
+\begin{equation}
+\boxed{\frac{\partial E_n}{\partial\lambda}
+= \Big\langle n\Big|\frac{\partial H}{\partial\lambda}\Big|n\Big\rangle.}
+\end{equation}
+
+将频率 $\omega$ 视为参数。谐振子 $H = \hat{P}^2/2m + m\omega^2\hat{X}^2/2$，故
+\[
+\frac{\partial H}{\partial\omega} = m\omega\hat{X}^2.
+\]
+HF 定理给出
+\[
+\frac{\partial E_n}{\partial\omega}
+= m\omega\langle n|\hat{X}^2|n\rangle
+= m\omega\cdot\frac{(n+\tfrac12)\hbar}{m\omega}
+= \Bigl(n+\frac12\Bigr)\hbar.
+\]
+积分即得 $E_n = \hbar\omega(n+1/2)$——不解薛定谔方程，仅从参数依赖性就恢复了能谱。
+
+\subsubsection{Virial 定理}
+
+对幂次势 $V\propto x^s$，尺度变换 $x\to\lambda x$ 结合 HF 定理给出
+\begin{equation}
+2\langle\hat{T}\rangle = s\langle V\rangle.
+\end{equation}
+谐振子 $s=2$，故 $\langle\hat{T}\rangle = \langle V\rangle = E_n/2$。由此
+\begin{equation}
+\boxed{\Big\langle\frac{\hat{P}^2}{2m}\Big\rangle = \Big\langle\frac12m\omega^2\hat{X}^2\Big\rangle
+= \frac{\hbar\omega}{2}\Bigl(n+\frac12\Bigr).}
+\end{equation}
+
+与矩阵元法结果完全一致。Virial 定理的优势在于：一旦知道总能量，立即拆分为动能与势能，无需计算任何矩阵元。
+
+\begin{insightbox}[HF 与 Virial 的互补性]
+HF 定理回答"能量如何随参数变化"，Virial 定理回答"能量如何在动能与势能间分配"。两者都只需要哈密顿量的结构信息，不依赖波函数的具体形式。对谐振子这类简单模型，它们是快速验证结果的自洽工具；对复杂模型（如氢原子），它们是从能级公式提取期望值的利器。
+\end{insightbox}
+% --------------------------------------------------------
+% 10. 多体推广：谐振子阱中的全同费米子
+% --------------------------------------------------------
+\subsection{多体推广：谐振子阱中的全同费米子}
+
+将单粒子谐振子模型推广到 $N$ 个无自旋全同费米子，两体相互作用为排斥 $\delta$ 势：
+\[
+\hat{V} = \frac{\lambda}{2}\sum_{i\neq j}\delta(x_i-x_j),
+\qquad \lambda>0.
+\]
+
+\subsubsection{零级近似：Slater 行列式}
+
+单粒子能级 $\varepsilon_n = \hbar\omega(n+1/2)$。由于 Pauli 不相容，$N$ 个费米子必须占据不同的单粒子态。基态将最低 $N$ 个能级 $0,1,\dots,N-1$ 各填一个粒子，总能量为
+\begin{equation}
+E_0^{(0)} = \hbar\omega\sum_{n=0}^{N-1}\Bigl(n+\frac12\Bigr)
+= \frac{\hbar\omega}{2}N^2.
+\end{equation}
+
+零级波函数是 Slater 行列式
+\[
+\Psi_0(x_1,\dots,x_N) = \frac{1}{\sqrt{N!}}\det\bigl[\psi_i(x_j)\bigr],
+\qquad i,j=0,1,\dots,N-1.
+\]
+
+\subsubsection{$\delta$ 相互作用的一级修正}
+
+$\delta$ 势的矩阵元正比于 $|\Psi|^2$ 在接触点的值。但对费米子波函数，交换两粒子坐标引入负号，故在 $x_i=x_j$ 处波函数为零：
+\[
+\Psi(x_i=x_j) = 0.
+\]
+
+接触点波函数为零，导致 $\delta$ 相互作用对费米子的一级修正\textbf{严格为零}。这是 Pauli 不相容原理的直接后果——费米子"感觉不到"短程接触相互作用。
+
+\subsubsection{Virial 定理与空间扩展}
+
+总谐振子势能 $V_\text{ho} = \frac12m\omega^2\sum_i x_i^2$。对二次势，Virial 定理给出 $\langle V_\text{ho}\rangle = E/2$（在 $\delta$ 修正为零的近似下），因此
+\begin{equation}
+\boxed{\Big\langle\sum_{i=1}^N x_i^2\Big\rangle = \frac{E}{m\omega^2}
+= \frac{\hbar}{2m\omega}(N^2 + 2k),}
+\end{equation}
+其中 $k=0,2,4$ 分别对应基态、第一激发态、第二激发态。
+
+\begin{insightbox}[费米压与空间扩展]
+$\langle\sum x_i^2\rangle \propto N^2$ 体现了 Pauli 排斥导致的"费米压"：为了占据不同的量子态，费米子必须分布在越来越大的空间区域内。相比之下，$N$ 个玻色子凝聚在基态时，$\langle\sum x_i^2\rangle \propto N$（单粒子尺度）。这种 $N^2$ 与 $N$ 的差异是费米统计最直观的宏观表现之一。
+\end{insightbox}
+
+% --------------------------------------------------------
+% 11. 一维特殊性：束缚态的非简并性
+% --------------------------------------------------------
+\subsection{一维特殊性：束缚态的非简并性}
+
+谐振子每个能级恰好只有一个量子态（除自旋外），这是一维束缚态普遍定理的特例。
+
+\subsubsection{Wronskian 论证}
+
+考虑任意一维实势 $V(x)$ 的定态方程。设 $\psi(x)$ 与 $\phi(x)$ 同为能量 $E$ 的解，则
+\[
+\psi'' = -\frac{2m}{\hbar^2}(E-V)\psi,
+\qquad
+\phi'' = -\frac{2m}{\hbar^2}(E-V)\phi.
+\]
+
+两式交叉相乘相减得
+\[
+\psi''\phi - \phi''\psi = 0
+\quad\Longrightarrow\quad
+\frac{d}{dx}\bigl(\psi'\phi - \phi'\psi\bigr) = 0.
+\]
+因此 Wronskian $W = \psi'\phi - \phi'\psi = \text{const}$。对束缚态，$x\to\pm\infty$ 时 $\psi,\phi\to 0$，故 $W\to 0$，从而 $W\equiv 0$。
+
+$W=0$ 意味着 $\phi'\psi = \psi'\phi$，即 $(\ln\phi/\psi)'=0$，积分得 $\phi = c\psi$。两个解线性相关，能量 $E$ 的束缚态\textbf{非简并}。
+
+\subsubsection{实波函数}
+
+若 $V(x)$ 为实函数，薛定谔方程系数为实，则 $\psi^*(x)$ 也是同能量解。由非简并性，$\psi^* = e^{i\delta}\psi$。再取复共轭得 $|e^{i\delta}|^2=1$。通过调整整体相位 $e^{-i\delta/2}$，总可使波函数变为实函数。
+
+谐振子波函数 $H_n(\xi)$ 满足此定理：它们都是实函数，具有确定宇称 $(-1)^n$，且无简并。
+
+\begin{insightbox}[一维 vs 高维]
+一维束缚态非简并的根源是边界条件过于"严格"——两端趋于零的要求不允许两个线性无关解同时满足。在三维中心势中，径向方程只要求 $r\to\infty$ 时衰减，而原点处正则性条件较松，因此同一能量可以容纳不同角动量 $l$ 的态（如氢原子的 $2s$ 与 $2p$）。谐振子在三维中同样存在简并：各向同性时 $E = \hbar\omega(2n_r+l+3/2)$，不同 $(n_r,l)$ 组合可对应同一能量。
+\end{insightbox}
+
+% --------------------------------------------------------
+% 12. 技巧、易错与速查
+% --------------------------------------------------------
+\subsection{考场策略与常见陷阱}
+
 \begin{tipbox}[快速识别与解题技巧]
 \begin{itemize}
-    \item \examnote{看到 $H = P^2/2m + m\omega^2X^2/2$ 或其变形}
+    \item \examnote{看到 $H = P^2/2m + m\omega^2X^2/2$} 
     $\Rightarrow$ 立即提取 $\omega$ 和 $x_0$，所有量用自然单位化。
 
-    \item \examnote{看到 $e^{ikX}|0\rangle$ 或 $e^{\alpha a^\dagger - \alpha^* a}|0\rangle$}
-    $\Rightarrow$ 识别为相干态，能量概率 = 泊松分布，不必逐项算矩阵元。
+    \item \examnote{看到 $e^{ikX}|0\rangle$ 或相干态}
+    $\Rightarrow$ 不必逐项算矩阵元，直接识别为 $D(\alpha)|0\rangle$，能量概率 = 泊松分布。
 
     \item \examnote{看到 $\delta(t)$ 脉冲}
-    $\Rightarrow$ 时间演化算符是精确指数 $U = \exp(-iV/\hbar)$，不是微扰级数。
+    $\Rightarrow$ 时间演化算符是精确指数 $U=e^{-iV/\hbar}$，不是微扰级数。
 
-    \item \examnote{看到求和规则 / 振子强度}
-    $\Rightarrow$ 套路：$[X,H] \to P$ 矩阵元 $\to [X,P]=i\hbar$ 闭合，无需波函数。
+    \item \examnote{看到求和规则或振子强度}
+    $\Rightarrow$ 套路：$[X,H] \to P$ 矩阵元（出能量差）$\to [X,P]=i\hbar$ 闭合，无需波函数。
 
     \item \examnote{看到多费米子 + 谐振子阱}
     $\Rightarrow$ 先构造 Slater 行列式；$\delta$ 排斥对费米子一级修正为零。
 
     \item \examnote{量纲检查}
-    $[x_0] = \text{L}$，$[p_0] = \text{M}\cdot\text{L}/\text{T}$，$[\hbar\omega] = \text{E}$，$[\alpha] = \text{L}^{-1}$。
-    $E_n$ 必须 $\propto \hbar\omega$，$\langle X^2\rangle$ 必须 $\propto \hbar/(m\omega)$。
+    $[x_0]=\text{L}$，$[p_0]=\text{M}\cdot\text{L}/\text{T}$，$[\hbar\omega]=\text{E}$。
+    $E_n$ 必须 $\propto\hbar\omega$，$\langle X^2\rangle$ 必须 $\propto\hbar/(m\omega)$。
 \end{itemize}
 \end{tipbox}
 
-% --------------------------------------------------------
-% 5. 易错点框
-% --------------------------------------------------------
-\begin{errorbox}{常见失误与陷阱}
+\begin{errorbox}{常见失误}
 \begin{enumerate}
-    \item \textbf{对易子与 $X$ 的交换性}：$[a, X^n] = nX^{n-1}[a,X]$ 仅在 $[a,X]$ 为 c 数时成立。
-    对 $[X, P^n] \neq nP^{n-1}[X,P]$，因为 $[X,P]=i\hbar$ 不是 c 数与 $P$ 对易。
+    \item \textbf{对易子交换性}：$[a,X^n]=nX^{n-1}[a,X]$ 仅在 $[a,X]$ 为 c 数时成立。对 $[X,P^n]$ 不适用，因为 $[X,P]=i\hbar$ 不是 c 数。
 
-    \item \textbf{$\alpha$ 的虚实判断}：
-    $e^{ikX}$ 对应 $\alpha = ik\sqrt{\hbar/2m\omega}$（纯虚），故 $\alpha^*=-\alpha$，$\langle X\rangle=0$。
-    若误用实数相干态公式会得到 $\langle X\rangle\neq 0$ 的错误结论。
+    \item \textbf{$\alpha$ 的虚实判断}：$e^{ikX}$ 对应 $\alpha=ik\sqrt{\hbar/2m\omega}$（纯虚），$\alpha^*=-\alpha$，$\langle X\rangle=0$。若误用实数公式得 $\langle X\rangle\neq 0$。
 
-    \item \textbf{$\delta(t)$ vs $\delta(x)$}：
-    $\delta(t)$ 脉冲产生时间演化跳跃；$\delta(x)$ 势产生空间波函数导数跳跃。
-    两者完全不同，公式不可混用。
+    \item \textbf{$\delta(t)$ vs $\delta(x)$}：前者产生时间演化跳跃，后者产生空间导数跳跃。公式不可混用。
 
-    \item \textbf{能量概率的时间依赖性}：
-    虽然态随时间演化 $|\psi(t)\rangle = \sum_n c_n e^{-iE_n t/\hbar}|n\rangle$，
-    但能量测量概率 $P_n = |c_n|^2$ \textbf{不随时间变化}。
+    \item \textbf{能量概率的时间依赖性}：态随时间演化 $|\psi(t)\rangle=\sum_n c_n e^{-iE_n t/\hbar}|n\rangle$，但能量测量概率 $P_n=|c_n|^2$ \textbf{不随时间变化}。
 
-    \item \textbf{费米子与玻色子的 $\delta$ 相互作用}：
-    对\textbf{费米子}，$\delta$ 相互作用一级修正为零（波函数在接触点为零）；
-    对\textbf{玻色子}，$\delta$ 相互作用有强修正（波函数在接触点非零，甚至发散）。
+    \item \textbf{费米子 vs 玻色子的 $\delta$ 相互作用}：对费米子一级修正为零（接触点波函数为零）；对玻色子则有强修正。
 
-    \item \textbf{WKB 量子化条件的 $+1/2$}：
-    一维势的 Bohr--Sommerfeld 条件为 $\oint p\,dx = 2\pi\hbar(n+1/2)$（含 Maslov 指数）。
-    漏掉 $1/2$ 会得到 $E_n = \hbar\omega\cdot n$ 的错误结果。
+    \item \textbf{WKB 量子化条件的 $+1/2$}：一维 Bohr--Sommerfeld 条件为 $\oint p\,dx = 2\pi\hbar(n+1/2)$。漏掉 $1/2$ 得 $E_n=\hbar\omega\cdot n$ 的错误结果。
 \end{enumerate}
 \end{errorbox}
 
-% --------------------------------------------------------
-% 6. 物理图像与关联模型
-% --------------------------------------------------------
-\begin{insightbox}[物理图像与模型关联]
-\textbf{物理图像}
-
-谐振子是量子力学中\textbf{唯一}能被所有方法精确求解的非平庸模型：
-\begin{itemize}[nosep]
-    \item 解析法：Hermite 多项式
-    \item 代数法：升降算符 $a, a^\dagger$
-    \item WKB 近似：意外精确（能级、波函数渐近形式均正确）
-    \item 路径积分：Gauss 积分可精确计算
-\end{itemize}
-
+\begin{insightbox}[模型关联网络]
 \textbf{与相似模型的对比}
 \begin{center}
 \renewcommand{\arraystretch}{1.3}
@@ -238,70 +547,37 @@ a^\dagger|n\rangle = \sqrt{n+1}\,|n+1\rangle}
 \textbf{特征} & \textbf{一维谐振子} & \textbf{无限深势阱} & \textbf{$\delta$ 势阱} \\
 \midrule
 势能形式 & $x^2$（抛物线） & 无限高墙 & $-\lambda\delta(x)$ \\
-能谱 & 等间距 & $\propto n^2$ & 单束缚态 + 连续谱 \\
-波函数 & Gauss 型 $\times$ 多项式 & 正弦函数 & 指数衰减 \\
-WKB 精确性 & \textbf{完全精确} & 近似（边界修正） & 不适用 \\
+能谱 & 等间距 & $\propto n^2$ & 单束缚态+连续谱 \\
+波函数 & Gauss$\times$多项式 & 正弦函数 & 指数衰减 \\
+WKB 精确性 & \textbf{完全精确} & 近似 & 不适用 \\
 \bottomrule
 \end{tabular}
 \end{center}
 
 \textbf{推广方向}
 \begin{itemize}[nosep]
-    \item 多维：$d$ 维各向同性谐振子 $E = \hbar\omega(n_1+\dots+n_d+d/2)$，简并度由组合数给出
-    \item 各向异性：$\omega_x \neq \omega_y$，能级一般非简并；简并出现条件为 $\omega_x/\omega_y$ 有理数
-    \item 耦合谐振子：通过正交模变换对角化，类似声子
-    \item 非谐修正：$V = \frac{1}{2}m\omega^2x^2 + \lambda x^4$，微扰论或变分法处理
+    \item 多维：$d$ 维各向同性 $E=\hbar\omega(n_1+\dots+n_d+d/2)$，简并度由组合数给出
+    \item 各向异性：$\omega_x\neq\omega_y$，能级一般非简并；有理数比时出现偶然简并
+    \item 耦合谐振子：正交模变换对角化，类似晶格声子
+    \item 非谐修正：$V=\frac12m\omega^2x^2+\lambda x^4$，微扰论处理
     \item 含时频率：$\omega(t)$，产生压缩态（squeezed state）
 \end{itemize}
 \end{insightbox}
 
-% --------------------------------------------------------
-% 7. 推导附录（自我检验）
-% --------------------------------------------------------
-\begin{derivationbox}[核心推导——自我检验清单]
-\textbf{能谱推导（升降算符法）}
-\begin{enumerate}
-    \item 写 $H = \hbar\omega(a^\dagger a + 1/2)$，定义 $N = a^\dagger a$
-    \item 证明 $[N, a] = -a$，$[N, a^\dagger] = a^\dagger$
-    \item 设 $N|n\rangle = n|n\rangle$，则 $Na|n\rangle = (n-1)a|n\rangle$
-    \item 存在基态 $a|0\rangle = 0$，解 $x_0\partial_\xi\psi_0 = -\xi\psi_0$ 得 Gauss 波函数
-    \item $E_n = \hbar\omega(n+1/2)$
-\end{enumerate}
+\begin{cheatbox}[一维谐振子：核心速查]
+\textbf{自然单位}：$x_0=\sqrt{\hbar/m\omega}$，$p_0=\sqrt{m\omega\hbar}$，$\xi=x/x_0$
 
-\textbf{WKB 验证谐振子能级}
-\begin{enumerate}
-    \item 转折点 $a = \sqrt{2E/m\omega^2}$
-    \item 积分 $I = 2\int_{-a}^{a}\sqrt{2m(E-m\omega^2x^2/2)}\,dx$
-    \item 令 $x = a\sin\theta$，$I = 2\sqrt{2mE}\cdot a\cdot 2\int_0^{\pi/2}\cos^2\theta\,d\theta = 2\pi E/\omega$
-    \item 量子化 $2\pi E/\omega = 2\pi\hbar(n+1/2)$ $\Rightarrow$ $E_n = \hbar\omega(n+1/2)$
-\end{enumerate}
+\textbf{能谱}：$E_n=\hbar\omega(n+1/2)$
 
-\textbf{相干态的泊松分布}
-\begin{enumerate}
-    \item $|\alpha\rangle = D(\alpha)|0\rangle = e^{-|\alpha|^2/2}\sum_n \alpha^n/\sqrt{n!}\,|n\rangle$
-    \item $\langle n|\alpha\rangle = e^{-|\alpha|^2/2}\alpha^n/\sqrt{n!}$
-    \item $P_n = |\langle n|\alpha\rangle|^2 = e^{-|\alpha|^2}|\alpha|^{2n}/n! = e^{-\bar{n}}\bar{n}^n/n!$
-\end{enumerate}
-\end{derivationbox}
+\textbf{基态}：$\psi_0=(m\omega/\pi\hbar)^{1/4}e^{-\xi^2/2}$，$\langle X^2\rangle_0=x_0^2/2$
 
-\begin{cheatbox}[一维谐振子：速查卡]
-\textbf{自然单位}：$x_0 = \sqrt{\hbar/m\omega}$，$\xi = x/x_0$
+\textbf{相干态}：$|\alpha\rangle=D(\alpha)|0\rangle$，$P_n=e^{-\bar{n}}\bar{n}^n/n!$，$\bar{n}=|\alpha|^2$
 
-\textbf{升降算符}：$a = (\xi + \partial_\xi)/\sqrt{2}$，$a^\dagger = (\xi - \partial_\xi)/\sqrt{2}$
+\textbf{Virial}：$\langle T\rangle=\langle V\rangle=E/2$
 
-\textbf{基态}：$\psi_0 = (m\omega/\pi\hbar)^{1/4}e^{-\xi^2/2}$，$\langle 0|X^2|0\rangle = x_0^2/2$
+\textbf{TRK}：$\sum_n f_n=1$（任意一维束缚势）
 
-\textbf{相干态}：$|\alpha\rangle$，$P_n = e^{-\bar{n}}\bar{n}^n/n!$，$\bar{n}=|\alpha|^2$
-
-\textbf{位移算符}：$D(\alpha) = e^{\alpha a^\dagger - \alpha^* a}$
-\begin{itemize}[nosep]
-    \item 实 $\alpha$：位置平移，$\langle X\rangle = \sqrt{2}x_0\alpha$
-    \item 纯虚 $\alpha$：动量平移，$\langle P\rangle = \sqrt{2}p_0\,\text{Im}(\alpha)$
-\end{itemize}
-
-\textbf{Virial}：$\langle T\rangle = \langle V\rangle = E/2$
-
-\textbf{TRK}：$\sum_n f_n = 1$（对任意一维束缚势）
+\textbf{WKB}：$\oint p\,dx=2\pi\hbar(n+1/2)\Rightarrow E_n=\hbar\omega(n+1/2)$
 \end{cheatbox}
 
 \vspace{1em}
