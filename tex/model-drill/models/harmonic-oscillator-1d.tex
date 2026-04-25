@@ -1028,11 +1028,26 @@ $W=0$ 意味着 $\phi'\psi = \psi'\phi$，即 $(\ln\phi/\psi)'=0$，积分得 $\
 \boxed{\tanh(2r) = \frac{\Delta}{\omega}.}
 \]
 
-此时对角化后的哈密顿量为
+此时 $b^\dagger b$ 的系数为
 \[
-\boxed{\hat{H}' = E\,\hat{b}^\dagger\hat{b} + \text{const},
-\qquad E = \sqrt{\omega^2-\Delta^2}.}
+\omega\cosh(2r) - \Delta\sinh(2r)
+= \omega\cdot\frac{\omega}{E} - \Delta\cdot\frac{\Delta}{E}
+= \frac{\omega^2-\Delta^2}{E} = E.
 \]
+
+常数项来源于 $a^\dagger a$ 中的 $\sinh^2 r$ 和 $a^2+(a^\dagger)^2$ 中的 $\sinh(2r)$：
+\begin{align*}
+C &= \omega\sinh^2 r - \frac{\Delta}{2}\sinh(2r) \\
+&= \omega\cdot\frac{\cosh(2r)-1}{2} - \frac{\Delta}{2}\sinh(2r) \\
+&= \frac{1}{2}\bigl(\omega\cosh(2r) - \Delta\sinh(2r)\bigr) - \frac{\omega}{2} \\
+&= \frac{E-\omega}{2}.
+\end{align*}
+
+因此对角化后的哈密顿量为
+\begin{equation}
+\boxed{\hat{H}' = E\,\hat{b}^\dagger\hat{b} + \frac{E-\omega}{2},
+\qquad E = \sqrt{\omega^2-\Delta^2}.}
+\end{equation}
 
 \begin{insightbox}[玻色子 vs 费米子 BdG 变换的数学根源]
 \begin{itemize}[nosep]
