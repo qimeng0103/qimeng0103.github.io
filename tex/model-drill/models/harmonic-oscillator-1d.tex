@@ -391,18 +391,9 @@ f_n = \frac{2m}{\hbar^2}(E_n - E_0)\,\bigl|\langle n|\hat{X}|0\rangle\bigr|^2,
 \end{equation}
 这就是 Thomas--Reiche--Kuhn (TRK) 求和规则。
 
-\subsubsection{谐振子的特例}
+\subsubsection{普适证明：双重对易子法}
 
-对谐振子，$\hat{X}$ 只连接相邻能级，$\langle n|\hat{X}|0\rangle = x_0/\sqrt{2}\,\delta_{n,1}$。因此
-\[
-f_1 = \frac{2m}{\hbar^2}\cdot\hbar\omega\cdot\frac{x_0^2}{2}
-= \frac{2m}{\hbar^2}\cdot\hbar\omega\cdot\frac{\hbar}{2m\omega} = 1,
-\]
-而 $f_{n\neq 1}=0$。故 $\sum_n f_n = 1$，谐振子"恰好"由第一激发态贡献全部强度。
-
-\subsubsection{一般束缚势的普适证明}
-
-TRK 求和规则的另一种标准证法是利用双重对易子 $[[\hat{H},\hat{X}],\hat{X}]$。
+TRK 求和规则对任意一维束缚势均成立，最简洁的证法是利用双重对易子 $[[\hat{H},\hat{X}],\hat{X}]$。
 
 \begin{derivationbox}[双重对易子法]
 首先计算对易子：
@@ -414,7 +405,7 @@ TRK 求和规则的另一种标准证法是利用双重对易子 $[[\hat{H},\hat
 [[\hat{H}, \hat{X}], \hat{X}] = \Bigl[\frac{i\hbar}{m}\hat{P}, \hat{X}\Bigr] = \frac{i\hbar}{m}(i\hbar) = \frac{\hbar^2}{m}.
 \]
 
-另一方面，对任意算符 $\hat{A}$，有恒等式
+另一方面，对任意算符有恒等式
 \[
 [[\hat{H},\hat{X}],\hat{X}] = \hat{H}\hat{X}^2 - 2\hat{X}\hat{H}\hat{X} + \hat{X}^2\hat{H}.
 \]
@@ -431,7 +422,7 @@ TRK 求和规则的另一种标准证法是利用双重对易子 $[[\hat{H},\hat
 乘以 $2m/\hbar^2$ 即得 $\sum_n f_n = 1$。
 \end{derivationbox}
 
-\subsubsection{在谐振子中验证：基态动能与 $(\Delta X)_0^2$}
+\subsubsection{在谐振子中验证}
 
 对谐振子，上述普适关系有特别简洁的验证。基态动能期望为
 \[
@@ -457,15 +448,12 @@ TRK 求和规则的另一种标准证法是利用双重对易子 $[[\hat{H},\hat
 
 这正是双重对易子给出的普适值 $\hbar^2/(2m)$，与势场形式无关。
 
-\begin{tipbox}[TRK 的三种等价证法]
-\textbf{方法一}（$[\hat{X},\hat{P}]$ 闭合）：利用 $[\hat{X},\hat{H}]$ 产生能量差，再用 $[\hat{X},\hat{P}]=i\hbar$ 闭合。
-
-\textbf{方法二}（双重对易子）：计算 $[[\hat{H},\hat{X}],\hat{X}]=\hbar^2/m$，直接得到求和规则。
-
-\textbf{方法三}（谐振子特例验证）：只有 $n=1$ 有贡献，$(E_1-E_0)|\langle 1|\hat{X}|0\rangle|^2 = \hbar^2/(2m)$。
-
-三种方法殊途同归，但方法二最简洁，最显普适性。
-\end{tipbox}
+此外，谐振子的选择定则 $\Delta n=\pm 1$ 意味着求和规则中只有 $n=1$ 一项有贡献：
+\[
+f_1 = \frac{2m}{\hbar^2}\cdot\hbar\omega\cdot\frac{x_0^2}{2}
+= \frac{2m}{\hbar^2}\cdot\hbar\omega\cdot\frac{\hbar}{2m\omega} = 1,
+\]
+而 $f_{n\neq 1}=0$，故 $\sum_n f_n = 1$。谐振子"恰好"由第一激发态贡献全部强度。
 
 % --------------------------------------------------------
 % 9. 对称性工具：HF 定理与 Virial 定理
