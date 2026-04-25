@@ -236,8 +236,21 @@ $\hat{X}^2$ 包含 $(\hat{a}+\hat{a}^\dagger)^2 = \hat{a}^2 + (\hat{a}^\dagger)^
 \]
 其中前两项正是经典谐振子的能量，最后一项是量子零点能。
 
-\begin{insightbox}[相干态的物理图像]
-相干态是量子谐振子中"最经典"的态。在相空间中，它是一个高斯波包，中心沿经典轨迹 $(\langle X\rangle(t), \langle P\rangle(t))$ 做简谐振荡，而波包形状保持不变（不扩散）。这正是谐振子势的二次型特征所致：所有高阶导数 $V'''=V^{(4)}=\dots=0$，因此波包不发生形变。
+\begin{insightbox}[相干态的物理图像——为什么波包不扩散？]
+相干态是量子谐振子中"最经典"的态。在相空间中，它是一个高斯波包，中心沿经典轨迹 $(\langle X\rangle(t), \langle P\rangle(t))$ 做简谐振荡。
+
+\textbf{关键问题}：一般自由粒子的高斯波包会扩散（$\Delta X$ 随时间增大），为什么谐振子势中的相干态不扩散？
+
+根本原因在于谐振子势是严格的\textbf{二次型} $V(x)\propto x^2$，所有高阶导数 $V'''=V^{(4)}=\dots=0$。对一般势 $V(x)$，波包扩散源于不同动量分量的群速度不同（色散）：
+\[
+v_g = \frac{d\omega}{dk} = \frac{dE}{dp} = \frac{p}{m} + \frac{\hbar k}{m}\cdot O(V''').
+\]
+当 $V'''\neq 0$ 时，不同 $k$ 分量的速度不同，波包逐渐展宽。但对谐振子，$V'''=0$，所有高阶色散项消失。谐振子的传播子可以精确写成高斯形式：
+\[
+K(x,t;x',0) = \sqrt{\frac{m\omega}{2\pi i\hbar\sin\omega t}}
+\exp\!\Bigl\{\frac{im\omega}{2\hbar\sin\omega t}\bigl[(x^2+x'^2)\cos\omega t - 2xx'\bigr]\Bigr\}.
+\]
+因此任何初始高斯波包始终保持高斯型。相干态是其中宽度恰好等于自然宽度 $x_0/\sqrt{2}$ 的特殊情况——它的形状不仅不扩散，而且\textbf{完全不变}。更一般地，一个" squeezed "高斯波包在谐振子势中会以 $2\omega$ 的频率呼吸（宽度周期性变化），而相干态是这种呼吸运动的"平衡点"。
 \end{insightbox}
 % --------------------------------------------------------
 % 6. 含时演化：瞬时脉冲与相干态的物理实现
@@ -262,6 +275,25 @@ $\hat{X}^2$ 包含 $(\hat{a}+\hat{a}^\dagger)^2 = \hat{a}^2 + (\hat{a}^\dagger)^
 |\psi(0^+)\rangle = e^{-i\lambda\hat{X}/\hbar}|\psi(0^-)\rangle.
 \end{equation}
 时间演化算符是\textbf{精确指数}，不是微扰级数——这是 $\delta(t)$ 脉冲与常微扰、简谐微扰的本质区别。
+
+\subsubsection{t>0 后的演化}
+
+\begin{warnbox}[常见困惑：脉冲之后呢？]
+很多考生会问："$\delta(t)$ 只在 $t=0$ 作用，那 $t>0$ 之后态就不演化了吗？"
+
+\textbf{答案是：态仍在演化，但能量测量概率不变。}
+
+$t>0$ 时微扰消失，系统恢复为自由谐振子。$t=0^+$ 时刻的态 $|\psi(0^+)\rangle = e^{-i\lambda\hat{X}/\hbar}|0\rangle$ 在 $t>0$ 时按自由谐振子演化：
+\[
+|\psi(t)\rangle = e^{-i\hat{H}_0 t/\hbar}|\psi(0^+)\rangle
+= \sum_n c_n e^{-iE_n t/\hbar}|n\rangle.
+\]
+各能量本征态获得各自的相位因子 $e^{-iE_n t/\hbar}$，但展开系数 $|c_n|$ 不变。因此：
+\begin{itemize}[nosep]
+    \item \textbf{能量概率} $P_n = |c_n|^2$：\textbf{不随时间变化}（能量本征态测量的基本性质）
+    \item \textbf{位置/动量期望值}：$\langle\hat{X}\rangle(t)$ 和 $\langle\hat{P}\rangle(t)$ 会随时间做简谐振荡（相干态的经典行为）
+\end{itemize}
+\end{warnbox}
 
 \subsubsection{与位移算符的对应}
 
@@ -333,8 +365,15 @@ $V\,\delta(t)$（瞬时脉冲） & \textbf{精确指数} $e^{-iV/\hbar}$ & \text
 \boxed{E_n = \hbar\omega\Bigl(n + \frac12\Bigr).}
 \]
 
-\begin{insightbox}[WKB 为什么对谐振子精确？]
-WKB 近似的关键假设是：在 de Broglie 波长尺度上势的变化缓慢，即 $\lambda|dV/dx|/|V-E|\ll 1$。对线性势，该条件在转折点附近必然失效；但对\textbf{二次势}，转折点附近的 Airy 函数渐近形式与 WKB 解的匹配恰好给出正确的量子化相位，使得 Maslov 修正 $+1/2$ 完全补偿了转折点处的相位损失。这纯属二次型的"巧合"，不具有普遍性。
+\begin{insightbox}[WKB 为什么对谐振子精确？——转折点处的相位匹配]
+WKB 近似的适用条件是势在 de Broglie 波长尺度上变化缓慢。在转折点 $x=\pm a$ 处，$p\to 0$，该条件必然失效，因此需要\textbf{连接公式}（connection formula）将两侧的 WKB 解衔接起来。
+
+\textbf{一般势的连接公式}：在转折点附近将势近似为线性 $V(x)\approx E + F(x-a)$，薛定谔方程的解是 Airy 函数。Airy 函数的渐近行为给出 WKB 相位的一个额外修正——\textbf{Maslov 修正}。对一维势，两侧各有一个转折点，每个转折点贡献 $\pi/4$ 的相位，总修正为 $\pi/2$，对应量子化条件中的 $+1/2$：
+\[
+\oint p\,dx = 2\pi\hbar\Bigl(n + \frac12\Bigr).
+\]
+
+\textbf{谐振子的特殊性}：谐振子的势在转折点附近\textbf{不是}线性的，而是二次的。但奇妙的是，二次势的精确解（抛物柱函数）在渐近区的相位行为，与线性近似下的 Airy 函数给出的连接结果完全相同。更深层的原因是：谐振子的作用量变量 $J = E/\omega$ 与角变量 $\theta = \omega t$ 构成的经典相空间是严格的圆，WKB 量子化本质上是将圆环周长量子化，而谐振子的量子化条件 $E_n=\hbar\omega(n+1/2)$ 恰好是这一几何结构的精确反映。对任意其他势（如 $V\propto x^4$），WKB 只能给出近似能级。
 \end{insightbox}
 
 % --------------------------------------------------------
@@ -363,27 +402,69 @@ f_1 = \frac{2m}{\hbar^2}\cdot\hbar\omega\cdot\frac{x_0^2}{2}
 
 \subsubsection{一般束缚势的普适证明}
 
-对一般一维势 $V(x)$，利用 $[\hat{X},\hat{H}] = i\hbar\hat{P}/m$，取 $|0\rangle$ 与 $|n\rangle$ 间的矩阵元：
+TRK 求和规则的另一种标准证法是利用双重对易子 $[[\hat{H},\hat{X}],\hat{X}]$。
+
+\begin{derivationbox}[双重对易子法]
+首先计算对易子：
 \[
-\langle n|\hat{P}|0\rangle = \frac{m}{i\hbar}(E_0 - E_n)\langle n|\hat{X}|0\rangle.
+[\hat{H}, \hat{X}] = \Bigl[\frac{\hat{P}^2}{2m}, \hat{X}\Bigr] = \frac{i\hbar}{m}\hat{P}.
+\]
+再对易一次：
+\[
+[[\hat{H}, \hat{X}], \hat{X}] = \Bigl[\frac{i\hbar}{m}\hat{P}, \hat{X}\Bigr] = \frac{i\hbar}{m}(i\hbar) = \frac{\hbar^2}{m}.
 \]
 
-再对 $[\hat{X},\hat{P}]=i\hbar$ 在基态取期望，插入完备基 $\sum_n|n\rangle\langle n|=I$：
+另一方面，对任意算符 $\hat{A}$，有恒等式
+\[
+[[\hat{H},\hat{X}],\hat{X}] = \hat{H}\hat{X}^2 - 2\hat{X}\hat{H}\hat{X} + \hat{X}^2\hat{H}.
+\]
+取基态期望值并插入完备基 $\sum_n|n\rangle\langle n|=I$：
 \begin{align*}
-i\hbar &= \sum_n\Bigl(\langle 0|\hat{X}|n\rangle\langle n|\hat{P}|0\rangle
-- \langle 0|\hat{P}|n\rangle\langle n|\hat{X}|0\rangle\Bigr) \\
-&= \sum_n\frac{2m}{i\hbar}(E_0-E_n)\bigl|\langle n|\hat{X}|0\rangle\bigr|^2.
+\frac{\hbar^2}{m}
+&= \sum_n\Bigl(E_0|\langle n|\hat{X}|0\rangle|^2 - 2E_n|\langle n|\hat{X}|0\rangle|^2 + E_0|\langle n|\hat{X}|0\rangle|^2\Bigr) \\
+&= 2\sum_n(E_0 - E_n)\bigl|\langle n|\hat{X}|0\rangle\bigr|^2.
 \end{align*}
-整理即得 $\sum_n (E_n-E_0)|\langle n|\hat{X}|0\rangle|^2 = \hbar^2/(2m)$，乘以 $2m/\hbar^2$ 后恰为 $\sum_n f_n = 1$。
+整理得
+\[
+\sum_n(E_n - E_0)\bigl|\langle n|\hat{X}|0\rangle\bigr|^2 = \frac{\hbar^2}{2m},
+\]
+乘以 $2m/\hbar^2$ 即得 $\sum_n f_n = 1$。
+\end{derivationbox}
 
-\begin{tipbox}[TRK 三步法]
-\textbf{Step 1}：写 $[\hat{X},\hat{H}] = i\hbar\hat{P}/m$。
+\subsubsection{在谐振子中验证：基态动能与 $(\Delta X)_0^2$}
 
-\textbf{Step 2}：求 $\hat{P}$ 的跃迁矩阵元，产生能量差因子 $(E_0-E_n)$。
+对谐振子，上述普适关系有特别简洁的验证。基态动能期望为
+\[
+\langle 0|\hat{T}|0\rangle = \frac{E_0}{2} = \frac{\hbar\omega}{4}.
+\]
 
-\textbf{Step 3}：用 $[\hat{X},\hat{P}]=i\hbar$ 在基态期望中闭合，插入完备基。
+基态位置方差为
+\[
+(\Delta X)_0^2 = \langle 0|\hat{X}^2|0\rangle - \langle 0|\hat{X}|0\rangle^2 = \frac{x_0^2}{2} - 0 = \frac{\hbar}{2m\omega}.
+\]
 
-此过程\textbf{完全不依赖具体势场形式}，是量子完备性与基本对易关系的直接推论。
+由 Virial 定理 $\langle\hat{T}\rangle = \langle\hat{V}\rangle$，有
+\[
+\langle 0|\hat{T}|0\rangle = \frac12 m\omega^2 (\Delta X)_0^2
+= \frac12 m\omega^2 \cdot \frac{\hbar}{2m\omega} = \frac{\hbar\omega}{4}.\quad\checkmark
+\]
+
+第一激发态与基态的能量差为 $E_1-E_0=\hbar\omega$。利用 TRK 求和规则的左侧（只有 $n=1$ 有贡献）：
+\[
+(E_1-E_0)\bigl|\langle 1|\hat{X}|0\rangle\bigr|^2 = \hbar\omega \cdot \frac{x_0^2}{2}
+= \hbar\omega \cdot \frac{\hbar}{2m\omega} = \frac{\hbar^2}{2m}.\quad\checkmark
+\]
+
+这正是双重对易子给出的普适值 $\hbar^2/(2m)$，与势场形式无关。
+
+\begin{tipbox}[TRK 的三种等价证法]
+\textbf{方法一}（$[\hat{X},\hat{P}]$ 闭合）：利用 $[\hat{X},\hat{H}]$ 产生能量差，再用 $[\hat{X},\hat{P}]=i\hbar$ 闭合。
+
+\textbf{方法二}（双重对易子）：计算 $[[\hat{H},\hat{X}],\hat{X}]=\hbar^2/m$，直接得到求和规则。
+
+\textbf{方法三}（谐振子特例验证）：只有 $n=1$ 有贡献，$(E_1-E_0)|\langle 1|\hat{X}|0\rangle|^2 = \hbar^2/(2m)$。
+
+三种方法殊途同归，但方法二最简洁，最显普适性。
 \end{tipbox}
 
 % --------------------------------------------------------
@@ -677,17 +758,63 @@ $W=0$ 意味着 $\phi'\psi = \psi'\phi$，即 $(\ln\phi/\psi)'=0$，积分得 $\
 标度变换沿倾斜轴进行。
 \end{insightbox}
 
-压缩变换与 Bogoliubov 变换的数学结构完全平行。玻色子配对哈密顿量
-\[
-\hat{H} = \omega\hat{a}^\dagger\hat{a} + \frac{\Delta}{2}(\hat{a}^2 + (\hat{a}^\dagger)^2)
-\]
-的对角化正是通过此幺正变换实现，参数 $r$ 满足 $\tanh(2r)=\Delta/\omega$。变换后哈密顿量变为 $\hat{H}' = E\hat{b}^\dagger\hat{b} + \text{const}$，其中 $E=\sqrt{\omega^2-\Delta^2}$。
+\subsubsection{Bogoliubov 对角化的详细推导}
 
-关键对比：
+压缩变换与 Bogoliubov 变换的数学结构完全平行。考虑玻色子配对哈密顿量（吸引相互作用，注意配对项的负号）：
+\[
+\hat{H} = \omega\hat{a}^\dagger\hat{a} - \frac{\Delta}{2}\bigl(\hat{a}^2 + (\hat{a}^\dagger)^2\bigr),
+\qquad \Delta>0.
+\]
+
+引入幺正变换 $\hat{b} = \hat{S}^\dagger(r)\hat{a}\hat{S}(r) = \hat{a}\cosh r - \hat{a}^\dagger\sinh r$，其逆变换为
+\[
+\hat{a} = \hat{b}\cosh r + \hat{b}^\dagger\sinh r,
+\qquad
+\hat{a}^\dagger = \hat{b}^\dagger\cosh r + \hat{b}\sinh r.
+\]
+
+代入哈密顿量。先算 $\hat{a}^\dagger\hat{a}$：
+\begin{align*}
+\hat{a}^\dagger\hat{a}
+&= (\hat{b}^\dagger\cosh r + \hat{b}\sinh r)(\hat{b}\cosh r + \hat{b}^\dagger\sinh r) \\
+&= \hat{b}^\dagger\hat{b}\cosh^2 r + (\hat{b}^\dagger)^2\sinh r\cosh r + \hat{b}^2\sinh r\cosh r + \hat{b}\hat{b}^\dagger\sinh^2 r \\
+&= \hat{b}^\dagger\hat{b}\cosh(2r) + \frac{\hat{b}^2+(\hat{b}^\dagger)^2}{2}\sinh(2r) + \sinh^2 r.
+\end{align*}
+
+再算 $\hat{a}^2+(\hat{a}^\dagger)^2$：
+\begin{align*}
+\hat{a}^2+(\hat{a}^\dagger)^2
+&= (\hat{b}^2+(\hat{b}^\dagger)^2)(\cosh^2 r+\sinh^2 r) + 2(2\hat{b}^\dagger\hat{b}+1)\sinh r\cosh r \\
+&= (\hat{b}^2+(\hat{b}^\dagger)^2)\cosh(2r) + (2\hat{b}^\dagger\hat{b}+1)\sinh(2r).
+\end{align*}
+
+合并得
+\begin{align*}
+\hat{H}'
+&= \omega\Bigl[\hat{b}^\dagger\hat{b}\cosh(2r) + \frac{\hat{b}^2+(\hat{b}^\dagger)^2}{2}\sinh(2r) + \sinh^2 r\Bigr] \\
+&\quad - \frac{\Delta}{2}\Bigl[(\hat{b}^2+(\hat{b}^\dagger)^2)\cosh(2r) + (2\hat{b}^\dagger\hat{b}+1)\sinh(2r)\Bigr].
+\end{align*}
+
+要求非对角项 $(\hat{b}^2+(\hat{b}^\dagger)^2)$ 的系数为零：
+\[
+\frac{\omega}{2}\sinh(2r) - \frac{\Delta}{2}\cosh(2r) = 0
+\quad\Longrightarrow\quad
+\boxed{\tanh(2r) = \frac{\Delta}{\omega}.}
+\]
+
+此时对角化后的哈密顿量为
+\[
+\boxed{\hat{H}' = E\,\hat{b}^\dagger\hat{b} + \text{const},
+\qquad E = \sqrt{\omega^2-\Delta^2}.}
+\]
+
+\begin{insightbox}[玻色子 vs 费米子 BdG 变换的数学根源]
 \begin{itemize}[nosep]
-    \item \textbf{玻色子}：$[\hat{b},\hat{b}^\dagger]=1$ 要求 $u^2-v^2=1$，用双曲函数 $(\cosh r, \sinh r)$
-    \item \textbf{费米子}：$\{\hat{c},\hat{c}^\dagger\}=1$ 要求 $u^2+v^2=1$，用三角函数 $(\cos\theta, \sin\theta)$
+    \item \textbf{玻色子}：$[\hat{b},\hat{b}^\dagger]=1$。设 $\hat{b}=u\hat{a}+v\hat{a}^\dagger$，由 $[\hat{b},\hat{b}^\dagger]=|u|^2-|v|^2=1$ 得 $u^2-v^2=1$，用\textbf{双曲函数} $(\cosh r, \sinh r)$ 参数化。
+    \item \textbf{费米子}：$\{\hat{c},\hat{c}^\dagger\}=1$。设 $\hat{c}=u\hat{\gamma}+v\hat{\gamma}^\dagger$，由 $\{\hat{c},\hat{c}^\dagger\}=|u|^2+|v|^2=1$ 得 $u^2+v^2=1$，用\textbf{三角函数} $(\cos\theta, \sin\theta)$ 参数化。
 \end{itemize}
+两种变换在数学结构上完全平行，都是"旋转"产生/湮灭算符以消除哈密顿量中的非对角配对项。区别仅在于：玻色子的"旋转"是双曲型的（保差 $u^2-v^2=1$，类似洛伦兹变换），而费米子是圆型的（保和 $u^2+v^2=1$，类似普通转动）。这正是玻色统计与费米统计在算符代数层面的深刻体现。
+\end{insightbox}
 
 % --------------------------------------------------------
 % 12. 技巧、易错与速查
