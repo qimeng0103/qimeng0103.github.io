@@ -251,6 +251,37 @@ K(x,t;x',0) = \sqrt{\frac{m\omega}{2\pi i\hbar\sin\omega t}}
 \exp\!\Bigl\{\frac{im\omega}{2\hbar\sin\omega t}\bigl[(x^2+x'^2)\cos\omega t - 2xx'\bigr]\Bigr\}.
 \]
 因此任何初始高斯波包始终保持高斯型。相干态是其中宽度恰好等于自然宽度 $x_0/\sqrt{2}$ 的特殊情况——它的形状不仅不扩散，而且\textbf{完全不变}。更一般地，一个" squeezed "高斯波包在谐振子势中会以 $2\omega$ 的频率呼吸（宽度周期性变化），而相干态是这种呼吸运动的"平衡点"。
+\subsubsection{Heisenberg 图像下的时间演化}
+
+在 Heisenberg 图像中，算符随时间演化而态不变。谐振子的 Heisenberg 运动方程为
+\[
+\frac{d\hat{X}_H}{dt} = \frac{1}{i\hbar}[\hat{X}, \hat{H}] = \frac{\hat{P}}{m},
+\qquad
+\frac{d\hat{P}_H}{dt} = \frac{1}{i\hbar}[\hat{P}, \hat{H}] = -m\omega^2\hat{X}.
+\]
+
+联立解得
+\begin{equation}
+\hat{X}_H(t) = \hat{X}\cos\omega t + \frac{\hat{P}}{m\omega}\sin\omega t,
+\qquad
+\hat{P}_H(t) = \hat{P}\cos\omega t - m\omega\hat{X}\sin\omega t.
+\end{equation}
+
+对相干态 $|\alpha\rangle$，期望值直接继承经典轨迹：
+\begin{align*}
+\langle\hat{X}_H(t)\rangle
+&= \langle\hat{X}\rangle_0\cos\omega t + \frac{\langle\hat{P}\rangle_0}{m\omega}\sin\omega t \\
+&= \sqrt{2}\,x_0\,\text{Re}(\alpha)\cos\omega t + \sqrt{2}\,x_0\,\text{Im}(\alpha)\sin\omega t \\
+&= \sqrt{2}\,x_0\,\text{Re}(\alpha e^{-i\omega t}).
+\end{align*}
+
+同理
+\[
+\langle\hat{P}_H(t)\rangle = \sqrt{2}\,p_0\,\text{Im}(\alpha e^{-i\omega t}).
+\]
+
+这恰好是相空间中半径为 $\sqrt{2}x_0|\alpha|$ 的圆轨道，角频率 $\omega$。
+
 \end{insightbox}
 % --------------------------------------------------------
 % 6. 含时演化：瞬时脉冲与相干态的物理实现
@@ -336,6 +367,60 @@ $V\,\delta(t)$（瞬时脉冲） & \textbf{精确指数} $e^{-iV/\hbar}$ & \text
 \end{center}
 只有 $\delta(t)$ 能让 $U$ 写成闭式指数，因为积分 $\int\delta(t)\,dt$ 有限；其他形式都需微扰展开。
 \end{tipbox}
+
+\subsubsection{叠加态的时间演化}
+
+相干态是最经典的态，但即使是简单的两能级叠加也展现出丰富的动力学。考虑
+\[
+|\psi(0)\rangle = \cos\theta\,|0\rangle + i\sin\theta\,|1\rangle.
+\]
+
+$t$ 时刻的态为
+\[
+|\psi(t)\rangle = \cos\theta\,e^{-i\omega t/2}|0\rangle + i\sin\theta\,e^{-3i\omega t/2}|1\rangle.
+\]
+
+位置与动量的期望值为
+\begin{align*}
+\langle\hat{X}\rangle(t)
+&= \sqrt{2}\,x_0\,\text{Re}\bigl\langle\hat{a}(t)\bigr\rangle
+= \sqrt{2}\,x_0\sin\theta\cos\theta\sin\omega t, \\
+\langle\hat{P}\rangle(t)
+&= \sqrt{2}\,p_0\,\text{Im}\bigl\langle\hat{a}(t)\bigr\rangle
+= \sqrt{2}\,p_0\sin\theta\cos\theta\cos\omega t.
+\end{align*}
+
+$\langle\hat{X}\rangle$ 以 $\omega$ 振荡，振幅 $\sqrt{2}x_0\sin\theta\cos\theta$，最大值出现在 $t=(n+1/2)\pi/\omega$。
+
+能量期望为
+\[
+\langle\hat{H}\rangle = \cos^2\theta\,E_0 + \sin^2\theta\,E_1
+= \frac{\hbar\omega}{2}(1 + 2\sin^2\theta).
+\]
+
+动能与势能分别为
+\[
+\langle\hat{T}\rangle = \langle\hat{V}\rangle = \frac{\hbar\omega}{4}(1 + 2\sin^2\theta),
+\]
+两者相等（此特殊叠加态恰好满足 Virial 定理的等式形式，但一般叠加态不满足）。
+
+\subsubsection{两能级叠加的概率密度振荡}
+
+更一般的两能级叠加
+\[
+\psi(x,0) = A\Bigl(\psi_1(x) + \frac12\psi_2(x)\Bigr)
+\]
+经归一化得 $A = 2/\sqrt{5}$。时间演化给出
+\[
+\psi(x,t) = A\Bigl(e^{-3i\omega t/2}\psi_1(x) + \tfrac12 e^{-5i\omega t/2}\psi_2(x)\Bigr).
+\]
+
+概率密度为
+\begin{equation}
+|\psi(x,t)|^2 = A^2\Bigl[\psi_1^2 + \frac14\psi_2^2 + \psi_1\psi_2\cos(\omega t)\Bigr].
+\end{equation}
+
+干涉项以频率 $\omega$（即 $E_2-E_1=\hbar\omega$）振荡，导致概率密度在空间分布上周期性"流动"。这是量子相干性的直接体现：不同于经典粒子的固定轨道，量子概率在空间中来回振荡。
 
 % --------------------------------------------------------
 % 7. 半经典极限：WKB 量子化条件的验证
@@ -454,6 +539,46 @@ f_1 = \frac{2m}{\hbar^2}\cdot\hbar\omega\cdot\frac{x_0^2}{2}
 = \frac{2m}{\hbar^2}\cdot\hbar\omega\cdot\frac{\hbar}{2m\omega} = 1,
 \]
 而 $f_{n\neq 1}=0$，故 $\sum_n f_n = 1$。谐振子"恰好"由第一激发态贡献全部强度。
+
+\subsubsection{推广：任意初态 $|m\rangle$}
+
+上述证明可推广到以任意本征态 $|m\rangle$ 为初态的情形。利用 $[[\hat{H},\hat{X}],\hat{X}]=\hbar^2/m$ 并在 $|m\rangle$ 中取期望：
+\[
+\langle m|[[\hat{H},\hat{X}],\hat{X}]|m\rangle = \frac{\hbar^2}{m}.
+\]
+
+展开左边并插入完备基：
+\begin{align*}
+\langle m|[[\hat{H},\hat{X}],\hat{X}]|m\rangle
+&= \sum_n\langle m|(\hat{H}\hat{X}-\hat{X}\hat{H})|n\rangle\langle n|\hat{X}|m\rangle
+- \sum_n\langle m|\hat{X}|n\rangle\langle n|(\hat{H}\hat{X}-\hat{X}\hat{H})|m\rangle \\
+&= \sum_n(E_m-E_n)|\langle n|\hat{X}|m\rangle|^2
+- \sum_n(E_n-E_m)|\langle m|\hat{X}|n\rangle|^2 \\
+&= 2\sum_n(E_m-E_n)|\langle n|\hat{X}|m\rangle|^2.
+\end{align*}
+
+注意 $\langle n|\hat{X}|m\rangle$ 为实矩阵元（实波函数），$|\langle n|\hat{X}|m\rangle|^2=|\langle m|\hat{X}|n\rangle|^2$。整理得
+\begin{equation}
+\boxed{\sum_n(E_n-E_m)\bigl|\langle n|\hat{X}|m\rangle\bigr|^2 = \frac{\hbar^2}{2m}.}
+\end{equation}
+
+对基态 $m=0$，回到 TRK 求和规则。对任意 $m$，该式表明：从 $|m\rangle$ 出发，到所有高能级的"加权跃迁强度"之和是普适常数，与 $m$ 无关。
+
+\begin{formulabox}[基态动能的下界]
+由不确定性原理 $\Delta P\,\Delta X\geq\hbar/2$ 及 $\langle T\rangle_0=\langle P^2\rangle_0/2m\geq(\Delta P)_0^2/2m$，得
+\[
+\langle T\rangle_0 \geq \frac{\hbar^2}{8m(\Delta X)_0^2}.
+\]
+
+结合上式取 $m=0$ 时 $\sum_{n>0}(E_n-E_0)|\langle n|\hat{X}|0\rangle|^2=\hbar^2/(2m)$，并利用 $(E_1-E_0)\sum_{n>0}|\langle n|\hat{X}|0\rangle|^2\leq\sum_{n>0}(E_n-E_0)|\langle n|\hat{X}|0\rangle|^2$ 以及 $\sum_{n>0}|\langle n|\hat{X}|0\rangle|^2=(\Delta X)_0^2$（对对称势 $x_{00}=0$），可得
+\[
+(E_1-E_0)(\Delta X)_0^2 \leq \frac{\hbar^2}{2m}
+\quad\Longrightarrow\quad
+\langle T\rangle_0 \geq \frac{E_1-E_0}{4}.
+\]
+
+对谐振子：$\langle T\rangle_0=\hbar\omega/4=(E_1-E_0)/4$，等号成立。对无限深势阱，不等式严格成立。
+\end{formulabox}
 
 % --------------------------------------------------------
 % 9. 对称性工具：HF 定理与 Virial 定理
