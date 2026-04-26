@@ -1165,63 +1165,53 @@ C &= \omega\sinh^2 r - \frac{\Delta}{2}\sinh(2r) \\
 \end{insightbox}
 
 
-\subsubsection{【Exam】自旋-谐振子耦合的 Schrieffer-Wolff 变换}
+\subsubsection{Schrieffer-Wolff 变换：自旋-谐振子耦合模型}
 
-考虑如下哈密顿量
-\begin{equation}
+上一节讨论了用 Bogoliubov 变换消除玻色哈密顿量中的配对项。本节转向另一个核心技巧——\textbf{Schrieffer-Wolff（SW）变换}——它通过幺正变换 $e^{\hat{S}}\hat{H}e^{-\hat{S}}$ 将微扰对角化，是凝聚态和量子光学中处理耦合系统的标准工具。
+
+\begin{modelbox}[模型：自旋-玻色耦合]
+\textbf{哈密顿量}
+\[
 \hat{H} = \hat{H}_0 + \hat{V},
 \qquad
 \hat{H}_0 = \hbar\nu\,\hat{a}^\dagger\hat{a} + \frac12\hbar\omega_\sigma\,\hat{\sigma}_z,
 \qquad
 \hat{V} = \frac12\eta\hbar\nu\omega\,(\hat{a}+\hat{a}^\dagger)\hat{\sigma}_z,
-\end{equation}
-其中 $\nu<\omega$，$\eta$ 为小量。这是\textbf{量子光学中光与两能级原子耦合}的简化模型：谐振子模描述光子场，$\hat{\sigma}_z$ 描述原子的能级劈裂。
-
-\begin{derivationbox}[三步求解]
-\textbf{（1）二阶微扰论求能级}
-
-未微扰本征态 $|n,\sigma\rangle$，$\sigma=\pm 1$ 对应 $\sigma_z$ 本征值。未微扰能量
-\[
-E_{n,\sigma}^{(0)} = \hbar\nu n + \frac12\hbar\omega_\sigma\,\sigma.
 \]
+其中 $\nu<\omega$，$\eta\ll 1$。$\hat{H}_0$ 是光子场（谐振子）与两能级原子（自旋）的自由哈密顿量；$\hat{V}$ 描述光与原子通过电偶极矩的线性耦合。
+\end{modelbox}
 
-由于 $(\hat{a}+\hat{a}^\dagger)$ 只连接 $n\leftrightarrow n\pm 1$，对角元为零，故一阶修正 $E_{n,\sigma}^{(1)}=0$。
+\textbf{微扰论视角}。未微扰本征态 $|n,\sigma\rangle$（$\sigma=\pm 1$ 为 $\sigma_z$ 本征值），能量 $E_{n,\sigma}^{(0)}=\hbar\nu n + \frac12\hbar\omega_\sigma\sigma$。由于 $(\hat{a}+\hat{a}^\dagger)$ 只连接 $n\leftrightarrow n\pm 1$，对角元为零，一阶能量修正 $E^{(1)}=0$。
 
-二阶修正只涉及 $|n\pm 1,\sigma\rangle$ 中间态：
-\begin{align*}
-|\langle n-1,\sigma|\hat{V}|n,\sigma\rangle|^2 &= \frac14\eta^2\hbar^2\nu^2\omega^2\,n, \\
-|\langle n+1,\sigma|\hat{V}|n,\sigma\rangle|^2 &= \frac14\eta^2\hbar^2\nu^2\omega^2\,(n+1).
-\end{align*}
+二阶修正涉及 $|n\pm 1,\sigma\rangle$ 中间态。利用 $|\langle n-1|\hat{a}|n\rangle|^2=n$ 和 $|\langle n+1|\hat{a}^\dagger|n\rangle|^2=n+1$，矩阵元平方为
+\[
+|\langle n-1,\sigma|\hat{V}|n,\sigma\rangle|^2 = \frac14\eta^2\hbar^2\nu^2\omega^2\,n,
+\qquad
+|\langle n+1,\sigma|\hat{V}|n,\sigma\rangle|^2 = \frac14\eta^2\hbar^2\nu^2\omega^2\,(n+1).
+\]
 能量分母分别为 $\hbar\nu$ 和 $-\hbar\nu$，故
 \begin{equation}
-\boxed{E_{n,\sigma}^{(2)} = \frac14\eta^2\hbar^2\nu^2\omega^2\Bigl(\frac{n}{\hbar\nu} - \frac{n+1}{\hbar\nu}\Bigr) = -\frac14\eta^2\hbar\nu\,\omega^2.}
+\label{eq:sw-2nd-pt}
+E_{n,\sigma}^{(2)} = \frac14\eta^2\hbar^2\nu^2\omega^2\Bigl(\frac{n}{\hbar\nu} - \frac{n+1}{\hbar\nu}\Bigr) = -\frac14\eta^2\hbar\nu\,\omega^2.
 \end{equation}
-\textbf{Remarkable}：$n$ 的依赖完全抵消，所有能级的二阶下移量相同。
+\textbf{Remarkable}：$n$ 的依赖完全抵消，所有能级的二阶下移量相同。这一特性暗示微扰可能通过某种整体变换被精确消除。
 
-\textbf{（2）构造消除微扰的幺正变换}
-
-引入反厄米算符
-\[
-\hat{S} = \frac12\frac{\eta}{\omega}\,(\hat{a}^\dagger-\hat{a})\hat{\sigma}_z,
-\qquad \hat{S}^\dagger = -\hat{S}.
-\]
-计算 $[\hat{S},\hat{H}_0]$。由于 $\hat{\sigma}_z$ 与玻色算符对易，且
+\textbf{构造消除微扰的生成元}。SW 变换的核心是找一个反厄米算符 $\hat{S}$（$\hat{S}^\dagger=-\hat{S}$），使得 BCH 展开的一阶项抵消微扰。利用对易关系
 \[
 [(\hat{a}^\dagger-\hat{a}),\hat{a}^\dagger\hat{a}] = -(\hat{a}+\hat{a}^\dagger),
 \]
-得
-\begin{equation}
-\boxed{[\hat{S},\hat{H}_0] = \frac12\frac{\eta}{\omega}\cdot\hbar\nu\cdot\bigl[-(\hat{a}+\hat{a}^\dagger)\bigr]\hat{\sigma}_z = -\hat{V}.}
-\end{equation}
-\textbf{关键发现}：$\hat{S}$ 与 $\hat{H}_0$ 的对易子恰好抵消微扰 $\hat{V}$（差一个负号）。这是 Schrieffer-Wolff 变换的核心思想——选取 $\hat{S}$ 使得 $[\hat{S},\hat{H}_0] = -\hat{V}$，从而在 BCH 展开中一阶消除微扰。
-
-\textbf{（3）BCH 展开到 $\eta^2$}
-
-利用
+尝试
 \[
-e^{\hat{S}}\hat{H}e^{-\hat{S}} = \hat{H} + [\hat{S},\hat{H}] + \frac12[\hat{S},[\hat{S},\hat{H}]] + \cdots,
+\hat{S} = \frac12\frac{\eta}{\omega}\,(\hat{a}^\dagger-\hat{a})\hat{\sigma}_z.
 \]
-已得 $[\hat{S},\hat{H}_0]=-\hat{V}$。再算
+由于 $\hat{\sigma}_z$ 与玻色算符对易，直接计算得
+\begin{equation}
+\label{eq:sw-sh0}
+[\hat{S},\hat{H}_0] = \frac12\frac{\eta}{\omega}\cdot\hbar\nu\cdot\bigl[-(\hat{a}+\hat{a}^\dagger)\bigr]\hat{\sigma}_z = -\hat{V}.
+\end{equation}
+\textbf{关键发现}：$[\hat{S},\hat{H}_0]=-\hat{V}$。这意味着在 BCH 展开 $e^{\hat{S}}\hat{H}e^{-\hat{S}} = \hat{H} + [\hat{S},\hat{H}] + \cdots$ 中，$\hat{H}_0$ 与 $\hat{V}$ 的一阶交叉项恰好抵消。
+
+\textbf{BCH 展开到 $\eta^2$}。已得 $[\hat{S},\hat{H}_0]=-\hat{V}$，再算 $[\hat{S},\hat{V}]$：
 \begin{align*}
 [\hat{S},\hat{V}]
 &= \Bigl(\frac12\frac{\eta}{\omega}\Bigr)\Bigl(\frac12\eta\hbar\nu\omega\Bigr)
@@ -1229,7 +1219,7 @@ e^{\hat{S}}\hat{H}e^{-\hat{S}} = \hat{H} + [\hat{S},\hat{H}] + \frac12[\hat{S},[
 &= \frac14\eta^2\hbar\nu\,[(\hat{a}^\dagger-\hat{a}),(\hat{a}+\hat{a}^\dagger)]\,\hat{\sigma}_z^2 \\
 &= \frac14\eta^2\hbar\nu\cdot(-2)\cdot 1 = -\frac12\eta^2\hbar\nu.
 \end{align*}
-（用了 $[\hat{a}^\dagger,\hat{a}]=-1$，$\hat{\sigma}_z^2=1$）。注意原题中 $\hat{V}$ 含额外因子 $\omega$，因此 $[\hat{S},\hat{V}] = -\frac12\eta^2\hbar\nu\,\omega^2$。这是一个 \textbf{c 数}，因此更高阶对易子 $[\hat{S},[\hat{S},\hat{V}]]=0$。
+注意原题中 $\hat{V}$ 含额外因子 $\omega$，因此实际 $[\hat{S},\hat{V}] = -\frac12\eta^2\hbar\nu\,\omega^2$。用了 $[\hat{a}^\dagger,\hat{a}]=-1$ 和 $\hat{\sigma}_z^2=1$。\textbf{这是 c 数}，因此更高阶对易子 $[\hat{S},[\hat{S},\hat{V}]]=0$，BCH 级数在二阶截断。
 
 于是
 \begin{align*}
@@ -1237,27 +1227,36 @@ e^{\hat{S}}\hat{H}e^{-\hat{S}} = \hat{H} + [\hat{S},\hat{H}] + \frac12[\hat{S},[
 \frac12[\hat{S},[\hat{S},\hat{H}]] &= \frac12\bigl(-[\hat{S},\hat{V}]\bigr) = \frac14\eta^2\hbar\nu\,\omega^2.
 \end{align*}
 
-合并：
+合并所有项：
 \begin{align*}
 e^{\hat{S}}\hat{H}e^{-\hat{S}}
 &= \hat{H}_0 + \hat{V} + (-\hat{V} - \tfrac12\eta^2\hbar\nu\,\omega^2) + \tfrac14\eta^2\hbar\nu\,\omega^2 + O(\eta^3) \\
 &= \hat{H}_0 - \frac14\eta^2\hbar\nu\,\omega^2 + O(\eta^3).
 \end{align*}
 
+\begin{formulabox}[SW 变换结果]
 \begin{equation}
 \boxed{e^{\hat{S}}\hat{H}e^{-\hat{S}} = \hbar\nu\,\hat{a}^\dagger\hat{a} + \frac12\hbar\omega_\sigma\,\hat{\sigma}_z - \frac14\eta^2\hbar\nu\,\omega^2 + O(\eta^3).}
 \end{equation}
-\end{derivationbox}
+\end{formulabox}
 
-\begin{insightbox}[与微扰论的自洽性]
-BCH 展开得到的常数项 $-\frac14\eta^2\hbar\nu\,\omega^2$ 与二阶微扰能量修正 $E_{n,\sigma}^{(2)}$ 完全一致。这说明：
-\begin{itemize}[nosep]
-\item 到 $\eta^2$ 阶，幺正变换 $e^{\hat{S}}$ 已将微扰完全对角化；
-\item 谐振子部分的能谱不变（频率仍为 $\nu$），只是整体下移一个与 $n$ 无关的常数；
-\item 自旋自由度 $\sigma$ 不受影响，因为 $\hat{V}\propto\hat{\sigma}_z$ 与 $\hat{\sigma}_z$ 对易。
-\end{itemize}
+\begin{insightbox}[与微扰论的自洽性及算符结构的统一性]
+BCH 展开得到的常数项 $-\frac14\eta^2\hbar\nu\,\omega^2$ 与式 \eqref{eq:sw-2nd-pt} 的二阶微扰能量修正完全一致。这说明到 $\eta^2$ 阶，幺正变换 $e^{\hat{S}}$ 已将微扰完全对角化——谐振子能谱不变（频率仍为 $\nu$），只是整体下移一个与 $n$ 无关的常数；自旋自由度也不受影响，因为 $\hat{V}\propto\hat{\sigma}_z$ 与 $\hat{\sigma}_z$ 对易。
 
-\textbf{更深层的联系}：$\hat{S}\propto(\hat{a}^\dagger-\hat{a})\hat{\sigma}_z$ 的生成元形式，与相干态的位移算符 $\hat{D}(\alpha)=\exp(\alpha\hat{a}^\dagger-\alpha^*\hat{a})$ 以及 BdG 的压缩算符 $\hat{S}(r)=\exp[\frac{r}{2}(\hat{a}^2-(\hat{a}^\dagger)^2)]$ 属于同一族——都是玻色算符双线性型的指数。区别在于：位移对应 $c$ 数平移（$[\hat{a},\hat{a}^\dagger]$ 闭合到 1），压缩对应双曲旋转（$\hat{a}^2$ 与 $(\hat{a}^\dagger)^2$ 的配对），而本题则是将玻色子与自旋自由度解耦的"旋转"。
+\textbf{算符结构的统一视角}：$\hat{S}\propto(\hat{a}^\dagger-\hat{a})\hat{\sigma}_z$ 的生成元形式，与此前讨论的三种变换属于同一数学族：
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{lccc}
+\toprule
+\textbf{变换} & \textbf{生成元} & \textbf{闭合代数} & \textbf{物理意义} \\
+\midrule
+位移 $\hat{D}(\alpha)$ & $\alpha\hat{a}^\dagger-\alpha^*\hat{a}$ & $[\hat{a},\hat{a}^\dagger]=1$ & $c$ 数平移 \\
+压缩 $\hat{S}(r)$ & $\frac{r}{2}(\hat{a}^2-(\hat{a}^\dagger)^2)$ & 双曲旋转 & 标度变换 \\
+SW $e^{\hat{S}}$ & $\frac{\eta}{2\omega}(\hat{a}^\dagger-\hat{a})\hat{\sigma}_z$ & $[\hat{S},\hat{H}_0]=-\hat{V}$ & 自旋-玻色解耦 \\
+\bottomrule
+\end{tabular}
+\end{center}
+三者都是玻色算符双线性型的指数，区别仅在于"旋转"所作用的子空间和保留下来的对称性。
 \end{insightbox}
 
 % 叙事逻辑：从模型定义 → 代数解 → 算符结构 → 相干态 →
