@@ -2,7 +2,7 @@
 % Model: 一维谐振子 (1D Harmonic Oscillator)
 % 叙事逻辑：从模型定义 → 代数解 → 算符结构 → 相干态 →
 %          含时演化 → 外场中的谐振子 → 半经典极限 → 求和约束 → 对称性工具 →
-%          多体推广 → 一维特例
+%          多体推广 → 一维特例 → 压缩算符与BdG
 % ============================================================
 \section{一维谐振子}
 \label{sec:model-ho-1d}
@@ -1164,90 +1164,3 @@ C &= \omega\sinh^2 r - \frac{\Delta}{2}\sinh(2r) \\
 两种变换在数学结构上完全平行，都是"旋转"产生/湮灭算符以消除哈密顿量中的非对角配对项。区别仅在于：玻色子的"旋转"是双曲型的（保差 $u^2-v^2=1$，类似洛伦兹变换），而费米子是圆型的（保和 $u^2+v^2=1$，类似普通转动）。这正是玻色统计与费米统计在算符代数层面的深刻体现。
 \end{insightbox}
 
-% --------------------------------------------------------
-% 12. 技巧、易错与速查
-% --------------------------------------------------------
-\subsection{考场策略与常见陷阱}
-
-\begin{tipbox}[快速识别与解题技巧]
-\begin{itemize}
-    \item \examnote{看到 $H = P^2/2m + m\omega^2X^2/2$} 
-    $\Rightarrow$ 立即提取 $\omega$ 和 $x_0$，所有量用自然单位化。
-
-    \item \examnote{看到 $e^{ikX}|0\rangle$ 或相干态}
-    $\Rightarrow$ 不必逐项算矩阵元，直接识别为 $D(\alpha)|0\rangle$，能量概率 = 泊松分布。
-
-    \item \examnote{看到 $\delta(t)$ 脉冲}
-    $\Rightarrow$ 时间演化算符是精确指数 $U=e^{-iV/\hbar}$，不是微扰级数。
-
-    \item \examnote{看到求和规则或振子强度}
-    $\Rightarrow$ 套路：$[X,H] \to P$ 矩阵元（出能量差）$\to [X,P]=i\hbar$ 闭合，无需波函数。
-
-    \item \examnote{看到多费米子 + 谐振子阱}
-    $\Rightarrow$ 先构造 Slater 行列式；$\delta$ 排斥对费米子一级修正为零。
-
-    \item \examnote{量纲检查}
-    $[x_0]=\text{L}$，$[p_0]=\text{M}\cdot\text{L}/\text{T}$，$[\hbar\omega]=\text{E}$。
-    $E_n$ 必须 $\propto\hbar\omega$，$\langle X^2\rangle$ 必须 $\propto\hbar/(m\omega)$。
-\end{itemize}
-\end{tipbox}
-
-\begin{errorbox}{常见失误}
-\begin{enumerate}
-    \item \textbf{对易子交换性}：$[a,X^n]=nX^{n-1}[a,X]$ 仅在 $[a,X]$ 为 c 数时成立。对 $[X,P^n]$ 不适用，因为 $[X,P]=i\hbar$ 不是 c 数。
-
-    \item \textbf{$\alpha$ 的虚实判断}：$e^{ikX}$ 对应 $\alpha=ik\sqrt{\hbar/2m\omega}$（纯虚），$\alpha^*=-\alpha$，$\langle X\rangle=0$。若误用实数公式得 $\langle X\rangle\neq 0$。
-
-    \item \textbf{$\delta(t)$ vs $\delta(x)$}：前者产生时间演化跳跃，后者产生空间导数跳跃。公式不可混用。
-
-    \item \textbf{能量概率的时间依赖性}：态随时间演化 $|\psi(t)\rangle=\sum_n c_n e^{-iE_n t/\hbar}|n\rangle$，但能量测量概率 $P_n=|c_n|^2$ \textbf{不随时间变化}。
-
-    \item \textbf{费米子 vs 玻色子的 $\delta$ 相互作用}：对费米子一级修正为零（接触点波函数为零）；对玻色子则有强修正。
-
-    \item \textbf{WKB 量子化条件的 $+1/2$}：一维 Bohr--Sommerfeld 条件为 $\oint p\,dx = 2\pi\hbar(n+1/2)$。漏掉 $1/2$ 得 $E_n=\hbar\omega\cdot n$ 的错误结果。
-\end{enumerate}
-\end{errorbox}
-
-\begin{insightbox}[模型关联网络]
-\textbf{与相似模型的对比}
-\begin{center}
-\renewcommand{\arraystretch}{1.3}
-\begin{tabular}{lccc}
-\toprule
-\textbf{特征} & \textbf{一维谐振子} & \textbf{无限深势阱} & \textbf{$\delta$ 势阱} \\
-\midrule
-势能形式 & $x^2$（抛物线） & 无限高墙 & $-\lambda\delta(x)$ \\
-能谱 & 等间距 & $\propto n^2$ & 单束缚态+连续谱 \\
-波函数 & Gauss$\times$多项式 & 正弦函数 & 指数衰减 \\
-WKB 精确性 & \textbf{完全精确} & 近似 & 不适用 \\
-\bottomrule
-\end{tabular}
-\end{center}
-
-\textbf{推广方向}
-\begin{itemize}[nosep]
-    \item 多维：$d$ 维各向同性 $E=\hbar\omega(n_1+\dots+n_d+d/2)$，简并度由组合数给出
-    \item 各向异性：$\omega_x\neq\omega_y$，能级一般非简并；有理数比时出现偶然简并
-    \item 耦合谐振子：正交模变换对角化，类似晶格声子
-    \item 非谐修正：$V=\frac12m\omega^2x^2+\lambda x^4$，微扰论处理
-    \item 含时频率：$\omega(t)$，产生压缩态（squeezed state）
-\end{itemize}
-\end{insightbox}
-
-\begin{cheatbox}[一维谐振子：核心速查]
-\textbf{自然单位}：$x_0=\sqrt{\hbar/m\omega}$，$p_0=\sqrt{m\omega\hbar}$，$\xi=x/x_0$
-
-\textbf{能谱}：$E_n=\hbar\omega(n+1/2)$
-
-\textbf{基态}：$\psi_0=(m\omega/\pi\hbar)^{1/4}e^{-\xi^2/2}$，$\langle X^2\rangle_0=x_0^2/2$
-
-\textbf{相干态}：$|\alpha\rangle=D(\alpha)|0\rangle$，$P_n=e^{-\bar{n}}\bar{n}^n/n!$，$\bar{n}=|\alpha|^2$
-
-\textbf{Virial}：$\langle T\rangle=\langle V\rangle=E/2$
-
-\textbf{TRK}：$\sum_n f_n=1$（任意一维束缚势）
-
-\textbf{WKB}：$\oint p\,dx=2\pi\hbar(n+1/2)\Rightarrow E_n=\hbar\omega(n+1/2)$
-\end{cheatbox}
-
-\vspace{1em}
