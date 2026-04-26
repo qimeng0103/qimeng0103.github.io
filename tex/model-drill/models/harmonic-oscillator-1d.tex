@@ -1,7 +1,7 @@
 % ============================================================
 % Model: 一维谐振子 (1D Harmonic Oscillator)
 % 叙事逻辑：从模型定义 → 代数解 → 算符结构 → 相干态 →
-%          含时演化 → 半经典极限 → 求和约束 → 对称性工具 →
+%          含时演化 → 外场中的谐振子 → 半经典极限 → 求和约束 → 对称性工具 →
 %          多体推广 → 一维特例
 % ============================================================
 \section{一维谐振子}
@@ -483,7 +483,99 @@ $\langle\hat{X}\rangle$ 以 $\omega$ 振荡，振幅 $\sqrt{2}x_0\sin\theta\cos\
 干涉项以频率 $\omega$（即 $E_2-E_1=\hbar\omega$）振荡，导致概率密度在空间分布上周期性"流动"。这是量子相干性的直接体现：不同于经典粒子的固定轨道，量子概率在空间中来回振荡。
 
 % --------------------------------------------------------
-% 7. 半经典极限：WKB 量子化条件的验证
+% 7. 带电谐振子在均匀电场中：Stark 效应与极化率
+% --------------------------------------------------------
+\subsection{带电谐振子在均匀电场中：Stark 效应与极化率}
+
+一个带电荷 $q$ 的谐振子置于沿 $x$ 轴的均匀电场 $\mathcal{E}$ 中，哈密顿量为
+\begin{equation}
+\hat{H} = \frac{\hat{P}^2}{2m} + \frac12 m\omega^2\hat{X}^2 - q\mathcal{E}\hat{X}.
+\end{equation}
+其中 $-q\mathcal{E}\hat{X}$ 是电场与电偶极矩的耦合。这是一个	extbf{可精确求解}的模型，也是微扰论教学中最经典的例子之一。
+
+\subsubsection{精确解：配方法与坐标平移}
+
+将势能配方：
+\begin{align*}
+\frac12 m\omega^2\hat{X}^2 - q\mathcal{E}\hat{X}
+&= \frac12 m\omega^2\Bigl(\hat{X} - \frac{q\mathcal{E}}{m\omega^2}\Bigr)^2 - \frac{q^2\mathcal{E}^2}{2m\omega^2}.
+\end{align*}
+
+引入平移坐标 $\hat{X}' = \hat{X} - q\mathcal{E}/(m\omega^2)$，注意平移不影响动量 $\hat{P}$，则
+\[
+\hat{H} = \frac{\hat{P}^2}{2m} + \frac12 m\omega^2\hat{X}'^2 - \frac{q^2\mathcal{E}^2}{2m\omega^2}.
+\]
+
+这正是标准谐振子哈密顿量（变量为 $\hat{X}'$）加上一个\textbf{与量子数无关的常数偏移}。因此能级和本征函数为
+\begin{equation}
+\boxed{E_n = \hbar\omega\Bigl(n + \frac12\Bigr) - \frac{q^2\mathcal{E}^2}{2m\omega^2},}
+\qquad
+\boxed{\psi_n(x) = \psi_n^{(0)}\Bigl(x - \frac{q\mathcal{E}}{m\omega^2}\Bigr),}
+\end{equation}
+其中 $\psi_n^{(0)}$ 是零电场时的标准谐振子波函数。
+
+\begin{insightbox}[物理图像：电场只移动平衡位置]
+与经典谐振子完全类似，均匀电场不改变振动频率，只是将平衡位置从 $x=0$ 移动到
+\[
+x_\text{eq} = \frac{q\mathcal{E}}{m\omega^2}.
+\]
+波函数形状不变，整体"跟着"平衡位置平移。所有能级的下移量相同，因此能级间距 $\hbar\omega$ 保持不变。
+\end{insightbox}
+
+\subsubsection{微扰论验证}
+
+将 $-q\mathcal{E}\hat{X}$ 视为微扰，可以验证微扰论的各阶结果。
+
+\textbf{一阶能量修正}：
+\[
+E_n^{(1)} = -q\mathcal{E}\,\langle n|\hat{X}|n\rangle = 0.
+\]
+这是因为谐振子本征态具有确定宇称，$\psi_n(x)$ 的奇偶性与 $n$ 相同，而被积函数 $x|\psi_n(x)|^2$ 总是奇函数，对角矩阵元恒为零。
+
+\textbf{二阶能量修正}：利用 $\hat{X} = \frac{x_0}{\sqrt{2}}(\hat{a} + \hat{a}^\dagger)$，只有 $|n\pm 1\rangle$ 中间态有贡献：
+\begin{align*}
+E_n^{(2)}
+&= q^2\mathcal{E}^2\sum_{m\neq n}\frac{|\langle m|\hat{X}|n\rangle|^2}{E_n - E_m} \\
+&= q^2\mathcal{E}^2\left[
+\frac{|\langle n-1|\hat{X}|n\rangle|^2}{\hbar\omega}
++ \frac{|\langle n+1|\hat{X}|n\rangle|^2}{-\hbar\omega}
+\right] \\
+&= q^2\mathcal{E}^2\cdot\frac{x_0^2}{2\hbar\omega}\bigl[n - (n+1)\bigr]
+= -\frac{q^2\mathcal{E}^2}{2m\omega^2}.
+\end{align*}
+
+与精确解完全一致。这说明对谐振子，微扰级数在二阶就	extbf{收敛到精确结果}——事实上所有更高阶修正都为零，因为 $[\hat{X}, [\hat{X}, \hat{H}_0]] = \text{常数}$，微扰哈密顿量作为 $\hat{X}$ 的线性函数，通过配方法可一次性对角化。
+
+\subsubsection{电极化率}
+
+由能级下移量 $\Delta E = -q^2\mathcal{E}^2/(2m\omega^2)$，与极化能量的一般定义
+\[
+\Delta E = -\frac12 \alpha \mathcal{E}^2
+\]
+对比，得\textbf{静态电极化率}
+\begin{equation}
+\boxed{\alpha = \frac{q^2}{m\omega^2} = \frac{q^2}{k}.}
+\end{equation}
+
+另一种等价定义来自诱导偶极矩。在任意定态 $|n\rangle$ 中，位置的期望值为
+\[
+\langle\hat{X}\rangle_n = \int x\,|\psi_n^{(0)}(x - x_\text{eq})|^2\,dx = x_\text{eq} = \frac{q\mathcal{E}}{m\omega^2},
+\]
+因此诱导电偶极矩为
+\[
+\langle d\rangle = q\langle\hat{X}\rangle_n = \frac{q^2}{m\omega^2}\mathcal{E} = \alpha\,\mathcal{E}.
+\]
+
+\begin{formulabox}[极化率的关键结论]
+\begin{itemize}[nosep]
+\item 所有定态具有\textbf{相同的}极化率 $\alpha = q^2/(m\omega^2)$，与量子数 $n$ 无关。
+\item 这是谐振子的特有性质。对一般势（如氢原子），极化率依赖于主量子数。
+\item 经典与量子结果完全一致：质量越大、弹簧越硬（$\omega$ 越大），极化率越小。
+\end{itemize}
+\end{formulabox}
+
+% --------------------------------------------------------
+% 8. 半经典极限：WKB 量子化条件的验证
 % --------------------------------------------------------
 \subsection{半经典极限：WKB 量子化条件的验证}
 
