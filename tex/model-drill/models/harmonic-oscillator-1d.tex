@@ -1256,7 +1256,41 @@ SW $e^{\hat{S}}$ & $\frac{\eta}{2\omega}(\hat{a}^\dagger-\hat{a})\hat{\sigma}_z$
 \bottomrule
 \end{tabular}
 \end{center}
-三者都是玻色算符双线性型的指数，区别仅在于"旋转"所作用的子空间和保留下来的对称性。
+三者都由玻色算符通过指数映射构造，其生成元中玻色算符的最高次数决定了变换的"层级"。
+\end{insightbox}
+
+\begin{insightbox}[什么是"双线性型"？——算符次数与 Lie 代数]
+在二次量子化语言中，算符按所含产生/湮灭算符的个数分类：
+\begin{itemize}[nosep]
+\item \textbf{线性型}（一次）：$\hat{a}$，$\hat{a}^\dagger$，$\hat{a}^\dagger-\hat{a}$，$\hat{a}+\hat{a}^\dagger$ 等。只含单个玻色算符。
+\item \textbf{双线性型}（二次）：$\hat{a}^2$，$(\hat{a}^\dagger)^2$，$\hat{a}^\dagger\hat{a}$，$\hat{a}\hat{a}^\dagger$ 等。含两个玻色算符的乘积。
+\item \textbf{常数型}（零次）：$\hat{1}$，数字 $c$。
+\end{itemize}
+
+\textbf{三类变换的生成元结构}：
+\begin{center}
+\renewcommand{\arraystretch}{1.3}
+\begin{tabular}{lcc}
+\toprule
+\textbf{变换} & \textbf{生成元中玻色部分} & \textbf{次数} \\
+\midrule
+位移 $\hat{D}(\alpha)$ & $\alpha\hat{a}^\dagger-\alpha^*\hat{a}$ & 一次（线性） \\
+压缩 $\hat{S}(r)$ & $\frac{r}{2}(\hat{a}^2-(\hat{a}^\dagger)^2)$ & 二次（双线性） \\
+SW $e^{\hat{S}}$ & $\frac{\eta}{2\omega}(\hat{a}^\dagger-\hat{a})\hat{\sigma}_z$ & 一次（线性，作用于玻色子） \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{为什么统称它们为"一族"？}
+
+从 Lie 代数角度看，这些变换的生成元在指数映射下构成封闭代数：
+\begin{itemize}[nosep]
+\item \textbf{位移}：生成元 $\{\hat{a},\hat{a}^\dagger,\hat{1}\}$ 构成 Heisenberg-Weyl 代数。$[\hat{a},\hat{a}^\dagger]=1$ 是核心对易关系。
+\item \textbf{压缩}：生成元 $\{\hat{a}^2,\,(\hat{a}^\dagger)^2,\,\hat{a}^\dagger\hat{a}+\frac12\}$ 构成 $su(1,1)$ 代数。对易子如 $[\hat{a}^2,\,(\hat{a}^\dagger)^2]=4\hat{a}^\dagger\hat{a}+2$，闭合在双线性型集合内。
+\item \textbf{SW}：生成元同时含玻色算符（一次）和自旋算符（零次），$[\hat{S},\hat{H}_0]$ 把一次型映射回一次型，形成自洽的迭代结构。
+\end{itemize}
+
+\textbf{关键区别}：位移和 SW 的生成元对玻色子是线性的，其效果是"平移"或"旋转"相空间中的坐标；压缩的生成元是双线性的，其效果是"拉伸/压缩"相空间的坐标轴（改变 $\Delta X$ 与 $\Delta P$ 的比例但保持 $\Delta X\Delta P$ 不变）。
 \end{insightbox}
 
 % 叙事逻辑：从模型定义 → 代数解 → 算符结构 → 相干态 →
