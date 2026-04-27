@@ -1,4 +1,4 @@
-\contentsline {part}{第一部分\hspace {1em}量子力学核心模型}{3}{part.1}%
+\contentsline {part}{第一部分\hspace {1em}量子力学基础模型}{3}{part.1}%
 \contentsline {section}{\numberline {1}一维谐振子}{3}{section.1}%
 \contentsline {subsection}{\numberline {1.1}代数解：能谱与本征态}{3}{subsection.1.1}%
 \contentsline {subsection}{\numberline {1.2}波函数与 Hermite 多项式}{4}{subsection.1.2}%
@@ -47,18 +47,28 @@
 \contentsline {subsubsection}{\numberline {1.13.3}物理图像与 BdG 联系}{17}{subsubsection.1.13.3}%
 \contentsline {subsubsection}{\numberline {1.13.4}Bogoliubov 对角化的详细推导}{17}{subsubsection.1.13.4}%
 \contentsline {subsubsection}{\numberline {1.13.5}Schrieffer-Wolff 变换：自旋-谐振子耦合模型}{18}{subsubsection.1.13.5}%
-\contentsline {section}{\numberline {2}一维双原子链晶格振动}{21}{section.2}%
-\contentsline {section}{\numberline {3}体心立方紧束缚 s 带}{24}{section.3}%
-\contentsline {section}{\numberline {4}半导体费米能级的温度依赖}{27}{section.4}%
-\contentsline {section}{\numberline {5}一维满带空穴六要素}{30}{section.5}%
-\contentsline {section}{\numberline {6}自由电子气与 Drude 输运}{33}{section.6}%
-\contentsline {section}{\numberline {7}一维方势垒周期势}{36}{section.7}%
-\contentsline {section}{\numberline {8}一维交替力常数链}{39}{section.8}%
-\contentsline {section}{\numberline {9}霍尔效应与多带导电}{42}{section.9}%
-\contentsline {section}{\numberline {10}近藤效应}{45}{section.10}%
-\contentsline {section}{\numberline {11}超导BCS判据与能隙实验}{48}{section.11}%
-\contentsline {section}{\numberline {12}Peierls 相变（一维二聚化）}{51}{section.12}%
-\contentsline {section}{\numberline {13}NaCl 几何结构因子与 X 射线衍射}{54}{section.13}%
-\contentsline {section}{\numberline {14}非简谐相互作用与声子热平衡}{57}{section.14}%
-\contentsline {section}{\numberline {15}CuO$_2$ 平面的对称性与布拉维格子}{60}{section.15}%
-\contentsline {section}{\numberline {16}GaAs 价带空穴的 Drude 输运}{63}{section.16}%
+\contentsline {section}{\numberline {2}一维 $\delta $ 势阱与变分法}{21}{section.2}%
+\contentsline {section}{\numberline {3}量子二能级系统}{25}{section.3}%
+\contentsline {section}{\numberline {4}无限深方势阱与突然近似}{30}{section.4}%
+\contentsline {section}{\numberline {5}全同粒子统计与交换对称性}{34}{section.5}%
+\contentsline {section}{\numberline {6}斯特恩-盖拉赫实验与自旋测量}{38}{section.6}%
+\contentsline {part}{第二部分\hspace {1em}晶体结构、对称性与衍射}{41}{part.2}%
+\contentsline {section}{\numberline {7}NaCl 几何结构因子与 X 射线衍射}{42}{section.7}%
+\contentsline {section}{\numberline {8}CuO$_2$ 平面的对称性与布拉维格子}{45}{section.8}%
+\contentsline {part}{第三部分\hspace {1em}晶格振动与声子}{47}{part.3}%
+\contentsline {section}{\numberline {9}一维双原子链晶格振动}{48}{section.9}%
+\contentsline {section}{\numberline {10}一维交替力常数链}{51}{section.10}%
+\contentsline {section}{\numberline {11}非简谐相互作用与声子热平衡}{54}{section.11}%
+\contentsline {part}{第四部分\hspace {1em}自由电子与能带理论}{56}{part.4}%
+\contentsline {section}{\numberline {12}自由电子气与 Drude 输运}{57}{section.12}%
+\contentsline {section}{\numberline {13}一维方势垒周期势}{60}{section.13}%
+\contentsline {section}{\numberline {14}体心立方紧束缚 s 带}{63}{section.14}%
+\contentsline {section}{\numberline {15}Peierls 相变（一维二聚化）}{66}{section.15}%
+\contentsline {part}{第五部分\hspace {1em}半导体物理}{68}{part.5}%
+\contentsline {section}{\numberline {16}半导体费米能级的温度依赖}{69}{section.16}%
+\contentsline {section}{\numberline {17}空穴概念与半导体输运}{72}{section.17}%
+\contentsline {part}{第六部分\hspace {1em}输运与磁现象}{76}{part.6}%
+\contentsline {section}{\numberline {18}霍尔效应与多带导电}{77}{section.18}%
+\contentsline {part}{第七部分\hspace {1em}关联电子与超导}{79}{part.7}%
+\contentsline {section}{\numberline {19}近藤效应}{80}{section.19}%
+\contentsline {section}{\numberline {20}超导BCS判据与能隙实验}{83}{section.20}%

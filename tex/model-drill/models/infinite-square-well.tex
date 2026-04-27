@@ -1,0 +1,270 @@
+% ============================================================
+% Model: 无限深方势阱与突然近似
+% ============================================================
+
+\section{无限深方势阱与突然近似}
+\label{sec:infinite-square-well}
+
+\begin{tipbox}[关键词标签]
+无限深势阱 · 本征态展开 · 含时演化 · 突然近似 · 测量概率 · 能量期望值 · 积化和差
+\end{tipbox}
+
+% --------------------------------------------------------
+% 1. 模型定义框
+% --------------------------------------------------------
+\begin{modelbox}[模型：一维无限深方势阱]
+\textbf{物理情境}：粒子被限制在 $0<x<a$ 的区间内，阱外势能为无穷大，阱内势能为零。这是量子力学中最基本可精确求解的模型之一，也是理解量子束缚态、离散能级和含时演化的标准范例。
+
+\textbf{势场定义}：
+\[
+V(x)=\begin{cases}0,&0<x<a,\\\infty,&x\leq0\text{ 或 }x\geq a.\end{cases}
+\]
+
+\textbf{定态薛定谔方程}（$0<x<a$）：
+\[
+-\frac{\hbar^2}{2m}\frac{d^2\phi_n}{dx^2}=E_n\phi_n,\quad\phi_n(0)=\phi_n(a)=0.
+\]
+
+\textbf{本征解}：
+\begin{itemize}[nosep]
+    \item 本征函数：$\displaystyle\phi_n(x)=\sqrt{\frac{2}{a}}\sin\Bigl(\frac{n\pi x}{a}\Bigr),\quad n=1,2,3,\ldots$
+    \item 本征能量：$\displaystyle E_n=\frac{n^2\pi^2\hbar^2}{2ma^2}\equiv n^2\,\varepsilon_0$
+    \item 基态能量：$\varepsilon_0=\frac{\pi^2\hbar^2}{2ma^2}$
+\end{itemize}
+
+\textbf{关键特征}：
+\begin{itemize}[nosep]
+    \item 能级间距不均匀：$E_{n+1}-E_n=(2n+1)\varepsilon_0$，随 $n$ 增大而增大
+    \item 节点定理：$\phi_n$ 有 $n-1$ 个节点（除边界外）
+    \item 正交归一：$\int_0^a\phi_m^*(x)\phi_n(x)\,dx=\delta_{mn}$
+    \item 完备性：任意阱内波函数可展开为 $\{\phi_n\}$ 的线性组合
+\end{itemize}
+\end{modelbox}
+
+% --------------------------------------------------------
+% 2. 关键公式框
+% --------------------------------------------------------
+\begin{formulabox}[核心公式]
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{含时演化}：
+    \[
+    \psi(x,t)=\sum_{n=1}^{\infty}c_n\,\phi_n(x)\,e^{-iE_nt/\hbar},\quad
+    c_n=\int_0^a\phi_n^*(x)\psi(x,0)\,dx.
+    \]
+    \texteq{$\{c_n\}$ 为初始波函数在本征基下的展开系数}
+
+    \item \textbf{测量概率与能量分布}：
+    \[
+    P_n=|c_n|^2,\qquad\sum_nP_n=1,\qquad\langle E\rangle=\sum_nP_nE_n.
+    \]
+    \texteq{每次能量测量必得某个 $E_n$，概率为 $|c_n|^2$}
+
+    \item \textbf{能量涨落}：
+    \[
+    \Delta E=\sqrt{\langle E^2\rangle-\langle E\rangle^2},\quad
+    \langle E^2\rangle=\sum_nP_nE_n^2.
+    \]
+
+    \item \textbf{突然近似}（$t=0$ 时势阱参数突变，$a\to a'$）：
+    \[
+    \psi(x,0^+)=\psi(x,0^-)\;(0<x<\min(a,a')).
+    \]
+    新基下展开系数：
+    \[
+    \tilde{c}_m=\int_0^{a'}\tilde{\phi}_m^*(x)\psi(x,0^+)\,dx.
+    \]
+    测得新基态（$m=1$）的概率：$P_{\text{new ground}}=|\tilde{c}_1|^2$.
+
+    \item \textbf{阱壁移动后的重叠积分}（$a\to2a$，初态为原基态 $\phi_1^{(a)}$）：
+    \[
+    \tilde{c}_1=\int_0^a\sqrt{\frac{1}{a}}\sin\Bigl(\frac{\pi x}{2a}\Bigr)\sqrt{\frac{2}{a}}\sin\Bigl(\frac{\pi x}{a}\Bigr)dx
+    =\frac{4\sqrt{2}}{3\pi}.
+    \]
+    \texteq{$P_1=|\tilde{c}_1|^2=\frac{32}{9\pi^2}\approx0.36$}
+
+    \item \textbf{绝热定理对比}：
+    \[
+    \text{突然近似：}\tau_{\text{switch}}\ll\frac{\hbar}{\Delta E};\qquad
+    \text{绝热近似：}\tau_{\text{switch}}\gg\frac{\hbar}{\Delta E}.
+    \]
+\end{enumerate}
+\end{formulabox}
+
+% --------------------------------------------------------
+% 3. 训练点框
+% --------------------------------------------------------
+\begin{drillbox}[训练点与考法变体]
+\trainingpoint{1} \textbf{积化和差识别本征态成分}：给定 $\psi(x)$ 含 $\sin\alpha x\cos\beta x$ 等三角函数乘积，用积化和差公式将其化为单一正弦函数的线性组合，直接读出 $n$ 值和展开系数。
+
+\trainingpoint{2} \textbf{含时演化计算}：已知初始态为 $\phi_3$ 和 $\phi_4$ 的等概率叠加，写出 $|\psi(x,t)\rangle$ 并计算某时刻的概率密度 $|\psi(x,t)|^2$ 的空间分布。
+
+\trainingpoint{3} \textbf{突然近似完整流程}：势阱突变 $\to$ 波函数来不及改变 $\to$ 用新本征基展开 $\to$ 计算各新能级的占据概率 $\to$ 计算新的能量期望值。
+
+\trainingpoint{4} \textbf{测量后的再演化}：测量能量得到 $E_n$ 后，系统坍缩到 $\phi_n$，此后以 $\phi_n$ 为初态重新演化。注意：若未指明测量结果，需用密度矩阵描述混合态。
+
+\trainingpoint{5} \textbf{突然近似 vs 绝热近似判断}：给定势阱参数变化的时间尺度 $\tau$ 和能级间距 $\Delta E$，判断适用哪种近似。关键参数：$\omega=\Delta E/\hbar$，若 $\tau\omega\ll1$ 为突然，$\tau\omega\gg1$ 为绝热。
+
+\trainingpoint{6} \textbf{半无限势阱}（$V=\infty$ for $x<0$, $V=0$ for $0<x<a$, $V=\infty$ for $x>a$）：本质与全无限势阱相同，只是边界条件为 $\psi(0)=\psi(a)=0$。但若有 $V(x)=\infty$ for $x<0$ 和 $V(x)=\infty$ for $x>L$ 且中间有势垒，则变为双势阱问题。
+\end{drillbox}
+
+% --------------------------------------------------------
+% 4. 解题技巧框
+% --------------------------------------------------------
+\begin{tipbox}[快速识别与解题技巧]
+\begin{itemize}
+    \item \examnote{识别标志}：题干出现``无限深势阱''''方势阱''''$\sin(n\pi x/a)$''''突然膨胀''''测量能量''，立即定位本模型。
+    \item \examnote{积化和差速查}：
+    \begin{center}
+    \fbox{\parbox{0.9\linewidth}{\centering
+    $\sin\alpha\cos\beta=\frac12[\sin(\alpha+\beta)+\sin(\alpha-\beta)]$\\[2pt]
+    $\cos\alpha\cos\beta=\frac12[\cos(\alpha+\beta)+\cos(\alpha-\beta)]$\\[2pt]
+    $\sin\alpha\sin\beta=\frac12[\cos(\alpha-\beta)-\cos(\alpha+\beta)]$
+    }}
+    \end{center}
+    \item \examnote{节点数定理}：$\phi_n$ 在 $(0,a)$ 内有 $n-1$ 个节点。若给定波函数图像数节点，可直接反推主成分 $n$。
+    \item \examnote{能量比记忆}：$E_n\propto n^2$。$E_1:E_2:E_3:E_4=1:4:9:16$。
+    \item \examnote{突然近似的核心}：$\psi$ 在势突变瞬间``来不及反应''，保持原样。但注意：若势阱扩大，新波函数只在原区域有定义，新区域 $(a,a')$ 的波函数需要重新确定（通常设为零或按新边界条件匹配）。标准处理：突变后波函数在原区域不变，新区域为零，然后归一化。
+    \item \examnote{正交积分公式}：
+    \[
+    \int_0^a\sin\Bigl(\frac{m\pi x}{a}\Bigr)\sin\Bigl(\frac{n\pi x}{a}\Bigr)dx=\frac{a}{2}\delta_{mn}.
+    \]
+    交叉项（$m\neq n$）的积分可用积化和差化为 $\cos$ 差，在 $[0,a]$ 上通常为零（正交性），但突然近似中的重叠积分（不同宽度）不正交。
+\end{itemize}
+\end{tipbox}
+
+% --------------------------------------------------------
+% 5. 易错点框
+% --------------------------------------------------------
+\begin{errorbox}{常见失误与陷阱}
+\begin{itemize}
+    \item \textbf{边界条件混淆}：无限深势阱要求 $\psi(0)=\psi(a)=0$。有限深势阱要求 $\psi$ 和 $\psi'$ 在边界连续。不要把两种边界条件混用。
+    \item \textbf{突然近似后未归一化}：势阱从 $a$ 扩大到 $2a$ 后，原波函数 $\psi(x)$ 只在 $[0,a]$ 有定义，在 $(a,2a]$ 设为零。此时总概率仍为 1，但用新本征基展开时，系数 $\tilde{c}_m$ 的计算积分限应为 $[0,2a]$，而 $\psi$ 在 $(a,2a]$ 为零。
+    \item \textbf{测量后的能量期望值}：测量能量后系统坍缩到某本征态，此后能量期望值就是该本征值（不再含时）。若未进行测量，能量期望值由初态决定，保持守恒（$H$ 不显含时）。
+    \item \textbf{含时演化中的相对相位}：$\psi(x,t)=\frac{1}{\sqrt{2}}[\phi_3(x)e^{-iE_3t/\hbar}+\phi_4(x)e^{-iE_4t/\hbar}]$。概率密度 $|\psi|^2$ 含交叉项 $\propto\cos[(E_4-E_3)t/\hbar]$，会随时间振荡。不要误以为 $|\psi|^2$ 不随时间变化。
+    \item \textbf{展开系数的模}：$c_n$ 可以是复数，但测量概率只与 $|c_n|^2$ 有关。若初态是实函数且本征函数也是实的，则 $c_n$ 为实数。
+\end{itemize}
+\end{errorbox}
+
+% --------------------------------------------------------
+% 6. 物理图像与关联模型
+% --------------------------------------------------------
+\begin{insightbox}[物理图像与模型关联]
+\textbf{物理图像}：
+
+无限深势阱就像一个两端有无限高墙的盒子：
+\begin{itemize}[nosep]
+    \item 粒子在盒内自由运动，但到达墙壁时被完全反射。
+    \item 反射波与入射波形成驻波，只有特定波长（$\lambda_n=2a/n$）才能稳定存在。
+    \item 波长越短（$n$ 越大），动量越大，能量越高——$E_n\propto n^2$。
+    \item 基态（$n=1$）在盒中央概率最大，像``站在盒子中央''。
+    \item 激发态有节点，粒子在某些位置永远找不到（概率密度为零）。
+\end{itemize}
+
+\textbf{突然近似的直觉}：
+
+想象盒子的墙壁瞬间移动：
+\begin{itemize}[nosep]
+    \item 如果墙壁移开得极快（比粒子的``反应时间'' $\hbar/\Delta E$ 还快），粒子还没来得及``知道''墙壁已经变了，波函数保持原样。
+    \item 但新的盒子有自己的一套驻波模式。原来的波函数不再是新盒子的本征态，而是许多新本征态的叠加。
+    \item 如果此时测量能量，粒子会``坍缩''到某个新本征态上，每个态的概率由重叠积分决定。
+\end{itemize}
+
+\textbf{与相似模型的对比}：
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{对比维度} & \textbf{无限深势阱} & \textbf{谐振子} & \textbf{$\delta$ 势阱} \\
+\midrule
+势场形状 & 方阱（无限高壁） & 抛物线 $V\propto x^2$ & 点吸引势 \\
+能级规律 & $E_n\propto n^2$ & $E_n\propto n$（等间距） & 仅 1 个束缚态 \\
+波函数 & 正弦函数 & 厄米多项式$\times$高斯 & 指数衰减 \\
+边界条件 & $\psi=0$ 在边界 & $\psi\to0$ 在无穷远 & $\psi$ 连续，$\psi'$ 跃变 \\
+适用情境 & 金属中的自由电子（简化） & 晶格振动、电磁场模式 & 杂质束缚、接触势 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{推广方向}：
+\begin{itemize}[nosep]
+    \item 有限深势阱：存在离散能级 + 连续谱，波函数在阱外指数衰减（束缚态）或振荡（散射态）
+    \item 双势阱（氨分子）：对称/反对称能级劈裂，隧穿振荡周期
+    \item 周期势阱（Kronig-Penney）：能带结构，Bloch 定理
+    \item 含时势阱：参数缓慢变化时的绝热不变量（量子绝热定理）
+\end{itemize}
+\end{insightbox}
+
+% --------------------------------------------------------
+% 7. 推导附录
+% --------------------------------------------------------
+\begin{derivationbox}[推导细节（自我检验用）]
+\textbf{Step 1：本征函数求解}
+
+令 $k=\sqrt{2mE}/\hbar$，通解：$\phi(x)=A\sin kx+B\cos kx$。
+
+边界条件 $\phi(0)=0$：$B=0$。
+
+边界条件 $\phi(a)=0$：$A\sin ka=0$ $\Rightarrow$ $ka=n\pi$，$n=1,2,\ldots$
+
+故 $k_n=n\pi/a$，$E_n=\hbar^2k_n^2/(2m)=n^2\pi^2\hbar^2/(2ma^2)$。
+
+归一化：$\int_0^a|A|^2\sin^2(n\pi x/a)dx=|A|^2\cdot a/2=1$ $\Rightarrow$ $A=\sqrt{2/a}$。
+
+\textbf{Step 2：展开系数计算（积化和差法）}
+
+给定 $\psi(x)=A\sin\frac{5\pi x}{2a}\cos\frac{3\pi x}{2a}+A\sin\frac{\pi x}{a}\cos\frac{2\pi x}{a}$。
+
+第一项：$\sin\alpha\cos\beta=\frac12[\sin(\alpha+\beta)+\sin(\alpha-\beta)]$
+\[
+\sin\frac{5\pi x}{2a}\cos\frac{3\pi x}{2a}=\frac12\Bigl(\sin\frac{4\pi x}{a}+\sin\frac{\pi x}{a}\Bigr).
+\]
+
+第二项：
+\[
+\sin\frac{\pi x}{a}\cos\frac{2\pi x}{a}=\frac12\Bigl(\sin\frac{3\pi x}{a}+\sin\Bigl(-\frac{\pi x}{a}\Bigr)\Bigr)=\frac12\Bigl(\sin\frac{3\pi x}{a}-\sin\frac{\pi x}{a}\Bigr).
+\]
+
+合并：
+\[
+\psi(x)=\frac{A}{2}\Bigl(\sin\frac{4\pi x}{a}+\sin\frac{3\pi x}{a}\Bigr)=\frac{A}{2}\sqrt{\frac{a}{2}}\bigl(\phi_4(x)+\phi_3(x)\bigr).
+\]
+
+归一化：$|A/2|^2\cdot(a/2)\cdot(1+1)=1$ $\Rightarrow$ $A=2/\sqrt{a}$。
+
+最终：$\psi(x)=\frac{1}{\sqrt{2}}(\phi_3+\phi_4)$。
+
+\textbf{Step 3：突然近似重叠积分}
+
+原基态（宽度 $a$）：$\phi_1^{(a)}(x)=\sqrt{2/a}\sin(\pi x/a)$。
+
+新基态（宽度 $2a$）：$\tilde{\phi}_1(x)=\sqrt{1/a}\sin(\pi x/2a)$。
+
+重叠积分：
+\begin{align*}
+\tilde{c}_1&=\int_0^a\tilde{\phi}_1^*(x)\phi_1^{(a)}(x)dx\\
+&=\frac{\sqrt{2}}{a}\int_0^a\sin\frac{\pi x}{2a}\sin\frac{\pi x}{a}dx.
+\end{align*}
+
+积化和差：$\sin\alpha\sin\beta=\frac12[\cos(\alpha-\beta)-\cos(\alpha+\beta)]$
+\[
+\sin\frac{\pi x}{2a}\sin\frac{\pi x}{a}=\frac12\Bigl[\cos\Bigl(\frac{\pi x}{2a}\Bigr)-\cos\Bigl(\frac{3\pi x}{2a}\Bigr)\Bigr].
+\]
+
+积分：
+\[
+\int_0^a\cos\frac{\pi x}{2a}dx=\frac{2a}{\pi}\sin\frac{\pi}{2}=\frac{2a}{\pi},
+\quad
+\int_0^a\cos\frac{3\pi x}{2a}dx=\frac{2a}{3\pi}\sin\frac{3\pi}{2}=-\frac{2a}{3\pi}.
+\]
+
+故
+\[
+\tilde{c}_1=\frac{\sqrt{2}}{a}\cdot\frac12\Bigl(\frac{2a}{\pi}+\frac{2a}{3\pi}\Bigr)=\frac{\sqrt{2}}{a}\cdot\frac{4a}{3\pi}=\frac{4\sqrt{2}}{3\pi}.
+\]
+
+概率：
+\[
+P_1=|\tilde{c}_1|^2=\frac{32}{9\pi^2}\approx0.360.
+\]
+\end{derivationbox}
+
+\vspace{1em}

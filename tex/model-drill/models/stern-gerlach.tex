@@ -1,0 +1,259 @@
+% ============================================================
+% Model: 斯特恩-盖拉赫实验与自旋测量
+% ============================================================
+
+\section{斯特恩-盖拉赫实验与自旋测量}
+\label{sec:stern-gerlach}
+
+\begin{tipbox}[关键词标签]
+斯特恩-盖拉赫实验 · 自旋测量 · 磁矩 · 非均匀磁场 · 密度矩阵 · 极化矢量 · 量子测量
+\end{tipbox}
+
+% --------------------------------------------------------
+% 1. 模型定义框
+% --------------------------------------------------------
+\begin{modelbox}[模型：自旋-$1/2$ 在非均匀磁场中的偏转]
+\textbf{物理情境}：1922 年斯特恩-盖拉赫实验首次直接证实了电子自旋的存在。银原子束通过非均匀磁场后分裂为两束，对应自旋的两种可能取向。该实验是理解量子测量、态叠加和自旋物理的基础范例。
+
+\textbf{物理机制}：
+\begin{itemize}[nosep]
+    \item 磁偶极子在非均匀磁场中受力：$\mathbf{F}=\nabla(\boldsymbol{\mu}\cdot\mathbf{B})$
+    \item 沿 $z$ 方向梯度：$F_z=\mu_z\,\frac{\partial B_z}{\partial z}\equiv\mu_z B'$
+    \item 银原子自旋-$1/2$，磁矩 $\boldsymbol{\mu}=-g\frac{e}{2m_e}\mathbf{S}=-\mu_B\boldsymbol{\sigma}$（$g\approx2$）
+    \item $\mu_z$ 只有两个取值：$\pm\mu_B$（$\mu_B=\frac{e\hbar}{2m_e}$ 为玻尔磁子）
+\end{itemize}
+
+\textbf{实验装置参数}：
+\begin{itemize}[nosep]
+    \item 磁场区域长度 $d$，磁场梯度 $B'=\partial B_z/\partial z$
+    \item 原子质量 $M$，热运动速度 $v$（由 $\frac12Mv^2=\frac32k_BT$ 决定）
+    \item 通过时间 $t=d/v$
+\end{itemize}
+
+\textbf{密度矩阵描述}：
+\begin{itemize}[nosep]
+    \item 纯态：$\rho=|\psi\rangle\langle\psi|$，$\text{Tr}\rho^2=1$
+    \item 混合态：$\rho=\sum_i p_i|\psi_i\rangle\langle\psi_i|$，$\text{Tr}\rho^2<1$
+    \item 自旋-$1/2$：$\rho=\frac12(I+\mathbf{P}\cdot\boldsymbol{\sigma})$，$\mathbf{P}=\langle\boldsymbol{\sigma}\rangle$ 为极化矢量，$|\mathbf{P}|\leq1$
+\end{itemize}
+\end{modelbox}
+
+% --------------------------------------------------------
+% 2. 关键公式框
+% --------------------------------------------------------
+\begin{formulabox}[核心公式]
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{磁偶极子受力}：
+    \[
+    F_z=\mu_z\,B'=\pm\mu_B B'
+    \]
+    \texteq{$+$ 对应自旋向下（$S_z=-\hbar/2$，$\mu_z=+\mu_B$），$-$ 对应自旋向上}
+
+    \item \textbf{偏转位移}（经典轨迹近似）：
+    \[
+    s=\frac12 a_z t^2=\frac12\frac{\mu_B B'}{M}\Bigl(\frac{d}{v}\Bigr)^2
+    =\frac{\mu_B B' d^2}{6k_B T}
+    \]
+    \texteq{由 $Mv^2/2=3k_BT/2$ 消去 $v$；分裂间距 $=2|s|$}
+
+    \item \textbf{密度矩阵与极化矢量}：
+    \[
+    \rho=\frac12(I+\mathbf{P}\cdot\boldsymbol{\sigma})=\frac12\begin{pmatrix}1+P_z&P_x-iP_y\\P_x+iP_y&1-P_z\end{pmatrix}
+    \]
+    \texteq{$|\mathbf{P}|=1$：纯态；$|\mathbf{P}|<1$：混合态；$\mathbf{P}=0$：完全非极化}
+
+    \item \textbf{测量概率}：在 SG-$z$ 装置中测得自旋向上的概率：
+    \[
+    P(\uparrow_z)=\text{Tr}\bigl(\rho|\uparrow_z\rangle\langle\uparrow_z|\bigr)=\frac{1+P_z}{2}.
+    \]
+    \texteq{类似地，$P(\downarrow_z)=\frac{1-P_z}{2}$}
+
+    \item \textbf{SG 串级实验}（$z\to x\to z$）：
+    \begin{itemize}[nosep]
+        \item 第一级 SG-$z$：入射未极化束分裂为 $+$ 和 $-$ 两束
+        \item 第二级 SG-$x$：取 $z+$ 束，再次分裂为 $x+$ 和 $x-$（各 $50\%$）
+        \item 第三级 SG-$z$：取 $x+$ 束，\textbf{再次分裂为 $z+$ 和 $z-$（各 $50\%$）}！
+    \end{itemize}
+    \texteq{关键结论：$x$ 测量``破坏''了 $z$ 信息，中间测量使初态信息丢失}
+
+    \item \textbf{自旋沿任意方向}：沿 $\mathbf{n}=(\sin\theta\cos\phi,\sin\theta\sin\phi,\cos\theta)$ 的自旋本征态：
+    \[
+    |\uparrow_\mathbf{n}\rangle=\begin{pmatrix}\cos\frac{\theta}{2}\\e^{i\phi}\sin\frac{\theta}{2}\end{pmatrix},\quad
+    |\downarrow_\mathbf{n}\rangle=\begin{pmatrix}-e^{-i\phi}\sin\frac{\theta}{2}\\\cos\frac{\theta}{2}\end{pmatrix}.
+    \]
+\end{enumerate}
+\end{formulabox}
+
+% --------------------------------------------------------
+% 3. 训练点框
+% --------------------------------------------------------
+\begin{drillbox}[训练点与考法变体]
+\trainingpoint{1} \textbf{偏转位移计算}：给定磁场梯度 $B'$、磁场区域长度 $d$、原子质量 $M$ 和温度 $T$，计算分裂间距。注意：若原子处于不同能级（如激发态），有效磁矩可能不同。
+
+\trainingpoint{2} \textbf{密度矩阵与极化矢量互求}：给定 $2\times2$ 密度矩阵，求极化矢量 $\mathbf{P}$；或给定 $\mathbf{P}$，写出 $\rho$ 并判断是纯态还是混合态。
+
+\trainingpoint{3} \textbf{SG 串级实验分析}：给定三级 SG 装置的不同取向组合（如 $z\to x\to z$、$z\to z\to x$ 等），计算最终各出射束的强度比。关键是理解每次测量都是投影，中间测量会``破坏''之前的信息。
+
+\trainingpoint{4} \textbf{测量后态的确定}：SG-$z$ 测得 $+$ 后，系统坍缩到 $|\uparrow_z\rangle$。若紧接着通过 SG-$x$，求测得 $x+$ 和 $x-$ 的概率各为多少？$|\langle\uparrow_x|\uparrow_z\rangle|^2=1/2$。
+
+\trainingpoint{5} \textbf{部分极化入射}：入射束密度矩阵为 $\rho=\frac12(I+P_z\sigma_z)$（$0<P_z<1$），求 SG-$z$ 分裂后的两束强度比。答案：$I_+/I_-=(1+P_z)/(1-P_z)$。
+
+\trainingpoint{6} \textbf{自旋进动}：自旋-$1/2$ 在均匀磁场 $\mathbf{B}=(0,0,B)$ 中，哈密顿量 $H=-\boldsymbol{\mu}\cdot\mathbf{B}=\mu_B B\sigma_z$。初态 $|\uparrow_x\rangle$ 随时间演化：$|\psi(t)\rangle=\frac{1}{\sqrt{2}}(e^{-i\omega t}|\uparrow_z\rangle+e^{+i\omega t}|\downarrow_z\rangle)$，其中 $\omega=\mu_B B/\hbar$。计算 $\langle\sigma_x(t)\rangle=\cos(2\omega t)$，即自旋在 $xy$ 平面内以拉比频率 $2\omega$ 进动。
+\end{drillbox}
+
+% --------------------------------------------------------
+% 4. 解题技巧框
+% --------------------------------------------------------
+\begin{tipbox}[快速识别与解题技巧]
+\begin{itemize}
+    \item \examnote{识别标志}：题干出现``斯特恩-盖拉赫''''SG''''自旋测量''''磁矩''''非均匀磁场''''分裂''，立即定位本模型。
+    \item \examnote{SG 串级结果速查}：
+    \begin{center}
+    \begin{tabular}{lll}
+    \toprule
+    \textbf{串级配置} & \textbf{最终束数} & \textbf{强度比} \\
+    \midrule
+    $z$（未极化入射） & 2 & $1:1$ \\
+    $z\to x$（取 $z+$） & 2 & $1:1$ \\
+    $z\to x\to z$（取 $x+$） & 2 & $1:1$ \\
+    $z\to z$（取 $z+$） & 1 & 全为 $z+$ \\
+    $z\to x\to x$（取 $x+$） & 1 & 全为 $x+$ \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+    \item \examnote{密度矩阵纯态判据}：计算 $\text{Tr}\rho^2$。若 $=1$ 为纯态；若 $<1$ 为混合态。对自旋-$1/2$，$\text{Tr}\rho^2=\frac12(1+|\mathbf{P}|^2)$。
+    \item \examnote{极化矢量的几何意义}：$\mathbf{P}$ 指向自旋期望方向，长度 $|\mathbf{P}|$ 表示极化程度。$\mathbf{P}=(0,0,1)$ 对应 $|\uparrow_z\rangle$；$\mathbf{P}=(1,0,0)$ 对应 $|\uparrow_x\rangle$。
+    \item \examnote{测量是投影}：SG-$\mathbf{n}$ 测量将态投影到 $|\uparrow_\mathbf{n}\rangle\langle\uparrow_\mathbf{n}|$ 和 $|\downarrow_\mathbf{n}\rangle\langle\downarrow_\mathbf{n}|$ 上。未被选中的那束若被挡住，相当于对原态做了非完全测量（trace out）。
+    \item \examnote{玻尔磁子数值}：$\mu_B=\frac{e\hbar}{2m_e}\approx9.27\times10^{-24}\,\text{J/T}=5.79\times10^{-5}\,\text{eV/T}$。在典型实验室磁场（$B\sim1$ T）中，$\mu_B B\sim10^{-4}$ eV，远小于室温热能 $k_BT\sim0.025$ eV。
+\end{itemize}
+\end{tipbox}
+
+% --------------------------------------------------------
+% 5. 易错点框
+% --------------------------------------------------------
+\begin{errorbox}{常见失误与陷阱}
+\begin{itemize}
+    \item \textbf{偏转方向混淆}：电子电荷为负，磁矩 $\boldsymbol{\mu}=-g\frac{e}{2m}\mathbf{S}$，$\mu_z$ 与 $S_z$ 反号。$S_z=+\hbar/2$（自旋向上）对应 $\mu_z=-\mu_B$，受力向下。SG 实验中``自旋向上''的粒子偏转向下。
+    \item \textbf{SG 串级的信息丢失}：$z\to x\to z$ 串级中，虽然第一级选出了 $z+$，但第二级的 $x$ 测量``破坏''了 $z$ 信息，所以第三级仍分裂为两束。这不是``量子记忆''，而是测量导致的态坍缩和重新叠加。
+    \item \textbf{均匀 vs 非均匀磁场}：均匀磁场中磁偶极子只受力矩（进动），不受净力。SG 实验必须用非均匀磁场才能产生偏转。
+    \item \textbf{温度效应}：室温下银原子的热运动速度很高，偏转量很小（$s\sim0.1$ mm 量级）。实验需要在高真空和精细检测条件下进行。
+    \item \textbf{混合态 vs 叠加态}：未极化束是混合态（$\rho=I/2$，$\mathbf{P}=0$），不是 $|\uparrow_z\rangle$ 和 $|\downarrow_z\rangle$ 的叠加。叠加态是纯态（$\mathbf{P}\neq0$），测量时会有干涉效应；混合态无干涉。
+    \item \textbf{密度矩阵的时间演化}：$\rho(t)=U(t)\rho(0)U^\dagger(t)$，其中 $U=e^{-iHt/\hbar}$。对于混合态，每个纯态成分独立演化后重新求和。
+\end{itemize}
+\end{errorbox}
+
+% --------------------------------------------------------
+% 6. 物理图像与关联模型
+% --------------------------------------------------------
+\begin{insightbox}[物理图像与模型关联]
+\textbf{物理图像}：
+
+斯特恩-盖拉赫实验就像一台``自旋筛子''：
+\begin{itemize}[nosep]
+    \item 非均匀磁场是筛子，只让特定取向的自旋通过特定位置。
+    \item 未极化的原子束像一把``方向各异的指南针''，经过筛子后分成两堆：指北的和指南的。
+    \item 如果你把指北的那堆再经过一个横着的筛子（SG-$x$），它们又会分成指东和指西的两堆——因为指北并不意味着不能指东。
+    \item 如果你把指东的那堆再经过一个竖着的筛子（SG-$z$），它们又分成了指北和指南的两堆！指东的指南针中，$z$ 分量仍然可以是正也可以是负。
+    \item 这就是量子测量的核心：每次测量都是一次投影，测量某个量会``破坏''与之不对易的量的信息。
+\end{itemize}
+
+\textbf{与相似模型的对比}：
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{对比维度} & \textbf{SG 实验} & \textbf{偏振片} & \textbf{干涉仪} \\
+\midrule
+物理量 & 自旋取向 & 光偏振方向 & 路径选择 \\
+测量装置 & 非均匀磁场 & 偏振片 & 分束器 \\
+量子特性 & 两分立结果 & 两分立结果 & 相干叠加/路径 \\
+串级行为 & $z\to x\to z$ 再分裂 & 类似 & 路径可重组干涉 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{推广方向}：
+\begin{itemize}[nosep]
+    \item 核磁共振（NMR）：自旋在射频场中的受激跃迁，SG 思想的逆过程（用场操控自旋而非测量）
+    \item 量子擦除实验：通过擦除路径信息恢复干涉，展示互补性原理
+    \item 弱测量：对量子系统进行极微弱的耦合，获取部分信息而不完全破坏量子态
+    \item 量子计算中的读出：SG 型测量是量子比特状态读出的物理实现之一
+\end{itemize}
+\end{insightbox}
+
+% --------------------------------------------------------
+% 7. 推导附录
+% --------------------------------------------------------
+\begin{derivationbox}[推导细节（自我检验用）]
+\textbf{Step 1：偏转位移推导}
+
+原子在磁场区域受恒力 $F_z=\mu_z B'$（$z$ 方向梯度）。
+
+$z$ 方向运动方程：
+\[
+M\ddot{z}=\mu_z B'\quad\Rightarrow\quad z(t)=\frac12\frac{\mu_z B'}{M}t^2.
+\]
+（初速度 $v_z=0$，因为原子束沿 $x$ 方向入射）
+
+通过时间：$t=d/v$，其中 $d$ 为磁场区域长度，$v$ 为入射速度。
+
+由热运动：$\frac12Mv^2=\frac32k_BT$ $\Rightarrow$ $v=\sqrt{3k_BT/M}$。
+
+故
+\[
+s=\frac12\frac{\mu_z B'}{M}\frac{d^2}{v^2}=\frac{\mu_z B'd^2}{3Mv^2}
+=\frac{\mu_z B'd^2}{6k_BT}.
+\]
+
+对 $\mu_z=\pm\mu_B$，两束分别偏转 $\pm s$，分裂间距 $=2|s|=\frac{\mu_B B'd^2}{3k_BT}$。
+
+\textbf{Step 2：密度矩阵与极化矢量}
+
+任意 $2\times2$ 厄米矩阵可写为：
+\[
+\rho=\frac12(I+\mathbf{P}\cdot\boldsymbol{\sigma})=\frac12\begin{pmatrix}1+P_z&P_x-iP_y\\P_x+iP_y&1-P_z\end{pmatrix}.
+\]
+
+由 $\text{Tr}\rho=1$（自动满足）。
+
+$\text{Tr}\rho^2=\frac12(1+|\mathbf{P}|^2)$。纯态要求 $\text{Tr}\rho^2=1$ $\Rightarrow$ $|\mathbf{P}|=1$。
+
+$\langle\boldsymbol{\sigma}\rangle=\text{Tr}(\rho\boldsymbol{\sigma})=\mathbf{P}$（验证：$\text{Tr}(\sigma_i\sigma_j)=2\delta_{ij}$）。
+
+\textbf{Step 3：SG 串级 $z\to x\to z$}
+
+初态：未极化，$\rho=I/2$。
+
+第一级 SG-$z$：分裂为 $z+$ 和 $z-$，各 $50\%$。取 $z+$ 束，态为 $|\uparrow_z\rangle=\begin{pmatrix}1\\0\end{pmatrix}$。
+
+第二级 SG-$x$：$|\uparrow_z\rangle$ 用 $x$ 基展开：
+\[
+|\uparrow_z\rangle=\frac{1}{\sqrt{2}}(|\uparrow_x\rangle+|\downarrow_x\rangle).
+\]
+
+测得 $x+$ 和 $x-$ 各 $50\%$。取 $x+$ 束，态为 $|\uparrow_x\rangle=\frac{1}{\sqrt{2}}\begin{pmatrix}1\\1\end{pmatrix}$。
+
+第三级 SG-$z$：$|\uparrow_x\rangle$ 用 $z$ 基展开：
+\[
+|\uparrow_x\rangle=\frac{1}{\sqrt{2}}(|\uparrow_z\rangle+|\downarrow_z\rangle).
+\]
+
+测得 $z+$ 和 $z-$ 各 $50\%$。\textbf{尽管第一级已经选出了 $z+$，第三级仍分裂为两束}。
+
+\textbf{Step 4：自旋进动}
+
+均匀磁场 $\mathbf{B}=(0,0,B)$，$H=\mu_B B\sigma_z$（取 $g=2$）。
+
+演化算符：$U(t)=e^{-iHt/\hbar}=e^{-i\omega t\sigma_z}=\begin{pmatrix}e^{-i\omega t}&0\\0&e^{i\omega t}\end{pmatrix}$，$\omega=\mu_B B/\hbar$。
+
+初态 $|\psi(0)\rangle=|\uparrow_x\rangle=\frac{1}{\sqrt{2}}\begin{pmatrix}1\\1\end{pmatrix}$。
+
+$|\psi(t)\rangle=U(t)|\psi(0)\rangle=\frac{1}{\sqrt{2}}\begin{pmatrix}e^{-i\omega t}\\e^{i\omega t}\end{pmatrix}$.
+
+$\langle\sigma_x\rangle=\langle\psi(t)|\sigma_x|\psi(t)\rangle=\frac12(e^{i\omega t}e^{i\omega t}+e^{-i\omega t}e^{-i\omega t})=\cos(2\omega t)$。
+
+$\langle\sigma_y\rangle=\sin(2\omega t)$，$\langle\sigma_z\rangle=0$。
+
+极化矢量在 $xy$ 平面内以角频率 $2\omega$ 旋转——拉比进动。
+\end{derivationbox}
+
+\vspace{1em}
