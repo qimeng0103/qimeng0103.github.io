@@ -1,0 +1,207 @@
+% ============================================================
+% Model: 半导体费米能级的温度依赖
+% ============================================================
+
+\section{半导体费米能级的温度依赖}
+\label{sec:semiconductor-fermi}
+
+\begin{tipbox}[关键词标签]
+本征半导体 · 掺杂半导体 · 费米能级 · 载流子浓度 · 温度依赖 · 电离饱和本征三段论
+\end{tipbox}
+
+% --------------------------------------------------------
+% 1. 模型定义框
+% --------------------------------------------------------
+\begin{modelbox}[模型：半导体费米能级]
+\textbf{物理情境}：半导体的导电性由载流子浓度决定，而载流子浓度对费米能级 $E_F$ 指数敏感。$E_F$ 的位置随温度变化经历三个特征区域。
+
+\textbf{基本公式}：
+\begin{align*}
+n &= N_c\exp\Bigl(-\frac{E_c-E_F}{k_BT}\Bigr)=2\Bigl(\frac{m_e^*k_BT}{2\pi\hbar^2}\Bigr)^{3/2}\exp\Bigl(-\frac{E_c-E_F}{k_BT}\Bigr),\\
+p &= N_v\exp\Bigl(-\frac{E_F-E_v}{k_BT}\Bigr)=2\Bigl(\frac{m_h^*k_BT}{2\pi\hbar^2}\Bigr)^{3/2}\exp\Bigl(-\frac{E_F-E_v}{k_BT}\Bigr).
+\end{align*}
+
+\textbf{关键参数}：
+\begin{itemize}[nosep]
+    \item $E_c, E_v$：导带底、价带顶能量；$E_g=E_c-E_v$ 为禁带宽度
+    \item $N_c, N_v$：导带/价带有效态密度
+    \item $m_e^*, m_h^*$：电子/空穴有效质量
+    \item $n_i=\sqrt{np}=\sqrt{N_cN_v}\exp(-E_g/2k_BT)$：本征载流子浓度
+\end{itemize}
+
+\textbf{边界条件 / 约束}：
+\begin{itemize}[nosep]
+    \item 非简并条件：$E_c-E_F\gg k_BT$，$E_F-E_v\gg k_BT$（可用玻尔兹曼近似）
+    \item 电中性条件：$n+N_A^-=p+N_D^+$（一般情形）
+\end{itemize}
+\end{modelbox}
+
+% --------------------------------------------------------
+% 2. 关键公式框
+% --------------------------------------------------------
+\begin{formulabox}[核心公式]
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{本征半导体费米能级}：
+    \[
+    E_F=E_i=\frac{E_c+E_v}{2}+\frac{3}{4}k_BT\ln\frac{m_h^*}{m_e^*}
+    \]
+    \texteq{若 $m_h^*=m_e^*$，则 $E_F$ 精确位于禁带中央}
+
+    \item \textbf{本征载流子浓度}：
+    \[
+    n_i=p_i=\sqrt{N_cN_v}\exp\Bigl(-\frac{E_g}{2k_BT}\Bigr)
+    \propto T^{3/2}e^{-E_g/2k_BT}
+    \]
+
+    \item \textbf{n 型掺杂（施主浓度 $N_D$）三段论}：
+    \begin{itemize}[nosep]
+        \item \textbf{低温弱电离区}（$k_BT\ll E_D$）：$n\approx\sqrt{\frac{N_cN_D}{2}}e^{-(E_c-E_D)/2k_BT}$，$E_F$ 在 $E_D$ 与 $E_c$ 之间
+        \item \textbf{饱和区}（$E_D\ll k_BT\ll E_g/2$）：$n\approx N_D$（施主全部电离），$E_F$ 下移靠近 $E_i$
+        \item \textbf{本征区}（$k_BT\sim E_g/2$）：$n\approx p\approx n_i\gg N_D$，$E_F\to E_i$
+    \end{itemize}
+
+    \item \textbf{p 型掺杂}：对称地，$E_F$ 从 $E_A$ 附近随温度上升移向 $E_i$。
+\end{enumerate}
+\end{formulabox}
+
+% --------------------------------------------------------
+% 3. 训练点框
+% --------------------------------------------------------
+\begin{drillbox}[训练点与考法变体]
+\trainingpoint{1} \textbf{本征 $E_F$ 位置推导}：由 $n=p$ 和玻尔兹曼分布，严格推导出 $E_F$ 表达式，讨论 $m_h^*/m_e^*$ 的影响。
+
+\trainingpoint{2} \textbf{掺杂浓度估算}：给定 $n$（或电阻率）和 $T$，反推掺杂浓度 $N_D$ 或 $N_A$。
+
+\trainingpoint{3} \textbf{温度分段判断}：给定温度和掺杂浓度，判断处于哪个温区（弱电离/饱和/本征），写出对应的载流子浓度公式。
+
+\trainingpoint{4} \textbf{简并半导体}：当掺杂浓度极高或温度极低时，$E_F$ 进入导带（n 型）或价带（p 型），玻尔兹曼近似失效，需用费米--狄拉克积分。
+
+\trainingpoint{5} \textbf{补偿掺杂}：同时存在施主和受主时，有效掺杂浓度为 $|N_D-N_A|$，$E_F$ 由净掺杂决定。
+\end{drillbox}
+
+% --------------------------------------------------------
+% 4. 解题技巧框
+% --------------------------------------------------------
+\begin{tipbox}[快速识别与解题技巧]
+\begin{itemize}
+    \item \examnote{识别标志}：题干出现``费米能级位置''''随温度变化''''本征/掺杂半导体''，立即定位本模型。
+    \item \examnote{三段论速记}：
+    \begin{center}
+    \begin{tabular}{ccc}
+    \toprule
+    \textbf{温区} & \textbf{n 型 $E_F$ 位置} & \textbf{主导载流子} \\
+    \midrule
+    低温 & $E_D$ 与 $E_c$ 之间 & 施主弱电离 \\
+    中温（饱和） & 靠近 $E_i$ 上方 & $n=N_D$ \\
+    高温 & $E_i$（禁带中央） & 本征激发 \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+    \item \examnote{图像法}：画 $E_F(T)$ 曲线——n 型从高温侧的 $E_i$ 开始，随 $T$ 降低先上升（进入饱和区），再趋于 $E_D$ 与 $E_c$ 中点附近（弱电离区）。
+    \item \examnote{对称性}：p 型的 $E_F(T)$ 曲线与 n 型关于 $E_i$ 镜像对称。
+    \item \examnote{量纲检查}：$k_BT$ 在室温 ($300\,\text{K}$) 约为 $0.026\,\text{eV}$，是判断温区的关键标尺。
+\end{itemize}
+\end{tipbox}
+
+% --------------------------------------------------------
+% 5. 易错点框
+% --------------------------------------------------------
+\begin{errorbox}{常见失误与陷阱}
+\begin{itemize}
+    \item \textbf{公式混淆}：不要把本征公式 $n_i=\sqrt{N_cN_v}e^{-E_g/2k_BT}$ 与掺杂公式 $n=N_ce^{-(E_c-E_F)/k_BT}$ 混用。前者与 $E_F$ 无关，后者显含 $E_F$。
+    \item \textbf{电中性条件}：n 型半导体在饱和区的电中性是 $n=N_D^++p$，不要漏掉 $p$。只有当 $N_D\gg n_i$ 时才有 $n\approx N_D$。
+    \item \textbf{温度方向}：$T$ 升高时，n 型 $E_F$ \textbf{下降}（移向 $E_i$），不要记反。
+    \item \textbf{有效质量对数项}：$\frac{3}{4}k_BT\ln(m_h^*/m_e^*)$ 通常很小（$\sim$ 几 meV），但若 $m_h^*/m_e^*\gg1$ 或 $\ll1$ 时不可忽略。
+    \item \textbf{施主电离能}：$E_D=E_c-E_D^{\text{level}}$ 是施主能级到导带底的距离，典型值 $10\sim50\,\text{meV}$，远小于 $E_g$。
+\end{itemize}
+\end{errorbox}
+
+% --------------------------------------------------------
+% 6. 物理图像与关联模型
+% --------------------------------------------------------
+\begin{insightbox}[物理图像与模型关联]
+\textbf{物理图像}：
+
+掺杂半导体的 $E_F(T)$ 行为可以类比为一个``水位调节器''：
+\begin{itemize}[nosep]
+    \item \textbf{低温}：施主能级就像悬在导带底下方的水龙头，只有少量水滴（电子）滴落到导带，$E_F$ 靠近水龙头。
+    \item \textbf{中温}：水龙头完全打开，所有施主电子都进入导带，$E_F$ 被大量电子``压''向禁带中央。
+    \item \textbf{高温}：本征激发产生大量电子--空穴对，外来的 $N_D$ 电子被``稀释''，$E_F$ 回归禁带中央。
+\end{itemize}
+
+\textbf{与相似模型的对比}：
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{对比维度} & \textbf{本征半导体} & \textbf{金属} \\
+\midrule
+$E_F$ 位置 & 禁带中央附近 & 导带内（费米面） \\
+载流子来源 & 热激发 $e^{-E_g/2k_BT}$ & 费米面附近电子 \\
+温度依赖性 & $n_i$ 指数敏感 & 电阻率 $\rho\propto T$ \\
+适用统计 & 玻尔兹曼（非简并） & 费米--狄拉克（简并） \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{推广方向}：
+\begin{itemize}[nosep]
+    \item 简并半导体：$E_F$ 进入能带，需用费米--狄拉克积分 $F_{1/2}(\eta)$
+    \item 异质结：两种半导体接触，$E_F$ 统一导致能带弯曲
+    \item 量子阱：二维态密度 $g_{2D}(E)=$ 常数，$n\propto k_BT\ln(1+e^{(E_F-E_c)/k_BT})$
+\end{itemize}
+\end{insightbox}
+
+% --------------------------------------------------------
+% 7. 推导附录
+% --------------------------------------------------------
+\begin{derivationbox}[推导细节（自我检验用）]
+\textbf{Step 1：本征 $E_F$ 推导}
+
+由 $n=p$ 和玻尔兹曼分布：
+\[
+N_c\exp\Bigl(-\frac{E_c-E_F}{k_BT}\Bigr)=N_v\exp\Bigl(-\frac{E_F-E_v}{k_BT}\Bigr).
+\]
+
+取对数：
+\[
+\ln N_c-\frac{E_c-E_F}{k_BT}=\ln N_v-\frac{E_F-E_v}{k_BT}.
+\]
+
+整理：
+\[
+\frac{2E_F-(E_c+E_v)}{k_BT}=\ln\frac{N_v}{N_c}=\ln\Bigl(\frac{m_h^*}{m_e^*}\Bigr)^{3/2}=\frac{3}{2}\ln\frac{m_h^*}{m_e^*}.
+\]
+
+故
+\[
+E_F=\frac{E_c+E_v}{2}+\frac{3}{4}k_BT\ln\frac{m_h^*}{m_e^*}.
+\]
+
+\textbf{Step 2：n 型低温弱电离区}
+
+施主电离平衡：$N_D=N_D^++n$，$n=N_c e^{-(E_c-E_F)/k_BT}$，$N_D^+=N_D/[1+2e^{(E_F-E_D)/k_BT}]$。
+
+在 $k_BT\ll E_c-E_D$ 时，$N_D^+\ll N_D$，近似有
+\[
+n\approx N_D^+\approx\frac{N_D}{2}e^{-(E_D-E_F)/k_BT}.
+\]
+
+联立消去 $E_F$：
+\[
+n\cdot n=N_cn\cdot\frac{N_D}{2}e^{-(E_c-E_D)/k_BT}
+\quad\Rightarrow\quad
+n\approx\sqrt{\frac{N_cN_D}{2}}\exp\Bigl(-\frac{E_c-E_D}{2k_BT}\Bigr).
+\]
+
+\textbf{Step 3：饱和区}
+
+当 $T$ 升高到 $k_BT\gg E_c-E_D$ 时，施主全部电离 $N_D^+=N_D$。若 $N_D\gg n_i$，则电中性条件 $n=N_D+p\approx N_D$，$E_F$ 由
+\[
+N_D=N_ce^{-(E_c-E_F)/k_BT}
+\quad\Rightarrow\quad
+E_F=E_c-k_BT\ln\frac{N_c}{N_D}
+\]
+给出，随 $T$ 升高而下降。
+\end{derivationbox}
+
+\vspace{1em}

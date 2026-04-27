@@ -1,0 +1,203 @@
+% ============================================================
+% Model: 体心立方紧束缚 s 带
+% ============================================================
+
+\section{体心立方紧束缚 s 带}
+\label{sec:tight-binding-bcc}
+
+\begin{tipbox}[关键词标签]
+紧束缚近似 · BCC · s 态能带 · 有效质量 · 能带极值 · 余弦乘积
+\end{tipbox}
+
+% --------------------------------------------------------
+% 1. 模型定义框
+% --------------------------------------------------------
+\begin{modelbox}[模型：BCC 紧束缚 s 带]
+\textbf{物理情境}：孤立原子 s 能级在晶格中因相邻原子波函数交叠展宽为能带。BCC 结构每个原子有 8 个最近邻，位于体对角方向。
+
+\textbf{紧束缚哈密顿量}：
+\[
+\hat{H}=\sum_{i}\varepsilon_s|i\rangle\langle i|-\sum_{\langle i,j\rangle}\gamma\bigl(|i\rangle\langle j|+|j\rangle\langle i|\bigr)
+\]
+
+\textbf{关键参数}：
+\begin{itemize}[nosep]
+    \item $\varepsilon_s$：孤立原子 s 能级
+    \item $J_0$（或 $\beta$）：在位能修正（晶体场、自身交叠）
+    \item $J_1$（或 $\gamma$）：最近邻跳跃积分（交叠积分），$J_1>0$ 时带底在 $\Gamma$
+    \item $a$：立方胞边长
+\end{itemize}
+
+\textbf{边界条件 / 约束}：
+\begin{itemize}[nosep]
+    \item 只考虑最近邻跳跃
+    \item s 态波函数球对称，所有最近邻 $J_1$ 相同
+    \item 周期边界条件
+\end{itemize}
+\end{modelbox}
+
+% --------------------------------------------------------
+% 2. 关键公式框
+% --------------------------------------------------------
+\begin{formulabox}[核心公式]
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{BCC s 带能带}：
+    \[
+    E(\mathbf{k})=E_0-8J_1\cos\frac{k_xa}{2}\cos\frac{k_ya}{2}\cos\frac{k_za}{2},
+    \qquad E_0=\varepsilon_s-J_0
+    \]
+    \texteq{$J_1>0$ 时带底在 $\Gamma$，带顶在 $H$ 点 $(2\pi/a,0,0)$}
+
+    \item \textbf{带底 ($\Gamma$ 点)}：
+    \[
+    E_{\min}=E_0-8J_1,\qquad m^*_{\text{底}}=\frac{\hbar^2}{2J_1a^2}>0
+    \]
+    \texteq{各向同性，$m^*_x=m^*_y=m^*_z$}
+
+    \item \textbf{带顶 ($H$ 点)}：
+    \[
+    E_{\max}=E_0+8J_1,\qquad m^*_{\text{顶}}=-\frac{\hbar^2}{2J_1a^2}<0
+    \]
+    \texteq{各向同性（对 BCC s 带而言）}
+
+    \item \textbf{能带宽度}：
+    \[
+    \Delta E=E_{\max}-E_{\min}=16J_1
+    \]
+
+    \item \textbf{沿 $[100]$ 方向 ($k_y=k_z=0$)}：
+    \[
+    E(k)=E_0-8J_1\cos\frac{ka}{2},\qquad 0\le k\le\frac{2\pi}{a}
+    \]
+    \texteq{单调上升，带底 $k=0$，带顶 $k=2\pi/a$}
+\end{enumerate}
+\end{formulabox}
+
+% --------------------------------------------------------
+% 3. 训练点框
+% --------------------------------------------------------
+\begin{drillbox}[训练点与考法变体]
+\trainingpoint{1} \textbf{直接写能带}：给定晶体结构（BCC/FCC/SC），写出最近邻坐标，求和得到 $E(\mathbf{k})$。
+
+\trainingpoint{2} \textbf{有效质量计算}：在带底/带顶/鞍点展开 $E(\mathbf{k})$ 到二阶，对比 $E=\hbar^2k^2/(2m^*)$，提取有效质量张量。
+
+\trainingpoint{3} \textbf{能带宽度与态密度}：由 $E_{\max}-E_{\min}$ 估算 $J_1$，或用紧束缚拟合实验能带。
+
+\trainingpoint{4} \textbf{特殊方向能带图}：沿高对称方向（$\Gamma\to H\to N\to\Gamma\to P$）画出 $E(k)$ 曲线。
+
+\trainingpoint{5} \textbf{与近自由电子对比}：紧束缚能带在布里渊区中心附近近似抛物线（有效质量），边界处由余弦函数自然连接；近自由电子则在边界处出现能隙。
+\end{drillbox}
+
+% --------------------------------------------------------
+% 4. 解题技巧框
+% --------------------------------------------------------
+\begin{tipbox}[快速识别与解题技巧]
+\begin{itemize}
+    \item \examnote{识别标志}：题干出现``紧束缚''''s 态''''最近邻跳跃''''能带表达式''，立即定位本模型。
+    \item \examnote{8 个最近邻速记}：BCC 最近邻坐标为 $(\pm a/2,\pm a/2,\pm a/2)$ 的全部 8 种符号组合。
+    \item \examnote{求和技巧}：
+    \[
+    \sum_{(\pm,\pm,\pm)}e^{i\frac{a}{2}(\pm k_x\pm k_y\pm k_z)}=8\cos\frac{k_xa}{2}\cos\frac{k_ya}{2}\cos\frac{k_za}{2}
+    \]
+    考场上直接写出结果，不必逐项展开。
+    \item \examnote{有效质量符号}：带底曲率为正，$m^*>0$（电子）；带顶曲率为负，$m^*<0$（空穴）。
+    \item \examnote{量纲检查}：$[J_1]=[E]$，$[\hbar^2/(J_1a^2)]=[M]$，有效质量必须是质量量纲。
+\end{itemize}
+\end{tipbox}
+
+% --------------------------------------------------------
+% 5. 易错点框
+% --------------------------------------------------------
+\begin{errorbox}{常见失误与陷阱}
+\begin{itemize}
+    \item \textbf{坐标错误}：BCC 最近邻是体对角方向 $(\pm a/2,\pm a/2,\pm a/2)$，不是面心方向 $(\pm a/2,\pm a/2,0)$（那是 FCC 的最近邻）。
+    \item \textbf{能带顶位置}：BCC s 带的带顶在 $H$ 点 $(2\pi/a,0,0)$，不是 $N$ 点 $(\pi/a,\pi/a,0)$。在 $H$ 点三个余弦因子分别为 $\cos\pi=-1$，$\cos0=1$，$\cos0=1$，乘积为 $-1$。
+    \item \textbf{展开变量}：在 $H$ 点展开时，应设 $k_x=2\pi/a+\delta k_x$，$k_y=\delta k_y$，$k_z=\delta k_z$，用 $\cos(\pi+\delta)\approx-1+\delta^2/2$。
+    \item \textbf{有效质量张量}：$m^*$ 一般是张量，$1/m^*_{\alpha\beta}=\frac{1}{\hbar^2}\frac{\partial^2E}{\partial k_\alpha\partial k_\beta}$。对各向同性点可简化为标量。
+    \item \textbf{费米面形状}：Na（BCC，单价）的 $k_F$ 较小，费米面近似球面；若电子浓度增加，费米面会触及布里渊区边界，发生能带交叠。
+\end{itemize}
+\end{errorbox}
+
+% --------------------------------------------------------
+% 6. 物理图像与关联模型
+% --------------------------------------------------------
+\begin{insightbox}[物理图像与模型关联]
+\textbf{物理图像}：
+
+紧束缚模型把能带看作是孤立原子能级在邻原子微扰下的展宽。
+\begin{itemize}[nosep]
+    \item $J_1=0$（无交叠）：能带退化为离散的原子能级 $E_0$。
+    \item $J_1>0$：原子波函数交叠导致能级展宽成带宽 $16J_1$ 的能带。$J_1$ 越大，电子越``离域''，能带越宽。
+\end{itemize}
+
+\textbf{与相似模型的对比}：
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{对比维度} & \textbf{紧束缚} & \textbf{近自由电子} & \textbf{自由电子} \\
+\midrule
+出发极限 & 原子极限（弱交叠） & 自由电子（弱势场） & 无势场 \\
+能带来源 & 原子能级展宽 & 自由电子抛物线在边界打开能隙 & 单一抛物线 \\
+波函数 & 原子轨道线性组合 & 平面波加微小修正 & 平面波 \\
+适用材料 & 过渡金属 d 带、共价晶体 & 简单金属（Na, Al） & 理想电子气 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{推广方向}：
+\begin{itemize}[nosep]
+    \item p/d 轨道：引入轨道角动量，能带出现各向异性（如 $t_{2g}$ 与 $e_g$ 分裂）
+    \item 次近邻：$E(\mathbf{k})$ 中出现额外余弦项，能带形状改变
+    \item 自旋--轨道耦合：能带发生劈裂（如拓扑绝缘体表面态）
+\end{itemize}
+\end{insightbox}
+
+% --------------------------------------------------------
+% 7. 推导附录
+% --------------------------------------------------------
+\begin{derivationbox}[推导细节（自我检验用）]
+\textbf{Step 1：最近邻求和}
+
+BCC 最近邻 $\mathbf{R}=\frac{a}{2}(\pm1,\pm1,\pm1)$，共 8 个。
+
+\begin{align*}
+\sum_{\mathbf{R}}e^{i\mathbf{k}\cdot\mathbf{R}}
+&=\sum_{s_x,s_y,s_z=\pm1}e^{i\frac{a}{2}(s_xk_x+s_yk_y+s_zk_z)}\\
+&=\Bigl(e^{i\frac{k_xa}{2}}+e^{-i\frac{k_xa}{2}}\Bigr)
+\Bigl(e^{i\frac{k_ya}{2}}+e^{-i\frac{k_ya}{2}}\Bigr)
+\Bigl(e^{i\frac{k_za}{2}}+e^{-i\frac{k_za}{2}}\Bigr)\\
+&=8\cos\frac{k_xa}{2}\cos\frac{k_ya}{2}\cos\frac{k_za}{2}.
+\end{align*}
+
+\textbf{Step 2：能带表达式}
+
+$E(\mathbf{k})=\varepsilon_s-J_0-J_1\sum_{\mathbf{R}}e^{i\mathbf{k}\cdot\mathbf{R}}
+=E_0-8J_1\cos\frac{k_xa}{2}\cos\frac{k_ya}{2}\cos\frac{k_za}{2}$。
+
+\textbf{Step 3：带底有效质量}
+
+在 $\Gamma$ 点附近，$\cos\theta\approx1-\theta^2/2$：
+\[
+E\approx E_0-8J_1\Bigl(1-\frac{k_x^2a^2}{8}\Bigr)\Bigl(1-\frac{k_y^2a^2}{8}\Bigr)\Bigl(1-\frac{k_z^2a^2}{8}\Bigr)
+\approx E_{\min}+J_1a^2(k_x^2+k_y^2+k_z^2).
+\]
+
+对比 $E=E_{\min}+\frac{\hbar^2k^2}{2m^*}$，得 $m^*_{\text{底}}=\frac{\hbar^2}{2J_1a^2}$。
+
+\textbf{Step 4：带顶有效质量}
+
+在 $H$ 点 $k_x=2\pi/a$，$\cos(k_xa/2)=\cos\pi=-1$。设 $k_x=2\pi/a+\delta k_x$，$k_y=\delta k_y$，$k_z=\delta k_z$：
+\[
+\cos\frac{k_xa}{2}=\cos\Bigl(\pi+\frac{\delta k_x a}{2}\Bigr)\approx-1+\frac{(\delta k_x)^2a^2}{8}.
+\]
+
+于是
+\[
+E\approx E_0-8J_1\Bigl(-1+\frac{(\delta k_x)^2a^2}{8}\Bigr)\Bigl(1-\frac{(\delta k_y)^2a^2}{8}\Bigr)\Bigl(1-\frac{(\delta k_z)^2a^2}{8}\Bigr)
+\approx E_{\max}-J_1a^2\bigl[(\delta k_x)^2+(\delta k_y)^2+(\delta k_z)^2\bigr].
+\]
+
+对比 $E=E_{\max}+\frac{\hbar^2(\delta k)^2}{2m^*}$，得 $m^*_{\text{顶}}=-\frac{\hbar^2}{2J_1a^2}$。
+\end{derivationbox}
+
+\vspace{1em}

@@ -1,0 +1,220 @@
+% ============================================================
+% Model: 一维满带空穴六要素
+% ============================================================
+
+\section{一维满带空穴六要素}
+\label{sec:hole-concept}
+
+\begin{tipbox}[关键词标签]
+空穴 · 有效质量 · 准动量 · 满带 · 电子空缺 · 正电荷 · 带顶
+\end{tipbox}
+
+% --------------------------------------------------------
+% 1. 模型定义框
+% --------------------------------------------------------
+\begin{modelbox}[模型：一维满带中的空穴]
+\textbf{物理情境}：当能带被电子几乎填满时，少数电子从价带顶被激发到导带，留下的空态可等效为带正电的准粒子——空穴。空穴是描述价带集体运动的便捷方式。
+
+\textbf{空穴定义}：设满带总波矢为零（对称填充）。从波矢 $k_e$ 处移走一个电子后，系统的总波矢为 $-k_e$。定义空穴波矢 $k_h=-k_e$，使系统波矢可写为 $k_h$。
+
+\textbf{关键参数}：
+\begin{itemize}[nosep]
+    \item $k_e, E_e, m_e^*, v_e, p_e$：被移走电子的各物理量
+    \item $k_h, E_h, m_h^*, v_h, p_h$：空穴的对应物理量
+    \item 外加电场 $\mathcal{E}$（避免与能量 $E$ 混淆）
+\end{itemize}
+
+\textbf{核心对应关系}：
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+\textbf{物理量} & \textbf{电子} & \textbf{空穴} \\
+\midrule
+波矢 & $k_e$ & $k_h=-k_e$ \\
+电荷 & $-e$ & $+e$ \\
+能量 & $E_e(k_e)$ & $E_h=-E_e(k_e)$ \\
+速度 & $v_e=\frac{1}{\hbar}\frac{\dd E_e}{\dd k_e}$ & $v_h=v_e$ \\
+有效质量 & $m_e^*=\hbar^2\bigl(\frac{\dd^2E_e}{\dd k_e^2}\bigr)^{-1}$ & $m_h^*=-m_e^*$ \\
+准动量 & $p_e=\hbar k_e$ & $p_h=\hbar k_h=-p_e$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{modelbox}
+
+% --------------------------------------------------------
+% 2. 关键公式框
+% --------------------------------------------------------
+\begin{formulabox}[核心公式]
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{空穴波矢}：
+    \[
+    k_h=-k_e
+    \]
+    \texteq{满带总动量为零，移走电子后系统动量等于 $-k_e$}
+
+    \item \textbf{空穴有效质量}：
+    \[
+    m_h^*=-m_e^*=-\hbar^2\Bigl(\frac{\dd^2E_e}{\dd k_e^2}\Bigr)^{-1}
+    \]
+    \texteq{能带顶 $m_e^*<0$，故 $m_h^*>0$，空穴表现如同正质量正电荷粒子}
+
+    \item \textbf{空穴速度}：
+    \[
+    v_h=v_e=\frac{1}{\hbar}\frac{\dd E_e}{\dd k_e}\bigg|_{k_e}
+    \]
+    \texteq{速度不变，因为 $E_h(k_h)=-E_e(-k_h)$ 对 $k_h$ 求导后符号抵消}
+
+    \item \textbf{空穴准动量}：
+    \[
+    p_h=\hbar k_h=-\hbar k_e=-p_e
+    \]
+
+    \item \textbf{空穴能量}：
+    \[
+    E_h=-E_e(k_e)=-E_e(-k_h)
+    \]
+    \texteq{以满带能量为零点，移走电子相当于``增加''了 $-E_e$ 的能量}
+
+    \item \textbf{外场下准动量变化}：
+    \[
+    \frac{\dd p_h}{\dd t}=+e\mathcal{E}\quad(\text{对比电子：}\frac{\dd p_e}{\dd t}=-e\mathcal{E})
+    \]
+    \texteq{空穴带正电，受力方向与电场相同}
+\end{enumerate}
+\end{formulabox}
+
+% --------------------------------------------------------
+% 3. 训练点框
+% --------------------------------------------------------
+\begin{drillbox}[训练点与考法变体]
+\trainingpoint{1} \textbf{六要素全算}：给定 $E(k)$ 和移走电子的位置 $k_e$，依次计算 $k_h, m_h^*, v_h, p_h, E_h, \dd p_h/\dd t$。
+
+\trainingpoint{2} \textbf{有效质量符号判断}：给定 $E(k)$ 曲线，判断某 $k$ 点电子有效质量正负，进而确定空穴有效质量正负。
+
+\trainingpoint{3} \textbf{速度方向判断}：已知电子速度方向，判断空穴速度方向（相同），但电流方向由正电荷运动决定。
+
+\trainingpoint{4} \textbf{与导带电子对比}：同一能带中，导带底的电子与价带顶的空穴，对比 $m^*, v, E$ 的异同。
+
+\trainingpoint{5} \textbf{外场漂移}：在电场/磁场中，分别写出电子和空穴的运动方程，验证霍尔效应中 n 型与 p 型的霍尔系数符号相反。
+\end{drillbox}
+
+% --------------------------------------------------------
+% 4. 解题技巧框
+% --------------------------------------------------------
+\begin{tipbox}[快速识别与解题技巧]
+\begin{itemize}
+    \item \examnote{识别标志}：题干出现``满带''''移走电子''''产生空穴''''价带顶''，立即定位空穴六要素。
+    \item \examnote{六要素速查卡}：
+    \begin{center}
+    \fbox{\parbox{0.9\linewidth}{\centering
+    \textbf{空穴 = ``电子的反面''，但速度保留}\\[2pt]
+    $k_h=-k_e$\quad$E_h=-E_e$\quad$p_h=-p_e$\\[2pt]
+    $m_h^*=-m_e^*$\quad$v_h=v_e$\quad$\dot{p}_h=+e\mathcal{E}$
+    }}
+    \end{center}
+    \item \examnote{有效质量记忆}：能带底 $m_e^*>0$（电子），$m_h^*<0$（无物理空穴）；能带顶 $m_e^*<0$（电子），$m_h^*>0$（真实空穴）。只有 $m_h^*>0$ 的空穴才是稳定的准粒子。
+    \item \examnote{能量参考点}：计算 $E_h$ 时，必须明确以满带能量为零点。若 $E(k)$ 表达式以导带底为参考，需先换算。
+    \item \examnote{量纲检查}：$[m^*]=[M]$，$[p]=[M\cdot L/T]$，$[E]=[M\cdot L^2/T^2]$，$[v]=[L/T]$。
+\end{itemize}
+\end{tipbox}
+
+% --------------------------------------------------------
+% 5. 易错点框
+% --------------------------------------------------------
+\begin{errorbox}{常见失误与陷阱}
+\begin{itemize}
+    \item \textbf{速度方向混淆}：电子从价带顶被激发后向更高 $k$ 运动（若 $k_e>0$），空穴 $k_h=-k_e<0$。但 $v_h=v_e$，两者速度方向相同。
+    \item \textbf{能量符号}：$E_h=-E_e$ 是以满带为零点的结果。若 $E_e<0$（价带顶通常取为能量零点以下），则 $E_h>0$，表示移走电子需要输入能量。
+    \item \textbf{有效质量推导}：$m_h^*=-m_e^*$ 的严格推导需要用到 $k_h=-k_e$ 和链式法则：
+    \[
+    \frac{\dd^2E_h}{\dd k_h^2}=\frac{\dd^2(-E_e)}{\dd(-k_e)^2}=\frac{\dd^2(-E_e)}{\dd k_e^2}=-\frac{\dd^2E_e}{\dd k_e^2}.
+    \]
+    不要凭直觉直接写正负号。
+    \item \textbf{准动量变化率}：电子 $\dot{p}_e=-e\mathcal{E}$，空穴 $\dot{p}_h=+e\mathcal{E}$。注意电场力对正/负电荷方向相反。
+    \item \textbf{一维 vs 三维}：一维中 $m^*$ 是标量；三维中 $m^*$ 是张量，$1/m^*_{\alpha\beta}=\frac{1}{\hbar^2}\frac{\partial^2E}{\partial k_\alpha\partial k_\beta}$。
+\end{itemize}
+\end{errorbox}
+
+% --------------------------------------------------------
+% 6. 物理图像与关联模型
+% --------------------------------------------------------
+\begin{insightbox}[物理图像与模型关联]
+\textbf{物理图像}：
+
+想象一个坐满人的剧场（满带）：
+\begin{itemize}[nosep]
+    \item \textbf{电子}：一个观众从座位 $k_e$ 站起来走到后台（被激发）。
+    \item \textbf{空穴}：剩下的观众看到的不是``某人走了''，而是``某个座位上出现了一个空位''。这个空位的运动（被后方观众填补）比追踪每个观众的位置更容易描述。
+    \item \textbf{正电荷}：空位向前移动时，实际上是后方的人依次向前补位——等效于一个``正电荷''在向前移动。
+\end{itemize}
+
+\textbf{与相似模型的对比}：
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{对比维度} & \textbf{导带电子} & \textbf{价带空穴} \\
+\midrule
+电荷 & $-e$ & $+e$ \\
+能带位置 & 导带底（$m^*>0$） & 价带顶（$m^*>0$） \\
+能量参考 & $E_c$ 以上 & $E_v$ 以下 \\
+运动方程 & $\dot{p}=-e\mathcal{E}$ & $\dot{p}=+e\mathcal{E}$ \\
+统计分布 & 费米--狄拉克 & 费米--狄拉克（空态） \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{推广方向}：
+\begin{itemize}[nosep]
+    \item 磁场中的空穴：朗道能级 $E_n=\hbar\omega_c(n+1/2)$，$\omega_c=eB/m_h^*c$
+    \item 激子：电子--空穴束缚态，类似氢原子，能量 $E_n=-\frac{\mu e^4}{2\hbar^2\varepsilon^2n^2}$
+    \item 极化子：电子/空穴与晶格极化场耦合形成的准粒子
+\end{itemize}
+\end{insightbox}
+
+% --------------------------------------------------------
+% 7. 推导附录
+% --------------------------------------------------------
+\begin{derivationbox}[推导细节（自我检验用）]
+\textbf{Step 1：空穴速度}
+
+由 $k_h=-k_e$，$E_h(k_h)=-E_e(-k_h)=-E_e(k_e)$。
+
+\[
+v_h=\frac{1}{\hbar}\frac{\dd E_h}{\dd k_h}=\frac{1}{\hbar}\frac{\dd(-E_e)}{\dd(-k_e)}=\frac{1}{\hbar}\frac{\dd E_e}{\dd k_e}=v_e.
+\]
+
+\textbf{Step 2：空穴有效质量}
+
+\[
+\frac{1}{m_h^*}=\frac{1}{\hbar^2}\frac{\dd^2E_h}{\dd k_h^2}
+=\frac{1}{\hbar^2}\frac{\dd^2(-E_e)}{\dd(-k_e)^2}
+=-\frac{1}{\hbar^2}\frac{\dd^2E_e}{\dd k_e^2}
+=-\frac{1}{m_e^*}.
+\]
+
+故 $m_h^*=-m_e^*$。
+
+\textbf{Step 3：外场下运动}
+
+电子半经典方程：$\hbar\dot{k}_e=-e\mathcal{E}$。
+
+空穴：$\hbar\dot{k}_h=\hbar\frac{\dd}{\dd t}(-k_e)=-\hbar\dot{k}_e=+e\mathcal{E}$。
+
+即 $\dot{p}_h=+e\mathcal{E}$。
+
+\textbf{Step 4：具体算例}
+
+设 $E(k)=\frac{\hbar^2k_i^2}{6m}-\frac{3\hbar^2k^2}{m}$，$k_i=\frac{1}{8a}$，$a=0.314\,\text{nm}$。
+
+移走 $k_e=k_i$ 处电子：
+\begin{itemize}[nosep]
+    \item $k_h=-k_i=-3.98\times10^8\,\text{m}^{-1}$
+    \item $\frac{\dd^2E}{\dd k^2}=-\frac{6\hbar^2}{m}$，$m_e^*=-\frac{m}{24\pi^2}$，$m_h^*=\frac{m}{24\pi^2}$
+    \item $v_e=\frac{1}{\hbar}\frac{\dd E}{\dd k}\big|_{k_i}=-\frac{12\pi\hbar k_i}{m}=v_h$
+    \item $p_h=-\hbar k_i=-\frac{h}{16\pi a}$
+    \item $E_h=-E(k_i)=\frac{17\hbar^2k_i^2}{6m}$
+    \item $\frac{\dd p_h}{\dd t}=+e\mathcal{E}$
+\end{itemize}
+\end{derivationbox}
+
+\vspace{1em}

@@ -1,0 +1,216 @@
+% ============================================================
+% Model: 一维双原子链晶格振动
+% ============================================================
+
+\section{一维双原子链晶格振动}
+\label{sec:1d-diatomic-chain}
+
+\begin{tipbox}[关键词标签]
+声学支 · 光学支 · 色散关系 · 能带折叠 · 高温热容 · 长波极限
+\end{tipbox}
+
+% --------------------------------------------------------
+% 1. 模型定义框
+% --------------------------------------------------------
+\begin{modelbox}[模型：一维双原子链]
+\textbf{物理情境}：一维晶格中两种不同原子交替排列，如离子晶体或复式晶格的一维简化。每个原胞含两个原子，质量分别为 $M$ 和 $m$（设 $M>m$），相邻原子间距为 $a$，晶格常数为 $2a$，近邻恢复力常数为 $\beta$。
+
+\textbf{运动方程}：
+\begin{align*}
+M\ddot{u}_{2n} &= \beta(v_{2n+1}+v_{2n-1}-2u_{2n}),\\
+m\ddot{v}_{2n+1} &= \beta(u_{2n+2}+u_{2n}-2v_{2n+1}).
+\end{align*}
+
+\textbf{关键参数}：
+\begin{itemize}[nosep]
+    \item $M, m$：两种原子质量，$M>m$
+    \item $a$：相邻异种原子间距，晶格常数 $=2a$
+    \item $\beta$：近邻力常数（弹簧劲度系数）
+    \item $\omega_0^2 = \beta(1/M+1/m)$：特征频率平方
+\end{itemize}
+
+\textbf{边界条件 / 约束}：
+\begin{itemize}[nosep]
+    \item 仅考虑近邻相互作用
+    \item 周期性边界条件（Born--von Karman）
+    \item 第一布里渊区：$q\in[-\pi/2a, \pi/2a]$
+\end{itemize}
+\end{modelbox}
+
+% --------------------------------------------------------
+% 2. 关键公式框
+% --------------------------------------------------------
+\begin{formulabox}[核心公式]
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{色散关系}：
+    \[
+    \omega_{\pm}^2 = \beta\Bigl(\frac{1}{M}+\frac{1}{m}\Bigr)
+    \pm\sqrt{\beta^2\Bigl(\frac{1}{M}+\frac{1}{m}\Bigr)^2-\frac{4\beta^2\sin^2 qa}{Mm}}
+    \]
+    \texteq{等价形式：$\omega_{\pm}^2=\beta\bigl(\frac{1}{M}+\frac{1}{m}\bigr)\pm\beta\sqrt{\bigl(\frac{1}{M}+\frac{1}{m}\bigr)^2-\frac{4\sin^2 qa}{Mm}}$}
+
+    \item \textbf{长波极限 ($q\to0$)}：
+    \[
+    \omega_{-}(q)\approx\sqrt{\frac{2\beta}{M+m}}\,|q|\cdot a,\qquad
+    \omega_{+}(q)\approx\sqrt{2\beta\Bigl(\frac{1}{M}+\frac{1}{m}\Bigr)}
+    \]
+    \texteq{声学支线性色散，光学支趋于常数}
+
+    \item \textbf{布里渊区边界 ($q=\pm\pi/2a$)}：
+    \[
+    \omega_{-}=\sqrt{\frac{2\beta}{M}},\qquad \omega_{+}=\sqrt{\frac{2\beta}{m}}
+    \]
+    \texteq{两支在此处出现能隙：$\Delta\omega=\sqrt{2\beta}\bigl(\frac{1}{\sqrt{m}}-\frac{1}{\sqrt{M}}\bigr)$}
+
+    \item \textbf{$M\gg m$ 极限}：
+    \[
+    \omega_{-}\approx\sqrt{\frac{2\beta}{M}}\,|\sin qa|,\qquad
+    \omega_{+}\approx\sqrt{\frac{2\beta}{m}}\Bigl(1-\frac{m}{2M}\sin^2 qa\Bigr)
+    \]
+    \texteq{声学支退化为重原子单原子链；光学支近似平坦}
+
+    \item \textbf{高温晶格热容}（能量均分）：
+    \[
+    C_V = 2Nk_B\quad\text{（每 $N$ 个原胞，$2N$ 个自由度）}
+    \]
+    \texteq{$k_BT\gg\hbar\omega_{+}$ 时成立}
+\end{enumerate}
+\end{formulabox}
+
+% --------------------------------------------------------
+% 3. 训练点框
+% --------------------------------------------------------
+\begin{drillbox}[训练点与考法变体]
+\trainingpoint{1} \textbf{直接求解色散}：给定 $M, m, \beta, a$，写出运动方程、设行波解、推导久期方程并求解 $\omega_{\pm}(q)$。
+
+\trainingpoint{2} \textbf{极限分析}：
+\begin{itemize}[nosep]
+    \item $M\gg m$：声学支退化为单原子链，光学支近似为爱因斯坦模型
+    \item $M=m$：双原子链退化为单原子链（周期折叠，能带连接）
+    \item $q\to0$：证明声学支线性、光学支平坦
+\end{itemize}
+
+\trainingpoint{3} \textbf{能带折叠图像}：$M=m$ 时，原胞缩小为 $a$，第一布里渊区扩大为 $[-\pi/a, \pi/a]$。原光学支平移倒格矢 $G=\pi/a$ 后与声学支连接成单支。
+
+\trainingpoint{4} \textbf{与单原子链对比}：给定相同 $M$ 和力常数，比较单原子链（周期 $a$）与双原子链声学支在长波区的声速差异。
+
+\trainingpoint{5} \textbf{热容计算}：用爱因斯坦近似处理光学支、德拜近似处理声学支，估算低温/高温热容。
+\end{drillbox}
+
+% --------------------------------------------------------
+% 4. 解题技巧框
+% --------------------------------------------------------
+\begin{tipbox}[快速识别与解题技巧]
+\begin{itemize}
+    \item \examnote{识别标志}：题干出现``两种原子''''交替排列''''复式晶格''''声学支/光学支''，立即定位双原子链模型。
+    \item \examnote{行列式速写法令}：设 $u_{2n}=Ae^{i(2nqa-\omega t)}$，$v_{2n+1}=Be^{i[(2n+1)qa-\omega t]}$，直接得到
+    \[
+    \begin{pmatrix}2\beta-M\omega^2 & -2\beta\cos qa\\ -2\beta\cos qa & 2\beta-m\omega^2\end{pmatrix}\begin{pmatrix}A\\ B\end{pmatrix}=0
+    \]
+    不必重复代入过程。
+    \item \examnote{布里渊区判断}：双原子链周期 $=2a$，倒格矢 $G=\pi/a$，故第一布里渊区边界在 $\pm\pi/2a$，\textbf{不是} $\pm\pi/a$。
+    \item \examnote{量纲检查}：$[\beta]=[M\omega^2]=[E/L^2]$，$[\beta/M]=[T^{-2}]$，色散结果必须是 $[\omega]=[T^{-1}]$。
+    \item \examnote{边界值速记}：$q=0$ 时声学支 $\omega=0$、光学支最大；$q=\pi/2a$ 时两支均取有限值，且 $\omega_{+}>\omega_{-}$。
+\end{itemize}
+\end{tipbox}
+
+% --------------------------------------------------------
+% 5. 易错点框
+% --------------------------------------------------------
+\begin{errorbox}{常见失误与陷阱}
+\begin{itemize}
+    \item \textbf{周期混淆}：相邻原子间距是 $a$，但晶格常数（原胞长度）是 $2a$。布里渊区边界为 $\pm\pi/2a$，若误用 $\pm\pi/a$ 则全部结果错误。
+    \item \textbf{行波解的相位}：设解时必须让 $u$ 和 $v$ 的波矢相位匹配——$u$ 在偶数位 $2n$，$v$ 在奇数位 $2n+1$，故 $v$ 的指数中必须写 $(2n+1)qa$ 而非 $nqa$。
+    \item \textbf{能隙位置}：能隙出现在布里渊区边界 $q=\pm\pi/2a$，而非 $q=0$。两支在 $q=0$ 处是分开的（光学支有限，声学支为零）。
+    \item \textbf{$M=m$ 的退化}：不要只说``变成单原子链''，必须说明周期从 $2a$ 变为 $a$，布里渊区从 $[-\pi/2a,\pi/2a]$ 扩展为 $[-\pi/a,\pi/a]$，光学支平移 $G=\pi/a$ 后与声学支相连。
+    \item \textbf{有效质量符号}：光学支在 $q=0$ 附近曲率为负，有效质量为负，对应离子晶体的红外活性（与电磁波耦合）。
+\end{itemize}
+\end{errorbox}
+
+% --------------------------------------------------------
+% 6. 物理图像与关联模型
+% --------------------------------------------------------
+\begin{insightbox}[物理图像与模型关联]
+\textbf{物理图像}：
+
+双原子链就像一条由``重球--轻球''交替串成的弹簧链。
+\begin{itemize}[nosep]
+    \item \textbf{声学支}：相邻原子同相振动，整体像一条``蛇''在摆动。长波极限下所有原子一起平移，恢复力趋于零，频率趋于零。
+    \item \textbf{光学支}：相邻原子反相振动，重原子基本不动，轻原子在高频振动。长波极限下质心不动，形成局域电偶极矩，可与电磁波耦合（红外吸收）。
+\end{itemize}
+
+\textbf{与相似模型的对比}：
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{对比维度} & \textbf{单原子链} & \textbf{双原子链} & \textbf{三维晶格} \\
+\midrule
+每原胞原子数 & 1 & 2 & $n$ \\
+色散支数 & 1（声学） & 1声学+1光学 & 3声学+$3n-3$光学 \\
+$q\to0$ 行为 & $\omega\propto q$ & $\omega_{-}\propto q$, $\omega_{+}\to$常数 & 类似 \\
+布里渊区 & $[-\pi/a,\pi/a]$ & $[-\pi/2a,\pi/2a]$ & 复杂多面体 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{推广方向}：
+\begin{itemize}[nosep]
+    \item 一维 $\to$ 二维/三维：每原胞 $n$ 个原子 $\Rightarrow$ 3支声学+$3n-3$支光学
+    \item 近邻 $\to$ 次近邻：色散关系出现弯曲，群速度可能变号
+    \item 连续介质极限：弹性波方程，声速 $v_s=a\sqrt{\beta/(M+m)}$
+\end{itemize}
+\end{insightbox}
+
+% --------------------------------------------------------
+% 7. 推导附录
+% --------------------------------------------------------
+\begin{derivationbox}[推导细节（自我检验用）]
+\textbf{Step 1：设行波解}
+
+设第 $2n$ 个重原子位移 $u_{2n}=Ae^{i(2nqa-\omega t)}$，第 $2n+1$ 个轻原子位移 $v_{2n+1}=Be^{i[(2n+1)qa-\omega t]}$。
+
+\textbf{Step 2：代入运动方程}
+
+\begin{align*}
+-M\omega^2 A &= \beta(B e^{iqa}+B e^{-iqa}-2A)=2\beta(B\cos qa-A),\\
+-m\omega^2 B &= \beta(A e^{iqa}+A e^{-iqa}-2B)=2\beta(A\cos qa-B).
+\end{align*}
+
+整理为矩阵形式：
+\[
+\begin{pmatrix}2\beta-M\omega^2 & -2\beta\cos qa\\ -2\beta\cos qa & 2\beta-m\omega^2\end{pmatrix}\begin{pmatrix}A\\ B\end{pmatrix}=0.
+\]
+
+\textbf{Step 3：久期方程}
+
+行列式为零：
+\[
+(2\beta-M\omega^2)(2\beta-m\omega^2)-4\beta^2\cos^2 qa=0.
+\]
+
+展开：
+\[
+4\beta^2-2\beta(M+m)\omega^2+Mm\omega^4-4\beta^2\cos^2 qa=0.
+\]
+
+令 $\omega_0^2=\beta(1/M+1/m)$，$\omega_1^2=2\beta/M$，$\omega_2^2=2\beta/m$，则
+\[
+\omega^4-\omega_0^2\omega^2+\frac{4\beta^2}{Mm}\sin^2 qa=0.
+\]
+
+解得：
+\[
+\omega_{\pm}^2=\frac{\omega_0^2}{2}\pm\frac{1}{2}\sqrt{\omega_0^4-\frac{16\beta^2}{Mm}\sin^2 qa}
+=\beta\Bigl(\frac{1}{M}+\frac{1}{m}\Bigr)\pm\beta\sqrt{\Bigl(\frac{1}{M}+\frac{1}{m}\Bigr)^2-\frac{4\sin^2 qa}{Mm}}.
+\]
+
+\textbf{Step 4：$M\gg m$ 极限}
+
+$\omega_{-}^2\approx\frac{2\beta}{M}\sin^2 qa$，$\omega_{+}^2\approx\frac{2\beta}{m}\bigl(1-\frac{m}{M}\sin^2 qa\bigr)$。
+
+\textbf{Step 5：$M=m$ 退化}
+
+$\omega_{\pm}^2=\frac{2\beta}{m}\bigl(1\pm\cos qa\bigr)$，即 $\omega_{-}=\sqrt{\frac{2\beta}{m}}\|\sin(qa/2)\|$，$\omega_{+}=\sqrt{\frac{2\beta}{m}}\|\cos(qa/2)\|$。将 $\omega_{+}$ 平移 $q\to q+\pi/a$ 后，两支连接成单原子链色散 $\omega=\sqrt{2\beta/m}\|\sin(qa/2)\|$，周期从 $2a$ 变为 $a$。
+\end{derivationbox}
+
+\vspace{1em}
