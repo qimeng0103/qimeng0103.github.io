@@ -1,0 +1,128 @@
+% ============================================================
+% Section 192: 一维离子晶格的马德隆常数与扩散方程
+% ============================================================
+\section{固体理论：一维离子晶格的马德隆常数与扩散方程}
+\label{sec:madelung-diffusion}
+
+\begin{modelbox}[题目：一维交替链的马德隆常数与扩散规律]
+\begin{enumerate}
+    \item 求一价正负离子等间距排列组成的一维晶格的马德隆常数；
+    \item 利用扩散方程 $\partial u/\partial t=D\nabla^2 u$，证明在给定时刻 $t$，从原点出发的某粒子平均扩散距离和 $t^{1/2}$ 成正比。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{马德隆常数}：$\alpha=\sum_{j\neq0}\frac{(\pm1)}{|j|}$，一维交替链为交错级数
+    \item \textbf{交错级数求和}：$\ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\cdots$，取 $x=1$ 得 $\ln2=1-\frac{1}{2}+\frac{1}{3}-\cdots$
+    \item \textbf{扩散方程}：高斯型基本解 $u(x,t)=(4\pi Dt)^{-1/2}e^{-x^2/(4Dt)}$
+    \item \textbf{均方位移}：$\langle x^2\rangle=\int x^2 u(x,t)\,\dd x=2Dt$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 一维交替离子链的马德隆常数}
+
+设正负离子等间距排列，相邻离子间距为 $r_0$（取 $r_0$ 为晶格常数）。以某一正离子为原点，其坐标位置为 $x_j=j\cdot r_0$（$j\in\mathbb{Z}$）。
+
+离子电荷交替为 $+e$ 与 $-e$。参考离子（原点处）为 $+e$，则第 $j$ 个离子的电荷为 $q_j=(-1)^j e$。
+
+马德隆常数定义为（取 $r_0$ 为长度单位）：
+\begin{equation}
+\alpha=\sum_{j\neq0}\frac{q_j/q_0}{|x_j|/r_0}
+=\sum_{j\neq0}\frac{(-1)^j}{|j|}.
+\end{equation}
+
+由于级数对称，$j>0$ 与 $j<0$ 贡献相同：
+\begin{equation}
+\alpha=2\sum_{j=1}^{\infty}\frac{(-1)^j}{j}
+=2\Bigl(-1+\frac{1}{2}-\frac{1}{3}+\frac{1}{4}-\cdots\Bigr)
+=-2\Bigl(1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\cdots\Bigr).
+\end{equation}
+
+利用泰勒展开
+\begin{equation}
+\ln(1+x)=x-\frac{x^2}{2}+\frac{x^3}{3}-\frac{x^4}{4}+\cdots,
+\qquad |x|\le1,\;x\neq-1,
+\end{equation}
+取 $x=1$ 得
+\begin{equation}
+\ln2=1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\cdots.
+\end{equation}
+
+因此
+\begin{equation}
+\boxed{\alpha=-2\ln2.}
+\end{equation}
+（若定义中不包含原点离子的符号，有的教材取 $|\alpha|=2\ln2\approx1.386$。）
+
+\textbf{(2) 扩散方程与均方位移}
+
+一维扩散方程：
+\begin{equation}
+\frac{\partial u}{\partial t}=D\frac{\partial^2 u}{\partial x^2},
+\end{equation}
+其中 $u(x,t)$ 为 $t$ 时刻粒子位于 $x$ 处的概率密度，$D$ 为扩散系数。
+
+初始条件：$t=0$ 时粒子位于原点，$u(x,0)=\delta(x)$。
+
+方程的基本解（格林函数）为高斯函数：
+\begin{equation}
+u(x,t)=\frac{1}{\sqrt{4\pi Dt}}\exp\Bigl(-\frac{x^2}{4Dt}\Bigr).
+\end{equation}
+
+验证归一化：
+\begin{equation}
+\int_{-\infty}^{\infty}u(x,t)\,\dd x
+=\frac{1}{\sqrt{4\pi Dt}}\int_{-\infty}^{\infty}e^{-x^2/(4Dt)}\,\dd x
+=\frac{1}{\sqrt{4\pi Dt}}\cdot\sqrt{4\pi Dt}=1.
+\end{equation}
+
+计算均方位移：
+\begin{equation}
+\langle x^2\rangle=\int_{-\infty}^{\infty}x^2 u(x,t)\,\dd x
+=\frac{1}{\sqrt{4\pi Dt}}\int_{-\infty}^{\infty}x^2 e^{-x^2/(4Dt)}\,\dd x.
+\end{equation}
+
+利用高斯积分公式 $\int_{-\infty}^{\infty}x^2 e^{-ax^2}\,\dd x=\frac{\sqrt{\pi}}{2}a^{-3/2}$，此处 $a=1/(4Dt)$：
+\begin{equation}
+\int_{-\infty}^{\infty}x^2 e^{-x^2/(4Dt)}\,\dd x
+=\frac{\sqrt{\pi}}{2}(4Dt)^{3/2}=\sqrt{\pi}\cdot(4Dt)^{3/2}/2.
+\end{equation}
+
+因此
+\begin{equation}
+\langle x^2\rangle=\frac{1}{\sqrt{4\pi Dt}}\cdot\frac{\sqrt{\pi}}{2}(4Dt)^{3/2}
+=\frac{1}{2\sqrt{Dt}}\cdot(4Dt)^{3/2}\cdot\frac{1}{2}
+=2Dt.
+\end{equation}
+
+方均根扩散距离（平均扩散距离的量度）：
+\begin{equation}
+\boxed{\sqrt{\langle x^2\rangle}=\sqrt{2D}\,t^{1/2}\propto t^{1/2}.}
+\end{equation}
+证毕。
+\end{derivationbox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 一维马德隆常数 $2\ln2$ 是固体物理中少有的可解析求和的离子相互作用参量。三维 NaCl 结构的马德隆常数 $\alpha\approx1.7476$ 需用数值方法（如 Evjen 方法）计算。
+    \item 扩散的 $t^{1/2}$ 规律是随机行走（random walk）的普适特征：$N$ 步后均方位移 $\langle R^2\rangle=Na^2$，而步数 $N$ 与时间成正比，故 $\sqrt{\langle R^2\rangle}\propto\sqrt{t}$。这与弹道输运（$\propto t$）和超扩散有本质区别。
+    \item 爱因斯坦关系将扩散系数与迁移率联系起来：$D=\mu k_BT/e$，这是连接涨落（扩散）与耗散（电阻/迁移）的涨落耗散定理的经典版本。
+\end{itemize}
+\end{insightbox}
+
+\begin{formulabox}[考场速记]
+\textbf{常用级数}：
+\begin{align}
+\ln(1+x)&=x-\frac{x^2}{2}+\frac{x^3}{3}-\frac{x^4}{4}+\cdots,\quad -1<x\le1;\\
+\ln2&=1-\frac{1}{2}+\frac{1}{3}-\frac{1}{4}+\cdots\approx0.693.
+\end{align}
+
+\textbf{高斯积分公式}：
+\begin{equation}
+\int_{-\infty}^{\infty}x^{2n}e^{-ax^2}\,\dd x
+=\frac{(2n-1)!!}{2^n a^n}\sqrt{\frac{\pi}{a}},\qquad a>0.
+\end{equation}
+特别地，$\int x^2 e^{-ax^2}\,\dd x=\frac{\sqrt{\pi}}{2}a^{-3/2}$，$\int x^4 e^{-ax^2}\,\dd x=\frac{3\sqrt{\pi}}{4}a^{-5/2}$。
+\end{formulabox}

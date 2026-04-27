@@ -1,0 +1,104 @@
+% ============================================================
+% Section 191: 一维单原子链的晶格振动与模式密度
+% ============================================================
+\section{固体理论：一维单原子链的晶格振动与模式密度}
+\label{sec:1d-phonon}
+
+\begin{modelbox}[题目：一维单原子链的色散、模式密度与德拜近似]
+考虑一维单原子链的晶格振动，试推导出：
+\begin{enumerate}
+    \item 色散关系的表达式；
+    \item 利用色散关系求出模式密度；
+    \item 说明德拜近似下的模式密度和 (2) 中得到的模式密度有何不同。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{运动方程}：$M\ddot{u}_n=\beta(u_{n+1}+u_{n-1}-2u_n)$，设行波解 $u_n=Ae^{i(kna-\omega t)}$
+    \item \textbf{色散关系}：$\omega(k)=2\sqrt{\beta/M}\,|\sin(ka/2)|$
+    \item \textbf{模式密度}：$g(\omega)=\frac{L}{\pi}|\frac{\dd k}{\dd\omega}|$，注意 $k$ 与 $-k$ 两支
+    \item \textbf{德拜近似}：$\omega=v_s k$（线性色散），一维 $g_D(\omega)=\text{常数}$
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 色散关系}
+
+一维单原子链，原子质量 $M$，近邻力常数 $\beta$。第 $n$ 个原子的位移 $u_n$ 满足：
+\begin{equation}
+M\ddot{u}_n=\beta(u_{n+1}+u_{n-1}-2u_n).
+\end{equation}
+
+设简正模解 $u_n=Ae^{i(kna-\omega t)}$，代入得：
+\begin{equation}
+-M\omega^2=\beta(e^{ika}+e^{-ika}-2)=-2\beta(1-\cos ka)=-4\beta\sin^2\frac{ka}{2}.
+\end{equation}
+
+故色散关系为
+\begin{equation}
+\boxed{\omega(k)=2\sqrt{\frac{\beta}{M}}\,\Bigl|\sin\frac{ka}{2}\Bigr|,\qquad -\frac{\pi}{a}<k\le\frac{\pi}{a}.}
+\end{equation}
+令 $\omega_m=2\sqrt{\beta/M}$ 为最大频率（布里渊区边界处）。
+
+\textbf{(2) 模式密度}
+
+一维 Born--von Karman 周期性边界条件，$k$ 取分立值 $k=\frac{2\pi n}{L}$（$n\in\mathbb{Z}$），$L=Na$ 为链长，$N$ 为原子数。$k$ 空间态密度为 $\frac{L}{2\pi}$，考虑 $\pm k$ 对称，$k>0$ 区间内单位长度态数目为 $\frac{L}{\pi}$。
+
+模式密度定义为 $g(\omega)\,\dd\omega$ 等于频率在 $[\omega,\omega+\dd\omega]$ 内的振动模式数：
+\begin{equation}
+g(\omega)=\frac{L}{\pi}\Bigl|\frac{\dd k}{\dd\omega}\Bigr|.
+\end{equation}
+
+由 $\omega=\omega_m\sin(ka/2)$（取 $k>0$），反解得：
+\begin{equation}
+k=\frac{2}{a}\arcsin\frac{\omega}{\omega_m},
+\quad\Rightarrow\quad
+\frac{\dd k}{\dd\omega}=\frac{2}{a}\cdot\frac{1}{\sqrt{\omega_m^2-\omega^2}}.
+\end{equation}
+
+因此
+\begin{equation}
+\boxed{g(\omega)=\frac{L}{\pi}\cdot\frac{2}{a\sqrt{\omega_m^2-\omega^2}}
+=\frac{2N}{\pi\sqrt{\omega_m^2-\omega^2}},\qquad 0<\omega<\omega_m.}
+\end{equation}
+
+\textbf{(3) 德拜近似对比}
+
+德拜近似假设在长波极限下 $\omega=v_s k$（线性色散），其中声速 $v_s=a\sqrt{\beta/M}=\omega_m a/2$。
+
+在此近似下，$\dd\omega=v_s\,\dd k$，$|\dd k/\dd\omega|=1/v_s=\text{常数}$，故
+\begin{equation}
+\boxed{g_D(\omega)=\frac{L}{\pi v_s}=\text{常数}.}
+\end{equation}
+
+\textbf{两者差异}：
+\begin{itemize}
+    \item 精确模式密度 $g(\omega)$ 在 $\omega\to\omega_m$ 时发散（van Hove 奇点），这是因为能带顶处群速度 $\dd\omega/\dd k\to0$，态堆积所致；
+    \item 德拜近似 $g_D(\omega)$ 为常数，完全抹平了能带结构，仅在 $\omega\ll\omega_m$ 的低频区与精确结果一致；
+    \item 德拜近似通过截断频率 $\omega_D$（或德拜温度 $\Theta_D$）保证总模式数为 $N$，即 $\int_0^{\omega_D}g_D(\omega)\,\dd\omega=N$。
+\end{itemize}
+\end{derivationbox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 一维链的色散关系在 $k\to0$ 时长波极限下趋于线性 $\omega\approx v_s|k|$，对应连续介质的弹性波；在 $k\to\pi/a$ 布里渊区边界处趋于平坦，群速度为零，形成驻波。
+    \item van Hove 奇点是维度效应的直接体现：一维系统中态密度在能带边缘按 $(\omega_m-\omega)^{-1/2}$ 发散；二维系统在 van Hove 点处对数发散；三维系统则出现尖峰但有限。
+    \item 德拜近似是固体物理中处理晶格比热问题的核心简化，它把复杂的声子谱替换为连续介质中的声波，从而得到低温 $T^3$ 定律。
+\end{itemize}
+\end{insightbox}
+
+\begin{formulabox}[推广速查]
+\textbf{一般维度 $d$ 的德拜模式密度}：$g_D(\omega)\propto\omega^{d-1}$。
+\begin{center}
+\begin{tabular}{ccc}
+\toprule
+\textbf{维度} & \textbf{德拜 $g_D(\omega)$} & \textbf{低温比热} \\
+\midrule
+1D & 常数 & $C_V\propto T$ \\
+2D & $\propto\omega$ & $C_V\propto T^2$ \\
+3D & $\propto\omega^2$ & $C_V\propto T^3$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+\end{formulabox}

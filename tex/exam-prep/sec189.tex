@@ -1,0 +1,101 @@
+% ============================================================
+% Section 189: 二维正方晶格的空晶格近似与近自由电子能隙
+% ============================================================
+\section{固体理论：二维正方晶格的空晶格近似与近自由电子能隙}
+\label{sec:2d-square-nearly-free}
+
+\begin{modelbox}[题目：二维正方晶格的能带与布里渊区顶角能隙]
+考虑二维正方晶格：
+\begin{enumerate}
+    \item 在空晶格近似下，画出沿 $X$ 轴 ($\Gamma\to X$) 的前四个能带并指出每个能带的简并度；
+    \item 假设晶体势场为
+    \begin{equation}
+    U(x,y)=-4U\cos\frac{2\pi x}{a}\cos\frac{2\pi y}{a},
+    \end{equation}
+    其中 $U$ 是常数，用近自由电子近似的微扰论，近似求出布里渊区顶角 $(\pi/a,\pi/a)$ 处的能隙。
+\end{enumerate}
+\end{modelbox}
+
+\begin{tipbox}[考点快速分析]
+\begin{itemize}
+    \item \textbf{空晶格近似}：$E(\bm{k})=\frac{\hbar^2}{2m}|\bm{k}+\bm{G}|^2$，不同 $\bm{G}$ 给出不同能带
+    \item \textbf{简并度}：由对称性等价的不同 $\bm{G}$ 矢量的数目决定
+    \item \textbf{能隙公式}：布里渊区边界处简并态的能隙 $\Delta E=2|V_{\bm{G}}|$，$V_{\bm{G}}$ 为势场的傅里叶分量
+    \item \textbf{势场展开}：将余弦函数写成指数形式，识别对应倒格矢的傅里叶系数
+\end{itemize}
+\end{tipbox}
+
+\begin{derivationbox}[标准解题过程]
+\textbf{(1) 空晶格近似下沿 $\Gamma\to X$ 的前四个能带}
+
+二维正方晶格，倒格矢 $\bm{G}=\frac{2\pi}{a}(n_x,n_y)$，$n_x,n_y\in\mathbb{Z}$。
+$\Gamma\to X$ 沿 $k_x$ 轴，$k_y=0$，$0\le k_x\le\pi/a$。
+
+自由电子能量 $E=\frac{\hbar^2}{2m}|\bm{k}+\bm{G}|^2$。取最低的几个 $\bm{G}$：
+
+\begin{itemize}
+    \item \textbf{带 1}：$\bm{G}=(0,0)$，$E_1(k_x)=\frac{\hbar^2k_x^2}{2m}$，\textbf{非简并}。
+    \item \textbf{带 2}：$\bm{G}=(-2\pi/a,0)$，$E_2(k_x)=\frac{\hbar^2}{2m}(k_x-2\pi/a)^2$，\textbf{非简并}。
+    \item \textbf{带 3}：$\bm{G}=(0,\pm2\pi/a)$，$E_3(k_x)=\frac{\hbar^2}{2m}\bigl(k_x^2+(2\pi/a)^2\bigr)$，两支等价，\textbf{二重简并}。
+    \item \textbf{带 4}：$\bm{G}=(-2\pi/a,\pm2\pi/a)$，
+    $E_4(k_x)=\frac{\hbar^2}{2m}\bigl((k_x-2\pi/a)^2+(2\pi/a)^2\bigr)$，两支等价，\textbf{二重简并}。
+\end{itemize}
+
+在 $X$ 点 $k_x=\pi/a$ 处：
+\begin{itemize}
+    \item $E_1=E_2=\frac{\hbar^2}{2m}(\pi/a)^2$，带 1 与带 2 简并（\textbf{二重}）；
+    \item $E_3=E_4=\frac{\hbar^2}{2m}\bigl((\pi/a)^2+(2\pi/a)^2\bigr)=\frac{5\hbar^2\pi^2}{2ma^2}$，带 3 与带 4 简并（\textbf{四重}，因各自内部二重）。
+\end{itemize}
+
+\textbf{(2) 布里渊区顶角 $(\pi/a,\pi/a)$ 的能隙}
+
+该点为二维第一布里渊区的 $M$ 点。自由电子简并态由四个平面波构成：
+\begin{equation}
+\bm{k}_1=(\tfrac{\pi}{a},\tfrac{\pi}{a}),\;
+\bm{k}_2=(-\tfrac{\pi}{a},\tfrac{\pi}{a}),\;
+\bm{k}_3=(\tfrac{\pi}{a},-\tfrac{\pi}{a}),\;
+\bm{k}_4=(-\tfrac{\pi}{a},-\tfrac{\pi}{a}).
+\end{equation}
+它们两两之差恰好为倒格矢 $\bm{G}=\pm\frac{2\pi}{a}\hat{\bm{x}}\pm\frac{2\pi}{a}\hat{\bm{y}}$。
+
+将势场展开为指数形式：
+\begin{align}
+U(x,y)&=-4U\cos\frac{2\pi x}{a}\cos\frac{2\pi y}{a}\notag\\
+&=-U\bigl(e^{i\frac{2\pi x}{a}}+e^{-i\frac{2\pi x}{a}}\bigr)
+\bigl(e^{i\frac{2\pi y}{a}}+e^{-i\frac{2\pi y}{a}}\bigr)\notag\\
+&=-U\bigl(e^{i\bm{G}_{11}\cdot\bm{r}}+e^{i\bm{G}_{1,-1}\cdot\bm{r}}
++e^{i\bm{G}_{-1,1}\cdot\bm{r}}+e^{i\bm{G}_{-1,-1}\cdot\bm{r}}\bigr),
+\end{align}
+其中 $\bm{G}_{\pm1,\pm1}=\frac{2\pi}{a}(\pm1,\pm1)$。
+
+在近自由电子近似的简并微扰论中，$M$ 点子空间的 $4\times4$ 矩阵中，非对角元由上述傅里叶分量给出：
+\begin{equation}
+\langle\bm{k}_i|U|\bm{k}_j\rangle=U_{\bm{k}_i-\bm{k}_j}=\begin{cases}
+-U, & \bm{k}_i-\bm{k}_j\in\{\pm\bm{G}_{11},\pm\bm{G}_{1,-1}\}\text{ 等}\\
+0, & \text{其他}.
+\end{cases}
+\end{equation}
+
+在该子空间内，哈密顿量可按对称性分块。$\bm{k}_1$ 与 $\bm{k}_4$ 耦合（差矢 $\bm{G}_{-2,-2}$ 的半矢），$\bm{k}_2$ 与 $\bm{k}_3$ 耦合。每个 $2\times2$ 块的非对角元为 $-U$。
+
+对 $2\times2$ 块对角化：
+\begin{equation}
+\det\begin{pmatrix}
+E_0-E & -U\\
+-U & E_0-E
+\end{pmatrix}=0
+\quad\Rightarrow\quad E=E_0\pm|U|.
+\end{equation}
+因此能隙为
+\begin{equation}
+\boxed{E_g=2|U|.}
+\end{equation}
+\end{derivationbox}
+
+\begin{insightbox}[物理图像]
+\begin{itemize}
+    \item 空晶格近似中，能带就是不同倒格矢平移后的自由电子抛物线。在布里渊区边界，来自不同布里渊区的抛物线相交，产生简并。
+    \item 引入弱周期势后，简并解除，形成能隙。能隙大小直接正比于势场对应傅里叶分量的强度。
+    \item 二维正方晶格的 $M$ 点有四个简并平面波，但按对称性可分成两组，每组内部形成标准的 $2\times2$ 简并微扰，故能隙仍为 $2|U|$（与 $X$ 点相同）。
+\end{itemize}
+\end{insightbox}
