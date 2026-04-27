@@ -1,0 +1,205 @@
+% ============================================================
+% Model: 平面转子
+% ============================================================
+
+\section{平面转子}
+\label{sec:planar-rotor}
+
+\begin{tipbox}[关键词标签]
+平面转子 · 周期性边界条件 · 角动量 · 转动能级 · Stark效应 · 带电棒 · 简并
+\end{tipbox}
+
+% --------------------------------------------------------
+% 1. 模型定义框
+% --------------------------------------------------------
+\begin{modelbox}[模型：一维角坐标上的自由转动]
+\textbf{物理情境}：一个刚体被约束在平面内绕固定轴转动，如分子中的基团转动、带电棒在电场中的取向运动。转动惯量为 $I$，转角为 $\varphi\in[0,2\pi)$。
+
+\textbf{哈密顿量}：
+\[
+\hat H=-\frac{\hbar^2}{2I}\frac{\partial^2}{\partial\varphi^2}=\frac{\hat L_z^2}{2I},
+\quad\hat L_z=-i\hbar\frac{\partial}{\partial\varphi}.
+\]
+
+\textbf{边界条件}：波函数单值性要求周期性边界条件
+\[
+\psi(\varphi+2\pi)=\psi(\varphi).
+\]
+
+\textbf{本征解}：
+\begin{itemize}[nosep]
+    \item 本征函数：$\displaystyle\psi_m(\varphi)=\frac{1}{\sqrt{2\pi}}e^{im\varphi},\quad m=0,\pm1,\pm2,\ldots$
+    \item 本征能量：$\displaystyle E_m=\frac{\hbar^2m^2}{2I}$
+    \item 角动量本征值：$L_z=m\hbar$
+\end{itemize}
+
+\textbf{简并情况}：
+\begin{itemize}[nosep]
+    \item $m=0$：非简并（$E_0=0$）
+    \item $m\neq0$：二重简并（$\pm m$ 对应相同能量）
+\end{itemize}
+\end{modelbox}
+
+% --------------------------------------------------------
+% 2. 关键公式框
+% --------------------------------------------------------
+\begin{formulabox}[核心公式]
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{含时演化}：
+    \[
+    \psi(\varphi,t)=\sum_{m=-\infty}^{\infty}c_m\,\frac{e^{im\varphi}}{\sqrt{2\pi}}\,e^{-iE_mt/\hbar},
+    \quad c_m=\int_0^{2\pi}\frac{e^{-im\varphi}}{\sqrt{2\pi}}\psi(\varphi,0)\,d\varphi.
+    \]
+
+    \item \textbf{矩形波包展开}（$\psi(\varphi,0)=A\sin^2\varphi$）：
+    \[
+    \sin^2\varphi=\frac12-\frac14e^{i2\varphi}-\frac14e^{-i2\varphi}
+    \quad\Rightarrow\quad
+    \psi(\varphi,t)=\frac{1}{\sqrt{3\pi}}\Bigl(1-e^{-i2\hbar t/I}\cos2\varphi\Bigr).
+    \]
+    \texteq{仅含 $m=0$ 和 $m=\pm2$ 三个成分}
+
+    \item \textbf{电场中的平面转子}（带电均匀棒，电偶极矩 $d$）：
+    \[
+    H'=-d\mathcal{E}\cos\varphi=-\frac{d\mathcal{E}}{2}\bigl(e^{i\varphi}+e^{-i\varphi}\bigr).
+    \]
+    \texteq{微扰连接 $|m\rangle$ 与 $|m\pm1\rangle$，选择定则 $\Delta m=\pm1$}
+
+    \item \textbf{一级能量修正}：
+    \[
+    E_m^{(1)}=\langle m|H'|m\rangle=0\quad(\text{因 }\langle m|\cos\varphi|m\rangle=0).
+    \]
+    \texteq{一级 Stark 效应为零}
+
+    \item \textbf{二级能量修正}：
+    \[
+    E_m^{(2)}=\sum_{m'\neq m}\frac{|\langle m'|H'|m\rangle|^2}{E_m-E_{m'}}
+    =\frac{Id^2\mathcal{E}^2}{\hbar^2}\frac{1}{4m^2-1}.
+    \]
+    \texteq{$m=0$ 时 $E_0^{(2)}=-\frac{Id^2\mathcal{E}^2}{\hbar^2}$；$m\neq0$ 时修正可正可负}
+\end{enumerate}
+\end{formulabox}
+
+% --------------------------------------------------------
+% 3. 训练点框
+% --------------------------------------------------------
+\begin{drillbox}[训练点与考法变体]
+\trainingpoint{1} \textbf{周期性边界条件的应用}：给定角坐标 $\varphi\in[0,2\pi)$，写出薛定谔方程、通解、边界条件约束，得到量子化 $m\in\mathbb{Z}$。
+
+\trainingpoint{2} \textbf{简并度分析}：平面转子 $m\neq0$ 为二重简并。加电场后微扰 $H'\propto\cos\varphi$ 在 $\{|+m\rangle,|-m\rangle\}$ 子空间内矩阵元为零，故仍可用非简并微扰公式。
+
+\trainingpoint{3} \textbf{三角函数展开}：给定初态 $\psi(\varphi,0)$ 含 $\sin^2\varphi$、$\cos^2\varphi$ 或 $\sin\varphi\cos\varphi$，用倍角公式化为 $e^{im\varphi}$ 的线性组合。
+
+\trainingpoint{4} \textbf{Stark 效应级数判定}：平面转子一级修正为零（$\langle\cos\varphi\rangle=0$），二级修正 $\propto\mathcal{E}^2$——这是``二次 Stark 效应''。对比氢原子 $n\geq2$ 的线性 Stark 效应（因 $l$ 简并）。
+
+\trainingpoint{5} \textbf{角动量算符的对易关系}：验证 $[\hat L_z,\hat H]=0$，故 $L_z$ 为守恒量。测量 $L_z$ 得 $m\hbar$，概率为 $|c_m|^2$。
+\end{drillbox}
+
+% --------------------------------------------------------
+% 4. 解题技巧框
+% --------------------------------------------------------
+\begin{tipbox}[快速识别与解题技巧]
+\begin{itemize}
+    \item \examnote{识别标志}：题干出现``平面转子''''转动惯量''''转角''''周期性边界''''带电棒''''电场中转动''，立即定位本模型。
+    \item \examnote{与无限深势阱的对比}：平面转子也是``边界条件导致量子化''，但边界是周期性的（$\varphi$ 和 $\varphi+2\pi$ 为同一点），故 $m\in\mathbb{Z}$。无限深势阱是 Dirichlet 边界（$\psi=0$），故 $n\in\mathbb{Z}^+$。
+    \item \examnote{能量零点}：$E_0=0$（$m=0$ 时），基态波函数为常数 $\psi_0=1/\sqrt{2\pi}$。这与无限深势阱 $E_1>0$ 不同。
+    \item \examnote{三角函数速查}：
+    \begin{center}
+    $\sin^2\varphi=\frac{1-\cos2\varphi}{2}=\frac12-\frac14e^{i2\varphi}-\frac14e^{-i2\varphi}$\\[2pt]
+    $\cos^2\varphi=\frac{1+\cos2\varphi}{2}=\frac12+\frac14e^{i2\varphi}+\frac14e^{-i2\varphi}$\\[2pt]
+    $\sin\varphi\cos\varphi=\frac{\sin2\varphi}{2}=\frac{1}{4i}e^{i2\varphi}-\frac{1}{4i}e^{-i2\varphi}$
+    \end{center}
+    \item \examnote{Stark 效应判定}：若未微扰态有确定宇称且微扰为奇宇称，则一级修正为零。平面转子 $m\to-m$ 对应空间反演（$\varphi\to-\varphi$），$\cos\varphi$ 为偶函数，但矩阵元 $\langle m|\cos\varphi|m\rangle\propto\delta_{m,m}=0$？实际上 $\langle m|\cos\varphi|m\rangle=0$ 因为 $\int e^{-im\varphi}\cos\varphi e^{im\varphi}d\varphi=\int\cos\varphi d\varphi=0$。
+\end{itemize}
+\end{tipbox}
+
+% --------------------------------------------------------
+% 5. 易错点框
+% --------------------------------------------------------
+\begin{errorbox}{常见失误与陷阱}
+\begin{itemize}
+    \item \textbf{$m$ 的范围}：$m=0,\pm1,\pm2,\ldots$，不是 $m=1,2,3,\ldots$。负 $m$ 对应反向转动，与正 $m$ 能量简并。
+    \item \textbf{归一化积分}：$\int_0^{2\pi}|e^{im\varphi}|^2d\varphi=2\pi$，故归一化常数为 $1/\sqrt{2\pi}$。不要误用 $1/\sqrt{\pi}$ 或 $1/\sqrt{a}$（势阱的归一化）。
+    \item \textbf{含时演化中的交叉项}：$|\psi(\varphi,t)|^2$ 含 $\cos[(E_m-E_{m'})t/\hbar]$ 的振荡项。对于平面转子，$E_m\propto m^2$，故 $E_2-E_0=4E_1$ 而 $E_1-E_0=E_1$，振荡频率不是等间距的。
+    \item \textbf{电场的方向}：若电场沿 $x$ 轴，$H'=-d\mathcal{E}\cos\varphi$；若沿 $y$ 轴，$H'=-d\mathcal{E}\sin\varphi$。不同方向的选择定则不同（$\sin\varphi$ 连接 $m$ 和 $m\pm1$ 但有不同相位）。
+    \item \textbf{简并微扰的误判}：$m\neq0$ 为二重简并，但 $H'\propto\cos\varphi$ 在 $\{|m\rangle,|-m\rangle\}$ 子空间内的矩阵元为零，故可用非简并公式。若微扰为 $\sin\varphi$，则矩阵元可能非零，需严格对角化。
+\end{itemize}
+\end{errorbox}
+
+% --------------------------------------------------------
+% 6. 物理图像与关联模型
+% --------------------------------------------------------
+\begin{insightbox}[物理图像与模型关联]
+\textbf{物理图像}：
+
+平面转子就像一个在圆形轨道上跑步的人：
+\begin{itemize}[nosep]
+    \item 如果他不跑（$m=0$），站在原地，能量为零。
+    \item 如果他顺时针跑（$m>0$）或逆时针跑（$m<0$），跑得越快（$|m|$ 越大），动能越大（$E\propto m^2$）。
+    \item 顺时针和逆时针跑得一样快时，能量相同——这就是二重简并。
+    \item 如果在轨道上施加一个``偏向力''（电场），跑步的人会稍微偏离原来的速度，但平均位置不变（一级修正为零），只是能量有微小变化（二级修正）。
+\end{itemize}
+
+\textbf{与相似模型的对比}：
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{对比维度} & \textbf{平面转子} & \textbf{3D 刚性转子} & \textbf{无限深势阱} \\
+\midrule
+坐标 & $\varphi\in[0,2\pi)$ & $(\theta,\varphi)$ 球面 & $x\in[0,a]$ \\
+波函数 & $e^{im\varphi}/\sqrt{2\pi}$ & $Y_{jm}(\theta,\varphi)$ & $\sin(n\pi x/a)$ \\
+能级 & $E_m\propto m^2$ & $E_j\propto j(j+1)$ & $E_n\propto n^2$ \\
+简并 & $|m|$ 二重 & $2j+1$ 重 & 无 \\
+Stark效应 & 二级 & 二级 & 不适用 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{推广方向}：
+\begin{itemize}[nosep]
+    \item 双转子耦合：两个平面转子的相互作用，与自旋链模型类比
+    \item 磁场中的带电转子：Aharonov-Bohm 效应在环上的实现
+    \item 分子马达：生物分子（如 ATP 合成酶）的转动可用量子转子模型描述
+\end{itemize}
+\end{insightbox}
+
+% --------------------------------------------------------
+% 7. 推导附录
+% --------------------------------------------------------
+\begin{derivationbox}[推导细节（自我检验用）]
+\textbf{Step 1：本征方程求解}
+
+$-\frac{\hbar^2}{2I}\frac{d^2\psi}{d\varphi^2}=E\psi$。
+
+令 $m^2=2IE/\hbar^2$，解为 $\psi(\varphi)=e^{im\varphi}$。
+
+周期性边界条件 $\psi(\varphi+2\pi)=\psi(\varphi)$：$e^{im(\varphi+2\pi)}=e^{im\varphi}$ $\Rightarrow$ $e^{i2\pi m}=1$ $\Rightarrow$ $m\in\mathbb{Z}$。
+
+归一化：$\int_0^{2\pi}|\psi_m|^2d\varphi=2\pi|c|^2=1$ $\Rightarrow$ $c=1/\sqrt{2\pi}$。
+
+\textbf{Step 2：二级 Stark 修正推导}
+
+$H'=-d\mathcal{E}\cos\varphi=-\frac{d\mathcal{E}}{2}(e^{i\varphi}+e^{-i\varphi})$。
+
+矩阵元：
+\[
+\langle m'|H'|m\rangle=-\frac{d\mathcal{E}}{2}\bigl(\delta_{m',m+1}+\delta_{m',m-1}\bigr).
+\]
+
+对 $m\neq0$：
+\begin{align*}
+E_m^{(2)}&=\sum_{m'\neq m}\frac{|\langle m'|H'|m\rangle|^2}{E_m-E_{m'}}\\
+&=\frac{d^2\mathcal{E}^2}{4}\Bigl(\frac{1}{E_m-E_{m+1}}+\frac{1}{E_m-E_{m-1}}\Bigr)\\
+&=\frac{d^2\mathcal{E}^2}{4}\cdot\frac{2I}{\hbar^2}\Bigl(\frac{1}{m^2-(m+1)^2}+\frac{1}{m^2-(m-1)^2}\Bigr)\\
+&=\frac{Id^2\mathcal{E}^2}{2\hbar^2}\Bigl(\frac{1}{-2m-1}+\frac{1}{2m-1}\Bigr)\\
+&=\frac{Id^2\mathcal{E}^2}{2\hbar^2}\cdot\frac{2}{4m^2-1}
+=\frac{Id^2\mathcal{E}^2}{\hbar^2}\frac{1}{4m^2-1}.
+\end{align*}
+
+对 $m=0$：只有 $m'=\pm1$ 贡献：
+\[
+E_0^{(2)}=2\cdot\frac{d^2\mathcal{E}^2}{4}\cdot\frac{1}{0-E_1}=-\frac{d^2\mathcal{E}^2}{2}\cdot\frac{2I}{\hbar^2}=-\frac{Id^2\mathcal{E}^2}{\hbar^2}.
+\]
+\end{derivationbox}
+
+\vspace{1em}

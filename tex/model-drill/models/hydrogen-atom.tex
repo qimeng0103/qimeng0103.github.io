@@ -1,0 +1,244 @@
+% ============================================================
+% Model: 氢原子与类氢系统
+% ============================================================
+
+\section{氢原子与类氢系统}
+\label{sec:hydrogen-atom}
+
+\begin{tipbox}[关键词标签]
+氢原子 · 库仑势 · 玻尔半径 · 里德伯能量 · 球谐函数 · 径向波函数 · Stark效应 · 量子亏损 · 类氢映射
+\end{tipbox}
+
+% --------------------------------------------------------
+% 1. 模型定义框
+% --------------------------------------------------------
+\begin{modelbox}[模型：库仑势中的束缚态]
+\textbf{物理情境}：氢原子是最基本的多体量子系统，电子在质子产生的库仑势中运动。其精确解析解是量子力学的基石，也是理解多电子原子、分子和固体的起点。
+
+\textbf{哈密顿量}（质心系）：
+\[
+\hat H=-\frac{\hbar^2}{2\mu}\nabla^2-\frac{Ze^2}{r},
+\]
+$\mu=\frac{m_em_p}{m_e+m_p}$ 为约化质量，$Z$ 为核电荷数。
+
+\textbf{本征解}：
+\begin{itemize}[nosep]
+    \item 波函数：$\psi_{nlm}(r,\theta,\varphi)=R_{nl}(r)Y_{lm}(\theta,\varphi)$
+    \item 主量子数：$n=1,2,3,\ldots$
+    \item 角量子数：$l=0,1,\ldots,n-1$
+    \item 磁量子数：$m=-l,\ldots,l$
+    \item 能级：$\displaystyle E_n=-\frac{\mu Z^2e^4}{2\hbar^2n^2}=-\frac{Z^2}{n^2}\times13.6\,\text{eV}$
+    \item 简并度：$\sum_{l=0}^{n-1}(2l+1)=n^2$
+\end{itemize}
+
+\textbf{特征长度与能量}：
+\begin{itemize}[nosep]
+    \item 玻尔半径：$a_0=\hbar^2/(\mu e^2)\approx0.529\,$\AA
+    \item 里德伯能量：$\text{Ry}=\mu e^4/(2\hbar^2)\approx13.6\,$eV
+\end{itemize}
+\end{modelbox}
+
+% --------------------------------------------------------
+% 2. 关键公式框
+% --------------------------------------------------------
+\begin{formulabox}[核心公式]
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{前几个径向波函数}：
+    \[
+    R_{10}=2\Bigl(\frac{Z}{a_0}\Bigr)^{3/2}e^{-Zr/a_0},\quad
+    R_{20}=\frac{1}{\sqrt{2}}\Bigl(\frac{Z}{a_0}\Bigr)^{3/2}\Bigl(1-\frac{Zr}{2a_0}\Bigr)e^{-Zr/2a_0},
+    \]
+    \[
+    R_{21}=\frac{1}{2\sqrt{6}}\Bigl(\frac{Z}{a_0}\Bigr)^{3/2}\frac{Zr}{a_0}e^{-Zr/2a_0}.
+    \]
+
+    \item \textbf{径向期望值}（Kramers 关系 / HF 定理）：
+    \[
+    \langle r\rangle_{nl}=\frac{a_0}{2Z}\bigl[3n^2-l(l+1)\bigr],\quad
+    \langle r^2\rangle_{nl}=\frac{a_0^2n^2}{2Z^2}\bigl[5n^2+1-3l(l+1)\bigr],
+    \]
+    \[
+    \langle r^{-1}\rangle_{nl}=\frac{Z}{a_0n^2},\quad
+    \langle r^{-2}\rangle_{nl}=\frac{Z^2}{a_0^2n^3(l+1/2)}.
+    \]
+
+    \item \textbf{维里定理}：
+    \[
+    \langle T\rangle=-\frac12\langle V\rangle=-E_n=\frac{\text{Ry}}{n^2},\quad
+    \langle V\rangle=2E_n=-\frac{2\,\text{Ry}}{n^2}.
+    \]
+
+    \item \textbf{类氢映射（量子亏损）}：屏蔽势 $V(r)=-e^2/r-\lambda e^2a/r^2$
+    \[
+    l'(l'+1)=l(l+1)-2\lambda\quad\Rightarrow\quad
+    l'\approx l-\frac{\lambda}{l+1/2},
+    \]
+    \[
+    E_{nl}\approx-\frac{\text{Ry}}{(n-\Delta_l)^2},\quad\Delta_l=l'-l\approx-\frac{\lambda}{l+1/2}.
+    \]
+    \texteq{低 $l$ 态贯穿原子实更深，量子亏损更大}
+
+    \item \textbf{氢原子 Stark 效应}（$n=2$ 四重简并）：
+    \[
+    E^{(1)}=+3ea_0\mathcal{E},\;-3ea_0\mathcal{E},\;0,\;0.
+    \]
+    \texteq{线性 Stark 效应，能级分裂为三条}
+
+    \item \textbf{镜像电荷问题}（导体表面上方电子）：
+    \[
+    V(y)=-\frac{e^2}{4y}\quad\Rightarrow\quad
+    E_n=-\frac{\text{Ry}}{16n^2}\;(y>0,\;\psi(0)=0).
+    \]
+    \texteq{等效 $Z=1/4$，且只有奇宇称类氢态（$n$ 为奇数时 $l=0$ 被排除后重新编号）}
+\end{enumerate}
+\end{formulabox}
+
+% --------------------------------------------------------
+% 3. 训练点框
+% --------------------------------------------------------
+\begin{drillbox}[训练点与考法变体]
+\trainingpoint{1} \textbf{氢原子波函数的节点结构}：径向节点数 $=n-l-1$，角向节点数 $=l$。总节点数 $=n-1$（不含无穷远）。验证 $n=3,l=1$ 的波函数有 $3-1-1=1$ 个径向节点。
+
+\trainingpoint{2} \textbf{HF 定理求期望值}：把 $e^2$、$\hbar$、$\mu$ 或 $l$ 当参数，用 $\partial E_n/\partial\lambda=\langle\partial H/\partial\lambda\rangle$ 求 $\langle r^{-1}\rangle$、$\langle r^{-2}\rangle$ 等。
+
+\trainingpoint{3} \textbf{简并微扰矩阵构造}：$n=2$ 的四个态 $|200\rangle,|210\rangle,|211\rangle,|21,-1\rangle$，微扰 $H'=e\mathcal{E}z=e\mathcal{E}r\cos\theta$。利用选择定则（$\Delta l=\pm1$，$\Delta m=0$）判断哪些矩阵元非零，构造 $4\times4$ 微扰矩阵并对角化。
+
+\trainingpoint{4} \textbf{氢原子 vs 普通原子的 Stark 效应}：氢原子 $n\geq2$ 有 $l$ 简并，一级 Stark 效应线性；普通原子 $l$ 简并已被多电子效应消除，一级为零，二级 $\propto\mathcal{E}^2$。
+
+\trainingpoint{5} \textbf{类氢离子的能级缩放}：$E_n(Z)=Z^2E_n^{(\text{H})}$，$a(Z)=a_0/Z$。$\text{He}^+$ 的基态能量为 $-54.4$ eV，玻尔半径为 $a_0/2$。
+
+\trainingpoint{6} \textbf{里德伯原子}：高 $n$ 态（$n\sim100$）的半径 $\sim n^2a_0\sim0.5\,\mu$m，能级间距 $\sim 2\text{Ry}/n^3\sim$ GHz，对微波敏感。用于量子信息、精密测量。
+\end{drillbox}
+
+% --------------------------------------------------------
+% 4. 解题技巧框
+% --------------------------------------------------------
+\begin{tipbox}[快速识别与解题技巧]
+\begin{itemize}
+    \item \examnote{识别标志}：题干出现``氢原子''''库仑势''''里德伯''''玻尔半径''''$a_0$''''$1/n^2$''''Stark效应''，立即定位本模型。
+    \item \examnote{径向波函数节点规则}：$R_{nl}$ 有 $n-l-1$ 个径向节点（不含原点和无穷远）。$n=1,l=0$：0 节点；$n=2,l=0$：1 节点；$n=2,l=1$：0 节点。
+    \item \examnote{能级简并的特殊性}：氢原子 $E_n$ 只依赖于 $n$，与 $l$ 无关。这是库仑势 $1/r$ 的特殊对称性（Runge-Lenz 矢量守恒），一般中心势不成立。
+    \item \examnote{HF 定理速用}：把 $H$ 中的某个常数当参数 $\lambda$，计算 $\partial E_n/\partial\lambda$ 直接得期望值。例如 $\lambda=e^2$：$\partial E_n/\partial e^2=-Z^2\mu e^2/(\hbar^2n^2)=\langle-1/r\rangle$。
+    \item \examnote{选择定则}：电偶极跃迁 $\Delta l=\pm1$，$\Delta m=0,\pm1$。$2s\to1s$ 禁戒（$\Delta l=0$），需双光子或碰撞诱导。
+    \item \examnote{类氢映射口诀}：``$1/r^2$ 扰动入离心，有效 $l$ 变 $l'$，能级公式照旧用，只需 $l\to l'$''。
+\end{itemize}
+\end{tipbox}
+
+% --------------------------------------------------------
+% 5. 易错点框
+% --------------------------------------------------------
+\begin{errorbox}{常见失误与陷阱}
+\begin{itemize}
+    \item \textbf{玻尔半径与约化质量}：严格定义 $a_0=\hbar^2/(\mu e^2)$ 含约化质量 $\mu$。电子-质子系统的 $\mu\approx m_e(1-m_e/m_p)\approx0.9995m_e$。对类氢离子（如 $\text{He}^+$），$\mu$ 略有不同，但通常近似为 $m_e$。
+    \item \textbf{简并微扰矩阵的基顺序}：$n=2$ 的四个态构造微扰矩阵时，按 $|211\rangle,|21,-1\rangle,|210\rangle,|200\rangle$ 排序可使矩阵块对角化。$|21\pm1\rangle$ 完全不参与 Stark 分裂（因 $\Delta m\neq0$ 矩阵元为零）。
+    \item \textbf{量子亏损的符号}：$\Delta_l\approx-\lambda/(l+1/2)<0$，故有效主量子数 $n^*=n-\Delta_l>n$，能级 $E_{nl}=-\text{Ry}/(n^*)^2$ 比氢原子略深（绝对值更大）。
+    \item \textbf{镜像电荷的等效 $Z$}：导体表面上方电子 $V(y)=-e^2/(4y)$，等效 $Z=1/4$。但边界条件 $\psi(0)=0$ 排除了偶宇称类氢态，只有奇宇称态（$l=0$ 时重新编号）。
+    \item \textbf{精细结构的忽略}：本题级模型中不考虑精细结构（$\Delta E_{FS}\sim\alpha^4mc^2$）。若题目提到``忽略精细结构''，则用纯库仑能级；若要求精细结构修正，需引入自旋-轨道耦合和相对论修正。
+\end{itemize}
+\end{errorbox}
+
+% --------------------------------------------------------
+% 6. 物理图像与关联模型
+% --------------------------------------------------------
+\begin{insightbox}[物理图像与模型关联]
+\textbf{物理图像}：
+
+氢原子就像地球绕太阳运动：
+\begin{itemize}[nosep]
+    \item 电子绕质子做``轨道''运动，但这不是经典轨道，而是概率云。
+    \item 基态（$1s$）是球形对称的，电子在核附近概率最大——像一团围绕太阳的均匀尘埃云。
+    \item $2p$ 态有哑铃形状，电子在 $z$ 轴方向出现概率最大——像地球在黄道面上运动。
+    \item 能级像梯子的横档，$n$ 越大横档越密（$E_n\propto-1/n^2$）。
+    \item 加电场后，$n=2$ 的四个态``重新组合''，形成沿电场方向拉长的``偶极子''态——这就是线性 Stark 效应。
+\end{itemize}
+
+\textbf{与相似模型的对比}：
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{对比维度} & \textbf{氢原子} & \textbf{3D 谐振子} & \textbf{有限深势阱} \\
+\midrule
+势场 & $-1/r$ & $r^2$ & 方阱（有限深） \\
+能级 & $E_n\propto-1/n^2$ & $E_N\propto N$ & 有限个离散 \\
+谱性质 & 渐近连续（$n\to\infty$） & 等间距 & 有阈值 \\
+简并 & $n^2$（高） & $(N+1)(N+2)/2$（3D） & $2l+1$ \\
+对称性 & $SO(4)$ & $SU(3)$ & $SO(3)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{推广方向}：
+\begin{itemize}[nosep]
+    \item 精细结构：Dirac 方程给出的相对论修正 + 自旋-轨道耦合
+    \item Lamb 位移：QED 辐射修正，$2s_{1/2}$ 与 $2p_{1/2}$ 的微小劈裂
+    \item 超精细结构：核磁矩与电子磁矩相互作用，$21$ cm 射电谱线
+    \item 里德伯原子：高 $n$ 态，用于量子模拟和精密测量
+\end{itemize}
+\end{insightbox}
+
+% --------------------------------------------------------
+% 7. 推导附录
+% --------------------------------------------------------
+\begin{derivationbox}[推导细节（自我检验用）]
+\textbf{Step 1：$n=2$ Stark 效应微扰矩阵}
+
+基：$|211\rangle,|21,-1\rangle,|210\rangle,|200\rangle$。
+
+微扰 $H'=e\mathcal{E}r\cos\theta=e\mathcal{E}z$。
+
+选择定则：$\Delta l=\pm1$，$\Delta m=0$。
+
+矩阵元：
+\begin{itemize}[nosep]
+    \item $\langle211|H'|211\rangle=\langle21,-1|H'|21,-1\rangle=0$（$\Delta l=0$，奇宇称）
+    \item $\langle210|H'|200\rangle=e\mathcal{E}\langle210|r\cos\theta|200\rangle\neq0$（$\Delta l=1$，$\Delta m=0$）
+    \item 其余矩阵元均为零
+\end{itemize}
+
+计算得 $\langle210|z|200\rangle=-3a_0$。
+
+微扰矩阵：
+\[
+H'=\begin{pmatrix}0&0&0&0\\0&0&0&0\\0&0&0&-3ea_0\mathcal{E}\\0&0&-3ea_0\mathcal{E}&0\end{pmatrix}.
+\]
+
+\textbf{Step 2：对角化}
+
+$2\times2$ 子矩阵 $\begin{pmatrix}0&-\lambda\\-\lambda&0\end{pmatrix}$，$\lambda=3ea_0\mathcal{E}$。
+
+本征值：$\pm\lambda=\pm3ea_0\mathcal{E}$。
+
+对应本征态：$\frac{1}{\sqrt2}(|210\rangle\mp|200\rangle)$。
+
+总能量修正：$E^{(1)}=+3ea_0\mathcal{E},\;-3ea_0\mathcal{E},\;0,\;0$。
+
+\textbf{Step 3：类氢映射推导}
+
+径向方程：
+\[
+-\frac{\hbar^2}{2\mu}\frac{d^2u}{dr^2}+\Bigl[-\frac{e^2}{r}+\frac{l(l+1)\hbar^2}{2\mu r^2}-\lambda\frac{e^2a}{r^2}\Bigr]u=Eu.
+\]
+
+利用 $a=\hbar^2/(\mu e^2)$，附加项：
+\[
+-\lambda\frac{e^2a}{r^2}=-\lambda\frac{\hbar^2}{\mu r^2}.
+\]
+
+有效离心势：
+\[
+\frac{l(l+1)\hbar^2}{2\mu r^2}-\lambda\frac{\hbar^2}{\mu r^2}=\frac{[l(l+1)-2\lambda]\hbar^2}{2\mu r^2}.
+\]
+
+令 $l'(l'+1)=l(l+1)-2\lambda$：
+\[
+l'=\sqrt{(l+1/2)^2-2\lambda}-1/2\approx l-\frac{\lambda}{l+1/2}.
+\]
+
+能级：
+\[
+E_{nl}=-\frac{\mu e^4}{2\hbar^2(n_r+l'+1)^2}=-\frac{\text{Ry}}{(n-\Delta_l)^2},
+\quad\Delta_l\approx-\frac{\lambda}{l+1/2}.
+\]
+\end{derivationbox}
+
+\vspace{1em}

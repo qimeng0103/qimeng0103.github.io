@@ -1,0 +1,234 @@
+% ============================================================
+% Model: 有限深球方势阱
+% ============================================================
+
+\section{有限深球方势阱}
+\label{sec:finite-spherical-well}
+
+\begin{tipbox}[关键词标签]
+有限深势阱 · 球 Bessel 函数 · 束缚态条件 · 阱口条件 · 分波法 · 半经典估算 · 核子势阱
+\end{tipbox}
+
+% --------------------------------------------------------
+% 1. 模型定义框
+% --------------------------------------------------------
+\begin{modelbox}[模型：球对称有限深势阱中的束缚态]
+\textbf{物理情境}：有限深球方势阱是核物理中最基本的模型之一，描述核子在原子核内的束缚。与无限深势阱不同，有限深势阱允许粒子以一定概率出现在阱外（隧穿效应），且当势阱不够深/宽时可能不存在束缚态。
+
+\textbf{势场定义}：
+\[
+V(r)=\begin{cases}0,&r<a\\V_0,&r\geq a\end{cases}\qquad(V_0>0).
+\]
+
+\textbf{径向方程}（$u(r)=rR(r)$）：
+\[
+-\frac{\hbar^2}{2\mu}\frac{d^2u}{dr^2}+\Bigl[V(r)+\frac{l(l+1)\hbar^2}{2\mu r^2}\Bigr]u=Eu.
+\]
+
+\textbf{关键参数}：
+\begin{itemize}[nosep]
+    \item $k=\sqrt{2\mu E}/\hbar$（阱内波数，$E>0$ 时）
+    \item $\beta=\sqrt{2\mu(V_0-E)}/\hbar$（阱外衰减系数，$E<V_0$ 时）
+    \item $k_0=\sqrt{2\mu V_0}/\hbar$（特征波数）
+\end{itemize}
+
+\textbf{波函数形式}：
+\begin{itemize}[nosep]
+    \item 阱内（$r<a$）：$u(r)=A\,r\,j_l(kr)$（正则解，$j_l$ 为球 Bessel 函数）
+    \item 阱外（$r\geq a$）：$u(r)=B\,r\,h_l^{(1)}(i\beta r)$（衰减解，$h_l^{(1)}$ 为第一类球 Hankel 函数）
+\end{itemize}
+\end{modelbox}
+
+% --------------------------------------------------------
+% 2. 关键公式框
+% --------------------------------------------------------
+\begin{formulabox}[核心公式]
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{束缚态匹配条件}（$r=a$ 处 $u$ 与 $u'$ 连续）：
+    \[
+    \frac{1}{j_l(kr)}\frac{d}{dr}[r\,j_l(kr)]\bigg|_{r=a}=\frac{1}{h_l^{(1)}(i\beta r)}\frac{d}{dr}[r\,h_l^{(1)}(i\beta r)]\bigg|_{r=a}.
+    \]
+    \texteq{ transcendental 方程，需数值求解}
+
+    \item \textbf{阱口条件}（新束缚能级刚出现时 $E\to V_0^-$，$\beta\to0$）：
+    \[
+    j_{l-1}(k_0a)=0,\quad k_0=\frac{\sqrt{2\mu V_0}}{\hbar}.
+    \]
+    \texteq{$l=0$ 时 $j_{-1}(x)=\cos x/x$，条件为 $\cos k_0a=0$}
+
+    \item \textbf{第一个束缚态（$1s$，$l=0$）}：
+    \[
+    k_0a=\frac{\pi}{2}\quad\Rightarrow\quad V_0a^2=\frac{\pi^2\hbar^2}{8\mu}.
+    \]
+    \texteq{三维吸引势需要足够深/宽才有束缚态，与一维不同}
+
+    \item \textbf{能级出现次序}（按 $j_{l-1}(x)$ 正零点递增）：
+    \[
+    1s\;(l=0),\;1p\;(l=1),\;1d\;(l=2),\;2s\;(l=0),\;1f\;(l=3),\;2p\;(l=1),\;\ldots
+    \]
+    \texteq{主量子数 $n=n_r+l+1$，$n_r$ 为径向节点数}
+
+    \item \textbf{半经典态密度估算}：
+    \[
+    N\approx\frac{(2\mu V_0)^{3/2}a^3}{6\pi^2\hbar^3}=\frac{(k_0a)^3}{6\pi^2}.
+    \]
+    \texteq{相空间体积除以 $h^3$，适用于大量子数极限}
+
+    \item \textbf{与无限深势阱对比}：
+    \begin{center}
+    \begin{tabular}{lll}
+    \toprule
+    \textbf{性质} & \textbf{有限深} & \textbf{无限深} \\
+    \midrule
+    束缚态数目 & 有限个 & 无限个 \\
+    波函数在阱外 & 指数衰减 & 为零 \\
+    最低能级 & $0<E_1<V_0$ & $E_1>0$ \\
+    存在条件 & $V_0a^2>V_{\text{crit}}$ & 总有束缚态 \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+\end{enumerate}
+\end{formulabox}
+
+% --------------------------------------------------------
+% 3. 训练点框
+% --------------------------------------------------------
+\begin{drillbox}[训练点与考法变体]
+\trainingpoint{1} \textbf{阱口条件推导}：$E\to V_0^-$ 时阱外方程化为 Euler 型，衰减解为 $r^{-(l+1)}$。利用 $r=a$ 处连续性导出 $j_{l-1}(k_0a)=0$。
+
+\trainingpoint{2} \textbf{第一个束缚态的 $l$ 判定}：由 Hellmann-Feynman 定理，给定 $l$ 下能量随 $V_0$ 增大而降低，且 $l$ 越小能级越深。故第一个束缚态必为 $s$ 波（$l=0$）。
+
+\trainingpoint{3} \textbf{球 Bessel 函数的性质}：$j_0(x)=\sin x/x$，$j_1(x)=\sin x/x^2-\cos x/x$，$n_l(x)$ 在原点发散。低 $l$ 的函数形式需熟记。
+
+\trainingpoint{4} \textbf{一维 vs 三维对比}：一维对称势阱总有至少一个束缚态；三维球势阱需要 $V_0a^2>\pi^2\hbar^2/(8\mu)$ 才有束缚态。这是因为三维的离心势垒 $l(l+1)/r^2$ 排斥粒子。
+
+\trainingpoint{5} \textbf{Thomas 效应}：三维吸引 $\delta$ 势 $V(r)=-\gamma\delta^{(3)}(\mathbf{r})$ 无束缚态（能量无下界，需正规化）。这与有限深势阱需要足够大 $V_0a^2$ 才出现束缚态一致。
+
+\trainingpoint{6} \textbf{核壳模型应用}：原子核中质子和中子各自填充能级，能级顺序由球形势阱（加自旋-轨道耦合修正）决定：$1s_{1/2},1p_{3/2},1p_{1/2},1d_{5/2},\ldots$，形成幻数 $2,8,20,28,50,82,126$。
+\end{drillbox}
+
+% --------------------------------------------------------
+% 4. 解题技巧框
+% --------------------------------------------------------
+\begin{tipbox}[快速识别与解题技巧]
+\begin{itemize}
+    \item \examnote{识别标志}：题干出现``有限深势阱''''球方势阱''''球 Bessel 函数''''阱口条件''''束缚态数目''''核子''，立即定位本模型。
+    \item \examnote{球 Bessel 函数速查}：
+    \begin{center}
+    \begin{tabular}{ll}
+    \toprule
+    $j_0(x)=\dfrac{\sin x}{x}$ & $n_0(x)=-\dfrac{\cos x}{x}$ \\
+    $j_1(x)=\dfrac{\sin x}{x^2}-\dfrac{\cos x}{x}$ & $n_1(x)=-\dfrac{\cos x}{x^2}-\dfrac{\sin x}{x}$ \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+    \item \examnote{阱口条件速记}：新能级刚出现时 $E\approx V_0$，阱外波函数几乎不衰减。$r=a$ 处要求波函数与导数匹配，导出 $j_{l-1}(k_0a)=0$。
+    \item \examnote{能级出现次序}：$j_{l-1}(x)$ 的正零点位置：$j_{-1}(x)=\cos x/x$（零点 $\pi/2,3\pi/2,\ldots$），$j_0(x)$（零点 $\pi,2\pi,\ldots$），$j_1(x)$（零点 $\approx4.49,7.73,\ldots$）。故次序：$1s(\pi/2)<1p(\approx4.49)<1d(\approx5.76)<2s(3\pi/2)<\ldots$
+    \item \examnote{半经典估算}：束缚态总数 $N\approx$ 势阱体积 $\times$ 态密度 $=\frac{4\pi a^3}{3}\cdot\frac{(2\mu V_0)^{3/2}}{6\pi^2\hbar^3}$。
+    \item \examnote{与一维势阱的对比}：一维势阱总有至少一个束缚态；三维势阱不一定。关键区别：三维的离心势垒 $l(l+1)/r^2$ 排斥粒子，使低能粒子难以被束缚。
+\end{itemize}
+\end{tipbox}
+
+% --------------------------------------------------------
+% 5. 易错点框
+% --------------------------------------------------------
+\begin{errorbox}{常见失误与陷阱}
+\begin{itemize}
+    \item \textbf{径向波函数的归一化}：$u(r)=rR(r)$ 的归一化条件是 $\int_0^\infty|u(r)|^2dr=1$，不是 $\int|R|^2dr=1$。$u(0)=0$（原点正则），$R(0)$ 有限。
+    \item \textbf{球 Bessel 与 Bessel 的混淆}：球 Bessel $j_l(x)$ 与圆柱 Bessel $J_\nu(x)$ 不同。关系：$j_l(x)=\sqrt{\frac{\pi}{2x}}J_{l+1/2}(x)$。
+    \item \textbf{$l=0$ 的阱口条件}：$j_{-1}(x)=\cos x/x$，不是 $j_l$ 的标准形式。$j_{-1}(x)=n_0(x)$ 实际上有定义，但需特别注意。
+    \item \textbf{束缚态存在条件}：三维有限深势阱需要 $V_0a^2>\pi^2\hbar^2/(8\mu)$ 才有束缚态。常见错误是认为``足够吸引就有束缚态''，这在三维不成立。
+    \item \textbf{零点能的误解}：即使只有一个束缚态，其能量 $E_1$ 也严格小于 $V_0$（不是 $E_1=V_0$）。阱口条件 $E\to V_0^-$ 是极限情况。
+    \item \textbf{与无限深势阱的能级对比}：有限深势阱的能级比同宽度的无限深势阱低（因为粒子可隧穿到阱外，等效``更宽''）。
+\end{itemize}
+\end{errorbox}
+
+% --------------------------------------------------------
+% 6. 物理图像与关联模型
+% --------------------------------------------------------
+\begin{insightbox}[物理图像与模型关联]
+\textbf{物理图像}：
+
+有限深球势阱就像一个埋在土里的球形陷阱：
+\begin{itemize}[nosep]
+    \item 陷阱内部是平地（$V=0$），外部是斜坡（$V=V_0$）。
+    \item 粒子在陷阱内自由运动，但到达边界时有一定概率``爬出去''（隧穿）——波函数在阱外指数衰减。
+    \item 如果陷阱太浅或太小，粒子根本抓不住，直接从顶上滚出去——没有束缚态。
+    \item 如果陷阱足够深，粒子可以在里面形成驻波，但波长比无限深势阱中的要长（能量更低）。
+    \item 角动量越大（$l$ 越大），离心势垒越高，粒子越难被束缚——高 $l$ 的能级需要更深的势阱才能出现。
+\end{itemize}
+
+\textbf{与相似模型的对比}：
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{对比维度} & \textbf{有限深球势阱} & \textbf{无限深势阱} & \textbf{库仑势（氢原子）} \\
+\midrule
+势场 & 方阱（有限深） & 方阱（无限深） & $-1/r$ \\
+束缚态数 & 有限个 & 无限个 & 无限个 \\
+波函数在无穷远 & 指数衰减 & 为零 & 指数衰减 \\
+简并 & $2l+1$ & $2l+1$ & $n^2$ \\
+最低能级 & $>0$（若存在） & $>0$ & $<0$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{推广方向}：
+\begin{itemize}[nosep]
+    \item 核壳模型：Woods-Saxon 势（有限深 + 弥散边），加自旋-轨道耦合
+    \item 量子点：半导体中电子的三维限制势，近似为有限深势阱或谐振子势
+    \item 胶球（glueball）：QCD 中胶子的自束缚，可用球形腔模型（bag model）描述
+    \item 势散射：分波法计算相移，Levinson 定理 $\delta_l(0)=n_l\pi$
+\end{itemize}
+\end{insightbox}
+
+% --------------------------------------------------------
+% 7. 推导附录
+% --------------------------------------------------------
+\begin{derivationbox}[推导细节（自我检验用）]
+\textbf{Step 1：阱口条件的推导}
+
+$E\to V_0^-$ 时，$\beta\to0$。阱外方程：
+\[
+\frac{d^2u}{dr^2}-\frac{l(l+1)}{r^2}u=0\quad(\text{因 }V_0-E\to0).
+\]
+
+这是 Euler 方程，解为 $u\propto r^{l+1}$（增长，舍去）或 $u\propto r^{-l}$（衰减）。取衰减解 $u\propto r^{-l}$。
+
+$r=a$ 处连续性：$u(a)=A\,a\,j_l(k_0a)=B\,a^{-l}$。
+
+导数连续性：$u'(a)=A\frac{d}{dr}[r j_l(k_0r)]_{r=a}=-lB a^{-l-1}$。
+
+两式相除消去 $A,B$：
+\[
+\frac{1}{r j_l(k_0r)}\frac{d}{dr}[r j_l(k_0r)]\bigg|_{r=a}=-\frac{l}{a}.
+\]
+
+利用递推关系 $\frac{d}{dx}[x^{l+1}j_l(x)]=x^{l+1}j_{l-1}(x)$ 和 $\frac{d}{dx}[x^{-l}j_l(x)]=-x^{-l}j_{l+1}(x)$，化简得：
+\[
+\frac{j_{l-1}(k_0a)}{j_l(k_0a)}=0\quad\Rightarrow\quad j_{l-1}(k_0a)=0.
+\]
+
+\textbf{Step 2：$l=0$ 验证}
+
+$j_{-1}(x)=\frac{\cos x}{x}$（由递推 $j_{l-1}=\frac{2l+1}{x}j_l-j_{l+1}$ 令 $l=0$ 得）。
+
+$j_{-1}(k_0a)=0$ $\Rightarrow$ $\cos k_0a=0$ $\Rightarrow$ $k_0a=\pi/2,3\pi/2,\ldots$。
+
+第一根 $k_0a=\pi/2$，即 $V_0a^2=\frac{\pi^2\hbar^2}{8\mu}$。
+
+\textbf{Step 3：半经典态密度估算}
+
+相空间中，单粒子态密度 $=d^3rd^3p/h^3$。
+
+势阱内 $|p|\leq\sqrt{2\mu V_0}$，体积 $=4\pi a^3/3$。
+
+相空间体积 $=\frac{4\pi a^3}{3}\cdot\frac{4\pi(2\mu V_0)^{3/2}}{3}=\frac{16\pi^2a^3(2\mu V_0)^{3/2}}{9}$。
+
+态数：
+\[
+N\approx\frac{1}{h^3}\cdot\frac{16\pi^2a^3(2\mu V_0)^{3/2}}{9}=\frac{(2\mu V_0)^{3/2}a^3}{6\pi^2\hbar^3}=\frac{(k_0a)^3}{6\pi^2}.
+\]
+\end{derivationbox}
+
+\vspace{1em}

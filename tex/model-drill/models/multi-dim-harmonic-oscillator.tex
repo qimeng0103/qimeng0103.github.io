@@ -1,0 +1,251 @@
+% ============================================================
+% Model: 多维各向同性谐振子
+% ============================================================
+
+\section{多维各向同性谐振子}
+\label{sec:multi-dim-ho}
+
+\begin{tipbox}[关键词标签]
+各向同性谐振子 · 2D谐振子 · 3D谐振子 · 简并度 · 升降算符 · 极坐标 · 球坐标 · 模式耦合
+\end{tipbox}
+
+% --------------------------------------------------------
+% 1. 模型定义框
+% --------------------------------------------------------
+\begin{modelbox}[模型：$d$ 维各向同性谐振子]
+\textbf{物理情境}：各向同性谐振子是量子力学中少数可精确求解的多维问题之一，在核物理（核壳模型）、量子光学（多模电磁场）和凝聚态（量子点）中有广泛应用。
+
+\textbf{哈密顿量}：
+\[
+\hat H=\sum_{i=1}^{d}\Bigl(\frac{\hat p_i^2}{2m}+\frac12m\omega^2\hat x_i^2\Bigr),\quad d=2\text{ 或 }3.
+\]
+
+\textbf{直角坐标解}（分离变量）：
+\begin{itemize}[nosep]
+    \item 每个维度独立：$E_{n_i}=\hbar\omega(n_i+1/2)$，$n_i=0,1,2,\ldots$
+    \item 总能：$E_N=\hbar\omega(N+d/2)$，$N=n_1+\cdots+n_d$
+    \item 简并度：$g_d(N)$ 为 $N$ 拆分为 $d$ 个非负整数之和的方式数
+\end{itemize}
+
+\textbf{关键特征}：
+\begin{itemize}[nosep]
+    \item 2D：$E_N=\hbar\omega(N+1)$，$g_2(N)=N+1$
+    \item 3D：$E_N=\hbar\omega(N+3/2)$，$g_3(N)=(N+1)(N+2)/2$
+    \item 升降算符：$a_i=\sqrt{\frac{m\omega}{2\hbar}}\bigl(\hat x_i+\frac{i\hat p_i}{m\omega}\bigr)$，$[a_i,a_j^\dagger]=\delta_{ij}$
+\end{itemize}
+\end{modelbox}
+
+% --------------------------------------------------------
+% 2. 关键公式框
+% --------------------------------------------------------
+\begin{formulabox}[核心公式]
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{2D 极坐标解}：
+    \[
+    \psi_{n_rm}(r,\varphi)=R_{n_r|m|}(r)\frac{e^{im\varphi}}{\sqrt{2\pi}},\quad m=0,\pm1,\pm2,\ldots
+    \]
+    \[
+    E_{n_rm}=\hbar\omega(2n_r+|m|+1),\quad n_r=0,1,2,\ldots
+    \]
+    \texteq{$n_r$ 为径向节点数，$N=2n_r+|m|$}
+
+    \item \textbf{3D 球坐标解}：
+    \[
+    \psi_{n_rlm}(r,\theta,\varphi)=R_{n_rl}(r)Y_{lm}(\theta,\varphi),
+    \]
+    \[
+    E_{n_rl}=\hbar\omega(2n_r+l+3/2),\quad n_r=0,1,2,\ldots,\;l=0,1,2,\ldots
+    \]
+    \texteq{$N=2n_r+l$}
+
+    \item \textbf{简并度对比}：
+    \begin{center}
+    \begin{tabular}{llll}
+    \toprule
+    $N$ & 2D $g_2(N)$ & 3D $g_3(N)$ & 组合表示 \\
+    \midrule
+    0 & 1 & 1 & $(0)$ \\
+    1 & 2 & 3 & $(1),(0,1)$ \\
+    2 & 3 & 6 & $(2),(1,1),(0,2)$ \\
+    3 & 4 & 10 & $(3),(2,1),(1,2),(0,3)$ \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+
+    \item \textbf{耦合谐振子的对角化}（$H=H_0+\lambda x_1x_2$）：
+    引入对称/反对称模式：
+    \[
+    X_s=\frac{x_1+x_2}{\sqrt2},\quad X_a=\frac{x_1-x_2}{\sqrt2},
+    \]
+    则 $H=\frac{p_s^2}{2m}+\frac12m(\omega^2+\lambda/m)X_s^2+\frac{p_a^2}{2m}+\frac12m(\omega^2-\lambda/m)X_a^2$。
+    \texteq{频率分裂：$\omega_s=\sqrt{\omega^2+\lambda/m}$，$\omega_a=\sqrt{\omega^2-\lambda/m}$}
+
+    \item \textbf{升降算符代数}：
+    \[
+    |n_1,n_2,\ldots,n_d\rangle=\prod_{i=1}^d\frac{(a_i^\dagger)^{n_i}}{\sqrt{n_i!}}|0\rangle,
+    \quad H=\hbar\omega\sum_{i=1}^d\bigl(a_i^\dagger a_i+\tfrac12\bigr).
+    \]
+\end{enumerate}
+\end{formulabox}
+
+% --------------------------------------------------------
+% 3. 训练点框
+% --------------------------------------------------------
+\begin{drillbox}[训练点与考法变体]
+\trainingpoint{1} \textbf{简并度计算}：给定总激发数 $N$，计算 2D 和 3D 谐振子的简并度。2D：$g_2=N+1$；3D：$g_3=(N+1)(N+2)/2$。
+
+\trainingpoint{2} \textbf{不同坐标系的对应}：同一能级 $E_N$ 的态，在直角坐标、极坐标（2D）、球坐标（3D）中如何对应？例如 3D $N=2$ 的 6 个态：$(n_1,n_2,n_3)=(2,0,0)$ 及其置换（3 个）对应 $(n_r,l,m)=(0,2,m)$（5 个）加 $(1,0,0)$（1 个）。
+
+\trainingpoint{3} \textbf{耦合模式的频率分裂}：两个相同谐振子通过 $x_1x_2$ 耦合，求新的本征频率和本征模式。对称模式频率升高，反对称模式频率降低。
+
+\trainingpoint{4} \textbf{与库仑势的对比}：谐振子 $E\propto N$（等间距），库仑势 $E\propto-1/n^2$（不等间距）。谐振子的简并来自 $SU(d)$ 对称性，库仑势的简并来自 $SO(4)$ 对称性。
+
+\trainingpoint{5} \textbf{Landau 能级}：2D 电子在垂直磁场中，$H=\frac{1}{2m}(\mathbf{p}+e\mathbf{A})^2+\frac12m\omega_0^2r^2$。当 $\omega_0\to0$ 时，化为纯 Landau 能级 $E_n=\hbar\omega_c(n+1/2)$，$\omega_c=eB/m$。
+
+\trainingpoint{6} \textbf{核壳模型}：3D 谐振子的能级 $E_N=\hbar\omega(N+3/2)$ 加上自旋-轨道耦合修正，给出核子的壳层结构。每个 $N$ 壳层的态数：$N=0$: 2，$N=1$: 6，$N=2$: 12，$N=3$: 20。
+\end{drillbox}
+
+% --------------------------------------------------------
+% 4. 解题技巧框
+% --------------------------------------------------------
+\begin{tipbox}[快速识别与解题技巧]
+\begin{itemize}
+    \item \examnote{识别标志}：题干出现``2D谐振子''''3D谐振子''''各向同性''''简并度''''升降算符''''极坐标''''球坐标''，立即定位本模型。
+    \item \examnote{简并度速算}：
+    \begin{center}
+    \fbox{\parbox{0.9\linewidth}{\centering
+    \textbf{2D}：$g_2(N)=N+1$（如 $N=0$:1, $N=1$:2, $N=2$:3）\\[2pt]
+    \textbf{3D}：$g_3(N)=(N+1)(N+2)/2$（如 $N=0$:1, $N=1$:3, $N=2$:6）
+    }}
+    \end{center}
+    \item \examnote{坐标系对应}：同一 $N$ 的态在不同坐标系中的标记：
+    \begin{itemize}[nosep]
+        \item 直角坐标：$(n_1,n_2,\ldots)$，$N=\sum n_i$
+        \item 2D 极坐标：$(n_r,m)$，$N=2n_r+|m|$
+        \item 3D 球坐标：$(n_r,l,m)$，$N=2n_r+l$
+    \end{itemize}
+    \item \examnote{耦合模式对角化}：$x_1x_2$ 型耦合 $\to$ 转动 $45°$ 变为 $X_sX_a$。对称模式 $X_s=(x_1+x_2)/\sqrt2$，反对称模式 $X_a=(x_1-x_2)/\sqrt2$。
+    \item \examnote{与氢原子的能级对比}：
+    \begin{center}
+    \begin{tabular}{lll}
+    \toprule
+    \textbf{性质} & \textbf{谐振子} & \textbf{氢原子} \\
+    \midrule
+    能级间距 & 等间距 $\hbar\omega$ & 不等间距，$\Delta E\propto1/n^3$ \\
+    简并来源 & $SU(d)$ 动力学对称 & $SO(4)$ Runge-Lenz 矢量 \\
+    基态 & 高斯型 & 指数型 \\
+    高温极限 & 经典统计可用 & 电离 \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+\end{itemize}
+\end{tipbox}
+
+% --------------------------------------------------------
+% 5. 易错点框
+% --------------------------------------------------------
+\begin{errorbox}{常见失误与陷阱}
+\begin{itemize}
+    \item \textbf{简并度的计数}：3D 谐振子 $N=2$ 的简并度为 $g_3(2)=(2+1)(2+2)/2=6$，不是 3。常见错误是认为 $N=2$ 只有 $(2,0,0),(0,2,0),(0,0,2)$ 三个态，遗漏了 $(1,1,0),(1,0,1),(0,1,1)$。
+    \item \textbf{极坐标与球坐标的量子数}：2D 极坐标中 $N=2n_r+|m|$，$n_r$ 是径向节点数，不是主量子数。3D 球坐标中 $N=2n_r+l$，$n_r$ 也是径向节点数。
+    \item \textbf{零点能的维度依赖}：$E_0=d\hbar\omega/2$。2D：$E_0=\hbar\omega$；3D：$E_0=3\hbar\omega/2$。不要对所有维度都用 $\hbar\omega/2$。
+    \item \textbf{耦合强度的符号}：$H=H_0+\lambda x_1x_2$ 中，$\lambda>0$ 时对称模式频率升高（$\omega_s=\sqrt{\omega^2+\lambda/m}$），反对称模式频率降低。若误记符号，会颠倒频率顺序。
+    \item \textbf{升降算符的对易关系}：$[a_i,a_j^\dagger]=\delta_{ij}$，$[a_i,a_j]=0$。不同模式的算符互相对易，可独立处理。
+\end{itemize}
+\end{errorbox}
+
+% --------------------------------------------------------
+% 6. 物理图像与关联模型
+% --------------------------------------------------------
+\begin{insightbox}[物理图像与模型关联]
+\textbf{物理图像}：
+
+多维谐振子就像一个各向同性的蹦床：
+\begin{itemize}[nosep]
+    \item 2D：蹦床是圆形的，小球可以在任意直径方向上振动，也可以绕圆心做``环形''运动（对应 $m\neq0$ 的态）。
+    \item 3D：蹦床是球形的，小球可以在球内任意方向上振动，也可以有角动量（对应 $l\neq0$ 的态）。
+    \item 等间距能级意味着``无论怎么激发，增加一个量子的能量都相同''——这是谐振子的核心特征。
+    \item 高简并度来自``有很多不同方式达到相同的总能量''——就像用不同组合凑出同一个总数。
+\end{itemize}
+
+\textbf{与相似模型的对比}：
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{对比维度} & \textbf{1D HO} & \textbf{2D HO} & \textbf{3D HO} \\
+\midrule
+$E_N$ & $\hbar\omega(N+1/2)$ & $\hbar\omega(N+1)$ & $\hbar\omega(N+3/2)$ \\
+$g(N)$ & 1 & $N+1$ & $(N+1)(N+2)/2$ \\
+基态波函数 & 高斯 & 高斯 & 高斯 \\
+激发态节点 & $N$ 个 & $n_r+|m|$ & $n_r+l$ \\
+对称性 & $Z_2$ & $U(2)\sim SU(2)\times U(1)$ & $U(3)\sim SU(3)\times U(1)$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{推广方向}：
+\begin{itemize}[nosep]
+    \item 量子霍尔效应：2D 电子在强磁场中，Landau 能级可视为 2D 谐振子
+    \item 核壳模型：3D 谐振子加自旋-轨道耦合解释核幻数
+    \item 夸克模型：重子（3 夸克）和介子（夸克-反夸克）的能谱可用谐振子势近似
+    \item 量子光学：多模电磁场的光子数态就是多维谐振子的激发态
+\end{itemize}
+\end{insightbox}
+
+% --------------------------------------------------------
+% 7. 推导附录
+% --------------------------------------------------------
+\begin{derivationbox}[推导细节（自我检验用）]
+\textbf{Step 1：2D 极坐标分离变量}
+
+$H=-\frac{\hbar^2}{2m}\Bigl(\frac{\partial^2}{\partial r^2}+\frac1r\frac{\partial}{\partial r}+\frac1{r^2}\frac{\partial^2}{\partial\varphi^2}\Bigr)+\frac12m\omega^2r^2$。
+
+设 $\psi(r,\varphi)=R(r)\frac{e^{im\varphi}}{\sqrt{2\pi}}$，径向方程：
+\[
+-\frac{\hbar^2}{2m}\Bigl(\frac{d^2R}{dr^2}+\frac1r\frac{dR}{dr}-\frac{m^2}{r^2}R\Bigr)+\frac12m\omega^2r^2R=ER.
+\]
+
+令 $R(r)=\frac{u(r)}{\sqrt{r}}$ 或直接设 $R(r)\propto r^{|m|}e^{-\alpha r^2}L_{n_r}^{|m|}(\beta r^2)$，得能级 $E=\hbar\omega(2n_r+|m|+1)$。
+
+\textbf{Step 2：3D 球坐标分离变量}
+
+$\psi(r,\theta,\varphi)=R(r)Y_{lm}(\theta,\varphi)$，径向方程：
+\[
+-\frac{\hbar^2}{2m}\Bigl(\frac{d^2R}{dr^2}+\frac2r\frac{dR}{dr}-\frac{l(l+1)}{r^2}R\Bigr)+\frac12m\omega^2r^2R=ER.
+\]
+
+解为 $R_{n_rl}(r)\propto r^l e^{-m\omega r^2/2\hbar}L_{n_r}^{l+1/2}(m\omega r^2/\hbar)$，能级 $E=\hbar\omega(2n_r+l+3/2)$。
+
+\textbf{Step 3：简并度推导}
+
+3D 中 $N=2n_r+l$，给定 $N$，$l$ 可取 $N,N-2,N-4,\ldots,0$ 或 $1$（同奇偶）。
+
+对每个 $l$，$m$ 有 $2l+1$ 个值。总简并度：
+\[
+g_3(N)=\sum_{l=N,N-2,\ldots}(2l+1).
+\]
+
+若 $N$ 为偶数，$l=0,2,\ldots,N$：
+\[
+g_3(N)=\sum_{k=0}^{N/2}(4k+1)=4\cdot\frac{(N/2)(N/2+1)}{2}+\frac{N}{2}+1=\frac{(N+1)(N+2)}{2}.
+\]
+
+若 $N$ 为奇数，$l=1,3,\ldots,N$：
+\[
+g_3(N)=\sum_{k=0}^{(N-1)/2}(4k+3)=\frac{(N+1)(N+2)}{2}.
+\]
+
+\textbf{Step 4：耦合模式对角化}
+
+$H=\frac{p_1^2+p_2^2}{2m}+\frac12m\omega^2(x_1^2+x_2^2)+\lambda x_1x_2$。
+
+令 $X_s=\frac{x_1+x_2}{\sqrt2}$，$X_a=\frac{x_1-x_2}{\sqrt2}$，则 $x_1x_2=\frac{X_s^2-X_a^2}{2}$。
+
+$H=\frac{P_s^2}{2m}+\frac12m\omega_s^2X_s^2+\frac{P_a^2}{2m}+\frac12m\omega_a^2X_a^2$，
+
+$\omega_s=\sqrt{\omega^2+\lambda/m}$，$\omega_a=\sqrt{\omega^2-\lambda/m}$。
+
+能级：$E=\hbar\omega_s(n_s+1/2)+\hbar\omega_a(n_a+1/2)$。
+\end{derivationbox}
+
+\vspace{1em}
