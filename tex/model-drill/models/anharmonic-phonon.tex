@@ -1,0 +1,211 @@
+% ============================================================
+% Model: 非简谐相互作用与声子热平衡
+% ============================================================
+
+\section{非简谐相互作用与声子热平衡}
+\label{sec:anharmonic-phonon}
+
+\begin{tipbox}[关键词标签]
+非简谐效应 · 声子散射 · 热平衡 · 三声子过程 · 德拜模型 · 低温比热
+\end{tipbox}
+
+% --------------------------------------------------------
+% 1. 模型定义框
+% --------------------------------------------------------
+\begin{modelbox}[模型：晶格的非简谐效应]
+\textbf{物理情境}：简谐近似下，晶格振动是独立的简正模，各格波之间不交换能量，声子气体无法达到热平衡。实际晶体中，原子势能在平衡位置附近不是严格的抛物线，存在三次、四次等高阶项（非简谐项），导致声子之间可以相互作用、交换能量和动量，从而使系统趋向热平衡分布。
+
+\textbf{势能展开}：
+\[
+U=U_0+\frac{1}{2}\sum_{ij}\Phi_{ij}u_iu_j+\frac{1}{3!}\sum_{ijk}\Psi_{ijk}u_iu_ju_k+\cdots
+\]
+
+\textbf{关键参数}：
+\begin{itemize}[nosep]
+    \item $\Phi_{ij}$：力常数矩阵（简谐项）
+    \item $\Psi_{ijk}$：非简谐力常数（三声子相互作用强度）
+    \item $\tau_{\text{ph}}$：声子寿命（由非简谐散射决定）
+    \item $\Theta_D$：德拜温度，$\Theta_D=\hbar\omega_D/k_B$
+\end{itemize}
+
+\textbf{物理图像}：
+\begin{itemize}[nosep]
+    \item 简谐近似：格波独立，声子间无相互作用，热导率无限大
+    \item 非简谐效应：声子间碰撞（三声子、四声子过程），能量和准动量守恒，趋向普朗克分布
+\end{itemize}
+\end{modelbox}
+
+% --------------------------------------------------------
+% 2. 关键公式框
+% --------------------------------------------------------
+\begin{formulabox}[核心公式]
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{声子数守恒（非平衡到平衡）}：
+    \[
+    \frac{\partial n_{\mathbf{q}s}}{\partial t}=\sum_{\mathbf{q}'s',\mathbf{q}''s''}\bigl[W_{\text{in}}(1+n_{\mathbf{q}s})-W_{\text{out}}n_{\mathbf{q}s}\bigr]
+    \]
+    \texteq{碰撞项使声子分布趋向 $n_B(\omega)=1/(e^{\hbar\omega/k_BT}-1)$}
+
+    \item \textbf{三声子过程}：
+    \[
+    \omega_{\mathbf{q}s}+\omega_{\mathbf{q}'s'}=\omega_{\mathbf{q}''s''},\qquad
+    \mathbf{q}+\mathbf{q}'=\mathbf{q}''+\mathbf{G}
+    \]
+    \texteq{Normal 过程（$\mathbf{G}=0$）和 Umklapp 过程（$\mathbf{G}\neq0$）}
+
+    \item \textbf{德拜低温比热}：
+    \[
+    C_V=\frac{12\pi^4}{5}Nk_B\Bigl(\frac{T}{\Theta_D}\Bigr)^3\approx234\,Nk_B\Bigl(\frac{T}{\Theta_D}\Bigr)^3
+    \]
+    \texteq{$T\ll\Theta_D$ 时成立，与材料无关的普适定律}
+
+    \item \textbf{德拜温度}：
+    \[
+    \Theta_D=\frac{\hbar v_s}{k_B}\Bigl(\frac{6\pi^2N}{V}\Bigr)^{1/3}
+    \]
+    \texteq{$v_s$ 为平均声速，$N/V$ 为原子数密度}
+
+    \item \textbf{非简谐热膨胀}：
+    \[
+    \beta=\frac{1}{V}\Bigl(\frac{\partial V}{\partial T}\Bigr)_P=\frac{\gamma C_V}{3B}
+    \]
+    \texteq{格林爱森参数 $\gamma=-\frac{\partial\ln\omega}{\partial\ln V}$，$B$ 为体变模量}
+\end{enumerate}
+\end{formulabox}
+
+% --------------------------------------------------------
+% 3. 训练点框
+% --------------------------------------------------------
+\begin{drillbox}[训练点与考法变体]
+\trainingpoint{1} \textbf{简谐 vs 非简谐对比}：简谐近似下哪些物理量发散/为零/不变化？（热膨胀为零、热导率无限、无法达到热平衡）非简谐效应如何修正？
+
+\trainingpoint{2} \textbf{德拜模型推导}：从 $\omega=v_s k$ 和 3D 模式密度 $g(\omega)\propto\omega^2$，推导低温 $C_V\propto T^3$ 和高温 $C_V\approx3Nk_B$（杜隆--珀蒂定律）。
+
+\trainingpoint{3} \textbf{德拜近似为何低温成功}：低温下只有长波声学支被激发，色散近似线性，与德拜假设一致；高温下光学支也被激发，德拜模型失效。
+
+\trainingpoint{4} \textbf{声子散射与热阻}：热导率 $\kappa=\frac{1}{3}C_V v_s \ell$，声子平均自由程 $\ell$ 由非简谐散射决定，$\ell\propto T^{-1}$（高温）或 $\ell\propto e^{\Theta_D/2T}$（低温）。
+
+\trainingpoint{5} \textbf{格林爱森参数}：$\gamma$ 的量纲为一，典型值 $1\sim3$。由热膨胀系数和比热实验数据反推 $\gamma$。
+\end{drillbox}
+
+% --------------------------------------------------------
+% 4. 解题技巧框
+% --------------------------------------------------------
+\begin{tipbox}[快速识别与解题技巧]
+\begin{itemize}
+    \item \examnote{识别标志}：题干出现``非简谐''''声子散射''''热平衡''''德拜模型''''$T^3$ 定律''，立即定位本模型。
+    \item \examnote{德拜模型速记}：
+    \begin{center}
+    \begin{tabular}{lll}
+    \toprule
+    \textbf{温区} & \textbf{主导模式} & \textbf{比热行为} \\
+    \midrule
+    $T\ll\Theta_D$ & 长波声学支 & $C_V\propto T^3$ \\
+    $T\sim\Theta_D$ & 中波声学支 & 复杂过渡 \\
+    $T\gg\Theta_D$ & 所有模式（包括光学支） & $C_V\approx3Nk_B$ \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+    \item \examnote{三声子过程分类}：
+    \begin{itemize}[nosep]
+        \item 类型 I：$\omega_1+\omega_2=\omega_3$（两个声子合并）
+        \item 类型 II：$\omega_1=\omega_2+\omega_3$（一个声子分裂）
+        \item Normal 过程：$\mathbf{q}_1+\mathbf{q}_2=\mathbf{q}_3$，不贡献热阻
+        \item Umklapp 过程：$\mathbf{q}_1+\mathbf{q}_2=\mathbf{q}_3+\mathbf{G}$，贡献热阻
+    \end{itemize}
+    \item \examnote{德拜温度估算}：由低温 $C_V$ 实验数据拟合 $C_V=\gamma T+\beta T^3$，从 $\beta$ 提取 $\Theta_D$。
+    \item \examnote{简谐极限的不可物理性}：若晶格严格简谐，则（1）热膨胀为零，（2）热导率无限大，（3）声子永不达到热平衡。这三点任何一点都可用来反驳``简谐近似足够''的观点。
+\end{itemize}
+\end{tipbox}
+
+% --------------------------------------------------------
+% 5. 易错点框
+% --------------------------------------------------------
+\begin{errorbox}{常见失误与陷阱}
+\begin{itemize}
+    \item \textbf{简谐近似下无热膨胀}：简谐势 $U\propto x^2$ 是对称的，平均位置始终在 $x=0$，热膨胀 $\langle x\rangle=0$。非简谐项（$x^3$）破坏对称性，使势能在热涨落下不对称，导致 $\langle x\rangle\neq0$。
+    \item \textbf{德拜模型的局限}：德拜模型只考虑声学支，且假设线性色散。高温下光学支被激发（$\hbar\omega_{\text{opt}}\sim k_BT$），德拜模型严重低估模式数；低温下则因为光学支冻结，德拜模型非常准确。
+    \item \textbf{爱因斯坦模型 vs 德拜模型}：爱因斯坦假设所有模式频率相同（$\omega=\omega_E$），适用于光学支；德拜假设线性色散，适用于声学支。实际晶体中两者结合使用。
+    \item \textbf{Umklapp 过程的必要性}：Normal 过程总准动量守恒，不破坏热流；只有 Umklapp 过程能把热流方向的准动量``翻转''到反方向，从而产生热阻。
+    \item \textbf{$T^3$ 定律的维度}：$C_V\propto T^3$ 只在三维成立。二维 $C_V\propto T^2$，一维 $C_V\propto T$。
+\end{itemize}
+\end{errorbox}
+
+% --------------------------------------------------------
+% 6. 物理图像与关联模型
+% --------------------------------------------------------
+\begin{insightbox}[物理图像与模型关联]
+\textbf{物理图像}：
+
+简谐晶格就像一组完全独立的摆：
+\begin{itemize}[nosep]
+    \item 每个摆独立摆动，能量不会从一个摆传到另一个摆。
+    \item 如果你加热其中一个摆，其他摆永远保持冷态——系统无法达到热平衡。
+
+非简谐晶格就像在摆之间加了``橡皮筋''连接：
+    \item 当一个摆摆动幅度大时，橡皮筋拉伸，把能量传给相邻的摆。
+    \item 最终所有摆以某种统计分布分享能量——这就是热平衡。
+    \item 橡皮筋的拉伸还使摆的平均位置偏移——这就是热膨胀。
+\end{itemize}
+
+\textbf{与相似模型的对比}：
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{对比维度} & \textbf{爱因斯坦模型} & \textbf{德拜模型} & \textbf{精确晶格计算} \\
+\midrule
+色散 & $\omega=\omega_E$（常数） & $\omega=v_s k$（线性） & 实际色散关系 \\
+模式密度 & $\delta$ 函数 & $\propto\omega^2$ & 复杂（含 van Hove 奇点） \\
+低温比热 & 指数 $e^{-\hbar\omega_E/k_BT}$ & $T^3$ & $T^3$（正确） \\
+高温比热 & $3Nk_B$ & $3Nk_B$ & $3Nk_B$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{推广方向}：
+\begin{itemize}[nosep]
+    \item 非谐声子计算：第一性原理计算声子寿命和热导率（如 Boltzmann 输运方程）
+    \item 热膨胀的准谐近似：在有限温度下自洽计算力常数矩阵
+    \item 非谐导致的结构相变：如 BaTiO$_3$ 的铁电相变由软模（频率趋于零的声子）驱动
+\end{itemize}
+\end{insightbox}
+
+% --------------------------------------------------------
+% 7. 推导附录
+% --------------------------------------------------------
+\begin{derivationbox}[推导细节（自我检验用）]
+\textbf{Step 1：德拜模式密度}
+
+三维各向同性，$\omega=v_s k$，$k$ 空间球壳：
+\[
+g(\omega)\,d\omega=\frac{3V}{(2\pi)^3}4\pi k^2\,dk=\frac{3V}{2\pi^2}\frac{\omega^2}{v_s^3}\,d\omega.
+\]
+
+（因子 3 来自一支纵波 + 两支横波）
+
+截断频率 $\omega_D$ 由总模式数 $3N$ 确定：
+\[
+\int_0^{\omega_D}g(\omega)\,d\omega=3N\quad\Rightarrow\quad
+\omega_D=v_s\Bigl(\frac{6\pi^2N}{V}\Bigr)^{1/3}.
+\]
+
+\textbf{Step 2：低温比热}
+
+\begin{align*}
+C_V&=\int_0^{\omega_D}g(\omega)\,k_B\Bigl(\frac{\hbar\omega}{k_BT}\Bigr)^2\frac{e^{\hbar\omega/k_BT}}{(e^{\hbar\omega/k_BT}-1)^2}\,d\omega\\
+&=\frac{3Vk_B}{2\pi^2v_s^3}\Bigl(\frac{k_BT}{\hbar}\Bigr)^3\int_0^{\infty}\frac{x^4e^x}{(e^x-1)^2}\,dx.
+\end{align*}
+
+积分值 $=4\pi^4/15$，故
+\[
+C_V=\frac{2\pi^2k_B^4}{15\hbar^3v_s^3}VT^3=\frac{12\pi^4}{5}Nk_B\Bigl(\frac{T}{\Theta_D}\Bigr)^3.
+\]
+
+\textbf{Step 3：为何德拜模型低温成功}
+
+低温时 $k_BT\ll\hbar\omega_D$，只有 $\omega\lesssim k_BT/\hbar\ll\omega_D$ 的声子被激发。这些声子的波矢 $k=\omega/v_s\ll\omega_D/v_s\sim\pi/a$（布里渊区边界），处于长波极限。长波声学支的色散确实近似线性 $\omega=v_s k$，与德拜假设完全一致。
+
+高温时 $k_BT\gg\hbar\omega_D$，所有声子被激发，包括光学支和声学支的短波部分，德拜模型（只含线性声学支）严重低估总模式数，比热趋于 $3Nk_B$ 的速度比实际慢。
+\end{derivationbox}
+
+\vspace{1em}
