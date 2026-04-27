@@ -1,0 +1,216 @@
+% ============================================================
+% Model: 霍尔效应与多带导电
+% ============================================================
+
+\section{霍尔效应与多带导电}
+\label{sec:hall-effect}
+
+\begin{tipbox}[关键词标签]
+霍尔系数 · 载流子类型 · 多带导电 · 漂移速度 · 洛伦兹力 · 符号反常
+\end{tipbox}
+
+% --------------------------------------------------------
+% 1. 模型定义框
+% --------------------------------------------------------
+\begin{modelbox}[模型：霍尔效应]
+\textbf{物理情境}：电流在磁场中受到洛伦兹力偏转，在垂直于电流和磁场的方向上产生电势差（霍尔电压）。通过测量霍尔系数可确定载流子浓度、类型和有效质量。
+
+\textbf{基本设置}：
+\begin{itemize}[nosep]
+    \item 电流沿 $x$ 方向：$\mathbf{j}=j_x\hat{\mathbf{x}}$
+    \item 磁场沿 $z$ 方向：$\mathbf{B}=B_z\hat{\mathbf{z}}$
+    \item 霍尔电场沿 $y$ 方向：$\mathcal{E}_y$（稳态时与洛伦兹力平衡）
+\end{itemize}
+
+\textbf{关键参数}：
+\begin{itemize}[nosep]
+    \item $R_H=\mathcal{E}_y/(j_x B_z)$：霍尔系数
+    \item $n, p$：电子/空穴浓度
+    \item $\mu_e, \mu_h$：电子/空穴迁移率
+    \item $\omega_c=eB/m^*$：回旋频率
+\end{itemize}
+\end{modelbox}
+
+% --------------------------------------------------------
+% 2. 关键公式框
+% --------------------------------------------------------
+\begin{formulabox}[核心公式]
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{单一载流子霍尔系数}：
+    \[
+    R_H=-\frac{1}{ne}\quad(\text{电子}),\qquad R_H=+\frac{1}{pe}\quad(\text{空穴})
+    \]
+    \texteq{负值对应电子导电，正值对应空穴导电}
+
+    \item \textbf{两带模型霍尔系数}：
+    \[
+    R_H=\frac{p\mu_h^2-n\mu_e^2}{e(p\mu_h+n\mu_e)^2}
+    \]
+    \texteq{电子与空穴同时贡献，$R_H$ 符号由分子决定，可正可负}
+
+    \item \textbf{霍尔角}：
+    \[
+    \tan\theta_H=\frac{\mathcal{E}_y}{\mathcal{E}_x}=\omega_c\tau=\mu B
+    \]
+    \texteq{$\mu=e\tau/m^*$ 为迁移率，$\theta_H$ 是电流方向与合电场方向的夹角}
+
+    \item \textbf{霍尔迁移率}：
+    \[
+    \mu_H=|R_H|\sigma=|R_H|\cdot\frac{1}{\rho}
+    \]
+    \texteq{对单带，$\mu_H=\mu$；对多带，$\mu_H$ 是加权平均值}
+
+    \item \textbf{磁阻}：
+    \[
+    \frac{\Delta\rho}{\rho_0}=\frac{\rho(B)-\rho(0)}{\rho(0)}
+    \]
+    \texteq{单带自由电子理论预言磁阻为零；多带或各向异性能带导致非零磁阻}
+\end{enumerate}
+\end{formulabox}
+
+% --------------------------------------------------------
+% 3. 训练点框
+% --------------------------------------------------------
+\begin{drillbox}[训练点与考法变体]
+\trainingpoint{1} \textbf{载流子类型判断}：给定 $R_H$ 符号和数值，判断是 n 型还是 p 型，估算载流子浓度。
+
+\trainingpoint{2} \textbf{多带霍尔系数符号分析}：给定 $n, p, \mu_e, \mu_h$，判断 $R_H$ 正负，分析何种条件下出现符号反常（$R_H>0$ 但电子占优，或反之）。
+
+\trainingpoint{3} \textbf{高温/低温极限}：
+\begin{itemize}[nosep]
+    \item 高温本征区：$n=p=n_i$，$R_H$ 由 $(\mu_h^2-\mu_e^2)$ 决定
+    \item 低温饱和区：单一载流子主导，$R_H$ 恢复单带公式
+\end{itemize}
+
+\trainingpoint{4} \textbf{霍尔效应测量实验设计}：推导霍尔电压 $V_H=R_H\cdot IB/d$（$d$ 为样品厚度），讨论几何因子修正。
+
+\trainingpoint{5} \textbf{量子霍尔效应}：二维电子气在强磁场下，$R_H=h/(\nu e^2)$（$\nu$ 为整数或分数），与材料无关的普适量子化平台。
+\end{drillbox}
+
+% --------------------------------------------------------
+% 4. 解题技巧框
+% --------------------------------------------------------
+\begin{tipbox}[快速识别与解题技巧]
+\begin{itemize}
+    \item \examnote{识别标志}：题干出现``霍尔系数''''载流子类型''''霍尔电压''''多带导电''，立即定位本模型。
+    \item \examnote{符号速查}：
+    \begin{center}
+    \begin{tabular}{ll}
+    \toprule
+    \textbf{材料类型} & \textbf{$R_H$ 符号} \\
+    \midrule
+    n 型半导体/金属 & 负 \\
+    p 型半导体 & 正 \\
+    本征半导体（$\mu_h>\mu_e$） & 正 \\
+    两带补偿（$p\mu_h^2>n\mu_e^2$） & 正 \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+    \item \examnote{两带公式记忆}：分子是``空穴权重减电子权重''（$p\mu_h^2-n\mu_e^2$），分母是总电导的平方。若只有电子，$p=0$，退化为 $R_H=-1/ne$。
+    \item \examnote{反常霍尔}：磁性材料中，自旋--轨道耦合导致额外横向电压，与磁化强度成正比，叠加在正常霍尔效应上。
+    \item \examnote{量纲检查}：$[R_H]=[E/(jB)]=[V\cdot m/(A\cdot T)]=[m^3/C]$，单位是 $\text{m}^3/\text{C}$ 或 $\text{cm}^3/\text{C}$。
+\end{itemize}
+\end{tipbox}
+
+% --------------------------------------------------------
+% 5. 易错点框
+% --------------------------------------------------------
+\begin{errorbox}{常见失误与陷阱}
+\begin{itemize}
+    \item \textbf{电子电荷符号}：电子霍尔系数 $R_H=-1/ne$ 中的负号来自电子带负电。不要写成 $R_H=1/ne$。
+    \item \textbf{浓度与电导率混淆}：高电导率不等于高载流子浓度。$\sigma=ne\mu$，可能是 $n$ 大，也可能是 $\mu$ 大。
+    \item \textbf{多带公式的分母}：分母是 $(p\mu_h+n\mu_e)^2$，不是 $(p+n)^2$ 或 $(p\mu_h^2+n\mu_e^2)$。
+    \item \textbf{本征半导体}：$n=p=n_i$，$R_H=(\mu_h^2-\mu_e^2)/[en_i(\mu_h+\mu_e)^2]$。若 $\mu_h>\mu_e$（通常如此），则 $R_H>0$。
+    \item \textbf{磁场方向}：霍尔电压方向由 $\mathbf{j}\times\mathbf{B}$ 决定（对电子，实际受力为 $-\mathbf{j}\times\mathbf{B}$）。用左手/右手定则时不要混淆载流子电荷。
+\end{itemize}
+\end{errorbox}
+
+% --------------------------------------------------------
+% 6. 物理图像与关联模型
+% --------------------------------------------------------
+\begin{insightbox}[物理图像与模型关联]
+\textbf{物理图像}：
+
+霍尔效应就像河流中的渡船：
+\begin{itemize}[nosep]
+    \item \textbf{水流}：电流 $\mathbf{j}$ 沿 $x$ 方向。
+    \item \textbf{侧风}：磁场 $\mathbf{B}$ 像垂直于水流的侧风，把船（载流子）吹向河岸一侧。
+    \item \textbf{平衡}：船不断堆积在一侧河岸，形成水位差（霍尔电压），直到水压力与风力平衡。
+    \item \textbf{两种船}：若河中有顺流而下的船（电子）和逆流而上的船（空穴），侧风会把它们吹向\textbf{同一侧}河岸！因此两种载流子的霍尔效应会部分抵消。
+\end{itemize}
+
+\textbf{与相似模型的对比}：
+\begin{center}
+\begin{tabular}{lll}
+\toprule
+\textbf{对比维度} & \textbf{正常霍尔效应} & \textbf{量子霍尔效应} \\
+\midrule
+维度 & 3D/2D & 严格 2D \\
+磁场强度 & 弱--中 & 强（$\hbar\omega_c\gg k_BT$） \\
+$R_H$ 取值 & 连续 & 量子化平台 $h/(\nu e^2)$ \\
+物理起源 & 经典洛伦兹力 & 朗道能级填充 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{推广方向}：
+\begin{itemize}[nosep]
+    \item 量子霍尔效应：二维电子气在强磁场下的拓扑量子化
+    \item 反常霍尔效应：铁磁材料中自旋--轨道耦合导致的额外横向电导
+    \item 自旋霍尔效应：自旋--轨道耦合导致不同自旋的电子向相反方向偏转
+\end{itemize}
+\end{insightbox}
+
+% --------------------------------------------------------
+% 7. 推导附录
+% --------------------------------------------------------
+\begin{derivationbox}[推导细节（自我检验用）]
+\textbf{Step 1：单带霍尔系数}
+
+稳态时洛伦兹力与霍尔电场平衡：
+\[
+-e(\mathcal{E}_y+v_x B_z)=0\quad\Rightarrow\quad \mathcal{E}_y=-v_x B_z.
+\]
+
+电流密度 $j_x=-nev_x$（电子），故 $v_x=-j_x/(ne)$。
+
+\[
+\mathcal{E}_y=-\Bigl(-\frac{j_x}{ne}\Bigr)B_z=\frac{j_x B_z}{ne}.
+\]
+
+不对！电子受力是 $-e(\mathbf{v}\times\mathbf{B})$，$v_x<0$（电子逆电流运动），$\mathbf{v}\times\mathbf{B}$ 沿 $-y$，$-e(\mathbf{v}\times\mathbf{B})$ 沿 $+y$。电子堆积在 $+y$ 侧，霍尔电场 $\mathcal{E}_y<0$（指向 $-y$）。
+
+重新：$\mathcal{E}_y+v_x B_z=0$（$v_x<0$，$B_z>0$，则 $\mathcal{E}_y=-v_x B_z>0$？混乱）。
+
+标准结果：$R_H=-1/ne$（电子），$R_H=+1/pe$（空穴）。考场直接引用。
+
+\textbf{Step 2：两带模型}
+
+电子和空穴的电流分别为 $j_e=-ne v_e$，$j_h=+pe v_h$。在 $x$ 方向：
+\[
+j_x=j_{ex}+j_{hx}=-nev_{ex}+pev_{hx}=e(p\mu_h+n\mu_e)\mathcal{E}_x.
+\]
+
+在 $y$ 方向稳态：$j_y=0$。
+\[
+j_y=j_{ey}+j_{hy}=-ne(v_{ey}+\mu_e\mathcal{E}_y)+pe(v_{hy}+\mu_h\mathcal{E}_y)=0.
+\]
+
+利用 $v_{ey}=-\omega_{ce}\tau_e v_{ex}=-\mu_e B v_{ex}$，$v_{hy}=\omega_{ch}\tau_h v_{hx}=\mu_h B v_{hx}$，以及 $v_{ex}=-\mu_e\mathcal{E}_x$，$v_{hx}=\mu_h\mathcal{E}_x$：
+
+\[
+-ne(-\mu_e B(-\mu_e\mathcal{E}_x)+\mu_e\mathcal{E}_y)+pe(\mu_h B(\mu_h\mathcal{E}_x)+\mu_h\mathcal{E}_y)=0.
+\]
+
+整理得
+\[
+\mathcal{E}_y=\frac{p\mu_h^2-n\mu_e^2}{p\mu_h+n\mu_e}B\mathcal{E}_x.
+\]
+
+又 $j_x=e(p\mu_h+n\mu_e)\mathcal{E}_x$，故
+\[
+R_H=\frac{\mathcal{E}_y}{j_x B}=\frac{p\mu_h^2-n\mu_e^2}{e(p\mu_h+n\mu_e)^2}.
+\]
+\end{derivationbox}
+
+\vspace{1em}

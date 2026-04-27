@@ -1,0 +1,199 @@
+% ============================================================
+% Model: 近藤效应
+% ============================================================
+
+\section{近藤效应}
+\label{sec:kondo-effect}
+
+\begin{tipbox}[关键词标签]
+磁性杂质 · 电阻率极小值 · 交换散射 · 局域磁矩 · 近藤温度 · 费米液体
+\end{tipbox}
+
+% --------------------------------------------------------
+% 1. 模型定义框
+% --------------------------------------------------------
+\begin{modelbox}[模型：近藤效应]
+\textbf{物理情境}：在稀释的磁性杂质（如 Fe、Mn）掺杂的非磁性金属中，低温下电阻率不遵循马西森定则预期的常数残余值，而是在某一温度出现极小值后随温度降低而上升。这是磁性杂质局域磁矩与传导电子交换相互作用导致的量子多体效应。
+
+\textbf{交换相互作用哈密顿量}（s-d 交换模型）：
+\[
+\hat{H}_{\text{sd}}=-J\,\mathbf{S}\cdot\mathbf{s}(\mathbf{r}=0),\qquad J<0\;(\text{反铁磁耦合})
+\]
+其中 $\mathbf{S}$ 是杂质局域自旋，$\mathbf{s}(\mathbf{r}=0)$ 是杂质位置的传导电子自旋密度。
+
+\textbf{关键参数}：
+\begin{itemize}[nosep]
+    \item $J$：交换耦合常数（$J<0$ 为反铁磁，导致近藤效应）
+    \item $S$：杂质局域自旋量子数
+    \item $T_K$：近藤温度，$k_BT_K\sim\varepsilon_F e^{-1/(|J|\rho_0)}$（$\rho_0$ 为费米面态密度）
+    \item $\rho_0$：费米面处单电子态密度
+\end{itemize}
+
+\textbf{物理图像}：
+\begin{itemize}[nosep]
+    \item $T\gg T_K$：局域磁矩自由，表现为磁散射中心，电阻率 $\rho\propto-\ln T$
+    \item $T\ll T_K$：传导电子屏蔽局域磁矩，形成单重态束缚态（近藤单态），磁矩被淬灭，电阻率趋于常数（费米液体行为 $\rho\propto T^2$）
+\end{itemize}
+\end{modelbox}
+
+% --------------------------------------------------------
+% 2. 关键公式框
+% --------------------------------------------------------
+\begin{formulabox}[核心公式]
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{近藤电阻率公式}（$T\gg T_K$）：
+    \[
+    \rho_{\text{Kondo}}(T)=\rho_0\Bigl[1-\frac{|J|\rho_0}{N}\ln\Bigl(\frac{k_BT}{D}\Bigr)\Bigr]
+    \]
+    \texteq{$D$ 为导带半宽度，对数发散被 $T_K$ 截断}
+
+    \item \textbf{近藤温度}：
+    \[
+    k_BT_K=\sqrt{D\cdot\varepsilon_F}\;\exp\Bigl(-\frac{1}{|J|\rho_0}\Bigr)
+    \sim\varepsilon_F\,e^{-1/(|J|\rho_0)}
+    \]
+    \texteq{特征能量尺度，$T_K$ 以下磁矩被屏蔽}
+
+    \item \textbf{总电阻率}（马西森定则 + 近藤项）：
+    \[
+    \rho(T)=\rho_{\text{phonon}}(T)+\rho_{\text{impurity}}+\rho_{\text{Kondo}}(T)
+    \]
+    \texteq{低温：$\rho_{\text{phonon}}\propto T^5$；近藤项：$\propto-\ln T$；杂质项：常数}
+
+    \item \textbf{低温费米液体行为}（$T\ll T_K$）：
+    \[
+    \rho(T)=\rho_0+A\Bigl(\frac{T}{T_K}\Bigr)^2
+    \]
+    \texteq{与正常费米液体一致，杂质变为重费米子型散射中心}
+
+    \item \textbf{比热与磁化率}（$T\ll T_K$）：
+    \[
+    C_V=\gamma T,\qquad \chi=\frac{C}{T_K}\quad\text{（Curie--Weiss 型）}
+    \]
+    \texteq{每个杂质贡献的有效质量极大增强}
+\end{enumerate}
+\end{formulabox}
+
+% --------------------------------------------------------
+% 3. 训练点框
+% --------------------------------------------------------
+\begin{drillbox}[训练点与考法变体]
+\trainingpoint{1} \textbf{电阻率曲线分析}：给定 $\rho(T)$ 实验曲线（先降后升再趋于常数），判断是否为近藤效应，标出电阻率极小值温度 $T_{\min}$ 与 $T_K$ 的关系。
+
+\trainingpoint{2} \textbf{与非磁性杂质对比}：非磁性杂质只增加常数残余电阻；磁性杂质在低温出现 $-\ln T$ 上升。解释为何非磁性杂质不出现此行为（无交换散射，无自旋翻转过程）。
+
+\trainingpoint{3} \textbf{近藤温度估算}：给定 $J, \rho_0, \varepsilon_F$，估算 $T_K$ 的数量级。$|J|\rho_0$ 越大，$T_K$ 越高。
+
+\trainingpoint{4} \textbf{重费米子材料}：Ce、Yb 等稀土化合物中，近藤效应导致有效质量 $m^*\sim 10^2\sim10^3 m_e$，费米能级极低，比热系数 $\gamma$ 极大。
+
+\trainingpoint{5} \textbf{近藤绝缘体}：半导体中磁性杂质导致能隙内出现近藤共振峰，输运性质呈现激活行为与近藤行为的竞争。
+\end{drillbox}
+
+% --------------------------------------------------------
+% 4. 解题技巧框
+% --------------------------------------------------------
+\begin{tipbox}[快速识别与解题技巧]
+\begin{itemize}
+    \item \examnote{识别标志}：题干出现``磁性杂质''''电阻率极小值''''低温上升''''$-\ln T$''，立即定位近藤效应。
+    \item \examnote{电阻率曲线速记}：
+    \begin{center}
+    \begin{tabular}{ll}
+    \toprule
+    \textbf{杂质类型} & \textbf{$\rho(T)$ 低温行为} \\
+    \midrule
+    非磁性 & 趋于常数 $\rho_0$ \\
+    磁性（$T>T_K$） & $\rho_0-\ln T$ 上升 \\
+    磁性（$T<T_K$） & $\rho_0+A(T/T_K)^2$ 趋于常数 \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+    \item \examnote{马西森定则失效}：近藤效应中 $\rho_{\text{Kondo}}$ 与温度有关且不是简单的求和，马西森定则严格失效。
+    \item \examnote{数量级}：典型 $T_K\sim1\sim100\,\text{K}$，重费米子材料可低至 mK 量级。
+    \item \examnote{与超导共存}：磁性杂质破坏超导（局域磁矩导致自旋翻转散射，破坏 Cooper 对）。
+\end{itemize}
+\end{tipbox}
+
+% --------------------------------------------------------
+% 5. 易错点框
+% --------------------------------------------------------
+\begin{errorbox}{常见失误与陷阱}
+\begin{itemize}
+    \item \textbf{近藤效应 vs 电子--电子相互作用}：近藤效应是磁性杂质与传导电子的散射，不是电子--电子直接相互作用（后者导致朗道费米液体修正）。
+    \item \textbf{极小值温度不是 $T_K$}：$T_{\min}$ 是电阻率极小值出现的温度，由声子电阻的下降与近藤电阻的上升竞争决定，$T_{\min}\neq T_K$。通常 $T_{\min}>T_K$。
+    \item \textbf{$J>0$（铁磁耦合）}：不出现近藤效应，电阻率不出现 $-\ln T$ 行为，而是正常的常数残余电阻。
+    \item \textbf{高浓度磁性杂质}：近藤效应要求杂质稀释（杂质间距离远大于近藤屏蔽云尺寸 $\xi_K\sim\hbar v_F/k_BT_K$）。高浓度时杂质间相互作用主导，出现自旋玻璃或磁有序。
+    \item \textbf{近藤单态的能量}：基态是单重态（总自旋 $S=0$），激发态是三重态（$S=1$），能量差 $\sim k_BT_K$。
+\end{itemize}
+\end{errorbox}
+
+% --------------------------------------------------------
+% 6. 物理图像与关联模型
+% --------------------------------------------------------
+\begin{insightbox}[物理图像与模型关联]
+\textbf{物理图像}：
+
+近藤效应就像一个``磁性鱼饵''在``电子海洋''中：
+\begin{itemize}[nosep]
+    \item \textbf{高温}：鱼饵（局域磁矩）自由旋转，不断``撞''到游过的鱼（传导电子），导致混乱（电阻上升）。
+    \item \textbf{低温}：越来越多的鱼被鱼饵吸引，形成一圈``鱼群云''（近藤屏蔽云），鱼饵被鱼群``锁定''而无法自由旋转。此时鱼群整体移动顺畅，碰撞减少（电阻趋于常数）。
+    \item \textbf{鱼群云尺寸}：$\xi_K\sim\hbar v_F/(k_BT_K)$，可达纳米量级，包含 $10^4\sim10^6$ 个电子。
+\end{itemize}
+
+\textbf{与相似模型的对比}：
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{对比维度} & \textbf{非磁性杂质} & \textbf{磁性杂质（$T>T_K$）} & \textbf{磁性杂质（$T<T_K$）} \\
+\midrule
+散射机制 & 势散射 & 交换散射（自旋翻转） & 势散射（屏蔽后） \\
+电阻率 & 常数 & $-\ln T$ 上升 & $T^2$ 趋于常数 \\
+局域磁矩 & 无 & 自由 & 淬灭（屏蔽） \\
+比热 & 无异常 & Curie 律 $1/T$ & 重费米子 $\gamma T$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{推广方向}：
+\begin{itemize}[nosep]
+    \item 多杂质近藤效应：近藤晶格（如重费米子化合物 CeCu$_6$）
+    \item 近藤绝缘体：SmB$_6$，YbB$_{12}$，低温下 opens 能隙
+    \item 量子点近藤效应：单电子晶体管中电荷/自旋自由度导致的近藤共振
+\end{itemize}
+\end{insightbox}
+
+% --------------------------------------------------------
+% 7. 推导附录
+% --------------------------------------------------------
+\begin{derivationbox}[推导细节（自我检验用）]
+\textbf{Step 1：微扰论计算散射率}
+
+s-d 交换哈密顿量 $\hat{H}_{\text{sd}}=-J\mathbf{S}\cdot\mathbf{s}$。二级微扰下，自旋翻转散射的矩阵元涉及中间态能量分母 $1/(E_k-E_{k'})$。
+
+对自旋向上的电子被自旋向下的杂质散射（$\uparrow\to\downarrow$）：
+\[
+\mathcal{M}\propto J^2S(S+1)\sum_{k'}\frac{f_{k'}(1-f_k)}{E_k-E_{k'}}.
+\]
+
+\textbf{Step 2：对数发散的来源}
+
+态密度近似为常数 $\rho_0$，积分：
+\[
+\sum_{k'}\frac{f_{k'}}{E_k-E_{k'}}\approx\rho_0\int_{-D}^{D}\frac{f(\varepsilon)}{E_k-\varepsilon}\,d\varepsilon
+\approx\rho_0\ln\frac{D}{|E_k|}.
+\]
+
+在费米面 $E_k\sim k_BT$，故散射率 $\propto\ln(D/k_BT)$，电阻率 $\propto-\ln T$。
+
+\textbf{Step 3：近藤温度的物理意义}
+
+微扰论在 $T\sim T_K$ 时失效，因为展开参数 $|J|\rho_0\ln(D/k_BT)$ 不再小。定义 $T_K$ 使得
+\[
+|J|\rho_0\ln\frac{D}{k_BT_K}\sim1\quad\Rightarrow\quad k_BT_K\sim D\,e^{-1/(|J|\rho_0)}.
+\]
+
+\textbf{Step 4：低温费米液体}
+
+$T\ll T_K$ 时，局域磁矩被屏蔽，系统表现为重费米子液体。有效质量 $m^*\propto 1/T_K$，电阻率 $\rho\propto(T/T_K)^2$。
+\end{derivationbox}
+
+\vspace{1em}

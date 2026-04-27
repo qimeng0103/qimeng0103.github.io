@@ -1,0 +1,223 @@
+% ============================================================
+% Model: 超导BCS判据与能隙实验
+% ============================================================
+
+\section{超导BCS判据与能隙实验}
+\label{sec:superconductivity-bcs}
+
+\begin{tipbox}[关键词标签]
+零电阻 · 迈斯纳效应 · BCS理论 · 超导能隙 · Cooper对 · 隧道谱 · 比热
+\end{tipbox}
+
+% --------------------------------------------------------
+% 1. 模型定义框
+% --------------------------------------------------------
+\begin{modelbox}[模型：超导BCS理论与能隙]
+\textbf{物理情境}：某些材料在临界温度 $T_c$ 以下，电阻突降为零，同时磁场被完全排斥（迈斯纳效应）。BCS 理论将超导归因于电子--声子耦合导致的有效吸引相互作用，使费米面附近的电子形成自旋单态、动量相反的 Cooper 对。
+
+\textbf{BCS 基态波函数}：
+\[
+|\Psi_{\text{BCS}}\rangle=\prod_{\mathbf{k}}\bigl(u_{\mathbf{k}}+v_{\mathbf{k}}\,\hat{c}_{\mathbf{k}\uparrow}^\dagger\hat{c}_{-\mathbf{k}\downarrow}^\dagger\bigr)|0\rangle
+\]
+其中 $|u_{\mathbf{k}}|^2+|v_{\mathbf{k}}|^2=1$，$v_{\mathbf{k}}^2$ 是动量 $\mathbf{k}$ 的 Cooper 对被占据的概率。
+
+\textbf{关键参数}：
+\begin{itemize}[nosep]
+    \item $T_c$：临界温度，$k_BT_c\approx1.13\hbar\omega_D\,e^{-1/(N_0V)}$
+    \item $\Delta$：超导能隙（$T=0$ 时 $\Delta_0\approx1.76\,k_BT_c$）
+    \item $\xi_0=\hbar v_F/(\pi\Delta_0)$：相干长度（Cooper 对尺寸）
+    \item $\lambda_L$：伦敦穿透深度
+    \item $\omega_D$：德拜频率
+\end{itemize}
+
+\textbf{超导判据}：
+\begin{itemize}[nosep]
+    \item 零电阻：直流电阻严格为零
+    \item 完全抗磁性（迈斯纳效应）：体内 $B=0$，磁场被排斥到穿透深度 $\lambda_L$ 以内
+\end{itemize}
+\end{modelbox}
+
+% --------------------------------------------------------
+% 2. 关键公式框
+% --------------------------------------------------------
+\begin{formulabox}[核心公式]
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{零温能隙}：
+    \[
+    \Delta_0=2\hbar\omega_D\exp\Bigl(-\frac{1}{N_0V}\Bigr)\approx1.76\,k_BT_c
+    \]
+    \texteq{$N_0$ 为费米面态密度，$V>0$ 为有效吸引势}
+
+    \item \textbf{能隙与温度关系}：
+    \[
+    \Delta(T)\approx\Delta_0\tanh\Bigl(\frac{\pi}{\Delta_0}\sqrt{\frac{2\Delta C}{3\zeta(3)}\cdot\frac{T_c-T}{T_c}}\Bigr)\quad(T\to T_c^-)
+    \]
+    \texteq{在 $T_c$ 附近，$\Delta(T)\propto\sqrt{T_c-T}$}
+
+    \item \textbf{准粒子激发谱}：
+    \[
+    E_{\mathbf{k}}=\sqrt{\varepsilon_{\mathbf{k}}^2+\Delta^2}
+    \]
+    \texteq{$\varepsilon_{\mathbf{k}}=\hbar^2k^2/2m-E_F$，最小激发能 $E_{\min}=\Delta$}
+
+    \item \textbf{临界磁场}：
+    \[
+    H_c(T)=H_c(0)\Bigl[1-\Bigl(\frac{T}{T_c}\Bigr)^2\Bigr],\qquad
+    H_c(0)=\sqrt{\frac{N_0}{\mu_0}}\Delta_0
+    \]
+
+    \item \textbf{London 方程与穿透深度}：
+    \[
+    \nabla^2\mathbf{j}=\frac{n_se^2}{m}\mathbf{B},\qquad
+    \lambda_L=\sqrt{\frac{m}{\mu_0n_se^2}}
+    \]
+    \texteq{$n_s$ 为超导电子对浓度}
+\end{enumerate}
+\end{formulabox}
+
+% --------------------------------------------------------
+% 3. 训练点框
+% --------------------------------------------------------
+\begin{drillbox}[训练点与考法变体]
+\trainingpoint{1} \textbf{超导判据判断}：给定电阻率和磁化率随温度变化的实验曲线，判断是否发生超导相变，确定 $T_c$。
+
+\trainingpoint{2} \textbf{能隙实验分析}：给定隧道谱 $I$-$V$ 曲线，读取能隙电压 $V_g=2\Delta/e$，计算 $\Delta$ 并与 $1.76k_BT_c$ 比较。
+
+\trainingpoint{3} \textbf{比热跃变}：超导相变时电子比热出现不连续跃变 $\Delta C/C_N\approx1.43$（BCS 理论预言值），利用此值验证 BCS 行为。
+
+\trainingpoint{4} \textbf{穿透深度与相干长度}：给定 $\lambda_L$ 和 $\xi_0$，判断超导体类型（$\kappa=\lambda_L/\xi_0<1/\sqrt{2}$ 为 I 型，$\kappa>1/\sqrt{2}$ 为 II 型）。
+
+\trainingpoint{5} \textbf{Josephson 效应}：超导--绝缘--超导结的直流 Josephson 效应 $I=I_c\sin\phi$，交流效应 $V=(\hbar/2e)\partial_t\phi$，涉及磁通量子 $\Phi_0=h/2e$。
+\end{drillbox}
+
+% --------------------------------------------------------
+% 4. 解题技巧框
+% --------------------------------------------------------
+\begin{tipbox}[快速识别与解题技巧]
+\begin{itemize}
+    \item \examnote{识别标志}：题干出现``零电阻''''迈斯纳效应''''超导能隙''''Cooper 对''''BCS''，立即定位本模型。
+    \item \examnote{能隙实验速查}：
+    \begin{center}
+    \begin{tabular}{ll}
+    \toprule
+    \textbf{实验方法} & \textbf{能隙特征} \\
+    \midrule
+    隧道谱（SIS结） & $I$-$V$ 曲线在 $eV=\pm2\Delta$ 处出现跃变 \\
+    远红外吸收 & 阈值频率 $\nu_g=2\Delta/h$ \\
+    核磁共振 & 弛豫率 $1/T_1$ 在 $T_c$ 下方出现相干峰 \\
+    比热 & 指数行为 $C_{es}\propto e^{-\Delta/k_BT}$ \\
+    超声衰减 & 能隙打开导致衰减系数突降 \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+    \item \examnote{能隙数值速算}：$\Delta_0\approx1.76k_BT_c$。若 $T_c=10\,\text{K}$，则 $\Delta_0\approx1.5\,\text{meV}$；若 $T_c=100\,\text{K}$，则 $\Delta_0\approx15\,\text{meV}$。
+    \item \examnote{磁通量子}：$\Phi_0=h/2e\approx2.07\times10^{-15}\,\text{Wb}=2.07\times10^{-7}\,\text{G}\cdot\text{cm}^2$，是区分超导体中载流子为 Cooper 对（$2e$）还是单电子（$e$）的直接证据。
+    \item \examnote{伦敦穿透深度}：典型 $\lambda_L\sim50\sim500\,\text{nm}$，远大于原子间距但小于宏观样品尺寸。
+\end{itemize}
+\end{tipbox}
+
+% --------------------------------------------------------
+% 5. 易错点框
+% --------------------------------------------------------
+\begin{errorbox}{常见失误与陷阱}
+\begin{itemize}
+    \item \textbf{迈斯纳效应 vs 理想导体}：理想导体（欧姆定律 $\rho=0$）只能维持内部磁场不变（冻结）；迈斯纳效应要求内部磁场 $B=0$ 与历史无关。这是超导的本质特征，不能由经典电动力学导出。
+    \item \textbf{能隙与激发能}：超导能隙 $\Delta$ 是单电子激发的最小能量，但拆散一个 Cooper 对需要能量 $2\Delta$（因为同时产生两个准粒子）。隧道谱测量的是 $2\Delta$。
+    \item \textbf{能隙与 $T_c$ 的关系}：$2\Delta_0/(k_BT_c)\approx3.52$ 是 BCS 弱耦合极限的值。强耦合超导体（如 Pb）该比值可达 $4\sim4.5$。
+    \item \textbf{相干长度 vs 穿透深度}：相干长度 $\xi_0$ 是 Cooper 对的空间尺度（$\sim1\,\text{nm}\sim1\,\mu\text{m}$）；穿透深度 $\lambda_L$ 是磁场穿透超导体的深度。不要混淆。
+    \item \textbf{I 型 vs II 型}：由 Ginzburg-Landau 参数 $\kappa=\lambda_L/\xi$ 决定。II 型超导体允许磁场以磁通涡旋形式部分穿透（混合态）。
+\end{itemize}
+\end{errorbox}
+
+% --------------------------------------------------------
+% 6. 物理图像与关联模型
+% --------------------------------------------------------
+\begin{insightbox}[物理图像与模型关联]
+\textbf{物理图像}：
+
+BCS 超导就像舞池中的舞伴：
+\begin{itemize}[nosep]
+    \item \textbf{正常态}：舞池中每个人各自随意走动（单电子态），不断碰撞。
+    \item \textbf{超导态}：音乐响起（晶格振动/声子），人们两两配对成舞伴（Cooper 对），配对者动作协调一致。要拆散一对舞伴需要额外能量（能隙 $\Delta$）。
+    \item \textbf{集体运动}：所有舞伴作为一个整体同步移动，不受舞池障碍（杂质）影响（零电阻）。
+    \item \textbf{迈斯纳效应}：如果有人试图从舞池外推入一个外来舞者（磁场），舞伴们会集体把他挡在外面（屏蔽电流）。
+\end{itemize}
+
+\textbf{与相似模型的对比}：
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{对比维度} & \textbf{BCS 超导体} & \textbf{超流 $^4$He} & \textbf{量子霍尔态} \\
+\midrule
+凝聚粒子 & Cooper 对（费米子配对） & $^4$He 原子（玻色子） & 电子（拓扑序） \\
+序参量 & 复数 $\psi=|\psi|e^{i\phi}$ & 波函数振幅 & 陈数 \\
+相干性 & 相位长程有序 & 相位长程有序 & 拓扑保护 \\
+载流子 & $2e$ & 无（中性超流） & $e$ \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{推广方向}：
+\begin{itemize}[nosep]
+    \item 高温超导：铜基、铁基超导体的配对机制可能非声子媒介（磁涨落？）
+    \item 拓扑超导：Majorana 零能模，非阿贝尔统计，拓扑量子计算
+    \item 超导量子比特：Josephson 结构成的 transmon、fluxonium 量子比特
+\end{itemize}
+\end{insightbox}
+
+% --------------------------------------------------------
+% 7. 推导附录
+% --------------------------------------------------------
+\begin{derivationbox}[推导细节（自我检验用）]
+\textbf{Step 1：Cooper 不稳定}
+
+在费米面附近加一对动量相反、自旋相反的电子，势能 $V<0$（吸引）。即使 $|V|$ 任意小，束缚态能量
+\[
+E=-2\hbar\omega_D\exp\Bigl(-\frac{2}{N_0|V|}\Bigr)
+\]
+总为负，说明费米海对配对不稳定。
+
+\textbf{Step 2：BCS 能隙方程}
+
+自洽方程：
+\[
+\Delta_{\mathbf{k}}=-\sum_{\mathbf{k}'}V_{\mathbf{k}\mathbf{k}'}\frac{\Delta_{\mathbf{k}'}}{2E_{\mathbf{k}'}}\tanh\frac{E_{\mathbf{k}'}}{2k_BT}.
+\]
+
+取简化势 $V_{\mathbf{k}\mathbf{k}'}=-V$（$|\varepsilon_{\mathbf{k}}|<\hbar\omega_D$），零温时：
+\[
+1=N_0V\int_0^{\hbar\omega_D}\frac{d\varepsilon}{\sqrt{\varepsilon^2+\Delta_0^2}}
+=N_0V\,\text{arcsinh}\frac{\hbar\omega_D}{\Delta_0}.
+\]
+
+若 $N_0V\ll1$（弱耦合），$\text{arcsinh}(x)\approx\ln(2x)$，故
+\[
+\Delta_0\approx2\hbar\omega_D\,e^{-1/(N_0V)}.
+\]
+
+\textbf{Step 3：$T_c$ 与 $\Delta_0$ 的关系}
+
+$T=T_c$ 时 $\Delta=0$，能隙方程变为
+\[
+1=N_0V\int_0^{\hbar\omega_D}\frac{d\varepsilon}{\varepsilon}\tanh\frac{\varepsilon}{2k_BT_c}.
+\]
+
+积分得 $k_BT_c\approx1.13\hbar\omega_D\,e^{-1/(N_0V)}$。
+
+因此
+\[
+\frac{2\Delta_0}{k_BT_c}\approx\frac{2\times2}{1.13}\approx3.52.
+\]
+
+\textbf{Step 4：准粒子激发}
+
+Bogoliubov 变换对角化后的哈密顿量：
+\[
+\hat{H}=E_0+\sum_{\mathbf{k}\sigma}E_{\mathbf{k}}\,\gamma_{\mathbf{k}\sigma}^\dagger\gamma_{\mathbf{k}\sigma},
+\qquad E_{\mathbf{k}}=\sqrt{\varepsilon_{\mathbf{k}}^2+\Delta^2}.
+\]
+
+最小激发能 $E_{\min}=\Delta$（在费米面 $\varepsilon_{\mathbf{k}}=0$ 处）。
+\end{derivationbox}
+
+\vspace{1em}
