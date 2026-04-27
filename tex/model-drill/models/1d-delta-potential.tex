@@ -1,0 +1,282 @@
+% ============================================================
+% Model: 一维 delta 势阱与变分法
+% ============================================================
+
+\section{一维 $\delta$ 势阱与变分法}
+\label{sec:1d-delta-potential}
+
+\begin{tipbox}[关键词标签]
+宇称定理 · 基态不简并 · 无节点 · delta 势阱 · 变分法 · 试探波函数 · 归一化 · 能量期望值
+\end{tipbox}
+
+% --------------------------------------------------------
+% 1. 模型定义框
+% --------------------------------------------------------
+\begin{modelbox}[模型：一维对称势场中的束缚态]
+\textbf{物理情境}：一维势场 $V(x)=V(-x)$ 具有空间反演对称性。考察其束缚定态，特别是基态的性质。对于吸引性 $\delta$ 势阱 $V(x)=-\gamma\delta(x)$（$\gamma>0$），可用变分法近似求基态能量，并与精确解对比。
+
+\textbf{宇称定理}：
+\begin{itemize}[nosep]
+    \item 若 $V(x)=V(-x)$，则哈密顿量与宇称算符对易：$[H,P]=0$
+    \item 一维束缚态基态不简并，故基态波函数必为 $P$ 的本征态
+    \item 基态宇称为正（偶函数），因为奇函数在原点必有节点，而基态无节点
+\end{itemize}
+
+\textbf{$\delta$ 势阱定义}：
+\[
+V(x)=-\gamma\delta(x),\quad\gamma>0.
+\]
+\begin{itemize}[nosep]
+    \item 仅在 $x=0$ 处有吸引势，强度为 $\gamma$
+    \item 薛定谔方程在 $x\neq0$ 处为自由粒子方程
+    \item 波函数在 $x=0$ 处连续，但导数跃变：$\psi'(0^+)-\psi'(0^-)=-\frac{2m\gamma}{\hbar^2}\psi(0)$
+\end{itemize}
+
+\textbf{变分法原理}：对任意归一化试探波函数 $\psi_t$，$\langle\psi_t|H|\psi_t\rangle\geq E_0$。等号当且仅当 $\psi_t=\psi_0$（基态）时成立。
+\end{modelbox}
+
+% --------------------------------------------------------
+% 2. 关键公式框
+% --------------------------------------------------------
+\begin{formulabox}[核心公式]
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{宇称定理（一维基态）}：
+    \[
+    V(x)=V(-x)\quad\Rightarrow\quad\psi_0(-x)=\psi_0(x),\quad\psi_0(x)\neq0\;(\forall x\in\mathbb{R}).
+    \]
+    \texteq{基态波函数为实偶函数，无节点（除 $x\to\pm\infty$ 外）}
+
+    \item \textbf{$\delta$ 势导数跃变条件}：
+    \[
+    \psi'(0^+)-\psi'(0^-)=-\frac{2m\gamma}{\hbar^2}\psi(0)
+    \]
+    \texteq{由薛定谔方程在 $x=0$ 邻域积分得到}
+
+    \item \textbf{$\delta$ 势精确基态}：
+    \[
+    \psi_0(x)=\sqrt{\lambda}\,e^{-\lambda|x|},\quad\lambda=\frac{m\gamma}{\hbar^2},\quad
+    E_0=-\frac{m\gamma^2}{2\hbar^2}.
+    \]
+    \texteq{仅存在一个束缚态，$E_0<0$}
+
+    \item \textbf{变分法能量泛函}（试探波函数 $\psi_\lambda(x)=\sqrt{\lambda}\,e^{-\lambda|x|}$）：
+    \[
+    E(\lambda)=\langle T\rangle+\langle V\rangle=\frac{\hbar^2\lambda^2}{2m}-\gamma\lambda
+    \]
+    \texteq{动能项来自 $x\neq0$ 处的曲率，势能项来自 $-\gamma|\psi(0)|^2$}
+
+    \item \textbf{变分极值}：
+    \[
+    \frac{dE}{d\lambda}=\frac{\hbar^2\lambda}{m}-\gamma=0\quad\Rightarrow\quad
+    \lambda_{\text{opt}}=\frac{m\gamma}{\hbar^2}.
+    \]
+    \texteq{恰好给出精确解，说明试探波函数选取得当}
+
+    \item \textbf{有限深势阱对比}（阱深 $V_0$，阱宽 $2a$）：
+    \[
+    \text{至少一个束缚态条件：}\frac{2mV_0a^2}{\hbar^2}\geq\frac{\pi^2}{8}\;(?)
+    \quad\text{（一维有限深势阱\textbf{总是}至少有一个束缚态）}
+    \]
+    \texteq{一维势阱无论多浅多窄，总存在至少一个束缚态}
+\end{enumerate}
+\end{formulabox}
+
+% --------------------------------------------------------
+% 3. 训练点框
+% --------------------------------------------------------
+\begin{drillbox}[训练点与考法变体]
+\trainingpoint{1} \textbf{宇称定理证明}：给定 $V(x)=V(-x)$，用反证法证明基态波函数必为偶函数。关键点：假设基态为奇函数 $\Rightarrow$ $\psi_0(0)=0$ $\Rightarrow$ 存在节点 $\Rightarrow$ 与基态无节点定理矛盾。
+
+\trainingpoint{2} \textbf{变分法完整步骤}：选取试探波函数 $\to$ 归一化 $\to$ 计算 $\langle T\rangle$ 和 $\langle V\rangle$ $\to$ 构建 $E(\lambda)$ $\to$ 对变分参数求导取极值 $\to$ 代回得 $E_0$ 估计。
+
+\trainingpoint{3} \textbf{试探波函数选取原则}：
+\begin{itemize}[nosep]
+    \item 满足边界条件（束缚态要求在无穷远处指数衰减）
+    \item 具有正确的宇称（基态为偶函数）
+    \item 含可调参数（至少一个）
+    \item 形式尽量接近真实波函数（可借鉴已知类似问题的精确解）
+\end{itemize}
+
+\trainingpoint{4} \textbf{$\delta$ 势 vs 有限深势阱}：比较两者的束缚态数目、波函数形式、能量尺度。$\delta$ 势仅有一个束缚态，有限深势阱可能有多个。
+
+\trainingpoint{5} \textbf{双 $\delta$ 势阱}：$V(x)=-\gamma[\delta(x-a)+\delta(x+a)]$，分析对称/反对称束缚态，隧穿劈裂，与分子轨道类比。
+\end{drillbox}
+
+% --------------------------------------------------------
+% 4. 解题技巧框
+% --------------------------------------------------------
+\begin{tipbox}[快速识别与解题技巧]
+\begin{itemize}
+    \item \examnote{识别标志}：题干出现``一维势场''''宇称''''$\delta(x)$''''变分法''''试探波函数''''基态无节点''，立即定位本模型。
+    \item \examnote{变分法步骤速查}：
+    \begin{center}
+    \fbox{\parbox{0.9\linewidth}{\centering
+    \textbf{变分法四步曲}\\[2pt]
+    1. 猜（试探波函数，含参数 $\lambda$）\\
+    2. 归（归一化，确定系数）\\
+    3. 算（$\langle H\rangle_\lambda=\langle T\rangle+\langle V\rangle$）\\
+    4. 极（$dE/d\lambda=0$，解出 $\lambda_{\text{opt}}$）
+    }}
+    \end{center}
+    \item \examnote{动能计算技巧}：对于分段光滑的波函数（如 $e^{-\lambda|x|}$），$d^2\psi/dx^2$ 在原点有 $\delta$ 函数奇异性。可用分部积分：
+    \[
+    \langle T\rangle=-\frac{\hbar^2}{2m}\int_{-\infty}^{\infty}\psi^*\frac{d^2\psi}{dx^2}dx
+    =\frac{\hbar^2}{2m}\int_{-\infty}^{\infty}\Bigl|\frac{d\psi}{dx}\Bigr|^2dx
+    \]
+    避开二阶导数在原点的奇异性。
+    \item \examnote{$\delta$ 势势能计算}：$\langle V\rangle=-\gamma\int\delta(x)|\psi(x)|^2dx=-\gamma|\psi(0)|^2$，只需波函数在原点的值。
+    \item \examnote{一维 vs 三维}：一维吸引势至少有一个束缚态；三维吸引势（如球对称有限深势阱）需要足够深/宽才有束缚态。$\delta$ 势在三维需要正规化（Thomas效应）。
+\end{itemize}
+\end{tipbox}
+
+% --------------------------------------------------------
+% 5. 易错点框
+% --------------------------------------------------------
+\begin{errorbox}{常见失误与陷阱}
+\begin{itemize}
+    \item \textbf{动能的二阶导数陷阱}：$\psi(x)=e^{-\lambda|x|}$ 的一阶导数在 $x=0$ 处不连续：$\psi'(0^+)=-\lambda$, $\psi'(0^-)=+\lambda$。二阶导数在原点包含 $-2\lambda\delta(x)$。若直接积分 $d^2\psi/dx^2$ 而不处理奇异性，会得到错误结果。
+    \item \textbf{基态简并的维度依赖}：一维束缚态基态不简并；二维及以上基态可能简并（如氢原子基态 $l=0,m=0$ 不简并，但激发态可简并）。宇称定理的``基态必为偶函数''仅在一维成立。
+    \item \textbf{试探波函数必须归一化}：变分原理要求试探波函数归一化。若忘记归一化常数，能量期望值会偏差。
+    \item \textbf{变分法给出的是上界}：$E(\lambda_{\text{opt}})\geq E_0$。若试探波函数选得好，接近精确解；选得差，上界很松。
+    \item \textbf{$\delta$ 势的维度}：一维 $V(x)=-\gamma\delta(x)$ 有且仅有一个束缚态；二维 $V(\mathbf{r})=-\gamma\delta^{(2)}(\mathbf{r})$ 有一个束缚态（对数发散需正规化）；三维 $V(\mathbf{r})=-\gamma\delta^{(3)}(\mathbf{r})$ 无束缚态（Thomas崩溃）。
+    \item \textbf{宇称定理的反用}：若已知基态波函数有节点，则可反推势场不对称或存在外场破坏空间反演对称性。
+\end{itemize}
+\end{errorbox}
+
+% --------------------------------------------------------
+% 6. 物理图像与关联模型
+% --------------------------------------------------------
+\begin{insightbox}[物理图像与模型关联]
+\textbf{物理图像}：
+
+$\delta$ 势阱就像一个无限窄、无限深的陷阱：
+\begin{itemize}[nosep]
+    \item 粒子在 $x\neq0$ 处完全自由，像``在旷野中游荡''。
+    \item 一旦靠近 $x=0$，就被瞬间吸入陷阱——但只有足够``轻''（动量小）的粒子才能被束缚。
+    \item 波函数呈指数衰减 $e^{-\lambda|x|}$，衰减长度 $1/\lambda=\hbar^2/m\gamma$。势越强（$\gamma$ 越大），粒子越局域。
+    \item 整个系统只有一个束缚态——无论势多强，深能级只有一个。
+\end{itemize}
+
+\textbf{基态无节点定理的证明思路}：
+
+若基态 $\psi_0(x)$ 在某处 $x=a$ 有节点（$\psi_0(a)=0$），可构造新波函数 $\phi(x)=|\psi_0(x)|$。
+\begin{itemize}[nosep]
+    \item $\phi$ 与 $\psi_0$ 概率密度相同，故归一化相同
+    \item 动能项 $\langle T\rangle_\phi\leq\langle T\rangle_{\psi_0}$（因为 $|\psi|$ 的``尖点''使动能更小，或通过分部积分证明）
+    \item 势能项相同（$\langle V\rangle$ 只依赖于 $|\psi|^2$）
+    \item 故 $\langle H\rangle_\phi\leq\langle H\rangle_{\psi_0}=E_0$，但 $E_0$ 是最低能量，矛盾
+    \item 因此基态波函数不能有节点
+\end{itemize}
+
+\textbf{与相似模型的对比}：
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{对比维度} & \textbf{$\delta$ 势阱} & \textbf{有限深势阱} & \textbf{谐振子} \\
+\midrule
+束缚态数目 & 1 个 & $N$ 个（取决于 $V_0a^2$） & 无限多个 \\
+基态波函数 & 指数衰减 $e^{-\lambda|x|}$ & 余弦（阱内）+ 指数（阱外） & 高斯 $e^{-m\omega x^2/2\hbar}$ \\
+能谱 & 仅离散（1个） & 离散 + 连续 & 等间距 $E_n=\hbar\omega(n+1/2)$ \\
+变分法效果 & 试探波函数恰为精确解 & 给出上界估计 & 高斯试探波函数给出精确基态 \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{推广方向}：
+\begin{itemize}[nosep]
+    \item 双 $\delta$ 势阱：对称/反对称束缚态，能级隧穿劈裂，与氢分子离子 $H_2^+$ 类比
+    \item 周期 $\delta$ 势（Kronig-Penney 模型极限）：$V(x)=-\gamma\sum_n\delta(x-na)$，能带结构
+    \item 三维 Thomas 效应：吸引 $\delta$ 势在三维导致能量无下界，需引入紫外截断
+    \item 非线性薛定谔方程中的 $\delta$ 势：孤子与束缚态的相互作用
+\end{itemize}
+\end{insightbox}
+
+% --------------------------------------------------------
+% 7. 推导附录
+% --------------------------------------------------------
+\begin{derivationbox}[推导细节（自我检验用）]
+\textbf{Step 1：宇称定理严格证明}
+
+已知 $[H,P]=0$，$H$ 与 $P$ 有共同本征函数完备集。设 $\psi_0(x)$ 为基态波函数，$E_0$ 为基态能量。
+
+假设 $\psi_0$ 为奇函数：$\psi_0(-x)=-\psi_0(x)$。则 $\psi_0(0)=-\psi_0(0)=0$。
+
+构造 $\phi(x)=|\psi_0(x)|$。$\phi$ 为偶函数，无节点（除无穷远外），且归一化与 $\psi_0$ 相同。
+
+计算 $\langle H\rangle_\phi$：
+\[
+\langle H\rangle_\phi=\langle T\rangle_\phi+\langle V\rangle_\phi.
+\]
+
+势能：$\langle V\rangle_\phi=\int V(x)|\phi|^2dx=\int V(x)|\psi_0|^2dx=\langle V\rangle_{\psi_0}$（因 $V$ 只依赖于概率密度）。
+
+动能（分部积分）：
+\[
+\langle T\rangle_\phi=\frac{\hbar^2}{2m}\int\Bigl|\frac{d\phi}{dx}\Bigr|^2dx.
+\]
+
+在 $\psi_0$ 的节点之间，$\phi=\pm\psi_0$，$|d\phi/dx|=|d\psi_0/dx|$。但在节点处，$\psi_0$ 穿过零点，$\phi$ 形成尖点，$d\phi/dx$ 在节点处不连续。对于基态（只有一个节点在原点），可分段证明 $\langle T\rangle_\phi\leq\langle T\rangle_{\psi_0}$。
+
+因此 $\langle H\rangle_\phi\leq E_0$。但 $E_0$ 是最低能量本征值，矛盾。故 $\psi_0$ 不能是奇函数，必为偶函数。
+
+\textbf{Step 2：$\delta$ 势精确解}
+
+薛定谔方程（$x\neq0$）：
+\[
+-\frac{\hbar^2}{2m}\frac{d^2\psi}{dx^2}=E\psi,\quad E<0.
+\]
+
+令 $\kappa=\sqrt{-2mE}/\hbar$，解为 $\psi(x)=Ae^{-\kappa|x|}$（束缚态要求指数衰减，且基态为偶函数）。
+
+归一化：
+\[
+\int_{-\infty}^{\infty}|\psi|^2dx=2|A|^2\int_0^{\infty}e^{-2\kappa x}dx=\frac{|A|^2}{\kappa}=1
+\quad\Rightarrow\quad A=\sqrt{\kappa}.
+\]
+
+导数跃变条件：
+\[
+\psi'(0^+)-\psi'(0^-)=-2\kappa\sqrt{\kappa}=-\frac{2m\gamma}{\hbar^2}\sqrt{\kappa}.
+\]
+
+故
+\[
+\kappa=\frac{m\gamma}{\hbar^2},\quad E_0=-\frac{\hbar^2\kappa^2}{2m}=-\frac{m\gamma^2}{2\hbar^2}.
+\]
+
+\textbf{Step 3：变分法计算}
+
+试探波函数：$\psi_\lambda(x)=\sqrt{\lambda}\,e^{-\lambda|x|}$（已归一化）。
+
+动能（分部积分法）：
+\[
+\langle T\rangle=\frac{\hbar^2}{2m}\int_{-\infty}^{\infty}\Bigl|\frac{d\psi_\lambda}{dx}\Bigr|^2dx
+=\frac{\hbar^2}{2m}\cdot2\lambda^2\cdot\lambda\int_0^{\infty}e^{-2\lambda x}dx
+=\frac{\hbar^2\lambda^2}{2m}.
+\]
+
+势能：
+\[
+\langle V\rangle=-\gamma|\psi_\lambda(0)|^2=-\gamma\lambda.
+\]
+
+总能量：
+\[
+E(\lambda)=\frac{\hbar^2\lambda^2}{2m}-\gamma\lambda.
+\]
+
+求导：
+\[
+\frac{dE}{d\lambda}=\frac{\hbar^2\lambda}{m}-\gamma=0\quad\Rightarrow\quad\lambda_{\text{opt}}=\frac{m\gamma}{\hbar^2}=\kappa.
+\]
+
+代回：
+\[
+E(\lambda_{\text{opt}})=\frac{\hbar^2}{2m}\Bigl(\frac{m\gamma}{\hbar^2}\Bigr)^2-\gamma\Bigl(\frac{m\gamma}{\hbar^2}\Bigr)
+=-\frac{m\gamma^2}{2\hbar^2}=E_0.
+\]
+
+变分法恰好给出精确解，说明试探波函数的函数形式与真实基态完全一致。
+\end{derivationbox}
+
+\vspace{1em}
