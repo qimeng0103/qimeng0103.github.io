@@ -1,0 +1,241 @@
+% ============================================================
+% Model: GaAs 价带空穴的 Drude 输运
+% ============================================================
+
+\section{GaAs 价带空穴的 Drude 输运}
+\label{sec:gaas-hole-drude}
+
+\begin{tipbox}[关键词标签]
+空穴 · Drude 模型 · 价带输运 · 有效质量张量 · GaAs · 电导率 · p 型半导体
+\end{tipbox}
+
+% --------------------------------------------------------
+% 1. 模型定义框
+% --------------------------------------------------------
+\begin{modelbox}[模型：p 型半导体中空穴的经典输运]
+\textbf{物理情境}：在 p 型半导体（如掺 Be 的 GaAs）中，价带顶附近的电子被受主杂质激发到价带中，在价带顶留下空态。这些空态的行为可以用带正电的准粒子——\key{空穴}——来描述。在电场作用下，空穴像经典带正电粒子一样漂移，可用 Drude 模型计算其输运性质。
+
+\textbf{空穴的物理定义}：
+\begin{itemize}[nosep]
+    \item 空穴是价带中大量电子集体运动的等效描述
+    \item 空穴波矢 $\mathbf{k}_h=-\mathbf{k}_e$（相对于价带顶）
+    \item 空穴能量 $\varepsilon_h(\mathbf{k})=-\varepsilon_e(\mathbf{k})$（以价带顶为能量零点）
+    \item 空穴有效质量 $m_h^*=-m_e^*>0$（价带电子有效质量为负）
+    \item 空穴速度 $\mathbf{v}_h=\nabla_{\mathbf{k}}\varepsilon_h/\hbar=\nabla_{\mathbf{k}}\varepsilon_e/\hbar=\mathbf{v}_e$
+\end{itemize}
+
+\textbf{GaAs 价带特征}：
+\begin{itemize}[nosep]
+    \item 价带顶在 $\Gamma$ 点（$\mathbf{k}=0$），三重简并（考虑自旋为六重）
+    \item 轻空穴带（LH）：$m_{lh}^*\approx0.08m_0$
+    \item 重空穴带（HH）：$m_{hh}^*\approx0.5m_0$
+    \item 自旋-轨道耦合分裂带（SO）：$\Delta_{SO}\approx0.34\,$eV
+\end{itemize}
+\end{modelbox}
+
+% --------------------------------------------------------
+% 2. 关键公式框
+% --------------------------------------------------------
+\begin{formulabox}[核心公式]
+\begin{enumerate}[label=\textbf{(\arabic*)}]
+    \item \textbf{空穴运动方程}：
+    \[
+    \hbar\frac{d\mathbf{k}_h}{dt}=+e(\mathbf{E}+\mathbf{v}_h\times\mathbf{B})
+    \]
+    \texteq{注意正号！空穴带电荷 $+e$，受力方向与电场相同}
+
+    \item \textbf{空穴漂移速度}：
+    \[
+    \mathbf{v}_d=\frac{e\tau}{m_h^*}\mathbf{E}=\mu_h\mathbf{E}
+    \]
+    \texteq{$\mu_h=e\tau/m_h^*$ 为空穴迁移率}
+
+    \item \textbf{Drude 电导率（p 型）}：
+    \[
+    \sigma_p=\frac{n_h e^2\tau}{m_h^*}=n_h e\mu_h
+    \]
+    \texteq{$n_h$ 为空穴浓度，$m_h^*$ 为空穴有效质量}
+
+    \item \textbf{重/轻空穴混合输运}：
+    \[
+    \sigma_p=e^2\tau\Bigl(\frac{n_{hh}}{m_{hh}^*}+\frac{n_{lh}}{m_{lh}^*}\Bigr)
+    \]
+    \texteq{总电导率为各子带贡献之和，重空穴通常占主导（$m_{hh}^*$ 大但态密度高）}
+
+    \item \textbf{Hall 系数（p 型）}：
+    \[
+    R_H=\frac{1}{n_h e}
+    \]
+    \texteq{p 型半导体 $R_H>0$，这是判定导电类型的金标准}
+
+    \item \textbf{各向异性有效质量}（非球形等能面）：
+    \[
+    \frac{1}{m_{\parallel}^*}=\frac{1}{\hbar^2}\frac{\partial^2\varepsilon}{\partial k_{\parallel}^2},\quad
+    \frac{1}{m_{\perp}^*}=\frac{1}{\hbar^2}\frac{\partial^2\varepsilon}{\partial k_{\perp}^2}
+    \]
+\end{enumerate}
+\end{formulabox}
+
+% --------------------------------------------------------
+% 3. 训练点框
+% --------------------------------------------------------
+\begin{drillbox}[训练点与考法变体]
+\trainingpoint{1} \textbf{空穴运动方程的符号}：推导空穴在电场和磁场中的运动方程，特别注意空穴电荷为 $+e$，洛伦兹力公式中的符号与电子相反。
+
+\trainingpoint{2} \textbf{有效质量张量的对称性}：对于立方晶系（如 GaAs），价带顶附近有效质量为标量（各向同性）；对于 Si、Ge 等，重空穴带各向异性，需用 Luttinger 参数 $\gamma_1,\gamma_2,\gamma_3$ 描述。
+
+\trainingpoint{3} \textbf{重/轻空穴浓度比}：在热平衡下，$n_{hh}/n_{lh}\propto(m_{hh}^*/m_{lh}^*)^{3/2}$，重空穴浓度占优。
+
+\trainingpoint{4} \textbf{p 型与 n 型对比}：给定相同掺杂浓度和散射时间，比较 n 型和 p 型 GaAs 的电导率和迁移率（$\mu_n\approx8500\,\text{cm}^2/\text{Vs}$, $\mu_p\approx400\,\text{cm}^2/\text{Vs}$）。
+
+\trainingpoint{5} \textbf{磁场中的空穴回旋共振}：回旋频率 $\omega_c=eB/m_h^*$，通过回旋共振实验测定有效质量。注意各向异性导致有效回旋质量与磁场方向有关。
+\end{drillbox}
+
+% --------------------------------------------------------
+% 4. 解题技巧框
+% --------------------------------------------------------
+\begin{tipbox}[快速识别与解题技巧]
+\begin{itemize}
+    \item \examnote{识别标志}：题干出现``p 型''''空穴''''价带''''Drude 模型''''GaAs''，立即定位本模型。
+    \item \examnote{空穴 vs 电子速记}：
+    \begin{center}
+    \begin{tabular}{lll}
+    \toprule
+    \textbf{物理量} & \textbf{电子} & \textbf{空穴} \\
+    \midrule
+    电荷 & $-e$ & $+e$ \\
+    波矢（价带顶） & $\mathbf{k}_e$ & $\mathbf{k}_h=-\mathbf{k}_e$ \\
+    能量 & $\varepsilon_e$ & $\varepsilon_h=-\varepsilon_e$ \\
+    有效质量 & $m_e^*$（可负） & $m_h^*=-m_e^*>0$ \\
+    电场受力 & $-e\mathbf{E}$ & $+e\mathbf{E}$ \\
+    漂移速度 & $-e\tau\mathbf{E}/m_e^*$ & $+e\tau\mathbf{E}/m_h^*$ \\
+    Hall 系数 & $-1/ne$ & $+1/n_h e$ \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+    \item \examnote{Drude 模型三大假设}：
+    \begin{enumerate}[nosep]
+        \item 独立粒子近似（电子/空穴间无相互作用）
+        \item 自由加速 + 瞬时碰撞（碰撞后速度随机化）
+        \item 弛豫时间近似（平均自由程 $\ell=v_F\tau$）
+    \end{enumerate}
+    \item \examnote{GaAs 参数速查}：
+    \begin{itemize}[nosep]
+        \item $m_{hh}^*=0.50m_0$, $m_{lh}^*=0.08m_0$
+        \item $\varepsilon_g=1.42\,$eV（300K，直接带隙）
+        \item $\mu_n=8500\,\text{cm}^2/\text{Vs}$, $\mu_p=400\,\text{cm}^2/\text{Vs}$
+    \end{itemize}
+\end{itemize}
+\end{tipbox}
+
+% --------------------------------------------------------
+% 5. 易错点框
+% --------------------------------------------------------
+\begin{errorbox}{常见失误与陷阱}
+\begin{itemize}
+    \item \textbf{空穴有效质量符号}：价带电子有效质量 $m_e^*<0$（曲率为负），但空穴有效质量 $m_h^*=-m_e^*>0$。在电导率公式中直接用 $m_h^*$ 即可，无需额外负号。
+    \item \textbf{空穴速度}：$\mathbf{v}_h=\mathbf{v}_e$！虽然波矢相反，但能量也相反，所以群速度相同。不要误认为空穴速度也与电子相反。
+    \item \textbf{Drude 模型适用范围}：Drude 模型假设抛物线色散和恒定弛豫时间，仅适用于费米面/带边附近。强场、高掺杂或介观尺度下失效。
+    \item \textbf{重空穴主导电导}：虽然重空穴迁移率低（$\mu_{hh}<\mu_{lh}$），但重空穴浓度高（$n_{hh}\gg n_{lh}$），总电导率通常由重空穴贡献主导。
+    \item \textbf{各向异性陷阱}：Si、Ge 的价带是各向异性的，有效质量与方向有关。GaAs 的价带顶近似各向同性，但偏离 $\Gamma$ 点后也出现各向异性。
+    \item \textbf{非抛物线性}：GaAs 的导带在能量较高时偏离抛物线（Kane 模型），但价带顶附近通常保持抛物线近似。
+\end{itemize}
+\end{errorbox}
+
+% --------------------------------------------------------
+% 6. 物理图像与关联模型
+% --------------------------------------------------------
+\begin{insightbox}[物理图像与模型关联]
+\textbf{物理图像}：
+
+把价带想象成一个装满水的游泳池：
+\begin{itemize}[nosep]
+    \item 电子就是水分子，池底是价带底，水面是价带顶。
+    \item 受主杂质像水泵，把水从水面附近抽走（电子被激发到受主能级）。
+    \item 水面出现的``气泡''就是空穴——它不是真正的粒子，而是水分子的集体运动。
+    \item 当你推游泳池的水（加电场），水整体向一边流动；气泡（空穴）看起来向反方向移动，但水的流速就是气泡的速度。
+    \item 如果你只盯着气泡看，可以把它当成一个带正电的粒子，用经典力学描述它的运动。
+\end{itemize}
+
+\textbf{与相似模型的对比}：
+\begin{center}
+\begin{tabular}{llll}
+\toprule
+\textbf{对比维度} & \textbf{本模型} & \textbf{n 型半导体} & \textbf{金属 Drude} \\
+\midrule
+载流子 & 空穴（价带） & 电子（导带） & 电子（费米面） \\
+电荷 & $+e$ & $-e$ & $-e$ \\
+浓度 & $n_h=N_A$（受主掺杂） & $n_e=N_D$（施主掺杂） & $n\sim10^{22}\,$cm$^{-3}$ \\
+有效质量 & $m_h^*\sim0.1$--$1m_0$ & $m_e^*\sim0.01$--$0.1m_0$ & $m^*\sim m_0$ \\
+适用温度 & 非简并（$T\gg T_F$） & 非简并 & 简并（$T\ll T_F$） \\
+\bottomrule
+\end{tabular}
+\end{center}
+
+\textbf{推广方向}：
+\begin{itemize}[nosep]
+    \item 高场输运：强电场下空穴获得足够能量发生光学声子散射，速度饱和
+    \item 量子阱中的空穴：量子限制使重/轻空穴带劈裂，改变有效质量和态密度
+    \item 自旋-轨道耦合效应：Dresselhaus/Rashba 自旋劈裂影响空穴自旋输运
+\end{itemize}
+\end{insightbox}
+
+% --------------------------------------------------------
+% 7. 推导附录
+% --------------------------------------------------------
+\begin{derivationbox}[推导细节（自我检验用）]
+\textbf{Step 1：空穴运动方程}
+
+价带中大量电子的总电流：
+\[
+\mathbf{j}=(-e)\sum_{\text{occ}}\mathbf{v}_e(\mathbf{k}).
+\]
+
+满带总电流为零：
+\[
+\sum_{\text{all}}\mathbf{v}_e(\mathbf{k})=0\quad\Rightarrow\quad
+\sum_{\text{occ}}\mathbf{v}_e=-\sum_{\text{unocc}}\mathbf{v}_e.
+\]
+
+定义空穴波矢 $\mathbf{k}_h=-\mathbf{k}_e$，则：
+\[
+\mathbf{j}=(-e)\Bigl(-\sum_{\text{unocc}}\mathbf{v}_e\Bigr)=(+e)\sum_{\text{holes}}\mathbf{v}_h(\mathbf{k}_h).
+\]
+
+空穴在外场中的运动：
+\[
+\hbar\frac{d\mathbf{k}_e}{dt}=(-e)\mathbf{E}\quad\Rightarrow\quad
+\hbar\frac{d\mathbf{k}_h}{dt}=\hbar\frac{d(-\mathbf{k}_e)}{dt}=(+e)\mathbf{E}.
+\]
+
+\textbf{Step 2：Drude 电导率推导}
+
+弛豫时间近似：
+\[
+\frac{d\mathbf{v}_d}{dt}=\frac{e\mathbf{E}}{m_h^*}-\frac{\mathbf{v}_d}{\tau}=0\quad\text{(稳态)}
+\]
+\[
+\Rightarrow\quad\mathbf{v}_d=\frac{e\tau}{m_h^*}\mathbf{E}=\mu_h\mathbf{E}.
+\]
+
+电流密度：
+\[
+\mathbf{j}=n_h(+e)\mathbf{v}_d=\frac{n_h e^2\tau}{m_h^*}\mathbf{E}=\sigma_p\mathbf{E}.
+\]
+
+\textbf{Step 3：重/轻空穴混合}
+
+GaAs 价带顶附近两支空穴带，总电流：
+\[
+\mathbf{j}=\mathbf{j}_{hh}+\mathbf{j}_{lh}=e^2\tau\Bigl(\frac{n_{hh}}{m_{hh}^*}+\frac{n_{lh}}{m_{lh}^*}\Bigr)\mathbf{E}.
+\]
+
+浓度比由有效态密度决定：
+\[
+\frac{n_{hh}}{n_{lh}}=\Bigl(\frac{m_{hh}^*}{m_{lh}^*}\Bigr)^{3/2}\Bigl(\frac{e^{-\varepsilon_{hh}/k_BT}}{e^{-\varepsilon_{lh}/k_BT}}\Bigr).
+\]
+
+在带边（两支能量简并），$n_{hh}/n_{lh}\approx(0.5/0.08)^{3/2}\approx16$，重空穴占主导。
+\end{derivationbox}
+
+\vspace{1em}
