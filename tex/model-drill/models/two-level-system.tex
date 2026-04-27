@@ -7,7 +7,7 @@
 \label{sec:two-level-system}
 
 \begin{tipbox}[关键词标签]
-二能级系统 · 微扰论 · 拉比振荡 · 中微子振荡 · 混合角 · 含时演化 · 能量修正
+二能级系统 · Bloch向量 · Bloch球 · 微扰论 · 拉比振荡 · 中微子振荡 · 混合角 · 含时演化 · 能量修正
 \end{tipbox}
 
 % --------------------------------------------------------
@@ -107,7 +107,11 @@ H=H_0+V=\begin{pmatrix}E_1&V_{12}\\V_{21}&E_2\end{pmatrix},
 
 \trainingpoint{6} \textbf{共振条件}：当 $E_1=E_2$（简并或近简并），$\theta=\pi/4$，混合最大。此时 $P_{1\to1}(t)=\cos^2(\Omega t/2\hbar)$，粒子在两态之间完全来回振荡。
 
-\trainingpoint{7} \textbf{二能级系统的绝热演化}：若参数随时间缓慢变化（如磁场方向缓慢旋转），系统始终保持在瞬时本征态上（Berry 相位）。
+\trainingpoint{7} \textbf{Bloch 向量与态的对应}：给定 Bloch 向量 $\mathbf{n}$，反求密度矩阵、判断纯/混合态、计算各自旋分量的期望值。给定纯态 $|\psi\rangle$，求其在 Bloch 球上的坐标 $(\theta,\phi)$。
+
+\trainingpoint{8} \textbf{Bloch 方程的几何解}：$d\mathbf{n}/dt=\boldsymbol{\Omega}\times\mathbf{n}$ 描述 Bloch 向量绕 $\boldsymbol{\Omega}$ 轴的匀速进动。初态在 $x$ 轴（$\mathbf{n}=(1,0,0)$），$\boldsymbol{\Omega}=(0,0,\omega)$，求 $\mathbf{n}(t)$。
+
+\trainingpoint{9} \textbf{二能级系统的绝热演化}：若参数随时间缓慢变化（如磁场方向缓慢旋转），系统始终保持在瞬时本征态上（Berry 相位）。
 \end{drillbox}
 
 % --------------------------------------------------------
@@ -133,6 +137,21 @@ H=H_0+V=\begin{pmatrix}E_1&V_{12}\\V_{21}&E_2\end{pmatrix},
     $E_+$ & $E_1+V_{11}+\frac{|V_{12}|^2}{E_1-E_2}$ & $\bar{E}+\frac{\Omega}{2}$ \\
     $E_-$ & $E_2+V_{22}+\frac{|V_{12}|^2}{E_2-E_1}$ & $\bar{E}-\frac{\Omega}{2}$ \\
     $\theta$ & $\frac{|V_{12}|}{E_2-E_1}$（小角） & $\frac{1}{2}\arctan\frac{2|V_{12}|}{\Delta}$ \\
+    \bottomrule
+    \end{tabular}
+    \end{center}
+    \item \examnote{Bloch 球速查}：
+    \begin{center}
+    \begin{tabular}{lll}
+    \toprule
+    \textbf{态} & \textbf{Bloch 向量} & \textbf{球面位置} \\
+    \midrule
+    $|1\rangle$ & $(0,0,1)$ & 北极 \\
+    $|2\rangle$ & $(0,0,-1)$ & 南极 \\
+    $|+\rangle=\frac{1}{\sqrt2}(|1\rangle+|2\rangle)$ & $(1,0,0)$ & $+x$ 轴 \\
+    $|-\rangle=\frac{1}{\sqrt2}(|1\rangle-|2\rangle)$ & $(-1,0,0)$ & $-x$ 轴 \\
+    $|+i\rangle=\frac{1}{\sqrt2}(|1\rangle+i|2\rangle)$ & $(0,1,0)$ & $+y$ 轴 \\
+    完全混合 & $(0,0,0)$ & 球心 \\
     \bottomrule
     \end{tabular}
     \end{center}
@@ -207,6 +226,17 @@ NMR & 自旋平行 & 自旋反平行 & 射频脉冲 \\
     \item 开放量子系统： Lindblad 主方程描述退相干对振荡的阻尼
     \item Berry 相位：绝热循环演化中积累的拓扑相位
     \item 量子 Zeno 效应：频繁测量抑制态的跃迁
+\end{itemize}
+
+\textbf{Bloch 球的物理图像}：
+
+Bloch 球是二能级系统的``状态地图''：
+\begin{itemize}[nosep]
+    \item 球面上的每一点对应一个纯态，球内的点对应混合态。
+    \item 北极是 $|1\rangle$，南极是 $|2\rangle$，赤道上的点是 $|1\rangle$ 和 $|2\rangle$ 的等概率叠加（相位决定具体位置）。
+    \item 哈密顿量的非对角元 $V_{12}$ 产生绕 $x$ 或 $y$ 轴的转动；对角分裂 $\Delta$ 产生绕 $z$ 轴的转动。
+    \item 拉比振荡就是 Bloch 向量在球面上画出一个圆（若 $|\boldsymbol{\Omega}|$ 恒定）。
+    \item 退相干使 Bloch 向量从球面``缩向''球心——纯态变为混合态。
 \end{itemize}
 \end{insightbox}
 
