@@ -113,6 +113,13 @@
   <h2>Quantum Mechanics Notes</h2>
   <ul class="article-list">
     <li class="article-item">
+      <span class="article-date">2026-05-03</span>
+      <div>
+        <div class="article-title"><a href="./quantum-mechanics/electron-proton-elastic-scattering">From Mott Scattering to the Rosenbluth Formula: Electron-Proton Elastic Scattering</a></div>
+        <div class="article-desc">Complete derivation of the Rosenbluth formula from QED first principles: electron and hadronic tensor trace calculations, form factor parameterization, and the pointlike limit</div>
+      </div>
+    </li>
+    <li class="article-item">
       <span class="article-date">2026-04-04</span>
       <div>
         <div class="article-title"><a href="./quantum-mechanics/angular-momentum-algebra">Angular Momentum Algebra: From Commutation Relations to Addition of Angular Momenta</a></div>
