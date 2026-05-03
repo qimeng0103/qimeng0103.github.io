@@ -57,9 +57,8 @@ export default defineConfig({
       '/posts/bare-handed/': [
         {
           text: 'Bare-Handed',
-          items: [
-            { text: 'About', link: '/posts/bare-handed/' }
-          ]
+          link: '/posts/bare-handed/',
+          items: []
         }
       ],
       '/posts/paper-notes/': [
