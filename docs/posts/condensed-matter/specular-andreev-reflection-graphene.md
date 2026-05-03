@@ -89,6 +89,12 @@ Setting $\Delta = 0$ and $U = 0$ in the normal region, the DBdG equation decoupl
 
 For electron states $(v = 0)$ the equation reads $(\mathbf{p}\cdot\boldsymbol{\sigma} - E_F)u = \varepsilon u$. 
 
+#### From Two Components to Four Components
+
+In the normal region the DBdG equation decouples: the electron sector ($u$) and the hole sector ($v$) satisfy independent $2 \times 2$ Dirac equations. An electron state therefore has $v = 0$, and a hole state has $u = 0$. In principle one could work entirely with two-component spinors and simply remember which sector is active.
+
+However, the boundary condition at the NS interface requires **continuity of the full four-component wave function** $(u, v)^T$. Matching at $x = 0$ mixes electrons and holes through the superconducting pair potential $\Delta$. It is therefore convenient to keep all four components explicit, padding the inactive sector with zeros. The electron eigen spinors written below are four-component objects with zeros in the lower two (hole) entries; the hole eigen spinors will have zeros in the upper two (electron) entries. This convention makes the boundary-condition matching in §7 transparent.
+
 #### Plane-Wave Ansatz and Its Motivation
 
 The NS interface is taken to lie in the $y$-$z$ plane at $x = 0$, so the Hamiltonian is **translationally invariant along $y$**. Momentum in the transverse direction is therefore conserved, and every eigenstate can be labelled by a definite wave number $q$. This justifies the factor $e^{iqy}$.
