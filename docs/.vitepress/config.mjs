@@ -62,6 +62,17 @@ export default defineConfig({
           ]
         }
       ],
+      '/posts/paper-notes/': [
+        {
+          text: 'Daily Papers',
+          items: [
+            { text: 'Issue #1 - 2026-04-14 (Open)', link: '/posts/paper-notes/2026-04-14-issue-1' },
+            { text: 'Issue #2 - 2026-04-10 (Closed)', link: '/posts/paper-notes/2026-04-10-issue-2' },
+            { text: 'Issue #1 - 2026-04-10 (Closed)', link: '/posts/paper-notes/2026-04-10-issue-1' },
+            { text: 'Issue #1 - 2026-04-09 (Closed)', link: '/posts/paper-notes/2026-04-09-issue-1' }
+          ]
+        }
+      ],
       '/posts/': [
         {
           text: 'Articles',
@@ -94,16 +105,7 @@ export default defineConfig({
                 { text: 'Spontaneous Symmetry Breaking and Functional Calculus', link: '/posts/condensed-matter/spontaneous-symmetry-breaking' }
               ]
             },
-            {
-              text: 'Daily Papers',
-              link: '/posts/paper-notes/',
-              items: [
-                { text: 'Issue #1 - 2026-04-14 (Open)', link: '/posts/paper-notes/2026-04-14-issue-1' },
-                { text: 'Issue #2 - 2026-04-10 (Closed)', link: '/posts/paper-notes/2026-04-10-issue-2' },
-                { text: 'Issue #1 - 2026-04-10 (Closed)', link: '/posts/paper-notes/2026-04-10-issue-1' },
-                { text: 'Issue #1 - 2026-04-09 (Closed)', link: '/posts/paper-notes/2026-04-09-issue-1' }
-              ]
-            }
+
           ]
         }
       ]
