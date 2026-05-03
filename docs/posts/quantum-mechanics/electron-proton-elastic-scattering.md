@@ -630,3 +630,4 @@ For typical electron-scattering facilities this requires beam waists on the orde
 ## References
 
 - *An Introduction to Quantum Field Theory*, Ch. 6: Electron-Proton Scattering and the Rosenbluth Formula
+- Y. Yang and I. P. Ivanov, "Universal features of high-energy scattering of Laguerre-Gaussian states," arXiv:2604.00575 [hep-ph] (2026).
