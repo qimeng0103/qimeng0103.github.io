@@ -487,29 +487,143 @@ The Rosenbluth separation becomes increasingly difficult at high $Q^2$ because t
 
 All of the preceding analysis rests on the plane-wave approximation: the incoming and outgoing electrons are treated as momentum eigenstates with definite four-momenta $k$ and $k'$. In practice, accelerator beams are wave packets, and recent advances in phase-shaping technology make it possible to prepare electrons in **Laguerre-Gaussian (LG) vortex states** that carry intrinsic orbital angular momentum (OAM). Replacing the plane wave with a vortex wave packet changes the kinematics in a controlled way and opens new observables.
 
+#### 1. LG Wave Packets in Momentum Space
+
 A paraxial LG electron state is characterized by an OAM quantum number $\ell$, a radial index $p$, a beam waist $w$, and a transverse impact parameter $\mathbf{b}$ relative to the target. In momentum space its transverse profile is
 
 $$
-\psi_{\ell p}(\mathbf{k}_\perp; \mathbf{b}) \propto (k_\perp w)^{|\ell|} L_p^{|\ell|}(k_\perp^2 w^2) \, e^{-k_\perp^2 w^2/2} \, e^{i\ell\phi_k} \, e^{-i\mathbf{k}_\perp\cdot\mathbf{b}} ,
+\psi_{\ell p}(\mathbf{k}_\perp; \mathbf{b}) = \sqrt{\frac{w^2 p!}{\pi(p+|\ell|)!}} \, (k_\perp w)^{|\ell|} L_p^{|\ell|}(k_\perp^2 w^2) \, e^{-k_\perp^2 w^2/2} \, e^{i\ell\phi_k} \, e^{-i\mathbf{k}_\perp\cdot\mathbf{b}} ,
 $$
 
-where $L_p^{|\ell|}$ is the associated Laguerre polynomial. The plane-wave limit corresponds to $\ell=0$, $p=0$, $w\to\infty$ and $b\to 0$.
+where $L_p^{|\ell|}$ is the associated Laguerre polynomial. The prefactor ensures the normalization
 
-Because the initial electron is no longer a momentum eigenstate, the scattering amplitude must be averaged over the transverse momentum distribution. For a process whose plane-wave cross section is the Rosenbluth formula $(d\sigma/d\Omega)_{\text{R}}$, the vortex-electron observable is the **transverse-momentum-resolved** distribution
+$$
+\int_0^\infty dk_\perp \, k_\perp \int_0^{2\pi} d\phi_k \; |\psi_{\ell p}(\mathbf{k}_\perp;\mathbf{b})|^2 = 1 .
+$$
+
+The plane-wave limit is recovered when $\ell=0$, $p=0$, $w\to\infty$ and $b\to 0$. In that limit the Gaussian becomes a delta function: $e^{-k_\perp^2 w^2/2}/\sqrt{\pi}/w \to \delta^{(2)}(\mathbf{k}_\perp)$, fixing the transverse momentum to zero.
+
+The probability density $|\psi_{\ell p}|^2$ is independent of $\phi_k$ and of the phase factor $e^{-i\mathbf{k}_\perp\cdot\mathbf{b}}$; it depends only on the modulus $k_\perp$:
+
+$$
+|\psi_{\ell p}(k_\perp)|^2 = \frac{w^2 p!}{\pi(p+|\ell|)!} \, (k_\perp w)^{2|\ell|} \big[L_p^{|\ell|}(k_\perp^2 w^2)\big]^2 \, e^{-k_\perp^2 w^2} .
+$$
+
+For the fundamental mode $(\ell=0, p=0)$ this reduces to a simple Gaussian,
+
+$$
+|\psi_{00}(k_\perp)|^2 = \frac{w^2}{\pi} \, e^{-k_\perp^2 w^2} ,
+$$
+
+while for $\ell \neq 0$ the distribution develops a ring-like structure with a zero at $k_\perp = 0$ and a peak at $k_\perp \sim \sqrt{|\ell|}/w$.
+
+#### 2. From Plane Waves to Vortex Cross Sections
+
+Because the initial electron is no longer a momentum eigenstate, the scattering amplitude must be averaged over the transverse momentum distribution. The transition matrix element for a vortex state is the coherent superposition of plane-wave amplitudes weighted by $\psi_{\ell p}$:
+
+$$
+\mathcal{M}_{\text{vortex}} = \int d^2k_\perp \, d^2k'_\perp \; \psi_{\ell p}^*(\mathbf{k}'_\perp;\mathbf{b}') \, \psi_{\ell p}(\mathbf{k}_\perp;\mathbf{b}) \, \mathcal{M}_{\text{pw}}(k,k') .
+$$
+
+Squaring and summing over spins gives the **transverse-momentum-resolved** distribution
 
 $$
 \frac{d\sigma}{d\Omega \, d^2P_\perp} = \int d^2k_\perp \, d^2k'_\perp \; \delta^{(2)}(\mathbf{P}_\perp - \mathbf{k}_\perp + \mathbf{k}'_\perp) \; |\psi_{\ell p}(\mathbf{k}_\perp;\mathbf{b})|^2 \; |\psi_{\ell' p'}(\mathbf{k}'_\perp;\mathbf{b}')|^2 \; \left(\frac{d\sigma}{d\Omega}\right)_{\!\text{R}} .
 $$
 
-Here $\mathbf{P}_\perp$ is the total final transverse momentum, which for plane waves is fixed by momentum conservation. For vortex states it becomes a continuous variable whose distribution encodes the geometry of the LG wave packets.
+Here $\mathbf{P}_\perp$ is the total final transverse momentum, which for plane waves is fixed to zero by momentum conservation. For vortex states it becomes a continuous variable. The presence of the impact-parameter phases $e^{\pm i\mathbf{k}_\perp\cdot\mathbf{b}}$ in $\psi$ and $\psi^*$ means that even when the moduli $|\psi|^2$ are azimuthally symmetric, the **overlap integral** carries $b$-dependent interference terms.
 
-The key insight of the systematic analysis by Yang and Ivanov is that the $P_\perp$ dependence separates into two distinct sources:
+#### 3. The $b = 0$ Limit
 
-**1. Universal kinematic shaping.** Even if the underlying scattering dynamics were completely trivial — imagine replacing the proton by a structureless charge — the LG envelope alone would produce a non-trivial $P_\perp$ distribution. The width and ring-like structure of $|\psi_{\ell p}|^2$ in momentum space imprints itself on the final-state transverse momentum. These effects are independent of $G_E$ and $G_M$; they are fixed by the beam parameters $(\ell, p, w, b)$ and serve as a calibration of the vortex state itself.
+When the beam axis is aligned with the target ($\mathbf{b} = \mathbf{b}' = 0$), the angular integrations decouple and the cross section simplifies. Introducing the Fourier conjugate variable $\boldsymbol{\rho}$ for $\mathbf{P}_\perp$, the delta function can be written as
 
-**2. Process-dependent dynamics.** The Rosenbluth amplitude contains the proton's internal structure through $G_E(Q^2)$ and $G_M(Q^2)$. Because different transverse momenta $k_\perp$ and $k'_\perp$ sample slightly different $Q^2$ values, the convolution with the LG profile weights the form factors differently than in the plane-wave case. At small $w$ (tightly focused beams) this can introduce corrections of order $(k_\perp w)^2$ to the extracted form factors. More importantly, the phase factor $e^{-i\mathbf{k}_\perp\cdot\mathbf{b}}$ introduces an interference between different transverse momentum components that is absent for plane waves. For non-zero impact parameter $b$, this leads to an azimuthal asymmetry in the $P_\perp$ distribution that is sensitive to the relative phase between the electric and magnetic contributions in the Rosenbluth amplitude.
+$$
+\delta^{(2)}(\mathbf{P}_\perp - \mathbf{k}_\perp + \mathbf{k}'_\perp) = \int \frac{d^2\rho}{(2\pi)^2} \, e^{i\boldsymbol{\rho}\cdot(\mathbf{P}_\perp - \mathbf{k}_\perp + \mathbf{k}'_\perp)} .
+$$
 
-In the limit $w \gg 1/Q$ and $b \ll w$, the vortex cross section collapses back to the Rosenbluth formula convolved with a narrow Gaussian in $P_\perp$. The deviations become significant only when the transverse coherence length of the beam is comparable to the inverse momentum transfer. For typical electron-scattering facilities this requires beam waists on the order of femtometers — challenging, but not fundamentally impossible with future phase-shaping techniques.
+For $b=0$ the phase factors vanish and the azimuthal integrals over $\phi_k$ and $\phi_{k'}$ give Bessel functions $J_0(k_\perp \rho)$ and $J_0(k'_\perp \rho)$. The result is
+
+$$
+\frac{d\sigma}{d\Omega \, d^2P_\perp}\bigg|_{b=0} = \int_0^\infty d\rho \, \rho \, J_0(P_\perp \rho) \; \widetilde{\mathcal{W}}_{\ell p}(\rho) \; \widetilde{\mathcal{W}}_{\ell' p'}(\rho) \; \left(\frac{d\sigma}{d\Omega}\right)_{\!\text{R}} ,
+$$
+
+where $\widetilde{\mathcal{W}}_{\ell p}(\rho)$ is the Hankel transform of the radial profile $|\psi_{\ell p}(k_\perp)|^2$. For the fundamental mode $(\ell=p=0)$ this transform can be evaluated in closed form:
+
+$$
+\widetilde{\mathcal{W}}_{00}(\rho) = \int_0^\infty dk_\perp \, k_\perp \, J_0(k_\perp \rho) \, |\psi_{00}(k_\perp)|^2 = \frac{1}{2\pi w^2} \, e^{-\rho^2/(4w^2)} .
+$$
+
+The $P_\perp$ distribution is then the autocorrelation of this Gaussian:
+
+$$
+\frac{d\sigma}{d\Omega \, d^2P_\perp}\bigg|_{\substack{b=0 \\ \ell=p=0}} = \frac{1}{4\pi w^2} \, e^{-P_\perp^2 w^2/2} \; \left(\frac{d\sigma}{d\Omega}\right)_{\!\text{R}} .
+$$
+
+This is a Gaussian of width $\Delta P_\perp \sim 1/w$ centered at $P_\perp = 0$. Integrating over $P_\perp$ recovers the plane-wave Rosenbluth cross section, as required by normalization.
+
+#### 4. Corrections to the Form Factor Extraction
+
+When the beam is tightly focused ($w$ not much larger than $1/Q$), the convolution with the LG profile samples a range of $Q^2$ values around the nominal value. Expanding the Rosenbluth cross section to first order in the transverse momentum transfer,
+
+$$
+\left(\frac{d\sigma}{d\Omega}\right)_{\!\text{R}}(Q^2 + \delta Q^2) \approx \left(\frac{d\sigma}{d\Omega}\right)_{\!\text{R}}(Q^2) + \delta Q^2 \, \frac{\partial}{\partial Q^2}\left(\frac{d\sigma}{d\Omega}\right)_{\!\text{R}} ,
+$$
+
+where $\delta Q^2 \approx -2 k_\perp \cdot k'_\perp$ at leading order in the small transverse momenta. Averaging over the LG distribution gives a correction proportional to the second moment of the transverse momentum:
+
+$$
+\langle k_\perp^2 \rangle = \int d^2k_\perp \, k_\perp^2 \, |\psi_{\ell p}(k_\perp)|^2 = \frac{2p + |\ell| + 1}{w^2} .
+$$
+
+The corrected vortex cross section at $b=0$ therefore reads
+
+$$
+\frac{d\sigma}{d\Omega}\bigg|_{\text{vortex}} = \left(\frac{d\sigma}{d\Omega}\right)_{\!\text{R}} + \frac{2p + |\ell| + 1}{w^2} \, \Delta(Q^2) + \mathcal{O}(w^{-4}) ,
+$$
+
+where $\Delta(Q^2)$ is a combination of $G_E$, $G_M$ and their derivatives that follows from differentiating the Rosenbluth formula. For the fundamental mode this reduces to
+
+$$
+\Delta(Q^2) = \frac{1}{w^2} \left[ -\frac{1}{1+\tau}\left(G_E \frac{dG_E}{dQ^2} + \tau G_M \frac{dG_M}{dQ^2}\right)\cos^2\frac{\theta}{2} - 2\tau G_M \frac{dG_M}{dQ^2}\sin^2\frac{\theta}{2} \right] .
+$$
+
+This correction is of order $(Q w)^{-2}$ relative to the leading term. For typical Jefferson Lab kinematics with $Q \sim 1\,\text{GeV}$ and beam waists $w \sim 10\,\text{fm}$, the correction is at the percent level and could become competitive with the precision needed for the proton radius extraction.
+
+#### 5. The Impact-Parameter Modulation ($b \neq 0$)
+
+The phase factor $e^{-i\mathbf{k}_\perp\cdot\mathbf{b}}$ is the origin of the most distinctive vortex signature. Restoring this factor, the overlap integral acquires a position-dependent phase that cannot be absorbed into the modulus. Writing $\mathbf{b} = b(\cos\phi_b, \sin\phi_b)$ and performing the angular integrals, one finds
+
+$$
+\frac{d\sigma}{d\Omega \, d^2P_\perp} = \int_0^\infty d\rho \, \rho \, J_0(P_\perp \rho) \; \widetilde{\mathcal{W}}_{\ell p}(\rho; b) \; \widetilde{\mathcal{W}}_{\ell' p'}(\rho; b') \; \left(\frac{d\sigma}{d\Omega}\right)_{\!\text{R}} ,
+$$
+
+but now the transformed profile is complex:
+
+$$
+\widetilde{\mathcal{W}}_{\ell p}(\rho; b) = \int_0^\infty dk_\perp \, k_\perp \, J_0(k_\perp \rho) \, |\psi_{\ell p}(k_\perp)|^2 \, J_0(k_\perp b) .
+$$
+
+The appearance of $J_0(k_\perp b)$ — the Bessel function encoding the geometric phase — modulates the $P_\perp$ distribution. For the fundamental mode the integral can again be done in closed form:
+
+$$
+\widetilde{\mathcal{W}}_{00}(\rho; b) = \frac{1}{2\pi w^2} \, \exp\!\left(-\frac{\rho^2 + b^2}{4w^2}\right) \, I_0\!\left(\frac{\rho b}{2w^2}\right) ,
+$$
+
+where $I_0$ is the modified Bessel function. The resulting $P_\perp$ distribution is no longer a simple Gaussian. It develops an azimuthal dependence when $b$ is comparable to $w$, with the asymmetry pattern rotating as $\phi_b$ is scanned.
+
+Crucially, this $b$-dependent modulation is **sensitive to the relative phase between the electric and magnetic terms** in the Rosenbluth amplitude. If one writes the amplitude as
+
+$$
+\mathcal{M} \propto G_E \, \mathcal{M}_E + G_M \, \mathcal{M}_M ,
+$$
+
+then the cross section contains an interference term $G_E G_M \, \text{Re}(\mathcal{M}_E \mathcal{M}_M^*)$. The geometric phase from $b \neq 0$ rotates this interference term in the complex plane, producing a $\phi_b$-dependent modulation of the $P_\perp$ spectrum. Measuring this modulation would provide direct access to the phase of the form factor ratio $G_E/G_M$, something that is extremely difficult to extract from plane-wave Rosenbluth data alone.
+
+#### 6. Experimental Prospects
+
+In the limit $w \gg 1/Q$ and $b \ll w$, the vortex cross section collapses back to the Rosenbluth formula convolved with a narrow Gaussian in $P_\perp$. The deviations discussed above become significant only when the transverse coherence length of the beam is comparable to the inverse momentum transfer.
+
+For typical electron-scattering facilities this requires beam waists on the order of femtometers. Current phase-shaping technology can produce electron vortices with OAM up to $\ell \sim 100$ and waists $w \sim 10\,\text{nm}$ in the low-energy regime. Extending these techniques to the GeV energies needed for Rosenbluth kinematics remains a formidable challenge, but the theoretical framework is now in place: once such beams become available, the $P_\perp$-resolved cross section will carry simultaneous information about the beam geometry and the proton's electromagnetic structure.
 
 ---
 
