@@ -319,8 +319,10 @@ $$
 and, introducing the hole propagation angle $\alpha'$ through
 
 $$
-\sin\alpha' = \frac{\hbar v q}{|E_F - \varepsilon|}, \qquad k' = \frac{|E_F - \varepsilon|}{\hbar v} \cos\alpha',
+\sin\alpha' = \frac{\hbar v q}{\varepsilon - E_F}, \qquad k' = \frac{\varepsilon - E_F}{\hbar v} \cos\alpha',
 $$
+
+with $\alpha' \in (-\pi/2, \pi/2)$ as before.  The crucial point is that the denominator $\varepsilon - E_F$ is an **algebraic quantity**.  When $\varepsilon < E_F$ (retro-reflection regime) the denominator is negative, so $\alpha'$ carries the opposite sign from $\alpha$ for the same transverse momentum $q$; when $\varepsilon > E_F$ (specular regime) the denominator is positive and $\alpha'$ has the same sign as $\alpha$.  The longitudinal wave number $k' = (\varepsilon-E_F)\cos\alpha'/\hbar v$ inherits the same sign as $\varepsilon-E_F$, so $k'$ is negative in the retro regime and positive in the specular regime.
 
 the eigen spinors are
 
@@ -414,27 +416,136 @@ This expression enters the boundary-condition matching through the ratios of dec
 
 ## 7. Boundary Matching
 
-At $x = 0$ the four-component wave function must be continuous. Writing the scattering state in the normal region as a superposition of incident and reflected waves,
+### Superconducting States in the Heavily Doped Limit
+
+In the superconducting region ($x < 0$) the subgap solutions decay exponentially as $x \to -\infty$.  In the heavily doped limit $U_0 \gg E_F, \varepsilon, \Delta_0$ there are exactly two such decaying modes, distinguished by the sign of the large real part of the longitudinal wave number ($\pm k_0$ with $k_0 \approx E_{S0}/\hbar v$).  Their four-component spinors at $x = 0$ are
 
 $$
-\Psi_N = \Psi_{e-} + r\,\Psi_{e+} + r_A\,\Psi_{h+},
-$$
-
-and matching it to the decaying superconducting solution $\Psi_S = a\,\Psi_{S+} + b\,\Psi_{S-}$, one obtains four linear equations for the four unknown amplitudes $(r, r_A, a, b)$. The reflection amplitudes are:
-
-$$
-r_A = \frac{e^{-i\phi}}{X}\sqrt{\frac{\cos\alpha}{\cos\alpha'}} \quad (|\alpha| < \alpha_c),
+\Psi_{S+}(0) = \begin{pmatrix} e^{-i\beta} \\ e^{-i\beta} \\ e^{-i\phi} \\ e^{-i\phi} \end{pmatrix},
 \qquad
-r = -\frac{1}{X}\left[\cos\beta\,\sin\frac{\alpha'+\alpha}{2} + i\sin\beta\,\sin\frac{\alpha'-\alpha}{2}\right],
+\Psi_{S-}(0) = \begin{pmatrix} e^{i\beta} \\ -e^{i\beta} \\ e^{-i\phi} \\ -e^{-i\phi} \end{pmatrix}.
 $$
 
-where
+The derivation proceeds from the DBdG equation in the superconductor by noting that the kinetic term $\hbar v k_x \sigma_x$ dominates and must be balanced against the large potential $E_{S0}$.  For the $+k_0$ branch the electron and hole spinors both lie in the $\sigma_x = +1$ eigenspace $(1,1)^T$; for the $-k_0$ branch they lie in the $\sigma_x = -1$ eigenspace $(1,-1)^T$.  Solving the remaining $2 \times 2$ electron-hole block to first order in $\Delta_0/E_{S0}$ yields the ratios $v/u = e^{-i(\phi-\beta)}$ for $\Psi_{S+}$ and $v/u = e^{-i(\phi+\beta)}$ for $\Psi_{S-}$.  The common phase $e^{-i\beta}$ in the upper two components of $\Psi_{S+}$ (and $e^{i\beta}$ in $\Psi_{S-}$) is a convenient choice of overall gauge.
+
+### The Scattering State in the Normal Region
+
+An electron is incident from the normal side ($x > 0$) toward the interface.  The scattering state is a superposition of the incident electron, a normally reflected electron, and an Andreev-reflected hole:
 
 $$
-X = \cos\beta\,\cos\frac{\alpha'-\alpha}{2} + i\sin\beta\,\cos\frac{\alpha'+\alpha}{2}.
+\Psi_N(x,y) = \Psi_{e-}(x,y) + r\,\Psi_{e+}(x,y) + r_A\,\Psi_{h+}(x,y).
 $$
 
-Unitarity requires $|r|^2 + |r_A|^2 = 1$ for $\varepsilon < \Delta_0$, which follows directly from these expressions after elementary trigonometric manipulation. All subgap probability current is reflected; nothing propagates into the superconductor.
+The amplitudes $r$ (normal reflection) and $r_A$ (Andreev reflection) are the quantities we seek.  Evaluated at the interface ($x = 0$), the three normal-region spinors are
+
+$$
+\Psi_{e-}(0) = \frac{1}{\sqrt{\cos\alpha}}
+\begin{pmatrix} e^{i\alpha/2} \\ -e^{-i\alpha/2} \\ 0 \\ 0 \end{pmatrix},
+\quad
+\Psi_{e+}(0) = \frac{1}{\sqrt{\cos\alpha}}
+\begin{pmatrix} e^{-i\alpha/2} \\ e^{i\alpha/2} \\ 0 \\ 0 \end{pmatrix},
+\quad
+\Psi_{h+}(0) = \frac{1}{\sqrt{\cos\alpha'}}
+\begin{pmatrix} 0 \\ 0 \\ e^{-i\alpha'/2} \\ -e^{i\alpha'/2} \end{pmatrix}.
+$$
+
+### Continuity at the Interface
+
+Demanding continuity of the full four-component wave function at $x = 0$ gives
+
+$$
+\Psi_{e-}(0) + r\,\Psi_{e+}(0) + r_A\,\Psi_{h+}(0) = a\,\Psi_{S+}(0) + b\,\Psi_{S-}(0).
+$$
+
+Writing this out component by component:
+
+**Component 1** (A sublattice, electron):
+$$
+\frac{e^{i\alpha/2} + r\,e^{-i\alpha/2}}{\sqrt{\cos\alpha}} = a\,e^{-i\beta} + b\,e^{i\beta}. \tag{1}
+$$
+
+**Component 2** (B sublattice, electron):
+$$
+\frac{-e^{-i\alpha/2} + r\,e^{i\alpha/2}}{\sqrt{\cos\alpha}} = a\,e^{-i\beta} - b\,e^{i\beta}. \tag{2}
+$$
+
+**Component 3** (A sublattice, hole):
+$$
+r_A\,\frac{e^{-i\alpha'/2}}{\sqrt{\cos\alpha'}} = (a+b)\,e^{-i\phi}. \tag{3}
+$$
+
+**Component 4** (B sublattice, hole):
+$$
+-r_A\,\frac{e^{i\alpha'/2}}{\sqrt{\cos\alpha'}} = (a-b)\,e^{-i\phi}. \tag{4}
+$$
+
+### Solving for the Superconducting Amplitudes
+
+Equations (3) and (4) involve only the hole sector and can be solved immediately.  Adding and subtracting them gives
+
+$$
+a = -\,\frac{i\,r_A\,e^{i\phi}\sin(\alpha'/2)}{\sqrt{\cos\alpha'}},
+\qquad
+b = \frac{r_A\,e^{i\phi}\cos(\alpha'/2)}{\sqrt{\cos\alpha'}}.
+$$
+
+### Solving for the Reflection Amplitudes
+
+Insert these expressions for $a$ and $b$ into equations (1) and (2).  Adding (1) and (2) eliminates $b$:
+
+$$
+\frac{i\sin(\alpha/2) + r\cos(\alpha/2)}{\sqrt{\cos\alpha}}
+= -\,\frac{i\,r_A\,e^{i\phi}\sin(\alpha'/2)\,e^{-i\beta}}{\sqrt{\cos\alpha'}}. \tag{5}
+$$
+
+Subtracting (2) from (1) eliminates $a$:
+
+$$
+\frac{\cos(\alpha/2) - i r\sin(\alpha/2)}{\sqrt{\cos\alpha}}
+= \frac{r_A\,e^{i\phi}\cos(\alpha'/2)\,e^{i\beta}}{\sqrt{\cos\alpha'}}. \tag{6}
+$$
+
+Equations (5) and (6) are two linear equations for the two unknowns $r$ and $r_A$.  It is convenient to eliminate $r_A$ first.  Multiply (5) by $\cos(\alpha'/2)\,e^{i\beta}$ and (6) by $i\sin(\alpha'/2)\,e^{-i\beta}$, then add the results.  After simplifying the trigonometric products with the identities
+
+$$
+\sin\frac{\alpha'}{2}\cos\frac{\alpha}{2} = \tfrac{1}{2}\Bigl[\sin\tfrac{\alpha'+\alpha}{2} + \sin\tfrac{\alpha'-\alpha}{2}\Bigr],
+\quad
+\cos\frac{\alpha'}{2}\sin\frac{\alpha}{2} = \tfrac{1}{2}\Bigl[\sin\tfrac{\alpha'+\alpha}{2} - \sin\tfrac{\alpha'-\alpha}{2}\Bigr],
+$$
+
+and similarly for the cosine products, one finds that the left-hand side combines into a single denominator
+
+$$
+X = \cos\beta\,\cos\frac{\alpha'-\alpha}{2} + i\sin\beta\,\cos\frac{\alpha'+\alpha}{2},
+$$
+
+while the right-hand side yields the Andreev amplitude
+
+$$
+r_A = e^{-i\phi}\,X^{-1}\sqrt{\cos\alpha\cos\alpha'} \qquad (|\alpha| < \alpha_c).
+$$
+
+Once $r_A$ is known, $r$ follows by substituting back into either (5) or (6).  The result is
+
+$$
+r = X^{-1}\Bigl[-\cos\beta\,\sin\tfrac{\alpha'+\alpha}{2} + i\sin\beta\,\sin\tfrac{\alpha'-\alpha}{2}\Bigr].
+$$
+
+### Unitarity
+
+For subgap energies $|\varepsilon| < \Delta_0$ the parameter $\beta = \arccos(\varepsilon/\Delta_0)$ is real, and one may verify directly that
+
+$$
+|r|^2 + |r_A|^2 = \frac{\cos^2\beta\,\sin^2\frac{\alpha'+\alpha}{2} + \sin^2\beta\,\sin^2\frac{\alpha'-\alpha}{2} + \cos\alpha\cos\alpha'}{|X|^2} = 1.
+$$
+
+The equality follows from the trigonometric identity
+
+$$
+|X|^2 = \tfrac{1}{2}\bigl[1 + \cos\alpha\cos\alpha' + \sin\alpha\sin\alpha'\cos(2\beta)\bigr],
+$$
+
+combined with the half-angle formulas for the sine squares in the numerator.  Since no propagating modes exist in the superconductor below the gap, all probability current must be reflected; the reflection matrix is therefore unitary, with $|r|^2$ the probability for normal reflection and $|r_A|^2$ the probability for Andreev reflection.
 
 ## 8. Retro-Reflection versus Specular Reflection
 
