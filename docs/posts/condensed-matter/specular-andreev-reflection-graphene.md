@@ -93,19 +93,63 @@ For electron states $(v = 0)$ the equation reads $(\mathbf{p}\cdot\boldsymbol{\s
 
 The NS interface is taken to lie in the $y$-$z$ plane at $x = 0$, so the Hamiltonian is **translationally invariant along $y$**. Momentum in the transverse direction is therefore conserved, and every eigenstate can be labelled by a definite wave number $q$. This justifies the factor $e^{iqy}$.
 
-In the longitudinal direction $x$ the system is not uniform — the interface breaks translational symmetry — but away from $x = 0$ both the normal and superconducting regions are themselves homogeneous. In each bulk region the wave function must therefore be a superposition of plane waves $e^{ik_x x}$. Because the Dirac equation is first-order in momentum, a given energy and transverse momentum $q$ admit two values of $k_x$: one positive (right-moving) and one negative (left-moving). The ansatz
+In the longitudinal direction $x$ the system is not uniform — the interface breaks translational symmetry — but away from $x = 0$ both the normal and superconducting regions are themselves homogeneous. In each bulk region the wave function must therefore be a superposition of plane waves $e^{ik_x x}$. The ansatz
 
 $$
 u(x,y) = e^{iqy} e^{ik_x x} \chi
 $$
 
-encodes precisely this structure: $e^{iqy}$ fixes the conserved transverse momentum, $e^{ik_x x}$ describes propagation toward or away from the interface, and the two-component spinor $\chi$ carries the sublattice (pseudospin) degree of freedom. The parameter $\alpha$ is introduced to package $q$ and $k_x$ into a single propagation angle measured from the normal to the interface:
+encodes precisely this structure: $e^{iqy}$ fixes the conserved transverse momentum, $e^{ik_x x}$ describes propagation toward or away from the interface, and the two-component spinor $\chi$ carries the sublattice (pseudospin) degree of freedom.
+
+#### Deriving the Dispersion and the Two $k_x$ Solutions
+
+Substituting the ansatz into $(\mathbf{p}\cdot\boldsymbol{\sigma} - E_F)u = \varepsilon u$ gives
 
 $$
-\sin\alpha = \frac{\hbar v q}{E_F + \varepsilon}, \qquad \alpha \in (-\pi/2, \pi/2).
+\hbar v (k_x \sigma_x + q \sigma_y) \chi = (E_F + \varepsilon) \chi .
 $$
 
-With this definition the longitudinal wave number becomes $k = (E_F + \varepsilon)/(\hbar v) \cos\alpha$. The two eigen spinors are
+Writing out the Pauli matrices explicitly,
+
+$$
+\hbar v \begin{pmatrix} 0 & k_x - iq \\ k_x + iq & 0 \end{pmatrix} \begin{pmatrix} \chi_1 \\ \chi_2 \end{pmatrix} = (E_F + \varepsilon) \begin{pmatrix} \chi_1 \\ \chi_2 \end{pmatrix} .
+$$
+
+This is a $2 \times 2$ eigenvalue problem. The characteristic equation is obtained by requiring the determinant to vanish:
+
+$$
+\det\!\begin{pmatrix} -(E_F+\varepsilon) & \hbar v(k_x - iq) \\ \hbar v(k_x + iq) & -(E_F+\varepsilon) \end{pmatrix} = 0,
+$$
+
+which yields
+
+$$
+(E_F + \varepsilon)^2 - \hbar^2 v^2 (k_x^2 + q^2) = 0 \quad \Longrightarrow \quad k_x^2 + q^2 = \frac{(E_F + \varepsilon)^2}{\hbar^2 v^2}.
+$$
+
+For fixed energy $\varepsilon$ and fixed transverse momentum $q$, this is a quadratic equation for $k_x$. It has **two roots**,
+
+$$
+k_x = \pm \sqrt{\frac{(E_F + \varepsilon)^2}{\hbar^2 v^2} - q^2} \equiv \pm k,
+$$
+
+corresponding to right-moving ($+k$) and left-moving ($-k$) waves. This is the physical origin of the incident and reflected waves: the same energy and transverse momentum support both propagation directions.
+
+#### The Propagation Angle and the Eigen Spinors
+
+It is convenient to package $q$ and $k$ into a single propagation angle $\alpha$ measured from the normal to the interface:
+
+$$
+\sin\alpha = \frac{\hbar v q}{E_F + \varepsilon}, \qquad k = \frac{E_F + \varepsilon}{\hbar v} \cos\alpha, \qquad \alpha \in (-\pi/2, \pi/2).
+$$
+
+Returning to the matrix equation, the ratio of spinor components is
+
+$$
+\frac{\chi_2}{\chi_1} = \frac{E_F + \varepsilon}{\hbar v(k_x - iq)} = \frac{k}{k - iq} = \frac{\cos\alpha}{\cos\alpha - i\sin\alpha} = e^{i\alpha},
+$$
+
+so that $\chi \propto (e^{-i\alpha/2}, e^{i\alpha/2})^T$ after normalizing to unit pseudospin magnitude. The two eigen spinors are therefore
 
 $$
 \Psi_{e\pm} = e^{iqy \pm ikx} \frac{1}{\sqrt{\cos\alpha}} \begin{pmatrix} e^{\mp i\alpha/2} \\ \pm e^{\pm i\alpha/2} \\ 0 \\ 0 \end{pmatrix},
@@ -115,21 +159,31 @@ with $\Psi_{e-}$ describing the incident wave (propagating toward the interface 
 
 ### Hole States
 
-For hole states $(u = 0)$ the sign of the energy term flips: $(\mathbf{p}\cdot\boldsymbol{\sigma})v = (E_F - \varepsilon)v$. The hole propagation angle $\alpha'$ is defined analogously,
+For hole states $(u = 0)$ the lower block of the DBdG equation gives
 
 $$
-\sin\alpha' = \frac{\hbar v q}{|E_F - \varepsilon|},
+(E_F - \mathbf{p}\cdot\boldsymbol{\sigma})v = \varepsilon v \quad \Longrightarrow \quad \mathbf{p}\cdot\boldsymbol{\sigma}\,v = (E_F - \varepsilon)v .
 $$
 
-and the corresponding spinors are
+Compared with the electron equation $\mathbf{p}\cdot\boldsymbol{\sigma}\,u = (E_F + \varepsilon)u$, the only difference is the sign in front of $\varepsilon$: the hole propagates at energy $E_F - \varepsilon$ rather than $E_F + \varepsilon$. The same substitution procedure yields the dispersion relation
 
 $$
-\Psi_{h\pm} = e^{iqy \pm ik'x} \frac{1}{\sqrt{\cos\alpha'}} \begin{pmatrix} 0 \\ 0 \\ e^{\mp i\alpha'/2} \\ \mp e^{\pm i\alpha'/2} \end{pmatrix},
+k_x^2 + q^2 = \frac{(E_F - \varepsilon)^2}{\hbar^2 v^2},
 $$
 
-with $k' = |E_F - \varepsilon|/(\hbar v) \cos\alpha'$.
+and, introducing the hole propagation angle $\alpha'$ through
 
-The critical observation is that the hole lives at energy $E_F - \varepsilon$ rather than $E_F + \varepsilon$. When $\varepsilon < E_F$, this places the hole in the **conduction band**; when $\varepsilon > E_F$, it falls into the **valence band**. The sign of the group velocity relative to the wave vector is opposite in the two cases, and this single fact controls whether reflection is retro-grade or specular.
+$$
+\sin\alpha' = \frac{\hbar v q}{|E_F - \varepsilon|}, \qquad k' = \frac{|E_F - \varepsilon|}{\hbar v} \cos\alpha',
+$$
+
+the eigen spinors are
+
+$$
+\Psi_{h\pm} = e^{iqy \pm ik'x} \frac{1}{\sqrt{\cos\alpha'}} \begin{pmatrix} 0 \\ 0 \\ e^{\mp i\alpha'/2} \\ \mp e^{\pm i\alpha'/2} \end{pmatrix}.
+$$
+
+The critical observation is the sign of $(E_F - \varepsilon)$. When $\varepsilon < E_F$, this places the hole in the **conduction band**; when $\varepsilon > E_F$, it falls into the **valence band**. The sign of the group velocity relative to the wave vector is opposite in the two cases, and this single fact controls whether reflection is retro-grade or specular.
 
 ## 5. The Critical Angle
 
@@ -143,15 +197,75 @@ For $|\alpha| < \alpha_c$, Andreev reflection is kinematically allowed and four 
 
 ## 6. Superconducting Region and the Heavily Doped Limit
 
-In the superconducting region the DBdG equation couples electrons and holes through $\Delta_0$. The dispersion relation is
+In the superconducting region $(x < 0)$ the potential is $U = -U_0$ and the pairing potential is $\Delta = \Delta_0 e^{i\phi}$. The DBdG equation reads
 
 $$
-\varepsilon^2 = \Delta_0^2 + (\hbar v|k| - E_{S0})^2,
+\begin{pmatrix}
+\hbar v\mathbf{k}\cdot\boldsymbol{\sigma} - U_0 - E_F & \Delta_0 e^{i\phi} \\
+\Delta_0 e^{-i\phi} & U_0 + E_F - \hbar v\mathbf{k}\cdot\boldsymbol{\sigma}
+\end{pmatrix}
+\begin{pmatrix} u \\ v \end{pmatrix}
+= \varepsilon \begin{pmatrix} u \\ v \end{pmatrix}.
 $$
 
-with $E_{S0} = U_0 + E_F$. For subgap energies $\varepsilon < \Delta_0$, the wave number $k_x$ acquires an imaginary part and the wave function decays exponentially into the superconductor. There are no propagating single-particle modes; all incident probability current must be reflected.
+It is convenient to define the superconducting Fermi energy $E_{S0} = U_0 + E_F$ and the normal-state kinetic energy measured from that Fermi level,
 
-In the heavily doped limit $U_0 \gg E_F, \varepsilon, \Delta_0$, the superconducting Fermi surface is large and the decay constant simplifies to $\kappa = (\Delta_0/\hbar v) \sin\beta$, where $\beta$ parameterizes the energy through $\varepsilon = \Delta_0 \cos\beta$.
+$$
+\xi_k = \hbar v |k| - E_{S0}.
+$$
+
+### Deriving the Superconducting Dispersion
+
+To find the eigenvalues, square the DBdG matrix. Acting with the Hamiltonian twice and using $\{\sigma_i, \sigma_j\} = 2\delta_{ij}$ gives
+
+$$
+\begin{pmatrix}
+\xi_k^2 + \Delta_0^2 & 0 \\
+0 & \xi_k^2 + \Delta_0^2
+\end{pmatrix}
+\begin{pmatrix} u \\ v \end{pmatrix}
+= \varepsilon^2 \begin{pmatrix} u \\ v \end{pmatrix},
+$$
+
+so that every eigenstate satisfies the Bogoliubov–quasiparticle dispersion
+
+$$
+\varepsilon^2 = \Delta_0^2 + \xi_k^2 = \Delta_0^2 + (\hbar v|k| - E_{S0})^2.
+$$
+
+This is the familiar gapped spectrum of a BCS superconductor, except that the normal-state dispersion $\xi_k$ is linear in $|k|$ rather than quadratic.
+
+### Subgap States and Exponential Decay
+
+For excitation energies below the gap, $|\varepsilon| < \Delta_0$, the dispersion relation gives
+
+$$
+(\hbar v|k| - E_{S0})^2 = \varepsilon^2 - \Delta_0^2 < 0.
+$$
+
+The right-hand side is negative, so $\hbar v|k| - E_{S0}$ must be purely imaginary. Writing
+
+$$
+\hbar v|k| - E_{S0} = \pm i\sqrt{\Delta_0^2 - \varepsilon^2},
+$$
+
+the wave number acquires an imaginary part
+
+$$
+\text{Im}(|k|) = \frac{\sqrt{\Delta_0^2 - \varepsilon^2}}{\hbar v} \equiv \kappa.
+$$
+
+The wave function therefore decays exponentially into the superconductor as $e^{-\kappa|x|}$. There are no propagating single-particle modes in the subgap regime; all incident probability current from the normal side must be reflected.
+
+### The Heavily Doped Limit
+
+When the superconducting electrode is heavily doped, $U_0 \gg E_F, \varepsilon, \Delta_0$, the superconducting Fermi energy $E_{S0}$ is very large. The decay constant can be written in a compact form by parameterizing the energy as $\varepsilon = \Delta_0 \cos\beta$ with $\beta \in (0, \pi)$. Then
+
+$$
+\kappa = \frac{\sqrt{\Delta_0^2 - \varepsilon^2}}{\hbar v} = \frac{\Delta_0 \sin\beta}{\hbar v}.
+$$
+
+This expression enters the boundary-condition matching through the ratios of decaying exponentials at $x = 0$.
 
 ## 7. Boundary Matching
 
