@@ -241,15 +241,4 @@ $$
 
 where the sum runs over all many-body states consistent with the symmetry of the particles. For bosons, this sum includes all symmetric states; for fermions, all antisymmetric states. The dice exercise has given us an intuitive preview of why these sums behave so differently—and why the world looks classical at high temperatures, quantum at low temperatures, and superfluid at very low temperatures.
 
----
 
-## 7. Further Reading
-
-- **Sethna, Ch. 6:** The canonical ensemble and the partition function.
-- **Sethna, Ch. 7:** Quantum statistics and Bose-Einstein condensation.
-- **Pathria & Beale, Ch. 5:** Ideal Bose and Fermi gases.
-- **Landau & Lifshitz, *Statistical Physics I*, §54-57:** The quantum ideal gas.
-
----
-
-*This note was written as part of a self-study journey through Sethna's textbook. The goal is not merely to solve exercises, but to extract the narrative thread that connects microscopic rules to macroscopic phenomena.*
