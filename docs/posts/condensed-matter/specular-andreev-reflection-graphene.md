@@ -27,7 +27,17 @@ $$
 = \varepsilon \begin{pmatrix} u \\ v \end{pmatrix} .
 $$
 
-Here $u$ and $v$ are two-component spinors describing the electron and hole amplitudes, $E_F$ is the Fermi energy in the normal region, and $U$ is a potential shift that can be used to model doping. In the superconducting region $(x < 0)$ we set $\Delta = \Delta_0 e^{i\phi}$ and $U = -U_0$ with $U_0 \gg E_F, \varepsilon, \Delta_0$ (the heavily doped superconductor limit). In the normal region $(x > 0)$ we set $\Delta = 0$ and $U = 0$.
+Here $u$ and $v$ are two-component spinors describing the electron and hole amplitudes, $E_F$ is the Fermi energy in the normal region, and $U$ is a potential shift that can be used to model doping.
+
+#### Doping as a Potential Shift
+
+In pristine graphene the valence and conduction bands touch at the Dirac point, and the Fermi level sits exactly at zero energy. Real samples are never perfectly intrinsic; some mechanism always pushes $E_F$ away from the Dirac point. The scalar term $-U \cdot \mathbb{I}$ in the Hamiltonian captures this by rigidly shifting the entire band structure: $U > 0$ pulls the bands downward so that $E_F$ lies in the conduction band (electron or n-type doping), while $U < 0$ pushes them upward so that $E_F$ lies in the valence band (hole or p-type doping).
+
+Experimentally this shift is achieved in several ways. A back-gate voltage across a dielectric layer electrostatically induces carriers and tunes $E_F$ continuously over hundreds of meV. Chemical adsorbates such as potassium atoms or NH$_3$ molecules donate or accept electrons, producing fixed doping densities as large as $10^{13}\,\text{cm}^{-2}$. The SiO$_2$ substrate itself usually introduces a mild p-type background because of surface trapped charges. Encapsulation in hexagonal boron nitride (hBN) suppresses this substrate-induced disorder and allows the sample to be tuned close to charge neutrality ($U \approx 0$) with high mobility.
+
+In the NS junction model the superconducting electrode is taken to be heavily doped: we set $U = -U_0$ with $U_0 \gg E_F, \varepsilon, \Delta_0$ in the region $x < 0$. This guarantees a large Fermi surface in the superconductor, which simplifies the boundary-condition matching and reflects the experimental fact that metallic superconducting contacts are always strongly n-type. In the normal graphene region ($x > 0$) we set $U = 0$, using the normal region as the energy reference.
+
+The crucial point is that the doping level in the normal region — controlled by $E_F$ relative to the Dirac point — determines whether the reflected hole lives in the conduction band or the valence band, and therefore whether Andreev reflection is retro-grade or specular.
 
 The superconducting proximity effect in graphene is thus a marriage of **relativistic kinematics** (Dirac electrons) and **Cooper-pair correlations** (Bogoliubov quasiparticles). The cross-term $\Delta$ couples states that live in different valleys of the band structure — a feature absent in conventional metals.
 
