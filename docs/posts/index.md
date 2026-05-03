@@ -144,6 +144,19 @@
 </div>
 
 <div class="category-section">
+  <h2>Bare-Handed</h2>
+  <ul class="article-list">
+    <li class="article-item">
+      <span class="article-date">—</span>
+      <div>
+        <div class="article-title"><a href="./bare-handed/">Bare-Handed — Daily Training Log</a></div>
+        <div class="article-desc">Starting from a blank page without books or notes. Exposing gaps, diagnosing blind spots, rebuilding from scratch.</div>
+      </div>
+    </li>
+  </ul>
+</div>
+
+<div class="category-section">
   <h2>Statistical Mechanics Notes</h2>
   <ul class="article-list">
     <li class="article-item">

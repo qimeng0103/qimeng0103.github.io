@@ -67,6 +67,11 @@ export default defineConfig({
               ]
             },
             {
+              text: 'Bare-Handed',
+              link: '/posts/bare-handed/',
+              items: []
+            },
+            {
               text: 'Statistical Mechanics Notes',
               items: [
                 { text: 'Quantum Dice and Coins', link: '/posts/statistical-mechanics/quantum-dice-and-coins' }
