@@ -49,6 +49,7 @@ export default defineConfig({
       { text: 'Home', link: '/' },
       { text: 'Articles', link: '/posts/' },
       { text: 'Daily Papers', link: '/posts/paper-notes/' },
+      { text: 'Bare-Handed', link: '/posts/bare-handed/' },
       { text: 'About', link: '/about' },
     ],
     
