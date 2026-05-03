@@ -22,23 +22,94 @@ Before writing down the Bogoliubov–de Gennes Hamiltonian, it is worth recallin
 
 Graphene is a single atomic layer of carbon arranged in a honeycomb lattice. The lattice is not Bravais: it consists of two interpenetrating triangular sublattices, conventionally called A and B. Every A atom has three nearest neighbours, all on the B sublattice, and vice versa.
 
-Tight-binding calculations with nearest-neighbour hopping $t$ give the Bloch bands
+![Graphene honeycomb lattice (left) with A/B sublattices, nearest-neighbour vectors $\boldsymbol{\delta}_j$, and primitive vectors $\mathbf{a}_1, \mathbf{a}_2$; first Brillouin zone (right) with reciprocal vectors $\mathbf{b}_1, \mathbf{b}_2$ and the inequivalent $K$ and $K'$ points](/images/condensed-matter/specular-andreev-reflection/graphene_lattice.png)
+
+To make the geometry explicit, place an A atom at the origin. The three vectors connecting this A atom to its nearest B neighbours are
 
 $$
-E(\mathbf{k}) = \pm t \left| \sum_{j=1}^{3} e^{i\mathbf{k}\cdot\boldsymbol{\delta}_j} \right|,
+\boldsymbol{\delta}_1 = a\begin{pmatrix} 1 \\ 0 \end{pmatrix}, \quad
+\boldsymbol{\delta}_2 = a\begin{pmatrix} -1/2 \\ \sqrt{3}/2 \end{pmatrix}, \quad
+\boldsymbol{\delta}_3 = a\begin{pmatrix} -1/2 \\ -\sqrt{3}/2 \end{pmatrix},
 $$
 
-where $\boldsymbol{\delta}_j$ are the three vectors connecting an A site to its nearest B neighbours. The plus sign gives the conduction band ($\pi^*$), the minus sign the valence band ($\pi$). The two bands touch at six points on the edge of the hexagonal Brillouin zone. Only two of these are inequivalent; they are labelled $K$ and $K'$ and are related by time reversal.
+where $a \approx 1.42\,\text{Å}$ is the carbon-carbon bond length. The primitive lattice vectors of the underlying triangular Bravais lattice are
+
+$$
+\mathbf{a}_1 = a\begin{pmatrix} 3/2 \\ \sqrt{3}/2 \end{pmatrix}, \qquad
+\mathbf{a}_2 = a\begin{pmatrix} 3/2 \\ -\sqrt{3}/2 \end{pmatrix}.
+$$
+
+Every lattice site can be written as $\mathbf{R} = n_1\mathbf{a}_1 + n_2\mathbf{a}_2$ for integers $n_1, n_2$; A sites sit at these points, while B sites sit at $\mathbf{R} + \boldsymbol{\delta}_1$.
+
+### From Atomic Orbitals to the Tight-Binding Hamiltonian
+
+The electronic structure follows from the $p_z$ orbitals of carbon, which stick out of the plane and form $\pi$ bonds with their three neighbours. Because the $p_z$ orbital is odd under reflection in the plane, it does not hybridize with the in-plane $sp^2$ bonds; the $\pi$ and $\sigma$ sectors decouple.
+
+In the tight-binding approximation one keeps only the dominant matrix element: the hopping amplitude $t \approx 2.7\,\text{eV}$ between nearest-neighbour $p_z$ orbitals. The Hamiltonian is
+
+$$
+H = -t \sum_{\langle i,j \rangle} \big( |i\rangle\langle j| + |j\rangle\langle i| \big),
+$$
+
+where the sum runs over all nearest-neighbour pairs $\langle i,j \rangle$ and $|i\rangle$ denotes the $p_z$ orbital on site $i$.
+
+Because the lattice has two atoms per unit cell, it is natural to introduce Bloch states for each sublattice separately:
+
+$$
+|\mathbf{k}, A\rangle = \frac{1}{\sqrt{N}} \sum_{\mathbf{R}} e^{i\mathbf{k}\cdot\mathbf{R}} \, |\mathbf{R}, A\rangle, \qquad
+|\mathbf{k}, B\rangle = \frac{1}{\sqrt{N}} \sum_{\mathbf{R}} e^{i\mathbf{k}\cdot\mathbf{R}} \, |\mathbf{R}, B\rangle.
+$$
+
+In this basis the Hamiltonian becomes a $2 \times 2$ matrix at each $\mathbf{k}$:
+
+$$
+H(\mathbf{k}) = \begin{pmatrix} 0 & h(\mathbf{k}) \\ h^*(\mathbf{k}) & 0 \end{pmatrix},
+$$
+
+where the off-diagonal element collects the three nearest-neighbour phase factors:
+
+$$
+h(\mathbf{k}) = -t \sum_{j=1}^{3} e^{i\mathbf{k}\cdot\boldsymbol{\delta}_j}
+= -t \Big[ e^{ik_x a} + 2 e^{-ik_x a/2} \cos\!\Big(\frac{\sqrt{3}k_y a}{2}\Big) \Big].
+$$
+
+Diagonalizing $H(\mathbf{k})$ gives the two Bloch bands
+
+$$
+E(\mathbf{k}) = \pm |h(\mathbf{k})| = \pm t \left| \sum_{j=1}^{3} e^{i\mathbf{k}\cdot\boldsymbol{\delta}_j} \right|.
+$$
+
+The plus sign is the conduction band ($\pi^*$), the minus sign the valence band ($\pi$). The bands touch whenever $h(\mathbf{k}) = 0$, which happens at six points on the edge of the hexagonal Brillouin zone. Only two of these are inequivalent; they are labelled $K$ and $K'$ and are related by time reversal.
 
 ### The Dirac Point
 
-Expanding the tight-binding dispersion to linear order around either $K$ or $K'$ gives
+In the reciprocal lattice the primitive vectors are
 
 $$
-E(\mathbf{k}) = \pm \hbar v |\mathbf{k} - \mathbf{K}|,
+\mathbf{b}_1 = \frac{2\pi}{3a}\begin{pmatrix} 1 \\ \sqrt{3} \end{pmatrix}, \qquad
+\mathbf{b}_2 = \frac{2\pi}{3a}\begin{pmatrix} 1 \\ -\sqrt{3} \end{pmatrix}.
 $$
 
-with $v = 3ta/2\hbar \approx 10^6\,\text{m/s}$. The dispersion is **linear** and **gapless**: the positive and negative branches form two cones touching at a single point. This is the Dirac point.
+The two inequivalent corners of the first Brillouin zone are at
+
+$$
+\mathbf{K} = \frac{4\pi}{3a}\begin{pmatrix} 1 \\ 0 \end{pmatrix}, \qquad
+\mathbf{K}' = \frac{4\pi}{3a}\begin{pmatrix} -1 \\ 0 \end{pmatrix}.
+$$
+
+Expanding $h(\mathbf{k})$ to linear order around $\mathbf{K}$ by setting $\mathbf{k} = \mathbf{K} + \mathbf{q}$ with $|\mathbf{q}|a \ll 1$ gives
+
+$$
+h(\mathbf{K} + \mathbf{q}) \approx \frac{3ta}{2} \big( q_x + i q_y \big) \equiv \hbar v \, q_+,
+$$
+
+with $v = 3ta/2\hbar \approx 10^6\,\text{m/s}$. The band energies are therefore
+
+$$
+E(\mathbf{q}) = \pm \hbar v |\mathbf{q}| = \pm \hbar v |\mathbf{k} - \mathbf{K}|.
+$$
+
+The dispersion is **linear** and **gapless**: the positive and negative branches form two cones touching at a single point. This is the Dirac point.
 
 Linear dispersion means the effective mass vanishes. The low-energy excitations are not Schrödinger electrons; they are **massless Dirac fermions**. Their wave equation is the two-dimensional Dirac equation with zero rest mass:
 
