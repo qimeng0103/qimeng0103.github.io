@@ -18,8 +18,9 @@ The premise is disarmingly simple. We have two three-sided dice, each showing 1,
 
 The connection to quantum mechanics is profound. Non-interacting identical particles in quantum mechanics are governed by precisely these rules: bosons can occupy the same single-particle state, while fermions cannot. Our dice are merely a discrete, finite-state caricature of this infinite-dimensional truth.
 
-<!-- Image placeholder: Quantum dice table -->
-<!-- Place an image file named `fig-quantum-dice-table.png` in the images directory to display the table of allowed rolls for the three games. -->
+![Table of allowed rolls for Distinguishable, Boson, and Fermion games with two three-sided dice. Shaded squares indicate legal configurations.](/images/statistical-mechanics/quantum-dice-and-coins/fig-quantum-dice-table.png)
+
+*Figure: Allowed rolls for the three quantum dice games. In Bosons, only the shaded squares (including the diagonal) are legal. In Fermions, only the darkly shaded squares above the diagonal are legal.*
 
 ---
 
