@@ -37,7 +37,7 @@ export default defineConfig({
     math: true,
     lineNumbers: true,
     config: (md) => {
-      md.use(mathjax3)
+      md.use(mathjax3, { tex: { macros: { slashed: ["\\not\\!#1", 1] } } })
     }
   },
   
@@ -144,16 +144,6 @@ export default defineConfig({
   head: [
     ['link', { rel: 'icon', href: '/favicon.ico' }],
     
-    // MathJax configuration: define slashed macro
-    ['script', {}, `
-      window.MathJax = {
-        tex: {
-          macros: {
-            slashed: ["\\\\not\\\\!#1", 1]
-          }
-        }
-      };
-    `],
     
     // Fonts - Academic style (serif headings + sans-serif body)
     ['link', { rel: 'preconnect', href: 'https://fonts.googleapis.com' }],
