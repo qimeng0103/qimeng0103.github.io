@@ -483,6 +483,34 @@ Similarly, the magnetic radius is extracted from $G_M$. Precise measurements of 
 
 The Rosenbluth separation becomes increasingly difficult at high $Q^2$ because the $G_E^2$ term is suppressed by $\tau = Q^2/(4m_p^2)$ relative to the $G_M^2$ term. For $Q^2 \gg m_p^2$, the cross section is dominated by magnetic scattering, and $G_E$ becomes hard to extract. Polarization transfer measurements, where the recoil proton's polarization is detected, provide a more direct separation of $G_E$ and $G_M$ at high $Q^2$ and have largely superseded the Rosenbluth method in modern experiments.
 
+### Vortex Electrons as a Probe
+
+All of the preceding analysis rests on the plane-wave approximation: the incoming and outgoing electrons are treated as momentum eigenstates with definite four-momenta $k$ and $k'$. In practice, accelerator beams are wave packets, and recent advances in phase-shaping technology make it possible to prepare electrons in **Laguerre-Gaussian (LG) vortex states** that carry intrinsic orbital angular momentum (OAM). Replacing the plane wave with a vortex wave packet changes the kinematics in a controlled way and opens new observables.
+
+A paraxial LG electron state is characterized by an OAM quantum number $\ell$, a radial index $p$, a beam waist $w$, and a transverse impact parameter $\mathbf{b}$ relative to the target. In momentum space its transverse profile is
+
+$$
+\psi_{\ell p}(\mathbf{k}_\perp; \mathbf{b}) \propto (k_\perp w)^{|\ell|} L_p^{|\ell|}(k_\perp^2 w^2) \, e^{-k_\perp^2 w^2/2} \, e^{i\ell\phi_k} \, e^{-i\mathbf{k}_\perp\cdot\mathbf{b}} ,
+$$
+
+where $L_p^{|\ell|}$ is the associated Laguerre polynomial. The plane-wave limit corresponds to $\ell=0$, $p=0$, $w\to\infty$ and $b\to 0$.
+
+Because the initial electron is no longer a momentum eigenstate, the scattering amplitude must be averaged over the transverse momentum distribution. For a process whose plane-wave cross section is the Rosenbluth formula $(d\sigma/d\Omega)_{\text{R}}$, the vortex-electron observable is the **transverse-momentum-resolved** distribution
+
+$$
+\frac{d\sigma}{d\Omega \, d^2P_\perp} = \int d^2k_\perp \, d^2k'_\perp \; \delta^{(2)}(\mathbf{P}_\perp - \mathbf{k}_\perp + \mathbf{k}'_\perp) \; |\psi_{\ell p}(\mathbf{k}_\perp;\mathbf{b})|^2 \; |\psi_{\ell' p'}(\mathbf{k}'_\perp;\mathbf{b}')|^2 \; \left(\frac{d\sigma}{d\Omega}\right)_{\!\text{R}} .
+$$
+
+Here $\mathbf{P}_\perp$ is the total final transverse momentum, which for plane waves is fixed by momentum conservation. For vortex states it becomes a continuous variable whose distribution encodes the geometry of the LG wave packets.
+
+The key insight of the systematic analysis by Yang and Ivanov is that the $P_\perp$ dependence separates into two distinct sources:
+
+**1. Universal kinematic shaping.** Even if the underlying scattering dynamics were completely trivial — imagine replacing the proton by a structureless charge — the LG envelope alone would produce a non-trivial $P_\perp$ distribution. The width and ring-like structure of $|\psi_{\ell p}|^2$ in momentum space imprints itself on the final-state transverse momentum. These effects are independent of $G_E$ and $G_M$; they are fixed by the beam parameters $(\ell, p, w, b)$ and serve as a calibration of the vortex state itself.
+
+**2. Process-dependent dynamics.** The Rosenbluth amplitude contains the proton's internal structure through $G_E(Q^2)$ and $G_M(Q^2)$. Because different transverse momenta $k_\perp$ and $k'_\perp$ sample slightly different $Q^2$ values, the convolution with the LG profile weights the form factors differently than in the plane-wave case. At small $w$ (tightly focused beams) this can introduce corrections of order $(k_\perp w)^2$ to the extracted form factors. More importantly, the phase factor $e^{-i\mathbf{k}_\perp\cdot\mathbf{b}}$ introduces an interference between different transverse momentum components that is absent for plane waves. For non-zero impact parameter $b$, this leads to an azimuthal asymmetry in the $P_\perp$ distribution that is sensitive to the relative phase between the electric and magnetic contributions in the Rosenbluth amplitude.
+
+In the limit $w \gg 1/Q$ and $b \ll w$, the vortex cross section collapses back to the Rosenbluth formula convolved with a narrow Gaussian in $P_\perp$. The deviations become significant only when the transverse coherence length of the beam is comparable to the inverse momentum transfer. For typical electron-scattering facilities this requires beam waists on the order of femtometers — challenging, but not fundamentally impossible with future phase-shaping techniques.
+
 ---
 
 ## References
