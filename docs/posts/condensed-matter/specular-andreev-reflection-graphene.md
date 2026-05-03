@@ -47,13 +47,25 @@ Setting $\Delta = 0$ and $U = 0$ in the normal region, the DBdG equation decoupl
 
 ### Electron States
 
-For electron states $(v = 0)$ the equation reads $(\mathbf{p}\cdot\boldsymbol{\sigma} - E_F)u = \varepsilon u$. Separating variables with $u(x,y) = e^{iqy} e^{ik_x x} \chi$ and defining the propagation angle $\alpha$ through
+For electron states $(v = 0)$ the equation reads $(\mathbf{p}\cdot\boldsymbol{\sigma} - E_F)u = \varepsilon u$. 
+
+#### Plane-Wave Ansatz and Its Motivation
+
+The NS interface is taken to lie in the $y$-$z$ plane at $x = 0$, so the Hamiltonian is **translationally invariant along $y$**. Momentum in the transverse direction is therefore conserved, and every eigenstate can be labelled by a definite wave number $q$. This justifies the factor $e^{iqy}$.
+
+In the longitudinal direction $x$ the system is not uniform — the interface breaks translational symmetry — but away from $x = 0$ both the normal and superconducting regions are themselves homogeneous. In each bulk region the wave function must therefore be a superposition of plane waves $e^{ik_x x}$. Because the Dirac equation is first-order in momentum, a given energy and transverse momentum $q$ admit two values of $k_x$: one positive (right-moving) and one negative (left-moving). The ansatz
 
 $$
-\sin\alpha = \frac{\hbar v q}{E_F + \varepsilon}, \qquad \alpha \in (-\pi/2, \pi/2),
+u(x,y) = e^{iqy} e^{ik_x x} \chi
 $$
 
-the longitudinal wave number is $k = (E_F + \varepsilon)/(\hbar v) \cos\alpha$. The two eigen spinors are
+encodes precisely this structure: $e^{iqy}$ fixes the conserved transverse momentum, $e^{ik_x x}$ describes propagation toward or away from the interface, and the two-component spinor $\chi$ carries the sublattice (pseudospin) degree of freedom. The parameter $\alpha$ is introduced to package $q$ and $k_x$ into a single propagation angle measured from the normal to the interface:
+
+$$
+\sin\alpha = \frac{\hbar v q}{E_F + \varepsilon}, \qquad \alpha \in (-\pi/2, \pi/2).
+$$
+
+With this definition the longitudinal wave number becomes $k = (E_F + \varepsilon)/(\hbar v) \cos\alpha$. The two eigen spinors are
 
 $$
 \Psi_{e\pm} = e^{iqy \pm ikx} \frac{1}{\sqrt{\cos\alpha}} \begin{pmatrix} e^{\mp i\alpha/2} \\ \pm e^{\pm i\alpha/2} \\ 0 \\ 0 \end{pmatrix},
