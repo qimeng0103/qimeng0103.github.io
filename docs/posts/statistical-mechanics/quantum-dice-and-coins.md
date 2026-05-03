@@ -146,7 +146,4 @@ where the sum runs over all many-body states consistent with the symmetry of the
 
 ## References
 
-- *Statistical Mechanics: Entropy, Order Parameters, and Complexity*, Ch. 6: The canonical ensemble and the partition function.
-- *Statistical Mechanics: Entropy, Order Parameters, and Complexity*, Ch. 7: Quantum statistics and Bose-Einstein condensation.
-- R. K. Pathria & P. D. Beale, *Statistical Mechanics*, 3rd ed., Ch. 5: Ideal Bose and Fermi gases.
-- L. D. Landau & E. M. Lifshitz, *Statistical Physics I*, §54–57: The quantum ideal gas.
+- *Statistical Mechanics: Entropy, Order Parameters, and Complexity*, Ch. 1: What is statistical mechanics?
