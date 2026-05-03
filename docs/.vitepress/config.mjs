@@ -67,6 +67,12 @@ export default defineConfig({
               ]
             },
             {
+              text: 'Statistical Mechanics Notes',
+              items: [
+                { text: 'Quantum Dice and Coins', link: '/posts/statistical-mechanics/quantum-dice-and-coins' }
+              ]
+            },
+            {
               text: 'Condensed Matter Notes',
               items: [
                 { text: 'Majorana Zero Modes in Planar Josephson Junctions', link: '/posts/condensed-matter/lieb-lattice-majorana-josephson-junctions' },

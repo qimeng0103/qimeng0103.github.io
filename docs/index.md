@@ -207,7 +207,15 @@ hero:
 
 <div class="latest-articles">
   <h2>Recent Articles</h2>
-  
+
+  <div class="article-entry">
+    <div class="article-date">2026-05-03</div>
+    <div class="article-info">
+      <h3><a href="/posts/statistical-mechanics/quantum-dice-and-coins">Quantum Dice and Coins: A Gentle Introduction to Bose-Einstein and Fermi-Dirac Statistics</a></h3>
+      <p>Sethna Exercise 1.1 — quantum statistics through dice games, from Pauli exclusion to Bose-Einstein condensation</p>
+    </div>
+  </div>
+
   <div class="article-entry">
     <div class="article-date">2026-04-14</div>
     <div class="article-info">
