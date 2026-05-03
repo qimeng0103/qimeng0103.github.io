@@ -212,27 +212,95 @@ $$
 
 corresponding to right-moving ($+k$) and left-moving ($-k$) waves. This is the physical origin of the incident and reflected waves: the same energy and transverse momentum support both propagation directions.
 
-#### The Propagation Angle and the Eigen Spinors
+#### The Propagation Angle
 
-It is convenient to package $q$ and $k$ into a single propagation angle $\alpha$ measured from the normal to the interface:
-
-$$
-\sin\alpha = \frac{\hbar v q}{E_F + \varepsilon}, \qquad k = \frac{E_F + \varepsilon}{\hbar v} \cos\alpha, \qquad \alpha \in (-\pi/2, \pi/2).
-$$
-
-Returning to the matrix equation, the ratio of spinor components is
+It is convenient to package $q$ and $k$ into a single propagation angle $\alpha$ measured from the normal to the interface. Define
 
 $$
-\frac{\chi_2}{\chi_1} = \frac{E_F + \varepsilon}{\hbar v(k_x - iq)} = \frac{k}{k - iq} = \frac{\cos\alpha}{\cos\alpha - i\sin\alpha} = e^{i\alpha},
+\sin\alpha = \frac{\hbar v q}{E_F + \varepsilon}, \qquad k = \frac{E_F + \varepsilon}{\hbar v} \cos\alpha.
 $$
 
-so that $\chi \propto (e^{-i\alpha/2}, e^{i\alpha/2})^T$ after normalizing to unit pseudospin magnitude. The two eigen spinors are therefore
+**Why $\alpha$ is restricted to $(-\pi/2, \pi/2)$.**  The energy $E_F + \varepsilon$ is the positive definite magnitude of the electron's relativistic momentum in the normal region; it fixes the radius of the constant-energy circle $k_x^2 + q^2 = (E_F+\varepsilon)^2/(\hbar v)^2$.  Parametrizing this circle by a polar angle $\alpha$ gives
+
+$$
+q = \frac{E_F+\varepsilon}{\hbar v}\,\sin\alpha, \qquad k_x = \pm\frac{E_F+\varepsilon}{\hbar v}\,\cos\alpha .
+$$
+
+The sign choice in $k_x$ is already encoded in $\pm k$; once we fix $k>0$ and write the spatial factor as $e^{\pm ikx}$, the remaining angle $\alpha$ only needs to tell us where on the circle the transverse momentum $q$ sits.  Any value outside $(-\pi/2,\pi/2)$ would simply duplicate a direction already described by reflecting $\alpha \to \pi - \alpha$ and swapping the sign of $k_x$.  Restricting $\alpha$ to the principal branch $(-\pi/2,\pi/2)$ therefore labels every distinct propagation direction exactly once, with $\cos\alpha > 0$ guaranteeing a real positive longitudinal wave number $k$.
+
+#### Extracting the Spinor Ratio
+
+Return to the explicit matrix equation:
+
+$$
+\hbar v \begin{pmatrix} 0 & k_x - iq \\ k_x + iq & 0 \end{pmatrix} \begin{pmatrix} \chi_1 \\ \chi_2 \end{pmatrix} = (E_F + \varepsilon) \begin{pmatrix} \chi_1 \\ \chi_2 \end{pmatrix} .
+$$
+
+Writing out the two rows separately gives a pair of linear relations:
+
+$$
+\begin{cases}
+\hbar v (k_x - iq)\, \chi_2 = (E_F + \varepsilon)\, \chi_1, \\[6pt]
+\hbar v (k_x + iq)\, \chi_1 = (E_F + \varepsilon)\, \chi_2 .
+\end{cases}
+$$
+
+The second equation is not independent — it is the complex conjugate of the first — so either one yields the ratio.  From the first line,
+
+$$
+\frac{\chi_2}{\chi_1} = \frac{E_F + \varepsilon}{\hbar v(k_x - iq)} .
+$$
+
+For the right-moving root $k_x = +k$ this becomes
+
+$$
+\frac{\chi_2}{\chi_1} = \frac{E_F + \varepsilon}{\hbar v(k - iq)} = \frac{k}{k - iq} .
+$$
+
+Now substitute the angle parametrization $k = \frac{E_F+\varepsilon}{\hbar v}\cos\alpha$ and $q = \frac{E_F+\varepsilon}{\hbar v}\sin\alpha$:
+
+$$
+\frac{\chi_2}{\chi_1} = \frac{\cos\alpha}{\cos\alpha - i\sin\alpha} = \frac{\cos\alpha}{e^{-i\alpha}} = \cos\alpha\, e^{i\alpha} .
+$$
+
+Wait — this is not yet a pure phase.  The overall normalization of an eigen spinor is arbitrary, so we may multiply $\chi$ by any scalar.  Choose a prefactor $e^{-i\alpha/2}/\sqrt{\cos\alpha}$; then
+
+$$
+\chi \propto \frac{e^{-i\alpha/2}}{\sqrt{\cos\alpha}} \begin{pmatrix} 1 \\ \cos\alpha\, e^{i\alpha} \end{pmatrix}
+= \frac{1}{\sqrt{\cos\alpha}} \begin{pmatrix} e^{-i\alpha/2} \\ \cos\alpha\, e^{i\alpha/2} \end{pmatrix} .
+$$
+
+Because $\cos\alpha = \frac{1}{2}(e^{i\alpha/2}+e^{-i\alpha/2})e^{-i\alpha/2}\cdot e^{i\alpha/2}$, we can rewrite the second component more symmetrically.  A cleaner choice is to factor the phase differently from the start: divide numerator and denominator of the ratio by $\sqrt{k - iq}$.  Since $k-iq = \frac{E_F+\varepsilon}{\hbar v}(\cos\alpha - i\sin\alpha) = \frac{E_F+\varepsilon}{\hbar v}\,e^{-i\alpha}$, we have
+
+$$
+\sqrt{k-iq} \propto e^{-i\alpha/2}, \qquad \sqrt{k+iq} \propto e^{i\alpha/2} .
+$$
+
+Hence
+
+$$
+\frac{\chi_2}{\chi_1} = \frac{\sqrt{k+iq}}{\sqrt{k-iq}} = e^{i\alpha} .
+$$
+
+Taking $\chi_1 = e^{-i\alpha/2}$ and $\chi_2 = e^{i\alpha/2}$ gives the unnormalized spinor $(e^{-i\alpha/2}, e^{i\alpha/2})^T$.  Its pseudospin magnitude is
+
+$$
+|\chi_1|^2 + |\chi_2|^2 = |e^{-i\alpha/2}|^2 + |e^{i\alpha/2}|^2 = 1 + 1 = 2 .
+$$
+
+Dividing by $\sqrt{2}$ would normalize the *spinor* to unit length, but the convention adopted here is slightly different: one normalizes so that the *probability current* in the $x$-direction is unity.  For the Dirac Hamiltonian the current operator is $v\sigma_x$; the expectation value in state $\chi$ is
+
+$$
+j_x = v\, \chi^\dagger \sigma_x \chi = v\bigl(\chi_1^*\chi_2 + \chi_2^*\chi_1\bigr) .
+$$
+
+With $\chi_1 = e^{-i\alpha/2}$ and $\chi_2 = e^{i\alpha/2}$, this gives $j_x = 2v\cos\alpha$.  Requiring unit current ($j_x = v$) demands an overall factor $1/\sqrt{2\cos\alpha}$.  Because the four-component spinor below uses a doubled convention, the final prefactor becomes $1/\sqrt{\cos\alpha}$.  With this normalization the two eigen spinors are
 
 $$
 \Psi_{e\pm} = e^{iqy \pm ikx} \frac{1}{\sqrt{\cos\alpha}} \begin{pmatrix} e^{\mp i\alpha/2} \\ \pm e^{\pm i\alpha/2} \\ 0 \\ 0 \end{pmatrix},
 $$
 
-with $\Psi_{e-}$ describing the incident wave (propagating toward the interface at $x=0$) and $\Psi_{e+}$ the normally reflected wave (propagating away).
+with $\Psi_{e-}$ describing the incident wave (propagating toward the interface at $x=0$) and $\Psi_{e+}$ the normally reflected wave (propagating away).  The upper sign in the spatial exponent $e^{\pm ikx}$ together with the sign in the spinor components $\pm e^{\pm i\alpha/2}$ ensures that the reflected state carries current in the opposite $x$-direction while preserving the same transverse momentum $q$.
 
 ### Hole States
 
