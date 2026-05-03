@@ -14,9 +14,49 @@ Charge is conserved: the normal region loses net charge $-e$ (one electron remov
 
 In a conventional metal with parabolic dispersion, the reflected hole belongs to the same conduction band as the incident electron. Its group velocity points opposite to its wave vector, so the reflection is **retro-grade**: the hole retraces the incoming path. Graphene introduces two new ingredients that overturn this intuition.
 
-## 2. The Dirac–Bogoliubov–de Gennes Equation
+## 2. Why Graphene Needs the Dirac Equation
 
-The low-energy physics of graphene near the $K$ and $K'$ valleys is described by the Dirac Hamiltonian $H = \hbar v \mathbf{p} \cdot \boldsymbol{\sigma}$, where $v \approx 10^6\,\text{m/s}$ is the Fermi velocity and $\boldsymbol{\sigma} = (\sigma_x, \sigma_y)$ acts on the sublattice pseudospin. To incorporate superconductivity, one couples electrons and holes through the pairing potential $\Delta$ and writes the four-component Dirac–Bogoliubov–de Gennes (DBdG) equation:
+Before writing down the Bogoliubov–de Gennes Hamiltonian, it is worth recalling why graphene is special. A free electron in vacuum obeys the Schrödinger equation with a parabolic dispersion $E = p^2/2m$. Graphene's charge carriers do not.
+
+### Honeycomb Lattice and Sublattices
+
+Graphene is a single atomic layer of carbon arranged in a honeycomb lattice. The lattice is not Bravais: it consists of two interpenetrating triangular sublattices, conventionally called A and B. Every A atom has three nearest neighbours, all on the B sublattice, and vice versa.
+
+Tight-binding calculations with nearest-neighbour hopping $t$ give the Bloch bands
+
+$$
+E(\mathbf{k}) = \pm t \left| \sum_{j=1}^{3} e^{i\mathbf{k}\cdot\boldsymbol{\delta}_j} \right|,
+$$
+
+where $\boldsymbol{\delta}_j$ are the three vectors connecting an A site to its nearest B neighbours. The plus sign gives the conduction band ($\pi^*$), the minus sign the valence band ($\pi$). The two bands touch at six points on the edge of the hexagonal Brillouin zone. Only two of these are inequivalent; they are labelled $K$ and $K'$ and are related by time reversal.
+
+### The Dirac Point
+
+Expanding the tight-binding dispersion to linear order around either $K$ or $K'$ gives
+
+$$
+E(\mathbf{k}) = \pm \hbar v |\mathbf{k} - \mathbf{K}|,
+$$
+
+with $v = 3ta/2\hbar \approx 10^6\,\text{m/s}$. The dispersion is **linear** and **gapless**: the positive and negative branches form two cones touching at a single point. This is the Dirac point.
+
+Linear dispersion means the effective mass vanishes. The low-energy excitations are not Schrödinger electrons; they are **massless Dirac fermions**. Their wave equation is the two-dimensional Dirac equation with zero rest mass:
+
+$$
+H = \hbar v \, \mathbf{p} \cdot \boldsymbol{\sigma} = \hbar v (p_x \sigma_x + p_y \sigma_y).
+$$
+
+Here $\boldsymbol{\sigma} = (\sigma_x, \sigma_y)$ are Pauli matrices, but they do not act on real spin. They act on **sublattice pseudospin**: the two components of the spinor correspond to the amplitude on the A and B sublattices. The eigenstates are plane waves with definite chirality: the pseudospin is locked parallel or antiparallel to the momentum.
+
+The two valleys $K$ and $K'$ are described by the same Hamiltonian with opposite sign of $p_y$ (or, equivalently, by exchanging $\sigma_x \to \sigma_x$, $\sigma_y \to -\sigma_y$). For the NS interface problem the valley index is largely a spectator; the physics is captured by a single-valley Dirac equation.
+
+### What Changes in an NS Junction?
+
+For Andreev reflection the crucial difference between graphene and an ordinary metal is the fate of the **hole**. In a parabolic band the hole sits in the same band as the electron, merely at a different momentum. In graphene's linear band the hole can sit in the **conduction band** (if $E_F > \varepsilon$) or in the **valence band** (if $E_F < \varepsilon$). The two cases correspond to retro-reflection and specular reflection, respectively. This band-structure ambiguity is the root of everything that follows.
+
+## 3. The Dirac–Bogoliubov–de Gennes Equation
+
+To incorporate superconductivity into the Dirac Hamiltonian, one couples electrons and holes through the pairing potential $\Delta$ and writes the four-component Dirac–Bogoliubov–de Gennes (DBdG) equation:
 
 $$
 \begin{pmatrix}
@@ -41,7 +81,7 @@ The crucial point is that the doping level in the normal region — controlled b
 
 The superconducting proximity effect in graphene is thus a marriage of **relativistic kinematics** (Dirac electrons) and **Cooper-pair correlations** (Bogoliubov quasiparticles). The cross-term $\Delta$ couples states that live in different valleys of the band structure — a feature absent in conventional metals.
 
-## 3. Normal-Region States: Electrons and Holes
+## 4. Normal-Region States: Electrons and Holes
 
 Setting $\Delta = 0$ and $U = 0$ in the normal region, the DBdG equation decouples into two independent $2 \times 2$ Dirac equations.
 
@@ -91,7 +131,7 @@ with $k' = |E_F - \varepsilon|/(\hbar v) \cos\alpha'$.
 
 The critical observation is that the hole lives at energy $E_F - \varepsilon$ rather than $E_F + \varepsilon$. When $\varepsilon < E_F$, this places the hole in the **conduction band**; when $\varepsilon > E_F$, it falls into the **valence band**. The sign of the group velocity relative to the wave vector is opposite in the two cases, and this single fact controls whether reflection is retro-grade or specular.
 
-## 4. The Critical Angle
+## 5. The Critical Angle
 
 The angle $\alpha'$ is real only when $|\sin\alpha'| \leq 1$, which defines a **critical angle**
 
@@ -101,7 +141,7 @@ $$
 
 For $|\alpha| < \alpha_c$, Andreev reflection is kinematically allowed and four scattering states coexist in the normal region: $\Psi_{e-}$ (incident electron), $\Psi_{e+}$ (normal reflection), $\Psi_{h-}$ (incident hole), and $\Psi_{h+}$ (Andreev-reflected hole). For $|\alpha| > \alpha_c$, the hole cannot propagate and Andreev reflection is suppressed; only normal reflection survives.
 
-## 5. Superconducting Region and the Heavily Doped Limit
+## 6. Superconducting Region and the Heavily Doped Limit
 
 In the superconducting region the DBdG equation couples electrons and holes through $\Delta_0$. The dispersion relation is
 
@@ -113,7 +153,7 @@ with $E_{S0} = U_0 + E_F$. For subgap energies $\varepsilon < \Delta_0$, the wav
 
 In the heavily doped limit $U_0 \gg E_F, \varepsilon, \Delta_0$, the superconducting Fermi surface is large and the decay constant simplifies to $\kappa = (\Delta_0/\hbar v) \sin\beta$, where $\beta$ parameterizes the energy through $\varepsilon = \Delta_0 \cos\beta$.
 
-## 6. Boundary Matching
+## 7. Boundary Matching
 
 At $x = 0$ the four-component wave function must be continuous. Writing the scattering state in the normal region as a superposition of incident and reflected waves,
 
@@ -137,7 +177,7 @@ $$
 
 Unitarity requires $|r|^2 + |r_A|^2 = 1$ for $\varepsilon < \Delta_0$, which follows directly from these expressions after elementary trigonometric manipulation. All subgap probability current is reflected; nothing propagates into the superconductor.
 
-## 7. Retro-Reflection versus Specular Reflection
+## 8. Retro-Reflection versus Specular Reflection
 
 The distinction between the two regimes hinges on the relative sign of $\alpha$ and $\alpha'$.
 
@@ -179,7 +219,7 @@ $$
 
 The transition from retro- to specular reflection is not merely a change in trajectory geometry; it corresponds to a qualitative shift in the **voltage dependence of the subgap conductance**.
 
-## 8. Perfect Andreev Reflection at Normal Incidence
+## 9. Perfect Andreev Reflection at Normal Incidence
 
 At normal incidence ($\alpha = 0$, $q = 0$) the expressions collapse to their simplest form. The normal reflection amplitude vanishes identically,
 
@@ -199,7 +239,7 @@ This result is remarkable because the Fermi wavelength mismatch between the norm
 
 The analogy with Klein tunneling is direct. A massless Dirac fermion incident normally on a potential barrier transmits with probability $T = 1$ because chirality cannot be flipped by a scalar potential. At an NS interface the same symmetry ensures perfect electron-to-hole conversion.
 
-## 9. Conductance and the Inversion of Voltage Dependence
+## 10. Conductance and the Inversion of Voltage Dependence
 
 The differential conductance of the NS interface at subgap voltages is proportional to the angle-integrated Andreev reflection probability. In the two limiting regimes this integral yields qualitatively different behaviors.
 
@@ -209,7 +249,7 @@ For **specular reflection** ($E_F \ll \varepsilon$), the opposite occurs: the co
 
 The crossover between these two behaviors occurs when the Fermi energy is tuned through the Dirac point. Experimentally, this means that sweeping the gate voltage (which controls $E_F$) across charge neutrality should produce an **inversion of the subgap conductance curve**: from a rising conductance characteristic of retro-reflection to a falling conductance characteristic of specular reflection.
 
-## 10. Experimental Outlook
+## 11. Experimental Outlook
 
 The observation of specular Andreev reflection requires graphene samples in which the Fermi energy can be tuned close to the Dirac point while maintaining good electrical contact to a superconducting electrode. Early experiments on graphene–aluminum junctions confirmed the predicted retro-reflective behavior at high doping. The specular regime remains more challenging because disorder and charge inhomogeneity broaden the Dirac point, washing out the sharp crossover.
 
