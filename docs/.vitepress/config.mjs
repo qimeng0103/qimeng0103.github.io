@@ -95,6 +95,7 @@ export default defineConfig({
             {
               text: 'Condensed Matter Notes',
               items: [
+                { text: 'Specular Andreev Reflection in Graphene', link: '/posts/condensed-matter/specular-andreev-reflection-graphene' },
                 { text: 'Majorana Zero Modes in Planar Josephson Junctions', link: '/posts/condensed-matter/lieb-lattice-majorana-josephson-junctions' },
                 { text: 'Crystal Structures: Bravais Lattices and Reciprocal Space', link: '/posts/condensed-matter/crystal-structures-bravais-lattices' },
                 { text: 'Electron Energy Bands: Origin and Bloch States', link: '/posts/condensed-matter/electron-energy-bands-origin' },

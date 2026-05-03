@@ -211,6 +211,14 @@ hero:
   <div class="article-entry">
     <div class="article-date">2026-05-03</div>
     <div class="article-info">
+      <h3><a href="/posts/condensed-matter/specular-andreev-reflection-graphene">Specular Andreev Reflection in Graphene: From Dirac Fermions to Superconducting Proximity</a></h3>
+      <p>Dirac-Bogoliubov-de Gennes theory for graphene NS junctions, retro-reflection versus specular reflection, and conductance inversion at the Dirac point</p>
+    </div>
+  </div>
+
+  <div class="article-entry">
+    <div class="article-date">2026-05-03</div>
+    <div class="article-info">
       <h3><a href="/posts/statistical-mechanics/quantum-dice-and-coins">Quantum Dice and Coins: A Gentle Introduction to Bose-Einstein and Fermi-Dirac Statistics</a></h3>
       <p>Sethna Exercise 1.1 — quantum statistics through dice games, from Pauli exclusion to Bose-Einstein condensation</p>
     </div>

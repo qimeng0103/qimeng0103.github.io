@@ -201,6 +201,13 @@
   <h2>Condensed Matter Notes</h2>
   <ul class="article-list">
     <li class="article-item">
+      <span class="article-date">2026-05-03</span>
+      <div>
+        <div class="article-title"><a href="./condensed-matter/specular-andreev-reflection-graphene">Specular Andreev Reflection in Graphene: From Dirac Fermions to Superconducting Proximity</a></div>
+        <div class="article-desc">Dirac-Bogoliubov-de Gennes theory for graphene NS junctions, boundary condition matching, retro-reflection versus specular reflection, and conductance inversion at the Dirac point</div>
+      </div>
+    </li>
+    <li class="article-item">
       <span class="article-date">2026-04-04</span>
       <div>
         <div class="article-title"><a href="./condensed-matter/crystal-structures-bravais-lattices">Crystal Structures: From Bravais Lattices to Reciprocal Space</a></div>
