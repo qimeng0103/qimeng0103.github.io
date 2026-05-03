@@ -155,8 +155,6 @@ r_A = \frac{e^{-i\phi}\cos\alpha}{\varepsilon/\Delta_0 + \zeta\cos\alpha}, \qqua
 r = -\frac{(\varepsilon/\Delta_0)\sin\alpha}{\varepsilon/\Delta_0 + \zeta\cos\alpha}.
 $$
 
-![Brillouin zone schematic showing the transition between retro- and specular reflection](/images/condensed-matter/specular-andreev-reflection/brillouin_zone.png)
-
 The transition from retro- to specular reflection is not merely a change in trajectory geometry; it corresponds to a qualitative shift in the **voltage dependence of the subgap conductance**.
 
 ## 8. Perfect Andreev Reflection at Normal Incidence
