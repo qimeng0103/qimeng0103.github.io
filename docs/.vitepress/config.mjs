@@ -54,6 +54,14 @@ export default defineConfig({
     ],
     
     sidebar: {
+      '/posts/bare-handed/': [
+        {
+          text: 'Bare-Handed',
+          items: [
+            { text: 'About', link: '/posts/bare-handed/' }
+          ]
+        }
+      ],
       '/posts/': [
         {
           text: 'Articles',
@@ -66,11 +74,6 @@ export default defineConfig({
                 { text: 'Time-Dependent Perturbation Theory', link: '/posts/quantum-mechanics/time-dependent-perturbation-theory' },
                 { text: 'Stationary Perturbation Theory', link: '/posts/quantum-mechanics/stationary-perturbation-theory' }
               ]
-            },
-            {
-              text: 'Bare-Handed',
-              link: '/posts/bare-handed/',
-              items: []
             },
             {
               text: 'Statistical Mechanics Notes',
