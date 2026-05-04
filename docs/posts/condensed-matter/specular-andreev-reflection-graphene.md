@@ -22,7 +22,7 @@ Before writing down the Bogoliubov–de Gennes Hamiltonian, it is worth recallin
 
 Graphene is a single atomic layer of carbon arranged in a honeycomb lattice. The lattice is not Bravais: it consists of two interpenetrating triangular sublattices, conventionally called A and B. Every A atom has three nearest neighbours, all on the B sublattice, and vice versa.
 
-![Graphene honeycomb lattice (left) with A/B sublattices, nearest-neighbour vectors $\boldsymbol{\delta}_j$, and primitive vectors $\mathbf{a}_1, \mathbf{a}_2$; first Brillouin zone (right) with reciprocal vectors $\mathbf{b}_1, \mathbf{b}_2$ and the inequivalent $K$ and $K'$ points](/images/condensed-matter/specular-andreev-reflection/graphene_lattice.png)
+![Graphene honeycomb lattice with A/B sublattices (blue and red), the three nearest-neighbour vectors $\boldsymbol{\delta}_j$, and the primitive vectors $\mathbf{a}_1, \mathbf{a}_2$ of the underlying triangular Bravais lattice](/images/condensed-matter/specular-andreev-reflection/graphene_realspace.png)
 
 To make the geometry explicit, place an A atom at the origin. The three vectors connecting this A atom to its nearest B neighbours are
 
@@ -89,6 +89,8 @@ $$
 \mathbf{b}_1 = \frac{2\pi}{3a}\begin{pmatrix} 1 \\ \sqrt{3} \end{pmatrix}, \qquad
 \mathbf{b}_2 = \frac{2\pi}{3a}\begin{pmatrix} 1 \\ -\sqrt{3} \end{pmatrix}.
 $$
+
+![First Brillouin zone (hexagon) with reciprocal lattice vectors $\mathbf{b}_1, \mathbf{b}_2$, the $\Gamma$ point at the centre, and the two inequivalent Dirac points $K$ and $K'$ on the boundary](/images/condensed-matter/specular-andreev-reflection/graphene_bz_only.png)
 
 The two inequivalent corners of the first Brillouin zone are at
 
