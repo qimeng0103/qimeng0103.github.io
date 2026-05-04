@@ -123,10 +123,6 @@ The two valleys $K$ and $K'$ are described by the same Hamiltonian with opposite
 
 ![Graphene tight-binding bands (left), conduction-band zoom around a Dirac point (centre), and the low-energy linear Dirac cone (right)](/images/graphene_spectrum.png)
 
-![Hexagonal first Brillouin zone with the two inequivalent Dirac points $K$ (red) and $K'$ (blue), the $\Gamma$ point (green), and the $M$ points (purple)](/images/graphene_bz.png)
-
-![Full Brillouin zone view of the valence and conduction bands, with the six Dirac points marked along the zone boundary](/images/graphene_full_bz.png)
-
 ### What Changes in an NS Junction?
 
 For Andreev reflection the crucial difference between graphene and an ordinary metal is the fate of the **hole**. In a parabolic band the hole sits in the same band as the electron, merely at a different momentum. In graphene the situation is different because the conduction and valence bands touch linearly at the Dirac point. After Andreev reflection the hole carries energy $E_F - \varepsilon$ (the electron carried $E_F + \varepsilon$). Whether this energy is positive or negative relative to the Dirac point determines which band the hole state belongs to:
