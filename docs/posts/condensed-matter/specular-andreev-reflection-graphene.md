@@ -123,7 +123,12 @@ The two valleys $K$ and $K'$ are described by the same Hamiltonian with opposite
 
 ### What Changes in an NS Junction?
 
-For Andreev reflection the crucial difference between graphene and an ordinary metal is the fate of the **hole**. In a parabolic band the hole sits in the same band as the electron, merely at a different momentum. In graphene's linear band the hole can sit in the **conduction band** (if $E_F > \varepsilon$) or in the **valence band** (if $E_F < \varepsilon$). The two cases correspond to retro-reflection and specular reflection, respectively. This band-structure ambiguity is the root of everything that follows.
+For Andreev reflection the crucial difference between graphene and an ordinary metal is the fate of the **hole**. In a parabolic band the hole sits in the same band as the electron, merely at a different momentum. In graphene the situation is different because the conduction and valence bands touch linearly at the Dirac point. After Andreev reflection the hole carries energy $E_F - \varepsilon$ (the electron carried $E_F + \varepsilon$). Whether this energy is positive or negative relative to the Dirac point determines which band the hole state belongs to:
+
+- **Retro-reflection** ($E_F > \varepsilon$): the hole energy $E_F - \varepsilon$ lies above the Dirac point. The hole state is formally in the **conduction band** (positive-energy branch of the Dirac cone), but as a *hole* excitation — an absence of an electron — its group velocity points **opposite** to its wave vector. The reflected hole therefore retraces the incident electron trajectory.
+- **Specular reflection** ($E_F < \varepsilon$): the hole energy $E_F - \varepsilon$ lies below the Dirac point. The hole state is in the **valence band** (negative-energy branch). There the group velocity of a hole points **parallel** to its wave vector, so the reflected hole exits at the same angle as the incident electron, on the same side of the normal — a mirror-like specular reflection.
+
+The essential physics is that **the sign of the hole energy relative to the Dirac point controls the relative orientation of its group velocity and wave vector**. This single fact is the root of everything that follows.
 
 ## 3. The Dirac–Bogoliubov–de Gennes Equation
 
@@ -228,7 +233,7 @@ $$
 
 The sign choice in $k_x$ is already encoded in $\pm k$; once we fix $k>0$ and write the spatial factor as $e^{\pm ikx}$, the remaining angle $\alpha$ only needs to tell us where on the circle the transverse momentum $q$ sits.  Any value outside $(-\pi/2,\pi/2)$ would simply duplicate a direction already described by reflecting $\alpha \to \pi - \alpha$ and swapping the sign of $k_x$.  Restricting $\alpha$ to the principal branch $(-\pi/2,\pi/2)$ therefore labels every distinct propagation direction exactly once, with $\cos\alpha > 0$ guaranteeing a real positive longitudinal wave number $k$.
 
-#### Extracting the Spinor Ratio
+#### Extracting the Spinor — Direct Route
 
 Return to the explicit matrix equation:
 
@@ -236,71 +241,78 @@ $$
 \hbar v \begin{pmatrix} 0 & k_x - iq \\ k_x + iq & 0 \end{pmatrix} \begin{pmatrix} \chi_1 \\ \chi_2 \end{pmatrix} = (E_F + \varepsilon) \begin{pmatrix} \chi_1 \\ \chi_2 \end{pmatrix} .
 $$
 
-Writing out the two rows separately gives a pair of linear relations:
+The two rows give the same ratio.  From the first component,
 
 $$
-\begin{cases}
-\hbar v (k_x - iq)\, \chi_2 = (E_F + \varepsilon)\, \chi_1, \\[6pt]
-\hbar v (k_x + iq)\, \chi_1 = (E_F + \varepsilon)\, \chi_2 .
-\end{cases}
+\frac{\chi_2}{\chi_1} = \frac{E_F + \varepsilon}{\hbar v\,(k_x - iq)} .
+\tag{1}
 $$
 
-The second equation is not independent — it is the complex conjugate of the first — so either one yields the ratio.  From the first line,
+Now use the dispersion relation $k_x^2 + q^2 = (E_F + \varepsilon)^2/(\hbar v)^2$ to introduce the polar angle $\alpha$:
 
 $$
-\frac{\chi_2}{\chi_1} = \frac{E_F + \varepsilon}{\hbar v(k_x - iq)} .
-$$
-
-For the right-moving root $k_x = +k$ this becomes
-
-$$
-\frac{\chi_2}{\chi_1} = \frac{E_F + \varepsilon}{\hbar v(k - iq)} = \frac{k}{k - iq} .
-$$
-
-Now substitute the angle parametrization $k = \frac{E_F+\varepsilon}{\hbar v}\cos\alpha$ and $q = \frac{E_F+\varepsilon}{\hbar v}\sin\alpha$:
-
-$$
-\frac{\chi_2}{\chi_1} = \frac{\cos\alpha}{\cos\alpha - i\sin\alpha} = \frac{\cos\alpha}{e^{-i\alpha}} = \cos\alpha\, e^{i\alpha} .
-$$
-
-Wait — this is not yet a pure phase.  The overall normalization of an eigen spinor is arbitrary, so we may multiply $\chi$ by any scalar.  Choose a prefactor $e^{-i\alpha/2}/\sqrt{\cos\alpha}$; then
-
-$$
-\chi \propto \frac{e^{-i\alpha/2}}{\sqrt{\cos\alpha}} \begin{pmatrix} 1 \\ \cos\alpha\, e^{i\alpha} \end{pmatrix}
-= \frac{1}{\sqrt{\cos\alpha}} \begin{pmatrix} e^{-i\alpha/2} \\ \cos\alpha\, e^{i\alpha/2} \end{pmatrix} .
-$$
-
-Because $\cos\alpha = \frac{1}{2}(e^{i\alpha/2}+e^{-i\alpha/2})e^{-i\alpha/2}\cdot e^{i\alpha/2}$, we can rewrite the second component more symmetrically.  A cleaner choice is to factor the phase differently from the start: divide numerator and denominator of the ratio by $\sqrt{k - iq}$.  Since $k-iq = \frac{E_F+\varepsilon}{\hbar v}(\cos\alpha - i\sin\alpha) = \frac{E_F+\varepsilon}{\hbar v}\,e^{-i\alpha}$, we have
-
-$$
-\sqrt{k-iq} \propto e^{-i\alpha/2}, \qquad \sqrt{k+iq} \propto e^{i\alpha/2} .
+k_x = \frac{E_F + \varepsilon}{\hbar v}\cos\alpha, \qquad q = \frac{E_F + \varepsilon}{\hbar v}\sin\alpha .
 $$
 
 Hence
 
 $$
-\frac{\chi_2}{\chi_1} = \frac{\sqrt{k+iq}}{\sqrt{k-iq}} = e^{i\alpha} .
+k_x - iq = \frac{E_F + \varepsilon}{\hbar v}(\cos\alpha - i\sin\alpha)
+= \frac{E_F + \varepsilon}{\hbar v}\,e^{-i\alpha} .
 $$
 
-Taking $\chi_1 = e^{-i\alpha/2}$ and $\chi_2 = e^{i\alpha/2}$ gives the unnormalized spinor $(e^{-i\alpha/2}, e^{i\alpha/2})^T$.  Its pseudospin magnitude is
+Substituting this into Eq. (1) gives **immediately**
 
 $$
-|\chi_1|^2 + |\chi_2|^2 = |e^{-i\alpha/2}|^2 + |e^{i\alpha/2}|^2 = 1 + 1 = 2 .
+\boxed{\frac{\chi_2}{\chi_1} = e^{i\alpha}} .
 $$
 
-Dividing by $\sqrt{2}$ would normalize the *spinor* to unit length, but the convention adopted here is slightly different: one normalizes so that the *probability current* in the $x$-direction is unity.  For the Dirac Hamiltonian the current operator is $v\sigma_x$; the expectation value in state $\chi$ is
+No trial prefactors, no "Wait — this is not yet a pure phase."  The ratio is a pure phase from the start because the magnitude $|k_x - iq| = (E_F+\varepsilon)/(\hbar v)$ exactly cancels the numerator.
+
+A convenient symmetric choice is $\chi_1 = e^{-i\alpha/2}$, $\chi_2 = e^{i\alpha/2}$, giving the unnormalized spinor
 
 $$
-j_x = v\, \chi^\dagger \sigma_x \chi = v\bigl(\chi_1^*\chi_2 + \chi_2^*\chi_1\bigr) .
+\chi_+ = \begin{pmatrix} e^{-i\alpha/2} \\ e^{i\alpha/2} \end{pmatrix}
+\quad\text{(right-moving, $k_x = +k$)} .
 $$
 
-With $\chi_1 = e^{-i\alpha/2}$ and $\chi_2 = e^{i\alpha/2}$, this gives $j_x = 2v\cos\alpha$.  Requiring unit current ($j_x = v$) demands an overall factor $1/\sqrt{2\cos\alpha}$.  Because the four-component spinor below uses a doubled convention, the final prefactor becomes $1/\sqrt{\cos\alpha}$.  With this normalization the two eigen spinors are
+For the left-moving root $k_x = -k$ the same algebra with $-k - iq = -|k|e^{-i\alpha}$ yields $\chi_2/\chi_1 = -e^{-i\alpha}$.  Choosing the symmetric form gives
 
 $$
-\Psi_{e\pm} = e^{iqy \pm ikx} \frac{1}{\sqrt{\cos\alpha}} \begin{pmatrix} e^{\mp i\alpha/2} \\ \pm e^{\pm i\alpha/2} \\ 0 \\ 0 \end{pmatrix},
+\chi_- = \begin{pmatrix} e^{i\alpha/2} \\ -e^{-i\alpha/2} \end{pmatrix}
+\quad\text{(left-moving, $k_x = -k$)} .
 $$
 
-with $\Psi_{e-}$ describing the incident wave (propagating toward the interface at $x=0$) and $\Psi_{e+}$ the normally reflected wave (propagating away).  The upper sign in the spatial exponent $e^{\pm ikx}$ together with the sign in the spinor components $\pm e^{\pm i\alpha/2}$ ensures that the reflected state carries current in the opposite $x$-direction while preserving the same transverse momentum $q$.
+#### Probability-Current Normalization
+
+For the Dirac Hamiltonian the probability-current operator is $v\sigma_x$.  Its expectation value in state $\chi$ is
+
+$$
+j_x = v\,\chi^\dagger\sigma_x\chi = v\bigl(\chi_1^*\chi_2 + \chi_2^*\chi_1\bigr) .
+$$
+
+For the right-mover,
+
+$$
+j_x(\chi_+) = v\bigl(e^{i\alpha} + e^{-i\alpha}\bigr) = 2v\cos\alpha .
+$$
+
+For the left-mover,
+
+$$
+j_x(\chi_-) = v\bigl(-e^{-i\alpha} - e^{i\alpha}\bigr) = -2v\cos\alpha .
+$$
+
+The sign is opposite, as required: the left-mover carries current in the $-x$ direction.  Normalizing to **unit probability current** ($|j_x| = 1$) requires an overall factor $1/\sqrt{2v\cos\alpha}$.  Adopting natural units $v = 1$ and incorporating the factor of $\sqrt{2}$ that arises when passing to the four-component Nambu basis used below, the prefactor becomes $1/\sqrt{\cos\alpha}$.  The normalized four-component electron spinors are therefore
+
+$$
+\boxed{
+\Psi_{e\pm} = \frac{e^{iqy \pm ikx}}{\sqrt{\cos\alpha}}
+\begin{pmatrix} e^{\mp i\alpha/2} \\ \pm e^{\pm i\alpha/2} \\ 0 \\ 0 \end{pmatrix}
+}
+$$
+
+with $\Psi_{e-}$ the incident wave (propagating toward the interface at $x=0$) and $\Psi_{e+}$ the reflected wave (propagating away).  The spatial factor $e^{\pm ikx}$ and the spinor sign $\pm$ are correlated so that the reflected state carries current in the opposite $x$-direction while keeping the same transverse momentum $q$.
 
 ### Hole States
 
@@ -330,7 +342,7 @@ $$
 \Psi_{h\pm} = e^{iqy \pm ik'x} \frac{1}{\sqrt{\cos\alpha'}} \begin{pmatrix} 0 \\ 0 \\ e^{\mp i\alpha'/2} \\ \mp e^{\pm i\alpha'/2} \end{pmatrix}.
 $$
 
-The critical observation is the sign of $(E_F - \varepsilon)$. When $\varepsilon < E_F$, this places the hole in the **conduction band**; when $\varepsilon > E_F$, it falls into the **valence band**. The sign of the group velocity relative to the wave vector is opposite in the two cases, and this single fact controls whether reflection is retro-grade or specular.
+The critical observation is the sign of $(E_F - \varepsilon)$. When $\varepsilon < E_F$, the hole energy $E_F - \varepsilon$ lies **above** the Dirac point; the hole state therefore sits on the **conduction-band side** of the spectrum, where its group velocity points opposite to its wave vector (retro-reflection). When $\varepsilon > E_F$, the hole energy lies **below** the Dirac point; the state sits on the **valence-band side**, where the group velocity points parallel to the wave vector (specular reflection). The relative orientation of group velocity and wave vector is opposite in the two cases, and this single fact controls the reflection geometry.
 
 ## 5. The Critical Angle
 
@@ -363,22 +375,87 @@ $$
 
 ### Deriving the Superconducting Dispersion
 
-To find the eigenvalues, square the DBdG matrix. Acting with the Hamiltonian twice and using $\{\sigma_i, \sigma_j\} = 2\delta_{ij}$ gives
+Write the superconducting DBdG Hamiltonian in compact block form.  With $h = \hbar v\,\mathbf{k}\cdot\boldsymbol{\sigma}$ and $E_{S0} = U_0 + E_F$,
 
 $$
+\mathcal{H} =
 \begin{pmatrix}
-\xi_k^2 + \Delta_0^2 & 0 \\
-0 & \xi_k^2 + \Delta_0^2
+h - E_{S0} & \Delta_0 e^{i\phi} \,\mathbb{1}_2 \\
+\Delta_0 e^{-i\phi} \,\mathbb{1}_2 & E_{S0} - h
 \end{pmatrix}
-\begin{pmatrix} u \\ v \end{pmatrix}
-= \varepsilon^2 \begin{pmatrix} u \\ v \end{pmatrix},
+\equiv
+\begin{pmatrix}
+h - E_{S0} & \Delta \\
+\Delta^\dagger & E_{S0} - h
+\end{pmatrix},
 $$
 
-so that every eigenstate satisfies the Bogoliubov–quasiparticle dispersion
+where $\Delta = \Delta_0 e^{i\phi}\mathbb{1}_2$ is proportional to the identity in sublattice space because the proximity-induced s-wave pairing does not mix A and B sites.
+
+#### Step 1: Square the matrix
 
 $$
-\varepsilon^2 = \Delta_0^2 + \xi_k^2 = \Delta_0^2 + (\hbar v|k| - E_{S0})^2.
+\mathcal{H}^2 =
+\begin{pmatrix}
+(h-E_{S0})^2 + |\Delta|^2 & [h,\Delta] \\
+[\Delta^\dagger, h] & (E_{S0}-h)^2 + |\Delta|^2
+\end{pmatrix}.
 $$
+
+Because $\Delta$ is a scalar multiple of the identity, it commutes with everything: $[h,\Delta] = 0$.  The off-diagonal blocks vanish.
+
+#### Step 2: Diagonalize $h$ in sublattice space
+
+The kinetic block is $h = \hbar v\,\mathbf{k}\cdot\boldsymbol{\sigma} = \hbar v|k|\,\hat{\mathbf{n}}\cdot\boldsymbol{\sigma}$ with $\hat{\mathbf{n}} = \mathbf{k}/|k|$.  Using the Pauli anticommutator $\{\sigma_i,\sigma_j\} = 2\delta_{ij}$,
+
+$$
+h^2 = (\hbar v|k|)^2 (\hat{\mathbf{n}}\cdot\boldsymbol{\sigma})^2 = (\hbar v|k|)^2 \,\mathbb{1}_2 .
+$$
+
+Thus $h$ has eigenvalues $\pm \hbar v|k|$.  The corresponding eigen spinors are the **chiral states** $\chi_{\pm}$ satisfying $(\hat{\mathbf{n}}\cdot\boldsymbol{\sigma})\chi_{\pm} = \pm\chi_{\pm}$.  In this chiral basis $h$ is diagonal:
+
+$$
+h \;\to\; \mathrm{diag}\bigl(+\hbar v|k|,\; -\hbar v|k|\bigr).
+$$
+
+#### Step 3: Evaluate the diagonal blocks in the chiral basis
+
+With $h$ diagonal, each $2\times 2$ block of $\mathcal{H}^2$ becomes diagonal too.  The upper-left block is
+
+$$
+(h-E_{S0})^2 + \Delta_0^2
+\;\to\;
+\mathrm{diag}\Bigl[(\hbar v|k|-E_{S0})^2 + \Delta_0^2,\; (-\hbar v|k|-E_{S0})^2 + \Delta_0^2\Bigr].
+$$
+
+The lower-right block gives the same two eigenvalues.  The four eigenvalues of $\mathcal{H}^2$ are therefore
+
+$$
+\varepsilon^2 = (\pm\hbar v|k| - E_{S0})^2 + \Delta_0^2,
+\qquad \text{(each doubly degenerate)}.
+$$
+
+#### Step 4: Heavy-doping (Andreev) limit
+
+In the heavily doped superconductor $E_{S0} \gg \hbar v|k|, \Delta_0, \varepsilon$.  Two of the four roots correspond to energies far from the Fermi level:
+
+$$
+\varepsilon \approx \pm(E_{S0} + \hbar v|k|) \quad \text{(high-energy, frozen modes)}.
+$$
+
+The remaining two roots live near the Fermi surface.  Defining the normal-state kinetic energy
+
+$$
+\xi_k = \hbar v|k| - E_{S0},
+$$
+
+these low-energy modes satisfy
+
+$$
+\boxed{\varepsilon^2 = \xi_k^2 + \Delta_0^2 = (\hbar v|k| - E_{S0})^2 + \Delta_0^2}.
+$$
+
+This is the familiar BCS gapped spectrum, with the crucial difference that $\xi_k$ is linear in $|k|$ rather than quadratic.  The heavy-doping limit has projected the four-component Dirac–Bogoliubov problem onto the single pair of Nambu states that couple to the subgap excitations in the normal region.
 
 This is the familiar gapped spectrum of a BCS superconductor, except that the normal-state dispersion $\xi_k$ is linear in $|k|$ rather than quadratic.
 
