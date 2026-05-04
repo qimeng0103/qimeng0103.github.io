@@ -86,8 +86,8 @@ The plus sign is the conduction band ($\pi^*$), the minus sign the valence band 
 In the reciprocal lattice the primitive vectors are
 
 $$
-\mathbf{b}_1 = \frac{2\pi}{3a}\begin{pmatrix} 1 \\ \sqrt{3} \end{pmatrix}, \qquad
-\mathbf{b}_2 = \frac{2\pi}{3a}\begin{pmatrix} 1 \\ -\sqrt{3} \end{pmatrix}.
+\mathbf{b}_1 = \frac{2\pi}{3a}\begin{pmatrix} 1 \\ -\sqrt{3} \end{pmatrix}, \qquad
+\mathbf{b}_2 = \frac{2\pi}{3a}\begin{pmatrix} 1 \\ \sqrt{3} \end{pmatrix}.
 $$
 
 ![First Brillouin zone (hexagon) with reciprocal lattice vectors $\mathbf{b}_1, \mathbf{b}_2$, the $\Gamma$ point at the centre, and the two inequivalent Dirac points $K$ and $K'$ on the boundary](/images/condensed-matter/specular-andreev-reflection/graphene_bz_only.png)
@@ -95,8 +95,8 @@ $$
 The two inequivalent corners of the first Brillouin zone are at
 
 $$
-\mathbf{K} = \frac{4\pi}{3a}\begin{pmatrix} 1 \\ 0 \end{pmatrix}, \qquad
-\mathbf{K}' = \frac{4\pi}{3a}\begin{pmatrix} -1 \\ 0 \end{pmatrix}.
+\mathbf{K} = \frac{2\pi}{3\sqrt{3}a}\begin{pmatrix} 0 \\ 2 \end{pmatrix}, \qquad
+\mathbf{K}' = \frac{2\pi}{3\sqrt{3}a}\begin{pmatrix} \sqrt{3} \\ 1 \end{pmatrix}.
 $$
 
 Expanding $h(\mathbf{k})$ to linear order around $\mathbf{K}$ by setting $\mathbf{k} = \mathbf{K} + \mathbf{q}$ with $|\mathbf{q}|a \ll 1$ gives
