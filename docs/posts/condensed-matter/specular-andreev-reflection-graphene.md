@@ -121,7 +121,7 @@ Here $\boldsymbol{\sigma} = (\sigma_x, \sigma_y)$ are Pauli matrices, but they d
 
 The two valleys $K$ and $K'$ are described by the same Hamiltonian with opposite sign of $p_y$ (or, equivalently, by exchanging $\sigma_x \to \sigma_x$, $\sigma_y \to -\sigma_y$). For the NS interface problem the valley index is largely a spectator; the physics is captured by a single-valley Dirac equation.
 
-![Graphene tight-binding bands (left), conduction-band zoom around a Dirac point (centre), and the low-energy linear Dirac cone (right)](/images/graphene_spectrum.png)
+![Graphene tight-binding valence (blue) and conduction (red) bands over an extended momentum region, showing the periodic Dirac-cone touch points](/images/graphene_spectrum.png)
 
 ### What Changes in an NS Junction?
 
