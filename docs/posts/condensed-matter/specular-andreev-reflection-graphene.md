@@ -237,7 +237,7 @@ $$
 
 The sign choice in $k_x$ is already encoded in $\pm k$; once we fix $k>0$ and write the spatial factor as $e^{\pm ikx}$, the remaining angle $\alpha$ only needs to tell us where on the circle the transverse momentum $q$ sits.  Any value outside $(-\pi/2,\pi/2)$ would simply duplicate a direction already described by reflecting $\alpha \to \pi - \alpha$ and swapping the sign of $k_x$.  Restricting $\alpha$ to the principal branch $(-\pi/2,\pi/2)$ therefore labels every distinct propagation direction exactly once, with $\cos\alpha > 0$ guaranteeing a real positive longitudinal wave number $k$.
 
-#### Extracting the Spinor — Direct Route
+#### Extracting the Spinor
 
 Return to the explicit matrix equation:
 
