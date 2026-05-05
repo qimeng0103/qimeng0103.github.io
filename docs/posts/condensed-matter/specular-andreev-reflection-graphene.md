@@ -252,35 +252,40 @@ $$
 \tag{1}
 $$
 
-Now use the dispersion relation $k_x^2 + q^2 = (E_F + \varepsilon)^2/(\hbar v)^2$ to introduce the polar angle $\alpha$:
+With the polar-angle parametrisation $k_x = \pm k\cos\alpha$ and $q = k\sin\alpha$ from the preceding section, where $k = (E_F + \varepsilon)/(\hbar v)$, Eq. (1) gives two branches.
+
+For the **right-moving** root $k_x = +k$,
 
 $$
-k_x = \frac{E_F + \varepsilon}{\hbar v}\cos\alpha, \qquad q = \frac{E_F + \varepsilon}{\hbar v}\sin\alpha .
+k_x - iq = k(\cos\alpha - i\sin\alpha) = k\,e^{-i\alpha} = \frac{E_F + \varepsilon}{\hbar v}\,e^{-i\alpha} ,
 $$
 
-Hence
-
-$$
-k_x - iq = \frac{E_F + \varepsilon}{\hbar v}(\cos\alpha - i\sin\alpha)
-= \frac{E_F + \varepsilon}{\hbar v}\,e^{-i\alpha} .
-$$
-
-Substituting this into Eq. (1) gives **immediately**
+so that
 
 $$
 \boxed{\frac{\chi_2}{\chi_1} = e^{i\alpha}} .
 $$
 
-No trial prefactors, no "Wait — this is not yet a pure phase."  The ratio is a pure phase from the start because the magnitude $|k_x - iq| = (E_F+\varepsilon)/(\hbar v)$ exactly cancels the numerator.
-
-A convenient symmetric choice is $\chi_1 = e^{-i\alpha/2}$, $\chi_2 = e^{i\alpha/2}$, giving the unnormalized spinor
+A convenient symmetric choice is $\chi_1 = e^{-i\alpha/2}$, $\chi_2 = e^{i\alpha/2}$, giving
 
 $$
 \chi_+ = \begin{pmatrix} e^{-i\alpha/2} \\ e^{i\alpha/2} \end{pmatrix}
 \quad\text{(right-moving, $k_x = +k$)} .
 $$
 
-For the left-moving root $k_x = -k$ the same algebra with $-k - iq = -|k|e^{-i\alpha}$ yields $\chi_2/\chi_1 = -e^{-i\alpha}$.  Choosing the symmetric form gives
+For the **left-moving** root $k_x = -k$,
+
+$$
+k_x - iq = k(-\cos\alpha - i\sin\alpha) = -k\,e^{i\alpha} = -\frac{E_F + \varepsilon}{\hbar v}\,e^{i\alpha} ,
+$$
+
+so that
+
+$$
+\boxed{\frac{\chi_2}{\chi_1} = -e^{-i\alpha}} .
+$$
+
+Choosing the symmetric form gives
 
 $$
 \chi_- = \begin{pmatrix} e^{i\alpha/2} \\ -e^{-i\alpha/2} \end{pmatrix}
