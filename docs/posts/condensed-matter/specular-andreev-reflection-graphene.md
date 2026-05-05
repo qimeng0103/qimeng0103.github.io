@@ -229,7 +229,7 @@ $$
 \sin\alpha = \frac{\hbar v q}{E_F + \varepsilon}, \qquad k = \frac{E_F + \varepsilon}{\hbar v} \cos\alpha.
 $$
 
-**Why $\alpha$ is restricted to $(-\pi/2, \pi/2)$.**  The dispersion relation $k_x^2 + q^2 = k^2$ with $k = (E_F+\varepsilon)/\hbar v > 0$ describes a circle of radius $k$ in the $(k_x, q)$ plane.  Writing $q = k\sin\alpha$ fixes the transverse momentum.  The longitudinal component is then $k_x = \sqrt{k^2-q^2} = k\cos\alpha$, which must be real and positive because the propagation direction is already encoded in the factor $e^{\pm ikx}$ (the sign $\pm$ distinguishes right- and left-moving waves).  The condition $\cos\alpha > 0$ restricts $\alpha$ to the principal branch $(-\pi/2, \pi/2)$.
+**Why $\alpha$ is restricted to $(-\pi/2, \pi/2)$.**  In the definition $k = \frac{E_F+\varepsilon}{\hbar v}\cos\alpha$, the quantity $k$ is the magnitude of the longitudinal wave number.  The factor $e^{\pm ikx}$ (with the independent sign $\pm$) already distinguishes right- and left-moving waves, so $k$ itself must be real and positive.  This requires $\cos\alpha > 0$, i.e. $\alpha \in (-\pi/2, \pi/2)$.
 
 #### Extracting the Spinor
 
