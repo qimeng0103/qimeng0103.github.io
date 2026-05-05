@@ -288,7 +288,7 @@ $$
 
 #### Probability-Current Normalization
 
-Plane-wave states cannot be normalized to unit probability density ($\int|\psi|^2 d^3r = \infty$).  In a scattering problem the reflection and transmission coefficients are ratios of probability currents, so the standard convention is to normalize the incident wave to **unit probability current** ($|j_x|=1$).  This makes the coefficients obtained from boundary-condition matching directly equal to the physical reflection and transmission amplitudes.
+Plane-wave states cannot be normalized to unit probability density ($\int|\psi|^2 d^3r = \infty$).  In a scattering problem the reflection and transmission probabilities are ratios of probability currents, so every participating state must carry the same current magnitude.
 
 For the Dirac Hamiltonian the current operator is $v\sigma_x$, giving
 
@@ -296,13 +296,13 @@ $$
 j_x = v\,\chi^\dagger\sigma_x\chi = v\bigl(\chi_1^*\chi_2 + \chi_2^*\chi_1\bigr) .
 $$
 
-The unnormalized spinors above satisfy $\chi_\pm^\dagger\chi_\pm = 2$, and their currents are
+The unnormalized spinors above have currents
 
 $$
 j_x(\chi_+) = 2v\cos\alpha, \qquad j_x(\chi_-) = -2v\cos\alpha .
 $$
 
-Normalizing the two-component spinors to $\chi^\dagger\chi = 1$ and $|j_x|=1$ requires an overall factor $1/\sqrt{2v\cos\alpha}$.  In the four-component Nambu basis the BdG convention assigns equal weight to the electron and hole blocks; passing from the two-component to the four-component representation effectively absorbs the $1/\sqrt{2}$ that normalizes $\chi^\dagger\chi$.  Adopting natural units $v=1$, the prefactor for the normalized four-component spinors becomes $1/\sqrt{\cos\alpha}$:
+The factor $\cos\alpha$ makes the current angle-dependent.  Multiplying every spinor by $1/\sqrt{\cos\alpha}$ removes this dependence, giving a uniform current magnitude $|j_x| = 2v$ for all states.  Adopting natural units $v=1$, the normalized four-component electron spinors are
 
 $$
 \boxed{
