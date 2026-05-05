@@ -140,8 +140,8 @@ To incorporate superconductivity into the Dirac Hamiltonian, one couples electro
 
 $$
 \begin{pmatrix}
-\mathbf{p}\cdot\boldsymbol{\sigma} - U - E_F & \Delta \\
-\Delta^* & U + E_F - \mathbf{p}\cdot\boldsymbol{\sigma}
+v\,\mathbf{p}\cdot\boldsymbol{\sigma} - U - E_F & \Delta \\
+\Delta^* & U + E_F - v\,\mathbf{p}\cdot\boldsymbol{\sigma}
 \end{pmatrix}
 \begin{pmatrix} u \\ v \end{pmatrix}
 = \varepsilon \begin{pmatrix} u \\ v \end{pmatrix} .
