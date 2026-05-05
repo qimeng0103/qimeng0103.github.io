@@ -229,13 +229,7 @@ $$
 \sin\alpha = \frac{\hbar v q}{E_F + \varepsilon}, \qquad k = \frac{E_F + \varepsilon}{\hbar v} \cos\alpha.
 $$
 
-**Why $\alpha$ is restricted to $(-\pi/2, \pi/2)$.**  The energy $E_F + \varepsilon$ is the positive definite magnitude of the electron's relativistic momentum in the normal region; it fixes the radius of the constant-energy circle $k_x^2 + q^2 = (E_F+\varepsilon)^2/(\hbar v)^2$.  Parametrizing this circle by a polar angle $\alpha$ gives
-
-$$
-q = \frac{E_F+\varepsilon}{\hbar v}\,\sin\alpha, \qquad k_x = \pm\frac{E_F+\varepsilon}{\hbar v}\,\cos\alpha .
-$$
-
-The sign choice in $k_x$ is already encoded in $\pm k$; once we fix $k>0$ and write the spatial factor as $e^{\pm ikx}$, the remaining angle $\alpha$ only needs to tell us where on the circle the transverse momentum $q$ sits.  Any value outside $(-\pi/2,\pi/2)$ would simply duplicate a direction already described by reflecting $\alpha \to \pi - \alpha$ and swapping the sign of $k_x$.  Restricting $\alpha$ to the principal branch $(-\pi/2,\pi/2)$ therefore labels every distinct propagation direction exactly once, with $\cos\alpha > 0$ guaranteeing a real positive longitudinal wave number $k$.
+**Why $\alpha$ is restricted to $(-\pi/2, \pi/2)$.**  The dispersion relation $k_x^2 + q^2 = k^2$ with $k = (E_F+\varepsilon)/\hbar v > 0$ describes a circle of radius $k$ in the $(k_x, q)$ plane.  Writing $q = k\sin\alpha$ fixes the transverse momentum.  The longitudinal component is then $k_x = \sqrt{k^2-q^2} = k\cos\alpha$, which must be real and positive because the propagation direction is already encoded in the factor $e^{\pm ikx}$ (the sign $\pm$ distinguishes right- and left-moving waves).  The condition $\cos\alpha > 0$ restricts $\alpha$ to the principal branch $(-\pi/2, \pi/2)$.
 
 #### Extracting the Spinor
 
@@ -294,25 +288,21 @@ $$
 
 #### Probability-Current Normalization
 
-For the Dirac Hamiltonian the probability-current operator is $v\sigma_x$.  Its expectation value in state $\chi$ is
+Plane-wave states cannot be normalized to unit probability density ($\int|\psi|^2 d^3r = \infty$).  In a scattering problem the reflection and transmission coefficients are ratios of probability currents, so the standard convention is to normalize the incident wave to **unit probability current** ($|j_x|=1$).  This makes the coefficients obtained from boundary-condition matching directly equal to the physical reflection and transmission amplitudes.
+
+For the Dirac Hamiltonian the current operator is $v\sigma_x$, giving
 
 $$
 j_x = v\,\chi^\dagger\sigma_x\chi = v\bigl(\chi_1^*\chi_2 + \chi_2^*\chi_1\bigr) .
 $$
 
-For the right-mover,
+The unnormalized spinors above satisfy $\chi_\pm^\dagger\chi_\pm = 2$, and their currents are
 
 $$
-j_x(\chi_+) = v\bigl(e^{i\alpha} + e^{-i\alpha}\bigr) = 2v\cos\alpha .
+j_x(\chi_+) = 2v\cos\alpha, \qquad j_x(\chi_-) = -2v\cos\alpha .
 $$
 
-For the left-mover,
-
-$$
-j_x(\chi_-) = v\bigl(-e^{-i\alpha} - e^{i\alpha}\bigr) = -2v\cos\alpha .
-$$
-
-The sign is opposite, as required: the left-mover carries current in the $-x$ direction.  Normalizing to **unit probability current** ($|j_x| = 1$) requires an overall factor $1/\sqrt{2v\cos\alpha}$.  Adopting natural units $v = 1$ and incorporating the factor of $\sqrt{2}$ that arises when passing to the four-component Nambu basis used below, the prefactor becomes $1/\sqrt{\cos\alpha}$.  The normalized four-component electron spinors are therefore
+Normalizing the two-component spinors to $\chi^\dagger\chi = 1$ and $|j_x|=1$ requires an overall factor $1/\sqrt{2v\cos\alpha}$.  In the four-component Nambu basis the BdG convention assigns equal weight to the electron and hole blocks; passing from the two-component to the four-component representation effectively absorbs the $1/\sqrt{2}$ that normalizes $\chi^\dagger\chi$.  Adopting natural units $v=1$, the prefactor for the normalized four-component spinors becomes $1/\sqrt{\cos\alpha}$:
 
 $$
 \boxed{
@@ -321,7 +311,7 @@ $$
 }
 $$
 
-with $\Psi_{e-}$ the incident wave (propagating toward the interface at $x=0$) and $\Psi_{e+}$ the reflected wave (propagating away).  The spatial factor $e^{\pm ikx}$ and the spinor sign $\pm$ are correlated so that the reflected state carries current in the opposite $x$-direction while keeping the same transverse momentum $q$.
+with $\Psi_{e-}$ the incident wave and $\Psi_{e+}$ the reflected wave.
 
 ### Hole States
 
