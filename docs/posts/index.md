@@ -151,19 +151,6 @@
 </div>
 
 <div class="category-section">
-  <h2>Statistical Mechanics Notes</h2>
-  <ul class="article-list">
-    <li class="article-item">
-      <span class="article-date">2026-05-03</span>
-      <div>
-        <div class="article-title"><a href="./statistical-mechanics/quantum-dice-and-coins">Quantum Dice and Coins: A Gentle Introduction to Bose-Einstein and Fermi-Dirac Statistics</a></div>
-        <div class="article-desc">Sethna Exercise 1.1 — mapping quantum statistics onto dice games, from Pauli exclusion to Bose-Einstein condensation in the thermodynamic limit</div>
-      </div>
-    </li>
-  </ul>
-</div>
-
-<div class="category-section">
   <h2>Condensed Matter Notes</h2>
   <ul class="article-list">
     <li class="article-item">

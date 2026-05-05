@@ -87,12 +87,6 @@ export default defineConfig({
               ]
             },
             {
-              text: 'Statistical Mechanics Notes',
-              items: [
-                { text: 'Quantum Dice and Coins', link: '/posts/statistical-mechanics/quantum-dice-and-coins' }
-              ]
-            },
-            {
               text: 'Condensed Matter Notes',
               items: [
                 { text: 'Specular Andreev Reflection in Graphene', link: '/posts/condensed-matter/specular-andreev-reflection-graphene' },
