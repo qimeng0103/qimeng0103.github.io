@@ -116,7 +116,7 @@ The dispersion is **linear** and **gapless**: the positive and negative branches
 Linear dispersion means the effective mass vanishes. The low-energy excitations are not Schrödinger electrons; they are **massless Dirac fermions**. Their wave equation is the two-dimensional Dirac equation with zero rest mass:
 
 $$
-H = \hbar v \, \mathbf{p} \cdot \boldsymbol{\sigma} = \hbar v (p_x \sigma_x + p_y \sigma_y).
+H = v \, \mathbf{p} \cdot \boldsymbol{\sigma} = v (p_x \sigma_x + p_y \sigma_y).
 $$
 
 Here $\boldsymbol{\sigma} = (\sigma_x, \sigma_y)$ are Pauli matrices, but they do not act on real spin. They act on **sublattice pseudospin**: the two components of the spinor correspond to the amplitude on the A and B sublattices. The eigenstates are plane waves with definite chirality: the pseudospin is locked parallel or antiparallel to the momentum.
