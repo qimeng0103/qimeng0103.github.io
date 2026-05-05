@@ -102,13 +102,13 @@ $$
 Expanding $h(\mathbf{k})$ to linear order around $\mathbf{K}$ by setting $\mathbf{k} = \mathbf{K} + \mathbf{q}$ with $|\mathbf{q}|a \ll 1$ gives
 
 $$
-h(\mathbf{K} + \mathbf{q}) \approx \frac{3ta}{2} \big( q_x + i q_y \big) \equiv \hbar v \, q_+,
+h(\mathbf{K} + \mathbf{q}) \approx \frac{3ta}{2} \big( q_x + i q_y \big) \equiv \hbar v_F \, q_+,
 $$
 
-with $v = 3ta/2\hbar \approx 10^6\,\text{m/s}$. The band energies are therefore
+with $v_F = 3ta/2\hbar \approx 10^6\,\text{m/s}$. The band energies are therefore
 
 $$
-E(\mathbf{q}) = \pm \hbar v |\mathbf{q}| = \pm \hbar v |\mathbf{k} - \mathbf{K}|.
+E(\mathbf{q}) = \pm \hbar v_F |\mathbf{q}| = \pm \hbar v_F |\mathbf{k} - \mathbf{K}|.
 $$
 
 The dispersion is **linear** and **gapless**: the positive and negative branches form two cones touching at a single point. This is the Dirac point.
@@ -116,7 +116,7 @@ The dispersion is **linear** and **gapless**: the positive and negative branches
 Linear dispersion means the effective mass vanishes. The low-energy excitations are not Schrödinger electrons; they are **massless Dirac fermions**. Their wave equation is the two-dimensional Dirac equation with zero rest mass:
 
 $$
-H = v \, \mathbf{p} \cdot \boldsymbol{\sigma} = v (p_x \sigma_x + p_y \sigma_y).
+H = v_F \, \mathbf{p} \cdot \boldsymbol{\sigma} = v_F (p_x \sigma_x + p_y \sigma_y).
 $$
 
 Here $\boldsymbol{\sigma} = (\sigma_x, \sigma_y)$ are Pauli matrices, but they do not act on real spin. They act on **sublattice pseudospin**: the two components of the spinor correspond to the amplitude on the A and B sublattices. The eigenstates are plane waves with definite chirality: the pseudospin is locked parallel or antiparallel to the momentum.
@@ -140,8 +140,8 @@ To incorporate superconductivity into the Dirac Hamiltonian, one couples electro
 
 $$
 \begin{pmatrix}
-v\,\mathbf{p}\cdot\boldsymbol{\sigma} - U - E_F & \Delta \\
-\Delta^* & U + E_F - v\,\mathbf{p}\cdot\boldsymbol{\sigma}
+v_F\,\mathbf{p}\cdot\boldsymbol{\sigma} - U - E_F & \Delta \\
+\Delta^* & U + E_F - v_F\,\mathbf{p}\cdot\boldsymbol{\sigma}
 \end{pmatrix}
 \begin{pmatrix} u \\ v \end{pmatrix}
 = \varepsilon \begin{pmatrix} u \\ v \end{pmatrix} .
@@ -167,7 +167,7 @@ Setting $\Delta = 0$ and $U = 0$ in the normal region, the DBdG equation decoupl
 
 ### Electron States
 
-For electron states $(v = 0)$ the equation reads $(v\,\mathbf{p}\cdot\boldsymbol{\sigma} - E_F)u = \varepsilon u$. 
+For electron states $(v = 0)$ the equation reads $(v_F\,\mathbf{p}\cdot\boldsymbol{\sigma} - E_F)u = \varepsilon u$. 
 
 #### From Two Components to Four Components
 
@@ -189,34 +189,34 @@ encodes precisely this structure: $e^{iqy}$ fixes the conserved transverse momen
 
 #### Deriving the Dispersion and the Two $k_x$ Solutions
 
-Substituting the ansatz into $(v\,\mathbf{p}\cdot\boldsymbol{\sigma} - E_F)u = \varepsilon u$ gives
+Substituting the ansatz into $(v_F\,\mathbf{p}\cdot\boldsymbol{\sigma} - E_F)u = \varepsilon u$ gives
 
 $$
-\hbar v (k_x \sigma_x + q \sigma_y) \chi = (E_F + \varepsilon) \chi .
+\hbar v_F (k_x \sigma_x + q \sigma_y) \chi = (E_F + \varepsilon) \chi .
 $$
 
 Writing out the Pauli matrices explicitly,
 
 $$
-\hbar v \begin{pmatrix} 0 & k_x - iq \\ k_x + iq & 0 \end{pmatrix} \begin{pmatrix} \chi_1 \\ \chi_2 \end{pmatrix} = (E_F + \varepsilon) \begin{pmatrix} \chi_1 \\ \chi_2 \end{pmatrix} .
+\hbar v_F \begin{pmatrix} 0 & k_x - iq \\ k_x + iq & 0 \end{pmatrix} \begin{pmatrix} \chi_1 \\ \chi_2 \end{pmatrix} = (E_F + \varepsilon) \begin{pmatrix} \chi_1 \\ \chi_2 \end{pmatrix} .
 $$
 
 This is a $2 \times 2$ eigenvalue problem. The characteristic equation is obtained by requiring the determinant to vanish:
 
 $$
-\det\!\begin{pmatrix} -(E_F+\varepsilon) & \hbar v(k_x - iq) \\ \hbar v(k_x + iq) & -(E_F+\varepsilon) \end{pmatrix} = 0,
+\det\!\begin{pmatrix} -(E_F+\varepsilon) & \hbar v_F(k_x - iq) \\ \hbar v_F(k_x + iq) & -(E_F+\varepsilon) \end{pmatrix} = 0,
 $$
 
 which yields
 
 $$
-(E_F + \varepsilon)^2 - \hbar^2 v^2 (k_x^2 + q^2) = 0 \quad \Longrightarrow \quad k_x^2 + q^2 = \frac{(E_F + \varepsilon)^2}{\hbar^2 v^2}.
+(E_F + \varepsilon)^2 - \hbar^2 v_F^2 (k_x^2 + q^2) = 0 \quad \Longrightarrow \quad k_x^2 + q^2 = \frac{(E_F + \varepsilon)^2}{\hbar^2 v_F^2}.
 $$
 
 For fixed energy $\varepsilon$ and fixed transverse momentum $q$, this is a quadratic equation for $k_x$. It has **two roots**,
 
 $$
-k_x = \pm \sqrt{\frac{(E_F + \varepsilon)^2}{\hbar^2 v^2} - q^2} \equiv \pm k,
+k_x = \pm \sqrt{\frac{(E_F + \varepsilon)^2}{\hbar^2 v_F^2} - q^2} \equiv \pm k,
 $$
 
 corresponding to right-moving ($+k$) and left-moving ($-k$) waves. This is the physical origin of the incident and reflected waves: the same energy and transverse momentum support both propagation directions.
@@ -226,32 +226,32 @@ corresponding to right-moving ($+k$) and left-moving ($-k$) waves. This is the p
 It is convenient to package $q$ and $k$ into a single propagation angle $\alpha$ measured from the normal to the interface. Define
 
 $$
-\sin\alpha = \frac{\hbar v q}{E_F + \varepsilon}, \qquad k = \frac{E_F + \varepsilon}{\hbar v} \cos\alpha.
+\sin\alpha = \frac{\hbar v_F q}{E_F + \varepsilon}, \qquad k = \frac{E_F + \varepsilon}{\hbar v_F} \cos\alpha.
 $$
 
-**Why $\alpha$ is restricted to $(-\pi/2, \pi/2)$.**  In the definition $k = \frac{E_F+\varepsilon}{\hbar v}\cos\alpha$, the quantity $k$ is the magnitude of the longitudinal wave number.  The factor $e^{\pm ikx}$ (with the independent sign $\pm$) already distinguishes right- and left-moving waves, so $k$ itself must be real and positive.  This requires $\cos\alpha > 0$, i.e. $\alpha \in (-\pi/2, \pi/2)$.
+**Why $\alpha$ is restricted to $(-\pi/2, \pi/2)$.**  In the definition $k = \frac{E_F+\varepsilon}{\hbar v_F}\cos\alpha$, the quantity $k$ is the magnitude of the longitudinal wave number.  The factor $e^{\pm ikx}$ (with the independent sign $\pm$) already distinguishes right- and left-moving waves, so $k$ itself must be real and positive.  This requires $\cos\alpha > 0$, i.e. $\alpha \in (-\pi/2, \pi/2)$.
 
 #### Extracting the Spinor
 
 Return to the explicit matrix equation:
 
 $$
-\hbar v \begin{pmatrix} 0 & k_x - iq \\ k_x + iq & 0 \end{pmatrix} \begin{pmatrix} \chi_1 \\ \chi_2 \end{pmatrix} = (E_F + \varepsilon) \begin{pmatrix} \chi_1 \\ \chi_2 \end{pmatrix} .
+\hbar v_F \begin{pmatrix} 0 & k_x - iq \\ k_x + iq & 0 \end{pmatrix} \begin{pmatrix} \chi_1 \\ \chi_2 \end{pmatrix} = (E_F + \varepsilon) \begin{pmatrix} \chi_1 \\ \chi_2 \end{pmatrix} .
 $$
 
 The two rows give the same ratio.  From the first component,
 
 $$
-\frac{\chi_2}{\chi_1} = \frac{E_F + \varepsilon}{\hbar v\,(k_x - iq)} .
+\frac{\chi_2}{\chi_1} = \frac{E_F + \varepsilon}{\hbar v_F\,(k_x - iq)} .
 \tag{1}
 $$
 
-With the polar-angle parametrisation $k_x = \pm k\cos\alpha$ and $q = k\sin\alpha$ from the preceding section, where $k = (E_F + \varepsilon)/(\hbar v)$, Eq. (1) gives two branches.
+With the polar-angle parametrisation $k_x = \pm k\cos\alpha$ and $q = k\sin\alpha$ from the preceding section, where $k = (E_F + \varepsilon)/(\hbar v_F)$, Eq. (1) gives two branches.
 
 For the **right-moving** root $k_x = +k$,
 
 $$
-k_x - iq = k(\cos\alpha - i\sin\alpha) = k\,e^{-i\alpha} = \frac{E_F + \varepsilon}{\hbar v}\,e^{-i\alpha} ,
+k_x - iq = k(\cos\alpha - i\sin\alpha) = k\,e^{-i\alpha} = \frac{E_F + \varepsilon}{\hbar v_F}\,e^{-i\alpha} ,
 $$
 
 so that
@@ -270,7 +270,7 @@ $$
 For the **left-moving** root $k_x = -k$,
 
 $$
-k_x - iq = k(-\cos\alpha - i\sin\alpha) = -k\,e^{i\alpha} = -\frac{E_F + \varepsilon}{\hbar v}\,e^{i\alpha} ,
+k_x - iq = k(-\cos\alpha - i\sin\alpha) = -k\,e^{i\alpha} = -\frac{E_F + \varepsilon}{\hbar v_F}\,e^{i\alpha} ,
 $$
 
 so that
@@ -290,10 +290,10 @@ $$
 
 Plane-wave states cannot be normalized to unit probability density ($\int|\psi|^2 d^3r = \infty$).  In a scattering problem the reflection and transmission probabilities are ratios of probability currents, so every participating state must carry the same current magnitude.
 
-For the Dirac Hamiltonian the current operator is $v\sigma_x$, giving
+For the Dirac Hamiltonian the current operator is $v_F\sigma_x$, giving
 
 $$
-j_x = v\,\chi^\dagger\sigma_x\chi = v\bigl(\chi_1^*\chi_2 + \chi_2^*\chi_1\bigr) .
+j_x = v_F\,\chi^\dagger\sigma_x\chi = v_F\bigl(\chi_1^*\chi_2 + \chi_2^*\chi_1\bigr) .
 $$
 
 The unnormalized spinors above have currents
@@ -302,7 +302,7 @@ $$
 j_x(\chi_+) = 2v\cos\alpha, \qquad j_x(\chi_-) = -2v\cos\alpha .
 $$
 
-The factor $\cos\alpha$ makes the current angle-dependent.  Multiplying every spinor by $1/\sqrt{\cos\alpha}$ removes this dependence, giving a uniform current magnitude $|j_x| = 2v$ for all states.  Adopting natural units $v=1$, the normalized four-component electron spinors are
+The factor $\cos\alpha$ makes the current angle-dependent.  Multiplying every spinor by $1/\sqrt{\cos\alpha}$ removes this dependence, giving a uniform current magnitude $|j_x| = 2v_F$ for all states.  Adopting natural units $v_F=1$, the normalized four-component electron spinors are
 
 $$
 \boxed{
@@ -318,22 +318,22 @@ with $\Psi_{e-}$ the incident wave and $\Psi_{e+}$ the reflected wave.
 For hole states $(u = 0)$ the lower block of the DBdG equation gives
 
 $$
-(E_F - v\,\mathbf{p}\cdot\boldsymbol{\sigma})v = \varepsilon v \quad \Longrightarrow \quad v\,\mathbf{p}\cdot\boldsymbol{\sigma}\,v = (E_F - \varepsilon)v .
+(E_F - v_F\,\mathbf{p}\cdot\boldsymbol{\sigma})v = \varepsilon v \quad \Longrightarrow \quad v_F\,\mathbf{p}\cdot\boldsymbol{\sigma}\,v = (E_F - \varepsilon)v .
 $$
 
-Compared with the electron equation $v\,\mathbf{p}\cdot\boldsymbol{\sigma}\,u = (E_F + \varepsilon)u$, the only difference is the sign in front of $\varepsilon$: the hole propagates at energy $E_F - \varepsilon$ rather than $E_F + \varepsilon$. The same substitution procedure yields the dispersion relation
+Compared with the electron equation $v_F\,\mathbf{p}\cdot\boldsymbol{\sigma}\,u = (E_F + \varepsilon)u$, the only difference is the sign in front of $\varepsilon$: the hole propagates at energy $E_F - \varepsilon$ rather than $E_F + \varepsilon$. The same substitution procedure yields the dispersion relation
 
 $$
-k_x^2 + q^2 = \frac{(E_F - \varepsilon)^2}{\hbar^2 v^2},
+k_x^2 + q^2 = \frac{(E_F - \varepsilon)^2}{\hbar^2 v_F^2},
 $$
 
 and, introducing the hole propagation angle $\alpha'$ through
 
 $$
-\sin\alpha' = \frac{\hbar v q}{\varepsilon - E_F}, \qquad k' = \frac{\varepsilon - E_F}{\hbar v} \cos\alpha',
+\sin\alpha' = \frac{\hbar v_F q}{\varepsilon - E_F}, \qquad k' = \frac{\varepsilon - E_F}{\hbar v_F} \cos\alpha',
 $$
 
-with $\alpha' \in (-\pi/2, \pi/2)$ as before.  The crucial point is that the denominator $\varepsilon - E_F$ is an **algebraic quantity**.  When $\varepsilon < E_F$ (retro-reflection regime) the denominator is negative, so $\alpha'$ carries the opposite sign from $\alpha$ for the same transverse momentum $q$; when $\varepsilon > E_F$ (specular regime) the denominator is positive and $\alpha'$ has the same sign as $\alpha$.  The longitudinal wave number $k' = (\varepsilon-E_F)\cos\alpha'/\hbar v$ inherits the same sign as $\varepsilon-E_F$, so $k'$ is negative in the retro regime and positive in the specular regime.
+with $\alpha' \in (-\pi/2, \pi/2)$ as before.  The crucial point is that the denominator $\varepsilon - E_F$ is an **algebraic quantity**.  When $\varepsilon < E_F$ (retro-reflection regime) the denominator is negative, so $\alpha'$ carries the opposite sign from $\alpha$ for the same transverse momentum $q$; when $\varepsilon > E_F$ (specular regime) the denominator is positive and $\alpha'$ has the same sign as $\alpha$.  The longitudinal wave number $k' = (\varepsilon-E_F)\cos\alpha'/\hbar v_F$ inherits the same sign as $\varepsilon-E_F$, so $k'$ is negative in the retro regime and positive in the specular regime.
 
 the eigen spinors are
 
@@ -359,8 +359,8 @@ In the superconducting region $(x < 0)$ the potential is $U = -U_0$ and the pair
 
 $$
 \begin{pmatrix}
-\hbar v\mathbf{k}\cdot\boldsymbol{\sigma} - U_0 - E_F & \Delta_0 e^{i\phi} \\
-\Delta_0 e^{-i\phi} & U_0 + E_F - \hbar v\mathbf{k}\cdot\boldsymbol{\sigma}
+\hbar v_F\mathbf{k}\cdot\boldsymbol{\sigma} - U_0 - E_F & \Delta_0 e^{i\phi} \\
+\Delta_0 e^{-i\phi} & U_0 + E_F - \hbar v_F\mathbf{k}\cdot\boldsymbol{\sigma}
 \end{pmatrix}
 \begin{pmatrix} u \\ v \end{pmatrix}
 = \varepsilon \begin{pmatrix} u \\ v \end{pmatrix}.
@@ -369,12 +369,12 @@ $$
 It is convenient to define the superconducting Fermi energy $E_{S0} = U_0 + E_F$ and the normal-state kinetic energy measured from that Fermi level,
 
 $$
-\xi_k = \hbar v |k| - E_{S0}.
+\xi_k = \hbar v_F |k| - E_{S0}.
 $$
 
 ### Deriving the Superconducting Dispersion
 
-Write the superconducting DBdG Hamiltonian in compact block form.  With $h = \hbar v\,\mathbf{k}\cdot\boldsymbol{\sigma}$ and $E_{S0} = U_0 + E_F$,
+Write the superconducting DBdG Hamiltonian in compact block form.  With $h = \hbar v_F\,\mathbf{k}\cdot\boldsymbol{\sigma}$ and $E_{S0} = U_0 + E_F$,
 
 $$
 \mathcal{H} =
@@ -405,16 +405,16 @@ Because $\Delta$ is a scalar multiple of the identity, it commutes with everythi
 
 #### Step 2: Diagonalize $h$ in sublattice space
 
-The kinetic block is $h = \hbar v\,\mathbf{k}\cdot\boldsymbol{\sigma} = \hbar v|k|\,\hat{\mathbf{n}}\cdot\boldsymbol{\sigma}$ with $\hat{\mathbf{n}} = \mathbf{k}/|k|$.  Using the Pauli anticommutator $\{\sigma_i,\sigma_j\} = 2\delta_{ij}$,
+The kinetic block is $h = \hbar v_F\,\mathbf{k}\cdot\boldsymbol{\sigma} = \hbar v_F|k|\,\hat{\mathbf{n}}\cdot\boldsymbol{\sigma}$ with $\hat{\mathbf{n}} = \mathbf{k}/|k|$.  Using the Pauli anticommutator $\{\sigma_i,\sigma_j\} = 2\delta_{ij}$,
 
 $$
-h^2 = (\hbar v|k|)^2 (\hat{\mathbf{n}}\cdot\boldsymbol{\sigma})^2 = (\hbar v|k|)^2 \,\mathbb{1}_2 .
+h^2 = (\hbar v_F|k|)^2 (\hat{\mathbf{n}}\cdot\boldsymbol{\sigma})^2 = (\hbar v_F|k|)^2 \,\mathbb{1}_2 .
 $$
 
-Thus $h$ has eigenvalues $\pm \hbar v|k|$.  The corresponding eigen spinors are the **chiral states** $\chi_{\pm}$ satisfying $(\hat{\mathbf{n}}\cdot\boldsymbol{\sigma})\chi_{\pm} = \pm\chi_{\pm}$.  In this chiral basis $h$ is diagonal:
+Thus $h$ has eigenvalues $\pm \hbar v_F|k|$.  The corresponding eigen spinors are the **chiral states** $\chi_{\pm}$ satisfying $(\hat{\mathbf{n}}\cdot\boldsymbol{\sigma})\chi_{\pm} = \pm\chi_{\pm}$.  In this chiral basis $h$ is diagonal:
 
 $$
-h \;\to\; \mathrm{diag}\bigl(+\hbar v|k|,\; -\hbar v|k|\bigr).
+h \;\to\; \mathrm{diag}\bigl(+\hbar v_F|k|,\; -\hbar v_F|k|\bigr).
 $$
 
 #### Step 3: Evaluate the diagonal blocks in the chiral basis
@@ -424,34 +424,34 @@ With $h$ diagonal, each $2\times 2$ block of $\mathcal{H}^2$ becomes diagonal to
 $$
 (h-E_{S0})^2 + \Delta_0^2
 \;\to\;
-\mathrm{diag}\Bigl[(\hbar v|k|-E_{S0})^2 + \Delta_0^2,\; (-\hbar v|k|-E_{S0})^2 + \Delta_0^2\Bigr].
+\mathrm{diag}\Bigl[(\hbar v_F|k|-E_{S0})^2 + \Delta_0^2,\; (-\hbar v_F|k|-E_{S0})^2 + \Delta_0^2\Bigr].
 $$
 
 The lower-right block gives the same two eigenvalues.  The four eigenvalues of $\mathcal{H}^2$ are therefore
 
 $$
-\varepsilon^2 = (\pm\hbar v|k| - E_{S0})^2 + \Delta_0^2,
+\varepsilon^2 = (\pm\hbar v_F|k| - E_{S0})^2 + \Delta_0^2,
 \qquad \text{(each doubly degenerate)}.
 $$
 
 #### Step 4: Heavy-doping (Andreev) limit
 
-In the heavily doped superconductor $E_{S0} \gg \hbar v|k|, \Delta_0, \varepsilon$.  Two of the four roots correspond to energies far from the Fermi level:
+In the heavily doped superconductor $E_{S0} \gg \hbar v_F|k|, \Delta_0, \varepsilon$.  Two of the four roots correspond to energies far from the Fermi level:
 
 $$
-\varepsilon \approx \pm(E_{S0} + \hbar v|k|) \quad \text{(high-energy, frozen modes)}.
+\varepsilon \approx \pm(E_{S0} + \hbar v_F|k|) \quad \text{(high-energy, frozen modes)}.
 $$
 
 The remaining two roots live near the Fermi surface.  Defining the normal-state kinetic energy
 
 $$
-\xi_k = \hbar v|k| - E_{S0},
+\xi_k = \hbar v_F|k| - E_{S0},
 $$
 
 these low-energy modes satisfy
 
 $$
-\boxed{\varepsilon^2 = \xi_k^2 + \Delta_0^2 = (\hbar v|k| - E_{S0})^2 + \Delta_0^2}.
+\boxed{\varepsilon^2 = \xi_k^2 + \Delta_0^2 = (\hbar v_F|k| - E_{S0})^2 + \Delta_0^2}.
 $$
 
 This is the familiar BCS gapped spectrum, with the crucial difference that $\xi_k$ is linear in $|k|$ rather than quadratic.  The heavy-doping limit has projected the four-component Dirac–Bogoliubov problem onto the single pair of Nambu states that couple to the subgap excitations in the normal region.
@@ -463,19 +463,19 @@ This is the familiar gapped spectrum of a BCS superconductor, except that the no
 For excitation energies below the gap, $|\varepsilon| < \Delta_0$, the dispersion relation gives
 
 $$
-(\hbar v|k| - E_{S0})^2 = \varepsilon^2 - \Delta_0^2 < 0.
+(\hbar v_F|k| - E_{S0})^2 = \varepsilon^2 - \Delta_0^2 < 0.
 $$
 
-The right-hand side is negative, so $\hbar v|k| - E_{S0}$ must be purely imaginary. Writing
+The right-hand side is negative, so $\hbar v_F|k| - E_{S0}$ must be purely imaginary. Writing
 
 $$
-\hbar v|k| - E_{S0} = \pm i\sqrt{\Delta_0^2 - \varepsilon^2},
+\hbar v_F|k| - E_{S0} = \pm i\sqrt{\Delta_0^2 - \varepsilon^2},
 $$
 
 the wave number acquires an imaginary part
 
 $$
-\text{Im}(|k|) = \frac{\sqrt{\Delta_0^2 - \varepsilon^2}}{\hbar v} \equiv \kappa.
+\text{Im}(|k|) = \frac{\sqrt{\Delta_0^2 - \varepsilon^2}}{\hbar v_F} \equiv \kappa.
 $$
 
 The wave function therefore decays exponentially into the superconductor as $e^{-\kappa|x|}$. There are no propagating single-particle modes in the subgap regime; all incident probability current from the normal side must be reflected.
@@ -485,7 +485,7 @@ The wave function therefore decays exponentially into the superconductor as $e^{
 When the superconducting electrode is heavily doped, $U_0 \gg E_F, \varepsilon, \Delta_0$, the superconducting Fermi energy $E_{S0}$ is very large. The decay constant can be written in a compact form by parameterizing the energy as $\varepsilon = \Delta_0 \cos\beta$ with $\beta \in (0, \pi)$. Then
 
 $$
-\kappa = \frac{\sqrt{\Delta_0^2 - \varepsilon^2}}{\hbar v} = \frac{\Delta_0 \sin\beta}{\hbar v}.
+\kappa = \frac{\sqrt{\Delta_0^2 - \varepsilon^2}}{\hbar v_F} = \frac{\Delta_0 \sin\beta}{\hbar v_F}.
 $$
 
 This expression enters the boundary-condition matching through the ratios of decaying exponentials at $x = 0$.
@@ -494,7 +494,7 @@ This expression enters the boundary-condition matching through the ratios of dec
 
 ### Superconducting States in the Heavily Doped Limit
 
-In the superconducting region ($x < 0$) the subgap solutions decay exponentially as $x \to -\infty$.  In the heavily doped limit $U_0 \gg E_F, \varepsilon, \Delta_0$ there are exactly two such decaying modes, distinguished by the sign of the large real part of the longitudinal wave number ($\pm k_0$ with $k_0 \approx E_{S0}/\hbar v$).  Their four-component spinors at $x = 0$ are
+In the superconducting region ($x < 0$) the subgap solutions decay exponentially as $x \to -\infty$.  In the heavily doped limit $U_0 \gg E_F, \varepsilon, \Delta_0$ there are exactly two such decaying modes, distinguished by the sign of the large real part of the longitudinal wave number ($\pm k_0$ with $k_0 \approx E_{S0}/\hbar v_F_F$).  Their four-component spinors at $x = 0$ are
 
 $$
 \Psi_{S+}(0) = \begin{pmatrix} e^{-i\beta} \\ e^{-i\beta} \\ e^{-i\phi} \\ e^{-i\phi} \end{pmatrix},
@@ -502,7 +502,7 @@ $$
 \Psi_{S-}(0) = \begin{pmatrix} e^{i\beta} \\ -e^{i\beta} \\ e^{-i\phi} \\ -e^{-i\phi} \end{pmatrix}.
 $$
 
-The derivation proceeds from the DBdG equation in the superconductor by noting that the kinetic term $\hbar v k_x \sigma_x$ dominates and must be balanced against the large potential $E_{S0}$.  For the $+k_0$ branch the electron and hole spinors both lie in the $\sigma_x = +1$ eigenspace $(1,1)^T$; for the $-k_0$ branch they lie in the $\sigma_x = -1$ eigenspace $(1,-1)^T$.  Solving the remaining $2 \times 2$ electron-hole block to first order in $\Delta_0/E_{S0}$ yields the ratios $v/u = e^{-i(\phi-\beta)}$ for $\Psi_{S+}$ and $v/u = e^{-i(\phi+\beta)}$ for $\Psi_{S-}$.  The common phase $e^{-i\beta}$ in the upper two components of $\Psi_{S+}$ (and $e^{i\beta}$ in $\Psi_{S-}$) is a convenient choice of overall gauge.
+The derivation proceeds from the DBdG equation in the superconductor by noting that the kinetic term $\hbar v_F k_x \sigma_x$ dominates and must be balanced against the large potential $E_{S0}$.  For the $+k_0$ branch the electron and hole spinors both lie in the $\sigma_x = +1$ eigenspace $(1,1)^T$; for the $-k_0$ branch they lie in the $\sigma_x = -1$ eigenspace $(1,-1)^T$.  Solving the remaining $2 \times 2$ electron-hole block to first order in $\Delta_0/E_{S0}$ yields the ratios $v/u = e^{-i(\phi-\beta)}$ for $\Psi_{S+}$ and $v/u = e^{-i(\phi+\beta)}$ for $\Psi_{S-}$.  The common phase $e^{-i\beta}$ in the upper two components of $\Psi_{S+}$ (and $e^{i\beta}$ in $\Psi_{S-}$) is a convenient choice of overall gauge.
 
 ### The Scattering State in the Normal Region
 
@@ -632,7 +632,7 @@ The distinction between the two regimes hinges on the relative sign of $\alpha$ 
 When the normal region is heavily doped, the Fermi energy sits deep in the conduction band. To leading order in $\varepsilon/E_F$,
 
 $$
-\sin\alpha' \approx \frac{\hbar v q}{E_F} \approx \sin\alpha \quad \Rightarrow \quad \alpha' \approx -\alpha.
+\sin\alpha' \approx \frac{\hbar v_F q}{E_F} \approx \sin\alpha \quad \Rightarrow \quad \alpha' \approx -\alpha.
 $$
 
 The hole lies in the conduction band, so its group velocity points **opposite** to its wave vector. The reflected hole therefore retraces the incident electron trajectory. This is the conventional **retro-reflection** familiar from non-relativistic metals.
@@ -651,7 +651,7 @@ with $\zeta = \sqrt{1 - (\varepsilon/\Delta_0)^2}$.
 At low doping, or equivalently for injection energies well above the Fermi level, the hole resides in the valence band. Now
 
 $$
-\sin\alpha' \approx \frac{\hbar v q}{\varepsilon} \approx \sin\alpha \quad \Rightarrow \quad \alpha' \approx \alpha.
+\sin\alpha' \approx \frac{\hbar v_F q}{\varepsilon} \approx \sin\alpha \quad \Rightarrow \quad \alpha' \approx \alpha.
 $$
 
 The hole group velocity points **in the same direction** as its wave vector. The reflected hole therefore exits the interface at the same angle as the incident electron, on the same side of the normal — a mirror-like **specular reflection**.
