@@ -226,10 +226,10 @@ corresponding to right-moving ($+k$) and left-moving ($-k$) waves. This is the p
 It is convenient to package $q$ and $k$ into a single propagation angle $\alpha$ measured from the normal to the interface. Define
 
 $$
-\sin\alpha = \frac{\hbar v_F q}{E_F + \varepsilon}, \qquad k = \frac{E_F + \varepsilon}{\hbar v_F} \cos\alpha.
+\sin\alpha = \frac{\hbar v_F q}{E_F + \varepsilon}, \qquad \cos\alpha = \frac{\hbar v_F k}{E_F + \varepsilon}.
 $$
 
-**Why $\alpha$ is restricted to $(-\pi/2, \pi/2)$.**  In the definition $k = \frac{E_F+\varepsilon}{\hbar v_F}\cos\alpha$, the quantity $k$ is the magnitude of the longitudinal wave number.  The factor $e^{\pm ikx}$ (with the independent sign $\pm$) already distinguishes right- and left-moving waves, so $k$ itself must be real and positive.  This requires $\cos\alpha > 0$, i.e. $\alpha \in (-\pi/2, \pi/2)$.
+**Why $\alpha$ is restricted to $(-\pi/2, \pi/2)$.**  The quantity $k$ is the magnitude of the longitudinal wave number.  As a magnitude it must be real and positive, which requires $\cos\alpha > 0$, i.e. $\alpha \in (-\pi/2, \pi/2)$.  The factor $e^{\pm ikx}$ (with the independent sign $\pm$) distinguishes right- and left-moving waves.
 
 #### Extracting the Spinor
 
