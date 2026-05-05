@@ -167,7 +167,7 @@ Setting $\Delta = 0$ and $U = 0$ in the normal region, the DBdG equation decoupl
 
 ### Electron States
 
-For electron states $(v = 0)$ the equation reads $(\mathbf{p}\cdot\boldsymbol{\sigma} - E_F)u = \varepsilon u$. 
+For electron states $(v = 0)$ the equation reads $(v\,\mathbf{p}\cdot\boldsymbol{\sigma} - E_F)u = \varepsilon u$. 
 
 #### From Two Components to Four Components
 
@@ -189,7 +189,7 @@ encodes precisely this structure: $e^{iqy}$ fixes the conserved transverse momen
 
 #### Deriving the Dispersion and the Two $k_x$ Solutions
 
-Substituting the ansatz into $(\mathbf{p}\cdot\boldsymbol{\sigma} - E_F)u = \varepsilon u$ gives
+Substituting the ansatz into $(v\,\mathbf{p}\cdot\boldsymbol{\sigma} - E_F)u = \varepsilon u$ gives
 
 $$
 \hbar v (k_x \sigma_x + q \sigma_y) \chi = (E_F + \varepsilon) \chi .
@@ -323,10 +323,10 @@ with $\Psi_{e-}$ the incident wave (propagating toward the interface at $x=0$) a
 For hole states $(u = 0)$ the lower block of the DBdG equation gives
 
 $$
-(E_F - \mathbf{p}\cdot\boldsymbol{\sigma})v = \varepsilon v \quad \Longrightarrow \quad \mathbf{p}\cdot\boldsymbol{\sigma}\,v = (E_F - \varepsilon)v .
+(E_F - v\,\mathbf{p}\cdot\boldsymbol{\sigma})v = \varepsilon v \quad \Longrightarrow \quad v\,\mathbf{p}\cdot\boldsymbol{\sigma}\,v = (E_F - \varepsilon)v .
 $$
 
-Compared with the electron equation $\mathbf{p}\cdot\boldsymbol{\sigma}\,u = (E_F + \varepsilon)u$, the only difference is the sign in front of $\varepsilon$: the hole propagates at energy $E_F - \varepsilon$ rather than $E_F + \varepsilon$. The same substitution procedure yields the dispersion relation
+Compared with the electron equation $v\,\mathbf{p}\cdot\boldsymbol{\sigma}\,u = (E_F + \varepsilon)u$, the only difference is the sign in front of $\varepsilon$: the hole propagates at energy $E_F - \varepsilon$ rather than $E_F + \varepsilon$. The same substitution procedure yields the dispersion relation
 
 $$
 k_x^2 + q^2 = \frac{(E_F - \varepsilon)^2}{\hbar^2 v^2},
