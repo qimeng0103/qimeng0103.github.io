@@ -327,31 +327,67 @@ $$
 k_x^2 + q^2 = \frac{(E_F - \varepsilon)^2}{\hbar^2 v_F^2},
 $$
 
-and, introducing the hole propagation angle $\alpha'$ through
+with two roots $k_x = \pm k'$ where $k' = \sqrt{(E_F-\varepsilon)^2/(\hbar v_F)^2 - q^2}$.
+
+At this stage a choice of convention arises.  If we were to define the hole angle through $\sin\alpha' = \hbar v_F q/(E_F-\varepsilon)$, the sign of $\alpha'$ would come out "backwards": for retro-reflection ($E_F > \varepsilon$) the denominator is positive, so $\alpha'$ and $\alpha$ would have the same sign, while the physics demands $\alpha' \approx -\alpha$.  To make the angle directly reflect the reflection geometry we therefore introduce the **algebraic quantity**
 
 $$
-\sin\alpha' = \frac{\hbar v_F q}{\varepsilon - E_F}, \qquad k' = \frac{\varepsilon - E_F}{\hbar v_F} \cos\alpha',
+\mu = \varepsilon - E_F = -(E_F - \varepsilon),
 $$
 
-with $\alpha' \in (-\pi/2, \pi/2)$ as before.  The crucial point is that the denominator $\varepsilon - E_F$ is an **algebraic quantity**.  When $\varepsilon < E_F$ (retro-reflection regime) the denominator is negative, so $\alpha'$ carries the opposite sign from $\alpha$ for the same transverse momentum $q$; when $\varepsilon > E_F$ (specular regime) the denominator is positive and $\alpha'$ has the same sign as $\alpha$.  The longitudinal wave number $k' = (\varepsilon-E_F)\cos\alpha'/\hbar v_F$ inherits the same sign as $\varepsilon-E_F$, so $k'$ is negative in the retro regime and positive in the specular regime.
+and define the hole propagation angle $\alpha'$ through
 
-the eigen spinors are
+$$
+\sin\alpha' = \frac{\hbar v_F q}{\mu}, \qquad k' = \frac{\mu}{\hbar v_F} \cos\alpha',
+$$
+
+with $\alpha' \in (-\pi/2, \pi/2)$ as before.  The crucial point is the sign of $\mu$:
+
+- **Retro-reflection regime ($\varepsilon < E_F$).**  Here $\mu < 0$.  For a given transverse momentum $q$, the denominator in $\sin\alpha'$ is negative, so $\alpha'$ carries the opposite sign from $\alpha$; in the heavily doped limit $\alpha' \approx -\alpha$.  The longitudinal wave number $k' = \mu\cos\alpha'/\hbar v_F$ is negative.
+
+- **Specular regime ($\varepsilon > E_F$).**  Here $\mu > 0$.  The denominator is positive, so $\alpha'$ has the same sign as $\alpha$; in the limit $\varepsilon \gg E_F$ one finds $\alpha' \approx \alpha$.  The longitudinal wave number $k'$ is now positive.
+
+The eigen spinors are
 
 $$
 \Psi_{h\pm} = e^{iqy \pm ik'x} \frac{1}{\sqrt{\cos\alpha'}} \begin{pmatrix} 0 \\ 0 \\ e^{\mp i\alpha'/2} \\ \mp e^{\pm i\alpha'/2} \end{pmatrix}.
 $$
 
-The critical observation is the sign of $(E_F - \varepsilon)$. When $\varepsilon < E_F$, the hole energy $E_F - \varepsilon$ lies **above** the Dirac point; the hole state therefore sits on the **conduction-band side** of the spectrum, where its group velocity points opposite to its wave vector (retro-reflection). When $\varepsilon > E_F$, the hole energy lies **below** the Dirac point; the state sits on the **valence-band side**, where the group velocity points parallel to the wave vector (specular reflection). The relative orientation of group velocity and wave vector is opposite in the two cases, and this single fact controls the reflection geometry.
+The physical distinction is controlled by the sign of the hole energy $E_F - \varepsilon = -\mu$.  When $\varepsilon < E_F$, the hole energy is positive; the state sits on the **conduction-band side** of the spectrum, where the group velocity of a hole points opposite to its wave vector (retro-reflection).  When $\varepsilon > E_F$, the hole energy is negative; the state sits on the **valence-band side**, where the group velocity of a hole points parallel to its wave vector (specular reflection).  The relative orientation of group velocity and wave vector is opposite in the two cases, and this single fact controls the reflection geometry.
 
 ## 5. The Critical Angle
 
-The angle $\alpha'$ is real only when $|\sin\alpha'| \leq 1$, which defines a **critical angle**
+The existence of a critical angle follows from **conservation of transverse momentum**.  At the planar interface momentum parallel to the boundary, $q = \hbar k_y$, is conserved.  For the incident electron this gives
+
+$$
+q = \frac{E_F + \varepsilon}{\hbar v_F}\,\sin\alpha .
+$$
+
+For the reflected hole the same conserved $q$ must be expressible as
+
+$$
+q = \frac{\mu}{\hbar v_F}\,\sin\alpha' = \frac{\varepsilon - E_F}{\hbar v_F}\,\sin\alpha' .
+$$
+
+A propagating hole state exists only when $|\sin\alpha'| \leq 1$.  Eliminating $q$ between the two equations yields the condition
+
+$$
+\left|\frac{E_F + \varepsilon}{\hbar v_F}\,\sin\alpha\right| \leq \left|\frac{\varepsilon - E_F}{\hbar v_F}\right|,
+$$
+
+or equivalently
+
+$$
+|\sin\alpha| \leq \frac{|E_F - \varepsilon|}{E_F + \varepsilon}.
+$$
+
+This inequality defines the **critical angle**
 
 $$
 \alpha_c = \arcsin\!\left(\frac{|E_F - \varepsilon|}{E_F + \varepsilon}\right).
 $$
 
-For $|\alpha| < \alpha_c$, Andreev reflection is kinematically allowed and four scattering states coexist in the normal region: $\Psi_{e-}$ (incident electron), $\Psi_{e+}$ (normal reflection), $\Psi_{h-}$ (incident hole), and $\Psi_{h+}$ (Andreev-reflected hole). For $|\alpha| > \alpha_c$, the hole cannot propagate and Andreev reflection is suppressed; only normal reflection survives.
+**Physical interpretation.**  For normal incidence ($\alpha = 0$) the transverse momentum vanishes, and the hole can always be created.  As $|\alpha|$ increases, the incident electron carries larger and larger $q$.  The hole, however, can support only a finite maximum transverse momentum $|\mu|/\hbar v_F = |E_F - \varepsilon|/\hbar v_F$ (the diameter of its momentum-space constant-energy circle).  Once $|\alpha|$ exceeds $\alpha_c$, the required $q$ is larger than this maximum; no hole state can match the conserved momentum, and Andreev reflection becomes kinematically forbidden.  In this regime only normal reflection survives.
 
 ## 6. Superconducting Region and the Heavily Doped Limit
 
