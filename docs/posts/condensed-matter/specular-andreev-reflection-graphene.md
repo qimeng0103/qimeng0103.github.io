@@ -494,7 +494,7 @@ This expression enters the boundary-condition matching through the ratios of dec
 
 ### Superconducting States in the Heavily Doped Limit
 
-In the superconducting region ($x < 0$) the subgap solutions decay exponentially as $x \to -\infty$.  In the heavily doped limit $U_0 \gg E_F, \varepsilon, \Delta_0$ there are exactly two such decaying modes, distinguished by the sign of the large real part of the longitudinal wave number ($\pm k_0$ with $k_0 \approx E_{S0}/\hbar v_F_F$).  Their four-component spinors at $x = 0$ are
+In the superconducting region ($x < 0$) the subgap solutions decay exponentially as $x \to -\infty$.  In the heavily doped limit $U_0 \gg E_F, \varepsilon, \Delta_0$ there are exactly two such decaying modes, distinguished by the sign of the large real part of the longitudinal wave number ($\pm k_0$ with $k_0 \approx E_{S0}/\hbar v_F$).  Their four-component spinors at $x = 0$ are
 
 $$
 \Psi_{S+}(0) = \begin{pmatrix} e^{-i\beta} \\ e^{-i\beta} \\ e^{-i\phi} \\ e^{-i\phi} \end{pmatrix},
