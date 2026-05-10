@@ -548,7 +548,30 @@ $$
 \Psi_N(x,y) = \Psi_{e-}(x,y) + r\,\Psi_{e+}(x,y) + r_A\,\Psi_{h+}(x,y).
 $$
 
-The amplitudes $r$ (normal reflection) and $r_A$ (Andreev reflection) are the quantities we seek.  Evaluated at the interface ($x = 0$), the three normal-region spinors are
+The amplitudes $r$ (normal reflection) and $r_A$ (Andreev reflection) are the quantities we seek.
+
+### The Reflection Matrix
+
+The discussion above assumes an electron is incident from the normal side.  Because the Bogoliubov–de Gennes equation couples electrons and holes, a complete description of the interface requires considering **both** electron and hole incidence.  A hole incident from the normal side can be normally reflected as a hole (amplitude $r'$) or Andreev-reflected as an electron (amplitude $r'_A$).  The four amplitudes together form the $2\times 2$ reflection matrix of the NS interface,
+
+$$
+r_{NS} =
+\begin{pmatrix}
+r & r'_A \\[4pt]
+r_A & r'
+\end{pmatrix},
+$$
+
+where rows label the output channel (electron or hole) and columns label the input channel.  Explicitly:
+
+- $r$ (first column, first row): electron $\to$ electron (normal reflection),
+- $r_A$ (first column, second row): electron $\to$ hole (Andreev reflection),
+- $r'_A$ (second column, first row): hole $\to$ electron (reverse Andreev reflection),
+- $r'$ (second column, second row): hole $\to$ hole (normal reflection of a hole).
+
+The calculation below determines the first column ($r$ and $r_A$) from the continuity equations for electron incidence.  For a time-reversal-invariant interface the second column follows by the symmetry $r'(\varepsilon) = r(-\varepsilon)$ and $r'_A(\varepsilon) = r_A(-\varepsilon)$.
+
+Evaluated at the interface ($x = 0$), the three normal-region spinors that enter the electron-incidence problem are
 
 $$
 \Psi_{e-}(0) = \frac{1}{\sqrt{\cos\alpha}}
@@ -657,7 +680,13 @@ $$
 |X|^2 = \tfrac{1}{2}\bigl[1 + \cos\alpha\cos\alpha' + \sin\alpha\sin\alpha'\cos(2\beta)\bigr],
 $$
 
-combined with the half-angle formulas for the sine squares in the numerator.  Since no propagating modes exist in the superconductor below the gap, all probability current must be reflected; the reflection matrix is therefore unitary, with $|r|^2$ the probability for normal reflection and $|r_A|^2$ the probability for Andreev reflection.
+combined with the half-angle formulas for the sine squares in the numerator.  Since no propagating modes exist in the superconductor below the gap, all probability current must be reflected; the full $2\times 2$ reflection matrix is therefore unitary,
+
+$$
+r_{NS}^\dagger r_{NS}^{} = \mathbb{1}_2 .
+$$
+
+For electron incidence the diagonal element of this matrix equation gives $|r|^2 + |r_A|^2 = 1$, with $|r|^2$ the probability for normal reflection and $|r_A|^2$ the probability for Andreev reflection.
 
 ## 8. Retro-Reflection versus Specular Reflection
 
